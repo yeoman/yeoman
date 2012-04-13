@@ -1,0 +1,42 @@
+  ______           _              _     
+ |  ____|         | |            (_)    
+ | |__   _ __ ___ | |__   ___ _ ___ ___ 
+ |  __| | '_ ` _ \| '_ \ / _ \ '__| / __|
+ | |____| | | | | | |_) |  __/ |_| \__ \
+ |______|_| |_| |_|_.__/ \___|_(_) |___/
+                                _/ |    
+                               |__/
+
+Your Ember.js project is almost ready! Here's how to get started:
+
+- Change lang="en" in the <html> tag if your page is not in English
+
+- Fill:
+  <title></title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+- Change the favicons
+
+- Start writing your app in js/app.js.
+
+- Describe your application HTML in index.html.
+
+- During development, you can link to ember-*.js to get the
+  unminified version of Ember.js.
+
+- Make a 404.html page if you have a 404 redirection in your server configuration file
+
+== Recommendations and usage =====
+
+- Use CSS versioning to force the cache refresh:
+  <link rel="stylesheet" href="css/style.css?v=[current_version]">
+
+== About =========================
+
+This Ember.js package is based on a build of HTML 5 Boilerplate from
+initializr.com. Thanks @jverrecchia!
+
+== Contact =======================
+
+www.emberjs.com
