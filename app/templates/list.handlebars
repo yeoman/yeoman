@@ -1,0 +1,24 @@
+
+<div id="top">
+	{{Em.MyApp.user.name}} {{#view Em.MyApp.AccessButton action="logout"}}Log out{{/view}}
+</div>
+
+<div id="create-item">
+	{{#view Em.MyApp.CreateItemView}}{{/view}}
+</div>
+
+<div id="items-list">
+	<ul>
+		{{#each items}}
+			{{#view Em.MyApp.ItemView contentBinding="this"}}
+				<li><span class="label">{{content.name}}</span>
+				[{{createdAtString}} by {{createdByName}}]</li>
+			{{/view}}
+		{{/each}}
+	</ul>
+</div>
+
+<div id="bottom">
+	MyApp v{{Em.MyApp.VERSION}}.
+</div>
+

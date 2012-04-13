@@ -1,0 +1,26 @@
+{
+	baseUrl: "..",
+	dir: "../../requirejs-example-build",
+	optimize: "uglify",
+
+	inlineText: true,
+
+	paths: {
+	    "jquery": "lib/require-jquery",
+	    "require-jquery": "lib/require-jquery"
+	},
+
+	modules: [
+	    {
+	        name: "require-jquery"
+	    },
+
+	    {
+	        name: "main",
+	        exclude: ["jquery"]
+	    }
+	],
+
+	preserveLicenseComments: false
+}
+
