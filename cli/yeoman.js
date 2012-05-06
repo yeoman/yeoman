@@ -1,0 +1,2 @@
+
+var yeoman = module.exports;

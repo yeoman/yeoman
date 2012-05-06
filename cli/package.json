@@ -1,0 +1,19 @@
+{
+  "author": "Chrome DevRel",
+  "name": "yeoman",
+  "description": "yeoman cmd line tool",
+  "version": "0.0.1",
+  "homepage": "http://yeoman.io",
+  "bin": {
+    "yeoman": "./bin/yeoman"
+  },
+  "main": "./yeoman",
+
+  "dependencies": {
+    "node-build-script": "http://nodeload.github.com/h5bp/node-build-script/tarball/master"
+  },
+
+  "scripts": {
+
+  }
+}
