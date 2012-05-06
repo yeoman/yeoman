@@ -2,13 +2,15 @@
 
 ## Installing
 
-    # verify you have the dependencies
+```shell
     ./install.sh
-    # install neccessary gems
-    bundle install
+```
+
+Oh. That's it.
+
 
 ## Running
 
-    python -m SimpleHTTPServer
-    open http://localhost:8000
-
+```shell
+    open http://localhost:8000 && python -m SimpleHTTPServer
+```

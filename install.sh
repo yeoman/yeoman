@@ -4,8 +4,10 @@
 # we need to account for the other OS's, which they do there..
 
 
+# packages to automatically be installed
 PACKAGES='git'
 
+# checking baseline dependencies
 XCODEFILE=$(which xed)
 RVMFILE=$(which rvm)
 BREWFILE=$(which brew)
@@ -33,6 +35,16 @@ then
 else
 	echo "XCode is not installed. Please install XCode 4.3+ from http://itunes.apple.com/us/app/xcode/id448457090?mt=12"
 	exit 1
+fi
+
+
+# rvm needed for BPM.
+if [ "$RVMFILE" ]
+then
+	echo "RVM is installed..."
+else
+	echo "Installing RVM..."
+	bash < <(curl -L get.rvm.io | bash -s stable )
 fi
 
 
@@ -70,4 +82,9 @@ for package in $PACKAGES
 do
 	check_or_install_brew_pkg $package
 done
+
+# some gems are required in the Gemfile.
+echo "Installing bundler-specified gems"
+bundle install
+
 
