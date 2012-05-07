@@ -9,6 +9,7 @@
   },
   "main": "./yeoman",
 
+  "//" : "// node-build-script is not yet on npm. "
   "dependencies": {
     "node-build-script": "http://nodeload.github.com/h5bp/node-build-script/tarball/master"
   },
