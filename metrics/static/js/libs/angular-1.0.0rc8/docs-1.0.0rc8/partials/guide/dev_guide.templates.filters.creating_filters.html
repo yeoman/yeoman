@@ -1,0 +1,80 @@
+<h1 id="Developer.Guide..Templates..Filters..Creating.Angular.Filters">Developer Guide: Templates: Filters: Creating Angular Filters</h1>
+<div class="developer-guide--templates--filters--creating-angular-filters"><p>Writing your own filter is very easy: just define a JavaScript function on the <code>angular.module.ng.$filter</code>
+object.
+The framework passes in the input value as the first argument to your function. Any filter
+arguments are passed in as additional function arguments.</p>
+
+<p>You can use these variables in the function:</p>
+
+<ul>
+<li><code>this</code> — The current scope.</li>
+<li><code>this.$element</code> — The DOM element containing the binding. The <code>$element</code> variable allows the
+filter to manipulate the DOM.</li>
+</ul>
+
+<p>The following sample filter reverses a text string. In addition, it conditionally makes the
+text upper-case and assigns color.</p>
+
+<h2>Demo Source Code</h2>
+<div source-edit="MyReverseModule" source-edit-deps="angular.js script.js" source-edit-html="index.html-48" source-edit-css="" source-edit-js="script.js-47" source-edit-unit="" source-edit-scenario="scenario.js-49"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-48" ng-html-wrap="MyReverseModule angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-48">
+
+
+<div ng-controller="Ctrl">
+  <input ng-model="greeting" type="greeting"><br>
+  No filter: {{greeting}}<br>
+  Reverse: {{greeting|reverse}}<br>
+  Reverse + uppercase: {{greeting|reverse:true}}<br>
+</div>
+</script>
+</div>
+<div class="tab-pane" title="script.js">
+<pre class="prettyprint linenums" ng-set-text="script.js-47"></pre>
+<script type="text/ng-template" id="script.js-47">
+  angular.module('MyReverseModule', []).
+    filter('reverse', function() {
+      return function(input, uppercase) {
+        var out = "";
+        for (var i = 0; i < input.length; i++) {
+          out = input.charAt(i) + out;
+        }
+        // conditional based on optional argument
+        if (uppercase) {
+          out = out.toUpperCase();
+        }
+        return out;
+      }
+    });
+
+  function Ctrl($scope) {
+    $scope.greeting = 'hello';
+  }
+</script>
+</div>
+<div class="tab-pane" title="End to end test">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-49"></pre>
+<script type="text/ng-template" id="scenario.js-49">
+  it('should reverse greeting', function() {
+    expect(binding('greeting|reverse')).toEqual('olleh');
+    input('greeting').enter('ABC');
+    expect(binding('greeting|reverse')).toEqual('CBA');
+  });
+</script>
+</div>
+</div><h2>Demo Source Code</h2>
+<div class="well  doc-example-live" ng-embed-app="MyReverseModule" ng-set-html="index.html-48" ng-eval-javascript="script.js-47"></div>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.templates.filters">Understanding Angular Filters</a></li>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$filter"><code>Angular Filter API</code></a></li>
+</ul></div>

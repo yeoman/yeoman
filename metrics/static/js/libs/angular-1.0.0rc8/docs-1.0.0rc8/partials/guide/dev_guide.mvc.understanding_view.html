@@ -1,0 +1,19 @@
+<h1 id="Developer.Guide..About.MVC.in.Angular..Understanding.the.View.Component">Developer Guide: About MVC in Angular: Understanding the View Component</h1>
+<div class="developer-guide--about-mvc-in-angular--understanding-the-view-component"><p>In angular, the view is the DOM loaded and rendered in the browser, after angular has transformed
+the DOM based on information in the template, controller and model.</p>
+
+<p><img src="img/guide/about_view_final.png"></p>
+
+<p>In the angular implementation of MVC, the view has knowledge of both the model and the controller.
+The view knows about the model where two-way data-binding occurs. The view has knowledge of the
+controller through angular directives, such as <a href="api/angular.module.ng.$compileProvider.directive.ngController"><code>ngController</code></a> and <a href="api/angular.module.ng.$compileProvider.directive.ngView"><code>ngView</code></a>, and through bindings of this form:
+<code>{{someControllerFunction()}}</code>. In these ways, the view can call functions in an associated
+controller function.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.mvc">About MVC in Angular</a></li>
+<li><a href="guide/dev_guide.mvc.understanding_model">Understanding the Model Component</a></li>
+<li><a href="guide/dev_guide.mvc.understanding_controller">Understanding the Controller Component</a></li>
+</ul></div>

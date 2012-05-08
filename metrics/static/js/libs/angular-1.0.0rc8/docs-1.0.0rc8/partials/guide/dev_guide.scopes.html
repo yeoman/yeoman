@@ -1,0 +1,35 @@
+<h1 id="Developer.Guide..Scopes">Developer Guide: Scopes</h1>
+<div class="developer-guide--scopes"><p>An Angular scope is a JavaScript object with additional APIs useful for watching property changes,
+Angular scope is the model in Model-View-Controller paradigm. Instances of scope serve as the
+context within which all <a href="guide/dev_guide.expressions">expressions</a> get evaluated.</p>
+
+<p>You can think of Angular scope objects as the medium through which the model, view, and controller
+communicate. Scopes are linked during the compilation process with the view. This linkage provides
+the contexts in which Angular creates data-bindings between the model and the view.</p>
+
+<p>In addition to providing the context in which data is evaluated, Angular scope objects watch for
+model changes. The scope objects also notify all components interested in any model changes (for
+example, functions registered through <a href="api/angular.module.ng.$rootScope.Scope#$watch"><code>$watch</code></a>, bindings created by
+<a href="api/angular.module.ng.$compileProvider.directive.ngBind"><code>ngBind</code></a>, or HTML input elements).</p>
+
+<p>Angular scope objects:</p>
+
+<ul>
+<li>Link the model, controller and view template together.</li>
+<li>Provide the mechanism to watch for model changes (<a href="api/angular.module.ng.$rootScope.Scope#$watch"><code>$watch</code></a>).</li>
+<li>Apply model changes to the system (<a href="api/angular.module.ng.$rootScope.Scope#$apply"><code>$apply</code></a>).</li>
+<li>Provide the context in which expressions are evaluated (<a href="api/angular.module.ng.$rootScope.Scope#$eval"><code>$eval</code></a>).</li>
+</ul>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.scopes.understanding_scopes">Understanding Scopes</a></li>
+<li><a href="guide/dev_guide.scopes.internals">Scopes Internals</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$rootScope.Scope"><code>Angular Scope API</code></a></li>
+</ul></div>

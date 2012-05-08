@@ -1,0 +1,227 @@
+<h1 id="Developer.Guide..Scopes..Scope.Internals">Developer Guide: Scopes: Scope Internals</h1>
+<div class="developer-guide--scopes--scope-internals"><h3>What is a scope?</h3>
+
+<p>A scope is an execution context for <a href="guide/dev_guide.expressions">expressions</a>. You can think of a
+scope as a JavaScript object that has an extra set of APIs for registering change listeners and for
+managing its own life cycle.  In Angular's implementation of the model-view-controller design
+pattern, a scope's properties comprise both the model and the controller methods.</p>
+
+<h4>Scope characteristics</h4>
+
+<ul>
+<li>Scopes provide APIs (<a href="api/angular.module.ng.$rootScope.Scope#$watch"><code>$watch</code></a>) to observe model mutations.</li>
+<li>Scopes provide APIs (<a href="api/angular.module.ng.$rootScope.Scope#$apply"><code>$apply</code></a>) to propagate any model changes
+through the system into the view from outside of the "Angular realm" (controllers, services,
+Angular event handlers).</li>
+<li>Scopes can be nested to isolate application components while providing access to shared model
+properties. A scope (prototypically) inherits properties from its parent scope.</li>
+<li>In some parts of the system (such as controllers, services and directives), the scope is made
+available as <code>this</code> within the given context. (Note: This api will change before 1.0 is released.)</li>
+</ul>
+
+<h4>Root scope</h4>
+
+<p>Every application has a root scope, which is the ancestor of all other scopes.</p>
+
+<h4>What is scope used for?</h4>
+
+<p><a href="guide/dev_guide.expressions">Expressions</a> in the view are <a href="api/angular.module.ng.$rootScope.Scope#$eval"><code>evaluated</code></a>
+against the current scope. When HTML DOM elements are attached to a scope, expressions in those
+elements are evaluated against the attached scope.</p>
+
+<p>There are two kinds of expressions:</p>
+
+<ul>
+<li>Binding expressions, which are observations of property changes. Property changes are reflected
+in the view during the <a href="api/angular.module.ng.$rootScope.Scope#$digest"><code>digest cycle</code></a>.</li>
+<li>Action expressions, which are expressions with side effects. Typically, the side effects cause
+execution of a method in a controller in response to a user action, such as clicking on a button.</li>
+</ul>
+
+<h4>Scope inheritance</h4>
+
+<p>A scope (prototypically) inherits properties from its parent scope. Since a given property may not
+reside on a child scope, if a property read does not find the property on a scope, the read will
+recursively check the parent scope, grandparent scope, etc. all the way to the root scope before
+defaulting to undefined.</p>
+
+<p><a href="guide/directive">directives</a> associated with elements
+(ngController, ngRepeat, ngInclude, etc.) create new child scopes that inherit properties from
+the current parent scope. Any code in Angular is free to create a new scope. Whether or not your
+code does so is an implementation detail of the directive, that is, you can decide when or if this
+happens. Inheritance typically mimics HTML DOM element nesting, but does not do so with the same
+granularity.</p>
+
+<p>A property write will always write to the current scope. This means that a write can hide a parent
+property within the scope it writes to, as shown in the following example.</p>
+
+<pre class="prettyprint linenums">
+it('should inherit properties', inject(function($rootScope)) {
+  var root = $rootScope;
+  var child = root.$new();
+
+  root.name = 'angular';
+  expect(child.name).toEqual('angular');
+  expect(root.name).toEqual('angular');
+
+  child.name = 'super-heroic framework';
+  expect(child.name).toEqual('super-heroic framework');
+  expect(root.name).toEqual('angular');
+});
+</pre>
+
+<h4>Scope life cycle</h4>
+
+<ol>
+<li><p><strong>Creation</strong></p>
+
+<ul><li>The root scope is created by the  <a href="api/angular.module.ng.$rootScope"><code>$rootScope</code></a> service.</li>
+<li>To create a child scopes, you should call <a href="api/angular.module.ng.$rootScope.Scope#$new"><code>parentScope.$new()</code></a>.</li></ul></li>
+<li><p><strong>Watcher registration</strong></p>
+
+<p>Watcher registration can happen at any time and on any scope (root or child) via <a href="api/angular.module.ng.$rootScope.Scope#$watch"><code>scope.$watch()</code></a> API.</p></li>
+<li><p><strong>Model mutation</strong></p>
+
+<p>For mutations to be properly observed, you should make them only within the execution of the
+function passed into <a href="api/angular.module.ng.$rootScope.Scope#$apply"><code>scope.$apply()</code></a> call. (Angular apis do this
+implicitly, so no extra <code>$apply</code> call is needed when doing synchronous work in controllers, or
+asynchronous work with <a href="api/angular.module.ng.$http"><code>$http</code></a> or <a href="api/angular.module.ng.$defer"><code>$defer</code></a> services.</p></li>
+<li><p><strong>Mutation observation</strong></p>
+
+<p>At the end of each <code>$apply</code> call <a href="api/angular.module.ng.$rootScope.Scope#$digest"><code>$digest</code></a> cycle is started on
+the root scope, which then propagates throughout all child scopes.</p>
+
+<p>During the <code>$digest</code> cycle, all <code>$watch-ers</code> expressions or functions are checked for model
+mutation and if a mutation is detected, the <code>$watch-er</code> listener is called.</p></li>
+<li><p><strong>Scope destruction</strong></p>
+
+<p>When child scopes are no longer needed, it is the responsibility of the child scope creator to
+destroy them via <a href="api/angular.module.ng.$rootScope.Scope#$destroy"><code>scope.$destroy()</code></a> API. This will stop
+propagation of <code>$digest</code> calls into the child scope and allow for memory used by the child scope
+models to be reclaimed by the garbage collector.</p>
+
+<p>The root scope can't be destroyed via the <code>$destroy</code> API. Instead, it is enough to remove all
+references from your application to the scope object and garbage collector will do its magic.</p></li>
+</ol>
+
+<h3>Scopes in Angular applications</h3>
+
+<p>To understand how Angular applications work, you need to understand how scopes work within an
+application. This section describes the typical life cycle of an application so you can see how
+scopes come into play throughout and get a sense of their interactions.</p>
+
+<h4>How scopes interact in applications</h4>
+
+<ol>
+<li>At application compile time, a root scope is created and is attached to the root <code>&lt;HTML&gt;</code> DOM
+element.</li>
+<li>During the compilation phase, the <a href="guide/dev_guide.compiler">compiler</a> matches <a href="guide/directive">directives</a> against the DOM template. The directives
+usually fall into one of two categories:
+<ul><li>Observing <a href="guide/directive">directives</a>, such as double-curly
+expressions <code>{{expression}}</code>, register listeners using the <a href="api/angular.module.ng.$rootScope.Scope#$watch"><code>$watch()</code></a> method. This type of directive needs to
+be notified whenever the expression changes so that it can update the view.</li>
+<li>Listener directives, such as <a href="api/angular.module.ng.$compileProvider.directive.ngClick"><code>ngClick</code></a>, register a listener with the DOM. When the DOM listener fires, the directive executes
+the associated expression and updates the view using  the <a href="api/angular.module.ng.$rootScope.Scope#$apply"><code>$apply()</code></a> method.</li></ul></li>
+<li>When an external event (such as a user action, timer or XHR) is received, the associated <a href="guide/dev_guide.expressions">expression</a> must be applied to the scope through the <a href="api/angular.module.ng.$rootScope.Scope#$apply"><code>$apply()</code></a> method so that all listeners are updated correctly.</li>
+</ol>
+
+<h4>Directives that create scopes</h4>
+
+<p>In most cases, <a href="guide/directive">directives</a> and scopes interact but do not create new
+instances of scope. However, some directives, such as <a href="api/angular.module.ng.$compileProvider.directive.ngController"><code>ngController</code></a> and <a href="api/angular.module.ng.$compileProvider.directive.ngRepeat"><code>ngRepeat</code></a>, create new child scopes using
+the <a href="api/angular.module.ng.$rootScope.Scope#$new"><code>$new()</code></a> method and then attach the child scope to the
+corresponding DOM element. You can retrieve a scope for any DOM element by using an
+<code>angular.element(aDomElement).scope()</code> method call.)</p>
+
+<h4>Controllers and scopes</h4>
+
+<p>Scopes and controllers interact with each other in the following situations:
+   - Controllers use scopes to expose controller methods to templates (see <a href="api/angular.module.ng.$compileProvider.directive.ngController"><code>ngController</code></a>).
+   - Controllers define methods (behavior) that can mutate the model (properties on the scope).
+   - Controllers may register <a href="api/angular.module.ng.$rootScope.Scope#$watch"><code>watches</code></a> on the model. These watches
+execute immediately after the controller behavior executes, but before the DOM gets updated.</p>
+
+<p>See the <a href="guide/dev_guide.mvc.understanding_controller">controller docs</a> for more information.</p>
+
+<h4>Updating scope properties</h4>
+
+<p>You can update a scope by calling its <a href="api/angular.module.ng.$rootScope.Scope#$apply"><code>$apply()</code></a> method with an
+expression or a function as the function argument. However it is typically not necessary to do this
+explicitly. In most cases, angular intercepts all external events (such as user interactions, XHRs,
+and timers) and wraps their callbacks into the <code>$apply()</code> method call on the scope object for you
+at the right time. The only time you might need to call <code>$apply()</code> explicitly is when you create
+your own custom asynchronous widget or service.</p>
+
+<p>The reason it is unnecessary to call <code>$apply()</code> from within your controller functions when you use
+built-in angular widgets and services is because your controllers are typically called from within
+an <code>$apply()</code> call already.</p>
+
+<p>When a user inputs data, angularized widgets invoke <code>$apply()</code> on the current scope and evaluate an
+angular expression or execute a function on this scope. Afterwards <code>$apply</code> will trigger <code>$digest</code>
+call on the root scope, to propagate your changes through the entire system, which results in
+$watch-ers firing and view getting updated. Similarly, when a request to fetch data from a server
+is made and the response comes back, the data is written into the model (scope) within an $apply,
+which then pushes updates through to the view and any other dependents.</p>
+
+<p>A widget that creates scopes (such as <a href="api/angular.module.ng.$compileProvider.directive.ngRepeat"><code>ngRepeat</code></a>) via <code>$new</code>,
+doesn't need to worry about propagating the <code>$digest</code> call from the parent scope to child scopes.
+This happens automatically.</p>
+
+<h3>Scopes in unit-testing</h3>
+
+<p>You can create scopes, including the root scope, in tests by having the $rootScope injected into
+your spec. This allows you to mimic the run-time environment and have full control over
+the life cycle of the scope so that you can assert correct model transitions. Since these scopes
+are created outside the normal compilation process, their life cycles must be managed by the test.</p>
+
+<h4>Using scopes in unit-testing</h4>
+
+<p>The following example demonstrates how the scope life cycle needs to be manually triggered from
+within the unit-tests.</p>
+
+<pre class="prettyprint linenums">
+  // example of a test
+  it('should trigger a watcher', inject(function($rootScope) {
+    var scope = $rootScope;
+    scope.$watch('name', function(name) {
+     scope.greeting = 'Hello ' + name + '!';
+    });
+
+    scope.name = 'angular';
+    // The watch does not fire yet since we have to manually trigger the digest phase.
+    expect(scope.greeting).toEqual(undefined);
+
+    // manually trigger digest phase from the test
+    scope.$digest();
+    expect(scope.greeting).toEqual('Hello Angular!');
+  }
+</pre>
+
+<h4>Dependency injection in Tests</h4>
+
+<p>When you find it necessary to inject your own mocks in your tests, use a scope to override the
+service instances, as shown in the following example.</p>
+
+<pre class="prettyprint linenums">
+it('should allow override of providers', inject(
+  function($provide) {
+    $provide.value('$location', {mode:'I am a mock'});
+  },
+  function($location){
+    expect($location.mode).toBe('I am a mock');
+  }
+)};
+</pre>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.scopes">Angular Scope Objects</a></li>
+<li><a href="guide/dev_guide.scopes.understanding_scopes">Understanding Scopes</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$rootScope.Scope"><code>Angular Scope API</code></a></li>
+</ul></div>

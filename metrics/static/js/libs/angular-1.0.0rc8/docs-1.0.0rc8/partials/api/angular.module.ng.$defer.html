@@ -1,0 +1,40 @@
+<h1><code ng:non-bindable="">$defer</code>
+<span class="hint">(service in module <code ng:non-bindable="">ng</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>Delegates to <a href="api/angular.module.ng.$browser#defer"><code>$browser.defer</code></a>, but wraps the <code>fn</code> function
+into a try/catch block and delegates any exceptions to
+<a href="api/angular.module.ng.$exceptionHandler"><code>$exceptionHandler</code></a> service.</p>
+
+<p>In tests you can use <code>$browser.defer.flush()</code> to flush the queue of deferred functions.</p></div>
+<h2 id="Dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="api/angular.module.ng.$browser">$browser</a></code>
+</li>
+</ul>
+<h2 id="Usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">$defer(fn[, delay]);</pre>
+<h3 id="Parameters">Parameters</h3>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+<p>A function, who's execution should be deferred.</p></li>
+<li><code ng:non-bindable="">delay<i>(optional=0)</i> – {number=} – </code>
+<p>of milliseconds to defer the function execution.</p></li>
+</ul>
+<h3 id="Returns">Returns</h3>
+<div class="returns"><code ng:non-bindable="">{*}</code>
+– <p>DeferId that can be used to cancel the task via <code>$defer.cancel()</code>.</p></div>
+</div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="cancel">cancel(deferId)</h3>
+<div class="cancel"><p>Cancels a defered task identified with <code>deferId</code>.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">deferId – {*} – </code>
+<p>Token returned by the <code>$defer</code> function.</p></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{boolean}</code>
+– <p>Returns <code>true</code> if the task hasn't executed yet and was successfuly canceled.</p></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,47 @@
+<h1 id="Developer.Guide..Initializing.Angular..Manual.Initialization">Developer Guide: Initializing Angular: Manual Initialization</h1>
+<div class="developer-guide--initializing-angular--manual-initialization"><p>In the vast majority of cases you'll want to let Angular handle initialization automatically.
+If, however, you need to delay Angular from managing the page right after the DOMContentLoaded
+event fires, you'll need to control this initialization manually.</p>
+
+<p>To initialize Angular -- after you've done your own special-purpose initialization -- just call
+the <a href="api/angular.bootstrap"><code>bootstrap()</code></a> function with the HTML container node that you want
+Angular to manage.  In automatic initialization you'd do this by adding the <code>ngApp</code> attribute to
+the same node.  Now, you won't use <code>ngApp</code> anywhere in your document.</p>
+
+<p>To show the contrast of manual vs. automatic initialization, this automatic method:</p>
+
+<pre class="prettyprint linenums">
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+&lt;head&gt;
+  &lt;script src="http://code.angularjs.org/angular.js"&gt;&lt;/script&gt;
+...
+&lt;/pre
+
+is the same as this manual method:
+
+&lt;pre&gt;
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="http://code.angularjs.org/angular.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+     angular.element(document).ready(function() {
+       angular.bootstrap(document);
+     });
+  &lt;/script&gt;
+&lt;/head&gt;
+...
+</pre>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.bootstrap">Initializing Angular</a></li>
+<li><a href="guide/dev_guide.bootstrap.auto_bootstrap">Automatic Initialization</a></li>
+<li><a href="guide/dev_guide.compiler">Angular HTML compiler</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<p><a href="api/angular.module.ng.$compile"><code>Compiler API</code></a></p></div>

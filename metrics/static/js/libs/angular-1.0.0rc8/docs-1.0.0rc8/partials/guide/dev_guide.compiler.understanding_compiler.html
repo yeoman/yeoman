@@ -1,0 +1,34 @@
+<h1 id="Developer.Guide..Angular.HTML.Compiler..Understanding.How.the.Compiler.Works">Developer Guide: Angular HTML Compiler: Understanding How the Compiler Works</h1>
+<div class="developer-guide--angular-html-compiler--understanding-how-the-compiler-works"><p>The <a href="api/angular.module.ng.$compile"><code>compiler</code></a> is responsible for applying
+<a href="guide/directive">directives</a> to the HTML. The directives
+extend the behavior of HTML elements and can effect the DOM structure, presentation, and behavior.
+This allows Angular to teach the browser new tricks.</p>
+
+<p>The compilation starts at the root element and proceeds in a depth-first order. As the compiler
+visits each node it collects the directives, orders them by priority and executes their compile
+function. The result of the compilation process is a linking function. The linking function
+can be used on the template clones to quickly bind the directives with the scope.</p>
+
+<p>The result of the compilation process is a live view. We say 'live' since any changes to the
+model attached to the <a href="api/angular.module.ng.$rootScope.Scope"><code>scope</code></a> are reflected in the view,
+and any changes in the view are reflected in the scope. This makes the scope the 'single source of
+truth'.</p>
+
+<p>Since directives allow attachment of behavior to the HTML, the angular philosophy is to use the
+HTML as Domain Specific Language (DSL) when building an application. For example it may be useful
+to declare <code>TabPanel</code> directive, or <code>KeyboardShortcut</code> directive when for an application.</p>
+
+<p>For details on how directives are created see <a href="guide/directive">directives</a></p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+<li><a href="guide/dev_guide.compiler.testing_dom_element">Testing a New DOM Element</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$compile"><code>$compile()</code></a></li>
+</ul></div>

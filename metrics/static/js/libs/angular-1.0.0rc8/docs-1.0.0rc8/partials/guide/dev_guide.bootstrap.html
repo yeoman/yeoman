@@ -1,0 +1,64 @@
+<h1 id="Developer.Guide..Initializing.Angular">Developer Guide: Initializing Angular</h1>
+<div class="developer-guide--initializing-angular"><p>Initializing Angular consists of loading the <code>angular.js</code> script in your page, and specifying how
+Angular should process and manage the page. To initialize Angular you do the following:</p>
+
+<ul>
+<li>Specify the Angular namespace in the <code>&lt;html&gt;</code> page</li>
+<li>Choose which flavor of Angular script to load (debug or production)</li>
+<li>Specify whether or not Angular should process and manage the page automatically (<code>ngApp</code>)</li>
+</ul>
+
+<p>The simplest way to initialize Angular is to load the Angular script and tell Angular to compile
+and manage the whole page. You do this as follows:</p>
+
+<pre class="prettyprint linenums">
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+  &lt;head&gt;
+    ...
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...
+    &lt;script src="angular.js"&gt;
+  &lt;/body&gt;
+</pre>
+
+<h3>Specifying the Angular Namespace</h3>
+
+<pre><code>    &lt;html xmlns:ng="http://angularjs.org"&gt;
+</code></pre>
+
+<p>You need to add the Angular namespace declaration if you use <code>ng:something</code> style of declaring
+Angular directives and you write your templates as XHTML. Or when you are targeting Internet
+Explorer older than version 9 (because older versions of IE do not render namespace
+properly for either HTML or XHTML). For more info please read <a href="guide/ie">Internet Explorer Compatibility</a> doc.</p>
+
+<h3>Creating Your Own Namespaces</h3>
+
+<p>When you are ready to define your own <a href="guide/directive">directive</a>, you may chose to create your own namespace in addition to specifying the Angular
+namespace. You use your own namespace to form the fully qualified name for directives that you
+create.</p>
+
+<p>For example, you could map the alias <code>my</code> to your domain, and create a directive called <code>my:directive</code>.
+To create your own namespace, simply add another <code>xmlns</code> tag to your page, create an alias, and set
+it to your unique domain:</p>
+
+<pre><code>    &lt;html xmlns:ng="http://angularjs.org" xmlns:my="http://mydomain.com"&gt;
+</code></pre>
+
+<h3>Loading the Angular Bootstrap Script</h3>
+
+<p>The Angular bootstrap script comes in two flavors; a debug script, and a production script:</p>
+
+<ul>
+<li>angular-[version].js - This is a human-readable file, suitable for development and debugging.</li>
+<li>angular-[version].min.js - This is a compressed and obfuscated file, suitable for use in
+production.</li>
+</ul>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.bootstrap.auto_bootstrap">Automatic Initialization</a></li>
+<li><a href="guide/dev_guide.bootstrap.manual_bootstrap">Manual Initialization</a></li>
+</ul></div>
