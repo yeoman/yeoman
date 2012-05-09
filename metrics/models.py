@@ -8,18 +8,16 @@ __author__ = 'ebidel@gmail.com (Eric Bidelman)'
 #from google.appengine.api import memcache
 from google.appengine.ext import db
 
+import shardedcounter
 
-class Command(db.Model):
-  """Model for commands."""
 
-  class Type(object):
-    INSTALL = 1
-    SCAFFOLD = 2
-    MODEL = 3
+class Report(db.Model):
+  """Model for report messages received by the API endpoints."""
 
-  type = db.IntegerProperty(required=True)
-  fetch_date = db.DateTimeProperty(auto_now=True, auto_now_add=True)
-
+  cmd = db.StringProperty(required=True)
+  sub_cmd = db.StringProperty()
+  received_date = db.DateTimeProperty(auto_now_add=True)
+  version = db.FloatProperty(required=True)
 
 # class Resource(db.Model):
 #   """Model for content resources."""

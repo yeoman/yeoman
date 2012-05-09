@@ -9,6 +9,7 @@ import os
 import simplejson
 import webapp2
 
+import models
 import settings
 
 
@@ -22,33 +23,42 @@ class APIHandler(webapp2.RequestHandler):
       return fn(self, *args, **kwargs)
     return wrapped
 
-  @__add_headers
-  def install(self, post_body=None):
-    if post_body is not None:
-      self.response.out.write(post_body)
-    else:
-      json = {
-        'rpc': 'install'
-      }
-      self.response.out.write(simplejson.dumps(json))
+  # @__add_headers
+  # def install(self, post_body=None):
+  #   if post_body is not None:
+  #     self.response.out.write(post_body)
+  #   else:
+  #     json = {
+  #       'rpc': 'install'
+  #     }
+
+  # @__add_headers
+  # def cmd(self, post_body=None):
+  #   if post_body is not None:
+  #     self.response.out.write(post_body)
+  #   else:
+  #     json = {
+  #       'rpc': 'cmd'
+  #     }
 
   @__add_headers
-  def cmd(self, post_body=None):
-    if post_body is not None:
-      self.response.out.write(post_body)
-    else:
-      json = {
-        'rpc': 'cmd'
-      }
-      self.response.out.write(simplejson.dumps(json))
-
   def get(self, method):
+    q = models.Report.all().filter('cmd', method)
     if method == 'install':
-      return self.install()
+      results = q.order("-height").fetch(limit=settings.MAX_FETCH_LIMIT)
+      #self.install()
     elif method == 'cmd':
-      return self.cmd()
+      #self.cmd()
+
+    self.response.out.write(simplejson.dumps(json))
 
   def post(self, method):
+    # m = models.Message(
+    #   cmd='init',
+    #   version=1.0
+    # )
+    # m.put()
+
     #TOOO: figure out how to verify this post request came from the yeoman cli.
     if method == 'install':
       return self.install(self.request.body)
