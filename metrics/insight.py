@@ -7,6 +7,7 @@ __author__ = 'ebidel@gmail.com (Eric Bidelman)'
 
 import os
 import random
+import sys
 import time
 import urllib
 import urllib2
@@ -56,7 +57,7 @@ class Analytics(object):
     f.write(s + '\n')
     f.close()
 
-  def send(self, path='/', recorded_at=None):
+  def _send(self, path='/', recorded_at=None):
     """Sends one pageview entry to Google Analytics.
 
     This method constructs the appropriate URL and makes a GET request to the
@@ -106,20 +107,27 @@ class Analytics(object):
       lines = [line[:-1] for line in f.readlines()]
       for l in lines[1:]: # Client ID is on first line, so start on second.
         parts = l.split(' ')
-        self.send(parts[1], recorded_at=float(parts[0]))
+        self._send(parts[1], recorded_at=float(parts[0]))
 
 
-def main():
+def main(args):
+
+  if len(sys.argv) < 2:
+    print 'Invalid number of arguments.'
+    return
+
+  method = sys.argv[1]
+  args = ' '.join(sys.argv[2:])
+
   ga = Analytics(TRACKING_CODE)
- 
-  #ga.record(CLI_NAME + ' add model MyModel')
-  #ga.record('add model MyModel')
 
-  #ga.send('/test/model') # Test his recorded now.
-  #ga.send('/add/model', recorded_at=time.time() - 120) # Test hit recorded 2 minutes ago.
-
-  ga.send_all()
+  #if callable(getattr(ga, method)):
+  #  getattr(ga, method)()
+  if method == 'record':
+    ga.record(args)
+  elif method == 'send_all':
+    ga.send_all()
 
 
 if __name__ == '__main__':
-  main()
+  main(sys.argv)
