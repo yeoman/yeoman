@@ -34,6 +34,8 @@ class Analytics(object):
     if os.path.getsize(LOG_FILE) == 0:
       self.client_id = '%s%s' % (time.time(), random.random())
       f.write(self.client_id + '\n')
+      f.flush()
+      self.record('downloaded')
     else:
       f.seek(0)
       self.client_id = f.readline()[:-1]
