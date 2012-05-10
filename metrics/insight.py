@@ -43,22 +43,6 @@ class Analytics(object):
 
     f.close()
 
-  def record(self, cmd_str):
-    """Saves the command that was run to a log file.
-
-    Args:
-      cmd_str: A string representing the full command that was run.
-          For example, when running "yeoman add model MyModel", this method
-          would save "add model" with a timestamp attached.
-    """
-    cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
-    path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
-
-    f = open(LOG_FILE, 'a')
-    s = '%s /%s' % (time.time(), path)
-    f.write(s + '\n')
-    f.close()
-
   def _send(self, path='/', recorded_at=None):
     """Sends one pageview entry to Google Analytics.
 
@@ -110,6 +94,22 @@ class Analytics(object):
       for l in lines[1:]: # Client ID is on first line, so start on second.
         parts = l.split(' ')
         self._send(parts[1], recorded_at=float(parts[0]))
+
+  def record(self, cmd_str):
+    """Saves the command that was run to a log file.
+
+    Args:
+      cmd_str: A string representing the full command that was run.
+          For example, when running "yeoman add model MyModel", this method
+          would save "add model" with a timestamp attached.
+    """
+    cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
+    path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
+
+    f = open(LOG_FILE, 'a')
+    s = '%s /%s' % (time.time(), path)
+    f.write(s + '\n')
+    f.close()
 
 
 def main(args):

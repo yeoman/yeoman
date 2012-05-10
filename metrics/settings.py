@@ -2,7 +2,6 @@ import os
 
 # Get version of Yeoman file VERSION file, otherwise use GAE app.yaml version
 # for this app.
-# TODO(ebidel): The version should be the same everywhere.
 def get_app_version():
   version_str = []
   try:
