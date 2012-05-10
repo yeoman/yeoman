@@ -57,7 +57,10 @@ class Analytics(object):
     f.close()
 
   def send(self, path='/', recorded_at=None):
-    """Sends data to Google Analytics.
+    """Sends one pageview entry to Google Analytics.
+
+    This method constructs the appropriate URL and makes a GET request to the
+    tracking API.
 
     Args:
       path: A string representing the url path of the pageview to record.
@@ -95,7 +98,9 @@ class Analytics(object):
     #print response.code
     #print response.read()
 
-  def upload(self):
+  def send_all(self):
+    """Sends all report data stored in the log file to Analytics."""
+
     with open(LOG_FILE) as f:
       # This assumes ever line in the log file ends with "\n".
       lines = [line[:-1] for line in f.readlines()]
@@ -113,7 +118,7 @@ def main():
   #ga.send('/test/model') # Test his recorded now.
   #ga.send('/add/model', recorded_at=time.time() - 120) # Test hit recorded 2 minutes ago.
 
-  ga.upload()
+  ga.send_all()
 
 
 if __name__ == '__main__':
