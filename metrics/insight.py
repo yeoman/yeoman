@@ -79,6 +79,8 @@ class Analytics(object):
             yeoman add model -> /add/model
       recorded_at: When the hit was recorded in seconds since the epoch.
           If absent, now is used.
+    Returns:
+      True if message was sent, otherwise false.
     """
     recorded_at = recorded_at or time.time()
 
@@ -103,27 +105,37 @@ class Analytics(object):
 
     url = '%s?%s' % (self.BASE_URL, encoded_params)
     print url
-    #response = urllib2.urlopen(url)
-    #print response.code
-    #print response.read()
+
+    # Noop if we're offline. Just keep stashing entries.
+    try:
+      response = urllib2.urlopen(url)
+      #if response.code == 200:
+      #  return True
+      return True
+    except urllib2.URLError:
+      return False
 
   def _send_all(self):
     """Sends all report data stored in the log file to Analytics."""
 
-    f = open(LOG_FILE) 
+    sent = True
+    with open(LOG_FILE) as f:
+      # This assumes every line in the log file ends with "\n".
+      lines = [line[:-1] for line in f.readlines()]
+      for l in lines[1:]: # ClientID is always on the first line, so start on 2nd.
+        parts = l.split(' ')
 
-    # This assumes every line in the log file ends with "\n".
-    lines = [line[:-1] for line in f.readlines()]
-    for l in lines[1:]: # ClientID is always on the first line, so start on 2nd.
-      parts = l.split(' ')
-      self._send(parts[1], recorded_at=float(parts[0]))
+        # If one message fails to send, assume we're offline and bomb out.
+        sent = self._send(parts[1], recorded_at=float(parts[0]))
+        if not sent:
+          break
 
-    f.close()
-
-    # Reset the file by clearing it and adding in the client id.
-    f = open(LOG_FILE, 'w+') 
-    self.__reset_file(f, self.client_id)
-    f.close()
+    # Proceed with resetting file if everything went well.
+    if sent:
+      # Reset the file by clearing it and adding in the client id.
+      f = open(LOG_FILE, 'w+') 
+      self.__reset_file(f, self.client_id)
+      f.close()
 
   def record(self, cmd_str):
     """Saves the command that was run to a log file.
