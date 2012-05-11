@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 
-"""This module defines the stat reporter tool."""
+"""This module defines the Yeoman Insight stat reporter tool."""
 
 __author__ = 'ebidel@gmail.com (Eric Bidelman)'
 
 
 import os
 import random
+import shutil
 import sys
 import time
 import urllib
@@ -14,34 +15,55 @@ import urllib2
 
 import settings
 
-
-TRACKING_CODE = 'UA-31537568-1'
-LOG_FILE = os.path.join(os.path.dirname(__file__), '.yeomaninsight')
 CLI_NAME = 'yeoman'
-NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only cmd subcmd format.
+LOG_FILE = os.path.join(os.path.dirname(__file__), '.%sinsight' % CLI_NAME)
+NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
+
+NUM_SECONDS_TO_STASH_DATA = 60 * 60 * 24 # 24 hrs 
 
 
 class Analytics(object):
 
+  TRACKING_CODE = 'UA-31537568-1'
   BASE_URL = 'http://www.google-analytics.com/collect/__utm.gif'
 
   def __init__(self, tracking_code):
     self.tracking_code = tracking_code
+
     f = open(LOG_FILE, 'a+') # Open file for reading and appending.
 
-    # If we're creating a new file, create a new client ID. Otherwise, read the
-    # one already saved on the first line of the file.
+    # If we're creating a new file, create a new client ID, setup the file, and
+    # record the download action. Otherwise, read the existing client ID saved
+    # on the first line of the file.
     if os.path.getsize(LOG_FILE) == 0:
       self.client_id = '%s%s' % (time.time(), random.random())
-      f.write(self.client_id + '\n')
-      f.flush()
+      self.__reset_file(f, self.client_id);
       self.record('downloaded')
     else:
       f.seek(0)
-      self.client_id = f.readline()[:-1]
-      f.seek(os.SEEK_END)
+      self.client_id = f.readline()[:-1] # Assumes the line ends with "\n".
+
+      first_entry_timestamp = float(f.readline().split(' ')[0])
+      time_delta = time.time() - first_entry_timestamp
+
+      # If we have data that's too old, send it to Analytics.
+      if time_delta >= NUM_SECONDS_TO_STASH_DATA:
+        self._send_all()
+
+    # Insure we're at the EOF to start appending.
+    f.seek(os.SEEK_END)
 
     f.close()
+
+  def __reset_file(self, f, client_id=None):
+    """Setups up the log file for writing entries to.
+
+    Args:
+      f: A file object, assumed to be open when passed to this method.
+      client_id: The client ID to use for this file.
+    """
+    f.write(self.client_id + '\n')
+    f.flush()
 
   def _send(self, path='/', recorded_at=None):
     """Sends one pageview entry to Google Analytics.
@@ -85,15 +107,23 @@ class Analytics(object):
     #print response.code
     #print response.read()
 
-  def send_all(self):
+  def _send_all(self):
     """Sends all report data stored in the log file to Analytics."""
 
-    with open(LOG_FILE) as f:
-      # This assumes ever line in the log file ends with "\n".
-      lines = [line[:-1] for line in f.readlines()]
-      for l in lines[1:]: # Client ID is on first line, so start on second.
-        parts = l.split(' ')
-        self._send(parts[1], recorded_at=float(parts[0]))
+    f = open(LOG_FILE) 
+
+    # This assumes every line in the log file ends with "\n".
+    lines = [line[:-1] for line in f.readlines()]
+    for l in lines[1:]: # ClientID is always on the first line, so start on 2nd.
+      parts = l.split(' ')
+      self._send(parts[1], recorded_at=float(parts[0]))
+
+    f.close()
+
+    # Reset the file by clearing it and adding in the client id.
+    f = open(LOG_FILE, 'w+') 
+    self.__reset_file(f, self.client_id)
+    f.close()
 
   def record(self, cmd_str):
     """Saves the command that was run to a log file.
@@ -115,20 +145,20 @@ class Analytics(object):
 def main(args):
 
   if len(sys.argv) < 2:
-    print 'Invalid number of arguments.'
-    return
+    print 'Yo! invalid number of arguments.'
+    sys.exit(1)
 
   method = sys.argv[1]
   args = ' '.join(sys.argv[2:])
 
-  ga = Analytics(TRACKING_CODE)
+  ga = Analytics(Analytics.TRACKING_CODE)
 
   #if callable(getattr(ga, method)):
   #  getattr(ga, method)()
   if method == 'record':
     ga.record(args)
-  elif method == 'send_all':
-    ga.send_all()
+  #elif method == 'send_all':
+  #  ga.send_all()
 
 
 if __name__ == '__main__':
