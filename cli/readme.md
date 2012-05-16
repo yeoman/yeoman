@@ -7,9 +7,16 @@ The Yeoman CLI presents a command line interface for creating, building, maintai
 
 ## Quick start
 
-```sh
+```
 # sudo npm install -g
 # sudo npm link (otherwise you'll get exceptions at the moment during scaffolding setup)
+```
+
+Next, navigate to where you would like to create a new project and then run:
+
+```
+yeoman init
+```
 
 ## Features
 
