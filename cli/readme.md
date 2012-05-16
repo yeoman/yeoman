@@ -14,9 +14,9 @@ The Yeoman CLI presents a command line interface for creating, building, maintai
 
 Next, navigate to where you would like to create a new project and then run:
 
-```
-yeoman init
-```
+```yeoman init```
+
+Todo: support ```yeoman init myapp```, currently ```yeoman init``` will work as will ```yeoman server```
 
 ## Features
 
