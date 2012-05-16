@@ -22,7 +22,8 @@
     "which": "~1.0.5",
     "fstream": "~0.1.18",
     "fstream-ignore": "0.0.5",
-    "tar": "~0.1.13"
+    "tar": "~0.1.13",
+    "less": "~1.2.1"
   },
   "scripts": {
     "pretest": "git submodule update --init",
