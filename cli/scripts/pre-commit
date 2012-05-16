@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+//
+// Consider adding this to your local .git/hooks/pre-commit. To
+// install (or update):
+//
+//    cat scripts/pre-commit > .git/hooks/pre-commit
+//    chmod +x .git/hooks/pre-commit
+//
+//
+// Does two thing before allowing the commit:
+//
+// * runs `grunt lint`
+// * runs `npm test`
+//
+
+var spawn = require('child_process').spawn;
+
+run('grunt lint').on('next', run.bind({}, 'npm test'));
+
+function run(args) {
+  args = args.split(' ');
+  var cmd = args.shift();
+  var ch = spawn(cmd, args);
+  ch.stdout.pipe(process.stdout);
+  ch.stderr.pipe(process.stderr);
+  ch.on('exit', function (code) {
+    if(code) process.exit(code);
+    var end = !ch.emit('next');
+    if()
+  });
+  return ch;
+}
+

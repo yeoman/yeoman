@@ -1,0 +1,22 @@
+
+[?] Do you need to force an update on master repo? (y/N) | force_update
+[?] Which layout ? ([D]efault, [C]ustom, [S]illy) | layout
+» [D]efault:  Standard html5-boilerplate layout
+
+» [C]ustom:   Specific build of html5-boilerplate. A series of prompt allows
+              explicit file rewrites for common files and directories.
+
+» [S]illy:    A "silly" build will prompt for every file in the h5bp repository.
+
+[?] CSS directory         (css/)            | css/
+» You can change here the basic layout of the project you're about to
+create. The defaults values will create a standars h5bp project, but you
+might want to go for something different like:
+
+    js/   → javascritps/
+    css/  → stylesheets/
+    img/  → images/
+
+[?] Image directory       (img/)            | img/
+[?] JavaScript directory  (js/)             | js/
+

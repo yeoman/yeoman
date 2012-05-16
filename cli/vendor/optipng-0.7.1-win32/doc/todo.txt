@@ -1,0 +1,45 @@
+
+OptiPNG - TO-DO list
+====================
+
+- Compression improvements:
+  Use zlib's deflateTune().
+  Use 7zip's powerful deflation engine.
+  (This is not possible with libpng, so a custom encoder is needed.)
+
+- Speed improvements:
+  Avoid repeated filtering when trying a filter value more than once.
+  (This is not possible with libpng, so a custom encoder is needed.)
+
+- Text chunk optimization:
+  Smart selection between tEXt and zTXt.  Similarly for iTXt.
+
+- More file recovery features.
+
+- Input from stdin; output to stdout.
+
+- Optimization of an entire directory, with and without subdirectory
+  recursion:
+    optipng dir/
+    optipng -recurse dir/
+
+- Improved support for reading external image formats
+  (e.g. compressed TIFF).
+
+- Support for conversion to a desired bit depth and color type:
+    optipng -b16 -c6 ...
+
+- Support for handling metadata, e.g.:
+    optipng -set tEXt=<keyword>,<text>     # add or update chunk
+    optipng -set sRGB=0                    # add or update chunk
+    optipng -set image.precision=<n>       # set the precision of all samples
+    optipng -set image.alpha.precision=<n> # set the precision of alpha samples
+    optipng -reset image.alpha             # make the image fully opaque
+    optipng -strip hIST,sPLT               # strip hIST and sPLT
+    optipng -strip all -protect iCCP       # strip all metadata except iCCP
+
+- Parallelization on multi-processor/multi-core machines.
+
+- A shared library (e.g. optipng.dll), to facilitate the development of
+  PNG-optimizing GUI applications and plugins.
+

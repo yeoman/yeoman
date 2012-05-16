@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title></title>
+    <link rel="stylesheet" href="qunit.css" type="text/css">
+    <script type="text/javascript" src="qunit.js"></script>
+    <script type="text/javascript" src="../src/htmlparser.js"></script>
+    <script type="text/javascript" src="../src/htmlminifier.js"></script>
+    <script type="text/javascript" src="../src/htmllint.js"></script>
+  </head>
+  <body>
+    
+    <h1 id="qunit-header">HTML Lint</h1>
+    <h2 id="qunit-banner"></h2>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+    
+    <script type="text/javascript">
+      
+      (function(global){
+        
+        var minify = global.minify, input, output, lint;
+        
+        module('', {
+          setup: function() {
+            lint = new HTMLLint();
+          }
+        });
+        
+        test('lint exists', function() {
+          ok(typeof lint !== 'undefined');
+        });
+        
+        test('lint is instance of HTMLLint', function() {
+          ok(lint instanceof HTMLLint);
+        });
+        
+        test('lint API', function() {
+          equals(0, lint.log.length, '`log` property exists');
+          equals("function", typeof lint.populate, '`populate` method exists');
+          equals("function", typeof lint.test, '`test` method exists');
+          equals("function", typeof lint.testElement, '`testElement` method exists');
+          equals("function", typeof lint.testAttribute, '`testAttribute` method exists');
+        });
+        
+        test('deprecated element (font)', function(){
+          minify('<font>foo</font>', { lint: lint });
+          var log = lint.log.join('');
+          
+          ok(log.indexOf('font') > -1);
+          ok(log.indexOf('deprecated element') > -1);
+        });
+        
+      })(this);
+    </script>
+  </body>
+</html>

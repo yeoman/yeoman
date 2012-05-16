@@ -1,0 +1,35 @@
+body { font-family: "Cambria", Georgia, Times, "Times New Roman", serif; margin-top: 0; padding-top: 0; }
+textarea { height: 30em; }
+h1 { margin-top: 0.5em; font-size: 1.25em; }
+button { font-weight: bold; width: 100px; }
+
+#outer-wrapper { overflow: hidden; }
+#wrapper { width: 65%; float: left; }
+#input { width: 99%; height: 18em; }
+#output { width: 99%; height: 18em; margin-bottom: 2em; }
+#options { float: right; width: 33%; padding-left: 1em; margin-top: 3em; }
+#options ul { list-style: none; padding: 0.5em; overflow: hidden; background: #ffe; margin-top: 0; }
+#options ul li { float: left; clear: both; padding-bottom: 0.5em; }
+#options ul li div { margin-left: 1.75em; }
+#options label, #options input { float: left; }
+#options input { margin-right: 0.5em; }
+#stats { margin-bottom: 2em; overflow: hidden; margin-top: 0; }
+#todo { font-family: monospace; margin-bottom: 2em; }
+#warning { background: #fcc; padding: 0.25em; display: inline-block; margin-top: 0; font-size: 0.85em; }
+#lint-report { font-family: monospace; }
+#report { margin-bottom: 5em; }
+#report ul { margin: 0.5em; padding-left: 1em; list-style: none; }
+
+.success { color: green; }
+.failure { color: red; }
+.quiet { font-size: 0.85em; color: #888; }
+.short { display: inline-block; width: 20em; margin-top: 0.25em; }
+
+.controls span { margin-right: 0.5em; margin-left: 1em; }
+.controls a { margin-left: 0.1em; }
+.controls a:focus, .controls a:hover { text-decoration: none; }
+
+.deprecated-element, .deprecated-attribute { color: red; }
+.presentational-element, .presentational-attribute, .inaccessible-attribute { color: #FF8C00; }
+
+.unsafe { color: #f33; }
