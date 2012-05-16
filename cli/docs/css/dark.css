@@ -1,0 +1,277 @@
+/* borrowed to http://backbonejs.org */
+
+body {
+  font-size: 13px;
+  line-height: 22px;
+  background: #272B30;
+  color: #757C82;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, body, legend, label {
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+}
+
+pre {
+  overflow-x: auto;
+}
+
+#sidebar {
+  background-color: #202328;
+  -webkit-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 15px 0 30px 30px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#sidebar::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 2px;
+}
+
+#sidebar::-webkit-scrollbar-thumb
+pre::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+a.toc_title, a.toc_title:visited {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+a.toc_title:hover {
+  text-decoration: underline;
+}
+
+a, a:visited { color:#ccc; text-decoration:none; }
+a:hover { color:#ffffff; text-decoration:underline; }
+#documentation h1 a { color: inherit; }
+
+ul.toc_section, ul.toc_section ul {
+  font-size: 11px;
+  line-height: 14px;
+  margin: 5px 0 0 0;
+  padding-left: 0px;
+  list-style-type: none;
+  font-family: Lucida Grande;
+}
+
+ul.toc_section ul {
+  padding-left: 1em;
+}
+
+.toc_section li {
+  margin: 0 0 3px 0;
+}
+.toc_section li:before { content: "» "; }
+.toc_section li a {
+  text-decoration: none;
+}
+.toc_section li a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  position: relative;
+  max-width: 690px;
+  margin: 30px 0 50px 260px;
+}
+p {
+  margin: 20px 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding-top: 1.5em;
+  line-height: 1.1;
+}
+h2 {
+  font-size: 20px; 
+  padding-bottom: .5em;
+}
+#sidebar hr {
+  margin: 25px 0 0 0;
+}
+hr {
+  height: 1px;
+  border: 0;
+  padding: 0;
+  margin: 35px 0 0 0;
+  background: rgba(0,0,0,0.20);
+  background: -moz-linear-gradient(left center, rgba(85, 85, 85, 0.88) rgba(85, 85, 85, 0.88) 50%, rgba(85, 85, 85, 0.88));
+  background: -webkit-gradient(linear, left top, right top, from(rgba(85, 85, 85, 0)), color-stop(0.5, rgba(0, 0, 0, 0.33)), to(rgba(85, 85, 85, 0)));
+}
+p > code, li > code {
+  font-family: monospace;
+  font-style: italic;
+}
+
+
+@media only screen and (device-width: 768px) {
+  #sidebar {
+    z-index: 10;
+  }
+  #sidebar .toc_section li {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  pre { white-space: pre-wrap }
+}
+
+@media only screen and (max-width: 480px) {
+  body { margin: 0; padding: 0 }
+  p { margin: .5em 0 }
+  h1, h2, h3, h4, h5, h6 { padding-top: .5em }
+  #sidebar {
+    display: none;
+    box-sizing: border-box;
+    padding: 12px 16px 30px;
+    width: 140px;
+    height: 100%;
+    font-family: helvetica, sans-serif;
+    -webkit-transform: translateX(-140px);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+  }
+  .navigating #sidebar {
+    display: block;
+    -webkit-transform: translateX(0);
+  }
+  a.toc_title { margin-top: .2em }
+  ul.toc_section { font-size: 12px; line-height: 16px }
+  .container {
+    margin: 12px;
+    max-width: none;
+  }
+  pre { padding: 2px 8px }
+}
+
+/*
+
+Zenburn style from voldmar.ru (c) Vladimir Epifanov <voldmar@voldmar.ru>
+based on dark.css by Ivan Sagalaev
+
+*/
+
+pre, pre code {
+  display: block; padding: 0.5em;
+  background: #3F3F3F;
+  color: #DCDCDC;
+}
+
+pre .keyword,
+pre .tag,
+pre .django .tag,
+pre .django .keyword,
+pre .css .class,
+pre .css .id,
+pre .lisp .title {
+  color: #E3CEAB;
+}
+
+pre .django .template_tag,
+pre .django .variable,
+pre .django .filter .argument {
+  color: #DCDCDC;
+}
+
+pre .number,
+pre .date {
+  color: #8CD0D3;
+}
+
+pre .dos .envvar,
+pre .dos .stream,
+pre .variable,
+pre .apache .sqbracket {
+  color: #EFDCBC;
+}
+
+pre .dos .flow,
+pre .diff .change,
+pre .python .exception,
+pre .python .built_in,
+pre .literal,
+pre .tex .special {
+  color: #EFEFAF;
+}
+
+pre .diff .chunk,
+pre .ruby .subst {
+  color: #8F8F8F;
+}
+
+pre .dos .keyword,
+pre .python .decorator,
+pre .class .title,
+pre .haskell .label,
+pre .function .title,
+pre .ini .title,
+pre .diff .header,
+pre .ruby .class .parent,
+pre .apache .tag,
+pre .nginx .built_in,
+pre .tex .command,
+pre .input_number {
+    color: #efef8f;
+}
+
+pre .dos .winutils,
+pre .ruby .symbol,
+pre .ruby .symbol .string,
+pre .ruby .symbol .keyword,
+pre .ruby .symbol .keymethods,
+pre .ruby .string,
+pre .ruby .instancevar {
+  color: #DCA3A3;
+}
+
+pre .diff .deletion,
+pre .string,
+pre .tag .value,
+pre .preprocessor,
+pre .built_in,
+pre .sql .aggregate,
+pre .javadoc,
+pre .smalltalk .class,
+pre .smalltalk .localvars,
+pre .smalltalk .array,
+pre .css .rules .value,
+pre .attr_selector,
+pre .pseudo,
+pre .apache .cbracket,
+pre .tex .formula {
+  color: #CC9393;
+}
+
+pre .shebang,
+pre .diff .addition,
+pre .comment,
+pre .java .annotation,
+pre .template_comment,
+pre .pi,
+pre .doctype {
+  color: #7F9F7F;
+}
+
+pre .xml .css,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .tex .formula {
+  opacity: 0.5;
+}
+
