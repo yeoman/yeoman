@@ -1,0 +1,119 @@
+<!DOCTYPE html>  <html> <head>   <title>html.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="css.html">                 css.js               </a>                                           <a class="source" href="docs.html">                 docs.js               </a>                                           <a class="source" href="dom.html">                 dom.js               </a>                                           <a class="source" href="h5bp.html">                 h5bp.js               </a>                                           <a class="source" href="html.html">                 html.js               </a>                                           <a class="source" href="img.html">                 img.js               </a>                                           <a class="source" href="h5bp.html">                 h5bp.js               </a>                                           <a class="source" href="gruntfile.html">                 gruntfile.js               </a>                                           <a class="source" href="main.html">                 main.js               </a>                                           <a class="source" href="plugins.html">                 plugins.js               </a>                                           <a class="source" href="jquery-1.7.2.html">                 jquery-1.7.2.js               </a>                                           <a class="source" href="misc.html">                 misc.js               </a>                                           <a class="source" href="rev.html">                 rev.js               </a>                                           <a class="source" href="serve.html">                 serve.js               </a>                                           <a class="source" href="usemin.html">                 usemin.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               html.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>                            </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">),</span>
+  <span class="nx">minifier</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;html-minifier&#39;</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>This task takes care of html minification through @kangax' html-minifier
+project</p>
+
+<blockquote>
+  <p>http://perfectionkills.com/experimenting-with-html-minifier/</p>
+</blockquote>
+
+<p>This is not a multi-task, but a simple one. The configuration is as follow:</p>
+
+<pre><code> ...
+ html: {
+   files: ['**/*.html']
+   options: {
+     ...
+   }
+ }
+ ...
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code> grunt html:&lt;type&gt;
+</code></pre>
+
+<p>Three "types" of html compression are supported. They map the html
+options of h5bp/ant-build-script, except that types and configuration works
+in "reverse order" here. (eg. default type is most aggresive compression).
+And we at the moment only have two types of html compression.</p>
+
+<ul>
+<li><p>compress: (when <code>grunt html</code> or <code>grunt html:compress</code> is run)
+Agrresive html compression (Most advanced optimization configuration,
+Full html minification)</p></li>
+<li><p>buildkit: (when <code>grunt html:buildkit</code> is run)
+all html whitespace/comments maintained (todo: inline and minify
+style/script)</p></li>
+<li><p>basics: (when <code>grunt html:basics</code> is run) Intermediate html compression
+(whitespace removed / comments removed)</p></li>
+</ul>
+
+<p>One very last thing this tasks needs to do is the minification of
+inlined styles / scripts.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>maintaining whitespace, removing html comments, extra quotes
+removed, ...</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">basics</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">collapseWhitespace</span><span class="o">:</span> <span class="kc">false</span>
+  <span class="p">},</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>maintaining whitespace, retain html comments</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">buildkit</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">collapseWhitespace</span>            <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">removeComments</span>                <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nx">removeCommentsFromCDATA</span>       <span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="p">},</span>
+
+  <span class="nx">compress</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">removeComments</span>                <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeCommentsFromCDATA</span>       <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeEmptyAttributes</span>         <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">cleanAttributes</span>               <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeAttributeQuotes</span>         <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeRedundantAttributes</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeScriptTypeAttributes</span>    <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeStyleLinkTypeAttributes</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">collapseWhitespace</span>            <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">collapseBooleanAttributes</span>     <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">removeOptionalTags</span>            <span class="o">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">,</span> <span class="s1">&#39;Basic to aggresive html minification&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">||</span> <span class="p">{};</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">requires</span><span class="p">(</span><span class="s1">&#39;html.files&#39;</span><span class="p">,</span> <span class="s1">&#39;staging&#39;</span><span class="p">);</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">writeln</span><span class="p">(</span><span class="s1">&#39;Run htmlcompressor on &#39;</span> <span class="o">+</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">wordlist</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">files</span><span class="p">));</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>default type</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span> <span class="o">||</span> <span class="nx">config</span><span class="p">.</span><span class="nx">type</span> <span class="o">||</span> <span class="s1">&#39;compress&#39;</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">valid</span> <span class="o">=</span> <span class="o">!!~</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">type</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">valid</span><span class="p">)</span> <span class="k">return</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;not a valid target: &#39;</span> <span class="o">+</span> <span class="nx">type</span><span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>merge default options for predefined type with the grunt's config
+one.</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">compress</span><span class="p">;</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">_</span><span class="p">.</span><span class="nx">defaults</span><span class="p">(</span><span class="nx">options</span><span class="p">[</span><span class="nx">type</span><span class="p">],</span> <span class="nx">defaults</span><span class="p">);</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;&gt;&gt; &#39;</span> <span class="o">+</span> <span class="nx">type</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span><span class="p">).</span><span class="nx">subhead</span><span class="p">(</span><span class="s1">&#39;Options:&#39;</span><span class="p">);</span>
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">helper</span><span class="p">(</span><span class="s1">&#39;inspect&#39;</span><span class="p">,</span> <span class="nx">options</span><span class="p">[</span><span class="nx">type</span><span class="p">]);</span>
+
+    <span class="kd">var</span> <span class="nx">files</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">expandFiles</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">files</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">read</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+      <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">file</span><span class="o">:</span> <span class="nx">file</span><span class="p">,</span>
+        <span class="nx">body</span><span class="o">:</span> <span class="nx">body</span><span class="p">,</span>
+        <span class="nx">minified</span><span class="o">:</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">helper</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">,</span> <span class="nx">body</span><span class="p">,</span> <span class="nx">options</span><span class="p">[</span><span class="nx">type</span><span class="p">])</span>
+      <span class="p">};</span>
+    <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>now write back to the disk each optimized html file</p>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">files</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">grunt</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">subhead</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">file</span><span class="p">);</span>
+      <span class="nx">grunt</span><span class="p">.</span><span class="nx">helper</span><span class="p">(</span><span class="s1">&#39;min_max_info&#39;</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">minified</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+      <span class="nx">grunt</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">file</span><span class="p">.</span><span class="nx">file</span><span class="p">,</span> <span class="nx">file</span><span class="p">.</span><span class="nx">minified</span><span class="p">);</span>
+    <span class="p">});</span>
+  <span class="p">});</span></pre></div>             </td>           </tr>                               <tr id="section-8">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-8">&#182;</a>               </div>               <p><strong>html</strong> helper is a wrapper to html-minifier package, taking care of
+html compression. See below for the full list of possible options. Options
+may be setup using <code>grunt.config('html.options')</code> in your gruntfile.</p>             </td>             <td class="code">               <div class="highlight"><pre>  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerHelper</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="nx">opts</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">opts</span> <span class="o">=</span> <span class="nx">opts</span> <span class="o">||</span> <span class="p">{};</span></pre></div>             </td>           </tr>                               <tr id="section-9">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-9">&#182;</a>               </div>               <blockquote>
+  <p>http://perfectionkills.com/experimenting-with-html-minifier/#options</p>
+</blockquote>             </td>             <td class="code">               <div class="highlight"><pre>    <span class="nx">grunt</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">_</span><span class="p">.</span><span class="nx">defaults</span><span class="p">(</span><span class="nx">opts</span><span class="p">,</span> <span class="nx">grunt</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="s1">&#39;html.options&#39;</span><span class="p">),</span> <span class="p">{</span>
+      <span class="nx">removeComments</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeCommentsFromCDATA</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeEmptyAttributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">cleanAttributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeAttributeQuotes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeRedundantAttributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeScriptTypeAttributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeStyleLinkTypeAttributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">collapseWhitespace</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">collapseBooleanAttributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="nx">removeOptionalTags</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="nx">minifier</span><span class="p">.</span><span class="nx">minify</span><span class="p">(</span><span class="nx">body</span><span class="p">,</span> <span class="nx">opts</span><span class="p">);</span>
+  <span class="p">});</span>
+
+<span class="p">};</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

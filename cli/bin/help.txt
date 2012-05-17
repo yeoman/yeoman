@@ -1,0 +1,28 @@
+Usage: yeoman [options] [task [task ...]]
+
+Available tasks the yeoman plugin provides (for a full list, type yeoman --help
+
+     clean  Wipe the previous build dirs
+      copy  Copies the whole staging(intermediate/) folder to output
+            (publish/) one
+       css  Concats, replaces @imports and minifies the CSS files *
+      docs  grunt h5bp plugin documentation
+       dom  dom-based build system
+      html  Basic to aggresive html minification
+       img  Optimizes .png/.jpg images using optipng/jpegtran
+    mkdirs  Prepares the build dirs *
+       rev  Automate the hash renames of assets filename *
+    server  Start a custom static web server
+    usemin  Replaces references to non-minified scripts / stylesheets *
+
+Build targets: yeoman build:<target>
+
+   default  concat css min img rev usemin manifest
+      text  concat css min     rev usemin manifest
+  buildkit  concat css min img rev usemin manifest html:buildkit
+    basics  concat css min img rev usemin manifest html:basics
+    minify  concat css min img rev usemin manifest html:compress
+
+For more information on the h5bp plugin, see https://yeoman.io
+
+For more information on grunt, see https://github.com/cowboy/grunt

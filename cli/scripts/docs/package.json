@@ -1,0 +1,16 @@
+{
+  "author": "mklabs",
+  "name": "grunt-doc-generator",
+  "description": "Internal tool for generating api docs",
+  "version": "0.0.0",
+  "engines": {
+    "node": "0.6.x"
+  },
+  "dependencies": {
+    "marked": "~0.2.4",
+    "h5bp-docs": "http://nodeload.github.com/mklabs/h5bp-docs/tarball/next",
+    "docco": "~0.3.0",
+    "fstream": "~0.1.18"
+  },
+  "bin": "./generate.js"
+}
