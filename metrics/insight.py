@@ -19,7 +19,8 @@ CLI_NAME = 'yeoman'
 LOG_FILE = os.path.join(os.path.dirname(__file__), '.%sinsight' % CLI_NAME)
 NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
 
-NUM_SECONDS_TO_STASH_DATA = 60 * 60 * 24 # 24 hrs 
+#NUM_SECONDS_TO_STASH_DATA = 60 * 60 * 4 # 4 hrs 
+NUM_SECONDS_TO_STASH_DATA = 0 # Send data as it happens.
 
 
 class Analytics(object):
@@ -104,11 +105,11 @@ class Analytics(object):
     encoded_params = urllib.urlencode(params)
 
     url = '%s?%s' % (self.BASE_URL, encoded_params)
-    print url
 
     # Noop if we're offline. Just keep stashing entries.
     try:
       response = urllib2.urlopen(url)
+      #print url
       #if response.code == 200:
       #  return True
       return True
