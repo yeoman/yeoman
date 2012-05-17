@@ -1,0 +1,1525 @@
+<!doctype html public "✰">
+<!--[if lt IE 7]> <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>h5bp/node-build-script .::. Home</title>
+  <meta name="viewport" content="width=device-width">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./css/style.css" >
+  <link rel="stylesheet" href="./css/grey.css" >
+  <style>
+    .themes { position: fixed; right: 2em; top: 1em; }
+    .themes a { font-size: 0.8em; float: left; margin-left: 0.5em; }
+    .themes a[href="#dark"] { color: #444; }
+    .themes a[href="#white"] { color: #fff; }
+    .themes a[href="#grey"] { color: #aaa; }
+  </style>
+  <script>
+    (function($, exports) {
+      $ = $ || function(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel));};
+      var m = (location.hash.match(/^#([\w]+)/) || [])[1],
+        link = $('link')[2];
+      if(m && !!~['dark', 'white', 'grey'].indexOf(m)) {
+        link.href = link.href.replace(/[^\/]+.css$/, m + '.css');
+      }
+      this.$ = $;
+    })(this.jQuery || this.Zepto, this);
+  </script>
+</head>
+<body>
+
+  <p class="themes">
+    <a href="#dark">dark</a>
+    <a href="#white">white</a>
+    <a href="#grey">grey</a>
+  </p>
+
+  <aside id="sidebar" class="interface">
+
+    <a class="toc_title" href="#">
+      h5bp/node-build-script <span class="version">(0.0.1)</span>
+    </a>
+    <ul class="toc_section">
+      <li><a href="http://github.com/h5bp/node-build-script">GitHub Repository</a></li>
+      <li><a href="./api/root/docs/h5bp.html">Annotated Source</a></li>
+      <ul>
+        <li><a href="./api/tasks/docs/css.html">Grunt Tasks</a></li>
+        <li><a href="./api/lib/docs/index.html">Lib & Dom plugins</a></li>
+      </ul>
+    </ul>
+
+    <a class="toc_title" href="#home">Introduction</a>
+    <ul class="toc_section">
+      <li><a href="#install">install</a></li>
+      <li><a href="#overview">overview</a></li>
+      <li><a href="#configuration">configuration</a></li>
+    </ul>
+    <a class="toc_title" href="#tasks">Tasks</a>
+    <ul class="toc_section">
+      <li><a href="#tasks">tasks</a></li>
+      <li><a href="#clean">clean</a></li>
+      <li><a href="#concat">concat</a></li>
+      <li><a href="#connect">connect</a></li>
+      <li><a href="#css">css</a></li>
+      <li><a href="#min">min</a></li>
+      <li><a href="#mkdirs">mkdirs</a></li>
+      <li><a href="#rev">rev</a></li>
+      <li><a href="#serve">serve</a></li>
+      <li><a href="#usemin">usemin</a></li>
+    </ul>
+
+    <a class="toc_title" href="#tasks">Dom based</a>
+    <ul class="toc_section">
+      <li><a href="#dom">dom</a></li>
+      <li><a href="#link-plugin">link-plugin</a></li>
+      <li><a href="#rev-plugin">rev-plugin</a></li>
+      <li><a href="#script-plugin">script-plugin</a></li>
+    </ul>
+  </aside>
+
+  <div class="container">
+
+    <section id=documentation>
+
+        <p>The h5bp build script now has three versions, the main one being
+the <a href="https://github.com/h5bp/ant-build-script">ant-build-script</a>. This
+project is the node version, and it uses <a href="https://github.com/cowboy/grunt">Grunt</a> as a build tool.
+
+</p>
+<p>It is packaged as a <a href="">grunt plugin</a> and provides you a bunch of tasks and
+helpers to help improve the performance of your site/app in a production
+environment.
+
+</p>
+<h2>Description</h2>
+<p>This node/grunt-based build script tries to be as close as possible to
+the <a href="https://github.com/h5bp/ant-build-script">ant-build-script</a>, a really great project you should check out.
+
+</p>
+<p>It is still in early stage of development, but it&#39;ll get
+better and better, based on <a href="https://github.com/h5bp/node-build-script/issues">your feedbacks</a>.
+
+</p>
+<h2>Quick start</h2>
+<p><strong>Fancy one line install:</strong>
+
+</p>
+<pre><code class="sh"><span class="comment"># see the gist: https://gist.github.com/2359881</span>
+<span class="variable">$ </span><span class="identifier">curl</span> <span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/raw.github.com/gist</span><span class="regexp">/2359881/install</span>.<span class="identifier">sh</span> | <span class="identifier">sh</span></code></pre>
+<p><strong>Slightly less fancier</strong>
+
+</p>
+<pre><code class="sh"><span class="variable">$ </span><span class="identifier">npm</span> <span class="identifier">install</span> <span class="identifier">https</span><span class="symbol">:</span>/<span class="regexp">/github.com/h</span>5<span class="identifier">bp</span>/<span class="identifier">node</span>-<span class="identifier">build</span>-<span class="identifier">script</span>/<span class="identifier">tarball</span>/<span class="identifier">master</span> -<span class="identifier">g</span>
+<span class="variable">$ </span><span class="identifier">h5bp</span> <span class="identifier">help</span>
+<span class="variable">$ </span><span class="identifier">h5bp</span> <span class="identifier">init</span></code></pre>
+<h2>Features</h2>
+<ul>
+<li>Concats / Compresses JS</li>
+<li>Concats / Compresses CSS</li>
+<li>Inline CSS imports via</li>
+<li>Basic to aggressive html minification</li>
+<li>Renames JS/CSS to prepend a hash of their contents for easier versioning</li>
+<li>Does the necessary regex replacements in html files and templates</li>
+<li>Experimental dom-based (with <a href="https://github.com/tmpvar/jsdom">JSDOM</a>) build system.</li>
+<li>May rerun the build script on file changes (grunt&#39;s watch task &#10084;)</li>
+<li>May automatically reload the page in your browsers whenever watched files
+change, through some <a href="http://socket.io">socket.io</a> magic.</li>
+</ul>
+<h2>Getting started</h2>
+<ul>
+<li><a href="https://github.com/h5bp/node-build-script/wiki/install">Install</a> the package</li>
+<li>Check out the extensive <a href="https://github.com/cowboy/grunt/blob/master/docs/toc.md">grunt documentation</a>, specifically the
+<a href="https://github.com/cowboy/grunt/blob/master/docs/getting_started.md#readme)">Getting Started</a> section.</li>
+<li>Learn more about <a href="https://github.com/h5bp/node-build-script/wiki/overview">Usage</a>
+and <a href="https://github.com/h5bp/node-build-script/wiki/configuration">Configuration</a></li>
+<li>Look at the <a href="https://github.com/h5bp/node-build-script/wiki/tasks">available tasks</a></li>
+<li>Test out the experimental
+<a href="https://github.com/h5bp/node-build-script/wiki/dom">dom-based</a> build
+system.</li>
+</ul>
+
+        <hr>
+<h1><a id="install" href="#install">Install</a></h1>
+<h2>Requirements</h2>
+<p>In order to successfully use this you will need:
+
+</p>
+<ul>
+<li>node = 0.6.7</li>
+<li>npm</li>
+</ul>
+<p>You should be able to use it on:
+
+</p>
+<ul>
+<li>OSX</li>
+<li>Unix</li>
+<li>Windows</li>
+</ul>
+<h2>Install instructions</h2>
+<p>There is two main way to install, using a &quot;global&quot; or a &quot;local&quot; install.
+
+</p>
+<ol>
+<li><p><strong>When installed globally</strong>: Provides a custom global binary named <code>h5bp</code>
+(or <code>html5-boilerplate</code>) which is a wrapper on top of grunt, plus the extra
+specific task and helpers.</p>
+</li>
+<li><p><strong>When installed locally</strong>: ability to load in your project and grunt setup a
+set of tasks that get referenced in your gruntfile (<code>grunt.js</code>) when run via <code>grunt</code>.</p>
+</li>
+</ol>
+<p>node-build-script is not on npm (yet), but you can install it (and/or add it to
+your project dependencies) using a tarball url, very much like if it was published
+on npm.
+
+
+</p>
+<h3>global install</h3>
+<pre><code class="sh">npm install https:<span class="comment">//github.com/h5bp/node-build-script/tarball/master -g</span></code></pre>
+<p>This installs the plugin globally, which contains its own internal grunt and
+provides an <code>h5bp</code> binary.
+
+</p>
+<p>Proxies don&#39;t like redirections, if you get problem with this command, try
+this instead:
+
+</p>
+<pre><code class="sh">npm install http://nodeload<span class="preprocessor">.github</span><span class="preprocessor">.com</span>/h5bp/node-build-script/tarball/master -g</code></pre>
+<h3>local install</h3>
+<p>This works for system where grunt have been already installed globally with
+
+</p>
+<pre><code class="sh"><span class="title">npm</span> install grunt -g.</code></pre>
+<ol>
+<li><p>Add the node-build-script as a project dependency. In your projet&#39;s root,
+next to the <code>grunt.js</code> and <code>package.json</code> file, run <code>npm install
+http://nodeload.github.com/h5bp/node-build-script/tarball/master -S</code></p>
+</li>
+<li><p>Add <code>grunt.loadNpmTasks(&#39;node-build-script&#39;)</code> into the projetc&#39;s <code>grunt.js</code> gruntfile.</p>
+</li>
+<li><p>Run <code>grunt --help</code> and all of the node-build-script&#39;s tasks and helpers
+should be available in addition to those already provided by grunt.</p>
+</li>
+</ol>
+<p>The <code>-S</code> flag (or <code>--save</code>) will make npm add the dependency in the
+<code>dependencies</code> property of your package.json. This is optional but ensures you
+never forget to update your package.json file accordingly.
+
+</p>
+<p><strong>Note</strong>: Once on npm, it&#39;ll be easier. The <code>npm install -S</code> step will add the
+following to your package.json file.
+
+</p>
+<pre><code class="js">"dependencies": {
+  "node-build-script": "0.1.0"
+}</code></pre>
+<p>Change <code>0.1.0</code> to the tarball url: <a href="http://nodeload.github.com/h5bp/node-build-script/tarball/master">http://nodeload.github.com/h5bp/node-build-script/tarball/master</a>
+
+</p>
+<h3>git clone / npm install</h3>
+<p>Clone or download this repo. Then, <code>cd</code> into it and run the <code>npm
+install</code> command.
+
+</p>
+<pre><code class="sh"><span class="preprocessor"># will most likely change to map the new location / repo / branch</span>
+git clone git:<span class="comment">//github.com/h5bp/node-build-script.git</span>
+
+<span class="preprocessor"># install the dependencies</span>
+<span class="preprocessor"># locally to play with it from the repo</span>
+npm install
+
+<span class="preprocessor"># or globally, to install the h5bp binary</span>
+npm install -g</code></pre>
+<p>For development, the <code>npm link</code> command might be handy (posix only, instead of
+<code>npm install -g</code>).
+
+</p>
+<h2>Uninstall</h2>
+<p>You may want to uninstall the globally installed package by running the
+following command:
+
+</p>
+<pre><code class="sh">npm uninstall node-build-<span class="keyword">script</span> -g</code></pre>
+<p>So sad to see you go ☹
+
+</p>
+<p>If it was installed locally, next to your gruntfile, simply drop the
+<code>node_modules/node-build-script</code> folder.
+
+</p>
+
+        <hr>
+<h1><a id="overview" href="#overview">Overview</a></h1>
+<p>node-build-script is a tool that optimizes your code for production use on the
+web, relying on <a href="https://github.com/cowboy/grunt">grunt</a> build tool.
+
+</p>
+<p>It is packaged as a grunt plugin, it defines an <code>h5bp</code> binary which wraps grunt
+plus few additional tasks and helpers.
+
+</p>
+<p>But nothing is forcing you to install this package globally, you can
+decide to pull in the set of tasks and helper in your grunt setup,
+instead of relying on the global <code>h5bp</code> binary.
+
+</p>
+<h2>Install</h2>
+<p>node-build-script is not available on npm yet, but you can install it
+via npm very much the same way.
+
+</p>
+<p>Installing the package is as simple as running the following command:
+
+</p>
+<pre><code>npm install https:<span class="comment">//github.com/h5bp/node-build-script/tarball/master</span></code></pre>
+<p>You can find more detailed documentation in the <a href="../install/">installation section</a>.
+
+</p>
+<h2>Usage</h2>
+<p><strong>This assumes the package was installed globally. It it was installed
+locally, simply replace <code>h5bp</code> by <code>grunt</code> in the following commands</strong>
+
+</p>
+<p>Running <code>h5bp --help</code> should output the following to the console
+
+</p>
+<pre><code>grunt: a task-based command line build tool <span class="flow">for</span> JavaScript projects. (v0.<span class="number">3</span>.<span class="number">7</span>)
+
+Usage
+ h5bp [options] [task [task ...]]
+
+Options
+    --help, -h  Display this help text.
+        --base  Specify an alternate base path. By default, all file paths are
+                relative to the "grunt.js" gruntfile. (grunt.file.setBase) *
+    --no-color  Disable colored output.
+      --config  Specify an alternate "grunt.js" gruntfile.
+   --debug, -d  Enable debugging mode <span class="flow">for</span> tasks that support it. <span class="flow">For</span> detailed
+                error stack traces, specify --debug <span class="number">9</span>.
+   --force, -f  A way to force your way past warnings. Want a suggestion? Don't
+                use this option, fix your code.
+       --tasks  Additional directory paths to scan <span class="flow">for</span> task and "extra" files.
+                (grunt.loadTasks) *
+         --npm  Npm-installed grunt plugins to scan <span class="flow">for</span> task and "extra" files.
+                (grunt.loadNpmTasks) *
+    --no-write  Disable writing files (dry run).
+ --verbose, -v  Verbose mode. A lot more information output.
+     --version  Print the grunt version.
+
+Options marked with * have methods exposed via the grunt API and should instead
+be specified inside the "grunt.js" gruntfile wherever possible.
+
+Available tasks
+        concat  Concatenate files. *
+          init  Generate project scaffolding from a predefined template.
+          lint  Validate files with JSHint. *
+           min  Minify files with UglifyJS. *
+         qunit  Run QUnit unit tests <span class="flow">in</span> a headless PhantomJS instance. *
+        server  Start a static web server.
+          test  Run unit tests with nodeunit. *
+         watch  Run predefined tasks whenever watched files change.
+       default  Alias <span class="flow">for</span> "intro clean mkdirs concat css min rev usemin
+                manifest" tasks.
+        reload  Alias <span class="flow">for</span> "default connect watch:reload" tasks.
+           css  Concats, replaces @imports and minifies the CSS files *
+         intro  Kindly inform the developer about the impending magic
+        mkdirs  Prepares the build dirs *
+         clean  Wipe the previous build dirs
+      manifest  Generates manifest files automatically from static assets
+                reference. *
+           rev  Automate the hash renames of assets filename *
+         serve  Spawns up a local http server on both staging / output
+                directory
+        usemin  Replaces references to non-minified scripts / stylesheets *
+
+Tasks run <span class="flow">in</span> the order specified. Arguments may be passed to tasks that accept
+them by using semicolons, like "lint:files". Tasks marked with * are "multi
+tasks" and will iterate over all sub-targets <span class="flow">if</span> no argument is specified.
+
+The list of available tasks may change based on tasks directories or grunt
+plugins specified <span class="flow">in</span> the "grunt.js" gruntfile or via command-line options.
+
+<span class="flow">For</span> more information, see https://github.com/cowboy/grunt</code></pre>
+<h2>Loading tasks and helpers in your grunt setup</h2>
+<p>You may opt to go for the local install, and manually load the tasks and helpers
+the node-build-script provides.
+
+</p>
+<p>Assuming you have no gruntfile yet for your project, run the following grunt init command:
+
+</p>
+<pre><code><span class="title">grunt</span> init:gruntfile</code></pre>
+<p>Grunt will ask you for few different things, simply follow the instructions.
+This will create a new <code>grunt.js</code> file relative to your current working
+directory.
+
+</p>
+<p>The generated gruntfile should look like this (depending on the answers
+to the few questions, check out <a href="https://github.com/cowboy/grunt/blob/master/docs/task_init.md#gruntfile">related grunt documentation</a>)
+
+</p>
+<pre><code class="js">/*global <span class="method">module:</span><span class="keyword">false</span>*/
+module.exports = function(grunt) {
+
+  // <span class="class">Project</span> configuration.
+  grunt.initConfig({
+    <span class="method">pkg:</span> <span class="string">'&lt;json:package.json>'</span>,
+    <span class="method">meta:</span> {
+      <span class="method">banner:</span> <span class="string">'/*! &lt;%= pkg.title || pkg.name %> - v&lt;%= pkg.version %> - '</span> +
+        <span class="string">'&lt;%= grunt.template.today("yyyy-mm-dd") %>\n'</span> +
+        <span class="string">'&lt;%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>'</span> +
+        <span class="string">'* Copyright (c) &lt;%= grunt.template.today("yyyy") %> &lt;%= pkg.author.name %>;'</span> +
+        <span class="string">' Licensed &lt;%= _.pluck(pkg.licenses, "type").join(", ") %> */'</span>
+    },
+    <span class="method">lint:</span> {
+      <span class="method">files:</span> [<span class="string">'grunt.js'</span>, <span class="string">'lib/**/*.js'</span>, <span class="string">'test/**/*.js'</span>]
+    },
+    <span class="method">qunit:</span> {
+      <span class="method">files:</span> [<span class="string">'test/**/*.html'</span>]
+    },
+    <span class="method">concat:</span> {
+      <span class="method">dist:</span> {
+        <span class="method">src:</span> [<span class="string">'&lt;banner>'</span>, <span class="string">'&lt;file_strip_banner:lib/&lt;%= pkg.name %>.js>'</span>],
+        <span class="method">dest:</span> <span class="string">'dist/&lt;%= pkg.name %>.js'</span>
+      }
+    },
+    <span class="method">min:</span> {
+      <span class="method">dist:</span> {
+        <span class="method">src:</span> [<span class="string">'&lt;banner>'</span>, <span class="string">'&lt;config:concat.dist.dest>'</span>],
+        <span class="method">dest:</span> <span class="string">'dist/&lt;%= pkg.name %>.min.js'</span>
+      }
+    },
+    <span class="method">watch:</span> {
+      <span class="method">files:</span> <span class="string">'&lt;config:lint.files>'</span>,
+      <span class="method">tasks:</span> <span class="string">'lint qunit'</span>
+    },
+    <span class="method">jshint:</span> {
+      <span class="method">options:</span> {
+        <span class="method">curly:</span> <span class="keyword">true</span>,
+        <span class="method">eqeqeq:</span> <span class="keyword">true</span>,
+        <span class="method">immed:</span> <span class="keyword">true</span>,
+        <span class="method">latedef:</span> <span class="keyword">true</span>,
+        <span class="method">newcap:</span> <span class="keyword">true</span>,
+        <span class="method">noarg:</span> <span class="keyword">true</span>,
+        <span class="method">sub:</span> <span class="keyword">true</span>,
+        <span class="method">undef:</span> <span class="keyword">true</span>,
+        <span class="method">boss:</span> <span class="keyword">true</span>,
+        <span class="method">eqnull:</span> <span class="keyword">true</span>,
+        <span class="method">browser:</span> <span class="keyword">true</span>
+      },
+      <span class="method">globals:</span> {
+        <span class="method">jQuery:</span> <span class="keyword">true</span>
+      }
+    },
+    <span class="method">uglify:</span> {}
+  });
+
+  // <span class="class">Default</span> task.
+  grunt.registerTask(<span class="string">'default'</span>, <span class="string">'lint qunit concat min'</span>);
+
+};</code></pre>
+<p>To load the node-build-script and helpers, you&#39;ll need to use
+
+</p>
+<pre><code class="js">grunt.loadNpmTasks('node-build-<span class="keyword">script</span>')</code></pre>
+<p>next to
+
+</p>
+<pre><code class="js">grunt.registerTask('default', <span class="literal">'lint qunit concat min'</span>);</code></pre>
+<p>Then, from your projet&#39;s root, running <code>grunt --help</code> should output the
+following:
+
+</p>
+<pre><code>...
+
+Available tasks
+        concat  Concatenate files. *
+          init  Generate project scaffolding from a predefined template.
+          lint  Validate files <span class="keyword">with</span> JSHint. *
+           min  Minify files <span class="keyword">with</span> UglifyJS. *
+         qunit  Run QUnit unit tests <span class="keyword">in</span> a headless PhantomJS instance. *
+        <span class="built_in">server</span>  Start a static web <span class="built_in">server</span>.
+          test  Run unit tests <span class="keyword">with</span> nodeunit. *
+         watch  Run predefined tasks whenever watched files change.
+       <span class="keyword">default</span>  Alias <span class="keyword">for</span> <span class="string">"lint qunit concat min"</span> tasks.
+          emit  A basic task that emits events over socket.io
+       connect  Spawns up a local http <span class="built_in">server</span> <span class="keyword">with</span> socket.io enabled
+           css  Concats, replaces @imports <span class="keyword">and</span> minifies the CSS files *
+         intro  Kindly inform the developer about the impending magic
+        mkdirs  Prepares the build dirs *
+         clean  Wipe the previous build dirs
+      manifest  Generates manifest files automatically from static assets
+                reference. *
+           rev  Automate the hash renames of assets filename *
+         serve  Spawns up a local http <span class="built_in">server</span> <span class="keyword">on</span> both staging / output
+                directory
+        usemin  Replaces references <span class="keyword">to</span> non-minified scripts / stylesheets *
+
+...</code></pre>
+
+        <hr>
+<h1><a id="configuration" href="#configuration">H5BP Build configuration</a></h1>
+<p>For what it&#39;s worth, here&#39;s the basic current configuration for the
+build script, which is located in repo&#39;s root.
+
+</p>
+<p>You may edit this configuration by creating a grunt.js file in the
+current working directory and tweak any configuration values below. The
+binary will lookup for this file, and fallback accordingly to the
+default one if it wasn&#39;t able to find one.
+
+</p>
+<p>To learn more about each configuration property (which are generally
+mapping a task name, in the case of <a href="https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks">multi-tasks</a> type of task), refer
+to the according <a href="../tasks/">task documentation</a>.
+
+</p>
+<pre><code class="js">
+// This <span class="keyword">is</span> the main html5-boilerplate build <span class="keyword">configuration</span> <span class="keyword">file</span>.
+//
+// Builds depends <span class="keyword">on</span> two specific directory created during the <span class="keyword">process</span>
+// `intermediate/` <span class="keyword">and</span> `publish/`, the first <span class="keyword">is</span> used as a staging area, the
+// second <span class="keyword">is</span> the final result <span class="keyword">of</span> the build that was run.
+//
+// These two values may be changed <span class="keyword">to</span> something <span class="keyword">else</span> <span class="keyword">with</span> the `staging` <span class="keyword">and</span>
+// `output` config property below, <span class="keyword">and</span> by changing any task config <span class="keyword">to</span> match the <span class="keyword">new</span> value.
+//
+module.exports = <span class="keyword">function</span>(grunt) {
+  // Grunt utilities
+  var config = grunt.config,
+    utils = grunt.utils;
+
+  // the staging directory used during the <span class="keyword">process</span>
+  var staging ='intermediate/';
+
+  // final build output
+  var output = 'publish/';
+
+  // extend the grunt.utils object <span class="keyword">with</span> h5bp's utilities, wrapping  require
+  // calls <span class="keyword">to</span> utility libs (rimraf, ncp, mkdirp) as lazy-loaded getters.
+  h5bp.utils.extend(utils);
+
+  //
+  // Grunt <span class="keyword">configuration</span>
+  //
+  config.init({
+    // the staging directory used during the <span class="keyword">process</span>
+    staging: staging,
+
+    // final build output
+    output: output,
+
+    // environement <span class="keyword">and</span> common <span class="keyword">configuration</span> values
+    // <span class="keyword">for</span> futher usage <span class="keyword">in</span> tasks that needs them.
+    env: {
+      platform: <span class="keyword">process</span>.platform,
+      win32: <span class="keyword">process</span>.platform === <span class="literal">'win32'</span>
+    },
+
+    // filter any files matching one <span class="keyword">of</span> the below pattern during mkdirs task
+    exclude: 'build/** node_modules/** grunt.js <span class="keyword">package</span>.json *.md'.split(' '),
+
+    mkdirs: {
+      staging: '&lt;config:exclude>',
+      output: '&lt;config:exclude>'
+    },
+
+    usemin: {
+      files: ['**/*.html']
+    },
+
+    manifest: '&lt;config:usemin>',
+
+    watch: {
+      files: ['js/**/*.js', 'css/**', '*.html'],
+      tasks: 'default',
+
+      reload: {
+        files: '&lt;config:watch.files>',
+        tasks: 'default emit'
+      }
+    },
+
+    css: {
+      'css/style.css': ['css/style.css']
+    },
+
+    // are resolved below the output directory
+    rev: {
+      js: 'js/**/*.js',
+      css: 'css/**/*.css',
+      img: 'img/**'
+    },
+
+    serve: {
+      staging: { <span class="keyword">port</span>: <span class="number">3000</span> },
+      output: { <span class="keyword">port</span>: <span class="number">3001</span> }
+    },
+
+    connect: {
+      staging: {
+        hostname: <span class="literal">'localhost'</span>,
+        <span class="keyword">port</span>: <span class="number">3000</span>,
+        logs: 'dev',
+        dirs: true
+      },
+      output: {
+        hostname: <span class="literal">'localhost'</span>,
+        <span class="keyword">port</span>: <span class="number">3001</span>,
+        logs: 'default',
+        dirs: true
+      }
+    },
+
+    dom: {
+
+      files                   : ['*.html'],
+
+      options: {
+        //
+        // cwd - base directory <span class="keyword">to</span> work from.
+        // <span class="keyword">out</span> - optimized assets get resolved <span class="keyword">to</span> this path.
+        //
+      },
+
+      'script[data-build]'    : h5bp.plugins.script,
+      <span class="literal">'link'</span>                  : h5bp.plugins.link,
+      'img'                   : h5bp.plugins.img,
+      'script, link, img'     : h5bp.plugins.rev
+    },
+
+    lint: {
+      files: ['js/*.js'],
+      build: ['grunt.js', 'tasks/*.js']
+    }
+  });
+
+  //
+  // Concat <span class="keyword">configuration</span> - prepending output / staging values <span class="keyword">to</span> task's target
+  //
+  // files are concat'd into `staging/subprop.js`
+  // (eg. intermediate/js/scripts.js)
+  //
+  // This <span class="keyword">is</span> necessary config <span class="keyword">for</span> the built-<span class="keyword">in</span> min / concat task <span class="keyword">to</span> operate
+  // <span class="keyword">on</span> staging <span class="keyword">or</span> output directory, without the need <span class="keyword">to</span> prepend their values
+  // directly <span class="keyword">in</span> the task target <span class="keyword">or</span> data (as they may be tweaked <span class="keyword">to</span> some other values)
+  //
+  // Will probably flesh <span class="keyword">out</span> a custom concat / min task, using grunt's helper <span class="keyword">to</span>
+  // handle these values prepends.
+  //
+  var concat = config('concat') || {};
+  concat[staging + 'js/scripts.js'] = ['js/plugins.js', 'js/script.js'];
+  concat[staging + 'css/style.css'] = ['css/*.css'];
+  config('concat', concat);
+
+  //
+  // Min <span class="keyword">configuration</span> - same goes the minify task
+  // (eg. publish/js/scripts.js)
+  //
+  var min = config('min') || {};
+  min[output + 'js/scripts.js'] = [staging + 'js/plugins.js', staging + 'js/script.js'];
+  config('min', min);
+
+  // Run the following tasks...
+  grunt.registerTask('default', 'intro clean mkdirs concat css min rev usemin manifest');
+  grunt.registerTask('reload', 'default connect watch:reload');
+
+  // dom based tasks - <span class="keyword">not</span> loaded <span class="keyword">for</span> windows platform
+  config('env.win32') || grunt.loadTasks('./tasks/dom');
+
+  // regular tasks
+  grunt.loadTasks('./tasks/support');
+
+};</code></pre>
+
+        <hr>
+<h1><a id="tasks" href="#tasks">Tasks</a></h1>
+<p>You&#39;ll find below a basic description and documentation for each task
+the grunt h5bp plugin provides. For each of these, we&#39;ll detail the
+task&#39;s configuration and how to change this.
+
+</p>
+<ul>
+<li><strong><a href="../clean/">clean</a></strong>: Wipe the previous build dirs.</li>
+<li><strong><a href="../mkdirs/">mkdirs</a></strong>: Prepares the build dirs.</li>
+<li><strong><a href="../concat/">concat</a></strong>: Concatenate files. <em>(built-in)</em></li>
+<li><strong><a href="../css/">css</a></strong>: Concats, replaces @imports and minifies CSS files.</li>
+<li><strong><a href="../min/">min</a></strong>: Minify files using UglifyJS</li>
+<li><strong><a href="../rev/">rev</a></strong>: Automate the revving of assets and perform the hash rename</li>
+<li><strong><a href="../usemin/">usemin</a></strong>: Replaces references to non-minified scripts / stylesheets</li>
+</ul>
+<p>In addition to those tasks, which are the backbone of the build script,
+there are a few additionnal tasks to help you in the process:
+
+</p>
+<ul>
+<li><strong><a href="../serve/">serve</a></strong>: Spawns up a basic local http server (on both pubilsh /
+intermediate folder with different ports).</li>
+<li><strong><a href="../connect/">connect</a></strong>:  Spawns up local http sever with socket.io configured,
+it&#39;ll inject a tiny client side script + socket.io lib on <code>*.html</code>
+response.</li>
+<li><strong>reload</strong>: Alias for <code>connect watch:reload</code>.</li>
+</ul>
+
+        <hr>
+<h1><a id="clean" href="#clean">Task - clean</a></h1>
+<p>The clean task will remove and delete any previous build dirs (which
+are mapping <code>staging</code> and <code>output</code> config value).
+
+</p>
+<pre><code class="js"><span class="title">staging</span>:<span class="string"> 'intermediate/'</span>,
+
+// final build output
+<span class="title">output</span>:<span class="string"> 'publish/'</span>,</code></pre>
+<h2>Helpers</h2>
+<h3>rimraf</h3>
+<p><code>rimraf</code> is the helper wrapper for
+<a href="https://github.com/isaacs/rimraf#readme">rimraf</a> package. The given
+<code>cb</code> callback if passed in will make the call asynchronous, otherwise
+<code>rimraf.sync</code> is used.
+
+</p>
+<pre><code><span class="title">task</span>.helper('rimraf', dir, cb);</code></pre>
+
+        <hr>
+<h1><a id="concat" href="#concat">Task - concat</a></h1>
+<p><a href="https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#readme">Read the grunt documentation on concat built-in
+task</a>
+
+</p>
+<p>Concat is a built-in grunt task and allows you to easily concatenate a
+list of files.
+
+</p>
+<pre><code class="js">concat: {
+  <span class="comment">'intermediate/js/scripts.js': [ 'js/plugins.js', 'js/script.js' ],</span>
+  <span class="comment">'intermediate/css/style.css': [ 'css/*.css' ]</span>
+},</code></pre>
+<p>The mechanism is fairly simple:
+
+</p>
+<ul>
+<li>config subprop are the destination files.</li>
+<li>config subprop values are an array of glob patterns that will be
+expanded in the corresponding file arrays.</li>
+</ul>
+<p>Each &quot;fileset&quot; is then concat into one file, the destination one.
+
+</p>
+<p>If order is important, you might need to be a little more explicit here
+and specify each script to be included (as glob patterns won&#39;t ensure
+this). Actually, you can see this in action here with the
+<code>intermediate/js/scripts.js</code> file.
+
+</p>
+<p>This is a <strong>really</strong> basic concat configuration, there&#39;s much more
+built-in in the grunt concat task, like <a href="https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#banner-comments">banner comments</a>, <a href="https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#multiple-build-targets">multiple build
+targets</a>, and <a href="https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#dynamic-filenames">dynamic filenames</a>. You&#39;re encouraged to edit this
+basic concat configuration to match your very own setup.
+
+</p>
+
+        <hr>
+<h1><a id="connect" href="#connect">Task - connect</a></h1>
+<p>The connect is a special little utility task working in tandem with the
+watch one.
+
+</p>
+<p>It&#39;s a slight variation of the serve command, but includes / injects
+some socket.io magic to be able to reload any opened webpage in your
+browsers.
+
+</p>
+<p>Basically, the idea is that anytime you change a watched files
+(js/css/templates, etc.), a new build is triggered and an event is
+emitted back to any connected clients to reload pages automatically.
+
+</p>
+<pre><code class="js"><span class="method">connect:</span> {
+
+  <span class="method">intermediate:</span> {
+    <span class="method">port:</span> <span class="number">3000</span>,
+    <span class="method">logs:</span> <span class="string">'dev'</span>,
+    <span class="method">dirs:</span> <span class="keyword">true</span>
+  },
+
+  <span class="method">publish:</span> {
+    <span class="method">port:</span> <span class="number">3001</span>,
+    <span class="method">logs:</span> <span class="string">'default'</span>,
+    <span class="method">dirs:</span> <span class="keyword">true</span>
+  }
+
+}</code></pre>
+<h2>Helpers</h2>
+<blockquote>
+<p>todo
+</p>
+</blockquote>
+
+        <hr>
+<h1><a id="css" href="#css">Task - css</a></h1>
+<p>The css tasks will handle stylesheets optimizations. These optimizations
+include:
+
+</p>
+<ul>
+<li>CSS <code>@import</code> statements inlining (borrowed to r.js)</li>
+<li>CSS minification (through
+<a href="https://github.com/GoalSmashers/clean-css">CSSMin</a>, todo consider
+using <a href="https://github.com/ded/sqwish">sqwish</a>, probably through
+<a href="https://github.com/jzaefferer/grunt-css">grunt-css</a>)</li>
+</ul>
+<p>Here&#39;s the basic configuration:
+
+</p>
+<pre><code class="js">css: {
+  'publish/css/style.css':<span class="sqbracket"> [ 'css/style.css' ]</span>
+},</code></pre>
+<p>Just as the concat / min task, the config subprop is used as the
+destination files, any expanded files in the config subprob value will
+be optimized and concat&#39;d into the destination file.
+
+</p>
+<p>The <code>css</code> task works pretty much the same as grunt&#39;s min task. The task
+target is the destination, data is an array of glob patterns. These
+files are concataned and run through <a href="http://requirejs.org/docs/optimization.html#onecss">requirejs
+optimizer</a> to handle
+@import inlines in CSS files.
+
+</p>
+<h2>Helpers</h2>
+<h3>mincss</h3>
+<p><code>mincss</code> basic utility to concat CSS files and run them through
+<a href="https://github.com/GoalSmashers/clean-css">cleanCSS</a>, might opt to use
+[<a href="https://github.com/jzaefferer/grunt-css">https://github.com/jzaefferer/grunt-css</a>] plugin. Takes an array of
+files to concat and minified. The minificaton only happens if the
+<code>options.nocompress</code> value is not set to <code>true</code> (default is <code>false</code>)
+
+</p>
+<pre><code class="js"><span class="keyword">var</span> css = task.helper(<span class="string">'mincss'</span>, files, options));</code></pre>
+<h3>rjs:optimize:css</h3>
+<p><code>rjs:optimize:css</code> is an helper using rjs to optimize a single file,
+mainly to properly import multi-level of @import statements, which can be
+tricky with all the url rewrites.
+
+</p>
+<p>file     - Path to the css file to optimize
+options  - (optional) rjs configuration
+cb       - callback function to call on completion
+
+</p>
+<pre><code class="js">task.helper(<span class="string">'rjs:optimize:css'</span>, cssIn, <span class="keyword">this</span>.<span class="keyword">async</span>());</code></pre>
+
+        <hr>
+<h1><a id="min" href="#min">Task - min</a></h1>
+<p><a href="https://github.com/cowboy/grunt/blob/master/docs/task_min.md#readme">Read the grunt documentation on min built-in
+task</a>
+
+</p>
+<p>Min is another built-in grunt task that allows you to easily compress
+JavaScript files through <a href="https://github.com/mishoo/UglifyJS/">UglifyJS</a>.
+
+</p>
+<pre><code class="js"><span class="keyword">min</span>: {
+  <span class="string">'publish/js/scripts.js'</span>: [ <span class="string">'intermediate/js/scripts.js'</span> ]
+},</code></pre>
+<p>This is a <strong>really</strong> basic minify configuration, there&#39;s much more
+built-in in the grunt min task, like <a href="https://github.com/cowboy/grunt/blob/master/docs/task_min.md#banner-comments">banner comments</a>, <a href="https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options">specifying
+uglifyjs options</a>, and <a href="https://github.com/cowboy/grunt/blob/master/docs/task_min.md#minifying-while-concatenating-files">minifying while concatenating files</a>. You&#39;re
+encouraged to edit this basic minify configuration to match your very
+own setup.
+
+</p>
+
+        <hr>
+<h1><a id="mkdirs" href="#mkdirs">Task - mkdirs</a></h1>
+<p>The mkdirs task is working in tandem with the clean one, and creates the
+necessary build dirs.
+
+</p>
+<pre><code class="js">// the staging directory used during the process
+staging: 'intermediate/',
+
+// final build output
+output: 'publish/',
+
+// filter any files matching one of the below pattern during mkdirs task
+exclude: 'build/** node_modules/** grunt.js package.json *.md'.split(' '),
+
+mkdirs: {
+  staging: '<span class="tag">&lt;<span class="title">config:exclude</span>></span>',
+  output: '<span class="tag">&lt;<span class="title">config:exclude</span>></span>'
+},</code></pre>
+<p>Just as the clean task, config subprop are used to create the
+directories. A basic mapping is done in configuration to get back the
+directory values, (eg. <code>config(task.target) --&gt; config(&#39;staging&#39;)</code>).
+
+</p>
+<p>Values for each is an array of files to filter, eg. they&#39;ll not be
+copied over during the process. These are
+<a href="https://github.com/isaacs/minimatch#readme">minimatch</a> patterns.
+
+</p>
+<h2>Helpers</h2>
+<h3>mkdirs</h3>
+<p><code>mkdir</code> helper is a basic wrapper for
+<a href="https://github.com/substack/node-mkdirp#readme">node-mkdirp</a>.  Takes a
+<code>directory</code> path to create, process is async if a valid callback
+is passed in, otherwise <code>mkdirp.sync(dir)</code> is used.
+
+</p>
+<pre><code class="js"><span class="title">task</span>.helper('mkdir', dir, cb);</code></pre>
+<h3>copy</h3>
+<p><code>copy</code> helper uses <a href="https://github.com/AvianFlu/ncp#readme">ncp</a>
+and <a href="https://github.com/isaacs/minimatch#readme">minimatch</a> to copy
+the files under the current directory to the specified <code>dir</code>,
+optionnaly ignoring files specified by the <code>options.ignore</code> property.
+
+</p>
+<p><code>options.ignore</code> can be a String of space delimited glob patterns,
+an Array of glob patterns, or a filter function.
+
+</p>
+<p>This helper is asynchronous only. Paths are always relative to
+current working directory.
+
+</p>
+<pre><code class="js">task.helper(<span class="string">'copy'</span>, <span class="keyword">source</span>, dest, opts, function(e) {
+  <span class="keyword">if</span>(e) <span class="keyword">log</span>.<span class="keyword">error</span>(e.stack || e.message);
+  <span class="keyword">else</span> <span class="keyword">log</span>.ok();
+  cb(!e);
+});</code></pre>
+<ul>
+<li>source     - Path to the source directory</li>
+<li>dest       - where the files will be copied to</li>
+<li>opts       - (optional) An Hash object with an <code>ignore</code> property</li>
+<li>cb         - callback to call on completion</li>
+</ul>
+
+        <hr>
+<h1><a id="rev" href="#rev">Task - rev</a></h1>
+<p>The rev task is a really simple one. Its role is to read the content of
+a given file, generate a hash and prepend that hash to the original
+filename.
+
+</p>
+<pre><code class="js"><span class="method">rev:</span> {
+  <span class="method">js:</span> [<span class="string">'publish/js/*.js'</span>],
+  <span class="method">css:</span> [<span class="string">'publish/css/*.css'</span>],
+  <span class="method">img:</span> [<span class="string">'publish/img/*'</span>]
+},</code></pre>
+<p>From this configuration example, the rev task will iterate through each
+expanded files for js / css / img subtasks and generate a hash from
+their content and rename each file accordingly.
+
+</p>
+<p>A <code>scripts.js</code> file will be renamed into something like
+<code>12345678.scripts.js</code>. The hash will change only when the content
+changes.
+
+</p>
+<h2>Helpers</h2>
+<h3>hash</h3>
+<p><code>hash</code> helper takes care of files revving, by renaming any files in the
+given <code>files</code> pattern(s), with passed in <code>options</code>.
+
+</p>
+<pre><code class="js">task.helper(<span class="literal">'hash'</span>, files, options);</code></pre>
+<ul>
+<li>files      - String or Array of glob pattern</li>
+<li>options    - (optional) An Hash object where:<ul>
+<li>cwd     - Base directory to work from, glob patterns are
+prepended to this path.</li>
+</ul>
+</li>
+</ul>
+<h3>md5</h3>
+<p><code>md5</code> helper is a basic wrapper around crypto.createHash, with given
+<code>algorithm</code> and <code>encoding</code>. Both are optional and defaults to <code>md5</code> and
+<code>hex</code> values.
+
+</p>
+<pre><code class="js">task.helper(<span class="string">'md5'</span>, <span class="keyword">file</span>, algorithm, encoding);</code></pre>
+
+        <hr>
+<h1><a id="serve" href="#serve">Task - server</a></h1>
+<p><code>server</code> is a utility task to start a local http server on top of
+generated build dirs, possibly intermediate/ and publish/ on different
+ports.
+
+</p>
+<p>It overrides the build-in grunt helper following the foundation as
+described in <a href="https://github.com/cowboy/grunt/blob/master/docs/task_server.md#readme">grunt&#39;s documentation</a>
+
+</p>
+<pre><code class="js"><span class="method">serve:</span> {
+  <span class="method">staging:</span> { <span class="method">port:</span> <span class="number">3000</span>, <span class="method">base:</span> <span class="string">'intermediate/'</span> },
+  <span class="method">output:</span> { <span class="method">port:</span> <span class="number">3001</span>, <span class="method">base:</span> <span class="string">'publish/'</span> }
+},</code></pre>
+<p>If <code>--reload</code> cli option is used when <code>grunt serve</code> is run, a socket.io
+server instance is created while a client-side sciprt is injected
+dynamically on response (eg. it won&#39;t edit the generated file)
+
+</p>
+<h2>Helpers</h2>
+<h3>server</h3>
+<p><code>server</code> creates and returns a basic application server, a configuration
+object may be passed where:
+
+</p>
+<ul>
+<li>base   - is the base directory to server static file from</li>
+<li>port   - server listen to this port</li>
+</ul>
+<pre><code class="js"><span class="title">task</span>.helper('serve', config);</code></pre>
+<p>This helper is used by the <code>serve</code> and <code>serve.io</code> helpers below.
+
+</p>
+<h3>serve.io</h3>
+<p><code>serve.io</code> creates and returns a webserver and setup a socket.io instance and
+the &quot;inject&quot; middleware. <code>/socket.io/socket.io.js</code> and <code>/reload.js</code> are
+then available.
+
+</p>
+<pre><code class="js"><span class="title">task</span>.helper('serve.io', config);</code></pre>
+<h3>serve</h3>
+<p><code>serve</code> same as serve.io, without the socket.io connection and inject
+middleware.
+
+</p>
+<pre><code class="js"><span class="title">task</span>.helper('serve.io', config);</code></pre>
+<h3>inject.io</h3>
+<p><code>inject.io</code> is a grunt helper returning a valid connect / express middleware.
+It&#39;s job is to setup a middleware right before the usual static one, and to
+bypass the response of <code>.html</code> file to render them with additional scripts.
+
+</p>
+<pre><code class="js">var app = <span class="keyword">connect</span>()
+  .<span class="keyword">use</span>(task.helper(<span class="string">'inject.io'</span>, config))
+  .<span class="keyword">use</span>(<span class="keyword">connect</span>.static);
+
+app.<span class="keyword">listen</span>(<span class="number">3000</span>);</code></pre>
+
+        <hr>
+<h1><a id="usemin" href="#usemin">Task - usemin</a></h1>
+<p>Replaces references ton non-optimized scripts / stylesheets into a
+set of html files (or any template / views).
+
+</p>
+<p>Usemin task is probably the trickiest one. It&#39;ll replace references to
+non minified scripts / stylesheets to their optimized / versioned
+equivalent.
+
+</p>
+<pre><code class="js"><span class="tag">usemin</span>: <span class="rules">{
+  <span class="rule"><span class="attribute">files</span>:<span class="value"> [<span class="string">'publish/*.html'</span>]
+</span>}</span></span></code></pre>
+<p>In this configuration, it&#39;ll handle the replacement for any html files
+located under the publish directory.
+
+</p>
+<p>Right now the replacement is based on the filename parsed from content
+and the files present in according directory (eg. looking up matching
+revved filename into <code>output/</code> dir to figure out the hash generated).
+
+</p>
+<p>If you&#39;d like a little bit more flexibility, you can use &quot;directives&quot;, some
+special kind of html comments surrounding the part of html we want to replace
+(original idea from <a href="https://github.com/necolas">@necolas</a> in:
+<a href="https://github.com/h5bp/html5-boilerplate/issues/831">#831</a>)
+
+</p>
+<p>There is no need for JSDOM for this, this is plain regexp (JSDOM required
+for data-build attributes).
+
+</p>
+<p>Ex:
+
+</p>
+<pre><code class="html"><span class="comment">&lt;!-- build:css css/site.css --></span>
+<span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"css/style.css"</span>></span>
+<span class="comment">&lt;!-- endbuild --></span></code></pre>
+<p>Results in:
+
+</p>
+<pre><code class="html"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"css/site.css"</span>></span></code></pre>
+<p>A directive is composed of the following part:
+
+</p>
+<pre><code class="html"><span class="comment">&lt;!-- build:&lt;target> &lt;output> --></span>
+... block ...
+<span class="comment">&lt;!-- endbuild --></span></code></pre>
+<ul>
+<li><p><code>&lt;target&gt;</code>
+A known target is required (<code>css</code> or <code>js</code>). It&#39;ll namely allow you
+to replace the html &quot;block&quot; with appropriate tag (eg. a <code>&lt;link&gt;</code> for
+stylesheets, a <code>&lt;script&gt;</code> for js files, the task won&#39;t guess this from markup
+for you)</p>
+</li>
+<li><p><code>&lt;output&gt;</code>
+Path to the optimized asset. The html &quot;block&quot; is replaced with
+according tag (depending on <code>&lt;target&gt;</code>) while replacing the src or href
+attribute with the <code>&lt;output&gt;</code> value.</p>
+</li>
+<li><p><code>... block ...</code>
+Anything inside the <code>&lt;!-- build.. --&gt;</code> and <code>&lt;!-- endbuild --&gt;</code> is replaced
+depending on <code>&lt;target&gt;</code> and <code>&lt;output&gt;</code> values.</p>
+</li>
+</ul>
+<p>The resulting html is then passed through the global replace, looking up
+matching revved filename in the output directory (defaults to <code>publish/</code>),
+replacing references to their hash-prepended version.
+
+</p>
+<p>This &quot;directives&quot; system will provide you a nice level of flexibility, and the
+ability to be very descriptive on what gets replaced and by what.
+</p>
+
+        <hr>
+<h1><a id="dom" href="#dom">Dom</a></h1>
+<p>The <code>dom</code> task is a special task using <code>jsdom</code> to do some nasty thing to
+a bunch of html files. The idea is to rely on a set of selectors and
+plugins.
+
+</p>
+<p>These plugins are special jQuery plugins that can use the node api to do
+their task.
+
+</p>
+<p>The following plugins are implemented
+
+</p>
+<ul>
+<li><strong><a href="../link-plugin/">css</a></strong> Relies on @import statement mainly which are inlined (with
+nested path rewrite) to serve a single optimized stylesheet.</li>
+</ul>
+<ul>
+<li><strong><a href="../script-plugin/">js</a></strong> Concats, minify through uglify and serve a single concat&#39;d /
+minified script.</li>
+</ul>
+<p>Each plugin is able to modify the DOM tree to replace references to
+optimized files.
+
+</p>
+<h2>Usage</h2>
+<p>Using the <code>h5bp</code> executable:
+
+</p>
+<pre><code><span class="title">h5bp</span> dom</code></pre>
+<h2>Configuration</h2>
+<p>Minimal, most of the configuration is derived from html markup, by using
+special semantics on <code>data-*</code> attributes, probably always namespaced to
+<code>data-build-*</code>.
+
+</p>
+<pre><code class="js">var h5bp = require(<span class="comment">'node-build-script');</span>
+
+module.exports = <span class="keyword">function</span>(grunt) {
+
+  grunt.initConfig({
+      ...,
+
+      dom: {
+          files: [<span class="comment">'*.html', 'views/**/*.html'],</span>
+          <span class="comment">'script[data-build]'    : h5bp.plugins.script,</span>
+          <span class="comment">'link'                  : h5bp.plugins.link,</span>
+          <span class="comment">'img'                   : h5bp.plugins.img,</span>
+          <span class="comment">'script, link, img'     : h5bp.plugins.rev</span>
+      },
+
+      ...
+  });
+
+};</code></pre>
+<ul>
+<li><strong>files</strong>: list of glob pattern to expand. The files in the resulted
+array are then passed through each of the processors.</li>
+</ul>
+<ul>
+<li><strong>script, link, img</strong> a list of selectors may be associated with
+plugins that will be executed with the set of matching DOM elements.</li>
+</ul>
+<p>selectors / plugins are run sequentially, and the DOM tree is modified
+all allong the way to the last selector / plugin couple. Read that
+the selectors result depends on the modified DOM tree from previous
+processors.
+
+</p>
+<p>One can use a totally different set of selectors, with custom plugin,
+ex.
+
+</p>
+<ul>
+<li>just <code>script</code>, <code>link</code> and <code>img</code></li>
+<li>or <code>.js-plugin</code></li>
+<li>or <code>script[src*=&quot;jquery&quot;]</code> or <code>script[src*=backbone]</code></li>
+<li><code>script[data-main]</code> --&gt; triggers a r.js build</li>
+</ul>
+<h2>Plugin API</h2>
+<p>Plugins are valid commonjs package and should expose a single function,
+a jQuery like plugin that will be run with the associated set of DOM
+elements for a given selector.
+
+</p>
+<p>Plugins needs to export a few things:
+
+</p>
+<ul>
+<li><strong>name</strong> is the plugin name and used to extend the jQuery namespace,
+eg its prototype <code>$.fn</code></li>
+<li><strong>defaults</strong> a Hash object of default configuration value.</li>
+<li><strong>handler</strong> the main function, that is the jQuery plugin
+implementation.</li>
+</ul>
+<p>Here&#39;s the <code>link</code> plugin:
+
+</p>
+<pre><code class="javascript">var plugin = module.exports;
+
+// give it a name
+plugin.name = <span class="literal">'link'</span>;
+
+// give it some defaults
+plugin.defaults = {
+  dir: <span class="keyword">process</span>.cwd(),
+  output: 'css/style.min.css'
+};
+
+// <span class="keyword">and</span> the main plugin handler, mixed <span class="keyword">in</span> jsdom's jquery as $.fn.pluginame
+plugin.handler = <span class="keyword">function</span> link($, options, cb) {
+  options = options || {};
+
+  // size <span class="keyword">of</span> the passed <span class="keyword">in</span> collection,
+  // used <span class="keyword">to</span> emit `success` <span class="keyword">on</span> last iteration.
+  var ln = this.length;
+
+  // don't act <span class="keyword">on</span> zero-element
+  <span class="keyword">if</span>(!ln) {
+    cb();
+    <span class="keyword">return</span> this;
+  }
+
+  // default <span class="keyword">configuration</span> here..
+  options.whatev = options.whatev || <span class="literal">'whatev'</span>;
+
+  // will hold the concatenated script,
+  // <span class="keyword">in</span> the order they appear <span class="keyword">in</span> the collection
+  var files = [];
+
+  <span class="keyword">return</span> this.each(<span class="keyword">function</span>(i, target) {
+    var el = $(this); // === $(target)
+
+    var src = el.attr(<span class="literal">'href'</span>),
+      last = ln === (i + <span class="number">1</span>),
+      <span class="keyword">file</span> = path.resolve(options.dir, src);
+
+    <span class="keyword">if</span>(!path.existsSync(<span class="keyword">file</span>)) <span class="keyword">return</span> cb(<span class="keyword">new</span> Error('no ' + src));
+    files = files.concat(fs.readFileSync(<span class="keyword">file</span>, <span class="literal">'utf8'</span>));
+
+    // remove dom element from dom tree, <span class="keyword">when</span> <span class="keyword">not</span> <span class="keyword">on</span> last <span class="keyword">loop</span>
+    <span class="keyword">if</span>(!last) <span class="keyword">return</span> el.remove();
+
+    var output = el.data('build') || options.output;
+    // update dom tree accordingly
+    el.attr(<span class="literal">'href'</span>, output);
+
+    // finally, write <span class="keyword">to</span> destination output
+    log.writeln((' › writing <span class="keyword">to</span> output ' + output).bold);
+    task.helper('mkdir', path.dirname(path.resolve(output)));
+    fs.writeFile(output, task.helper('mincss', files), cb);
+  });
+};</code></pre>
+<p>One could think do to some crazy stuff on their html files, and use a
+jQuery like api mixed here and there with the node api to handle all
+sort of things with a bunch of custom plugins, on an arbitrary set of
+selectors.
+</p>
+
+        <hr>
+<h1><a id="link-plugin" href="#link-plugin">Plugin - link</a></h1>
+<p>This plugin runs, in the default setup, with the following
+configuration:
+
+</p>
+<pre><code class="js">dom: {
+  files                   : [<span class="comment">'*.html'],</span>
+  options                 : {
+    dir: process.cwd(),
+    output: <span class="comment">'css/style.min.css'</span>
+  },
+  <span class="comment">'script[data-build]'    : h5bp.plugins.link</span>
+},</code></pre>
+<p>It uses <a href="https://github.com/jrburke/r.js">r.js</a> to optimize a single css
+file, and properly handle the <code>@import</code> statements you might have.
+
+</p>
+<ul>
+<li><a href="http://requirejs.org/docs/optimization.html#onecss">http://requirejs.org/docs/optimization.html#onecss</a></li>
+</ul>
+<p>Default optimization options for rjs are as follows:
+
+</p>
+<ul>
+<li><code>optimizeCss=&#39;standard.keepLines&#39;</code></li>
+</ul>
+<p>The output is based on <code>data-build</code> from the <code>&lt;link&gt;</code> tag, or defaults
+to <code>css/style.min.css</code>.
+
+</p>
+<h2>Options</h2>
+<ul>
+<li><strong>dir</strong> base directory to work from</li>
+</ul>
+<ul>
+<li><strong>output</strong> default output destination, if not defined through
+<code>data-build</code>.</li>
+</ul>
+<ul>
+<li><strong>rjs</strong> requirejs css optimization option.</li>
+</ul>
+
+        <hr>
+<h1><a id="rev-plugin" href="#rev-plugin">Plugin - rev</a></h1>
+<h2>Options</h2>
+
+        <hr>
+<h1><a id="script-plugin" href="#script-plugin">Plugin - script</a></h1>
+<p>This plugin runs, in the default setup, with the following
+configuration:
+
+</p>
+<pre><code class="js">dom: {
+  files                   : [<span class="comment">'*.html'],</span>
+  options                 : {
+    dir: process.cwd(),
+    output: <span class="comment">'js/bundle.min.js'</span>
+  },
+  <span class="comment">'script[data-build]'    : h5bp.plugins.script</span>
+},</code></pre>
+<p>Does the following:
+
+</p>
+<ol>
+<li>Iterates through each script in order and concats them</li>
+<li>On the very last iteration (last script tags in jQuery collection),
+concat&#39;d files are minified.</li>
+<li>The single minified content string is written to <code>options.output</code> or
+to the <code>data-build</code> attribute of last script tag.</li>
+<li>Every script in the collection but the last one get removed. Last one
+is updated so that the src attribute is <code>src=path/to/output</code></li>
+</ol>
+<h2>Options</h2>
+<ul>
+<li><strong>dir</strong> base directory to work from</li>
+</ul>
+<ul>
+<li><strong>output</strong> default output destination, if not defined through
+<code>data-build</code>.</li>
+</ul>
+
+        <hr>
+<h1><a id="test" href="#test">Tests</a></h1>
+<p>A significant amount of efforts have been put into setting up a basic test suite
+to ensure everything is working properly.
+
+</p>
+<p>As of now, the <code>default</code> and <code>usemin</code> task are tested.
+
+</p>
+<p><code>default</code> is the global task that runs the following tasks:
+
+</p>
+<pre><code class="js"><span class="title">grunt</span>.registerTask('default',<span class="string"> 'intro clean mkdirs concat css min rev usemin manifest'</span>);</code></pre>
+<p>Assertions on <code>default</code> task output are a good sanity check. Each tasks is then
+tested individually (now the case of <code>usemin</code>)
+
+</p>
+<p>This page will give a walkthrough on how to setup basic tests, how to run them
+and how to write new ones.
+
+</p>
+<h2>npm pretest</h2>
+<p>Tests are done on top of
+<a href="https://github.com/h5bp/html5-boilerplate/">h5bp/html5-boilerplate</a> repository.
+The original repository is setup as a submodule at the <code>test/h5bp</code> location.
+
+</p>
+<p>Running <code>npm test</code> will trigger the <code>pretest</code> npm script, and then execute the
+<code>test/index.js</code> file:
+
+</p>
+<pre><code class="js">"pretest": "git submodule update --init"</code></pre>
+<h2>How the tests work</h2>
+<p>Testing a build script is somewhat tricky. Tests here aren&#39;t really unit tests,
+they simply run a given grunt command, and run few basic assertions on the script output.
+
+</p>
+<p>No test framework are used during the process, they require nothing but node.js.
+It&#39;ll hopefully make them easier to understand for anyone that is familiar with
+node and not a given chosen test framework.
+
+</p>
+<p>Each assertion file is using a grunt helper to spawn a new process, executing a grunt command,
+to finally run a few assertions on top of the output directory.
+
+</p>
+<h2>Test structure</h2>
+<pre><code>* test/
+  * fixtures
+    * default/
+      * expected<span class="preprocessor">.html</span>
+      * grunt<span class="preprocessor">.js</span>
+      * usemin<span class="preprocessor">.expected</span><span class="preprocessor">.html</span>
+      * usemin<span class="preprocessor">.html</span>
+    * ...
+    * usemin/
+      * expected<span class="preprocessor">.html</span>
+      * grunt<span class="preprocessor">.js</span>
+      * index<span class="preprocessor">.html</span>
+
+  * h5bp/
+    * css/
+    * js/
+    * index<span class="preprocessor">.html</span>
+    * <span class="number">404</span><span class="preprocessor">.html</span>
+    * ...
+
+  * helpers/
+    * index<span class="preprocessor">.js</span>
+
+  * tasks/
+    * usemin/
+      * index<span class="preprocessor">.js</span></code></pre>
+<ul>
+<li><strong>test/fixtures</strong>
+Holds the fixtures file. If necessary test scripts will copy
+files from fixtures to the test directory (<code>.test</code>) and have grunt operate on
+top of that. This may include custom gruntfile and specific html files, testing
+out the whole script or a specific feature. This directory usually include
+subdirectories named after the task they meant to be used with.</li>
+</ul>
+<ul>
+<li><strong>test/h5bp</strong>
+this is the h5bp submodule. Running <code>git submodule update
+--init</code> will make sure everything is here. Relatedly, this command is run
+automatically before <code>npm test</code>.</li>
+</ul>
+<ul>
+<li><strong>test/helpers</strong>
+Contains few test helper, see below for further details.</li>
+</ul>
+<ul>
+<li><strong>test/tasks</strong> Like <code>test/fixtures</code>, this directory usually include
+subdirectories named after the task that is tested. Test files in this directory
+are meant to test specific task / feature of the build script. They may be run directly using
+<code>node test/tasks/usemin</code> (or any other implemented test).</li>
+</ul>
+<h2>Writing a new test</h2>
+<p>Checkout the tests that have been setup, they usually are a good place to look at.
+
+</p>
+<p>Tests are usually done like so:
+
+</p>
+<pre><code class="js">var fs = require('fs'),
+  h5bp = require('../'),
+  <span class="keyword">assert</span> = require('<span class="keyword">assert</span>'),
+  runner = require('./helpers'),
+  EventEmitter = require('events').EventEmitter;
+
+//
+// Setup the event emitter, an <span class="keyword">end</span> event will be emitted <span class="keyword">on</span> grunt completion.
+//
+// Depending <span class="keyword">on</span> grunt's <span class="keyword">exit</span> code, test fail <span class="keyword">or</span> pass. <span class="keyword">Then</span>, further assertions
+// may perform few additional checks.
+//
+var test = <span class="keyword">new</span> EventEmitter;
+
+//
+// Running tasks serially, tests pass <span class="keyword">or</span> fail depending <span class="keyword">on</span> grunt's <span class="keyword">exit</span> code.
+//
+
+//
+// `runner.setup` <span class="keyword">is</span> mandatory, <span class="keyword">and</span> deal <span class="keyword">with</span> directory copy from `test/h5bp` <span class="keyword">to</span> `.test`.
+//
+//  The tests <span class="keyword">and</span> build <span class="keyword">process</span> happens <span class="keyword">in</span> this `.test` directory.
+//
+runner.setup(<span class="keyword">function</span>(err) {
+
+  //
+  // optional fixtures copy test. Copy may copy a single <span class="keyword">or</span> a set <span class="keyword">of</span> files.
+  //
+  // Second argument <span class="keyword">is</span> the destination, which may be a <span class="keyword">file</span> (<span class="keyword">when</span> copying a single <span class="keyword">file</span>)
+  // <span class="keyword">or</span> a directory (`.test`).
+  //
+  runner.copy('test/fixtures/default/usemin.html', '.test/usemin.html', <span class="keyword">function</span>(err) {
+    <span class="keyword">if</span>(err) throw err;
+
+    // run the default task
+    runner('.test', test)('default');
+  });
+});
+
+// global check <span class="keyword">on</span> index.html
+test.<span class="keyword">on</span>('<span class="keyword">end</span>', <span class="keyword">function</span>(err) {
+  <span class="keyword">if</span>(err) throw err;
+  var result = fs.readFileSync('.test/index.html', <span class="literal">'utf8'</span>),
+    expected = fs.readFileSync('test/fixtures/default/expected.html', <span class="literal">'utf8'</span>);
+
+  <span class="keyword">assert</span>.equal(expected.trim(), result.trim());
+});
+
+//
+// check the usemin version, eg. one using
+//
+//    &lt;!<span class="comment">-- build:js path/to/script.js --></span>
+//
+// kind <span class="keyword">of</span> surrouding html comment.
+//
+test.<span class="keyword">on</span>('<span class="keyword">end</span>', <span class="keyword">function</span>(err) {
+  <span class="keyword">if</span>(err) throw err;
+  var result = fs.readFileSync('.test/usemin.html', <span class="literal">'utf8'</span>),
+    expected = fs.readFileSync('test/fixtures/default/usemin.expected.html', <span class="literal">'utf8'</span>);
+
+  <span class="keyword">assert</span>.equal(expected.trim(), result.trim());
+});</code></pre>
+
+
+      <hr>
+      <p>
+        This documentation is based on the layout of the
+        <a href="https://github.com/documentcloud/backbone/">Backbone.js</a>
+        documentation, which is released under the
+        <a href="https://github.com/documentcloud/backbone/blob/master/LICENSE">MIT license</a>.
+      </p>
+
+    </section>
+
+  </div>
+  <script>
+    (function($) {
+      var themes = $('.themes a'),
+        each = themes.each ? 'each' : 'forEach',
+        link = $('link')[2];
+
+      themes[each](function(val, i) {
+        var swap = typeof val === 'number',
+          el = swap ? i : val,
+          theme = (el.href.match(/#([\w]+)/) || [])[1];
+
+        if(swap) i = val, val = el;
+        if(!theme) return;
+        el.addEventListener('click', function(e) {
+          link.href = link.href.replace(/[^\/]+.css$/, theme + '.css');
+        });
+      });
+    })(this.$, this);
+  </script>
+</body>
+</html>
+

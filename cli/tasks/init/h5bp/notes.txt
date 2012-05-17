@@ -1,0 +1,21 @@
+First time the init task is run with `h5bp` template, the latest version
+of html5-boilerplate is downloaded locally.
+
+The resulting output depends on the few question grunt asks during the
+process. This includes some path rewrites (like renaming the
+`css/style.css` file to something else).
+
+Simply keep pressing enter for the default h5bp layout.
+
+There's four "step" of prompts:
+
+- project:    Basic project configuration (name, description, version, ...)
+- layout:     [D]efault, [C]ustom, [S]illy
+- files:      Depends on layout value, series of prompts for specific
+              file / directory renames
+- gruntfile:  Gruntfile creation
+
+This template tries to guess file and directory paths, but you will most likely
+need to edit the generated grunt.js file before running grunt. If you run grunt
+after generating grunt.js, and grunt exits with errors, edit the grunt.js file!
+

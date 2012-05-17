@@ -1,20 +1,32 @@
 {
   "author": "Chrome DevRel",
   "name": "yeoman",
-  "description": "yeoman cmd line tool",
+  "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "version": "0.0.1",
   "homepage": "http://yeoman.io",
   "bin": {
     "yeoman": "./bin/yeoman"
   },
   "main": "./yeoman",
-
-  "//" : "// node-build-script is not yet on npm. "
   "dependencies": {
-    "node-build-script": "http://nodeload.github.com/h5bp/node-build-script/tarball/master"
+    "rimraf": "~2.0.1",
+    "mkdirp": "~0.3.1",
+    "ncp": "~0.2.6",
+    "requirejs": "~1.0.7",
+    "clean-css": "~0.3.2",
+    "connect": "~1.8.6",
+    "grunt": "~0.3.8",
+    "socket.io": "~0.9.5",
+    "request": "~2.9.200",
+    "html-minifier": "~0.4.5",
+    "which": "~1.0.5",
+    "fstream": "~0.1.18",
+    "fstream-ignore": "0.0.5",
+    "tar": "~0.1.13",
+    "less": "~1.2.1"
   },
-
   "scripts": {
-
+    "pretest": "git submodule update --init",
+    "test": "node test build:minify"
   }
 }
