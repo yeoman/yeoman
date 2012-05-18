@@ -19,7 +19,35 @@ h5bp.steps = 'project setup files gruntfile'.split(' ');
 
 // The actual init template.
 h5bp.template = function(grunt, init, done) {
+
+  // attach the grunt object to our exposed template
   h5bp.grunt = grunt;
+
+  // --noprompt bypass all the prompts and run the default template
+  // XXX consider a --template option to start from a set of default prompt or
+  // custom behaviour
+  var noprompt = grunt.option('noprompt');
+
+  var templates = grunt.file.expandFiles(path.join(__dirname, 'templates/*.json'))
+    // map to only the basename, minus extension
+    .map(function(filename) {
+      return path.basename(filename).replace(path.extname(filename), '');
+    })
+    // reduce the array down to a single hash object with key mapping the
+    // template name, value the path to the json template
+    .reduce(function(o, file) {
+      o[file] = path.join(__dirname, 'templates', file + '.json');
+      return o;
+    }, {});
+
+  if(noprompt) return fs.readFile(templates.defaults, 'utf8', function(err, body) {
+    if(err) {
+      grunt.log.error(err);
+      return done(false);
+    }
+
+    h5bp.end(init, JSON.parse(body), done);
+  });
 
   // setup custom prompt
   h5bp.customPrompt();
