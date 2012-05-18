@@ -28,7 +28,7 @@ var helpers = module.exports = function grunt(base, em) {
 
       // path to the grunt executable, going to node dependency but could be done
       // with the global grunt instead
-      var gruntpath = path.resolve('node_modules/grunt/bin/grunt');
+      var binpath = path.resolve(__dirname, '../../bin/yeoman');
 
       // now that the stack is setup, run each command serially
       (function run(cmd) {
@@ -47,7 +47,7 @@ var helpers = module.exports = function grunt(base, em) {
 
         // run grunt via child_process.fork, setting up cwd to test dir and
         // necessary environment variables.
-        var gpr = fork(gruntpath, cmd, { cwd: path.resolve(base), env: env });
+        var gpr = fork(binpath, cmd, { cwd: path.resolve(base), env: env });
         gpr.on('exit', function(code, stdout, stderr) {
           assert.equal(code, 0, ' ✗ Grunt exited with errors. Code: ' + code);
           em.emit(cmd, code, stdout, stdout);

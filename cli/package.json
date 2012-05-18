@@ -26,7 +26,7 @@
     "less": "~1.2.1"
   },
   "scripts": {
-    "pretest": "git submodule update --init",
-    "test": "node test build:minify"
+    "pretest": "rm -rf .test/ && mkdir .test/ && cd .test/ && node ../bin/yeoman init --noprompt",
+    "test": "mkdir .test/img && cp test/fixtures/default/usemin.html .test/ && node test build:minify"
   }
 }
