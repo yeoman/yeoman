@@ -18,8 +18,8 @@ describe('build:* tasks', function() {
     });
 
     describe('When the build script ends', function() {
-      it('Then the outcome should be test/fixtures/default/expected.html', function() {
-        helpers.assertFile('.test/publish/index.html', 'test/fixtures/default/expected.html');
+      it('Then the outcome should be test/fixtures/default/expected/index.html', function() {
+        helpers.assertFile('.test/publish/index.html', 'test/fixtures/default/expected/index.html');
       });
     });
   });
@@ -33,8 +33,8 @@ describe('build:* tasks', function() {
 
     describe('When the build script ends', function() {
 
-      it('Then the outcome should be test/fixtures/default/expected.minify.html', function() {
-        helpers.assertFile('.test/publish/index.html', 'test/fixtures/default/expected.minify.html');
+      it('Then the outcome should be test/fixtures/default/expected/minify.html', function() {
+        helpers.assertFile('.test/publish/index.html', 'test/fixtures/default/expected/minify.html');
       });
 
     });
