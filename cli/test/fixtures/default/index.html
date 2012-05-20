@@ -24,21 +24,50 @@
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
-  <!-- All JavaScript at the bottom, except this Modernizr build.
-       Modernizr enables HTML5 elements & feature detects for optimal performance.
-       Create your own custom Modernizr build: www.modernizr.com/download/ -->
   <script src="js/vendor/modernizr-2.5.3.min.js"></script>
+
+  <style>
+    .imgs:before, .css-reved:before {
+      font: 0.8em Helvetica, Arial, sans-sherif;
+      color: hsla(230, 26%, 27%, 0.38);
+    }
+
+    .imgs:before { content: 'Test out this rev replacement with some <img /> tags '; }
+    .css-reved:before { content: 'Test out this rev replacement with some background img'; }
+
+    .imgs, .css-reved { margin: 1em; padding: 1em; border: 1px solid #ccc; float: left; width: 200px; }
+    .css-reved .img-1 { background: url('img/1.png'); }
+    .css-reved .img-2 { background: url('img/2.png'); }
+    .css-reved .img-3 { background: url('img/3.png'); }
+    .css-reved .img-4 { background: url('img/4.png'); }
+
+    img, .img-1, .img-2, .img-3, .img-4 { display: block; height: 150px; width: 150px; float: left; margin: 1em; }
+  </style>
+
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-  <!-- Add your site or application content here -->
-  <img src="img/1.png" /> <img src="img/2.png" />
-  <img src="img/3.png" />
-  <img src="img/4.png" />
+  <!-- test out this img rev replacement -->
 
+  <div class="imgs clearfix">
+    <!-- on same line -->
+    <img src="img/1.png" /> <img src="img/2.png" />
+
+    <!-- one at  a time -->
+    <img src="img/3.png" />
+    <img src="img/4.png" />
+  </div>
+
+  <!-- Let's test this thing with img that were revved with references in our stylesheets -->
+  <div class="css-reved clearfix">
+    <span class="img-1"></span>
+    <span class="img-2"></span>
+    <span class="img-3"></span>
+    <span class="img-4"></span>
+  </div>
 
   <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
