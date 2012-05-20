@@ -26,7 +26,8 @@ module.exports = function(grunt) {
     },
     // update references in html to revved files
     usemin: {
-      files: ['**/*.html']
+      files: ['**/*.html'],
+      css: ['**/*.css']
     },
     // html minification
     html: '<config:usemin>',
