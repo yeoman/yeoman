@@ -1,10 +1,12 @@
 
 var fs = require('fs'),
   path = require('path'),
-  cleanCSS = require("clean-css"),
+  cleanCSS = require('clean-css'),
   rjs = require('requirejs');
 
 module.exports = function(grunt) {
+
+
 
   // **css* task works pretty much the same as grunt's min task. The task
   // target is the destination, data is an array of glob patterns. These
@@ -16,11 +18,24 @@ module.exports = function(grunt) {
     // if defined, files get prepended by the output config value
     var files = this.data;
 
-    // concat css files matching the glob patterns and write to destination
-    grunt.file.write(this.target, grunt.helper('mincss', files, { nocompress: true }));
+    // subtarget name is the output destination
+    var target = this.target;
+
+    // async task
+    var cb = this.async();
 
     // replace @import statements
-    grunt.helper('rjs:optimize:css', this.target, this.async());
+    //
+    // XXX no error handling in this helper so far..
+    // Check that rjs returns an error when something wrong (if it throws...)
+    // if it is bubble the error back here
+    grunt.helper('rjs:optimize:css', target, function() {
+      // do the minification once inline imports are done
+      grunt.log.write('Writing css files to ' + target + '...');
+      grunt.file.write(target, grunt.helper('mincss', target));
+      grunt.log.ok();
+      cb();
+    });
   });
 
   //
@@ -48,13 +63,14 @@ module.exports = function(grunt) {
     if(!cb) { cb = options; options = {}; }
     options.cssIn = file;
     options.out = options.out || file;
-    options.optimizeCss = 'standard.keepLines';
+    options.optimizeCss = 'standard.keepComments.keepLines';
     var before = grunt.file.read(file);
     rjs.optimize(options, function() {
       grunt.helper('min_max_info', grunt.file.read(file), before);
       cb();
     });
   });
+
 
 };
 

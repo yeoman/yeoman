@@ -1,0 +1,29 @@
+{
+  "name": "Yeo Man",
+  "author_name": "Yeo Man",
+  "description": "default template",
+  "version": "0.1.0",
+  "licenses": [
+    "MIT"
+  ],
+  "force_update": "y/N",
+  "js_safe_name": "_test",
+  "git_user": "yeoman",
+  "setup": {
+    "layout": "[D]efault, [C]ustom, [S]illy"
+  },
+  "gruntfile": {
+    "dom": true,
+    "min_concat": true,
+    "package_json": true,
+    "staging": "intermediate",
+    "output": "publish",
+    "css_dir": "css",
+    "js_dir": "js",
+    "img_dir": "img",
+    "test_task": "qunit",
+    "file_name": "<%= pkg.name %>",
+    "test_dir": "test",
+    "jquery": true
+  }
+}
