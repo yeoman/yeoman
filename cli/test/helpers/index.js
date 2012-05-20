@@ -29,7 +29,10 @@ helpers.before = function(cb) {
   helpers.setup(function(err) {
     if(err) return cb(err);
 
-    var imgs = ['default/1.png', 'default/2.png', 'default/3.png', 'default/4.png', 'default/5.jpg', 'default/6.jpg'];
+    var imgs = fs.readdirSync(path.join(__dirname, '../fixtures/default/img'))
+      .map(function(img) {
+        return path.join('default/img', img);
+      });
 
     // img to copy
     helpers.copy(['default/usemin.html', 'default/index.html'], '.test', function(err) {
