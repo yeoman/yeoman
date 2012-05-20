@@ -16,6 +16,8 @@ var fs = require('fs'),
 // Todo: Use a file dictionary during build process and rev task to
 // store each optimized assets and their associated sha1.
 //
+// Thx to @krzychukula for the new, super handy replace helper.
+//
 
 module.exports = function(grunt) {
 
@@ -29,6 +31,10 @@ module.exports = function(grunt) {
 
     files.map(grunt.file.read).forEach(function(content, i) {
       var p = files[i];
+
+      // get extension and trigger corresponding helpers
+      var ext = path.extname(p).slice(1);
+
       grunt.log.subhead('usemin - ' + p);
 
       // make sure to convert back into utf8, `file.read` when used as a
@@ -36,44 +42,15 @@ module.exports = function(grunt) {
       // raw buffer read
       content = content.toString();
 
-      // todo fallback to the usemin replace we have if no sections were found.
-      var blocks = getBlocks(content);
+      // ext-specific directives handling and replacement of blocks
+      if(!!grunt.task._helpers['usemin:pre:' + ext]) {
+        content = grunt.helper('usemin:pre:' + ext, content);
+      }
 
-      //
-      // {
-      //    'css/site.css ':[
-      //      '  <!-- build:css css/site.css -->',
-      //      '  <link rel="stylesheet" href="css/style.css">',
-      //      '  <!-- endbuild -->'
-      //    ],
-      //    'js/head.js ': [
-      //      '  <!-- build:js js/head.js -->',
-      //      '  <script src="js/libs/modernizr-2.5.3.min.js"></script>',
-      //      '  <!-- endbuild -->'
-      //    ],
-      //    'js/site.js ': [
-      //      '  <!-- build:js js/site.js -->',
-      //      '  <script src="js/plugins.js"></script>',
-      //      '  <script src="js/script.js"></script>',
-      //      '  <!-- endbuild -->'
-      //    ]
-      // }
-      //
-
-      // handle blocks
-      Object.keys(blocks).forEach(function(key) {
-        var block = blocks[key].join(linefeed),
-          parts = key.split(':'),
-          type = parts[0],
-          target = parts[1];
-
-        content = grunt.helper('usemin', content, block, target, type);
-      });
-
-      // handle revving, each script / link tags are searching for a
-      // matching file in intermediate dir, replacing the href/src with their
-      // hash-prepended version.
-      content = grunt.helper('usemin:replace', content);
+      // actual replacement of revved assets
+      if(!!grunt.task._helpers['usemin:post:' + ext]) {
+        content = grunt.helper('usemin:post:' + ext, content);
+      }
 
       // write the new content to disk
       grunt.file.write(p, content);
@@ -81,6 +58,29 @@ module.exports = function(grunt) {
 
   });
 
+  // usemin:pre:* are used to preprocess files with the blocks and directives
+  // before going through the global replace
+  grunt.registerHelper('usemin:pre:html', function(content) {
+    // XXX extension-specific for get blocks too.
+    //
+    // Eg. for each predefined extensions directives may vary. eg <!--
+    // directive --> for html, /** directive **/ for css
+    var blocks = getBlocks(content);
+
+    // handle blocks
+    Object.keys(blocks).forEach(function(key) {
+      var block = blocks[key].join(linefeed),
+        parts = key.split(':'),
+        type = parts[0],
+        target = parts[1];
+
+      content = grunt.helper('usemin', content, block, target, type);
+    });
+
+    return content;
+  });
+
+  // usemin and usemin:* are used with the blocks parsed from directives
   grunt.registerHelper('usemin', function(content, block, target, type) {
     target = target || 'replace';
     return grunt.helper('usemin:' + type, content, block, target);
@@ -96,18 +96,44 @@ module.exports = function(grunt) {
     return content.replace(block, indent + '<script src="' + target + '"></script>');
   });
 
-  grunt.registerHelper('usemin:replace', function(content) {
-    grunt.log.verbose.writeln('Update the HTML to reference our concat/min/revved script files');
-    content = grunt.helper('replace', content, /<script.+src=['"](.+)["'][\/>]?><[\\]?\/script>/gm);
-
-    grunt.log.verbose.writeln('Update the HTML with the new css filename');
-    content = grunt.helper('replace', content, /<link rel=["']?stylesheet["']?\shref=['"](.+)["']\s*>/gm);
-
-    grunt.log.verbose.writeln('Update the HTML with the new img filename');
-    content = grunt.helper('replace', content, /<img[^\>]+src=['"]([^"']+)["']/gm);
+  grunt.registerHelper('usemin:post:css', function(content) {
+    grunt.log.writeln('Update the CSS with new img filenames');
+    content = grunt.helper('replace', content, /url\(\s*['"]([^"']+)["']\s*\)/gm);
     return content;
   });
 
+  // usemin:post:* are the global replace handlers, they delegate the regexp
+  // replace to the replace helper.
+  grunt.registerHelper('usemin:post:html', function(content) {
+
+    grunt.log.verbose.writeln('Update the HTML to reference our concat/min/revved script files');
+    content = grunt.helper('replace', content, /<script.+src=['"](.+)["'][\/>]?><[\\]?\/script>/gm);
+
+    grunt.log.verbose.writeln('Update the HTML with the new css filenames');
+    content = grunt.helper('replace', content, /<link rel=["']?stylesheet["']?\shref=['"](.+)["']\s*>/gm);
+
+    grunt.log.verbose.writeln('Update the HTML with the new img filenames');
+    content = grunt.helper('replace', content, /<img[^\>]+src=['"]([^"']+)["']/gm);
+
+    grunt.log.verbose.writeln('Update the HTML with background imgs, case there is some inline style');
+    content = grunt.helper('replace', content, /url\(\s*['"]([^"']+)["']\s*\)/gm);
+
+    return content;
+  });
+
+  grunt.registerHelper('usemin:post:css', function(content) {
+
+    grunt.log.verbose.writeln('Update the CSS with background imgs, case there is some inline style');
+    content = grunt.helper('replace', content, /url\(\s*['"]?([^'"\)]+)['"]?\s*\)/gm);
+
+    return content;
+  });
+
+  //
+  // global replace handler, takes a file content a regexp to macth with. The
+  // regexp should capture the assets relative filepath, it is then compared to
+  // the list of files on the filesystem to guess the actual revision of a file
+  //
   grunt.registerHelper('replace', function(content, regexp) {
     return content.replace(regexp, function(match, src) {
       //do not touch external files
@@ -115,8 +141,8 @@ module.exports = function(grunt) {
       var basename = path.basename(src);
       var dirname = path.dirname(src);
 
-      // todo: don't lookup for every files on each replace. suboptimal.
-      // files won't change, the filepath should filter the original list of files.
+      // XXX files won't change, the filepath should filter the original list
+      // of cached files.
       var filepath = grunt.file.expand(path.join('**/*') + basename)[0];
 
       // not a file in intermediate, skip it
@@ -151,6 +177,30 @@ var regbuild = /<!--\s*build:(\w+)\s*(.+)\s*-->/;
 // end build pattern -- <!-- endbuild -->
 var regend = /<!--\s*endbuild\s*-->/;
 
+
+//
+// Returns an hash object of all the directives for the given html. Results is
+// of the following form:
+//
+//     {
+//        'css/site.css ':[
+//          '  <!-- build:css css/site.css -->',
+//          '  <link rel="stylesheet" href="css/style.css">',
+//          '  <!-- endbuild -->'
+//        ],
+//        'js/head.js ': [
+//          '  <!-- build:js js/head.js -->',
+//          '  <script src="js/libs/modernizr-2.5.3.min.js"></script>',
+//          '  <!-- endbuild -->'
+//        ],
+//        'js/site.js ': [
+//          '  <!-- build:js js/site.js -->',
+//          '  <script src="js/plugins.js"></script>',
+//          '  <script src="js/script.js"></script>',
+//          '  <!-- endbuild -->'
+//        ]
+//     }
+//
 function getBlocks(body) {
   var lines = body.replace(/\r\n/g, '\n').split(/\n/),
     block = false,
