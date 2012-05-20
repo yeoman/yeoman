@@ -213,7 +213,7 @@ helpers.copy = function(sources, destination, cb) {
 // assertion helper to compare files, output.
 helpers.assertFile = function(actual, expected, mode) {
   // unless mode is specifically set to null, defaults to utf8
-  mode = mode === null ? mode : 'utf8';
+  mode = mode || 'utf8';
   var actualBody = fs.readFileSync(actual, mode);
   var expectBody = fs.readFileSync(expected, mode);
   helpers.equal(actualBody, expectBody);
