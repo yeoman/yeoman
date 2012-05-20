@@ -20,33 +20,65 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/73ef6e0f.style.css">
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
-  <!-- All JavaScript at the bottom, except this Modernizr build.
-       Modernizr enables HTML5 elements & feature detects for optimal performance.
-       Create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="js/vendor/modernizr-2.5.3.min.js"></script>
+  <script src="js/vendor/5f7134b6.modernizr-2.5.3.min.js"></script>
+
+  <style>
+    .imgs:before, .css-reved:before {
+      font: 0.8em Helvetica, Arial, sans-sherif;
+      color: hsla(230, 26%, 27%, 0.38);
+    }
+
+    .imgs:before { content: 'Test out this rev replacement with some <img /> tags '; }
+    .css-reved:before { content: 'Test out this rev replacement with some background img'; }
+
+    .imgs, .css-reved { margin: 1em; padding: 1em; border: 1px solid #ccc; float: left; width: 200px; }
+    .css-reved .img-1 { background: url('img/b2e8c0ea.1.png'); }
+    .css-reved .img-2 { background: url('img/073323ac.2.png'); }
+    .css-reved .img-3 { background: url('img/6c97ba68.3.png'); }
+    .css-reved .img-4 { background: url('img/b3636b33.4.png'); }
+
+    img, .img-1, .img-2, .img-3, .img-4 { display: block; height: 150px; width: 150px; float: left; margin: 1em; }
+  </style>
+
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
        chromium.org/developers/how-tos/chrome-frame-getting-started -->
   <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
-  <!-- Add your site or application content here -->
-  <img src="img/1.png" /> <img src="img/2.png" />
-  <img src="img/3.png" />
-  <img src="img/4.png" />
+  <!-- test out this img rev replacement -->
 
+  <div class="imgs clearfix">
+    <!-- on same line -->
+    <img src="img/b2e8c0ea.1.png" /> <img src="img/073323ac.2.png" />
+
+    <!-- one at  a time -->
+    <img src="img/6c97ba68.3.png" />
+    <img src="img/b3636b33.4.png" />
+  </div>
+
+  <!-- Let's test this thing with img that were revved with references in our stylesheets -->
+  <div class="css-reved clearfix">
+    <span class="img-1"></span>
+    <span class="img-2"></span>
+    <span class="img-3"></span>
+    <span class="img-4"></span>
+  </div>
 
   <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="js/vendor/775b359b.jquery-1.7.2.min.js"><\/script>')</script>
 
-  <script src="js/main.min.js"></script>
+  <!-- scripts concatenated and minified via build script -->
+  <script src="js/8df0ff3a.plugins.js"></script>
+  <script src="js/f91c824c.main.js"></script>
+  <!-- end scripts -->
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
        mathiasbynens.be/notes/async-analytics-snippet -->
