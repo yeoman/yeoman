@@ -1,5 +1,5 @@
 
-[?] Do you need to force an update on master repo? (y/N) | force_update
+[?] Do you need to force an update on remote repositories ? (y/N) | force_update
 [?] Which layout ? ([D]efault, [C]ustom, [S]illy) | layout
 » [D]efault:  Standard html5-boilerplate layout
 
@@ -19,4 +19,10 @@ might want to go for something different like:
 
 [?] Image directory       (img/)            | img/
 [?] JavaScript directory  (js/)             | js/
+
+
+[?] Would you like to include Twitter Bootstrap in your project? (Y/n)  | bootstrap
+[?] Would you like to configure Bootstrap further? (Y/n)                | bootsrap_configure
+[?] Would you like to include like Bootstrap plugins? (Y/n)             | boostrap_plugins
+
 

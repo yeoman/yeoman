@@ -1,7 +1,8 @@
 
 var fs = require('fs'),
   path = require('path'),
-  utils = require('../../').utils;
+  utils = require('../../').utils,
+  fstream = require('fstream');
 
 var h5bp = module.exports;
 
@@ -16,6 +17,15 @@ h5bp.warnOn = '*';
 
 // the "prompts steps"
 h5bp.steps = 'project setup files gruntfile'.split(' ');
+
+// urls to remotely fetched package
+h5bp.urls = {
+  h5bp                        : 'http://nodeload.github.com/h5bp/html5-boilerplate/tarball/v3.0.2',
+  h5bp_stripped               : 'http://nodeload.github.com/h5bp/html5-boilerplate/tarball/v3.0.2stripped',
+  compass_twitter_bootstrap   : 'http://nodeload.github.com/vwall/compass-twitter-bootstrap/tarball/v2.0.3',
+  bootstrap                   : 'http://nodeload.github.com/twitter/bootstrap/tarball/v2.0.3'
+};
+
 
 // The actual init template.
 h5bp.template = function(grunt, init, done) {
@@ -65,7 +75,7 @@ h5bp.template = function(grunt, init, done) {
       else h5bp.props[step] = props;
       run(h5bp.steps.shift());
     });
-  })(h5bp.steps.shift())
+  })(h5bp.steps.shift());
 
 };
 
@@ -82,21 +92,79 @@ h5bp.template = function(grunt, init, done) {
 // description, etc.)
 h5bp.project = function project(cb) {
   var grunt = this.grunt;
-  var exists = path.existsSync(path.join(__dirname, 'h5bp/root/index.html'));
+
+  var paths = {
+    h5bp                      : path.join(__dirname, 'h5bp/cache/h5bp'),
+    bootstrap                 : path.join(__dirname, 'h5bp/cache/bootstrap'),
+    compass_twitter_bootstrap : path.join(__dirname, 'h5bp/cache/compass_twitter_bootstrap')
+  };
+
+  var exists = {
+    h5bp                      : path.existsSync(paths.h5bp),
+    bootstrap                 : path.existsSync(paths.bootstrap),
+    compass_twitter_bootstrap : path.existsSync(paths.compass_twitter_bootstrap)
+  };
+
+  // unless the force_upate option is set to true (answering yes in the
+  // prompts), we bypass the fetch if files are cached locally
+  var ready = exists.h5bp && exists.bootstrap && exists.compass_twitter_bootstrap;
 
   var prompts = 'name description version repository homepage ';
   prompts += 'licenses author_name author_email author_url ';
   prompts += exists ? 'force_update' : '';
 
+  // bootstrap integration prompts
+  prompts += ' bootstrap bootsrap_configure boostrap_plugins';
+
   h5bp.prompt(prompts.trim().split(' '), function(err, props) {
-    if(/n/i.test(props.force_update) && exists) return cb(null, props);
+    if(err) return cb(err);
+    // if it's no and all the files are fetched locally, goes to next
+    // step right away
+    if(/n/i.test(props.force_update) && ready) return copy();
 
-    var url = 'http://nodeload.github.com/h5bp/html5-boilerplate/tarball/master';
-    utils.fetch.call(grunt, url, path.join(__dirname, 'h5bp/root'), function(err) {
-      if(err) return cb(err);
-      cb(null, props);
-    });
+    var remotes = ['h5bp'];
+    if(/y/i.test(props.bootstrap)) {
+      remotes = remotes.concat(['bootstrap', 'compass_twitter_bootstrap']);
+    }
 
+    (function next(remote) {
+      if(!remote) return copy();
+      var url = h5bp.urls[remote];
+      grunt.log.writeln('... Fetching ' + remote + ' ...');
+      utils.fetch.call(grunt, url, path.join(__dirname, 'h5bp/cache', remote), function(err) {
+        if(err) return cb(err);
+        next(remotes.shift());
+      });
+    })(remotes.shift());
+
+    // once all have been fetched, the copy handler takes care of
+    // copying relevant files in the special root folder for grunt.
+    // This is based on the previous answers, whether bootstrap is
+    // included or not
+    function copy() {
+      var remaining = 0;
+      // if bootstrap is included, copy the sass files from
+      // compass_twitter_bootstrap
+      if(/y/i.test(props.bootstrap)) {
+        remaining++;
+        fstream.Reader(path.join(paths.compass_twitter_bootstrap, 'stylesheets_sass'))
+          .pipe(fstream.Writer({ path: path.join(__dirname, 'h5bp/root/css/saas'), type: 'Directory' }))
+          .on('close', done);
+      }
+
+      // if bootstrap js plugins are included, copy them as well
+      if(/y/i.test(props.bootstrap)) {
+        remaining++;
+        fstream.Reader(path.join(paths.bootstrap, 'js'))
+          .pipe(fstream.Writer({ path: path.join(__dirname, 'h5bp/root/js/vendor'), type: 'Directory' }))
+          .on('close', done);
+      }
+
+      function done() {
+        if(--remaining) return;
+        cb(null, props);
+      }
+    }
   });
 };
 
@@ -271,7 +339,7 @@ h5bp.customPrompt = function() {
     var prompt = {
       message: m[1].trim(),
       default: m[2].trim(),
-      name: m[3].trim(),
+      name: m[3].trim()
     };
 
     if(/^»/.test(lines[i + 1])) {
@@ -312,7 +380,7 @@ h5bp.prompt = function(prompts, cb) {
 // **filePrompts** builds an array of prompts object, for each files in
 // the root repository.
 h5bp.filePrompts = function() {
-  var root = root = path.join(__dirname, 'h5bp/root'),
+  var root = path.join(__dirname, 'h5bp/root'),
     files = this.grunt.file.expandFiles(path.join(root, '**')),
     opts = this.grunt.helper('prompt_for_obj');
 

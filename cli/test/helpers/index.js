@@ -97,9 +97,15 @@ helpers.spawn = function(options, cb) {
   options.bin = options.bin || yeopath;
   options.args = options.args || options.tasks || [];
 
-  // we want $PATH in forked process environment for the which package to
+  //
+  // We want $PATH in forked process environment for the which package to
   // work appropriately when run via npm test
-  var env = { PATH: process.env.PATH };
+  //
+  // We want the spawned grunt / yeoman to have the same environment than the
+  // parrent one (namely for $PATH for the which package to work appropriately,
+  // and $http_proxy when run behind some kind of proxy)
+  //
+  var env = process.env;
 
   var child = spawn(options.cmd, [options.bin].concat(options.args), { cwd: options.base, env: env });
   if(!silent) child.stderr.pipe(process.stderr);
@@ -135,25 +141,31 @@ helpers.spawn = function(options, cb) {
 // If an hash object of options is passed in as first arg, with a nocopy prop
 // then the h5bp project copy is prevented (mostly useful with the init task test)
 //
-// XXX do copy with fstream
-//
 helpers.setup = function setup(o, cb) {
   if(!cb) { cb = o; o = {}; }
 
   // test dir, $pkgroot/.test
   var dest = o.base || o.dest || path.join(__dirname, '../../.test');
 
-  // rm -rf .test
-  rimraf(dest, function(err) {
+  helpers.clean(dest, function(err) {
     if(err) return cb(err);
-
-    // && mkdirp ./test
-    mkdirp(dest, function(err) {
-      helpers.run('init --noprompt', cb);
-    });
+    helpers.run('init --noprompt', cb);
   });
+
 };
 
+//
+// **clean** helper, used in before / setup test
+//
+
+helpers.clean = function clean(dir, cb) {
+  if(!cb) { cb = dir; dir = path.join(__dirname, '../../.test'); }
+
+  rimraf(dir, function(err) {
+    if(err) return cb(err);
+    mkdirp(dir, cb);
+  });
+};
 
 //
 // **copy** helper, creates a new ReadStream, connects to WriteStream destination,
