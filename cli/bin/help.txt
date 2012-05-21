@@ -6,7 +6,7 @@ Available tasks the yeoman plugin provides (for a full list, type yeoman --help
       copy  Copies the whole staging(intermediate/) folder to output
             (publish/) one
        css  Concats, replaces @imports and minifies the CSS files *
-      docs  grunt h5bp plugin documentation
+      docs  yeoman h5bp plugin documentation
        dom  dom-based build system
       html  Basic to aggresive html minification
        img  Optimizes .png/.jpg images using optipng/jpegtran
@@ -23,6 +23,3 @@ Build targets: yeoman build:<target>
     basics  concat css min img rev usemin manifest html:basics
     minify  concat css min img rev usemin manifest html:compress
 
-For more information on the h5bp plugin, see https://yeoman.io
-
-For more information on grunt, see https://github.com/cowboy/grunt
