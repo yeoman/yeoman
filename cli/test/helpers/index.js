@@ -149,7 +149,7 @@ helpers.setup = function setup(o, cb) {
 
   helpers.clean(dest, function(err) {
     if(err) return cb(err);
-    helpers.run('init --noprompt', cb);
+    helpers.run('init --template defaults', cb);
   });
 
 };

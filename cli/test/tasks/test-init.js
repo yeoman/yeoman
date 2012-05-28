@@ -17,7 +17,7 @@ describe('Init task', function() {
 
   it('Given I run the init task', function(done) {
     // runt the html task
-    helpers.run('init:yeoman', done);
+    helpers.run('init:yeoman --template defaults', done);
   });
 
   describe('When the script ends', function(done) {

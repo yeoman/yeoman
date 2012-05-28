@@ -51,55 +51,85 @@ yeoman.notes = '... More notes to come here ...';
 // Any existing file or directory matching this wildcard will cause a warning.
 yeoman.warnOn = '*';
 
-// the "prompts steps"
-yeoman.steps = 'project setup files gruntfile'.split(' ');
+//
+// the defaults can bypass a prompt if it matches a prompt name this will
+// eventually be pulled in from another file, based on the `--template`
+// option.
+//
+// XXX Ideally, I'd like to be able to have default prompts (that are
+// bypassed) in two different ways:
+//
+// - by loading in a predefined template of answers (with `-t <templateName>`)
+// - by checking command line options for matching prop name here, eg.
+// passing in a --description Foo would bypass the prompt for description
+// using "Foo" as a value.
+//
+// The order of precedence for conflicting settings is this:
+//
+// - command line flags
+// - template file settings
+// - prompts
+//
 
-// The actual init template.
+// yeoman.defaults = {
+//   "description": "The best project ever.",
+//   "version": "0.1.0",
+//   "repository": "git://github.com/user/repository.git",
+//   "homepage": "https://github.com/user/repository",
+//   "licenses": [ "MIT"],
+//   "author_url": "none",
+//   "git_user": "mk",
+//   "name": "testname",
+//   "author_name": "you",
+//
+//   // includes, this would bypass the prompt for project inclusion
+//   // this maps the remote name property
+//   "include_bootstrap": "y",
+//   "include_compass_bootstrap": "y",
+//   "include_twitter": "y"
+// };
+//
+
+yeoman.defaults = {};
+
+// **configure** setup the initial set of properties from optionnaly loading
+// default anwsers. They differ from grunt's usual default prompts in the way
+// that they by-pass the prompt instead of setting a default.
+//
+// XXX right now, it is mainly useful for us with testing to by-pass all the
+// prompt. But we may think of a way to prompt user at the end if he wants to
+// store all the prompted anwsers, to easily re-run later on (or to share with
+// others)
+yeoman.configure = function configure(cb) {
+  // get back the grunt reference
+  var grunt = this.grunt;
+
+  // when user provides a --template option, we try to load in matching predefined template
+  // from templates/*.json
+  var template = grunt.option('template');
+
+  //  when not provided is invalid, go to the next step right away
+  if(!template) return cb();
+
+  // then try to load in predefined template for this template
+  var files = grunt.file.expandFiles(path.join(__dirname, 'templates', template + '.json'));
+
+  // grunt wasn't able to find a template, go to next step right away
+  if(!files.length) return cb();
+
+  // if it is a valid template then, setup `yeoman.defaults` hash object to
+  // by-pass relevant options.
+  this.defaults = grunt.file.readJSON(files[0]);
+
+  cb();
+};
+
+// The actual grunt init template.
 yeoman.template = function template(grunt, init, cb) {
-  // XXX parse cli opts here, noprompt? template?
-
-  // the defaults can bypass a prompt if it matches a prompt name this will
-  // eventually be pulled in from another file, based on the `--template`
-  // option.
-  yeoman.defaults = {
-    // by now, it is simple the JSON.stringify results of the project step  prompts.
-    //
-    // XXX Ideally, I'd like to be able to have default prompts (that are
-    // bypassed) in two different ways:
-    //
-    // - by loading in a predefined template of answers (with `-t <templateName>`)
-    // - by checking command line options for matching prop name here, eg.
-    // passing in a --description Foo would bypass the prompt for description
-    // using "Foo" as a value.
-    //
-    // The order of precedence for conflicting settings is this:
-    //
-    // - command line flags
-    // - template file settings
-    // - prompts
-    //
-    "description": "The best project ever.",
-    "version": "0.1.0",
-    "repository": "git://github.com/user/repository.git",
-    "homepage": "https://github.com/user/repository",
-    "licenses": [ "MIT"],
-    "author_url": "none",
-    "git_user": "mk",
-    "name": "testname",
-    "author_name": "you",
-
-    // includes, this would bypass the prompt for project inclusion
-    // this maps the remote name property
-    "include_bootstrap": "y",
-    "include_compass_bootstrap": "y",
-    "include_twitter": "y"
-  };
-
-  //
   // attach the grunt instance to the template object,
   // we're going to use its API through the init code
   //
-  // warn, grunt place the this context to grunt itself for us already.
+  // warn, grunt place the `this` context to grunt itself for us already.
   yeoman.grunt = grunt;
 
   // with grunt 0.4.x, we won't need this anymore
@@ -110,30 +140,37 @@ yeoman.template = function template(grunt, init, cb) {
     return cb(false);
   };
 
+  yeoman.configure(function(err) {
+    if(err) return done(err);
+    yeoman.start(init, done);
+  });
+
+  return yeoman;
+};
+
+yeoman.start = function start(init, cb) {
+
   // cleanup the previous root folder, if any
   rimraf(path.join(yeoman.dir, 'root'), function(err) {
-    if(err) return done(err);
-
+    if(err) return cb(err);
     // prompt for basic project information
     yeoman.prompt(function(err, props) {
-      if(err) return done(err);
-
+      if(err) return cb(err);
       // Fetch our remotes assets and have them copied / compiled / etc.
       yeoman.remotes(props, function(err) {
-        if(err) return done(err);
-
+        if(err) return cb(err);
         // Special gruntfile handler, now a basic copy. We need to have it generated from
         // predefined answer and the state of `yeoman/root` directory.
         yeoman.gruntfile(function(err) {
-          if(err) return done(err);
+          if(err) return cb(err);
           // then let grunt copy over all the files that are in `yeoman/root`
-          yeoman.end(init, props, done);
+          yeoman.end(init, props, cb);
         });
       });
     });
   });
 
-  return yeoman;
+  return this;
 };
 
 
@@ -154,13 +191,16 @@ yeoman.end = function end(init, props, cb) {
   // XXX Generate package.json file?
   init.writePackageJSON('package.json', props);
 
+  // All done!
+  cb();
+
   return this;
 };
 
 // XXX basic copy for now, to be done a fairly elaborated process for
 // generating a grunt file based on previous prompts, additional ones and the
 // current state of the root folder
-yeoman.gruntfile = function(cb) {
+yeoman.gruntfile = function gruntfile(cb) {
   fstream.Reader(path.join(this.dir, 'Gruntfile.js'))
     .on('error', cb)
     // destination is now grunt.js. But it'll change to Gruntfile.js whenever
@@ -213,7 +253,7 @@ yeoman.prompt = function prompt(cb) {
 // on this branch or latest tag to automate this. This sha1 could be the cache folder name.
 // For now, we always fetch even though the cache folder is already there.
 //
-yeoman.remotes = function(props, cb) {
+yeoman.remotes = function _remotes(props, cb) {
   var grunt = this.grunt;
 
   // prompt for inclusion on remaining remotes (bootstrap, compass bootstrap)
