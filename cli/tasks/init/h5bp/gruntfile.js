@@ -35,6 +35,12 @@ module.exports = function(grunt) {
     img: {
       dist: '<config:rev.img>'
     },
+    coffee: {
+      dist: {
+        src: '{%= js_dir %}/**/*.coffee',
+        dest: '{%= js_dir %}'
+      }
+    },
     watch: {
       files: '<config:lint.files>',
       tasks: 'lint {%= test_task %}'
