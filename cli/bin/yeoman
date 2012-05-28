@@ -32,7 +32,7 @@ if(opts.version) {
 
 // `h5bp init` -> `grunt init:h5bp`
 if(/^init$/.test(route)) {
-  cli.tasks = 'init:h5bp';
+  cli.tasks = 'init:yeoman';
 }
 
 // the grunt cli
