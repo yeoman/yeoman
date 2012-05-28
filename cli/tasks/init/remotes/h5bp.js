@@ -31,7 +31,10 @@ function H5BP(opts) {
 
   this.user = opts.user || 'h5bp';
   this.repo = opts.repo || 'html5-boilerplate';
-  this.version = opts.version || 'v3.0.2stripped';
+  // latest commit on h5bp repo, to test things out and to always pull from a
+  // specific sha1 (thus making the cache thing more robust, master or other
+  // branch are likelly to change)
+  this.version = opts.version || '3942ee1775b07b6a1c725f064e066f39998a5069';
 
   this.priority = 1;
   // no prompt for inclusion
