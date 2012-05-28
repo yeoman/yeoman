@@ -52,7 +52,7 @@ Repo.prototype.init = function init(cb) {
     // XXX add validators, typing something else than y is meaning a no
     // right now. y and n should be the only possible value. If it's
     // not, it should reprompt
-    if(!/y/i.test(props.include)) return;
+    if(!/y/i.test(props.include)) return cb();
 
     self.fetch(function(err) {
       if(err) return cb(err);
