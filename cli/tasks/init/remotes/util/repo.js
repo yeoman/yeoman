@@ -65,11 +65,21 @@ Repo.prototype.init = function init(cb) {
 // fetch the remote locally
 Repo.prototype.fetch = function fetch(cb) {
   var self = this;
-  utils.fetch.call(this.grunt, this.url(), this.cache, function(err) {
-    if(err) return cb(err);
-    self.emit('fetch');
-    cb();
+
+  fs.stat(this.cache, function(err) {
+    // cache is there, copy right away
+    if(!err) return cb();
+
+    // expected error, trigger the fetch & copy
+    utils.fetch.call(self.grunt, self.url(), self.cache, function(err) {
+      if(err) return cb(err);
+      console.log('fetched');
+      self.emit('fetch');
+      cb();
+    });
+
   });
+
   return this;
 };
 

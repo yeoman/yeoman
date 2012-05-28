@@ -31,7 +31,7 @@ function H5BP(opts) {
 
   this.user = opts.user || 'h5bp';
   this.repo = opts.repo || 'html5-boilerplate';
-  this.version = opts.version || 'master';
+  this.version = opts.version || 'v3.0.2stripped';
 
   this.priority = 1;
   // no prompt for inclusion

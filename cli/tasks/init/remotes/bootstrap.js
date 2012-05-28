@@ -17,7 +17,7 @@ function Bootstrap(opts) {
 
   this.user = opts.user || 'twitter';
   this.repo = opts.repo || 'bootstrap';
-  this.version = opts.version || 'master';
+  this.version = opts.version || 'v2.0.3';
 
   this.priority = 2;
 

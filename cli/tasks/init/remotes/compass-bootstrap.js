@@ -17,7 +17,7 @@ function CompassBootstrap(opts) {
 
   this.user = opts.user || 'vwall';
   this.repo = opts.repo || 'compass-twitter-bootstrap';
-  this.version = opts.version || 'master';
+  this.version = opts.version || 'v2.0.3';
 
   this.priority = 3;
 
