@@ -66,15 +66,15 @@ module.exports = function(grunt) {
     // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
     concat: {
       dist: {
-        src: ['js/plugins.js', 'js/bootstrap-*.js', 'js/main.js'],
-        dest: 'js/<config:pkg.name>-<config:pkg.version>.js'
+        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
+        dest: 'js/<%= pkg.name %>-<%= pkg.version %>.js'
       }
     },
     // default min configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
     min: {
       dist: {
-        src: 'js/<config:pkg.name>-<config:pkg.version>.js',
+        src: 'js/<%= pkg.name %>-<%= pkg.version %>.js',
         dest: 'js/main.js'
       }
     },
