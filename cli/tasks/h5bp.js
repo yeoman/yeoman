@@ -23,23 +23,23 @@ module.exports = function(grunt) {
   // target
   var targets = {
     // build - (default) no html optimizations
-    default: 'concat css min img rev usemin manifest',
+    default: 'coffee concat css min img rev usemin manifest',
 
     // text - same as build but without image (png/jpg) optimizing
-    text: 'concat css min rev usemin manifest',
+    text: 'coffee concat css min rev usemin manifest',
 
     // buildkit - minor html optimizations, all html whitespace/comments
     // maintained
     // (todo: inline script/style minified)
-    buildkit: 'concat css min img rev usemin manifest html:buildkit',
+    buildkit: 'coffee concat css min img rev usemin manifest html:buildkit',
 
     // basics - same as build minus plugs minor html optimizations
     // (extra quotes and comments removed)
     // (todo: inline script/style minified)
-    basics: 'concat css min img rev usemin manifest html:basics',
+    basics: 'coffee concat css min img rev usemin manifest html:basics',
 
     // minify - same as build plus full html minification,
-    minify: 'concat css min img rev usemin manifest html:compress'
+    minify: 'coffee concat css min img rev usemin manifest html:compress'
   };
 
   var targetList = grunt.log.wordlist(Object.keys(targets));
