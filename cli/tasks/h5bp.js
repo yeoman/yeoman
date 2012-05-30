@@ -8,11 +8,22 @@ var fs = require('fs'),
 // ant build script has a nice notion of environment, this defaults to
 // production. And we only support env=prod for now.
 //
-// not implemented tasks (add noop waithing for their impl): manifest images
+// not implemented tasks (add noop waithing for their impl): manifest
 //
 
 
 module.exports = function(grunt) {
+
+  // External grunt plugin:
+  //
+  // - jasmine task: https://github.com/creynders/grunt-jasmine-task
+  //
+  // note: We need to use loadTasks instead of loadNpmTasks, otherwise will try
+  // to load relative to gruntfile node_modules, this would require user to
+  // install manually. So we load tasks specifically from our node_modules,
+  // with abs path.
+  //
+  grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
 
   // Setup some default alias...
   grunt.registerTask('default', 'build:default');
