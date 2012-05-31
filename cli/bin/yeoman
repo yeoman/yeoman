@@ -35,5 +35,15 @@ if(/^init$/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
 
+// if the route is empty
+if(/^$/.test(route)) {
+  // this is specific to an empty route code
+  console.log('yeoman v%s', require('../package.json').version);
+
+  // we return early to prevent grunt from actually running
+  // and instead just output help.txt
+  return fs.createReadStream(help).pipe(process.stdout);
+}
+
 // the grunt cli
 grunt.cli();
