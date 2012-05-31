@@ -1,6 +1,14 @@
 Usage: yeoman [options] [task [task ...]]
 
-Available tasks the yeoman plugin provides (for a full list, type yeoman --help
+Available options supported by yeoman:
+
+      init  Initialize and scaffold a new project
+     build  Build an optimized version of your app, ready to deploy
+    server  Launch a preview server which will begin watching for changes
+      test  Run a Jasmine test harness in a headless Phantom.js
+     watch  Watch for changes
+
+Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
 
      clean  Wipe the previous build dirs
       copy  Copies the whole staging(intermediate/) folder to output
