@@ -35,3 +35,12 @@ For example, run this guy as:
 ```shell
     ./server.sh 8000
 ```
+
+## Browser Support
+
+Yeoman supports:
+
+* Modern browsers (latest versions of Chrome, Safari, Firefox and IE10)
+* Chrome on Android
+* Mobile Safari
+
