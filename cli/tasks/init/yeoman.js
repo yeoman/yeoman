@@ -21,9 +21,8 @@ var yeoman = module.exports;
 // 2. Trigger the template
 // 3. Prompts
 // 4. Fetch / Copy / End
-// 5. Grunt file copy with prompt renames (the feature in place with
-//    [D]efault, [C]ustom, [S]illy layouts. Allow user to rename specific
-//    folders
+// 5. Copy specific assets, like the Jasmine default environment (defaults to
+// root/test)
 // 6. Gruntfile Generation (from prompts and what is in the root folder)
 //
 // The init task and command when run through `yeoman` should behave like so:
@@ -35,7 +34,6 @@ var yeoman = module.exports;
 //      # "template" of the same name. This is a simple json file whose properties
 //      # are used to bypass prompts when init is run.
 //      yeoman init --template defaults
-//      yeoman init -t defaults
 //
 
 // the base working directory for the yeoman template,
@@ -104,15 +102,16 @@ yeoman.configure = function configure(cb) {
   // get back the grunt reference
   var grunt = this.grunt;
 
-  // when user provides a --template option, we try to load in matching predefined template
-  // from templates/*.json
+  // when user provides a --template option, we try to load in matching
+  // predefined template from templates/*.json
   var template = grunt.option('template');
 
   //  when not provided is invalid, go to the next step right away
   if(!template) return cb();
 
   // then try to load in predefined template for this template
-  var files = grunt.file.expandFiles(path.join(__dirname, 'templates', template + '.json'));
+  template = template + '.json';
+  var files = grunt.file.expandFiles(path.join(__dirname, 'templates', template));
 
   // grunt wasn't able to find a template, go to next step right away
   if(!files.length) return cb();
@@ -133,7 +132,7 @@ yeoman.template = function template(grunt, init, cb) {
   yeoman.grunt = grunt;
 
   // with grunt 0.4.x, we won't need this anymore
-  // related:: https://github.com/cowboy/grunt/issues/146
+  // related: https://github.com/cowboy/grunt/issues/146
   var done = function(err) {
     if(!err) return cb();
     grunt.log.error(err.stack || err.message);
@@ -173,7 +172,6 @@ yeoman.start = function start(init, cb) {
   return this;
 };
 
-
 // **end** completes the creation process.
 // XXX custom renames
 yeoman.end = function end(init, props, cb) {
@@ -181,6 +179,9 @@ yeoman.end = function end(init, props, cb) {
 
   // Files to copy (and process).
   var files = init.filesToCopy(props);
+
+  // add the Jasmine runner and basic environment
+  grunt.utils._.extend(files, this.jasmineFilesToCopy(init, props));
 
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
@@ -278,3 +279,30 @@ yeoman.remotes = function _remotes(props, cb) {
   })(repos.shift());
 };
 
+// append the jasmine runner and basic boilerplate for Jasmine testing to the
+// files-to-be-copied Hash object of Grunt. Borrowed and based on
+// init.filesToCopy source:
+// https://github.com/cowboy/grunt/blob/master/tasks/init.js#L91-107
+//
+// Does the same lookup but looks into yeoman/jasmine instead of yeoman/root,
+// while adding a `test/` prefix folder. This value could be the result of a
+// prompt.
+yeoman.jasmineFilesToCopy = function jasmineFilesToCopy(init, props) {
+  // the hash of files dest:relpath
+  var files = {};
+  // the base directory
+  var prefix = 'init/yeoman/jasmine/';
+  this.grunt.task.expandFiles({ dot: true }, prefix + '**').forEach(function(obj) {
+    // Get the path relative to the template root.
+    var relpath = obj.rel.slice(prefix.length);
+    var rule = init.renames[relpath];
+    // Omit files that have an empty / false rule value.
+    if (!rule && relpath in init.renames) { return; }
+    // Create a property for this file.
+    // XXX this `test/` prefix could be the result of a prompt
+    var dest = rule ? grunt.template.process(rule, props, 'init') : relpath;
+    files['test/' + dest] = obj.rel;
+  });
+
+  return files;
+};

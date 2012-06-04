@@ -31,6 +31,7 @@ describe('Init task', function() {
         'img'                                      : 'Directory',
         'css'                                      : 'Directory',
         'js'                                       : 'Directory',
+        'test'                                     : 'Directory',
         'package.json'                             : 'File',
         'grunt.js'                                 : 'File',
         'robots.txt'                               : 'File',
