@@ -63,10 +63,10 @@ module.exports = function(grunt) {
     lint: {
       files: ['grunt.js', 'js/**/*.js', 'test/**/*.js']
     },
-    // QUnit headless test through PhantomJS
-    // XXX to be changed with grunt-jasmine integration
-    qunit: {
-      files: ['test/**/*.html']
+    // Jasmine headless test through PhantomJS
+    // > https://github.com/creynders/grunt-jasmine-task
+    jasmine: {
+      all: ['test/**/*.html']
     },
     // default concat configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
@@ -108,5 +108,9 @@ module.exports = function(grunt) {
     // https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options
     uglify: {}
   });
+
+
+  // Alias the `test` task to run the `jasmine` task instead
+  grunt.registerTask('test', 'jasmine');
 
 };
