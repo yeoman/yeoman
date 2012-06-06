@@ -1,4 +1,4 @@
-Usage: yeoman [options] [task [task ...]]
+Usage: yeoman [command] [task [task ...]]
 
 Available commands supported by yeoman:
 
