@@ -40,7 +40,7 @@ For example, run this guy as:
 
 Yeoman supports:
 
-* Modern browsers (latest versions of Chrome, Safari, Firefox and IE10)
+* Modern browsers (latest versions of Chrome, Safari, Firefox, Opera and IE10)
 * Chrome on Android
 * Mobile Safari
 
