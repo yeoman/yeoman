@@ -11,9 +11,6 @@
 * FAQs
 
 
-Todo: write up the tasks.
-Yeoman command line interface section
-
 
 ## Why Yeoman?
 
@@ -43,8 +40,6 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 
 ##Getting Started
 
-## Quick start
-
 *One line install:*
 
 Open up a terminal and enter in the following:
@@ -71,9 +66,7 @@ You should be able to use it on:
 * OSX
 * Unix
 
-
-
-## Manual Installation
+### Manual Installation
 
 There are two main ways to install, using a "global" or a "local" install.
 
@@ -89,7 +82,7 @@ your project dependencies) using a tarball url, very much like if it was publish
 on npm.
 
 
-### global install
+#### global install
 
 ```sh
 npm install https://github.com/yeoman/yeoman/tarball/master -g
@@ -249,6 +242,58 @@ process.
 
 
 
+# Option - build
+
+Usage: `yeoman build`, `yeoman build:<target>`
+
+Yeoman leverages third party tools to construct an optimized version of your 
+application that's ready to deploy. 
+
+We make use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to 
+tackle much of the hard work for this, with some useful additions that assist
+with compression, optimization and testing.
+
+These include:
+
+* Linting all JavaScript files against jshint
+* Recompiling all CoffeeScript and SASS files for production
+* Using r.js to compile and optimize any AMD modules
+* Concatenation and minification of scripts and stylesheets
+* Compressing your images using OptiPNG for PNG files and JPEGtran-turbo for JPEGs
+* Running any unit tests written against a headless WebKit browser (via PhantomJS)
+* Creating an Application Cache manifest via Confess.js
+* Using revision filenames or oldernames
+
+We finally publish an optimized version of your application to your project directory
+so that it can be deployed to production right after.
+
+Yeoman supports a number of build targets to be used with `yeoman build`. To implicitly
+pass the `default` target one would run `yeoman build:default` for example. The complete
+list of supported build targets can be found below:
+
+* default: Runs `concat css min img rev usemin manifest`
+* text: Runs `concat css min rev usemin manifest`
+* buildkit: Runs `concat css min img rev usemin manifest html:buildkit`
+* basics: Runs `concat css min img rev usemin manifest html:basics`
+* minify: Runs `concat css min img rev usemin manifest html:compress`
+
+Each build target above runs a number of different build *tasks*. The supported
+tasks included with Yeoman out of the box are:
+
+* clean: Wipe the previous build dirs
+* cop: Copies the whole staging(intermediate/) folder to output (publish/) one
+* css: Concats, replaces @imports and minifies the CSS files 
+* dom: dom-based build system
+* html: Basic to aggresive html minification
+* img: Optimizes .png/.jpg images using optipng/jpegtran
+* mkdirs: Prepares the build dirs 
+* rev: Automate the hash renames of assets filename 
+* usemin: Replaces references to non-minified scripts / stylesheets 
+
+More comprehensive information on each task can be found lower down the page.
+
+
+
 ## Flags
 
 * `yeoman --help`
@@ -288,7 +333,6 @@ Build targets: yeoman build:<target>
   buildkit  concat css min img rev usemin manifest html:buildkit
     basics  concat css min img rev usemin manifest html:basics
     minify  concat css min img rev usemin manifest html:compress
-
 
 
 
@@ -949,28 +993,11 @@ output: 'publish/',
 
 
 
-
-
 *Testing*
 
 -`$ yeoman test`
 * Runs the jasmine test harness in a headless Phantom.js
 
-*Project Build*
-
-Yeoman leverages third party tools to construct an optimized version of your app ready to deploy.
-
-`$ yeoman build`
-* Grunt tackles the hard work
-* All js files run against jshint
-* CSS/JS recompiled
-* r.js to compile AMD modules for the app
-* Concatenation and minification
-* rev filenames (or folder names)
-* Image compression
-* Run unit tests in headless WebKit via PhantomJS
-* Create appcache via Confess.js in PhantomJS
-* Publish optimized app to folder
 
 
 
