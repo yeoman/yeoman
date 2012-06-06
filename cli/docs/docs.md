@@ -11,7 +11,6 @@
 * FAQs
 
 
-
 Todo: write up the tasks.
 Yeoman command line interface section
 
@@ -177,17 +176,20 @@ If it was installed locally, next to your gruntfile, simply drop the
 ## Yeoman Command-Line Interface (CLI)
 
 
-# Tasks
+# Options and Tasks
 
-You'll find below a basic description and documentation for each task
-the Yeoman CLI provides. For each of these, we'll detail the
-task's configuration and how to change this.
+You'll find below a basic description and documentation for each option and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change this.
 
-* **[[init]]**: Scaffold a new project.
-* **[[watch]]**: Watch a project for changes, automatically reload if changes detected
-* **[[server]]**: Spawns up a basic local http server (on both pubilsh /
-  intermediate folder with different ports).
-* **[[build]]**: Build a project
+Options:
+
+* **[[init]]**: Initialize and scaffold a new project
+* **[[watch]]**: Watch a project for changes, compiling any SASS/CoffeeScript files being used
+* **[[server]]**: Launch a preview server which will begin watching for changes
+* **[[build]]**: Build an optimized version of your app, ready to deploy
+* **[[test]]**: Run a Jasmine test harness in a headless Phantom.js
+
+Tasks:
+
 * **[[clean]]**: Wipe the previous build dirs.
 * **[[mkdirs]]**: Prepares the build dirs.
 * **[[concat]]**: Concatenate files. *(built-in)*
@@ -196,15 +198,63 @@ task's configuration and how to change this.
 * **[[rev]]**: Automate the revving of assets and perform the hash rename
 * **[[usemin]]**: Replaces references to non-minified scripts / stylesheets
 
-In addition to those tasks, which are the backbone of the build script,
-there are a few additionnal tasks to help you in the process:
 
 ## Usage
 
-**This assumes the package was installed globally. If it was installed
-locally, simply replace `yeoman` by `grunt` in the following commands**
+**This assumes the package was installed globally.
 
-Running `yeoman --help` should output the following to the console
+## Project creation
+
+# Option - init
+
+Usage: `yeoman init`, `yeoman init myapp`
+
+The `init` option asks you a number of questions (with default answers) for setting
+up a new project. The answers to these questions will be used to scaffold a folder
+a file structure for the application.
+
+Questions include whether you would like to scaffold your project using HTML5
+Boilerplate, include themeing via Twitter Bootstrap, support EcmaScript 6 Modules
+in your project and so on. 
+
+By default we support Compass and CoffeeScript, so if your project includes any 
+.coffee files, these will be compiled when either `watch` or `build` tasks are being
+run. 
+
+Passing an extra argument to `yeoman init` (e.g `myapp`) will create a new directory
+of the name `myapp` and Yeoman will then scaffold your application within this new
+directory. 
+
+Coming soon: We plan on yeoman init making requests to Nest to request the most recent
+versions of dependencies your project may need. When this is integrated, we will add
+further documentation about it to this page. 
+
+
+# Option - server
+
+Usage: `yeoman server`
+
+The `server` option launches a preview server on port 3000 that allows you to access a 
+running version of your application locally.
+
+It also automatically fires up the `yeoman watch` process, so changes to any application
+files cause the browser to refresh via LiveReload. 
+
+Any changes to CoffeeScript or Compass files result in them being recompiled, meaning that
+no manual intervention is required to write and preview code in the format you feel most
+comfortable with.  
+
+To quit the server, simply run `yeoman quit server` and this will kill the Python server
+process.
+
+
+
+## Flags
+
+* `yeoman --help`
+
+This will list out the options and tasks supported by yeoman and should print out the 
+following to the console:
 
 Usage: yeoman [options] [task [task ...]]
 
@@ -214,7 +264,8 @@ Available options supported by yeoman:
      build  Build an optimized version of your app, ready to deploy
     server  Launch a preview server which will begin watching for changes
       test  Run a Jasmine test harness in a headless Phantom.js
-     watch  Watch for changes
+     watch  Watch for changes, compiling any SASS/CoffeeScript files being used
+      docs  yeoman documentation
 
 Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
 
@@ -222,7 +273,6 @@ Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
       copy  Copies the whole staging(intermediate/) folder to output
             (publish/) one
        css  Concats, replaces @imports and minifies the CSS files *
-      docs  yeoman h5bp plugin documentation
        dom  dom-based build system
       html  Basic to aggresive html minification
        img  Optimizes .png/.jpg images using optipng/jpegtran
@@ -239,7 +289,12 @@ Build targets: yeoman build:<target>
     basics  concat css min img rev usemin manifest html:basics
     minify  concat css min img rev usemin manifest html:compress
 
+
+
+
 ## Loading tasks and helpers in your Yeoman setup
+
+Note: Need to review whether we keep the below in place. 
 
 You may opt to go for the local install, and manually load the tasks and helpers
 the yeoman provides.
@@ -893,31 +948,7 @@ output: 'publish/',
 
 
 
-## Quick Guide (reference for documentation writers only)
 
-*Project creation*
-
-
--`$ yeoman init myapp`
-* Asks you a number of questions (with default answers) for setting up your project
-* We default to Compass on, and Coffeescript off
-* We populate a JSON manifest with some of these
-* Scaffold a folder and file structure for the application
-* HTML5 Boilerplate and Twitter Bootstrap frontend assets are given by default
-* All JS files can be ES.Next Modules if you wish to use them
-* Calls on NEST to request the freshest dependencies that you need
-Ember, Ember Data, jQuery
-
--``$ yeoman server`
-* Launches preview server and begins watching for changes
-* Server just implicitly fires up a watch process
-* Any changes to .coffee, .scss files are automatically recompiled through Coffeescript, Compass  respectively. Hooked up with LiveReload so browser refreshes on changes
-* Log out a notice that `watch` functionality is running too
-
--`$ yeoman quit server` 
-* Kills the python server process
-
-`watch` is an alias for server, as we just coalesce the two.
 
 
 *Testing*
