@@ -108,8 +108,8 @@ class Analytics(object):
 
     # Noop if we're offline. Just keep stashing entries.
     try:
-      response = urllib2.urlopen(url)
-      #print url
+      #response = urllib2.urlopen(url)
+      print url
       #if response.code == 200:
       #  return True
       return True
