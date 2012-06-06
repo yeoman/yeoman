@@ -27,7 +27,6 @@ module.exports = function(grunt) {
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-shell/tasks'));
 
   // Setup some default alias...
-  grunt.registerTask('default', 'build:default');
   grunt.registerTask('reload', 'default connect watch:reload');
 
   // and build targets, these are equivalent to alias except that we
@@ -57,6 +56,9 @@ module.exports = function(grunt) {
   var targetList = grunt.log.wordlist(Object.keys(targets));
   grunt.registerTask('build', 'Run a predefined target - build:<target> \n' + targetList, function(target) {
     var valid = Object.keys(targets);
+    if(!target) {
+    	target = 'default';
+    }
     if(!~valid.indexOf(target)) {
       grunt.log
         .error('Not a valid target')
