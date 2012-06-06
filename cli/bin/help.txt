@@ -1,6 +1,6 @@
 Usage: yeoman [options] [task [task ...]]
 
-Available options supported by yeoman:
+Available commands supported by yeoman:
 
       init  Initialize and scaffold a new project
      build  Build an optimized version of your app, ready to deploy
