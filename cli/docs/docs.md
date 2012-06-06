@@ -40,7 +40,7 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 
 ##Getting Started
 
-*Step 1: One line install*
+**Step 1: One line install**
 
 Open up a terminal and enter in the following:
 
@@ -51,7 +51,7 @@ $ curl https://raw.github.com/gist/2829237/install.sh | sh
 
 This will immediately install Yeoman and any dependencies it may need such as Node, NPM and Ruby.
 
-*Step 2: Create a new project:*
+**Step 2: Create a new project:**
 
 Next, enter in `yeoman init` followed by the name of the directory you would like to scaffold your application in.
 
@@ -61,7 +61,7 @@ yeoman init myapp
 ```
 If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.
 
-*Step 3: Develop*
+**Step 3: Develop**
 
 We'll then ask you some questions to help scaffold your project out. Simple! 
 
@@ -180,30 +180,30 @@ If it was installed locally, next to your gruntfile, simply drop the
 
 
 
-## Yeoman Command-Line Interface (CLI)
+## Command-Line Interface (CLI)
 
 
-# Options and Tasks
+### Commands and Tasks
 
-You'll find below a basic description and documentation for each option and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change this.
+You'll find below a basic description and documentation for each command and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change this.
 
-Options:
+**Commands:**
 
-* **[[init]]**: Initialize and scaffold a new project
-* **[[watch]]**: Watch a project for changes, compiling any SASS/CoffeeScript files being used
-* **[[server]]**: Launch a preview server which will begin watching for changes
-* **[[build]]**: Build an optimized version of your app, ready to deploy
-* **[[test]]**: Run a Jasmine test harness in a headless Phantom.js
+* **init**: Initialize and scaffold a new project
+* **watch**: Watch a project for changes, compiling any SASS/CoffeeScript files being used
+* **server**: Launch a preview server which will begin watching for changes
+* **build**: Build an optimized version of your app, ready to deploy
+* **test**: Run a Jasmine test harness in a headless Phantom.js
 
-Tasks:
+**Tasks:**
 
-* **[[clean]]**: Wipe the previous build dirs.
-* **[[mkdirs]]**: Prepares the build dirs.
-* **[[concat]]**: Concatenate files. *(built-in)*
-* **[[css]]**: Concats, replaces @imports and minifies CSS files.
-* **[[min]]**: Minify files using UglifyJS
-* **[[rev]]**: Automate the revving of assets and perform the hash rename
-* **[[usemin]]**: Replaces references to non-minified scripts / stylesheets
+* **clean**: Wipe the previous build dirs.
+* **mkdirs**: Prepares the build dirs.
+* **concat**: Concatenate files. *(built-in)*
+* **css**: Concats, replaces @imports and minifies CSS files.
+* **min**: Minify files using UglifyJS
+* **rev**: Automate the revving of assets and perform the hash rename
+* **usemin**: Replaces references to non-minified scripts / stylesheets
 
 
 ## Usage
@@ -212,11 +212,11 @@ Tasks:
 
 ## Project creation
 
-# Option - init
+# Command - init
 
 Usage: `yeoman init`, `yeoman init myapp`
 
-The `init` option asks you a number of questions (with default answers) for setting
+The `init` command asks you a number of questions (with default answers) for setting
 up a new project. The answers to these questions will be used to scaffold a folder
 a file structure for the application.
 
@@ -237,11 +237,11 @@ versions of dependencies your project may need. When this is integrated, we will
 further documentation about it to this page. 
 
 
-# Option - server
+# Command - server
 
 Usage: `yeoman server`
 
-The `server` option launches a preview server on port 3000 that allows you to access a 
+The `server` command launches a preview server on port 3000 that allows you to access a 
 running version of your application locally.
 
 It also automatically fires up the `yeoman watch` process, so changes to any application
@@ -255,8 +255,19 @@ To quit the server, simply run `yeoman quit server` and this will kill the Pytho
 process.
 
 
+# Command - watch
 
-# Option - build
+Usage: `yeoman watch`
+
+Yeoman integrates with LiveReload so the browser refreshes every time a change is made to your
+application 
+
+Similar to the `build` command, this automatically recompiles CoffeeScript and SASS files so you
+don't need to do anything extra to continue editing your source files.
+
+
+
+# Command - build
 
 Usage: `yeoman build`, `yeoman build:<target>`
 
@@ -307,17 +318,34 @@ tasks included with Yeoman out of the box are:
 More comprehensive information on each task can be found lower down the page.
 
 
+Todo: The following commands need to be fleshed out further.
+
+# Command - test
+
+Usage: `yeoman test`
+
+This command runs a Jasmine test harness in a headless instance of Phantom.js.
+ 
+# Command - install
+
+Defer to `nest install`
+
+# Command - update
+
+Defer to `nest update`
+
+
 
 ## Flags
 
 * `yeoman --help`
 
-This will list out the options and tasks supported by yeoman and should print out the 
+This will list out the commands and tasks supported by yeoman and should print out the 
 following to the console:
 
-Usage: yeoman [options] [task [task ...]]
+Usage: yeoman [command] [task [task ...]]
 
-Available options supported by yeoman:
+Available commands supported by yeoman:
 
       init  Initialize and scaffold a new project
      build  Build an optimized version of your app, ready to deploy
@@ -348,265 +376,6 @@ Build targets: yeoman build:<target>
     basics  concat css min img rev usemin manifest html:basics
     minify  concat css min img rev usemin manifest html:compress
 
-
-
-## Loading tasks and helpers in your Yeoman setup
-
-Note: Need to review whether we keep the below in place. 
-
-You may opt to go for the local install, and manually load the tasks and helpers
-the yeoman provides.
-
-Assuming you have no gruntfile yet for your project, run the following grunt init command:
-
-    grunt init:gruntfile
-
-Grunt will ask you for few different things, simply follow the instructions.
-This will create a new `grunt.js` file relative to your current working
-directory.
-
-The generated gruntfile should look like this (depending on the answers
-to the few questions, check out [related grunt documentation][])
-
-```js
-/*global module:false*/
-module.exports = function(grunt) {
-
-  // Project configuration.
-  grunt.initConfig({
-    pkg: '<json:package.json>',
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
-    lint: {
-      files: ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
-    },
-    qunit: {
-      files: ['test/**/*.html']
-    },
-    concat: {
-      dist: {
-        src: ['<banner>', '<file_strip_banner:lib/<%= pkg.name %>.js>'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
-    min: {
-      dist: {
-        src: ['<banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
-      }
-    },
-    watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
-    },
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        browser: true
-      },
-      globals: {
-        jQuery: true
-      }
-    },
-    uglify: {}
-  });
-
-  // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
-
-};
-```
-
-To load the yeoman and helpers, you'll need to use
-
-```js
-grunt.loadNpmTasks('yeoman')
-```
-
-next to
-
-```js
-grunt.registerTask('default', 'lint qunit concat min');
-```
-
-# Tests
-
-A significant amount of efforts have been put into setting up a basic test suite
-to ensure everything is working properly.
-
-As of now, the `default` and `usemin` task are tested.
-
-`default` is the global task that runs the following tasks:
-
-```js
-grunt.registerTask('default', 'intro clean mkdirs concat css min rev usemin manifest');
-```
-
-Assertions on `default` task output are a good sanity check. Each tasks is then
-tested individually (now the case of `usemin`)
-
-This page will give a walkthrough on how to setup basic tests, how to run them
-and how to write new ones.
-
-## npm pretest
-
-Tests are done on top of
-[yeoman/yeoman](https://github.com/yeoman/yeoman/) repository.
-The original repository is setup as a submodule at the `test/yeoman` location.
-
-Running `npm test` will trigger the `pretest` npm script, and then execute the
-`test/index.js` file:
-
-```js
-"pretest": "git submodule update --init"
-```
-
-## How the tests work
-
-Testing a build script is somewhat tricky. Tests here aren't really unit tests,
-they simply run a given grunt command, and run few basic assertions on the script output.
-
-No test framework are used during the process, they require nothing but node.js.
-It'll hopefully make them easier to understand for anyone that is familiar with
-node and not a given chosen test framework.
-
-Each assertion file is using a grunt helper to spawn a new process, executing a grunt command,
-to finally run a few assertions on top of the output directory.
-
-## Test structure
-
-
-    * test/
-      * fixtures
-        * default/
-          * expected.html
-          * grunt.js
-          * usemin.expected.html
-          * usemin.html
-        * ...
-        * usemin/
-          * expected.html
-          * grunt.js
-          * index.html
-
-      * yeoman/
-        * css/
-        * js/
-        * index.html
-        * 404.html
-        * ...
-
-      * helpers/
-        * index.js
-
-      * tasks/
-        * usemin/
-          * index.js
-
-* **test/fixtures**
-Holds the fixtures file. If necessary test scripts will copy
-files from fixtures to the test directory (`.test`) and have grunt operate on
-top of that. This may include custom gruntfile and specific html files, testing
-out the whole script or a specific feature. This directory usually include
-subdirectories named after the task they meant to be used with.
-
-* **test/yeoman**
-this is the yeoman submodule. Running `git submodule update
---init` will make sure everything is here. Relatedly, this command is run
-automatically before `npm test`.
-
-* **test/helpers**
-Contains few test helper, see below for further details.
-
-* **test/tasks** Like `test/fixtures`, this directory usually include
-subdirectories named after the task that is tested. Test files in this directory
-are meant to test specific task / feature of the build script. They may be run directly using
-`node test/tasks/usemin` (or any other implemented test).
-
-## Writing a new test
-
-Checkout the tests that have been setup, they usually are a good place to look at.
-
-Tests are usually done like so:
-
-```js
-var fs = require('fs'),
-  yeoman = require('../'),
-  assert = require('assert'),
-  runner = require('./helpers'),
-  EventEmitter = require('events').EventEmitter;
-
-//
-// Setup the event emitter, an end event will be emitted on grunt completion.
-//
-// Depending on grunt's exit code, test fail or pass. Then, further assertions
-// may perform few additional checks.
-//
-var test = new EventEmitter;
-
-//
-// Running tasks serially, tests pass or fail depending on grunt's exit code.
-//
-
-//
-// `runner.setup` is mandatory, and deal with directory copy from `test/yeoman` to `.test`.
-//
-//  The tests and build process happens in this `.test` directory.
-//
-runner.setup(function(err) {
-
-  //
-  // optional fixtures copy test. Copy may copy a single or a set of files.
-  //
-  // Second argument is the destination, which may be a file (when copying a single file)
-  // or a directory (`.test`).
-  //
-  runner.copy('test/fixtures/default/usemin.html', '.test/usemin.html', function(err) {
-    if(err) throw err;
-
-    // run the default task
-    runner('.test', test)('default');
-  });
-});
-
-// global check on index.html
-test.on('end', function(err) {
-  if(err) throw err;
-  var result = fs.readFileSync('.test/index.html', 'utf8'),
-    expected = fs.readFileSync('test/fixtures/default/expected.html', 'utf8');
-
-  assert.equal(expected.trim(), result.trim());
-});
-
-//
-// check the usemin version, eg. one using
-//
-//    <!-- build:js path/to/script.js -->
-//
-// kind of surrouding html comment.
-//
-test.on('end', function(err) {
-  if(err) throw err;
-  var result = fs.readFileSync('.test/usemin.html', 'utf8'),
-    expected = fs.readFileSync('test/fixtures/default/usemin.expected.html', 'utf8');
-
-  assert.equal(expected.trim(), result.trim());
-});
-```
 
 
 
@@ -1005,13 +774,38 @@ output: 'publish/',
 
 
 
+## Package Manager (Nest)
 
+Until now, client-side JavaScript has not benefitted from a rich package management solution such as those found in other platforms (e.g NPM, RubyGems). By instead maintaining packages of packages in client-side JS, developers reduced the chances of using up-to-date versions of libraries.
 
-*Testing*
+Yeoman's integration with Twitter Nest changes that.
 
--`$ yeoman test`
-* Runs the jasmine test harness in a headless Phantom.js
+In Nest, dependencies are listed in a ‘package.json’ file, similar to Node’s package (adhering as closely as possible to the [commonjs specification](http://wiki.commonjs.org/wiki/Packages/1.0)):
 
+```js
+ {
+   "dependencies": {
+     "modernizr": "~2.5.3"
+   }
+ }
+ ```
+
+Dependencies are then installed locally via the `yeoman install’ command. First they’re resolved to find conflicts, then downloaded and unpacked in a local sub dir (browser_modules) to package.json, for example:
+
+```
+/package.json
+/browser_modules/modernizr/index.js
+/browser_modules/modernizr/package.json
+```
+
+This approach has a number of benefits.
+
+* There are no system wide dependencies and no dependencies are shared between different applications
+* None of this is JavaScript specific. Packages can contain JavaScript, CSS, images etc
+* None of this is specific to a specific module format (e.g AMD/CommonJS). These formats can be used but aren't required
+* The dependency tree is flat meaning that we don't ship multiple versions of say, Modernizr to clients
+
+For information on how to use Yeoman's Nest integration, see `yeoman install` and `yeoman update`
 
 
 
@@ -1025,3 +819,171 @@ A package manager runs through a command-line interface and is a tool for automa
 
 A command-line interface is a means for developers to interact with a system using text commands. On OSX this this is often done using the Terminal and on Windows we use the command shell or a third-party tool such as [Cygwin](http://www.cygwin.com/).
 
+
+
+
+
+# Tests
+
+A significant amount of efforts have been put into setting up a basic test suite
+to ensure everything is working properly.
+
+As of now, the `default` and `usemin` task are tested.
+
+`default` is the global task that runs the following tasks:
+
+```js
+grunt.registerTask('default', 'intro clean mkdirs concat css min rev usemin manifest');
+```
+
+Assertions on `default` task output are a good sanity check. Each tasks is then
+tested individually (now the case of `usemin`)
+
+This page will give a walkthrough on how to setup basic tests, how to run them
+and how to write new ones.
+
+## npm pretest
+
+Tests are done on top of
+[yeoman/yeoman](https://github.com/yeoman/yeoman/) repository.
+The original repository is setup as a submodule at the `test/yeoman` location.
+
+Running `npm test` will trigger the `pretest` npm script, and then execute the
+`test/index.js` file:
+
+```js
+"pretest": "git submodule update --init"
+```
+
+## How the tests work
+
+Testing a build script is somewhat tricky. Tests here aren't really unit tests,
+they simply run a given grunt command, and run few basic assertions on the script output.
+
+No test framework are used during the process, they require nothing but node.js.
+It'll hopefully make them easier to understand for anyone that is familiar with
+node and not a given chosen test framework.
+
+Each assertion file is using a grunt helper to spawn a new process, executing a grunt command,
+to finally run a few assertions on top of the output directory.
+
+## Test structure
+
+
+    * test/
+      * fixtures
+        * default/
+          * expected.html
+          * grunt.js
+          * usemin.expected.html
+          * usemin.html
+        * ...
+        * usemin/
+          * expected.html
+          * grunt.js
+          * index.html
+
+      * yeoman/
+        * css/
+        * js/
+        * index.html
+        * 404.html
+        * ...
+
+      * helpers/
+        * index.js
+
+      * tasks/
+        * usemin/
+          * index.js
+
+* **test/fixtures**
+Holds the fixtures file. If necessary test scripts will copy
+files from fixtures to the test directory (`.test`) and have grunt operate on
+top of that. This may include custom gruntfile and specific html files, testing
+out the whole script or a specific feature. This directory usually include
+subdirectories named after the task they meant to be used with.
+
+* **test/yeoman**
+this is the yeoman submodule. Running `git submodule update
+--init` will make sure everything is here. Relatedly, this command is run
+automatically before `npm test`.
+
+* **test/helpers**
+Contains few test helper, see below for further details.
+
+* **test/tasks** Like `test/fixtures`, this directory usually include
+subdirectories named after the task that is tested. Test files in this directory
+are meant to test specific task / feature of the build script. They may be run directly using
+`node test/tasks/usemin` (or any other implemented test).
+
+## Writing a new test
+
+Checkout the tests that have been setup, they usually are a good place to look at.
+
+Tests are usually done like so:
+
+```js
+var fs = require('fs'),
+  yeoman = require('../'),
+  assert = require('assert'),
+  runner = require('./helpers'),
+  EventEmitter = require('events').EventEmitter;
+
+//
+// Setup the event emitter, an end event will be emitted on grunt completion.
+//
+// Depending on grunt's exit code, test fail or pass. Then, further assertions
+// may perform few additional checks.
+//
+var test = new EventEmitter;
+
+//
+// Running tasks serially, tests pass or fail depending on grunt's exit code.
+//
+
+//
+// `runner.setup` is mandatory, and deal with directory copy from `test/yeoman` to `.test`.
+//
+//  The tests and build process happens in this `.test` directory.
+//
+runner.setup(function(err) {
+
+  //
+  // optional fixtures copy test. Copy may copy a single or a set of files.
+  //
+  // Second argument is the destination, which may be a file (when copying a single file)
+  // or a directory (`.test`).
+  //
+  runner.copy('test/fixtures/default/usemin.html', '.test/usemin.html', function(err) {
+    if(err) throw err;
+
+    // run the default task
+    runner('.test', test)('default');
+  });
+});
+
+// global check on index.html
+test.on('end', function(err) {
+  if(err) throw err;
+  var result = fs.readFileSync('.test/index.html', 'utf8'),
+    expected = fs.readFileSync('test/fixtures/default/expected.html', 'utf8');
+
+  assert.equal(expected.trim(), result.trim());
+});
+
+//
+// check the usemin version, eg. one using
+//
+//    <!-- build:js path/to/script.js -->
+//
+// kind of surrouding html comment.
+//
+test.on('end', function(err) {
+  if(err) throw err;
+  var result = fs.readFileSync('.test/usemin.html', 'utf8'),
+    expected = fs.readFileSync('test/fixtures/default/usemin.expected.html', 'utf8');
+
+  assert.equal(expected.trim(), result.trim());
+});
+```
