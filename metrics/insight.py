@@ -15,7 +15,7 @@ import urllib2
 
 import settings
 
-CLI_NAME = 'yeoman'
+CLI_NAME = settings.APP['cli_name']
 LOG_FILE = os.path.join(os.path.dirname(__file__), '.%sinsight' % CLI_NAME)
 NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
 

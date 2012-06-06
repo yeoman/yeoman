@@ -3,14 +3,14 @@ import os
 
 # Get version of Yeoman out of package file, otherwise use GAE app.yaml version
 # for this app. 
-def get_app_version():
+def get_app_data():
   version_str = []
   try:
     f = open(os.path.join(
         os.path.dirname(__file__), '..', 'cli', 'package.json'))
     data = json.load(f)
     f.close()
-    return data['version']
+    return {'cli_name': data['name'], 'version': data['version']} 
   except:
   	return os.environ['CURRENT_VERSION_ID'].split('.')[0]
 
@@ -35,9 +35,12 @@ else:
 DEBUG = not PROD
 TEMPLATE_DEBUG = DEBUG
 
+APP_DATA = get_app_data()
+
 APP = {
   'title': 'Yeoman Insight',
-  'version': get_app_version()
+  'cli_name':  APP_DATA['cli_name'],
+  'version': APP_DATA['version']
   }
 
 
