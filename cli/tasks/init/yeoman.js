@@ -262,7 +262,11 @@ yeoman.remotes = function _remotes(props, cb) {
 
   // prompt for inclusion on remaining remotes (bootstrap, compass bootstrap)
   var repos = Object.keys(remotes).map(function(remote) {
-    return new remotes[remote]({ props: props, grunt: grunt });
+  	// Node.js loads hidden files (.DS_Store) when doing
+  	// require() against a folder, we don't want those
+  	if (remote[0] !== '.') {
+      return new remotes[remote]({ props: props, grunt: grunt });
+  	}
   }).sort(function(a, b) {
     return a.priority < b.priority ? -1 : 1;
   });
