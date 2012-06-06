@@ -295,7 +295,7 @@ Each build target above runs a number of different build *tasks*. The supported
 tasks included with Yeoman out of the box are:
 
 * clean: Wipe the previous build dirs
-* cop: Copies the whole staging(intermediate/) folder to output (publish/) one
+* copy: Copies the whole staging(intermediate/) folder to output (publish/) one
 * css: Concats, replaces @imports and minifies the CSS files 
 * dom: dom-based build system
 * html: Basic to aggresive html minification
