@@ -9,9 +9,6 @@
 * - Command Line
 * - Package Manager
 * FAQs
-* Discuss
-* Google Plus
-* Twitter
 
 
 
@@ -943,3 +940,16 @@ Yeoman leverages third party tools to construct an optimized version of your app
 * Run unit tests in headless WebKit via PhantomJS
 * Create appcache via Confess.js in PhantomJS
 * Publish optimized app to folder
+
+
+
+## Frequently Asked Questions
+
+**What is a package manager?**
+
+A package manager runs through a command-line interface and is a tool for automating the process of installing, upgrading, configuring and managing dependencies for projects.
+
+**What is a command-line interface?**
+
+A command-line interface is a means for developers to interact with a system using text commands. On OSX this this is often done using the Terminal and on Windows we use the command shell or a third-party tool such as [Cygwin](http://www.cygwin.com/).
+
