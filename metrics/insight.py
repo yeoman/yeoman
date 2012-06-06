@@ -112,14 +112,10 @@ More info: XXX
       'cid': self.client_id, # Client ID
       'aip': '1', # Anonymize IP
       'qt': int((time.time() - recorded_at) * 1e3), # Queue Time. Delta (milliseconds) between now and when hit was recorded.
-      #'dt': , # Document title.
-      'p': path, #urllib.quote_plus(path)
+      'dp': path,
       'an': settings.APP['title'], # Application Name.
       'av': settings.APP['version'], # Application Version.
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
-      #'sc': ??,
-      #'cm*': ??,
-      #'cd*': ??,
     }
 
     encoded_params = urllib.urlencode(params)
