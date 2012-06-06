@@ -44,3 +44,6 @@ Yeoman supports:
 * Chrome on Android
 * Mobile Safari
 
+## Docs
+
+The current documentation exists [here](https://github.com/yeoman/yeoman/blob/master/cli/docs/docs.md).
