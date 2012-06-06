@@ -40,7 +40,7 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 
 ##Getting Started
 
-*One line install:*
+*Step 1: One line install*
 
 Open up a terminal and enter in the following:
 
@@ -49,7 +49,21 @@ Open up a terminal and enter in the following:
 $ curl https://raw.github.com/gist/2829237/install.sh | sh
 ```
 
-This will immediately install dependencies needed by Yeoman such as Node, NPM and Ruby.
+This will immediately install Yeoman and any dependencies it may need such as Node, NPM and Ruby.
+
+*Step 2: Create a new project:*
+
+Next, enter in `yeoman init` followed by the name of the directory you would like to scaffold your application in.
+
+```
+yeoman init myapp
+
+```
+If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.
+
+*Step 3: Develop*
+
+We'll then ask you some questions to help scaffold your project out. Simple! 
 
 
 ## Requirements
