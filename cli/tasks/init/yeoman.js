@@ -181,7 +181,10 @@ yeoman.end = function end(init, props, cb) {
   var files = init.filesToCopy(props);
 
   // add the Jasmine runner and basic environment
-  grunt.utils._.extend(files, this.jasmineFilesToCopy(init, props));
+  grunt.utils._.extend(files, this.jasmineFilesToCopy(init, props), {
+  	// Extra files to copy
+    'config.rb': 'init/yeoman/config.rb'
+  });
 
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
