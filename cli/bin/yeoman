@@ -35,6 +35,12 @@ if(/^init$/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
 
+// a nest command?
+if(/^install|uninstall|update/.test(route)) {
+  cli.tasks = 'nest' + ':' + cmds.join(':');
+}
+
+
 // if the route is empty
 if(/^$/.test(route)) {
   // this is specific to an empty route code
