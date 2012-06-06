@@ -9,7 +9,7 @@ module.exports = function(grunt) {
     output: 'publish',
     // filter any files matching one of the below pattern during mkdirs task
     // the pattern in the .gitignore file should work too.
-    exclude: '.git* build/** node_modules/** grunt.js package.json *.md'.split(' '),
+    exclude: '.git* build/** node_modules/** grunt.js package.json *.md css/sass/'.split(' '),
     mkdirs: {
       staging: '<config:exclude>'
     },
@@ -41,6 +41,11 @@ module.exports = function(grunt) {
       dist: {
         src: 'js/**/*.coffee',
         dest: 'js'
+      }
+    },
+    shell: {
+      compass: {
+        command: 'compass compile'
       }
     },
     // default watch configuration

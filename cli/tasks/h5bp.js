@@ -24,6 +24,7 @@ module.exports = function(grunt) {
   // with abs path.
   //
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
+  grunt.loadTasks(join(__dirname, '../node_modules/grunt-shell/tasks'));
 
   // Setup some default alias...
   grunt.registerTask('default', 'build:default');
@@ -34,7 +35,7 @@ module.exports = function(grunt) {
   // target
   var targets = {
     // build - (default) no html optimizations
-    default: 'coffee concat css min img rev usemin manifest',
+    default: 'coffee concat shell:compass css min img rev usemin manifest',
 
     // text - same as build but without image (png/jpg) optimizing
     text: 'coffee concat css min rev usemin manifest',
