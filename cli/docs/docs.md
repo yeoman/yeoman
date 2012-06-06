@@ -1,24 +1,27 @@
 
 # Yeoman Documentation
 
-Note: This documentation will be split into individual parts once we've had
-a chance to clean it up further.
+* Home
+* Why Yeoman?
+* Getting Started
+* Requirements
+* Documentation
+* - Command Line
+* - Package Manager
+* FAQs
+* Discuss
+* Google Plus
+* Twitter
 
 
-## Quick start
 
-One line install:
+Todo: write up the tasks.
+Yeoman command line interface section
 
-```
-# see the gist: https://gist.github.com/2829237
-$ curl https://raw.github.com/gist/2829237/install.sh | sh
-```
 
-This will immediately install dependencies needed by Yeoman such as Node, NPM and Ruby.
+## Why Yeoman?
 
-## Overview
-
-Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. 
+Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup.
 
 With a modular architecture that can scale out of the box, we leverage the success and lessons learned from several open-source communities to ensure the stack developers use is as intelligent as possible.
 
@@ -29,11 +32,11 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 
 ## Features
 
-* Easily scaffold new projects with customizable templates
+* Easily scaffold new projects with customizable templates (e.g HTML5 Boilerplate, Twitter Bootstrap)
+* Watch process for compiling files (e.g Sass, CoffeeScript) and refreshing as you change them
 * Built-in preview server for running projects
-* Watch process for compiling files/refreshing as you change them
 * Run all your JavaScript files against jshint
-* Minify and concatenate your CSS/JS
+* Minify and concatenate  CSS/JavaScript files
 * Compile any files needed (e.g CoffeeScript)
 * Compile AMD modules automatically via r.js
 * Revision names for filenames or folder names
@@ -41,81 +44,42 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 * Run unit tests in headless WebKit via PhantomJS
 * Create an Application Cache via Confess.js
 
-## Getting started
 
-* Install the yeoman package
-* Learn more about Usage and Configuration
-* Look at the available tasks
+##Getting Started
 
+## Quick start
 
-## Quick Guide (reference for documentation writers only)
+*One line install:*
 
-*Project creation*
+Open up a terminal and enter in the following:
 
-This whole section will be redone and integrated to improve flow. Just adding for reference.
+```
+# see the gist: https://gist.github.com/2829237
+$ curl https://raw.github.com/gist/2829237/install.sh | sh
+```
 
--`$ yeoman init myapp`
-* Asks you a number of questions (with default answers) for setting up your project
-* We default to Compass on, and Coffeescript off
-* We populate a JSON manifest with some of these
-* Scaffold a folder and file structure for the application
-* HTML5 Boilerplate and Twitter Bootstrap frontend assets are given by default
-* All JS files can be ES.Next Modules if you wish to use them
-* Calls on NEST to request the freshest dependencies that you need
-Ember, Ember Data, jQuery
+This will immediately install dependencies needed by Yeoman such as Node, NPM and Ruby.
 
--``$ yeoman server`
-* Launches preview server and begins watching for changes
-* Server just implicitly fires up a watch process
-* Any changes to .coffee, .scss files are automatically recompiled through Coffeescript, Compass  respectively. Hooked up with LiveReload so browser refreshes on changes
-* Log out a notice that `watch` functionality is running too
-
--`$ yeoman quit server` 
-* Kills the python server process
-
-`watch` is an alias for server, as we just coalesce the two.
-
-
-*Testing*
-
--`$ yeoman test`
-* Runs the jasmine test harness in a headless Phantom.js
-
-*Project Build*
-
-Yeoman leverages third party tools to construct an optimized version of your app ready to deploy.
-
-`$ yeoman build`
-* Grunt tackles the hard work
-* All js files run against jshint
-* CSS/JS recompiled
-* r.js to compile AMD modules for the app
-* Concatenation and minification
-* rev filenames (or folder names)
-* Image compression
-* Run unit tests in headless WebKit via PhantomJS
-* Create appcache via Confess.js in PhantomJS
-* Publish optimized app to folder
-
-
-# Install
 
 ## Requirements
 
-In order to successfully use this you will need:
+The Yeoman install script will install any dependencies needed by the project. If however
+you find yourself wishing to install these manually, you can find the find the list of 
+requirements below.
 
-* node 0.6.x
-* npm
+* [node 0.6.x](http://nodejs.org/)
+* [npm](http://npmjs.org/)
 
 You should be able to use it on:
 
 * OSX
 * Unix
-* Windows
 
-## Install instructions
 
-There is two main way to install, using a "global" or a "local" install.
+
+## Manual Installation
+
+There are two main ways to install, using a "global" or a "local" install.
 
 1. **When installed globally**: Provides a custom global binary named `yeoman`
 (or `html5-boilerplate`) which is a wrapper on top of grunt, plus the extra
@@ -135,8 +99,8 @@ on npm.
 npm install https://github.com/yeoman/yeoman/tarball/master -g
 ```
 
-This installs the plugin globally, which contains its own internal grunt and
-provides an `yeoman` binary.
+This installs Yeoman globally, which contains its own internal grunt and
+provides a `yeoman` binary.
 
 Proxies don't like redirections, if you get problem with this command, try
 this instead:
@@ -213,13 +177,20 @@ If it was installed locally, next to your gruntfile, simply drop the
 
 
 
+## Yeoman Command-Line Interface (CLI)
+
+
 # Tasks
 
 You'll find below a basic description and documentation for each task
-the grunt yeoman plugin provides. For each of these, we'll detail the
+the Yeoman CLI provides. For each of these, we'll detail the
 task's configuration and how to change this.
 
 * **[[init]]**: Scaffold a new project.
+* **[[watch]]**: Watch a project for changes, automatically reload if changes detected
+* **[[server]]**: Spawns up a basic local http server (on both pubilsh /
+  intermediate folder with different ports).
+* **[[build]]**: Build a project
 * **[[clean]]**: Wipe the previous build dirs.
 * **[[mkdirs]]**: Prepares the build dirs.
 * **[[concat]]**: Concatenate files. *(built-in)*
@@ -231,17 +202,6 @@ task's configuration and how to change this.
 In addition to those tasks, which are the backbone of the build script,
 there are a few additionnal tasks to help you in the process:
 
-* **[[server]]**: Spawns up a basic local http server (on both pubilsh /
-  intermediate folder with different ports).
-* **[[connect]]**:  Spawns up local http sever with socket.io configured,
-  it'll inject a tiny client side script + socket.io lib on `*.html`
-  response.
-* **reload**: Alias for `connect watch:reload`.
-
-
-
-
-
 ## Usage
 
 **This assumes the package was installed globally. If it was installed
@@ -249,65 +209,40 @@ locally, simply replace `yeoman` by `grunt` in the following commands**
 
 Running `yeoman --help` should output the following to the console
 
-    grunt: a task-based command line build tool for JavaScript projects. (v0.3.7)
+Usage: yeoman [options] [task [task ...]]
 
-    Usage
-     yeoman [options] [task [task ...]]
+Available options supported by yeoman:
 
-    Options
-        --help, -h  Display this help text.
-            --base  Specify an alternate base path. By default, all file paths are
-                    relative to the "grunt.js" gruntfile. (grunt.file.setBase) *
-        --no-color  Disable colored output.
-          --config  Specify an alternate "grunt.js" gruntfile.
-       --debug, -d  Enable debugging mode for tasks that support it. For detailed
-                    error stack traces, specify --debug 9.
-       --force, -f  A way to force your way past warnings. Want a suggestion? Don't
-                    use this option, fix your code.
-           --tasks  Additional directory paths to scan for task and "extra" files.
-                    (grunt.loadTasks) *
-             --npm  Npm-installed grunt plugins to scan for task and "extra" files.
-                    (grunt.loadNpmTasks) *
-        --no-write  Disable writing files (dry run).
-     --verbose, -v  Verbose mode. A lot more information output.
-         --version  Print the grunt version.
+      init  Initialize and scaffold a new project
+     build  Build an optimized version of your app, ready to deploy
+    server  Launch a preview server which will begin watching for changes
+      test  Run a Jasmine test harness in a headless Phantom.js
+     watch  Watch for changes
 
-    Options marked with * have methods exposed via the grunt API and should instead
-    be specified inside the "grunt.js" gruntfile wherever possible.
+Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
 
-    Available tasks
-            concat  Concatenate files. *
-              init  Generate project scaffolding from a predefined template.
-              lint  Validate files with JSHint. *
-               min  Minify files with UglifyJS. *
-             qunit  Run QUnit unit tests in a headless PhantomJS instance. *
-            server  Start a static web server.
-              test  Run unit tests with nodeunit. *
-             watch  Run predefined tasks whenever watched files change.
-           default  Alias for "intro clean mkdirs concat css min rev usemin
-                    manifest" tasks.
-            reload  Alias for "default connect watch:reload" tasks.
-               css  Concats, replaces @imports and minifies the CSS files *
-             intro  Kindly inform the developer about the impending magic
-            mkdirs  Prepares the build dirs *
-             clean  Wipe the previous build dirs
-          manifest  Generates manifest files automatically from static assets
-                    reference. *
-               rev  Automate the hash renames of assets filename *
-             serve  Spawns up a local http server on both staging / output
-                    directory
-            usemin  Replaces references to non-minified scripts / stylesheets *
+     clean  Wipe the previous build dirs
+      copy  Copies the whole staging(intermediate/) folder to output
+            (publish/) one
+       css  Concats, replaces @imports and minifies the CSS files *
+      docs  yeoman h5bp plugin documentation
+       dom  dom-based build system
+      html  Basic to aggresive html minification
+       img  Optimizes .png/.jpg images using optipng/jpegtran
+    mkdirs  Prepares the build dirs *
+       rev  Automate the hash renames of assets filename *
+    server  Start a custom static web server
+    usemin  Replaces references to non-minified scripts / stylesheets *
 
-    Tasks run in the order specified. Arguments may be passed to tasks that accept
-    them by using colons, like "lint:files". Tasks marked with * are "multi
-    tasks" and will iterate over all sub-targets if no argument is specified.
+Build targets: yeoman build:<target>
 
-    The list of available tasks may change based on tasks directories or grunt
-    plugins specified in the "grunt.js" gruntfile or via command-line options.
+   default  concat css min img rev usemin manifest
+      text  concat css min     rev usemin manifest
+  buildkit  concat css min img rev usemin manifest html:buildkit
+    basics  concat css min img rev usemin manifest html:basics
+    minify  concat css min img rev usemin manifest html:compress
 
-    For more information, see https://github.com/cowboy/grunt
-
-## Loading tasks and helpers in your grunt setup
+## Loading tasks and helpers in your Yeoman setup
 
 You may opt to go for the local install, and manually load the tasks and helpers
 the yeoman provides.
@@ -398,39 +333,6 @@ next to
 grunt.registerTask('default', 'lint qunit concat min');
 ```
 
-Then, from your projet's root, running `grunt --help` should output the
-following:
-
-    ...
-
-    Available tasks
-            concat  Concatenate files. *
-              init  Generate project scaffolding from a predefined template.
-              lint  Validate files with JSHint. *
-               min  Minify files with UglifyJS. *
-             qunit  Run QUnit unit tests in a headless PhantomJS instance. *
-            server  Start a static web server.
-              test  Run unit tests with nodeunit. *
-             watch  Run predefined tasks whenever watched files change.
-           default  Alias for "lint qunit concat min" tasks.
-              emit  A basic task that emits events over socket.io
-           connect  Spawns up a local http server with socket.io enabled
-               css  Concats, replaces @imports and minifies the CSS files *
-             intro  Kindly inform the developer about the impending magic
-            mkdirs  Prepares the build dirs *
-             clean  Wipe the previous build dirs
-          manifest  Generates manifest files automatically from static assets
-                    reference. *
-               rev  Automate the hash renames of assets filename *
-             serve  Spawns up a local http server on both staging / output
-                    directory
-            usemin  Replaces references to non-minified scripts / stylesheets *
-
-    ...
-
-
-
-
 # Tests
 
 A significant amount of efforts have been put into setting up a basic test suite
@@ -453,7 +355,7 @@ and how to write new ones.
 ## npm pretest
 
 Tests are done on top of
-[yeoman/html5-boilerplate](https://github.com/yeoman/html5-boilerplate/) repository.
+[yeoman/yeoman](https://github.com/yeoman/yeoman/) repository.
 The original repository is setup as a submodule at the `test/yeoman` location.
 
 Running `npm test` will trigger the `pretest` npm script, and then execute the
@@ -595,8 +497,6 @@ test.on('end', function(err) {
   assert.equal(expected.trim(), result.trim());
 });
 ```
-
-
 
 
 
@@ -995,3 +895,51 @@ output: 'publish/',
 
 
 
+
+## Quick Guide (reference for documentation writers only)
+
+*Project creation*
+
+
+-`$ yeoman init myapp`
+* Asks you a number of questions (with default answers) for setting up your project
+* We default to Compass on, and Coffeescript off
+* We populate a JSON manifest with some of these
+* Scaffold a folder and file structure for the application
+* HTML5 Boilerplate and Twitter Bootstrap frontend assets are given by default
+* All JS files can be ES.Next Modules if you wish to use them
+* Calls on NEST to request the freshest dependencies that you need
+Ember, Ember Data, jQuery
+
+-``$ yeoman server`
+* Launches preview server and begins watching for changes
+* Server just implicitly fires up a watch process
+* Any changes to .coffee, .scss files are automatically recompiled through Coffeescript, Compass  respectively. Hooked up with LiveReload so browser refreshes on changes
+* Log out a notice that `watch` functionality is running too
+
+-`$ yeoman quit server` 
+* Kills the python server process
+
+`watch` is an alias for server, as we just coalesce the two.
+
+
+*Testing*
+
+-`$ yeoman test`
+* Runs the jasmine test harness in a headless Phantom.js
+
+*Project Build*
+
+Yeoman leverages third party tools to construct an optimized version of your app ready to deploy.
+
+`$ yeoman build`
+* Grunt tackles the hard work
+* All js files run against jshint
+* CSS/JS recompiled
+* r.js to compile AMD modules for the app
+* Concatenation and minification
+* rev filenames (or folder names)
+* Image compression
+* Run unit tests in headless WebKit via PhantomJS
+* Create appcache via Confess.js in PhantomJS
+* Publish optimized app to folder
