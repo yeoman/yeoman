@@ -7,6 +7,7 @@ Available options supported by yeoman:
     server  Launch a preview server which will begin watching for changes
       test  Run a Jasmine test harness in a headless Phantom.js
      watch  Watch for changes
+      docs  yeoman documentation
 
 Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
 
@@ -14,7 +15,6 @@ Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
       copy  Copies the whole staging(intermediate/) folder to output
             (publish/) one
        css  Concats, replaces @imports and minifies the CSS files *
-      docs  yeoman h5bp plugin documentation
        dom  dom-based build system
       html  Basic to aggresive html minification
        img  Optimizes .png/.jpg images using optipng/jpegtran
