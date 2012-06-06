@@ -40,7 +40,7 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 
 ##Getting Started
 
-*Step 1: One line install*
+**Step 1: One line install**
 
 Open up a terminal and enter in the following:
 
@@ -51,7 +51,7 @@ $ curl https://raw.github.com/gist/2829237/install.sh | sh
 
 This will immediately install Yeoman and any dependencies it may need such as Node, NPM and Ruby.
 
-*Step 2: Create a new project:*
+**Step 2: Create a new project:**
 
 Next, enter in `yeoman init` followed by the name of the directory you would like to scaffold your application in.
 
@@ -61,7 +61,7 @@ yeoman init myapp
 ```
 If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.
 
-*Step 3: Develop*
+**Step 3: Develop**
 
 We'll then ask you some questions to help scaffold your project out. Simple! 
 
@@ -183,27 +183,27 @@ If it was installed locally, next to your gruntfile, simply drop the
 ## Yeoman Command-Line Interface (CLI)
 
 
-# Options and Tasks
+### Commands and Tasks
 
-You'll find below a basic description and documentation for each option and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change this.
+You'll find below a basic description and documentation for each command and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change this.
 
-Options:
+**Commands:**
 
-* **[[init]]**: Initialize and scaffold a new project
-* **[[watch]]**: Watch a project for changes, compiling any SASS/CoffeeScript files being used
-* **[[server]]**: Launch a preview server which will begin watching for changes
-* **[[build]]**: Build an optimized version of your app, ready to deploy
-* **[[test]]**: Run a Jasmine test harness in a headless Phantom.js
+* **init**: Initialize and scaffold a new project
+* **watch**: Watch a project for changes, compiling any SASS/CoffeeScript files being used
+* **server**: Launch a preview server which will begin watching for changes
+* **build**: Build an optimized version of your app, ready to deploy
+* **test**: Run a Jasmine test harness in a headless Phantom.js
 
-Tasks:
+**Tasks:**
 
-* **[[clean]]**: Wipe the previous build dirs.
-* **[[mkdirs]]**: Prepares the build dirs.
-* **[[concat]]**: Concatenate files. *(built-in)*
-* **[[css]]**: Concats, replaces @imports and minifies CSS files.
-* **[[min]]**: Minify files using UglifyJS
-* **[[rev]]**: Automate the revving of assets and perform the hash rename
-* **[[usemin]]**: Replaces references to non-minified scripts / stylesheets
+* **clean**: Wipe the previous build dirs.
+* **mkdirs**: Prepares the build dirs.
+* **concat**: Concatenate files. *(built-in)*
+* **css**: Concats, replaces @imports and minifies CSS files.
+* **min**: Minify files using UglifyJS
+* **rev**: Automate the revving of assets and perform the hash rename
+* **usemin**: Replaces references to non-minified scripts / stylesheets
 
 
 ## Usage
@@ -212,11 +212,11 @@ Tasks:
 
 ## Project creation
 
-# Option - init
+# Command - init
 
 Usage: `yeoman init`, `yeoman init myapp`
 
-The `init` option asks you a number of questions (with default answers) for setting
+The `init` command asks you a number of questions (with default answers) for setting
 up a new project. The answers to these questions will be used to scaffold a folder
 a file structure for the application.
 
@@ -237,11 +237,11 @@ versions of dependencies your project may need. When this is integrated, we will
 further documentation about it to this page. 
 
 
-# Option - server
+# Command - server
 
 Usage: `yeoman server`
 
-The `server` option launches a preview server on port 3000 that allows you to access a 
+The `server` command launches a preview server on port 3000 that allows you to access a 
 running version of your application locally.
 
 It also automatically fires up the `yeoman watch` process, so changes to any application
@@ -255,8 +255,19 @@ To quit the server, simply run `yeoman quit server` and this will kill the Pytho
 process.
 
 
+# Command - watch
 
-# Option - build
+Usage: `yeoman watch`
+
+Yeoman integrates with LiveReload so the browser refreshes every time a change is made to your
+application 
+
+Similar to the `build` command, this automatically recompiles CoffeeScript and SASS files so you
+don't need to do anything extra to continue editing your source files.
+
+
+
+# Command - build
 
 Usage: `yeoman build`, `yeoman build:<target>`
 
@@ -307,17 +318,24 @@ tasks included with Yeoman out of the box are:
 More comprehensive information on each task can be found lower down the page.
 
 
+# Command - test
+
+Usage: `yeoman test`
+
+This command runs a Jasmine test harness in a headless instance of Phantom.js.
+
+
 
 ## Flags
 
 * `yeoman --help`
 
-This will list out the options and tasks supported by yeoman and should print out the 
+This will list out the commands and tasks supported by yeoman and should print out the 
 following to the console:
 
-Usage: yeoman [options] [task [task ...]]
+Usage: yeoman [command] [task [task ...]]
 
-Available options supported by yeoman:
+Available commands supported by yeoman:
 
       init  Initialize and scaffold a new project
      build  Build an optimized version of your app, ready to deploy
@@ -1003,14 +1021,6 @@ output: 'publish/',
 
     task.helper('rimraf', dir, cb);
 
-
-
-
-
-*Testing*
-
--`$ yeoman test`
-* Runs the jasmine test harness in a headless Phantom.js
 
 
 
