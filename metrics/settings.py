@@ -6,9 +6,10 @@ import os
 def get_app_version():
   version_str = []
   try:
-    json_file = open(
-        os.path.join(os.path.dirname(__file__), '..', 'cli', 'package.json'))
-    data = json.load(json_file)
+    f = open(os.path.join(
+        os.path.dirname(__file__), '..', 'cli', 'package.json'))
+    data = json.load(f)
+    f.close()
     return data['version']
   except:
   	return os.environ['CURRENT_VERSION_ID'].split('.')[0]
