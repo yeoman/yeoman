@@ -34,7 +34,7 @@ module.exports = function(grunt) {
   // target
   var targets = {
     // build - (default) no html optimizations
-    default: 'coffee concat shell:compass css min img rev usemin manifest',
+    "default": 'coffee concat shell:compass css min img rev usemin manifest',
 
     // text - same as build but without image (png/jpg) optimizing
     text: 'coffee concat css min rev usemin manifest',
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', 'Run a predefined target - build:<target> \n' + targetList, function(target) {
     var valid = Object.keys(targets);
     if(!target) {
-    	target = 'default';
+      target = 'default';
     }
     if(!~valid.indexOf(target)) {
       grunt.log
