@@ -60,7 +60,7 @@ $ yeoman init myapp
 ```
 If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.
 
-**Step 3: Develop**
+**Step 3: Scaffold your app!**
 
 We'll then ask you some questions to help scaffold your project out. Simple! 
 
@@ -316,12 +316,26 @@ This command runs a Jasmine test harness in a headless instance of Phantom.js.
 
 # Command - install
 
-Defer to `nest install`
+Usage: `yeoman install <name>`
+
+Installs a package <name> and any packages that this depends on using Twitter Nest. A package is a folder containing a resource described by a package.json file or a gzipped tarball containing this information.  
+
+Running yeoman install <name> will install the dependencies in your project’sl browser_modules folder. 
+
+For further information, see the section on the package manager.
 
 # Command - update
 
-Defer to `nest update`
+Usage: `yeoman update <name>`
 
+Updates the package <name> to the latest version available.
+
+
+# Command - uninstall
+
+Usage: yeoman uninstall <name>
+
+Removes the package <name> from the current project.
 
 
 ## Flags
