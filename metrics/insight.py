@@ -15,11 +15,10 @@ import urllib2
 
 import settings
 
-CLI_NAME = 'yeoman'
+NO_STATS = 'NO_STATS'
+CLI_NAME = settings.APP['cli_name']
 LOG_FILE = os.path.join(os.path.dirname(__file__), '.%sinsight' % CLI_NAME)
 NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
-
-#NUM_SECONDS_TO_STASH_DATA = 60 * 60 * 4 # 4 hrs 
 NUM_SECONDS_TO_STASH_DATA = 0 # Send data as it happens.
 
 
@@ -30,6 +29,7 @@ class Analytics(object):
 
   def __init__(self, tracking_code):
     self.tracking_code = tracking_code
+    self.do_stats = True
 
     f = open(LOG_FILE, 'a+') # Open file for reading and appending.
 
@@ -37,19 +37,39 @@ class Analytics(object):
     # record the download action. Otherwise, read the existing client ID saved
     # on the first line of the file.
     if os.path.getsize(LOG_FILE) == 0:
+      # Record the initial "download/install". Then have users opt-in.
       self.client_id = '%s%s' % (time.time(), random.random())
-      self.__reset_file(f, self.client_id);
+      self.__reset_file(f, self.client_id)
       self.record('downloaded')
+
+      self._send_all() 
+
+      # Have users opt-in to sending usage stats.
+      cli_name = settings.APP['cli_name'].capitalize()
+      print """==========================================================================
+We're constantly looking for ways to make %s better!
+May we anonymously report usage statistics to improve the tool over time?
+More info: XXX
+==========================================================================""" % cli_name
+      ans = raw_input('[Y/n]: ')
+      if not (ans == '' or ans.capitalize() == 'Y'):
+        self.do_stats = False
+
     else:
       f.seek(0)
       self.client_id = f.readline()[:-1] # Assumes the line ends with "\n".
 
-      first_entry_timestamp = float(f.readline().split(' ')[0])
-      time_delta = time.time() - first_entry_timestamp
+      try:
+        first_entry_timestamp = float(f.readline().split(' ')[0])
+        time_delta = time.time() - first_entry_timestamp
 
-      # If we have data that's too old, send it to Analytics.
-      if time_delta >= NUM_SECONDS_TO_STASH_DATA:
-        self._send_all()
+        # If we have data that's too old, send it to Analytics.
+        if time_delta >= NUM_SECONDS_TO_STASH_DATA:
+          self._send_all()
+      except ValueError:
+        # Error means we tried to parse a non timestamp or one wasn't present.
+        # That means no stats.
+        self.do_stats = False
 
     # Insure we're at the EOF to start appending.
     f.seek(os.SEEK_END)
@@ -63,7 +83,7 @@ class Analytics(object):
       f: A file object, assumed to be open when passed to this method.
       client_id: The client ID to use for this file.
     """
-    f.write(self.client_id + '\n')
+    f.write(client_id+ '\n')
     f.flush()
 
   def _send(self, path='/', recorded_at=None):
@@ -92,14 +112,10 @@ class Analytics(object):
       'cid': self.client_id, # Client ID
       'aip': '1', # Anonymize IP
       'qt': int((time.time() - recorded_at) * 1e3), # Queue Time. Delta (milliseconds) between now and when hit was recorded.
-      #'dt': , # Document title.
-      'p': path, #urllib.quote_plus(path)
+      'dp': path,
       'an': settings.APP['title'], # Application Name.
       'av': settings.APP['version'], # Application Version.
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
-      #'sc': ??,
-      #'cm*': ??,
-      #'cd*': ??,
     }
 
     encoded_params = urllib.urlencode(params)
@@ -149,10 +165,11 @@ class Analytics(object):
     cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
     path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
 
-    f = open(LOG_FILE, 'a')
-    s = '%s /%s' % (time.time(), path)
-    f.write(s + '\n')
-    f.close()
+    if self.do_stats:
+      f = open(LOG_FILE, 'a')
+      s = '%s /%s' % (time.time(), path)
+      f.write(s + '\n')
+      f.close()
 
 
 def main(args):
