@@ -28,36 +28,35 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 * Easily scaffold new projects with customizable templates (e.g HTML5 Boilerplate, Twitter Bootstrap)
 * Watch process for compiling files (e.g Sass, CoffeeScript) and refreshing as you change them
 * Built-in preview server for running projects
-* Run all your JavaScript files against jshint
-* Minify and concatenate  CSS/JavaScript files
+* Run all your JavaScript files against JSHint
+* Minify and concatenate CSS/JavaScript files
 * Compile any files needed (e.g CoffeeScript)
 * Compile AMD modules automatically via r.js
 * Revision names for filenames or folder names
 * Compress and optimize all your images with ease
 * Run unit tests in headless WebKit via PhantomJS
-* Create an Application Cache via Confess.js
+* Create an Application Cache manifest via Confess.js
 
 
-##Getting Started
+## Getting Started
 
 **Step 1: One line install**
 
 Open up a terminal and enter in the following:
 
-```
+```sh
 # see the gist: https://gist.github.com/2829237
 $ curl https://raw.github.com/gist/2829237/install.sh | sh
 ```
 
 This will immediately install Yeoman and any dependencies it may need such as Node, NPM and Ruby.
 
-**Step 2: Create a new project:**
+**Step 2: Create a new project**
 
 Next, enter in `yeoman init` followed by the name of the directory you would like to scaffold your application in.
 
-```
-yeoman init myapp
-
+```sh
+$ yeoman init myapp
 ```
 If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.
 
@@ -72,8 +71,8 @@ The Yeoman install script will install any dependencies needed by the project. I
 you find yourself wishing to install these manually, you can find the find the list of 
 requirements below.
 
-* [node 0.6.x](http://nodejs.org/)
-* [npm](http://npmjs.org/)
+* [node 0.6.x](http://nodejs.org)
+* [npm](http://npmjs.org)
 
 You should be able to use it on:
 
@@ -99,18 +98,12 @@ on npm.
 #### global install
 
 ```sh
-npm install https://github.com/yeoman/yeoman/tarball/master -g
+npm install http://nodeload.github.com/yeoman/yeoman/tarball/master -g
 ```
 
 This installs Yeoman globally, which contains its own internal grunt and
 provides a `yeoman` binary.
 
-Proxies don't like redirections, if you get problem with this command, try
-this instead:
-
-```sh
-npm install http://nodeload.github.com/yeoman/yeoman/tarball/master -g
-```
 
 ### local install
 
@@ -120,7 +113,7 @@ This works for system where grunt have been already installed globally with
 npm install grunt -g
 ```
 
-1. Add the yeoman as a project dependency. In your project's root,
+1. Add yeoman as a project dependency. In your project's root,
 next to the `grunt.js` and `package.json` file, run `npm install
 http://nodeload.github.com/yeoman/yeoman/tarball/master -S`
 
@@ -185,9 +178,9 @@ If it was installed locally, next to your gruntfile, simply drop the
 
 ### Commands and Tasks
 
-You'll find below a basic description and documentation for each command and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change this.
+You'll find below a basic description and documentation for each command and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change it.
 
-**Commands:**
+#### Commands:
 
 * **init**: Initialize and scaffold a new project
 * **watch**: Watch a project for changes, compiling any SASS/CoffeeScript files being used
@@ -195,12 +188,12 @@ You'll find below a basic description and documentation for each command and tas
 * **build**: Build an optimized version of your app, ready to deploy
 * **test**: Run a Jasmine test harness in a headless Phantom.js
 
-**Tasks:**
+#### Tasks:
 
-* **clean**: Wipe the previous build dirs.
-* **mkdirs**: Prepares the build dirs.
-* **concat**: Concatenate files. *(built-in)*
-* **css**: Concats, replaces @imports and minifies CSS files.
+* **clean**: Wipe the previous build dirs
+* **mkdirs**: Prepares the build dirs
+* **concat**: Concatenate files *(built-in)*
+* **css**: Concatenates, replaces @imports and minifies CSS files
 * **min**: Minify files using UglifyJS
 * **rev**: Automate the revving of assets and perform the hash rename
 * **usemin**: Replaces references to non-minified scripts / stylesheets
@@ -217,39 +210,36 @@ You'll find below a basic description and documentation for each command and tas
 Usage: `yeoman init`, `yeoman init myapp`
 
 The `init` command asks you a number of questions (with default answers) for setting
-up a new project. The answers to these questions will be used to scaffold a folder
-a file structure for the application.
+up a new project. The answers to these questions will be used to scaffold a file structure for the application.
 
 Questions include whether you would like to scaffold your project using HTML5
-Boilerplate, include themeing via Twitter Bootstrap, support EcmaScript 6 Modules
-in your project and so on. 
+Boilerplate, include theming via Twitter Bootstrap, support ECMAScript 6 Modules
+in your project and so on.
 
-By default we support Compass and CoffeeScript, so if your project includes any 
-.coffee files, these will be compiled when either `watch` or `build` tasks are being
-run. 
+By default we support Compass and CoffeeScript, so if your project includes any .coffee files, these will be compiled when either `watch` or `build` tasks are being
+run.
 
 Passing an extra argument to `yeoman init` (e.g `myapp`) will create a new directory
 of the name `myapp` and Yeoman will then scaffold your application within this new
-directory. 
+directory.
 
 Coming soon: We plan on yeoman init making requests to Nest to request the most recent
 versions of dependencies your project may need. When this is integrated, we will add
-further documentation about it to this page. 
+further documentation about it to this page.
 
 
 # Command - server
 
 Usage: `yeoman server`
 
-The `server` command launches a preview server on port 3000 that allows you to access a 
-running version of your application locally.
+The `server` command launches a preview server on port 3000 that allows you to access a running version of your application locally.
 
-It also automatically fires up the `yeoman watch` process, so changes to any application
-files cause the browser to refresh via LiveReload. 
+It also automatically fires up the `yeoman watch` process, so changes to any of the applications
+files cause the browser to refresh via LiveReload.
 
 Any changes to CoffeeScript or Compass files result in them being recompiled, meaning that
 no manual intervention is required to write and preview code in the format you feel most
-comfortable with.  
+comfortable with.
 
 To quit the server, simply run `yeoman quit server` and this will kill the Python server
 process.
@@ -260,7 +250,7 @@ process.
 Usage: `yeoman watch`
 
 Yeoman integrates with LiveReload so the browser refreshes every time a change is made to your
-application 
+application.
 
 Similar to the `build` command, this automatically recompiles CoffeeScript and SASS files so you
 don't need to do anything extra to continue editing your source files.
@@ -271,16 +261,14 @@ don't need to do anything extra to continue editing your source files.
 
 Usage: `yeoman build`, `yeoman build:<target>`
 
-Yeoman leverages third party tools to construct an optimized version of your 
-application that's ready to deploy. 
+Yeoman leverages third party tools to construct an optimized version of your application that's ready to deploy.
 
-We make use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to 
-tackle much of the hard work for this, with some useful additions that assist
+We make use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist
 with compression, optimization and testing.
 
 These include:
 
-* Linting all JavaScript files against jshint
+* Linting all JavaScript files against JSHint
 * Recompiling all CoffeeScript and SASS files for production
 * Using r.js to compile and optimize any AMD modules
 * Concatenation and minification of scripts and stylesheets
@@ -307,13 +295,13 @@ tasks included with Yeoman out of the box are:
 
 * clean: Wipe the previous build dirs
 * copy: Copies the whole staging(intermediate/) folder to output (publish/) one
-* css: Concats, replaces @imports and minifies the CSS files 
-* dom: dom-based build system
-* html: Basic to aggresive html minification
-* img: Optimizes .png/.jpg images using optipng/jpegtran
-* mkdirs: Prepares the build dirs 
-* rev: Automate the hash renames of assets filename 
-* usemin: Replaces references to non-minified scripts / stylesheets 
+* css: Concatenates, replaces @imports and minifies the CSS files
+* dom: DOM-based build system
+* html: Basic to aggressive HTML minification
+* img: Optimizes .png/.jpg images using OptiPNG/JPEGtran
+* mkdirs: Prepares the build dirs
+* rev: Automate the hash renames of assets filename
+* usemin: Replaces references to non-minified scripts / stylesheets
 
 More comprehensive information on each task can be found lower down the page.
 
@@ -325,7 +313,7 @@ Todo: The following commands need to be fleshed out further.
 Usage: `yeoman test`
 
 This command runs a Jasmine test harness in a headless instance of Phantom.js.
- 
+
 # Command - install
 
 Defer to `nest install`
@@ -340,8 +328,7 @@ Defer to `nest update`
 
 * `yeoman --help`
 
-This will list out the commands and tasks supported by yeoman and should print out the 
-following to the console:
+This will list out the commands and tasks supported by yeoman and should print out the following to the console:
 
 Usage: yeoman [command] [task [task ...]]
 
@@ -360,9 +347,9 @@ Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
       copy  Copies the whole staging(intermediate/) folder to output
             (publish/) one
        css  Concats, replaces @imports and minifies the CSS files *
-       dom  dom-based build system
-      html  Basic to aggresive html minification
-       img  Optimizes .png/.jpg images using optipng/jpegtran
+       dom  DOM-based build system
+      html  Basic to aggressive HTML minification
+       img  Optimizes .png/.jpg images using OptiPNG/JPEGtran
     mkdirs  Prepares the build dirs *
        rev  Automate the hash renames of assets filename *
     server  Start a custom static web server
@@ -395,7 +382,7 @@ min: {
 
 This is a **really** basic minify configuration, there's much more
 built-in in the grunt min task, like [banner comments][], [specifying
-uglifyjs options][], and [minifying while concatenating files][]. You're
+UglifyJS options][], and [minifying while concatenating files][]. You're
 encouraged to edit this basic minify configuration to match your very
 own setup.
 
@@ -439,8 +426,8 @@ copied over during the process. These are
 ### mkdirs
 
 `mkdir` helper is a basic wrapper for
-[node-mkdirp](https://github.com/substack/node-mkdirp#readme).  Takes a
-`directory` path to create, process is async if a valid callback
+[node-mkdirp](https://github.com/substack/node-mkdirp#readme). Takes a
+`directory` path to create. Process is async if a valid callback
 is passed in, otherwise `mkdirp.sync(dir)` is used.
 
 ```js
@@ -452,7 +439,7 @@ task.helper('mkdir', dir, cb);
 `copy` helper uses [ncp](https://github.com/AvianFlu/ncp#readme)
 and [minimatch](https://github.com/isaacs/minimatch#readme) to copy
 the files under the current directory to the specified `dir`,
-optionnaly ignoring files specified by the `options.ignore` property.
+optionally ignoring files specified by the `options.ignore` property.
 
 `options.ignore` can be a String of space delimited glob patterns,
 an Array of glob patterns, or a filter function.
@@ -469,16 +456,16 @@ task.helper('copy', source, dest, opts, function(e) {
 ```
 
 - source     - Path to the source directory
-- dest       - where the files will be copied to
+- dest       - Where the files will be copied to
 - opts       - (optional) An Hash object with an `ignore` property
-- cb         - callback to call on completion
+- cb         - Callback to call on completion
 
 
 
 # Task - usemin
 
-Replaces references ton non-optimized scripts / stylesheets into a
-set of html files (or any template / views).
+Replaces references to non-optimized scripts / stylesheets into a
+set of HTML files (or any template / views).
 
 Usemin task is probably the trickiest one. It'll replace references to
 non minified scripts / stylesheets to their optimized / versioned
@@ -490,7 +477,7 @@ usemin: {
 }
 ```
 
-In this configuration, it'll handle the replacement for any html files
+In this configuration, it'll handle the replacement for any HTML files
 located under the publish directory.
 
 Right now the replacement is based on the filename parsed from content
@@ -498,14 +485,14 @@ and the files present in according directory (eg. looking up matching
 revved filename into `output/` dir to figure out the hash generated).
 
 If you'd like a little bit more flexibility, you can use "directives", some
-special kind of html comments surrounding the part of html we want to replace
+special kind of HTML comments surrounding the part of HTML we want to replace
 (original idea from [@necolas](https://github.com/necolas) in:
 [#831](https://github.com/yeoman/html5-boilerplate/issues/831))
 
 There is no need for JSDOM for this, this is plain regexp (JSDOM required
 for data-build attributes).
 
-Ex:
+Eg:
 
 ```html
 <!-- build:css css/site.css -->
@@ -528,13 +515,13 @@ A directive is composed of the following part:
 ```
 
 * `<target>`
-A known target is required (`css` or `js`). It'll namely allow you
-to replace the html "block" with appropriate tag (eg. a `<link>` for
+A known target is required (`css` or `js`). It'll allow you
+to replace the HTML "block" with appropriate tag (eg. a `<link>` for
 stylesheets, a `<script>` for js files, the task won't guess this from markup
 for you)
 
 * `<output>`
-Path to the optimized asset. The html "block" is replaced with
+Path to the optimized asset. The HTML "block" is replaced with
 according tag (depending on `<target>`) while replacing the src or href
 attribute with the `<output>` value.
 
@@ -542,8 +529,8 @@ attribute with the `<output>` value.
 Anything inside the `<!-- build.. -->` and `<!-- endbuild -->` is replaced
 depending on `<target>` and `<output>` values.
 
-The resulting html is then passed through the global replace, looking up
-matching revved filename in the output directory (defaults to `publish/`),
+The resulting HTML is then passed through the global replace, looking up
+matching revved filenames in the output directory (defaults to `publish/`),
 replacing references to their hash-prepended version.
 
 This "directives" system will provide you a nice level of flexibility, and the
@@ -552,11 +539,11 @@ ability to be very descriptive on what gets replaced and by what.
 
 # Task - server
 
-`server` is a utility task to start a local http server on top of
+`server` is a utility task to start a local HTTP server on top of
 generated build dirs, possibly intermediate/ and publish/ on different
 ports.
 
-It overrides the build-in grunt helper following the foundation as
+It overrides the built-in grunt helper following the foundation as
 described in [grunt's documentation][serve-task]
 
 ```js
@@ -567,7 +554,7 @@ serve: {
 ```
 
 If `--reload` cli option is used when `grunt serve` is run, a socket.io
-server instance is created while a client-side sciprt is injected
+server instance is created while a client-side script is injected
 dynamically on response (eg. it won't edit the generated file)
 
 ## Helpers
@@ -588,7 +575,7 @@ This helper is used by the `serve` and `serve.io` helpers below.
 
 ### serve.io
 
-`serve.io` creates and returns a webserver and setup a socket.io instance and
+`serve.io` creates and returns a web server and setup a socket.io instance and
 the "inject" middleware. `/socket.io/socket.io.js` and `/reload.js` are
 then available.
 
@@ -643,7 +630,7 @@ The mechanism is fairly simple:
 * config subprop values are an array of glob patterns that will be
   expanded in the corresponding file arrays.
 
-Each "fileset" is then concat into one file, the destination one.
+Each "fileset" is then concatenated into one file, the destination one.
 
 If order is important, you might need to be a little more explicit here
 and specify each script to be included (as glob patterns won't ensure
@@ -732,8 +719,7 @@ task.helper('hash', files, options);
 
 - files      - String or Array of glob pattern
 - options    - (optional) An Hash object where:
-  - cwd     - Base directory to work from, glob patterns are
-  prepended to this path.
+- cwd        - Base directory to work from, glob patterns are prepended to this path.
 
 
 ### md5
@@ -770,19 +756,21 @@ output: 'publish/',
 `cb` callback if passed in will make the call asynchronous, otherwise
 `rimraf.sync` is used.
 
-    task.helper('rimraf', dir, cb);
+```js
+task.helper('rimraf', dir, cb);
+```
 
 
 
 ## Package Manager (Nest)
 
-Until now, client-side JavaScript has not benefitted from a rich package management solution such as those found in other platforms (e.g NPM, RubyGems). By instead maintaining packages of packages in client-side JS, developers reduced the chances of using up-to-date versions of libraries.
+Until now, client-side JavaScript has not benefited from a rich package management solution such as those found in other platforms (e.g NPM, RubyGems). By instead maintaining packages of packages in client-side JS, developers reduced the chances of using up-to-date versions of libraries.
 
 Yeoman's integration with Twitter Nest changes that.
 
 In Nest, dependencies are listed in a ‘package.json’ file, similar to Node’s package (adhering as closely as possible to the [commonjs specification](http://wiki.commonjs.org/wiki/Packages/1.0)):
 
-```js
+```json
  {
    "dependencies": {
      "modernizr": "~2.5.3"
@@ -790,7 +778,7 @@ In Nest, dependencies are listed in a ‘package.json’ file, similar to Node�
  }
  ```
 
-Dependencies are then installed locally via the `yeoman install’ command. First they’re resolved to find conflicts, then downloaded and unpacked in a local sub dir (browser_modules) to package.json, for example:
+Dependencies are then installed locally via the `yeoman install’ command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir (browser_modules) to package.json, for example:
 
 ```
 /package.json
@@ -811,13 +799,13 @@ For information on how to use Yeoman's Nest integration, see `yeoman install` an
 
 ## Frequently Asked Questions
 
-**What is a package manager?**
+### What is a package manager?
 
 A package manager runs through a command-line interface and is a tool for automating the process of installing, upgrading, configuring and managing dependencies for projects.
 
-**What is a command-line interface?**
+### What is a command-line interface?
 
-A command-line interface is a means for developers to interact with a system using text commands. On OSX this this is often done using the Terminal and on Windows we use the command shell or a third-party tool such as [Cygwin](http://www.cygwin.com/).
+A command-line interface is a means for developers to interact with a system using text commands. On OSX this this is often done using the Terminal and on Windows we use the command shell or a third-party tool such as [Cygwin](http://www.cygwin.com).
 
 
 
@@ -860,7 +848,7 @@ Running `npm test` will trigger the `pretest` npm script, and then execute the
 Testing a build script is somewhat tricky. Tests here aren't really unit tests,
 they simply run a given grunt command, and run few basic assertions on the script output.
 
-No test framework are used during the process, they require nothing but node.js.
+No test framework are used during the process, they require nothing but Node.js.
 It'll hopefully make them easier to understand for anyone that is familiar with
 node and not a given chosen test framework.
 
@@ -900,22 +888,19 @@ to finally run a few assertions on top of the output directory.
 * **test/fixtures**
 Holds the fixtures file. If necessary test scripts will copy
 files from fixtures to the test directory (`.test`) and have grunt operate on
-top of that. This may include custom gruntfile and specific html files, testing
+top of that. This may include custom gruntfile and specific HTML files, testing
 out the whole script or a specific feature. This directory usually include
 subdirectories named after the task they meant to be used with.
 
 * **test/yeoman**
-this is the yeoman submodule. Running `git submodule update
+This is the yeoman submodule. Running `git submodule update
 --init` will make sure everything is here. Relatedly, this command is run
 automatically before `npm test`.
 
 * **test/helpers**
-Contains few test helper, see below for further details.
+Contains a few test helpers, see below for further details.
 
-* **test/tasks** Like `test/fixtures`, this directory usually include
-subdirectories named after the task that is tested. Test files in this directory
-are meant to test specific task / feature of the build script. They may be run directly using
-`node test/tasks/usemin` (or any other implemented test).
+* **test/tasks** Like `test/fixtures`, this directory usually include subdirectories named after the task that is tested. Test files in this directory are meant to test specific task / feature of the build script. They may be run directly using `node test/tasks/usemin` (or any other implemented test).
 
 ## Writing a new test
 
