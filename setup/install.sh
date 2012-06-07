@@ -5,7 +5,7 @@
 
 
 # packages to automatically be installed
-PACKAGES='git'
+PACKAGES='git optipng libjpeg'
 
 # checking baseline dependencies
 XCODEFILE=$(which xed)
@@ -44,7 +44,7 @@ then
 	echo "RVM is installed..."
 else
 	echo "Installing RVM..."
-	bash < <(curl -L get.rvm.io | bash -s stable )
+	curl -L get.rvm.io | bash -s stable
 fi
 
 
@@ -86,5 +86,3 @@ done
 # some gems are required in the Gemfile.
 echo "Installing bundler-specified gems"
 bundle install
-
-
