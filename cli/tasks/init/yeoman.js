@@ -186,6 +186,7 @@ yeoman.end = function end(init, props, cb) {
     'config.rb': 'init/yeoman/config.rb'
   });
 
+
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
 
@@ -303,12 +304,14 @@ yeoman.jasmineFilesToCopy = function jasmineFilesToCopy(init, props) {
     // Get the path relative to the template root.
     var relpath = obj.rel.slice(prefix.length);
     var rule = init.renames[relpath];
+
     // Omit files that have an empty / false rule value.
     if (!rule && relpath in init.renames) { return; }
     // Create a property for this file.
     // XXX this `test/` prefix could be the result of a prompt
     var dest = rule ? grunt.template.process(rule, props, 'init') : relpath;
     files['test/' + dest] = obj.rel;
+
   });
 
   return files;
