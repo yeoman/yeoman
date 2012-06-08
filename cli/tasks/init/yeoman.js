@@ -88,7 +88,10 @@ yeoman.warnOn = '*';
 // };
 //
 
-yeoman.defaults = {};
+yeoman.defaults = {
+  require_js: true,
+  plugin: false
+};
 
 // **configure** setup the initial set of properties from optionnaly loading
 // default anwsers. They differ from grunt's usual default prompts in the way
@@ -185,7 +188,6 @@ yeoman.end = function end(init, props, cb) {
   	// Extra files to copy
     'config.rb': 'init/yeoman/config.rb'
   });
-
 
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
