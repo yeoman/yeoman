@@ -88,7 +88,10 @@ yeoman.warnOn = '*';
 // };
 //
 
-yeoman.defaults = {};
+yeoman.defaults = {
+  require_js: true,
+  plugin: false
+};
 
 // **configure** setup the initial set of properties from optionnaly loading
 // default anwsers. They differ from grunt's usual default prompts in the way
@@ -118,7 +121,7 @@ yeoman.configure = function configure(cb) {
 
   // if it is a valid template then, setup `yeoman.defaults` hash object to
   // by-pass relevant options.
-  this.defaults = grunt.file.readJSON(files[0]);
+  this.defaults = grunt.utils._.defaults(grunt.file.readJSON(files[0]), this.defaults);
 
   cb();
 };
@@ -185,7 +188,6 @@ yeoman.end = function end(init, props, cb) {
   	// Extra files to copy
     'config.rb': 'init/yeoman/config.rb'
   });
-
 
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
