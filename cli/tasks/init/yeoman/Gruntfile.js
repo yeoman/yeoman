@@ -111,14 +111,26 @@ module.exports = function(grunt) {
     },
     // specifying UglifyJS options:
     // https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options
-    uglify: {}{% } %}{% if (require_js) { %},
+    uglify: {}{% if (require_js) { %},
+    // rjs configuration: http://requirejs.org/docs/optimization.html#options
     rjs: {
-      name: 'main'
+      modules: [{
+        name: 'main',
+      }],
+      dir: 'js',
+      appDir: 'js',
+      baseUrl: './',
+      pragmas: {
+        doExclude: true
+      },
+      skipModuleInsertion: false,
+      optimizeAllPluginResources: true,
+      findNestedDependencies: true
     }{% } %}
   });
 
   {% if (require_js) { %}
-  // in rjs setup, the concat and min task are overriden to use rjs optimizr
+  // in rjs setup, the concat and min task are overridden to use rjs optimizer
   grunt.renameTask('concat', '_concat').registerTask('concat', 'rjs (noop)', function() {
     grunt.log.writeln('the concat in rjs setup is a noop, rjs optimizer somewhat replace js concatenation');
   });
@@ -128,7 +140,7 @@ module.exports = function(grunt) {
   {% if (plugin) { %}
   grunt.loadNpmTasks('{%= plugin %}');
   {% } %}
-  
+
 
   // Alias the `test` task to run the `jasmine` task instead
   grunt.registerTask('test', 'jasmine');
