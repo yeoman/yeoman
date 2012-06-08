@@ -1,0 +1,7 @@
+export function make(domAPI) {
+        return {
+            munge: function(doc) {
+                domAPI.document.write('hi!');    
+            }
+        };
+    }

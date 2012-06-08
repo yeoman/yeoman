@@ -1,0 +1,20 @@
+
+/*
+Fake comment to try to break the hm parser.
+module bad at 'bad';
+*/
+
+//import {bad2} from 'bad2'
+
+module theta at 'theta';
+
+import * from theta;
+import * from 'sigma';
+
+export thetaOne;
+
+export thetaTwo;
+
+export sigmaFunc;
+
+export sigmaNumber;
