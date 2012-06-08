@@ -14,7 +14,7 @@ describe('build:* tasks', function() {
   describe('default -> build:default', function() {
 
     it('Given I run the default task', function(done) {
-      helpers.run('default', done);
+      helpers.run('build', done);
     });
 
     describe('When the build script ends', function() {

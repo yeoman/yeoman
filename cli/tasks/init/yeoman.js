@@ -121,7 +121,7 @@ yeoman.configure = function configure(cb) {
 
   // if it is a valid template then, setup `yeoman.defaults` hash object to
   // by-pass relevant options.
-  this.defaults = grunt.file.readJSON(files[0]);
+  this.defaults = grunt.utils._.defaults(grunt.file.readJSON(files[0]), this.defaults);
 
   cb();
 };
