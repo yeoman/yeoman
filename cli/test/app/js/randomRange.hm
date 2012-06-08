@@ -1,0 +1,16 @@
+/*
+module randomRange {
+  export setMin;    
+  export setMax;    
+  export random;    
+}
+
+module myModule {
+  import imp1 from '/path/to/import.js';
+  import imp2 from namedImportedModule; 
+  module mod1 from '/path/to/module.js';
+  module mod2 from myImportedModule;    
+  export expA;                          
+  export expB;                          
+} 
+*/

@@ -1,6 +1,7 @@
 ({
     appDir: "../",
     baseUrl: "js",
+    hm: 'hm',
     dir: "../build",
     paths: {
     	jquery: 'libs/jquery/jquery-min',
