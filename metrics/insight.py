@@ -44,17 +44,6 @@ class Analytics(object):
 
       self._send_all() 
 
-      # Have users opt-in to sending usage stats.
-      cli_name = settings.APP['cli_name'].capitalize()
-      print """==========================================================================
-We're constantly looking for ways to make %s better!
-May we anonymously report usage statistics to improve the tool over time?
-More info: XXX
-==========================================================================""" % cli_name
-      ans = raw_input('[Y/n]: ')
-      if not (ans == '' or ans.capitalize() == 'Y'):
-        self.do_stats = False
-
     else:
       f.seek(0)
       self.client_id = f.readline()[:-1] # Assumes the line ends with "\n".
@@ -165,7 +154,8 @@ More info: XXX
     cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
     path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
 
-    if self.do_stats:
+    # insight.py record NO_STATS is sent from bin/yeoman on first run.
+    if self.do_stats and cmd_str != NO_STATS:
       f = open(LOG_FILE, 'a')
       s = '%s /%s' % (time.time(), path)
       f.write(s + '\n')
