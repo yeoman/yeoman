@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 var fs = require('fs'),
   join = require('path').join,
-  help = join(__dirname, 'help.txt');
+  help = join(__dirname, 'help.txt'),
+  spawn = require('child_process').spawn,
+  rl = require('readline'),
+  pkg = require('../package.json');
 
 // grunt with the plugin registered
 var grunt = require('grunt').npmTasks(join(__dirname, '../'));
@@ -27,7 +30,7 @@ if(/^help/.test(route)) {
 
 // add the plugin version on `--version`
 if(opts.version) {
-  console.log('h5bp  v%s', require('../package.json').version);
+  console.log('h5bp  v%s', pkg.version);
 }
 
 // `h5bp init` -> `grunt init:h5bp`
@@ -40,11 +43,39 @@ if(/^install|uninstall|update/.test(route)) {
   cli.tasks = 'nest' + ':' + cmds.join(':');
 }
 
+// Record this action in Insight.
+var metricsFolder = join(__dirname, '..', '..', 'metrics/');
+var insightScript = [metricsFolder + 'insight.py', 'record'];
+
+var insight = spawn('python', insightScript.concat(cmds));
+//insight.stdout.pipe(process.stdout);
+
+fs.stat(metricsFolder + '.yeomaninsight', function(err, stats) {
+  // Error means file doesn't exist and this is the first run.
+  // Go through stat opt-in flow.
+  if (err) {
+    var msg = "==========================================================================\n\
+We're constantly looking for ways to make " + pkg.name + " better!\n\
+May we anonymously report usage statistics to improve the tool over time?\n\
+More info: XXX\n\
+==========================================================================\n\
+[Y/n]: ";
+
+    var i = rl.createInterface(process.stdin, process.stdout, null);
+    i.question(msg, function(answer) {
+      if (!(answer == '' || answer.toUpperCase() == 'Y')) {
+        var insight = spawn('python', insightScript.concat(['NO_STATS']));
+      }
+      i.close();
+      process.stdin.destroy();
+    });
+  }
+});
 
 // if the route is empty
 if(/^$/.test(route)) {
   // this is specific to an empty route code
-  console.log('yeoman v%s', require('../package.json').version);
+  console.log(pkg.name + ' v%s', pkg.version);
 
   // we return early to prevent grunt from actually running
   // and instead just output help.txt
