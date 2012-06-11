@@ -25,7 +25,8 @@
     "less": "~1.2.1",
     "coffee-script": "~1.3.3",
     "grunt-jasmine-task": "~0.2.0",
-    "grunt-shell": "~0.1.1"
+    "grunt-shell": "~0.1.1",
+    "faye-websocket": "~0.4.2"
   },
   "devDependencies": {
     "mocha": "~1.0.3"
