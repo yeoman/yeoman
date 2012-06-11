@@ -199,13 +199,11 @@ You'll find below a basic description and documentation for each command and tas
 * **usemin**: Replaces references to non-minified scripts / stylesheets
 
 
-## Usage
+# Usage
 
 **This assumes the package was installed globally.
 
-## Project creation
-
-# Command - init
+## Command - init
 
 Usage: `yeoman init`, `yeoman init myapp`
 
@@ -228,7 +226,7 @@ versions of dependencies your project may need. When this is integrated, we will
 further documentation about it to this page.
 
 
-# Command - server
+## Command - server
 
 Usage: `yeoman server`
 
@@ -245,7 +243,7 @@ To quit the server, simply run `yeoman quit server` and this will kill the Pytho
 process.
 
 
-# Command - watch
+## Command - watch
 
 Usage: `yeoman watch`
 
@@ -257,7 +255,7 @@ don't need to do anything extra to continue editing your source files.
 
 
 
-# Command - build
+## Command - build
 
 Usage: `yeoman build`, `yeoman build:<target>`
 
@@ -306,15 +304,13 @@ tasks included with Yeoman out of the box are:
 More comprehensive information on each task can be found lower down the page.
 
 
-Todo: The following commands need to be fleshed out further.
-
-# Command - test
+## Command - test
 
 Usage: `yeoman test`
 
 This command runs a Jasmine test harness in a headless instance of Phantom.js.
 
-# Command - install
+## Command - install
 
 Usage: `yeoman install <name>`
 
@@ -324,14 +320,14 @@ Running yeoman install <name> will install the dependencies in your project’sl
 
 For further information, see the section on the package manager.
 
-# Command - update
+## Command - update
 
 Usage: `yeoman update <name>`
 
 Updates the package <name> to the latest version available.
 
 
-# Command - uninstall
+## Command - uninstall
 
 Usage: yeoman uninstall <name>
 
@@ -378,9 +374,37 @@ Build targets: yeoman build:<target>
     minify  concat css min img rev usemin manifest html:compress
 
 
+# Tasks
+
+## Task - css
+
+Usage: `yeoman css`
+
+The css task concatenates CSS files and runs them through the requirejs optimizer
+to handle `@import` inlines within files.
+
+## Task - img
+
+Usage: `yeoman img`
+
+The img task handles image compression optimizations by running any `.png` or `.jpg` files in an application through OptiPNG and JPEGTran. 
+
+## Task - html
+
+Usage: `yeoman html`
+
+The html task handles HTML minification and runs markup files through the @kangax [html-minifier](http://perfectionkills.com/experimenting-with-html-minifier/) project. 
+
+## Task - rjs
+
+Usage: `yeoman rjs`
+
+The rjs task runs any JavaScript files through the r.js optimizer for RequireJS. This is particularly useful if using AMD or the experimental ES6 module support.
 
 
-# Task - min
+## Task - min
+
+Usage: `yeoman min`
 
 [Read the grunt documentation on min built-in
 task](https://github.com/cowboy/grunt/blob/master/docs/task_min.md#readme)
@@ -406,10 +430,12 @@ own setup.
 
 
 
-# Task - mkdirs
+## Task - mkdirs
 
-The mkdirs task is working in tandem with the clean one, and creates the
-necessary build dirs.
+Usage: `yeoman mkdirs`
+
+The mkdirs task works in conjunction with the `clean` task. It creates the necessary build directories.
+
 
 ```js
 // the staging directory used during the process
@@ -427,11 +453,11 @@ mkdirs: {
 },
 ```
 
-Just as the clean task, config subprop are used to create the
-directories. A basic mapping is done in configuration to get back the
+Similar to the `clean` task, configuration subj-properties are used to create
+the directions. A basic mapping is done in configuration to get back the
 directory values, (eg. `config(task.target) --> config('staging')`).
 
-Values for each is an array of files to filter, eg. they'll not be
+Values for each are an array of files to filter, eg. they'll not be
 copied over during the process. These are
 [minimatch](https://github.com/isaacs/minimatch#readme) patterns.
 
@@ -476,7 +502,9 @@ task.helper('copy', source, dest, opts, function(e) {
 
 
 
-# Task - usemin
+## Task - usemin
+
+Usage: `yeoman usemin`
 
 Replaces references to non-optimized scripts / stylesheets into a
 set of HTML files (or any template / views).
@@ -551,7 +579,7 @@ This "directives" system will provide you a nice level of flexibility, and the
 ability to be very descriptive on what gets replaced and by what.
 
 
-# Task - server
+## Task - server
 
 `server` is a utility task to start a local HTTP server on top of
 generated build dirs, possibly intermediate/ and publish/ on different
@@ -623,7 +651,9 @@ app.listen(3000);
 [serve-task]: https://github.com/cowboy/grunt/blob/master/docs/task_server.md#readme
 
 
-# Task - concat
+## Task - concat
+
+Usage: `yeoman concat`
 
 [Read the grunt documentation on concat built-in
 task](https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#readme)
@@ -651,10 +681,10 @@ and specify each script to be included (as glob patterns won't ensure
 this). Actually, you can see this in action here with the
 `intermediate/js/scripts.js` file.
 
-This is a **really** basic concat configuration, there's much more
-built-in in the grunt concat task, like [banner comments][], [multiple build
+This is a **really** basic concat configuration. There is a lot more
+built into the grunt concat task, like [banner comments][], [multiple build
 targets][], and [dynamic filenames][]. You're encouraged to edit this
-basic concat configuration to match your very own setup.
+basic concat configuration to match your own setup.
 
 [banner comments]: https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#banner-comments
 [multiple build targets]: https://github.com/cowboy/grunt/blob/master/docs/task_concat.md#multiple-build-targets
@@ -662,47 +692,12 @@ basic concat configuration to match your very own setup.
 
 
 
-# Task - connect
+## Task - rev
 
-The connect is a special little utility task working in tandem with the
-watch one.
+Usage: `yeoman rev`
 
-It's a slight variation of the serve command, but includes / injects
-some socket.io magic to be able to reload any opened webpage in your
-browsers.
-
-Basically, the idea is that anytime you change a watched files
-(js/css/templates, etc.), a new build is triggered and an event is
-emitted back to any connected clients to reload pages automatically.
-
-```js
-connect: {
-
-  intermediate: {
-    port: 3000,
-    logs: 'dev',
-    dirs: true
-  },
-
-  publish: {
-    port: 3001,
-    logs: 'default',
-    dirs: true
-  }
-
-}
-```
-
-## Helpers
-
-> todo
-
-
-# Task - rev
-
-The rev task is a really simple one. Its role is to read the content of
-a given file, generate a hash and prepend that hash to the original
-filename.
+The rev task reads in the content of a given file, generates a hash and 
+prepends that hash to the original filename.
 
 ```js
 rev: {
@@ -747,12 +742,12 @@ task.helper('md5', file, algorithm, encoding);
 ```
 
 
+## Task - clean
 
-
-# Task - clean
+Usage: `yeoman clean`
 
 The clean task will remove and delete any previous build dirs (which
-are mapping `staging` and `output` config value).
+are mapping the `staging` and `output` config values).
 
 ```js
 staging: 'intermediate/',
@@ -815,12 +810,10 @@ For information on how to use Yeoman's Nest integration, see `yeoman install` an
 
 Yeoman comes with experimental support for ES6 modules, made possible through Require HM. HM allows us to write ES.next module syntax and as long as code is saved in files with `.hm` extension, they can be used with RequireJS and AMD as if they were regular ES3/5 scripts.
 
-```
-Note: The ES.next module specification is not yet complete and is subject to change. As such, the material below should be considered correct as of June, 2012 but for later dates the Harmony wiki entry on modules should be consulted to ensure correctness.
 
-Also note that as Require HM is a RequireJS plugin, ES6 modules are only supported when used with RequireJS. We hope to change this in the future once support for ES6 modules in Google Traceur has improved.
+*Note: The ES.next module specification is not yet complete and is subject to change. As such, the material below should be considered correct as of June, 2012 but for later dates the Harmony wiki entry on modules should be consulted to ensure correctness.
 
-```
+Also note that as Require HM is a RequireJS plugin, ES6 modules are only supported when used with RequireJS. We hope to change this in the future once support for ES6 modules in Google Traceur has improved.*
 
 ###module:
 
@@ -911,11 +904,13 @@ module Car{
     console.log('details:', speed, direction);    
   }
   
-  export module engine(){
+  export module engine{
     export function check(){ ... }
   }
+
   export var miles = 5000;
   export var color = "silver";
+
 };
 ```
 
@@ -971,7 +966,7 @@ Bringing these three concepts together:
 
 ```
 module vehicle{
-  export function drive(){speed, direction}{
+  export function drive(speed, direction){
     console.log('We are driving at a speed of ' + speed + ', ' + direction);
   };
   
@@ -1031,8 +1026,9 @@ Earlier, we mentioned the concept of a Module Loader API. The module loader allo
 Loader.load("car.js", function(car) {
         console.log(car.drive(500, "north"));
     }, function(err){
-      console.log("Error:" + err);
+        console.log("Error:" + err);
     });
+
 ```
 
 `load()` accepts three arguments:
@@ -1148,7 +1144,11 @@ var customLoader = new Loader(Loader,{
   });
 ```
 
-### More examples
+
+*Note: As Require HM is able to work with the RequireJS `define()` and `require()` syntax, it doesn't currently support the Module Loader API. If one is however required, there is a shim available for this feature [here](https://github.com/addyosmani/es6-module-loader/).*
+
+
+### What else can be done with modules?
 
 We can also define modules with a shared state:
 
@@ -1179,6 +1179,9 @@ module Scooter {
     }
 }
 ```
+
+
+*Note: Require HM does not presently support cyclic dependencies. We are working on fixing this limitation.*
 
 
 
