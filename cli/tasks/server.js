@@ -44,18 +44,28 @@ module.exports = function(grunt) {
 
     // go through all sockets, and emit a reload command
     Object.keys(this.sockets).forEach(function(id) {
-      var ws = sockets[id];
-      self.send(ws, {
+      var ws = sockets[id],
+        version = ws.livereloadVersion;
+
+      // support both "refresh" command for 1.6 and 1.7 protocol version
+      var data = version === '1.6' ? ['refresh', {
+        path: changed.filepath,
+        apply_js_live: true,
+        apply_css_live: true
+      }] : {
         command: 'reload',
         path: changed.filepath,
-        liveCSS: true
-      });
+        liveCSS: true,
+        liveJS: true
+      };
+
+      self.send(ws, data);
     });
   };
 
   Reactor.prototype.start = function start(options) {
     // setup socket connection
-    this.server.once('upgrade', this.connection.bind(this));
+    this.server.on('upgrade', this.connection.bind(this));
   };
 
   Reactor.prototype.connection = function connection(request, socket, head) {
@@ -72,9 +82,13 @@ module.exports = function(grunt) {
 
       // parse the JSON data object
       var data = self.parseData(event.data);
-      if(!data.command) return console.warn('Invalid ws command');
 
-      // valid commands are: url, reload, alert and hello
+      // attach the guessed livereload protocol version to the sokect object
+      ws.livereloadVersion = data.command ? '1.7' : '1.6';
+      // data sent wasn't a valid JSON object, assume version 1.6
+      if(!data.command) return ws.send('!!ver:1.6');
+
+      // valid commands are: url, reload, alert and hello for 1.7
 
       // first handshake
       if(data.command === 'hello') return self.hello(data, ws);
