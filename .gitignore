@@ -1,5 +1,5 @@
-# Ignore hidden files
-.*
+# Ignore hidden folders
+.*/
 
 *.min.css
 #*.min.js
