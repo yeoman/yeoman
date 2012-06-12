@@ -46,11 +46,24 @@ module.exports = function(grunt) {
       all: ['test/**/*.html']
     },
 
-   // default watch configuration
+    // default watch configuration
     watch: {
-      files: '<config:lint.files>',
-      tasks: 'lint qunit'
+      coffee: {
+        files: '<config:coffee.dist.src>',
+        tasks: 'coffee'
+      },
+      compass: {
+        files: 'css/sass/**/*.sass',
+        tasks: 'shell:compass'
+      },
+
+      // only used with `yeoman server`
+      reload: {
+        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*'],
+        tasks: 'reload'
+      }
     },
+
 
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
