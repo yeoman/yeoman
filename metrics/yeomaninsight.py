@@ -162,7 +162,7 @@ class Analytics(object):
     cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
     path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
 
-    # insight.py record NO_STATS is sent from bin/yeoman on first run.
+    # yeomaninsight.py record NO_STATS is sent from bin/yeoman on first run.
     if self.do_stats and cmd_str != NO_STATS:
       f = open(LOG_FILE, 'a')
       s = '%s /%s' % (time.time(), path)
