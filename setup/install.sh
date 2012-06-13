@@ -43,7 +43,7 @@ then
 	echo "Homebrew is installed..."
 else
 	echo "Installing Homebrew..."
-	ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 fi
 
 brew install ${PACKAGES}
