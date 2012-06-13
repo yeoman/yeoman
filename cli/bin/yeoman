@@ -39,7 +39,7 @@ if(/^init$/.test(route)) {
 }
 
 // a nest command?
-if(/^install|uninstall|update/.test(route)) {
+if(/^install|uninstall|search|update/.test(route)) {
   cli.tasks = 'nest' + ':' + cmds.join(':');
 }
 
