@@ -7,7 +7,6 @@ Available commands supported by yeoman:
     server  Launch a preview server which will begin watching for changes
       test  Run a Jasmine test harness in a headless Phantom.js
      watch  Watch for changes
-      docs  yeoman documentation
 
 Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
 
