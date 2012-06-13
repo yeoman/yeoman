@@ -13,8 +13,8 @@ RVMFILE=$(which rvm)
 BREWFILE=$(which brew)
 GEMFILE=$(which gem)
 JAVAFILE=$(which java)
-ANTFILE=$(which ant)
-ANDROIDFILE=$(which android)
+
+YEOMANINSIGHT=$(which yeomaninsight)
 
 
 # Due to bug in xcode install xed may not be in path
@@ -72,3 +72,10 @@ fi
 # some gems are required in the Gemfile.
 echo "Installing bundler-specified gems"
 bundle install
+
+
+if [ !"$YEOMANINSIGHT" ]
+then
+  # TODO: creating a path like this probably doesn't work on Windows.
+	python ../metrics/setup.py install --install-scripts=~/.yeoman/insight
+fi
