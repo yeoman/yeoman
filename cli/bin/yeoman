@@ -55,18 +55,14 @@ if(/^install|uninstall|search|update/.test(route)) {
 // e.g. /Users/username/.yeoman
 var YEOMAN_DIR = join(getUserHome(), '.' + pkg.name);
 
-// TODO: Update to this to the proper installed path of yeomaninsight.py.
-var insightRecordCmd = [
-  join(__dirname, '..', '..', 'metrics', 'yeomaninsight.py'), 'record'
-];
+var insightFolder = join(YEOMAN_DIR, 'insight');
+
+// Assume yeomaninsight.py is installed in the user's home dir.
+var insightRecordCmd = [join(insightFolder, 'yeomaninsight.py'), 'record'];
 
 // Record this action in Insight (e.g. python yeomaninsight.py record cmd cmd2).
 var insight = spawn('python', insightRecordCmd.concat(cmds));
 //insight.stdout.pipe(process.stdout);
-
-// TODO: Creating ~/.yeoman/insight is handled by insight.py, but it should
-// really be done at install time.
-var insightFolder = join(YEOMAN_DIR, 'insight');
 
 fs.stat(join(insightFolder, '.log'), function(err, stats) {
   // Error means file doesn't exist and this is the first run.
