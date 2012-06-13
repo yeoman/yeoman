@@ -55,12 +55,12 @@ if(/^install|uninstall|search|update/.test(route)) {
 // e.g. /Users/username/.yeoman
 var YEOMAN_DIR = join(getUserHome(), '.' + pkg.name);
 
-// TODO: Update to this to the proper installed path of insight.py.
+// TODO: Update to this to the proper installed path of yeomaninsight.py.
 var insightRecordCmd = [
-  join(__dirname, '..', '..', 'metrics', 'insight.py'), 'record'
+  join(__dirname, '..', '..', 'metrics', 'yeomaninsight.py'), 'record'
 ];
 
-// Record this action in Insight (e.g. python insight.py record cmd cmd2).
+// Record this action in Insight (e.g. python yeomaninsight.py record cmd cmd2).
 var insight = spawn('python', insightRecordCmd.concat(cmds));
 //insight.stdout.pipe(process.stdout);
 
