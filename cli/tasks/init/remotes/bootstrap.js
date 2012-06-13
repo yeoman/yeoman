@@ -18,6 +18,7 @@ function Bootstrap(opts) {
   this.user = opts.user || 'twitter';
   this.repo = opts.repo || 'bootstrap';
   this.version = opts.version || 'v2.0.3';
+  this.title = "Twitter Bootstrap";
 
   this.priority = 2;
 
