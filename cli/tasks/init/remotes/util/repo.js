@@ -42,7 +42,7 @@ Repo.prototype.init = function init(cb) {
   // node-prompt info
   var prompts = [{
     name: 'include',
-    message: 'Would you like to include ' + [this.user, this.repo].join('/') + ' repository?',
+    message: 'Would you like to include ' + (this.title || ([this.user, this.repo].join('/') + ' repository')) + '?',
     default: 'Y/n',
     warning: 'Be warned!'
   }];

@@ -15,9 +15,9 @@ module.exports = requirejs;
 function requirejs(opts) {
 
   this.name = opts.name || 'jrburke';
-
   this.user = opts.user || 'jrburke';
   this.repo = opts.repo || 'requirejs';
+  this.title = "RequireJS (for AMD support)";
 
   this.version = opts.version || '819774388d0143f2dcc7b178a364e875aea6e45a';
 

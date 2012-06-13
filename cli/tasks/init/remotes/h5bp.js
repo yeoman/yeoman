@@ -31,6 +31,8 @@ function H5BP(opts) {
 
   this.user = opts.user || 'h5bp';
   this.repo = opts.repo || 'html5-boilerplate';
+  this.title = "HTML5 Boilerplate";
+
   // latest commit on h5bp repo, to test things out and to always pull from a
   // specific sha1 (thus making the cache thing more robust, master or other
   // branch are likelly to change)
