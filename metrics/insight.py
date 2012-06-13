@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""This module defines the Yeoman Insight stat reporter tool."""
+"""This module defines the Yeoman Insight metrics reporter tool."""
 
 __author__ = 'ebidel@gmail.com (Eric Bidelman)'
 
@@ -13,11 +13,15 @@ import time
 import urllib
 import urllib2
 
-import settings
+#import settings
 
 NO_STATS = 'NO_STATS'
-CLI_NAME = settings.APP['cli_name']
-LOG_FILE = os.path.join(os.path.dirname(__file__), '.%sinsight' % CLI_NAME)
+CLI_NAME = 'yeoman' #settings.APP['cli_name']
+
+# TODO(ericbidelman): Verify expanduser('~') works on other platforms.
+INSIGHT_DIR = os.path.join(os.path.expanduser('~'), '.yeoman', 'insight')
+LOG_FILE = os.path.join(INSIGHT_DIR, '.log') #os.path.join(os.path.dirname(__file__), '.log')
+
 NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
 NUM_SECONDS_TO_STASH_DATA = 0 # Send data as it happens.
 
@@ -30,6 +34,10 @@ class Analytics(object):
   def __init__(self, tracking_code):
     self.tracking_code = tracking_code
     self.do_stats = True
+
+    # Create ~/.yeoman/insight if it doesn't exist.
+    if not os.path.exists(INSIGHT_DIR):
+      os.makedirs(INSIGHT_DIR)
 
     f = open(LOG_FILE, 'a+') # Open file for reading and appending.
 
@@ -102,8 +110,8 @@ class Analytics(object):
       'aip': '1', # Anonymize IP
       'qt': int((time.time() - recorded_at) * 1e3), # Queue Time. Delta (milliseconds) between now and when hit was recorded.
       'dp': path,
-      'an': settings.APP['title'], # Application Name.
-      'av': settings.APP['version'], # Application Version.
+      'an': 'Yeoman Insight', #settings.APP['title'], # Application Name.
+      'av': '0.0.1', #settings.APP['version'], # Application Version.
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
     }
 
