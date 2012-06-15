@@ -1,7 +1,6 @@
-# install.sh: Installation script for OSX
+# install.sh: Installation script
 
-# mostly taken from https://github.com/Toura/mulberry/blob/master/install/osx/install.sh
-# we need to account for the other OS's, which they do there..
+# Note for maintenance: we have versions of Node, Compass, and the Yeoman zip hardcoded here.
 
 
 # checking baseline dependencies
@@ -56,6 +55,55 @@ echo ""
 echo "We're going to check some dependencies and install them if they're not present"
 echo ""
 echo "Stand by..."
+echo ""
+
+# Some utility parts:
+# 1. Grab a temporary folder for us to operate in
+# 2. Find a tar executable
+
+# set the temp dir
+TMP="${TMPDIR}"
+if [ "x$TMP" = "x" ]; then
+  TMP="/tmp"
+fi
+TMP="${TMP}/yeoman.$$"
+rm -rf "$TMP" || true
+mkdir "$TMP"
+if [ $? -ne 0 ]; then
+  echo "Failed to mkdir $TMP" >&2
+  exit 1
+fi
+
+# tar so hard.
+tar="${TAR}"
+if [ -z "$tar" ]; then
+  tar="${npm_config_tar}"
+fi
+if [ -z "$tar" ]; then
+  tar=`which tar 2>&1`
+  ret=$?
+fi
+if [ $ret -eq 0 ] && [ -x "$tar" ]; then
+  echo "tar=$tar"
+  echo "Good gracious! You've got this version 'tar' installed:"
+  $tar --version
+  ret=$?
+fi
+if [ $ret -eq 0 ]; then
+  (exit 0)
+else
+  echo "No suitable tar program found."
+  exit 1
+fi
+
+
+
+
+# where will we return to?
+BACK="$PWD"
+cd "$TMP"
+
+
 
 
 if [ "$RUBYFILE" ] && [ "$GEMFILE" ]
@@ -71,14 +119,10 @@ then
     echo "Node.js is installed..."
 else
     echo "Installing Node.js..."
-    CURPATH=$(pwd)
 
-    cd ~/Downloads/
     curl -O http://nodejs.org/dist/v0.6.19/node-v0.6.19.pkg
     echo "Node.js downloaded, running install script (requires authentication)"
     sudo installer -pkg node-v0.6.19.pkg -target /
-
-    cd "$CURPATH"
 fi
 
 echo ""
@@ -108,9 +152,57 @@ else
 fi
 
 # now that we have all our major dependencies in place,
-# lets ask the user if she is okay with reporting anonymous stats so we can build a better tool
+# lets grab the yeoman package and start initializing it.
+
 echo ""
+echo "Phew. That was hard work!"
+echo "Now we've got those dependencies out of the way, let's grab Yeoman's latest!"
+
+
+
+# grab our latest and unpack the tarball
+tarball="yeoman-yeoman-ac4376214a4241e16bc7899aa8d361b5cd68ffc0"
+curl http://paulirish.com/i/"$tarball".tar.tar.gz | "$tar" -xzf -
+cd "$tarball"
+
+cd cli
+# install yeoman as a global node package
+echo ""
+echo "Alright buckaroo, hold on to your hats.."
+echo "We're about to install the yeoman CLI, which will in turn install quite a few node modules"
+echo "We're going to move fast, but once we're done, "
+echo "you'll have the power of a thousand developers at your blinking cursor."
+echo "Okay here we go..."
+sudo npm install . -g
+
+echo ""
+echo "Yah Hoo! Yeoman global is in place, now for some housekeeping.."
+
+# let's ask the user if she is okay with reporting anonymous stats so we can build a better tool
+echo ""
+cd ../metrics
 # TODO: creating a path like this probably doesn't work on Windows.
-python ../metrics/setup.py install --install-scripts=~/.yeoman/insight
+python setup.py install --install-scripts=~/.yeoman/insight
+
+echo "Alright now, that bit is done now, too."
+echo ""
+
+# hop back to start and kill our temp folder off
+cd "$BACK" && rm -rf "$TMP"
+
+# Welcome wagon
+echo ""
+echo "My my, I hope you enjoyed that as much as me."
+echo "Yeoman and all it's dependencies are now installed!"
+echo ""
+echo "Now that we've got our ducks in a row..."
+echo "You should try starting a new project with yeoman."
+echo "... might I suggest: "
+echo "       mkdir myYeomanApp"
+echo "       cd myYeomanApp   "
+echo "       yeoman init      "
+echo ""
+echo "See you on the other side!"
+
 
 
