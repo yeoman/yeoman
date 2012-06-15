@@ -4,78 +4,113 @@
 # we need to account for the other OS's, which they do there..
 
 
+# checking baseline dependencies
+RUBYFILE=$(which ruby)
+GEMFILE=$(which ruby)
+
+NODEFILE=$(which node)
+GEMFILE=$(which gem)
+COMPASSFILE=$(gem which compass)
+
 # packages to automatically be installed
 PACKAGES='git optipng libjpeg'
 
-# checking baseline dependencies
-XCODEFILE=$(which xed)
-RVMFILE=$(which rvm)
-BREWFILE=$(which brew)
-GEMFILE=$(which gem)
-JAVAFILE=$(which java)
 
-YEOMANINSIGHT=$(which yeomaninsight)
+echo "                                                            "
+echo "             .-:/+ossyhhhddddddddhhhysso+/:-.               "
+echo "       ./oymNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmho/.         "
+echo "     .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh'       "
+echo "     -NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-       "
+echo "      dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd        "
+echo "      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+        "
+echo "      .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.        "
+echo "       hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh         "
+echo "       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/         "
+echo "       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'         "
+echo "        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy          "
+echo "        /No---------+Nosh+oyyssyo/d+hm:--------yN:          "
+echo "        'Ny          omssyy/ys/ssyohm:         dm           "
+echo "    -----dN-----------+mmyssyyssshmd/---------:Nh-----      "
+echo "   'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      "
+echo "    /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      "
+echo "    'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       "
+echo "          :Nm'''.:oso+:/smd:      '-/oso:.'                 "
+echo "          'NN' /dNNNNNmo':Nm'    'smNNNNNd:                 "
+echo "           hN/ .+hdmmho-  hN:     -sdmmdy/'                 "
+echo "           /Nh    '.'     hN/        '.'                    "
+echo "            mN-           hN/.'                             "
+echo "            :Nd'          ymdddy'                           "
+echo "             sNy'        '-:::::.'                          "
+echo "              sNs'   ':ohdmNNyNNmdyo:'                      "
+echo "               oNh--smNNNNNNd'dNNNNNNms-                    "
+echo "                :mNNNNNNNNNh. .dNNNNNNNNy.                  "
+echo "                :mNNNNNNNd/'   '+dNNNNNNNm-                 "
+echo "               'ydmmmdmNms+:-..'  -+ydmmmds'                "
+echo "                       ./oyhmmms                            "
+echo "                                                            "
+echo ""
+echo ""
+echo "                   Welcome to Yeoman! "
+echo ""
+echo ""
+echo "We're going to check some dependencies and install them if they're not present"
+echo ""
+echo "Stand by..."
 
 
-# Due to bug in xcode install xed may not be in path
-# ref http://stackoverflow.com/questions/7317785/terminal-xed-command-missing-after-new-xcode-install
-if [ "$XCODEFILE" ] || [ -x "/Developer/usr/bin/xed" ]
+if [ "$RUBYFILE" ] && [ "$GEMFILE" ]
 then
-	echo "XCode is installed..."
+    echo ""
 else
-	echo "XCode is not installed. Please install XCode 4.3+ from http://itunes.apple.com/no/app/xcode/id497799835"
-	exit 1
+    echo "You'll need Ruby and RubyGems installed before this installer can continue."
 fi
 
-
-# rvm needed for BPM.
-if [ "$RVMFILE" ]
+echo ""
+if [ "$NODEFILE" ]
 then
-	echo "RVM is installed..."
+    echo "Node.js is installed..."
 else
-	echo "Installing RVM..."
-	curl -L get.rvm.io | bash -s stable
+    echo "Installing Node.js..."
+    CURPATH=$(pwd)
+
+    cd ~/Downloads/
+    curl -O http://nodejs.org/dist/v0.6.19/node-v0.6.19.pkg
+    echo "Node.js downloaded, running install script (requires authentication)"
+    sudo installer -pkg node-v0.6.19.pkg -target /
+
+    cd "$CURPATH"
 fi
 
-
+echo ""
 if [ "$BREWFILE" ]
 then
-	echo "Homebrew is installed..."
+    echo "Homebrew is installed..."
 else
-	echo "Installing Homebrew..."
-	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+    echo "Installing Homebrew..."
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 fi
 
+echo ""
+echo "Installing required packages via Homebrew..."
 brew install ${PACKAGES}
 
 
-if [ "$JAVAFILE" ]
+# Install of installing bundler we'll just go and grab the compass gem.
+# We would like to move to node-sass once libsass is stable
+echo ""
+if [ "$COMPASSFILE" ]
 then
-	echo "Java is installed..."
+    echo "Compass already installed, you may want to 'gem install compass --pre' for Sass 3.2..."
 else
-	echo "Java is not installed. Please install java from http://www.java.com/en/download/index.jsp"
-	exit 1
+    echo "Installing Compass for CSS preprocessing magic..."
+    sudo gem update --system
+    sudo gem install compass --pre
 fi
 
-
-BUNDLERFILE=$(gem which bundler)
-
-if [[ "$BUNDLERFILE" =~ /*ERROR*/ ]]
-then
-	echo "Installing bundler..."
-	gem install bundler
-else
-	echo "Bundler is installed..."
-fi
+# now that we have all our major dependencies in place,
+# lets ask the user if she is okay with reporting anonymous stats so we can build a better tool
+echo ""
+# TODO: creating a path like this probably doesn't work on Windows.
+python ../metrics/setup.py install --install-scripts=~/.yeoman/insight
 
 
-# some gems are required in the Gemfile.
-echo "Installing bundler-specified gems"
-bundle install
-
-
-if [ !"$YEOMANINSIGHT" ]
-then
-  # TODO: creating a path like this probably doesn't work on Windows.
-	python ../metrics/setup.py install --install-scripts=~/.yeoman/insight
-fi
