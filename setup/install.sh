@@ -60,6 +60,7 @@ echo ""
 # Some utility parts:
 # 1. Grab a temporary folder for us to operate in
 # 2. Find a tar executable
+# 3. Safe method to check for installed homebrew packages
 
 # set the temp dir
 TMP="${TMPDIR}"
@@ -97,6 +98,16 @@ else
 fi
 
 
+function check_or_install_brew_pkg() {
+  FILELOCATION=$(which $1)
+  if [ "$FILELOCATION" ]
+  then
+    echo "$1 is installed."
+  else
+    echo "Installing $1..."
+    brew install $1
+  fi
+}
 
 
 # where will we return to?
@@ -136,7 +147,13 @@ fi
 
 echo ""
 echo "Installing required packages via Homebrew..."
-brew install ${PACKAGES}
+echo "First, we'll make sure homebrew is up to date. (Auth required)"
+sudo brew update
+echo "Now to install: $PACKAGES"
+for package in $PACKAGES
+do
+  check_or_install_brew_pkg $package
+done
 
 
 # Install of installing bundler we'll just go and grab the compass gem.
