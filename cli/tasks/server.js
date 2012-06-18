@@ -1,5 +1,6 @@
 
-var path = require('path'),
+var fs = require('fs'),
+  path = require('path'),
   util = require('util'),
   events = require('events'),
   connect = require('connect'),
@@ -176,6 +177,8 @@ module.exports = function(grunt) {
       base = path.resolve(grunt.config('server.base') || '.');
 
     var middleware = [
+      // add the special livereload snippet injection middleware
+      grunt.helper('reload:inject'),
       // Serve static files.
       connect.static(base),
       // Serve the livereload.js script,
@@ -213,5 +216,52 @@ module.exports = function(grunt) {
     });
 
   });
+
+
+  // **inject.io** is a grunt helper returning a valid connect / express middleware.
+  // Its job is to setup a middleware right before the usual static one, and to
+  // bypass the response of `.html` file to render them with additional scripts.
+  grunt.registerHelper('reload:inject', function() {
+
+    return function inject(req, res, next) {
+      // build filepath from req.url and deal with index files for trailing `/`
+      var filepath = req.url.slice(-1) === '/' ? req.url + 'index.html' : req.url;
+
+      // if ext is anything but .html, let it go through usual connect static
+      // middleware.
+      if(path.extname(filepath) !== '.html') return next();
+
+      // setup some basic headers, at this point it's always text/html anyway
+      res.setHeader('Content-Type', connect.static.mime.lookup(filepath));
+
+      // can't use the ideal stream / pipe case, we need to alter the html response
+      // by injecting that little livereload snippet
+      filepath = path.resolve(filepath.replace(/^\//, ''));
+      fs.readFile(filepath, 'utf8', function(e, body) {
+        if(e) {
+          res.writeHead(500);
+          return res.end('Error loading' + req.url + '  -- ' + JSON.stringify(e));
+        }
+
+        body = body.replace(/<\/body>/, function(w) {
+          return [
+            "<!-- yeoman livereload snippet -->",
+            "<script>document.write('<script src=\"http://'",
+            " + (location.host || 'localhost').split(':')[0]",
+            " + ':35729/livereload.js?snipver=1\"><\\/script>')",
+            "</script>",
+            "",
+            w
+          ].join('\n');
+        });
+
+        res.end(body);
+      });
+    };
+
+  });
+
+
+
 
 };
