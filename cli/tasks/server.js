@@ -7,13 +7,6 @@ var path = require('path'),
 
 module.exports = function(grunt) {
 
-  // the msg pattern of the watch task
-  var matcher = /File "([^"]+)" ([a-z]+)/;
-
-  // Latest changed file reference, we'll have to be careful about race
-  // condition issues
-  var changedFile = {};
-
   // Reactor object
   // ==============
 
@@ -38,29 +31,40 @@ module.exports = function(grunt) {
   util.inherits(Reactor, events.EventEmitter);
 
   // send a reload command on all stored web socket connection
-  Reactor.prototype.reload = function reload(changed) {
+  Reactor.prototype.reload = function reload(files) {
     var self = this,
-      sockets = this.sockets;
+      sockets = this.sockets,
+      changed = files.changed;
 
     // go through all sockets, and emit a reload command
-    Object.keys(this.sockets).forEach(function(id) {
+    Object.keys(sockets).forEach(function(id) {
       var ws = sockets[id],
         version = ws.livereloadVersion;
 
-      // support both "refresh" command for 1.6 and 1.7 protocol version
-      var data = version === '1.6' ? ['refresh', {
-        path: changed.filepath,
-        apply_js_live: true,
-        apply_css_live: true
-      }] : {
-        command: 'reload',
-        path: changed.filepath,
-        liveCSS: true,
-        liveJS: true
-      };
-
-      self.send(ws, data);
+      // go throuh all the files that has been marked as changed by grunt
+      // and trigger a reload command on each one, for each connection.
+      changed.forEach(self.reloadFile.bind(self, ws, version));
     });
+  };
+
+  Reactor.prototype.reloadFile = function reloadFile(ws, version, filepath) {
+    // > as full as possible/known, absolute path preferred, file name only is
+    // > OK
+    filepath = path.resolve(filepath);
+
+    // support both "refresh" command for 1.6 and 1.7 protocol version
+    var data = version === '1.6' ? ['refresh', {
+      path: filepath,
+      apply_js_live: true,
+      apply_css_live: true
+    }] : {
+      command: 'reload',
+      path: filepath,
+      liveCSS: true,
+      liveJS: true
+    };
+
+    this.send(ws, data);
   };
 
   Reactor.prototype.start = function start(options) {
@@ -71,7 +75,7 @@ module.exports = function(grunt) {
   Reactor.prototype.connection = function connection(request, socket, head) {
     var ws = new WebSocket(request, socket, head),
       self = this,
-      wsId = this.uid + 1;
+      wsId = this.uid = this.uid + 1;
 
     // store the new connection
     this.sockets[wsId] = ws;
@@ -146,13 +150,11 @@ module.exports = function(grunt) {
   // triggered by a watch handler to emit a reload event on all livereload
   // established connection
   grunt.registerTask('reload', '(internal) livereload interface', function(target) {
-    // defaults the target to css
-    target = target || 'css';
-
     // get the reactor instance
     var reactor = grunt.helper('reload:reactor');
+
     // and send a reload command to all browsers
-    reactor.reload(changedFile);
+    reactor.reload(grunt.file.watchFiles);
   });
 
   // Factory for the reactor object
@@ -212,27 +214,4 @@ module.exports = function(grunt) {
 
   });
 
-  // Hacky part.
-  //
-  // Grunt doesn't easily expose which was file was changed, but it logs the
-  // filepath and the status. The idea here is to monkey-patch grunt's writeln
-  // method to keep track of the latest watched file.
-  //
-  // Yes this is hacky, but kinda works ;) Another option would be to override
-  // the watch task to find a way to expose to other task the changedFiles
-  // object.
-  //
-
-  var _writeln = grunt.log.writeln;
-  grunt.log.writeln = function writeln (msg) {
-    // Check that the msg match the watch task log output
-    if(!matcher.test(msg)) return _writeln.apply(grunt.log, arguments);
-
-    // keep track of the latest changed file
-    var matches = msg.match(matcher);
-    // update the latest changedFile information
-    changedFile.pathname = matches[1];
-    changedFile.filepath = path.resolve(matches[1]);
-    changedFile.status = matches[2];
-  };
 };
