@@ -39,7 +39,7 @@ if(opts.version) {
   console.log('h5bp  v%s', pkg.version);
 }
 
-// `h5bp init` -> `grunt init:h5bp`
+// `yeoman init` -> `grunt init:yeoman`
 if(/^init$/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
