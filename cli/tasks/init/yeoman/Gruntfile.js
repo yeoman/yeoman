@@ -48,6 +48,10 @@ module.exports = function(grunt) {
         command: 'compass compile'
       }
     },
+    // generate application cache manifest
+    manifest:{
+      dest: ''
+    },
     // default watch configuration
     watch: {
       files: '<config:lint.files>',
