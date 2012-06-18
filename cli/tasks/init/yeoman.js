@@ -208,11 +208,18 @@ yeoman.end = function end(init, props, cb) {
 // generating a grunt file based on previous prompts, additional ones and the
 // current state of the root folder
 yeoman.gruntfile = function gruntfile(cb) {
+
+  // XXX might be removed to just use Gruntfile. But we ensure we write the
+  // appropriate Gruntfile depending on grunt's version. From 0.4.x, we need
+  // to generate Gruntfile.js. Using semver here would be better, but a
+  // temporary regexp should be fine.
+  var gruntfile = /^0.4/.test(this.grunt.version) ? 'Gruntfile.js' : 'grunt.js';
+
   fstream.Reader(path.join(this.dir, 'Gruntfile.js'))
     .on('error', cb)
     // destination is now grunt.js. But it'll change to Gruntfile.js whenever
     // we swicth to grunt 0.4.x
-    .pipe(fstream.Writer(path.join(this.dir, 'root/grunt.js')))
+    .pipe(fstream.Writer(path.join(this.dir, 'root', gruntfile)))
     .on('error', cb)
     .on('close', cb);
   return this;
