@@ -40,6 +40,11 @@ module.exports = function(grunt) {
       }
     },
 
+    // generate application cache manifest
+    manifest:{
+      dest: ''
+    },
+
     // Jasmine headless test through PhantomJS
     // > https://github.com/creynders/grunt-jasmine-task
     jasmine: {
@@ -56,7 +61,6 @@ module.exports = function(grunt) {
         files: ['css/sass/**/*.sass', 'css/sass/**/*.scss'],
         tasks: 'shell:compass'
       },
-
       // only used with `yeoman server`
       reload: {
         files: ['css/**/*.css', 'js/**/*.js', 'img/**/*'],

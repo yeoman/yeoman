@@ -2,9 +2,15 @@
 var fs = require('fs'),
   join = require('path').join,
   help = join(__dirname, 'help.txt'),
-  spawn = require('child_process').spawn,
+  mkdirp = require('mkdirp'),
+  pkg = require('../package.json'),
   rl = require('readline'),
-  pkg = require('../package.json');
+  spawn = require('child_process').spawn;
+
+// Returns the user's home directory in a platform agnostic way.
+function getUserHome() {
+  return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+}
 
 // grunt with the plugin registered
 var grunt = require('grunt').npmTasks(join(__dirname, '../'));
@@ -33,24 +39,32 @@ if(opts.version) {
   console.log('h5bp  v%s', pkg.version);
 }
 
-// `h5bp init` -> `grunt init:h5bp`
+// `yeoman init` -> `grunt init:yeoman`
 if(/^init$/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
 
 // a nest command?
-if(/^install|uninstall|update/.test(route)) {
+if(/^install|uninstall|search|update/.test(route)) {
   cli.tasks = 'nest' + ':' + cmds.join(':');
 }
 
-// Record this action in Insight.
-var metricsFolder = join(__dirname, '..', '..', 'metrics/');
-var insightScript = [metricsFolder + 'insight.py', 'record'];
+/* Yeoman Insight =========================================================== */
 
-var insight = spawn('python', insightScript.concat(cmds));
+// Store global state used throughout the project in the user's home dir.
+// e.g. /Users/username/.yeoman
+var YEOMAN_DIR = join(getUserHome(), '.' + pkg.name);
+
+var insightFolder = join(YEOMAN_DIR, 'insight');
+
+// Assume yeomaninsight.py is installed in the user's home dir.
+var insightRecordCmd = [join(insightFolder, 'yeomaninsight.py'), 'record'];
+
+// Record this action in Insight (e.g. python yeomaninsight.py record cmd cmd2).
+var insight = spawn('python', insightRecordCmd.concat(cmds));
 //insight.stdout.pipe(process.stdout);
 
-fs.stat(metricsFolder + '.yeomaninsight', function(err, stats) {
+fs.stat(join(insightFolder, '.log'), function(err, stats) {
   // Error means file doesn't exist and this is the first run.
   // Go through stat opt-in flow.
   if (err) {
@@ -61,16 +75,18 @@ More info: XXX\n\
 ==========================================================================\n\
 [Y/n]: ";
 
+    // TODO: Bug where backspace re-prompts.
     var i = rl.createInterface(process.stdin, process.stdout, null);
     i.question(msg, function(answer) {
       if (!(answer == '' || answer.toUpperCase() == 'Y')) {
-        var insight = spawn('python', insightScript.concat(['NO_STATS']));
+        var insight = spawn('python', insightRecordCmd.concat(['NO_STATS']));
       }
       i.close();
       process.stdin.destroy();
     });
   }
 });
+/* ========================================================================== */
 
 // if the route is empty
 if(/^$/.test(route)) {
