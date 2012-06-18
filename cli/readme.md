@@ -29,11 +29,24 @@ You can run the tests via `npm test` if you like. It will:
 
 # Current components
 
-[grunt]: https://github.com/cowboy/grunt
-[grunt documentation]: https://github.com/cowboy/grunt/blob/master/docs/toc.md
-[grunt plugin]: https://github.com/cowboy/grunt/blob/master/docs/plugins.md
-[Getting Started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md#readme)
-[JSDOM]: https://github.com/tmpvar/jsdom
-[ant-build-script]: https://github.com/h5bp/ant-build-script
-[socket.io]: http://socket.io
-[html-minifier]: https://github.com/kangax/html-minifier
+* Compass
+* Grunt
+* Twitter Bootstrap
+* Html5 Boilerplate
+* Modernizr
+* Node
+* NPM
+* Twitter Nest 
+* socket.io
+* coffeescript
+* mocha
+* jasmine
+* PhantomJS
+* optipng, jpegtran
+* connect
+* html-minifier
+* clean-css
+* node-build-script
+* compass_bootstrap
+
+
