@@ -3,7 +3,7 @@
 ## Installing
 
 ```shell
-    ./install.sh
+    .setup/install.sh
 ```
 
 Oh. That's it.
@@ -46,4 +46,4 @@ Yeoman supports:
 
 ## Docs
 
-The current documentation exists [here](https://github.com/yeoman/yeoman/blob/master/cli/docs/docs.md).
+The current documentation can be found [here](https://yeoman.github.com/docs).
