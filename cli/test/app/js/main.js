@@ -37,3 +37,4 @@ require(['views/app', 'hm!alpha', 'jquery'], function(AppView, alpha){
 
 });
 
+//@sourceURL=main.js
