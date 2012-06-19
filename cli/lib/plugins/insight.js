@@ -1,5 +1,4 @@
-var mkdirp = require('mkdirp'),
-    fs = require('fs'),
+var fs = require('fs'),
     join = require('path').join,
     spawn = require('child_process').spawn,
     rl = require('readline')
