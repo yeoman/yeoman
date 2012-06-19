@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
         function puts(error, stdout, stderr) {
 
-            grunt.log.write('\n\nnest output:\n');
+            // grunt.log.write('\n\nnest output:\n');
             grunt.log.write(stdout);
 
             if (error !== null) {
@@ -25,6 +25,6 @@ module.exports = function(grunt) {
         }
 
         exec(command, puts);
-        grunt.log.write('nest package manager, running `' + this.args.join(' ') + '` now...');
+        // grunt.log.write('nest package manager, running `' + this.args.join(' ') + '` now...');
     });
 };

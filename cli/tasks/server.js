@@ -4,7 +4,8 @@ var fs = require('fs'),
   util = require('util'),
   events = require('events'),
   connect = require('connect'),
-  WebSocket = require('faye-websocket');
+  WebSocket = require('faye-websocket'),
+  open = require('open');
 
 module.exports = function(grunt) {
 
@@ -205,7 +206,9 @@ module.exports = function(grunt) {
       .subhead('Starting static web server on port ' + port + '.')
       .writeln('Hit Ctrl+C to quit.');
 
-    var server = connect.apply(null, middleware).listen(port);
+    var server = connect.apply(null, middleware).listen(port, function() {
+      open('http://localhost:35729');
+    });
 
     // create the reactor object
     grunt.helper('reload:reactor', {

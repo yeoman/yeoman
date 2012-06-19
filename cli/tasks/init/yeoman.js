@@ -6,6 +6,7 @@ var fs = require('fs'),
   remotes = require('./remotes'),
   rimraf = require('rimraf');
 
+
 // top level export
 var yeoman = module.exports;
 
@@ -42,6 +43,9 @@ yeoman.dir = path.join(__dirname, 'yeoman');
 
 // Basic template description.
 yeoman.description = 'Init a new project.';
+
+// Welcome message
+yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n';
 
 // Template-specific notes to be displayed before question prompts.
 yeoman.notes = '... More notes to come here ...';
@@ -93,6 +97,10 @@ yeoman.defaults = {
   plugin: false
 };
 
+// Display welcome message
+// XXX should this exist as it's own helper task?
+console.log(yeoman.welcome);
+
 // **configure** setup the initial set of properties from optionnaly loading
 // default anwsers. They differ from grunt's usual default prompts in the way
 // that they by-pass the prompt instead of setting a default.
@@ -126,6 +134,8 @@ yeoman.configure = function configure(cb) {
   cb();
 };
 
+
+
 // The actual grunt init template.
 yeoman.template = function template(grunt, init, cb) {
   // attach the grunt instance to the template object,
@@ -152,12 +162,15 @@ yeoman.template = function template(grunt, init, cb) {
 
 yeoman.start = function start(init, cb) {
 
+  var grunt = this.grunt;
+
   // cleanup the previous root folder, if any
   rimraf(path.join(yeoman.dir, 'root'), function(err) {
     if(err) return cb(err);
     // prompt for basic project information
     yeoman.prompt(function(err, props) {
       if(err) return cb(err);
+      grunt.log.write("\nGreat! I'll save this configuration to your package.json file!\n\n");
       // Fetch our remotes assets and have them copied / compiled / etc.
       yeoman.remotes(props, function(err) {
         if(err) return cb(err);

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Todos</title>
+  
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8">
+
+  <!-- we're manually including all of our js libs here, but we could also 
+      have require do this -->
+
+      
+  <script src="js/vendor/json2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/vendor/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/vendor/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
+
+
+  
+  <!-- here we tell requirejs to load and then process main.js -->
+  <script src="js/requirejs/require.js" type="text/javascript" data-main="js/main" ></script>
+  
+  <script type="text/x-jquery-tmpl" id="taskTemplate">
+    <div class="item {{if done}}done{{/if}}">
+      <div class="view" title="Double click to edit...">
+        <input type="checkbox" {{if done}}checked="checked"{{/if}}> 
+        <span>${name}</span> <a class="destroy"></a>
+      </div>
+      
+      <div class="edit">
+        <input type="text" value="${name}">
+      </div>
+    </div>
+  </script>
+
+
+</head>
+<body>
+  <div id="views">
+    <div id="tasks">
+      <h1>Todos</h1>
+      
+      <form>
+        <input type="text" placeholder="What needs to be done?">
+      </form>
+      
+      <div class="items"></div>
+      
+      <footer>
+        <a class="clear">Clear completed</a>
+        <div class="count"><span class="countVal"></span> left</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

@@ -36,6 +36,7 @@ class Analytics(object):
     self.do_stats = True
 
     # Create ~/.yeoman/insight if it doesn't exist.
+    # install.sh should have taken care of it though.
     if not os.path.exists(INSIGHT_DIR):
       os.makedirs(INSIGHT_DIR)
 
