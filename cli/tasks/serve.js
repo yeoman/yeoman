@@ -2,7 +2,8 @@
 var fs = require('fs'),
   path = require('path'),
   connect = require('connect'),
-  socketio = require('socket.io');
+  socketio = require('socket.io'),
+  spawn = require('child_process').spawn;
 
 // client-side socket-io script
 var ioScript = fs.readFileSync(path.join(__dirname, '../lib/support/reload.js'), 'utf8');
@@ -25,6 +26,9 @@ module.exports = function(grunt) {
     var reload = config.reload || grunt.option('reload');
     // the helper name to use
     var helper = reload ? 'serve.io' : 'serve';
+
+    // open the browser
+    spawn('open', ['http://localhost:3000']);
 
     // start the webserver(s)
     if(target) return grunt.helper(helper, config[target]);
@@ -52,7 +56,7 @@ module.exports = function(grunt) {
     return app;
   });
 
-  // **serve.io** creates and returns a webserver and setup a socket.io instance and 
+  // **serve.io** creates and returns a webserver and setup a socket.io instance and
   // the "inject" middleware. `/socket.io/socket.io.js` and `/relod.js` are
   // then available.
   grunt.registerHelper('serve.io', function serve(config) {
