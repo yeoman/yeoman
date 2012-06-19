@@ -1,8 +1,7 @@
 var fs = require('fs'),
     join = require('path').join,
     spawn = require('child_process').spawn,
-    rl = require('readline')
-
+    rl = require('readline');
 
 
 module.exports = {
@@ -30,7 +29,7 @@ var msg = "\
 ==========================================================================\n\
 We're constantly looking for ways to make " + opts.pkgname + " better!    \n\
 May we anonymously report usage statistics to improve the tool over time? \n\
-More info: XXX                                                            \n\
+More info: http://yeoman.github.com/docs/                                 \n\
 ==========================================================================\n\
 [Y/n]: ";
 
