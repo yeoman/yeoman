@@ -1,7 +1,8 @@
 var fs = require('fs'),
     join = require('path').join,
     spawn = require('child_process').spawn,
-    rl = require('readline');
+    rl = require('readline'),
+    prompt = require('prompt');
 
 
 module.exports = {
@@ -41,8 +42,10 @@ More info: http://yeoman.github.com/docs/                                 \n\
               }
               i.close();
               process.stdin.destroy();
+              opts.cb();
             });
           }
+          else opts.cb();
         });
 
     }
