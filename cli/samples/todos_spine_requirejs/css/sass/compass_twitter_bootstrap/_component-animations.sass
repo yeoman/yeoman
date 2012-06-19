@@ -1,0 +1,16 @@
+// COMPONENT ANIMATIONS
+// --------------------
+
+.fade
+  +bootstrap-opacity(0)
+  +bootstrap-transition(opacity 0.15s linear)
+  &.in
+    +bootstrap-opacity(100)
+
+.collapse
+  position: relative
+  height: 0
+  overflow: hidden
+  +bootstrap-transition(height 0.35s ease)
+  &.in
+    height: auto

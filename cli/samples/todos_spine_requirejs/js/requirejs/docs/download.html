@@ -1,0 +1,227 @@
+<div id="directory" class="section">
+<h1>Download RequireJS</h1>
+<ul class="index mono">
+    <li class="hbox"><a href="#latest">Latest Release</a><span class="spacer boxFlex"></span><span class="sect">&sect; 1</span></li>
+    <ul>
+        <li class="hbox"><a href="#requirejs">require.js</a><span class="spacer boxFlex"></span><span class="sect">&sect; 1.1</span></li>
+        <li class="hbox"><a href="#samplejquery">Sample RequireJS + jQuery 1.7 project</a><span class="spacer boxFlex"></span><span class="sect">&sect; 1.2</span></li>
+        <li class="hbox"><a href="#rjs">r.js: Optimizer and Node and Rhino adapter</a><span class="spacer boxFlex"></span><span class="sect">&sect; 1.3</span></li>
+    </ul>
+    <li class="hbox"><a href="#plugins">Plugins</a><span class="spacer boxFlex"></span><span class="sect">&sect; 2</span></li>
+    <ul>
+        <li class="hbox"><a href="#text">text</a><span class="spacer boxFlex"></span><span class="sect">&sect; 2.1</span></li>
+        <li class="hbox"><a href="#domReady">domReady</a><span class="spacer boxFlex"></span><span class="sect">&sect; 2.2</span></li>
+        <li class="hbox"><a href="#cs">cs (CoffeeScript)</a><span class="spacer boxFlex"></span><span class="sect">&sect; 2.3</span></li>
+        <li class="hbox"><a href="#i18n">i18n</a><span class="spacer boxFlex"></span><span class="sect">&sect; 2.4</span></li>
+    </ul>
+    <li class="hbox"><a href="#releasenotes">Release Notes</a><span class="spacer boxFlex"></span><span class="sect">&sect; 3</span></li>
+</ul>
+
+</div>
+
+<div class="section">
+<h2><a name="latest">Latest Release</a><span class="sectionMark">&sect; 1</span></h2>
+
+<span class="note">Just released: <a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.0">RequireJS 2.0</a>.
+If you want 1.0: <a href="1.0/">Link to 1.0</a>.</span>
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="requirejs">require.js 2.0.2</a>
+<span class="boxFlex"></span>
+<a class="download" href="http://requirejs.org/docs/release/2.0.2/minified/require.js">Minified</a>
+<a class="download" href="http://requirejs.org/docs/release/2.0.2/comments/require.js">With Comments</a>
+</h4>
+
+<p>All you need to start using require.js in the browser.</p>
+</div>
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="samplejquery">Sample RequireJS 2.0.2 + jQuery 1.7.2 project</a>
+<span class="boxFlex"></span>
+<a class="download" href="http://requirejs.org/docs/release/jquery-require/jquery1.7.2-requirejs2.0.2/jquery-require-sample.zip">Download</a>
+</h4>
+
+<p>A zip file containing a sample project that uses jQuery and RequireJS.</p>
+</div>
+
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="rjs">r.js: Optimizer and Node and Rhino adapter</a>
+<span class="boxFlex"></span>
+<a class="download" href="http://requirejs.org/docs/release/2.0.2/r.js">Download</a>
+</h4>
+
+<p>The r.js file allows you to run the optimizer as well as run modules in Node or Rhino.</p>
+
+<p>If you are running in Node, and want to use npm to install this file via npm, see the <a href="node.html">Use with Node</a> page for more information.</p>
+
+<p>For information on its use, as well as how to get the JAR files to run it under Rhino, see the <a href="https://github.com/jrburke/r.js">r.js README</a>.</p>
+
+</div>
+
+<div class="section">
+<h2><a name="plugins">Plugins</a><span class="sectionMark">&sect; 2</span></h2>
+
+<p>These are useful loader plugins that have the same license terms as require.js itself. Download the plugin file and place it as a sibling to your "data-main" main.js script.</p>
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="text">text</a>
+<span class="boxFlex"></span>
+<a class="download" href="https://raw.github.com/requirejs/text/latest/text.js">Download</a>
+</h4>
+<p><a href="api.html#text">Load text files and treat them as dependencies</a>. Great for loading templates. The text strings can be inlined in an optimized build when the optimizer is used.</p>
+</div>
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="domReady">domReady</a>
+<span class="boxFlex"></span>
+<a class="download" href="https://raw.github.com/requirejs/domReady/latest/domReady.js">Download</a>
+</h4>
+<p><a href="api.html#pageload">Wait for the DOM is ready</a>. Useful for pausing execution of top level application
+logic until the DOM is ready for querying/modification.</p>
+</div>
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="cs">cs (CoffeeScript)</a>
+<span class="boxFlex"></span>
+<a class="download" href="https://github.com/jrburke/require-cs/raw/latest/cs.js">Download</a>
+</h4>
+<p>Load files written in CoffeeScript. Includes a version of CoffeeScript, only this one file is needed. With this plugin, it is easy to code in CoffeeScript in the browser, it can participate in the optimizer optimizations, and it works in Node and Rhino via the <a href="#rjs">RequireJS adapter</a>. This is the best way to do cross-environment, modular CoffeeScript. <a href="https://github.com/jrburke/require-cs">The project home</a> has more information on how to use it.</p>
+</div>
+
+
+<div class="subSection">
+<h4 class="hbox">
+<a name="i18n">i18n</a>
+<span class="boxFlex"></span>
+<a class="download" href="https://raw.github.com/requirejs/i18n/latest/i18n.js">Download</a>
+</h4>
+<p><a href="api.html#i18n">Load string bundles</a> used in internationalization (i18n) that are made up of separate country/language/locale-specific bundles.</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2><a name="releasenotes">Release Notes</a><span class="sectionMark">&sect; 3</span></h2>
+
+<h3 id="2-0-2">2.0.2</h3>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=16&sort=created&direction=desc&state=closed">Fixed require.js issues</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=14">Fixed r.js optimizer issues</a></li>
+</ul>
+
+<h3 id="2-0-1">2.0.1</h3>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=15&sort=created&direction=desc&state=closed">Fixed require.js issues</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=13">Fixed r.js optimizer issues</a></li>
+</ul>
+
+
+<h3 id="2-0-0">2.0.0</h3>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/wiki/Upgrading-to-RequireJS-2.0">2.0 changes</a></li>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=13&sort=created&direction=desc&state=closed">Fixed require.js issues</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=10">Fixed r.js optimizer issues</a></li>
+</ul>
+
+
+<h3 id="1-0-8">1.0.8</h3>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=12&sort=created&direction=desc&state=closed">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=9">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-7">1.0.7</h3>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=11&sort=created&direction=desc&state=closed">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=8">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-6">1.0.6</h3>
+
+<p>Main purpose of the release is to fix a regression in 1.0.5 where the
+optimizer's "dir" config option was not applied correctly when passed on the
+command line.</p>
+
+<p>The other notable change: the optimizer now supports
+<a href="https://github.com/jrburke/r.js/blob/master/build/example.build.js#L320">onBuildRead
+and onBuildWrite</a> functions that are called when JS modules are read or written
+for an optimized build layer. This allows doing some regexp work to modify their
+contents.</p>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=10&sort=created&direction=desc&state=closed">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=7">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-5">1.0.5</h3>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=8&sort=created&direction=desc&state=closed">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=6">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-4">1.0.4</h3>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=7&sort=created&direction=desc&state=closed">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?milestone=5&sort=created&direction=desc&state=closed">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-3">1.0.3</h3>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?sort=created&direction=desc&state=closed&page=1&milestone=6">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=4">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-2">1.0.2</h3>
+
+<p>Small bug fixes to:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?sort=created&direction=desc&state=closed&page=1&milestone=5">require.js</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?sort=created&direction=desc&state=closed&page=1&milestone=3">r.js optimizer</a></li>
+</ul>
+
+<h3 id="1-0-1">1.0.1</h3>
+
+<p>Just small bug fixes related to:</p>
+
+<ul>
+    <li>allowing full URLs for simplified CommonJS wrapped modules</li>
+    <li>AST parsing of dependencies for modules that use a variable for the factory function</li>
+    <li>catching more cases that should have the "namespace" optimizer option applied</li>
+</ul>
+
+<p>Detailed list of changes for require.js and the r.js optimizer:</p>
+
+<ul>
+    <li><a href="https://github.com/jrburke/requirejs/issues?milestone=4&state=closed">require.js 1.0.1 changes</a></li>
+    <li><a href="https://github.com/jrburke/r.js/issues?milestone=2&state=closed">r.js 1.0.1 changes</a></li>
+</ul>
+
+</div>

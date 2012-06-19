@@ -1,0 +1,22 @@
+{
+  "name": "spineapp",
+  "description": "A Yeoman test app",
+  "version": "0.1.0",
+  "homepage": "https://github.com/addyo/spineapp",
+  "author": {
+    "name": "addyosmani",
+    "url": "http://yeoman.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/addyo/spineapp.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/addyo/spineapp/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {},
+  "keywords": []
+}
