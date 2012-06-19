@@ -256,6 +256,7 @@ td { vertical-align: top; }
 
 #tasks input[type="text"] {
   width: 466px;
+  height:30px;
   font-size: 24px;
   font-family: inherit;
   line-height: 1.4em;
