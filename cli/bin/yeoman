@@ -2,10 +2,8 @@
 var fs = require('fs'),
   join = require('path').join,
   help = join(__dirname, 'help.txt'),
-  mkdirp = require('mkdirp'),
-  pkg = require('../package.json'),
-  rl = require('readline'),
-  spawn = require('child_process').spawn;
+  insight = require('../lib/plugins/insight.js'),
+  pkg = require('../package.json');
 
 // Returns the user's home directory in a platform agnostic way.
 function getUserHome() {
@@ -50,43 +48,12 @@ if(/^install|uninstall|search|update/.test(route)) {
 }
 
 /* Yeoman Insight =========================================================== */
+insight.init({
+  pkgname : pkg.name,
+  getUserHome : getUserHome,
+  cmds : cmds
+})
 
-// Store global state used throughout the project in the user's home dir.
-// e.g. /Users/username/.yeoman
-var YEOMAN_DIR = join(getUserHome(), '.' + pkg.name);
-
-var insightFolder = join(YEOMAN_DIR, 'insight');
-
-// Assume yeomaninsight.py is installed in the user's home dir.
-var insightRecordCmd = [join(insightFolder, 'yeomaninsight.py'), 'record'];
-
-// Record this action in Insight (e.g. python yeomaninsight.py record cmd cmd2).
-var insight = spawn('python', insightRecordCmd.concat(cmds));
-//insight.stdout.pipe(process.stdout);
-
-fs.stat(join(insightFolder, '.log'), function(err, stats) {
-  // Error means file doesn't exist and this is the first run.
-  // Go through stat opt-in flow.
-  if (err) {
-    var msg = "==========================================================================\n\
-We're constantly looking for ways to make " + pkg.name + " better!\n\
-May we anonymously report usage statistics to improve the tool over time?\n\
-More info: XXX\n\
-==========================================================================\n\
-[Y/n]: ";
-
-    // TODO: Bug where backspace re-prompts.
-    var i = rl.createInterface(process.stdin, process.stdout, null);
-    i.question(msg, function(answer) {
-      if (!(answer == '' || answer.toUpperCase() == 'Y')) {
-        var insight = spawn('python', insightRecordCmd.concat(['NO_STATS']));
-      }
-      i.close();
-      process.stdin.destroy();
-    });
-  }
-});
-/* ========================================================================== */
 
 // if the route is empty
 if(/^$/.test(route)) {
