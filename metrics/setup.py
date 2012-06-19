@@ -13,5 +13,5 @@ setup(name='Yeoman Insight',
       author='Eric Bidelman',
       author_email='ebidel@gmail.com',
       url='http://yeoman.io',
-      scripts=['../metrics/yeomaninsight.py']
+      scripts=['./yeomaninsight.py']
      )
