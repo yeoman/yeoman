@@ -24,29 +24,42 @@ module.exports = {
         fs.stat(join(insightFolder, '.log'), function(err, stats) {
           // Error means file doesn't exist and this is the first run.
           // Go through stat opt-in flow.
-          if (err) {
+          if (!err) return opts.cb();
 
 var msg = "\
 ==========================================================================\n\
 We're constantly looking for ways to make " + opts.pkgname + " better!    \n\
 May we anonymously report usage statistics to improve the tool over time? \n\
 More info: http://yeoman.github.com/docs/                                 \n\
-==========================================================================\n\
-[Y/n]: ";
+==========================================================================";
 
-            // TODO: Bug where backspace re-prompts.
-            var i = rl.createInterface(process.stdin, process.stdout, null);
-            i.question(msg, function(answer) {
-              if (!(answer == '' || answer.toUpperCase() == 'Y')) {
-                var insight = spawn('python', insightRecordCmd.concat(['NO_STATS']));
+
+          prompt.message = '[' + '?'.green + ']';
+          prompt.delimiter = ' ';
+
+          var schema = {
+            properties: {
+              optin: {
+                description: "[Y/n]: ",
+                "default"  : 'Y',
+                pattern    : /^[yntf]{1}/i,
+                required   : true
               }
-              i.close();
-              process.stdin.destroy();
-              opts.cb();
-            });
-          }
-          else opts.cb();
-        });
+            }
+          };
 
+          prompt.start();
+          console.log(msg);
+          prompt.get(schema, function(err, result) {
+            if (err) { return opts.cb(err); }
+
+            if (/n/i.test(result.optin)) {
+              var insight = spawn('python', insightRecordCmd.concat(['NO_STATS']));
+            }
+            opts.cb();
+          });
+
+
+        });
     }
 };
