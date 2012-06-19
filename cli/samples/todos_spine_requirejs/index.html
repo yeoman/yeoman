@@ -3,21 +3,14 @@
 <head>
   <title>Todos</title>
   
+
+  <!-- hack: compass looks like it isnt compiling, using static for now-->
+  <link rel="stylesheet" href="css/static/bootstrap.min.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8">
 
-  <!-- we're manually including all of our js libs here, but we could also 
-      have require do this -->
-
-      
-  <script src="js/vendor/json2.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/vendor/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="js/vendor/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
-
-
+  <script src="js/vendor/require.js" type="text/javascript" data-main="js/main" ></script>
   
-  <!-- here we tell requirejs to load and then process main.js -->
-  <script src="js/requirejs/require.js" type="text/javascript" data-main="js/main" ></script>
-  
+  <!-- switch to underscore templating, handlebars or something else soon -->
   <script type="text/x-jquery-tmpl" id="taskTemplate">
     <div class="item {{if done}}done{{/if}}">
       <div class="view" title="Double click to edit...">
@@ -31,18 +24,21 @@
     </div>
   </script>
 
-
 </head>
 <body>
   <div id="views">
     <div id="tasks">
-      <h1>Todos</h1>
+      <h1>Yeoman Todos</h1>
       
       <form>
         <input type="text" placeholder="What needs to be done?">
       </form>
       
       <div class="items"></div>
+
+      <div class="alert alert-info">
+          <small><strong>Welcome!</strong> Create a todo or double-click to edit an existing one</small>
+      </div>
       
       <footer>
         <a class="clear">Clear completed</a>
