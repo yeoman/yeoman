@@ -162,12 +162,15 @@ yeoman.template = function template(grunt, init, cb) {
 
 yeoman.start = function start(init, cb) {
 
+  var grunt = this.grunt;
+
   // cleanup the previous root folder, if any
   rimraf(path.join(yeoman.dir, 'root'), function(err) {
     if(err) return cb(err);
     // prompt for basic project information
     yeoman.prompt(function(err, props) {
       if(err) return cb(err);
+      grunt.log.write("\nGreat! I'll save this configuration to your package.json file!\n\n");
       // Fetch our remotes assets and have them copied / compiled / etc.
       yeoman.remotes(props, function(err) {
         if(err) return cb(err);
