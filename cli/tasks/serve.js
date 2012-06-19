@@ -3,7 +3,7 @@ var fs = require('fs'),
   path = require('path'),
   connect = require('connect'),
   socketio = require('socket.io'),
-  spawn = require('child_process').spawn;
+  open = require('open');
 
 // client-side socket-io script
 var ioScript = fs.readFileSync(path.join(__dirname, '../lib/support/reload.js'), 'utf8');
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     var helper = reload ? 'serve.io' : 'serve';
 
     // open the browser
-    spawn('open', ['http://localhost:3000']);
+    open('http://localhost:3000');
 
     // start the webserver(s)
     if(target) return grunt.helper(helper, config[target]);
