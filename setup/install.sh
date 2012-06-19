@@ -200,7 +200,7 @@ echo "Yah Hoo! Yeoman global is in place, now for some housekeeping.."
 echo ""
 cd ../metrics
 # TODO: creating a path like this probably doesn't work on Windows.
-python setup.py install --install-scripts=~/.yeoman/insight
+python setup.py install --quiet --force --user --install-scripts=~/.yeoman/insight
 
 echo "Alright now, that bit is done now, too."
 echo ""
