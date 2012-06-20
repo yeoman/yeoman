@@ -1,7 +1,6 @@
 var fs = require('fs'),
     join = require('path').join,
     spawn = require('child_process').spawn,
-    rl = require('readline'),
     prompt = require('prompt');
 
 
