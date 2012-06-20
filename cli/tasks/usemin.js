@@ -21,7 +21,7 @@ var fs = require('fs'),
 
 module.exports = function(grunt) {
 
-  var linefeed = grunt.utils.linefeed;
+  var linefeed = grunt.util.linefeed;
 
   grunt.registerMultiTask('usemin', 'Replaces references to non-minified scripts / stylesheets', function() {
 

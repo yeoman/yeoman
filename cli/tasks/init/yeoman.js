@@ -129,7 +129,7 @@ yeoman.configure = function configure(cb) {
 
   // if it is a valid template then, setup `yeoman.defaults` hash object to
   // by-pass relevant options.
-  this.defaults = grunt.utils._.defaults(grunt.file.readJSON(files[0]), this.defaults);
+  this.defaults = grunt.util._.defaults(grunt.file.readJSON(files[0]), this.defaults);
 
   cb();
 };
@@ -197,7 +197,7 @@ yeoman.end = function end(init, props, cb) {
   var files = init.filesToCopy(props);
 
   // add the Jasmine runner and basic environment
-  grunt.utils._.extend(files, this.jasmineFilesToCopy(init, props), {
+  grunt.util._.extend(files, this.jasmineFilesToCopy(init, props), {
   	// Extra files to copy
     'config.rb': 'init/yeoman/config.rb'
   });
@@ -268,7 +268,7 @@ yeoman.prompt = function prompt(cb) {
   grunt.helper('prompt', prompts, function(err, props) {
     if(err) return cb(err);
     // while merging in back any defaults we might have skipped
-    cb(null, grunt.utils._.defaults(props, defaults));
+    cb(null, grunt.util._.defaults(props, defaults));
   });
 };
 

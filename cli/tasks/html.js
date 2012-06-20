@@ -90,7 +90,7 @@ module.exports = function(grunt) {
     // merge default options for predefined type with the grunt's config
     // one.
     var defaults = options.compress;
-    grunt.utils._.defaults(options[type], defaults);
+    grunt.util._.defaults(options[type], defaults);
 
     grunt.log.write('>> ' + type + '...').subhead('Options:');
     grunt.helper('inspect', options[type]);
@@ -121,7 +121,7 @@ module.exports = function(grunt) {
     opts = opts || {};
 
     // > http://perfectionkills.com/experimenting-with-html-minifier/#options
-    grunt.utils._.defaults(opts, grunt.config('html.options'), {
+    grunt.util._.defaults(opts, grunt.config('html.options'), {
       removeComments: true,
       removeCommentsFromCDATA: true,
       removeEmptyAttributes: true,
