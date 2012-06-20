@@ -6,10 +6,10 @@ var yeoman = module.exports;
 yeoman.plugins = require('./lib/plugins');
 
 //
-// custom package utilities, works in tandem with `grunt.utils`.
+// custom package utilities, works in tandem with `grunt.util`.
 //
 // Utils is there to package and provide a
 //
-// Will be merged into grunt.utils for further usage in tasks and helpers
+// Will be merged into grunt.util for further usage in tasks and helpers
 //
 yeoman.utils = require('./lib/utils');

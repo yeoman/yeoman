@@ -71,9 +71,9 @@ module.exports = function(grunt) {
     var msg = Object.keys(valid).map(function(key) {
       if(/pre|post/.test(key)) return '';
       return grunt.helper('pad', key, 10) + '# '+ valid[key];
-    }).join(grunt.utils.linefeed);
+    }).join(grunt.util.linefeed);
 
-    var err = new Error(grunt.utils.linefeed + msg);
+    var err = new Error(grunt.util.linefeed + msg);
     err.code = code || 3;
     return err;
   });
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
 
   // Output some info on given object, using util.inspect
   grunt.registerHelper('inspect', function(o) {
-    var lf = grunt.utils.linefeed;
+    var lf = grunt.util.linefeed;
     var output = (lf + util.inspect(o, false, 4, true) + lf).split(lf).map(function(line) {
       return line;
     });

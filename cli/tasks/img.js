@@ -67,7 +67,7 @@ module.exports = function(grunt) {
       args = args.concat(files);
       if(!files.length) return cb();
       grunt.log.writeln('Running optipng... ' + grunt.log.wordlist(files));
-      var optipng = grunt.utils.spawn({
+      var optipng = grunt.util.spawn({
         cmd: cmdpath,
         args: args
       }, function() {});
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
       (function run(file) {
         if(!file) return cb();
         grunt.log.subhead('** Processing: ' + file);
-        var jpegtran = grunt.utils.spawn({
+        var jpegtran = grunt.util.spawn({
           cmd: cmdpath,
           args: opts.args.concat(file)
         }, function() {});

@@ -61,7 +61,7 @@ module.exports = function(grunt) {
     // appears, merge the paths configuration (and other options that might
     // appear here) into the original options object.
     sandbox.require.config = function config(o) {
-      grunt.utils._.extend(options, o);
+      grunt.util._.extend(options, o);
     };
 
     // define noop
