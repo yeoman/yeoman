@@ -2,10 +2,9 @@
 var fs = require('fs'),
   join = require('path').join,
   help = join(__dirname, 'help.txt'),
-  mkdirp = require('mkdirp'),
-  pkg = require('../package.json'),
-  rl = require('readline'),
-  spawn = require('child_process').spawn;
+  insight = require('../lib/plugins/insight.js'),
+  async = require('async'),
+  pkg = require('../package.json');
 
 // Returns the user's home directory in a platform agnostic way.
 function getUserHome() {
@@ -50,53 +49,35 @@ if(/^install|uninstall|search|list|lookup|update/.test(route)) {
 }
 
 /* Yeoman Insight =========================================================== */
+async.series([function(cb){
 
-// Store global state used throughout the project in the user's home dir.
-// e.g. /Users/username/.yeoman
-var YEOMAN_DIR = join(getUserHome(), '.' + pkg.name);
 
-var insightFolder = join(YEOMAN_DIR, 'insight');
+  insight.init({
+    pkgname    : pkg.name,
+    getUserHome: getUserHome,
+    cmds       : cmds,
+    cb         : cb
+  });
 
-// Assume yeomaninsight.py is installed in the user's home dir.
-var insightRecordCmd = [join(insightFolder, 'yeomaninsight.py'), 'record'];
 
-// Record this action in Insight (e.g. python yeomaninsight.py record cmd cmd2).
-var insight = spawn('python', insightRecordCmd.concat(cmds));
-//insight.stdout.pipe(process.stdout);
+},function(cb){
 
-fs.stat(join(insightFolder, '.log'), function(err, stats) {
-  // Error means file doesn't exist and this is the first run.
-  // Go through stat opt-in flow.
-  if (err) {
-    var msg = "==========================================================================\n\
-We're constantly looking for ways to make " + pkg.name + " better!\n\
-May we anonymously report usage statistics to improve the tool over time?\n\
-More info: XXX\n\
-==========================================================================\n\
-[Y/n]: ";
+  // if the route is empty
+  if(/^$/.test(route)) {
+    // this is specific to an empty route code
+    console.log(pkg.name + ' v%s', pkg.version);
 
-    // TODO: Bug where backspace re-prompts.
-    var i = rl.createInterface(process.stdin, process.stdout, null);
-    i.question(msg, function(answer) {
-      if (!(answer == '' || answer.toUpperCase() == 'Y')) {
-        var insight = spawn('python', insightRecordCmd.concat(['NO_STATS']));
-      }
-      i.close();
-      process.stdin.destroy();
-    });
+    // we return early to prevent grunt from actually running
+    // and instead just output help.txt
+    cb();
+    return fs.createReadStream(help).pipe(process.stdout);
   }
-});
-/* ========================================================================== */
 
-// if the route is empty
-if(/^$/.test(route)) {
-  // this is specific to an empty route code
-  console.log(pkg.name + ' v%s', pkg.version);
+  // the grunt cli
+  grunt.cli();
 
-  // we return early to prevent grunt from actually running
-  // and instead just output help.txt
-  return fs.createReadStream(help).pipe(process.stdout);
-}
+  cb();
 
-// the grunt cli
-grunt.cli();
+}]);
+
+
