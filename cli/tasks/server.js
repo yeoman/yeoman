@@ -174,12 +174,12 @@ module.exports = function(grunt) {
   // called. The task is designed to work alongside the `watch` task.
   grunt.registerTask('yeoman-server', 'Launch a preview, LiveReload compatible server', function() {
     // Get values from config, or use defaults.
-    var port = grunt.config('server.port') || 35729,
+    var port = grunt.config('server.port') || 0xDAD,
       base = path.resolve(grunt.config('server.base') || '.');
 
     var middleware = [
       // add the special livereload snippet injection middleware
-      grunt.helper('reload:inject'),
+      grunt.helper('reload:inject', port),
       // Serve static files.
       connect.static(base),
       // Serve the livereload.js script,
@@ -207,7 +207,7 @@ module.exports = function(grunt) {
       .writeln('Hit Ctrl+C to quit.');
 
     var server = connect.apply(null, middleware).listen(port, function() {
-      open('http://localhost:35729');
+      open('http://localhost:' + port);
     });
 
     // create the reactor object
@@ -224,7 +224,7 @@ module.exports = function(grunt) {
   // **inject.io** is a grunt helper returning a valid connect / express middleware.
   // Its job is to setup a middleware right before the usual static one, and to
   // bypass the response of `.html` file to render them with additional scripts.
-  grunt.registerHelper('reload:inject', function() {
+  grunt.registerHelper('reload:inject', function(port) {
 
     return function inject(req, res, next) {
       // build filepath from req.url and deal with index files for trailing `/`
@@ -251,7 +251,7 @@ module.exports = function(grunt) {
             "<!-- yeoman livereload snippet -->",
             "<script>document.write('<script src=\"http://'",
             " + (location.host || 'localhost').split(':')[0]",
-            " + ':35729/livereload.js?snipver=1\"><\\/script>')",
+            " + ':" + port + "/livereload.js?snipver=1\"><\\/script>')",
             "</script>",
             "",
             w
