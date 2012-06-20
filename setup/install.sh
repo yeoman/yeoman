@@ -176,10 +176,9 @@ echo "Phew. That was hard work!"
 echo "Now we've got those dependencies out of the way, let's grab Yeoman's latest!"
 
 
-
 # grab our latest and unpack the tarball
-tarball="yeoman-yeoman-ac4376214a4241e16bc7899aa8d361b5cd68ffc0"
-curl http://paulirish.com/i/"$tarball".tar.tar.gz | "$tar" -xzf -
+tarball="yeoman-yeoman-1b68f68a73424f7b7d618a18b897748b365c8ad1"
+curl https://dl.dropbox.com/u/39519/"$tarball".tar.gz | "$tar" -xzf -
 cd "$tarball"
 
 cd cli
