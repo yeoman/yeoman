@@ -202,6 +202,8 @@ yeoman.end = function end(init, props, cb) {
     'config.rb': 'init/yeoman/config.rb'
   });
 
+  files = yeoman.simplifyFileTree(files);
+
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
 
@@ -337,4 +339,28 @@ yeoman.jasmineFilesToCopy = function jasmineFilesToCopy(init, props) {
   });
 
   return files;
+};
+
+
+// We use this a chance to blacklist files or remap any particular paths
+yeoman.simplifyFileTree = function(files){
+  var newFiles = {};
+  for (var file in files){
+
+    // file blacklist
+    if (  file.match(/^apple-touch-icon/) ||
+          file.match(/^\.gitattributes/)  ||
+          file.match(/^crossdomain\.xml/) ||
+          file.match(/^humans\.txt/)      ||
+          file.match(/^readme\.md/)       ||
+          file.match(/^404\.html/)        ||
+          file.match(/^robots\.txt/)      ||
+
+          file.match(/^js\/vendor\/README\.md/)   ||
+          file.match(/^js\/vendor\/tests/)
+        ){ continue; }
+
+    newFiles[file] = files[file];
+  }
+  return newFiles;
 };
