@@ -21,6 +21,10 @@ function requirehm(opts) {
 
   this.version = opts.version || '12dd2cc037b1cda98b1ac34e2ae6e31686de1acb';
 
+  this.files = {};
+  this.files.path = 'js/vendor';
+  this.files.js = ['hm.js'];
+
   this.priority = 5;
 
   Repo.apply(this, arguments);
@@ -34,7 +38,7 @@ requirehm.prototype.copy = function copy(cb) {
   fstream.Reader(path.join(this.cache, 'dist'))
     .on('error', cb)
     .pipe(fstream.Writer({
-      path: path.join(__dirname, '../yeoman/root/js/require-hm'),
+      path: path.join(__dirname, '../yeoman/root/js/vendor'),
       type: 'Directory'
     }))
     .on('error', cb)
