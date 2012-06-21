@@ -31,11 +31,13 @@ util.inherits(requirejs, Repo);
 requirejs.prototype.copy = function copy(cb) {
   // XXX provide a glob based API to copy specific files from the cached
   // folder to the root one
-  fstream.Reader(path.join(this.cache, ''))
+  var filename = 'require.js';
+
+  fstream.Reader(path.join(this.cache, filename))
     .on('error', cb)
     .pipe(fstream.Writer({
-      path: path.join(__dirname, '../yeoman/root/js/requirejs'),
-      type: 'Directory'
+      path: path.join(__dirname, '../yeoman/root/js/vendor', filename),
+      type: 'File'
     }))
     .on('error', cb)
     .on('close', cb)
