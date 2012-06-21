@@ -36,6 +36,9 @@ module.exports = function(grunt) {
     // text - same as build but without image (png/jpg) optimizing
     text: 'coffee concat css min rev usemin manifest',
 
+    // require - same as build but uses r.js for requirejs modules
+    rjs: 'coffee shell:compass css img rjs manifest',
+
     // buildkit - minor html optimizations, all html whitespace/comments
     // maintained
     // (todo: inline script/style minified)

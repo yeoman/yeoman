@@ -158,10 +158,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // specifying UglifyJS options:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options
-    uglify: {}{% if (require_js) { %},
-    // rjs configuration: http://requirejs.org/docs/optimization.html#options
     rjs: {
       modules: [{
         name: 'main',
@@ -175,15 +171,14 @@ module.exports = function(grunt) {
       skipModuleInsertion: false,
       optimizeAllPluginResources: true,
       findNestedDependencies: true
-    }{% } %}
+    },
+
+    // specifying UglifyJS options:
+    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options
+    uglify: {}
   });
-  {% if (require_js) { %}
-  // in rjs setup, the concat and min task are overridden to use rjs optimizer
-  grunt.renameTask('concat', '_concat').registerTask('concat', 'rjs (noop)', function() {
-    grunt.log.writeln('the concat in rjs setup is a noop, rjs optimizer somewhat replace js concatenation');
-  });
-  grunt.renameTask('min', '_min').registerTask('min', 'rjs');
-  {% } %}
+
+
   {% if (plugin) { %}
   grunt.loadNpmTasks('{%= plugin %}');
   {% } %}
