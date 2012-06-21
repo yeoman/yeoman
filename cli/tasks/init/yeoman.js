@@ -194,13 +194,6 @@ yeoman.start = function start(init, cb) {
 yeoman.end = function end(init, props, cb) {
   var grunt = this.grunt;
 
-
-  // Wire up the dependencies
-  // Wire
-  //yeoman.wireFiles(props, function(err) {});
-
-  //
-
   // Files to copy (and process).
   var files = init.filesToCopy(props);
 
@@ -224,7 +217,6 @@ yeoman.end = function end(init, props, cb) {
 
   // Wire up written dependencies to index
   yeoman.wireFiles(props, function(err) {});
-
 
   // All done!
   cb();
