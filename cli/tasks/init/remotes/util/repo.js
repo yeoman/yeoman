@@ -39,8 +39,6 @@ Repo.prototype.init = function init(cb) {
     self.copy(cb);
   });
 
-
-
   // node-prompt info
   var prompts = [{
     name: 'include',
@@ -48,12 +46,6 @@ Repo.prototype.init = function init(cb) {
     default: 'Y/n',
     warning: 'Be warned!'
   }];
-
-  // File wires present
-  //if(this.files){
-    //console.log(this.files.js, this.files.css, this.files.path);
-  //}
-  
 
 
   this.grunt.helper('prompt', {}, prompts, function(err, props) {
