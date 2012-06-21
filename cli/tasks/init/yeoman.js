@@ -99,7 +99,7 @@ yeoman.defaults = {
 
 // Display welcome message
 // XXX should this exist as it's own helper task?
-grunt.log.write(yeoman.welcome);
+console.log(yeoman.welcome);
 
 // **configure** setup the initial set of properties from optionnaly loading
 // default anwsers. They differ from grunt's usual default prompts in the way
