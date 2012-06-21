@@ -34,7 +34,7 @@ Bootstrap.prototype.copy = function copy(cb) {
   fstream.Reader(path.join(this.cache, 'js'))
     .on('error', cb)
     .pipe(fstream.Writer({
-        path: path.join(__dirname, '../yeoman/root/js/vendor'), type: 'Directory'
+        path: path.join(__dirname, '../yeoman/root/js/vendor/bootstrap'), type: 'Directory'
     }))
     .on('error', cb)
     .on('close', cb)
