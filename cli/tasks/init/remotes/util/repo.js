@@ -90,7 +90,9 @@ Repo.prototype.copy = function copy(cb) {
   // a folder into another, ala fstream-ignore or fstream-npm
   fstream.Reader(this.cache)
     .on('error', cb)
-    .pipe(fstream.Writer({ path: path.join(__dirname, '../../yeoman/root'), type: 'Directory' }))
+    .pipe(fstream.Writer({
+        path: path.join(__dirname, '../../yeoman/root'),
+        type: 'Directory' }))
     .on('error', cb)
     .on('close', cb)
     .on('close', this.emit.bind(this, 'copy'));
