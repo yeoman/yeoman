@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 var fs = require('fs'),
-  join = require('path').join,
-  help = join(__dirname, 'help.txt'),
-  insight = require('../lib/plugins/insight.js'),
-  async = require('async'),
-  pkg = require('../package.json');
+    join = require('path').join,
+    help = join(__dirname, 'help.txt'),
+    insight = require('../lib/plugins/insight.js'),
+    async = require('async'),
+    pkg = require('../package.json');
 
 // Returns the user's home directory in a platform agnostic way.
 function getUserHome() {
@@ -24,8 +24,8 @@ var cli =  require('grunt/lib/grunt/cli');
 
 // command line options and remaining args
 var opts = cli.options,
-  cmds = cli.tasks,
-  route = cmds.join(' ').trim('');
+    cmds = cli.tasks,
+    route = cmds.join(' ').trim('');
 
 // custom help, on `h5bp help`
 if(/^help/.test(route)) {
@@ -34,9 +34,7 @@ if(/^help/.test(route)) {
 }
 
 // add the plugin version on `--version`
-if(opts.version) {
-  console.log('h5bp  v%s', pkg.version);
-}
+// handled by route-less path at bottom
 
 // `yeoman init` -> `grunt init:yeoman`
 if(/^init$/.test(route)) {
