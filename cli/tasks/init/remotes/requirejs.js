@@ -21,6 +21,10 @@ function requirejs(opts) {
 
   this.version = opts.version || '819774388d0143f2dcc7b178a364e875aea6e45a';
 
+  this.files = {};
+  this.files.path = 'js/vendor';
+  this.files.js = ['require.js'];
+
   this.priority = 4;
 
   Repo.apply(this, arguments);

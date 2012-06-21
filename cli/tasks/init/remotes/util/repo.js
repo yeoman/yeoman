@@ -47,6 +47,7 @@ Repo.prototype.init = function init(cb) {
     warning: 'Be warned!'
   }];
 
+
   this.grunt.helper('prompt', {}, prompts, function(err, props) {
     if(err) return cb(err);
     // XXX add validators, typing something else than y is meaning a no

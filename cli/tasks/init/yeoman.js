@@ -183,6 +183,7 @@ yeoman.start = function start(init, cb) {
         });
       });
     });
+
   });
 
   return this;
@@ -202,6 +203,7 @@ yeoman.end = function end(init, props, cb) {
     'config.rb': 'init/yeoman/config.rb'
   });
 
+
   files = yeoman.simplifyFileTree(files);
 
   // Actually copy (and process) files.
@@ -212,6 +214,9 @@ yeoman.end = function end(init, props, cb) {
 
   // XXX Generate package.json file?
   init.writePackageJSON('package.json', props);
+
+  // Wire up written dependencies to index
+  yeoman.wireFiles(props, function(err) {});
 
   // All done!
   cb();
@@ -275,6 +280,8 @@ yeoman.prompt = function prompt(cb) {
 };
 
 
+
+
 // remote facade to the actual remote project implementation this step prompts
 // for every remote it finds in the `remotes/` directory.
 //
@@ -287,6 +294,7 @@ yeoman.remotes = function _remotes(props, cb) {
 
   // prompt for inclusion on remaining remotes (bootstrap, compass bootstrap)
   var repos = Object.keys(remotes).map(function(remote) {
+
   	// Node.js loads hidden files (.DS_Store) when doing
   	// require() against a folder, we don't want those
   	if (remote[0] !== '.') {
@@ -299,7 +307,7 @@ yeoman.remotes = function _remotes(props, cb) {
   // process each one
   (function next(repo) {
     if(!repo) return cb();
-
+    
     // prompting if any specific to this project information needs to be done,
     // then fetch & copy
     repo.init(function(err) {
@@ -341,6 +349,67 @@ yeoman.jasmineFilesToCopy = function jasmineFilesToCopy(init, props) {
   return files;
 };
 
+
+
+yeoman.wireFiles = function(props, cb){
+
+  var grunt = this.grunt;
+
+  // Placeholders
+  // Before </head>
+  yeoman.cssFiles = "";
+  // Before </body>
+  yeoman.jsFiles = "";
+
+
+  // Current index content
+  var indexData = fs.readFileSync(path.resolve('index.html'), 'utf8');
+
+  // Map over remote repos to get them in the right priority order
+  var repos = Object.keys(remotes).map(function(remote) {
+
+  if (remote[0] !== '.') {
+      return new remotes[remote]({ props: props, grunt: grunt });
+    }
+  }).sort(function(a, b) {
+    return a.priority < b.priority ? -1 : 1;
+  });
+
+
+// For each repo, generate the script or stylesheet refrences for their final files
+(function next(repo) {
+    if(!repo) return cb();
+
+    // Generate paths and store for wiring
+    if(repo.files){
+
+      if(repo.files.js){
+        repo.files.js.forEach(function(n){
+            yeoman.jsFiles += ('\n<script src="' + repo.files.path + '/' + n + '"></script>\n');
+        }); 
+      }
+
+      if(repo.files.css){
+        repo.files.css.forEach(function(n){
+            yeoman.cssFiles += ('\n <link rel="stylesheet" type="text/css" href="' + repo.files.path + "/" + n  + '">\n');
+        }); 
+      }
+
+    }
+
+  next(repos.shift());
+
+  })(repos.shift());
+
+
+  // Write back the wired up file
+  indexData = indexData.replace('</head>', yeoman.cssFiles + '</head>');
+  indexData = indexData.replace('</body>', yeoman.jsFiles + '</body>');
+
+  fs.writeFileSync(path.resolve('index.html'), indexData, 'utf8');
+
+
+};
 
 // We use this a chance to blacklist files or remap any particular paths
 yeoman.simplifyFileTree = function(files){
