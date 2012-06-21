@@ -391,7 +391,7 @@ yeoman.wireFiles = function(props, cb){
 
       if(repo.files.css){
         repo.files.css.forEach(function(n){
-            yeoman.cssFiles += ('\n <link rel="stylesheet" type="text/css" href="' + repo.files.path + "/" + n  + '">\n');
+            yeoman.cssFiles += ('\n <link rel="stylesheet" href="' + repo.files.path + "/" + n  + '">\n');
         }); 
       }
 
