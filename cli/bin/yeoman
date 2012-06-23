@@ -33,10 +33,6 @@ if(opts.version) {
 // Matches everything after init to prevent
 // the user from seeing the default grunt init tasks
 if(/^init/.test(route)) {
-  if (cli.tasks.length > 1) {
-  	// TODO: set the app name somehow
-  	// cli.tasks[1]
-  }
   cli.tasks = 'init:yeoman';
 }
 
