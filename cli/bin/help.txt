@@ -1,6 +1,6 @@
-Usage: yeoman [options] [task [task ...]]
+Usage: yeoman [command] [task [task ...]]
 
-Available options supported by yeoman:
+Available commands supported by yeoman:
 
       init  Initialize and scaffold a new project
      build  Build an optimized version of your app, ready to deploy
@@ -8,26 +8,9 @@ Available options supported by yeoman:
       test  Run a Jasmine test harness in a headless Phantom.js
      watch  Watch for changes
 
-Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
-
-     clean  Wipe the previous build dirs
-      copy  Copies the whole staging(intermediate/) folder to output
-            (publish/) one
-       css  Concats, replaces @imports and minifies the CSS files *
-      docs  yeoman h5bp plugin documentation
-       dom  dom-based build system
-      html  Basic to aggresive html minification
-       img  Optimizes .png/.jpg images using optipng/jpegtran
-    mkdirs  Prepares the build dirs *
-       rev  Automate the hash renames of assets filename *
-    server  Start a custom static web server
-    usemin  Replaces references to non-minified scripts / stylesheets *
-
-Build targets: yeoman build:<target>
-
-   default  concat css min img rev usemin manifest
-      text  concat css min     rev usemin manifest
-  buildkit  concat css min img rev usemin manifest html:buildkit
-    basics  concat css min img rev usemin manifest html:basics
-    minify  concat css min img rev usemin manifest html:compress
-
+   install  Install a package from the clientside package registry
+ uninstall  Uninstall the package
+    update  Update a package to the latest version
+      list  List the packages currently installed
+    search  Query the registry for matching package names
+    lookup  Look up info on a particular package

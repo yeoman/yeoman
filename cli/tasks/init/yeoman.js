@@ -6,6 +6,7 @@ var fs = require('fs'),
   remotes = require('./remotes'),
   rimraf = require('rimraf');
 
+
 // top level export
 var yeoman = module.exports;
 
@@ -42,6 +43,9 @@ yeoman.dir = path.join(__dirname, 'yeoman');
 
 // Basic template description.
 yeoman.description = 'Init a new project.';
+
+// Welcome message
+yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n';
 
 // Template-specific notes to be displayed before question prompts.
 yeoman.notes = '... More notes to come here ...';
@@ -88,7 +92,14 @@ yeoman.warnOn = '*';
 // };
 //
 
-yeoman.defaults = {};
+yeoman.defaults = {
+  require_js: true,
+  plugin: false
+};
+
+// Display welcome message
+// XXX should this exist as it's own helper task?
+console.log(yeoman.welcome);
 
 // **configure** setup the initial set of properties from optionnaly loading
 // default anwsers. They differ from grunt's usual default prompts in the way
@@ -118,10 +129,12 @@ yeoman.configure = function configure(cb) {
 
   // if it is a valid template then, setup `yeoman.defaults` hash object to
   // by-pass relevant options.
-  this.defaults = grunt.file.readJSON(files[0]);
+  this.defaults = grunt.util._.defaults(grunt.file.readJSON(files[0]), this.defaults);
 
   cb();
 };
+
+
 
 // The actual grunt init template.
 yeoman.template = function template(grunt, init, cb) {
@@ -149,12 +162,15 @@ yeoman.template = function template(grunt, init, cb) {
 
 yeoman.start = function start(init, cb) {
 
+  var grunt = this.grunt;
+
   // cleanup the previous root folder, if any
   rimraf(path.join(yeoman.dir, 'root'), function(err) {
     if(err) return cb(err);
     // prompt for basic project information
     yeoman.prompt(function(err, props) {
       if(err) return cb(err);
+      grunt.log.write("\nGreat! I'll save this configuration to your package.json file!\n\n");
       // Fetch our remotes assets and have them copied / compiled / etc.
       yeoman.remotes(props, function(err) {
         if(err) return cb(err);
@@ -167,6 +183,7 @@ yeoman.start = function start(init, cb) {
         });
       });
     });
+
   });
 
   return this;
@@ -181,7 +198,13 @@ yeoman.end = function end(init, props, cb) {
   var files = init.filesToCopy(props);
 
   // add the Jasmine runner and basic environment
-  grunt.utils._.extend(files, this.jasmineFilesToCopy(init, props));
+  grunt.util._.extend(files, this.jasmineFilesToCopy(init, props), {
+  	// Extra files to copy
+    'config.rb': 'init/yeoman/config.rb'
+  });
+
+
+  files = yeoman.simplifyFileTree(files);
 
   // Actually copy (and process) files.
   init.copyAndProcess(files, props);
@@ -191,6 +214,9 @@ yeoman.end = function end(init, props, cb) {
 
   // XXX Generate package.json file?
   init.writePackageJSON('package.json', props);
+
+  // Wire up written dependencies to index
+  yeoman.wireFiles(props, function(err) {});
 
   // All done!
   cb();
@@ -202,11 +228,18 @@ yeoman.end = function end(init, props, cb) {
 // generating a grunt file based on previous prompts, additional ones and the
 // current state of the root folder
 yeoman.gruntfile = function gruntfile(cb) {
+
+  // XXX might be removed to just use Gruntfile. But we ensure we write the
+  // appropriate Gruntfile depending on grunt's version. From 0.4.x, we need
+  // to generate Gruntfile.js. Using semver here would be better, but a
+  // temporary regexp should be fine.
+  var gruntfile = /^0.4/.test(this.grunt.version) ? 'Gruntfile.js' : 'grunt.js';
+
   fstream.Reader(path.join(this.dir, 'Gruntfile.js'))
     .on('error', cb)
     // destination is now grunt.js. But it'll change to Gruntfile.js whenever
     // we swicth to grunt 0.4.x
-    .pipe(fstream.Writer(path.join(this.dir, 'root/grunt.js')))
+    .pipe(fstream.Writer(path.join(this.dir, 'root', gruntfile)))
     .on('error', cb)
     .on('close', cb);
   return this;
@@ -242,9 +275,11 @@ yeoman.prompt = function prompt(cb) {
   grunt.helper('prompt', prompts, function(err, props) {
     if(err) return cb(err);
     // while merging in back any defaults we might have skipped
-    cb(null, grunt.utils._.defaults(props, defaults));
+    cb(null, grunt.util._.defaults(props, defaults));
   });
 };
+
+
 
 
 // remote facade to the actual remote project implementation this step prompts
@@ -259,7 +294,12 @@ yeoman.remotes = function _remotes(props, cb) {
 
   // prompt for inclusion on remaining remotes (bootstrap, compass bootstrap)
   var repos = Object.keys(remotes).map(function(remote) {
-    return new remotes[remote]({ props: props, grunt: grunt });
+
+  	// Node.js loads hidden files (.DS_Store) when doing
+  	// require() against a folder, we don't want those
+  	if (remote[0] !== '.') {
+      return new remotes[remote]({ props: props, grunt: grunt });
+  	}
   }).sort(function(a, b) {
     return a.priority < b.priority ? -1 : 1;
   });
@@ -267,7 +307,7 @@ yeoman.remotes = function _remotes(props, cb) {
   // process each one
   (function next(repo) {
     if(!repo) return cb();
-
+    
     // prompting if any specific to this project information needs to be done,
     // then fetch & copy
     repo.init(function(err) {
@@ -296,13 +336,100 @@ yeoman.jasmineFilesToCopy = function jasmineFilesToCopy(init, props) {
     // Get the path relative to the template root.
     var relpath = obj.rel.slice(prefix.length);
     var rule = init.renames[relpath];
+
     // Omit files that have an empty / false rule value.
     if (!rule && relpath in init.renames) { return; }
     // Create a property for this file.
     // XXX this `test/` prefix could be the result of a prompt
     var dest = rule ? grunt.template.process(rule, props, 'init') : relpath;
     files['test/' + dest] = obj.rel;
+
   });
 
   return files;
+};
+
+
+
+yeoman.wireFiles = function(props, cb){
+
+  var grunt = this.grunt;
+
+  // Placeholders
+  // Before </head>
+  yeoman.cssFiles = "";
+  // Before </body>
+  yeoman.jsFiles = "";
+
+
+  // Current index content
+  var indexData = fs.readFileSync(path.resolve('index.html'), 'utf8');
+
+  // Map over remote repos to get them in the right priority order
+  var repos = Object.keys(remotes).map(function(remote) {
+
+  if (remote[0] !== '.') {
+      return new remotes[remote]({ props: props, grunt: grunt });
+    }
+  }).sort(function(a, b) {
+    return a.priority < b.priority ? -1 : 1;
+  });
+
+
+// For each repo, generate the script or stylesheet refrences for their final files
+(function next(repo) {
+    if(!repo) return cb();
+
+    // Generate paths and store for wiring
+    if(repo.files){
+
+      if(repo.files.js){
+        repo.files.js.forEach(function(n){
+            yeoman.jsFiles += ('\n<script src="' + repo.files.path + '/' + n + '"></script>\n');
+        }); 
+      }
+
+      if(repo.files.css){
+        repo.files.css.forEach(function(n){
+            yeoman.cssFiles += ('\n <link rel="stylesheet" href="' + repo.files.path + "/" + n  + '">\n');
+        }); 
+      }
+
+    }
+
+  next(repos.shift());
+
+  })(repos.shift());
+
+
+  // Write back the wired up file
+  indexData = indexData.replace('</head>', yeoman.cssFiles + '</head>');
+  indexData = indexData.replace('</body>', yeoman.jsFiles + '</body>');
+
+  fs.writeFileSync(path.resolve('index.html'), indexData, 'utf8');
+
+
+};
+
+// We use this a chance to blacklist files or remap any particular paths
+yeoman.simplifyFileTree = function(files){
+  var newFiles = {};
+  for (var file in files){
+
+    // file blacklist
+    if (  file.match(/^apple-touch-icon/) ||
+          file.match(/^\.gitattributes/)  ||
+          file.match(/^crossdomain\.xml/) ||
+          file.match(/^humans\.txt/)      ||
+          file.match(/^readme\.md/)       ||
+          file.match(/^404\.html/)        ||
+          file.match(/^robots\.txt/)      ||
+
+          file.match(/^js\/vendor\/README\.md/)   ||
+          file.match(/^js\/vendor\/tests/)
+        ){ continue; }
+
+    newFiles[file] = files[file];
+  }
+  return newFiles;
 };

@@ -1,0 +1,9 @@
+import * from 'dom';
+
+export var document = {
+    write: function(txt) {
+        console.log('I\'m sorry, Dave, I\'m afraid I can\'t do that...');
+
+        // document.getElementsByClassName('param')[0].innerHTML += 'this works';
+    }
+};

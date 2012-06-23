@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+  <meta charset="utf-8">
+
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/i/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>Yeoman Todo App</title>
+  <meta name="description" content="">
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <link rel="stylesheet" href="css/style.css">
+  
+
+	<script data-main="js/main" src="js/libs/require/require.js"></script>
+</head>
+<body>
+
+<div id="todoapp">
+
+      <div class="title">
+        <h1>Todos</h1>
+      </div>
+
+      <div class="content">
+
+        <div id="create-todo">
+          <input id="new-todo" placeholder="What needs to be done?" type="text" />
+          <span class="ui-tooltip-top" style="display:none;">Press Enter to save this task</span>
+        </div>
+
+        <div id="todos">
+          <input class="check mark-all-done" type="checkbox"/>
+          <label for="check-all">Mark all as complete</label>
+          <ul id="todo-list"></ul>
+        </div>
+
+        <div id="todo-stats"></div>
+
+      </div>
+
+    </div>
+
+    <div id="credits">
+        <p>This app is present for test purposes. Please ensure it is running on a local HTTP server.<p>
+    </div>
+
+</body>
+</html>

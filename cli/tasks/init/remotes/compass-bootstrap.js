@@ -18,6 +18,12 @@ function CompassBootstrap(opts) {
   this.user = opts.user || 'vwall';
   this.repo = opts.repo || 'compass-twitter-bootstrap';
   this.version = opts.version || 'v2.0.3';
+  this.title = "Twitter Bootstrap (Compass version)";
+
+  // Files to wire up
+  this.files = {};
+  this.files.path = 'css/sass';
+  this.files.css = ['_compass_twitter_bootstrap.css'];
 
   this.priority = 3;
 

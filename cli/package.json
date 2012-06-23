@@ -1,5 +1,5 @@
 {
-  "author": "Chrome DevRel",
+  "author": "Chrome Developer Relations",
   "name": "yeoman",
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "version": "0.0.1",
@@ -9,14 +9,15 @@
   },
   "main": "./yeoman",
   "dependencies": {
+    "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/19a7f280b1",
+    "open": "0.0.2",
     "rimraf": "~2.0.1",
     "mkdirp": "~0.3.1",
+    "async": "~0.1.18",
     "ncp": "~0.2.6",
     "requirejs": "~1.0.7",
     "clean-css": "~0.3.2",
     "connect": "~1.8.6",
-    "grunt": "~0.3.8",
-    "socket.io": "~0.9.5",
     "request": "~2.9.200",
     "html-minifier": "~0.4.5",
     "which": "~1.0.5",
@@ -25,7 +26,10 @@
     "tar": "~0.1.13",
     "less": "~1.2.1",
     "coffee-script": "~1.3.3",
-    "grunt-jasmine-task": "~0.2.0"
+    "grunt-jasmine-task": "~0.2.0",
+    "grunt-shell": "~0.1.1",
+    "faye-websocket": "~0.4.2",
+    "prompt": "~0.2.1"
   },
   "devDependencies": {
     "mocha": "~1.0.3"
