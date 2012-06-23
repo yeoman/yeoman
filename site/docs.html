@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Google Yeoman</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=Lekton|Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+  <link href="css/normalize.css" rel="stylesheet" />
+  <link href="css/yeoman-alt01.css" rel="stylesheet" />
+  <link href="css/prettify-alt01.css" rel="stylesheet" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="js/libs/prettify.js"></script>
+  <script src="js/script.js"></script>
+</head>
+
+<body>  <nav>
+    <header><img src="img/yeoman-logo.png" /></header>
+    <ul>
+      <li class="nav-divider"><a href="index.html"><img src="img/icon-home.png" />Home</a></li>
+      <li><a href="#"><img src="img/icon-why-yeoman.png" />Why Yeoman?</a></li>
+      <li><a href="#"><img src="img/icon-getting-started.png" />Getting Started</a></li>
+      <li class="nav-divider"><img src="img/icon-requirements.png" /><a href="#">Requirements</a></li>
+      <li><a href="docs.html"><img src="img/icon-documentation.png" />Documentation</a></li>
+      <li class="nav-sub"><a href="#">Command Line</a></li>
+      <li class="nav-sub nav-divider"><a href="#">Package Manager</a></li>
+      <li><a href="#"><img src="img/icon-faqs.png" />FAQs</a></li>
+      <li class="nav-divider"><img src="img/icon-discuss.png" /><a href="#">Discuss</a></li>
+      <li><a href="#"><img src="img/icon-google-plus.png" />Google Plus</a></li>
+      <li class="nav-divider"><a href="#"><img src="img/icon-twitter.png" />Twitter</a></li>
+      <li><a href="#"><img src="img/icon-github.png" />GitHub</a></li>
+      <li><a href="#"><img src="img/icon-contributing.png" />Contributing</a></li>
+    </ul>
+  </nav>
+
+    <div id="content">
+    <article>
+      <h1>Documentation</h1>
+
+<hr />
+
+<h2>Requirements</h2>
+
+<p>The Yeoman install script will install any dependencies needed by the project. If however<br />you find yourself wishing to install these manually, you can find the find the list of <br />requirements below.</p>
+
+<ul>
+<li><a href="http://nodejs.org">node 0.6.x</a></li>
+<li><a href="http://npmjs.org">npm</a></li>
+</ul>
+
+<p>You should be able to use it on:</p>
+
+<ul>
+<li>OSX</li>
+<li>Unix</li>
+</ul>
+
+<h2>Installation</h2>
+
+<h3>Simplest</h3>
+
+<h3>Step 1: Install me</h3>
+
+<p>Open up a terminal and enter in the following:</p>
+
+<pre><code>
+$ curl <a href='https://raw.github.com/yeoman/yeoman/master/setup/install.sh'>https://raw.github.com/yeoman/yeoman/master/setup/install.sh</a> | sh
+</code></pre>
+
+<p>This will immediately install Yeoman and any dependencies it may need such as Node, NPM and Ruby.</p>
+
+<h3>Step 2: Create a new project</h3>
+
+<p>Next, enter in <code>yeoman init</code> followed by the name of the directory you would like to scaffold your application in.</p>
+
+<pre><code>
+$ yeoman init myapp
+</code></pre>
+
+<p>If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.</p>
+
+<h3>Step 3: Profit</h3>
+
+<p>We'll then ask you some questions to help scaffold your project out. Simple! </p>
+
+<h3>Manual Installation</h3>
+
+<p>There are two main ways to install, using a "global" or a "local" install.</p>
+
+<ol>
+<li><p><strong>When installed globally</strong>: Provides a custom global binary named <code>yeoman</code><br />(or <code>html5-boilerplate</code>) which is a wrapper on top of grunt, plus the extra<br />specific task and helpers.</p></li>
+<li><p><strong>When installed locally</strong>: ability to load in your project and grunt setup a<br />set of tasks that get referenced in your gruntfile (<code>grunt.js</code>) when run via <code>grunt</code>.</p></li>
+</ol>
+
+<p>yeoman is not on npm (yet), but you can install it (and/or add it to<br />your project dependencies) using a tarball url, very much like if it was published<br />on npm.</p>
+
+<h3>global install</h3>
+
+<pre><code>
+npm install <a href='http://nodeload.github.com/yeoman/yeoman/tarball/master'>http://nodeload.github.com/yeoman/yeoman/tarball/master</a> -g
+</code></pre>
+
+<p>This installs Yeoman globally, which contains its own internal grunt and<br />provides a <code>yeoman</code> binary.</p>
+
+<h3>local install</h3>
+
+<p>This works for system where grunt have been already installed globally with</p>
+
+<pre><code>
+npm install grunt -g
+</code></pre>
+
+<ol>
+<li><p>Add yeoman as a project dependency. In your project's root,<br />next to the <code>grunt.js</code> and <code>package.json</code> file, run <code>npm install<br /><a href='http://nodeload.github.com/yeoman/yeoman/tarball/master'>http://nodeload.github.com/yeoman/yeoman/tarball/master</a> -S</code></p></li>
+<li><p>Add <code>grunt.loadNpmTasks('yeoman')</code> into the project's <code>grunt.js</code> gruntfile.</p></li>
+<li><p>Run <code>grunt --help</code> and all of the yeoman's tasks and helpers<br />should be available in addition to those already provided by grunt.</p></li>
+</ol>
+
+<p>The <code>-S</code> flag (or <code>--save</code>) will make npm add the dependency in the<br /><code>dependencies</code> property of your package.json. This is optional but ensures you<br />never forget to update your package.json file accordingly.</p>
+
+<p><strong>Note</strong>: Once on npm, it'll be easier. The <code>npm install -S</code> step will add the<br />following to your package.json file.</p>
+
+<pre><code>
+"dependencies": {
+  "yeoman": "0.1.1"
+}
+</code></pre>
+
+<p>Change <code>0.1.1</code> to the tarball url: <a href='http://nodeload.github.com/yeoman/yeoman/tarball/master'>http://nodeload.github.com/yeoman/yeoman/tarball/master</a></p>
+
+<h3>git clone / npm install</h3>
+
+<p>Clone or download this repo. Then, <code>cd</code> into it and run the <code>npm<br />install</code> command.</p>
+
+<pre><code>
+# will most likely change to map the new location / repo / branch
+git clone git://github.com/yeoman/yeoman.git
+
+# install the dependencies
+# locally to play with it from the repo
+npm install
+
+# or globally, to install the yeoman binary
+npm install -g
+</code></pre>
+
+<p>For development, the <code>npm link</code> command might be handy (posix only, instead of<br /><code>npm install -g</code>).</p>
+
+<h2>Uninstall</h2>
+
+<p>You may want to uninstall the globally installed package by running the<br />following command:</p>
+
+<pre><code>
+npm uninstall yeoman -g
+</code></pre>
+
+<p>So sad to see you go ☹</p>
+
+<p>If it was installed locally, next to your gruntfile, simply drop the<br /><code>node_modules/yeoman</code> folder.</p>
+
+<h2>Command-Line Interface</h2>
+
+<h3>Commands and Tasks</h3>
+
+<p>You'll find below a basic description and documentation for each command and task the Yeoman CLI provides. For each of these, we'll detail the task's configuration and how to change it.</p>
+
+<h4>Commands:</h4>
+
+<ul>
+<li><strong>init</strong>: Initialize and scaffold a new project</li>
+<li><strong>watch</strong>: Watch a project for changes, compiling any SASS/CoffeeScript files being used</li>
+<li><strong>server</strong>: Launch a preview server which will begin watching for changes</li>
+<li><strong>build</strong>: Build an optimized version of your app, ready to deploy</li>
+<li><strong>test</strong>: Run a Jasmine test harness in a headless Phantom.js</li>
+</ul>
+
+<h4>Tasks:</h4>
+
+<ul>
+<li><strong>clean</strong>: Wipe the previous build dirs</li>
+<li><strong>mkdirs</strong>: Prepares the build dirs</li>
+<li><strong>concat</strong>: Concatenate files <em>(built-in)</em></li>
+<li><strong>css</strong>: Concatenates, replaces @imports and minifies CSS files</li>
+<li><strong>min</strong>: Minify files using UglifyJS</li>
+<li><strong>rev</strong>: Automate the revving of assets and perform the hash rename</li>
+<li><strong>usemin</strong>: Replaces references to non-minified scripts / stylesheets</li>
+</ul>
+
+<h2>init</h2>
+
+<p>Usage: <code>yeoman init</code>, <code>yeoman init myapp</code></p>
+
+<p>The <code>init</code> command asks you a number of questions (with default answers) for setting<br />up a new project. The answers to these questions will be used to scaffold a file structure for the application.</p>
+
+<p>Questions include whether you would like to scaffold your project using HTML5<br />Boilerplate, include theming via Twitter Bootstrap, support ECMAScript 6 Modules<br />in your project and so on.</p>
+
+<p>By default we support Compass and CoffeeScript, so if your project includes any .coffee files, these will be compiled when either <code>watch</code> or <code>build</code> tasks are being<br />run.</p>
+
+<p>Passing an extra argument to <code>yeoman init</code> (e.g <code>myapp</code>) will create a new directory<br />of the name <code>myapp</code> and Yeoman will then scaffold your application within this new<br />directory.</p>
+
+<p>Coming soon: We plan on yeoman init making requests to Nest to request the most recent<br />versions of dependencies your project may need. When this is integrated, we will add<br />further documentation about it to this page.</p>
+
+<h2>server</h2>
+
+<p>Usage: <code>yeoman server</code></p>
+
+<p>The <code>server</code> command launches a preview server on port 3000 that allows you to access a running version of your application locally.</p>
+
+<p>It also automatically fires up the <code>yeoman watch</code> process, so changes to any of the applications<br />files cause the browser to refresh via LiveReload.</p>
+
+<p>Any changes to CoffeeScript or Compass files result in them being recompiled, meaning that<br />no manual intervention is required to write and preview code in the format you feel most<br />comfortable with.</p>
+
+<p>To quit the server, simply run <code>yeoman quit server</code> and this will kill the Python server<br />process.</p>
+
+<h2>watch</h2>
+
+<p>Usage: <code>yeoman watch</code></p>
+
+<p>Yeoman integrates with LiveReload so the browser refreshes every time a change is made to your<br />application.</p>
+
+<p>Similar to the <code>build</code> command, this automatically recompiles CoffeeScript and SASS files so you<br />don't need to do anything extra to continue editing your source files.</p>
+
+<h2>build</h2>
+
+<p>Usage: <code>yeoman build</code>, <code>yeoman build:&lt;target&gt;</code></p>
+
+<p>Yeoman leverages third party tools to construct an optimized version of your application that's ready to deploy.</p>
+
+<p>We make use of <a href="https://github.com/cowboy/grunt">Grunt</a> behind the scenes to tackle much of the hard work for this, with some useful additions that assist<br />with compression, optimization and testing.</p>
+
+<p>These include:</p>
+
+<ul>
+<li>Linting all JavaScript files against JSHint</li>
+<li>Recompiling all CoffeeScript and SASS files for production</li>
+<li>Using r.js to compile and optimize any AMD modules</li>
+<li>Concatenation and minification of scripts and stylesheets</li>
+<li>Compressing your images using OptiPNG for PNG files and JPEGtran-turbo for JPEGs</li>
+<li>Running any unit tests written against a headless WebKit browser (via PhantomJS)</li>
+<li>Creating an Application Cache manifest via Confess.js</li>
+<li>Using revision filenames or oldernames</li>
+</ul>
+
+<p>We finally publish an optimized version of your application to your project directory<br />so that it can be deployed to production right after.</p>
+
+<p>Yeoman supports a number of build targets to be used with <code>yeoman build</code>. To implicitly<br />pass the <code>default</code> target one would run <code>yeoman build:default</code> for example. The complete<br />list of supported build targets can be found below:</p>
+
+<ul>
+<li>default: Runs <code>concat css min img rev usemin manifest</code></li>
+<li>text: Runs <code>concat css min rev usemin manifest</code></li>
+<li>buildkit: Runs <code>concat css min img rev usemin manifest html:buildkit</code></li>
+<li>basics: Runs <code>concat css min img rev usemin manifest html:basics</code></li>
+<li>minify: Runs <code>concat css min img rev usemin manifest html:compress</code></li>
+</ul>
+
+<p>Each build target above runs a number of different build <em>tasks</em>. The supported<br />tasks included with Yeoman out of the box are:</p>
+
+<ul>
+<li>clean: Wipe the previous build dirs</li>
+<li>copy: Copies the whole staging(intermediate/) folder to output (publish/) one</li>
+<li>css: Concatenates, replaces @imports and minifies the CSS files</li>
+<li>dom: DOM-based build system</li>
+<li>html: Basic to aggressive HTML minification</li>
+<li>img: Optimizes .png/.jpg images using OptiPNG/JPEGtran</li>
+<li>mkdirs: Prepares the build dirs</li>
+<li>rev: Automate the hash renames of assets filename</li>
+<li>usemin: Replaces references to non-minified scripts / stylesheets</li>
+</ul>
+
+<p>More comprehensive information on each task can be found lower down the page.</p>
+
+<h2>test</h2>
+
+<p>Usage: <code>yeoman test</code></p>
+
+<p>This command runs a Jasmine test harness in a headless instance of Phantom.js.</p>
+
+<h2>install</h2>
+
+<p>Usage: <code>yeoman install &lt;name&gt;</code></p>
+
+<p>Installs a package <name> and any packages that this depends on using Twitter Nest. A package is a folder containing a resource described by a package.json file or a gzipped tarball containing this information.  </p>
+
+<p>Running yeoman install <name> will install the dependencies in your project’sl browser_modules folder. </p>
+
+<p>For further information, see the section on the package manager.</p>
+
+<h2>update</h2>
+
+<p>Usage: <code>yeoman update &lt;name&gt;</code></p>
+
+<p>Updates the package <name> to the latest version available.</p>
+
+<h2>uninstall</h2>
+
+<p>Usage: yeoman uninstall <name></p>
+
+<p>Removes the package <name> from the current project.</p>
+
+<h2>Flags</h2>
+
+<ul>
+<li><code>yeoman --help</code></li>
+</ul>
+
+<p>This will list out the commands and tasks supported by yeoman and should print out the following to the console:</p>
+
+<div class="highlight"><pre lang="">Usage: yeoman [command] [task [task ...]]
+
+Available commands supported by yeoman:
+
+<pre><code>  init  Initialize and scaffold a new project
+ build  Build an optimized version of your app, ready to deploy
+server  Launch a preview server which will begin watching for changes
+  test  Run a Jasmine test harness in a headless Phantom.js
+ watch  Watch for changes, compiling any SASS/CoffeeScript files being used
+</code></pre>
+
+Available tasks the yeoman plugin provides (for a full list, type yeoman --help)
+
+<pre><code> clean  Wipe the previous build dirs
+  copy  Copies the whole staging(intermediate/) folder to output
+        (publish/) one
+   css  Concats, replaces @imports and minifies the CSS files *
+   dom  DOM-based build system
+  html  Basic to aggressive HTML minification
+   img  Optimizes .png/.jpg images using OptiPNG/JPEGtran
+mkdirs  Prepares the build dirs *
+   rev  Automate the hash renames of assets filename *
+server  Start a custom static web server
+usemin  Replaces references to non-minified scripts / stylesheets *
+</code></pre>
+
+Build targets: yeoman build:<target>
+
+   default  concat css min img rev usemin manifest
+      text  concat css min     rev usemin manifest
+  buildkit  concat css min img rev usemin manifest html:buildkit
+    basics  concat css min img rev usemin manifest html:basics
+    minify  concat css min img rev usemin manifest html:compress
+
+</pre></div>
+
+<h1>@ Package Manager</h1>
+
+<p>Until now, client-side JavaScript has not benefited from a rich package management solution such as those found in other platforms (e.g NPM, RubyGems). By instead maintaining packages of packages in client-side JS, developers reduced the chances of using up-to-date versions of libraries.</p>
+
+<p>Yeoman's integration with Twitter Nest changes that.</p>
+
+<p>In Nest, dependencies are listed in a ‘package.json’ file, similar to Node’s package (adhering as closely as possible to the <a href="http://wiki.commonjs.org/wiki/Packages/1.0">commonjs specification</a>):</p>
+
+<pre><code>
+ {
+   "dependencies": {
+     "modernizr": "~2.5.3"
+   }
+ }
+ ```
+
+Dependencies are then installed locally via the `yeoman install’ command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir (browser_modules) to package.json, for example:
+
+</code></pre>
+
+<p>/package.json<br />/browser_modules/modernizr/index.js<br />/browser_modules/modernizr/package.json</p>
+
+<div class="highlight"><pre lang="">
+This approach has a number of benefits.
+
+
+<ul>
+<li>There are no system wide dependencies and no dependencies are shared between different applications</li>
+<li>None of this is JavaScript specific. Packages can contain JavaScript, CSS, images etc</li>
+<li>None of this is specific to a specific module format (e.g AMD/CommonJS). These formats can be used but aren't required</li>
+<li>The dependency tree is flat meaning that we don't ship multiple versions of say, Modernizr to clients</li>
+</ul>
+
+For information on how to use Yeoman's Nest integration, see `yeoman install` and `yeoman update`
+
+
+
+
+
+<h2>EcmaScript 6 Modules And Module Support</h2>
+
+Yeoman comes with experimental support for ES6 modules, made possible through Require HM. HM allows us to write ES.next module syntax and as long as code is saved in files with `.hm` extension, they can be used with RequireJS and AMD as if they were regular ES3/5 scripts.
+
+
+*Note: The ES.next module specification is not yet complete and is subject to change. As such, the material below should be considered correct as of June, 2012 but for later dates the Harmony wiki entry on modules should be consulted to ensure correctness.
+
+Also note that as Require HM is a RequireJS plugin, ES6 modules are only supported when used with RequireJS. We hope to change this in the future once support for ES6 modules in Google Traceur has improved.*
+
+
+
+<h3>module:</h3>
+
+In ES6, A module is a unit of code contained within a `module` declaration. It can either be defined inline or within an externally loaded module file. A skeleton inline module for a Car could be written:
+
+</pre></div>
+
+<p>module Car{<br />  // import …<br />  // export … <br />}</p>
+
+<div class="highlight"><pre lang="">When we say *externally loaded modules*, we are referring to modules which are either loaded using `import` declarations or the Module Loader API. Both will be covered shortly.
+
+A module *instance* is a module which has been evaluated, is linked to other modules or has lexically encapsulated data. Examples of modules instances are:
+
+</pre></div>
+
+<p>module myCar = Car;<br />module myCar at "car.js";</p>
+
+<div class="highlight"><pre lang="">
+`module` declarations can be used in the following contexts:
+
+
+</pre></div>
+
+<p>module Universe {}<br />module Universe { module MilkyWay {} }<br />module MilkyWay = "Universe/MilkyWay"<br />module System = Universe.MilkyWay.SolarSystem<br />module System = SolarSystem</p>
+
+<div class="highlight"><pre lang="">
+
+
+<h3>export:</h3>
+
+An export declaration declares that a local function or variable binding is visible externally to other modules. If familiar with the module pattern, think of this concept as being parallel to the idea of exposing functionality publicly. 
+
+</pre></div>
+
+<p>module Car{</p>
+
+<p>// Internals<br />  var licensePlateNo = "556-343"</p>
+
+<p>// Exports<br />  export function drive(speed, direction){<br />    console.log('We are driving at a speed of ' + speed + ', ' + direction); <br /><br />  }</p>
+
+<p>export var miles = 5000;<br />  export var color = "silver";<br />}</p>
+
+<div class="highlight"><pre lang="">
+Modules `import` what they wish to use from other modules. Other modules may read the module exports (e.g `drive()`, `miles` etc. above) but they cannot modify them. Exports can be renamed as well so their names are different from local names. 
+
+A module may also export other modules for consumption.
+
+</pre></div>
+
+<p>module Car{<br />  export module engine{}<br />  export module driver{}<br />  export module seats{}<br />}</p>
+
+<div class="highlight"><pre lang="">
+`export` can be used in the following contexts:
+
+</pre></div>
+
+<p>export var document<br />export var document = { }<br />export function parse() { }<br />export module System = SolarSystem<br />export SolarSystem<br />export Mercury, Venus, Earth<br />export * from SolarSystem<br />export { Mercury: SolarSystem.Mercury, Earth: SolarSystem.Earth }</p>
+
+<div class="highlight"><pre lang="">
+
+
+
+<h3>import:</h3>
+
+An import declaraction binds another modules exports as local variables. Variables that are imported can be locally renamed to avoid naming conflicts. 
+
+</pre></div>
+
+<p>module Car{<br />  export function drive(speed, direction){<br />    console.log('details:', speed, direction); <br /><br />  }</p>
+
+<p>export module engine{<br />    export function check(){ ... }<br />  }</p>
+
+<p>export var miles = 5000;<br />  export var color = "silver";</p>
+
+<p>};</p>
+
+<div class="highlight"><pre lang="">
+Revisiting the export example above, we can now selectively choose what we wish to `import` when in another module.
+
+We can just import `drive()`:
+
+</pre></div>
+
+<p>import drive from Car;</p>
+
+<div class="highlight"><pre lang="">
+We can import `drive()` and `miles`:
+
+</pre></div>
+
+<p>import {drive, miles} from Car;</p>
+
+<div class="highlight"><pre lang="">
+We can import `check()` from our engine module:
+
+</pre></div>
+
+<p>import check from Car.engine;</p>
+
+<div class="highlight"><pre lang="">
+We can import all of the exports:
+
+</pre></div>
+
+<p>import * from Car;</p>
+
+<div class="highlight"><pre lang="">
+We can also import an entire file as a module:
+
+</pre></div>
+
+<p>import "car.js" as Car;</p>
+
+<div class="highlight"><pre lang="">
+Or import `drive()` without needing to bind the module to a local name:
+
+</pre></div>
+
+<p>import drive from "car.js";</p>
+
+<div class="highlight"><pre lang="">
+This similarly works with JavaScript libraries like Underscore.js:
+
+</pre></div>
+
+<p>import reduce from "Underscore.js"</p>
+
+<div class="highlight"><pre lang="">
+
+
+
+<h3>module, import and export</h3>
+
+Bringing these three concepts together:
+
+
+</pre></div>
+
+<p>module vehicle{<br />  export function drive(speed, direction){<br />    console.log('We are driving at a speed of ' + speed + ', ' + direction);<br />  };</p>
+
+<p>export function stop(){<br />    console.log('We have stopped');<br />  };</p>
+
+<p>export var miles = 0;<br />  export var color = "silver";<br />  export var wheels = 4;<br />}</p>
+
+<p>module basicExtras{<br />  export var carSeat = true;<br />  export var specialRims =  true;<br />  export var mp3Player = true;<br />}</p>
+
+<p>module premiumExtras{<br />  export module GPS{<br />    //...<br />  }<br />}</p>
+
+<div class="highlight"><pre lang="">
+</pre></div>
+
+<p>// Engine.js<br />module engine{</p>
+
+<p>}</p>
+
+<div class="highlight"><pre lang="">
+</pre></div>
+
+<p>module Car{<br />  import * from vehicle;<br />  import {specialRims, mp3Player} from basicExtras;<br />  import "engine.js" as engine;<br />  module navigationSystem from premiumExtras.GPS;</p>
+
+<p>export drive;<br />  export stop;<br />}</p>
+
+<div class="highlight"><pre lang="">
+-- how do you rename exports?
+
+
+
+
+
+<h3>dynamically loading modules</h3>
+
+Earlier, we mentioned the concept of a Module Loader API. The module loader allows us to dynamically load in scripts for consumption. Similar to `import`, we are able to consume anything defined as an `export` from such modules.
+
+</pre></div>
+
+<p>// Signature: load( moduleURL, callback, errorCallback )</p>
+
+<p>Loader.load("car.js", function(car) {<br />        console.log(car.drive(500, "north"));<br />    }, function(err){<br />        console.log("Error:" + err);<br />    });</p>
+
+<div class="highlight"><pre lang="">
+`load()` accepts three arguments:
+
+
+<ul>
+<li>moduleURL: The string representing a module URL (e.g "car.js")</li>
+<li>callback: A callback function which receives the output result of attempting to load, compile and then execute the module</li>
+<li>errorCallback: A callback triggered if an error occurs during loading or compilation</li>
+</ul>
+
+Whilst the above example seems fairly trivial to use, the Loader API is there to provide a way to load modules in controlled contexts and actually supports a number of different configuration options. `Loader` itself is a system provided instance of the API, but it's possible to create custom loaders using the `Loader` constructor. 
+
+
+</pre></div>
+
+<p>// The Loader constructor creates a new loader<br />var customLoader = new Loader(<br />    // Define the parent of this loader<br />    // if a custo one exists, otherwise<br />    // just use the default system Loader<br />    Loader, {</p>
+
+<pre><code>// Global object for the Loader
+global: Object.create(null),
+
+// Loader's base URL
+baseURL: baseURL,
+
+// A flag indicating whether code should be evaluated
+// in strict mode
+strict: false,         
+
+// Source of the loader intrinsics which can either
+// be an existing loader or just null
+linkedTo: Loader || null,
+
+// The module resolution hook
+resolve: function( relativeURL, baseURL ){..},
+
+// The module loading hook
+fetch: function( relativeURL, baseURL, request, resolved ){…},
+
+// A hook for source translation
+translate: function( src, relativeURL, baseURL, resolved ){…}
+</code></pre>
+
+<p>});</p>
+
+<div class="highlight"><pre lang="                     ">
+
+Let's review the final three hooks in more detail:
+
+**fetch: function( relativeURL, baseURL, request, resolved ):**
+
+Once a module is resolved, it must be fetched. The `fetch` hook allows us to fetch code from an external resource and returns its source via the first callback or rejecting the code via the second callback. 
+
+
+The `fetch` request object has three callbacks:
+
+</pre></div>
+
+<p>request = {</p>
+
+<p>// callbacks for the loading hook</p>
+
+<p>// callback to create the successfully loaded source<br />  fulfill: function( src ){..},</p>
+
+<p>// callback to indicate the source should be loaded from a different URL<br />  redirect: function( url, baseURL ){..}</p>
+
+<p>// callback to indicate am error occurred in the loading<br />  reject: function( msg )<br />}</p>
+
+<div class="highlight"><pre lang="">
+If we don't supply a `fetch` hook, the parent Loader's `fetch` is used instead.
+
+
+
+**resolve: function( relativeURL, baseURL ):**
+
+
+
+**translate: function( src, relativeURL, baseURL, resolved ):**
+
+When code is evaluated, we have the option of translating the source of that code using this hook. The hook can either produce the final source code or throw an exception if something goes wrong. 
+
+
+A complete custom loader example could thus be written as follows:
+
+</pre></div>
+
+<p>var customLoader = new Loader(Loader,{<br />    global: window,<br />    baseURL: document.URL.substring(0, document.URL.lastIndexOf('\/') + 1),<br />    strict: false,<br />    resolve: function (relURL, baseURL) {<br />      var url = baseURL + relURL;<br />      return url;<br />    },<br />    fetch: function (relURL, baseURL, request, resolved) {<br />      var url = baseURL + relURL;<br />      var xhr = new XMLHttpRequest();<br />      xhr.onreadystatechange = function () {<br />        if (xhr.readyState === 4) {<br />          if (xhr.status === 200) {<br />            request.fulfill(xhr.responseText);<br />          } else {<br />            request.reject(xhr.statusText);<br />          }<br />        }<br />      };<br />      xhr.open("GET", url, true);<br />      xhr.send(null);<br />    },<br />    translate: function (src, relURL, baseURL, resolved) {<br />      return src;<br />    }<br />  });</p>
+
+<div class="highlight"><pre lang="">
+
+*Note: As Require HM is able to work with the RequireJS `define()` and `require()` syntax, it doesn't currently support the Module Loader API. If one is however required, there is a shim available for this feature [here](<a href='https://github.com/addyosmani/es6-module-loader/).*'>https://github.com/addyosmani/es6-module-loader/).*</a>
+
+
+
+
+<h3>What else can be done with modules?</h3>
+
+We can also define modules with a shared state:
+
+</pre></div>
+
+<p>module Car{<br />  export module milesCounter {<br />      var miles = 0;<br />      export function addMile() { return miles++ }<br />      export function currentMiles() { return miles }<br />  };<br />};</p>
+
+<div class="highlight"><pre lang="">
+or cyclic dependencies:
+
+</pre></div>
+
+<p>module Car {<br />    import * from Scooter;<br />    export function even(n) {<br />        return n == 0 || odd(n - 1);<br />    }<br />}</p>
+
+<p>module Scooter {<br />    import * from Car;<br />    export function odd(n) {<br />        return n != 0 &amp;&amp; even(n - 1);<br />    }<br />}<br />```</p>
+
+<p><em>Note: Require HM does not presently support cyclic dependencies. We are working on fixing this limitation.</em></p>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is a package manager?</h3>
+
+<p>A package manager runs through a command-line interface and is a tool for automating the process of installing, upgrading, configuring and managing dependencies for projects.</p>
+
+<h3>What is a command-line interface?</h3>
+
+<p>A command-line interface is a means for developers to interact with a system using text commands. On OSX this this is often done using the Terminal and on Windows we use the command shell or a third-party tool such as <a href="http://www.cygwin.com">Cygwin</a>.</p>
+      </section>
+    </article>
+    <footer>
+    	<p>&nbsp;</p>
+    </footer>
+  </div>
+</body>
+</html>

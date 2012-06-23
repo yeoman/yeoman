@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 var fs = require('fs'),
   join = require('path').join,
-  help = join(__dirname, 'help.txt');
+  help = join(__dirname, 'help.txt'),
+  insight = require('../lib/plugins/insight.js'),
+  async = require('async'),
+  pkg = require('../package.json');
+
+// Returns the user's home directory in a platform agnostic way.
+function getUserHome() {
+  return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+}
 
 // grunt with the plugin registered
 var grunt = require('grunt').npmTasks(join(__dirname, '../'));
@@ -27,7 +35,7 @@ if(/^help/.test(route)) {
 
 // add the plugin version on `--version`
 if(opts.version) {
-  console.log('h5bp  v%s', require('../package.json').version);
+  console.log('h5bp  v%s', pkg.version);
 }
 
 // Matches everything after init to prevent
@@ -36,15 +44,41 @@ if(/^init/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
 
-// if the route is empty
-if(/^$/.test(route)) {
-  // this is specific to an empty route code
-  console.log('yeoman v%s', require('../package.json').version);
-
-  // we return early to prevent grunt from actually running
-  // and instead just output help.txt
-  return fs.createReadStream(help).pipe(process.stdout);
+// a nest command?
+if(/^install|uninstall|search|list|lookup|update/.test(route)) {
+  cli.tasks = 'nest' + ':' + cmds.join(':');
 }
 
-// the grunt cli
-grunt.cli();
+/* Yeoman Insight =========================================================== */
+async.series([function(cb){
+
+
+  insight.init({
+    pkgname    : pkg.name,
+    getUserHome: getUserHome,
+    cmds       : cmds,
+    cb         : cb
+  });
+
+
+},function(cb){
+
+  // if the route is empty
+  if(/^$/.test(route)) {
+    // this is specific to an empty route code
+    console.log(pkg.name + ' v%s', pkg.version);
+
+    // we return early to prevent grunt from actually running
+    // and instead just output help.txt
+    cb();
+    return fs.createReadStream(help).pipe(process.stdout);
+  }
+
+  // the grunt cli
+  grunt.cli();
+
+  cb();
+
+}]);
+
+

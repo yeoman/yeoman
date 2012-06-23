@@ -24,20 +24,20 @@ module.exports = function(grunt) {
   // with abs path.
   //
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
-
-  // Setup some default alias...
-  grunt.registerTask('default', 'build:default');
-  grunt.registerTask('reload', 'default connect watch:reload');
+  grunt.loadTasks(join(__dirname, '../node_modules/grunt-shell/tasks'));
 
   // and build targets, these are equivalent to alias except that we
   // defined a single task and use arguments to trigger the appropriate
   // target
   var targets = {
     // build - (default) no html optimizations
-    default: 'coffee concat css min img rev usemin manifest',
+    "default": 'coffee concat shell:compass css min img usemin manifest',
 
     // text - same as build but without image (png/jpg) optimizing
     text: 'coffee concat css min rev usemin manifest',
+
+    // require - same as build but uses r.js for requirejs modules
+    rjs: 'coffee shell:compass css img rjs manifest',
 
     // buildkit - minor html optimizations, all html whitespace/comments
     // maintained
@@ -56,6 +56,9 @@ module.exports = function(grunt) {
   var targetList = grunt.log.wordlist(Object.keys(targets));
   grunt.registerTask('build', 'Run a predefined target - build:<target> \n' + targetList, function(target) {
     var valid = Object.keys(targets);
+    if(!target) {
+      target = 'default';
+    }
     if(!~valid.indexOf(target)) {
       grunt.log
         .error('Not a valid target')
@@ -71,9 +74,9 @@ module.exports = function(grunt) {
     var msg = Object.keys(valid).map(function(key) {
       if(/pre|post/.test(key)) return '';
       return grunt.helper('pad', key, 10) + '# '+ valid[key];
-    }).join(grunt.utils.linefeed);
+    }).join(grunt.util.linefeed);
 
-    var err = new Error(grunt.utils.linefeed + msg);
+    var err = new Error(grunt.util.linefeed + msg);
     err.code = code || 3;
     return err;
   });
@@ -103,7 +106,7 @@ module.exports = function(grunt) {
 
   // Output some info on given object, using util.inspect
   grunt.registerHelper('inspect', function(o) {
-    var lf = grunt.utils.linefeed;
+    var lf = grunt.util.linefeed;
     var output = (lf + util.inspect(o, false, 4, true) + lf).split(lf).map(function(line) {
       return line;
     });

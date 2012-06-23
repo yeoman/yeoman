@@ -1,0 +1,21 @@
+{
+  "name": "todos",
+  "description": "Yeoman Todos",
+  "version": "0.1.0",
+  "homepage": "https://github.com/yeoman/yeoman",
+  "author": {
+    "name": "addyosmani"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeoman/yeoman"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/yeoman/yeoman/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {},
+  "keywords": []
+}

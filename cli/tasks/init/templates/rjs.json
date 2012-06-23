@@ -1,0 +1,34 @@
+{
+  "name": "name",
+  "description": "rjs default setup",
+  "version": "0.1.0",
+  "repository": "git://github.com/yeoman/yeoman.git",
+  "homepage": "https://github.com/yeoman/yeoman",
+  "licenses": [
+    "MIT"
+  ],
+  "author_name": "",
+  "author_email": "",
+  "author_url": "",
+  "force_update": "y/N",
+  "js_safe_name": "name",
+  "git_user": "yeoman",
+  "setup": {
+    "layout": "D"
+  },
+  "gruntfile": {
+    "dom": true,
+    "min_concat": false,
+    "package_json": true,
+    "staging": "intermediate",
+    "output": "publish",
+    "css_dir": "css",
+    "js_dir": "js",
+    "img_dir": "img",
+    "require_js": "y",
+    "test_task": "qunit",
+    "file_name": "<%= pkg.name %>",
+    "test_dir": "test",
+    "jquery": true
+  }
+}

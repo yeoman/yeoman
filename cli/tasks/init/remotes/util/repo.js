@@ -42,10 +42,11 @@ Repo.prototype.init = function init(cb) {
   // node-prompt info
   var prompts = [{
     name: 'include',
-    message: 'Would you like to include ' + [this.user, this.repo].join('/') + ' repository?',
+    message: 'Would you like to include ' + (this.title || ([this.user, this.repo].join('/') + ' repository')) + '?',
     default: 'Y/n',
     warning: 'Be warned!'
   }];
+
 
   this.grunt.helper('prompt', {}, prompts, function(err, props) {
     if(err) return cb(err);
@@ -90,7 +91,9 @@ Repo.prototype.copy = function copy(cb) {
   // a folder into another, ala fstream-ignore or fstream-npm
   fstream.Reader(this.cache)
     .on('error', cb)
-    .pipe(fstream.Writer({ path: path.join(__dirname, '../../yeoman/root'), type: 'Directory' }))
+    .pipe(fstream.Writer({
+        path: path.join(__dirname, '../../yeoman/root'),
+        type: 'Directory' }))
     .on('error', cb)
     .on('close', cb)
     .on('close', this.emit.bind(this, 'copy'));

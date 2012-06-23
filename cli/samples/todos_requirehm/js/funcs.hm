@@ -1,0 +1,11 @@
+var oneName = 'one';
+
+export function one () {
+    return oneName;
+};
+
+export
+    function _helloWorld(value){
+        return 'hello ' + value
+    };
+

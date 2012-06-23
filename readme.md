@@ -1,9 +1,15 @@
 # Welcome, Friend!
 
+## What am I?
+
+Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup.
+
+Yeoman is fast, performant and is optimized to work best in modern browsers.
+
 ## Installing
 
 ```shell
-    ./install.sh
+    ./setup/install.sh
 ```
 
 Oh. That's it.
@@ -36,11 +42,16 @@ For example, run this guy as:
     ./server.sh 8000
 ```
 
+## Documentation
+
+The current documentation for Yeoman can be found [here](http://yeoman.github.com/docs).
+
+
 ## Browser Support
 
 Yeoman supports:
 
-* Modern browsers (latest versions of Chrome, Safari, Firefox and IE10)
+* Modern browsers (latest versions of Chrome, Safari, Firefox, Opera and IE10)
 * Chrome on Android
 * Mobile Safari
 
