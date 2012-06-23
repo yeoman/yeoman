@@ -38,8 +38,9 @@ if(opts.version) {
   console.log('h5bp  v%s', pkg.version);
 }
 
-// `yeoman init` -> `grunt init:yeoman`
-if(/^init$/.test(route)) {
+// Matches everything after init to prevent
+// the user from seeing the default grunt init tasks
+if(/^init/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
 
