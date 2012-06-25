@@ -9,7 +9,6 @@
   "licenses": ["MIT"],
   "js_safe_name": "init_test",
   "git_user": "username",
-  "include_bootstrap": "y",
   "include_compass_bootstrap": "y",
   "include_twitter": "y"
 }

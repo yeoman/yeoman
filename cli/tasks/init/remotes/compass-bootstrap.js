@@ -21,9 +21,17 @@ function CompassBootstrap(opts) {
   this.title = "Twitter Bootstrap (Compass version)";
 
   // Files to wire up
-  this.files = {};
-  this.files.path = 'css/sass';
-  this.files.css = ['_compass_twitter_bootstrap.css'];
+  this.files = {
+    css: [
+      'css/sass/_compass_twitter_bootstrap.css'
+    ],
+    js: [
+      'js/vendor/bootstrap/bootstrap-alert.js',
+      'js/vendor/bootstrap/bootstrap-button.js',
+      'js/vendor/bootstrap/bootstrap-tab.js',
+      'js/vendor/bootstrap/bootstrap-modal.js'
+    ]
+  };
 
   this.priority = 3;
 
@@ -33,22 +41,28 @@ function CompassBootstrap(opts) {
 util.inherits(CompassBootstrap, Repo);
 
 CompassBootstrap.prototype.copy = function copy(cb) {
-  // XXX provide a glob based API to copy specific files from the cached
-  // folder to the root one
-  fstream.Reader(path.join(this.cache, 'stylesheets_sass'))
-    .on('error', cb)
-    .pipe(fstream.Writer({
-      path: path.join(__dirname, '../yeoman/root/css/sass'),
-      type: 'Directory'
-    }))
-    .on('error', cb)
-    .on('close', cb)
-    .on('close', this.emit.bind(this, 'copy'));
+
+  var self = this,
+    cp = function(input, output, cb2) {
+      // XXX provide a glob based API to copy specific files from the cached
+      // folder to the root one
+      fstream.Reader(path.join(self.cache, input))
+        .on('error', cb)
+        .pipe(fstream.Writer({
+          path: path.join(__dirname, '../yeoman/root/' + output),
+          type: 'Directory'
+        }))
+        .on('error', cb)
+        .on('close', cb2)
+        .on('close', self.emit.bind(self, 'copy'));
+    };
+
+  cp('stylesheets_sass', 'css/sass', function() {
+    cp('vendor/assets/javascripts', 'js/vendor/bootstrap', cb);
+  });
+
 };
 
 CompassBootstrap.prototype.end = function end(cb) {
   return this;
 };
-
-
-
