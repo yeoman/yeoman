@@ -1,5 +1,6 @@
 var fs = require('fs'),
   path = require('path'),
+  colors = require('colors'),
   zlib = require('zlib'),
   request = require('request'),
   tar = require('tar');
@@ -15,7 +16,7 @@ module.exports = function fetch(tarball, target, cb) {
 
   var log = this.log
     .subhead('Fetching ' + tarball)
-    .writeln('This might take a few moment');
+    .writeln('This might take a few moment'.yellow);
 
   // tarball untar opts
   var extractOpts = { type: 'Directory', path: target, strip: 1 };
@@ -25,7 +26,7 @@ module.exports = function fetch(tarball, target, cb) {
 
   req.on('data', function() { log.write('.'); }).on('end', function() {
     log.ok().writeln();
-    log.ok('Done in ' + (+new Date - now) / 1000 + 's.');
+    log.ok( ('Done in ' + (+new Date - now) / 1000 + 's.').green );
   });
 
   req
@@ -47,7 +48,7 @@ module.exports = function fetch(tarball, target, cb) {
       cb(err);
     })
     .on('close', function() {
-      log.writeln().ok('Done in ' + extractOpts.path).writeln();
+      log.writeln().ok( ('Done in ' + extractOpts.path).green ).writeln();
       cb();
     });
 };
