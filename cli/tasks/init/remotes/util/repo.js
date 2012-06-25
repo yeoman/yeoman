@@ -1,6 +1,7 @@
 
 var fs = require('fs'),
   path = require('path'),
+  colors = require('colors'),
   util = require('util'),
   events = require('events'),
   fstream = require('fstream'),
@@ -74,7 +75,7 @@ Repo.prototype.fetch = function fetch(cb) {
     // expected error, trigger the fetch & copy
     utils.fetch.call(self.grunt, self.url(), self.cache, function(err) {
       if(err) return cb(err);
-      console.log('fetched');
+      console.log('fetched'.green);
       self.emit('fetch');
       cb();
     });

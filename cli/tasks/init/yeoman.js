@@ -1,6 +1,7 @@
 
 var fs = require('fs'),
   path = require('path'),
+  colors = require('colors'),
   utils = require('../../').utils,
   fstream = require('fstream'),
   remotes = require('./remotes'),
@@ -45,10 +46,10 @@ yeoman.dir = path.join(__dirname, 'yeoman');
 yeoman.description = 'Init a new project.';
 
 // Welcome message
-yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n';
+yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n'.rainbow.bold;
 
 // Template-specific notes to be displayed before question prompts.
-yeoman.notes = '... More notes to come here ...';
+yeoman.notes = '... More notes to come here ...'.yellow;
 
 // Any existing file or directory matching this wildcard will cause a warning.
 yeoman.warnOn = '*';
@@ -169,7 +170,7 @@ yeoman.start = function start(init, cb) {
     // prompt for basic project information
     yeoman.prompt(function(err, props) {
       if(err) return cb(err);
-      grunt.log.write("\nGreat! I'll save this configuration to your package.json file!\n\n");
+      grunt.log.write("\nGreat! I'll save this configuration to your package.json file!\n\n".green);
       // Fetch our remotes assets and have them copied / compiled / etc.
       yeoman.remotes(props, function(err) {
         if(err) return cb(err);

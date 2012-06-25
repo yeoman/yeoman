@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 var fs = require('fs'),
   join = require('path').join,
+  _ = require('underscore'),
+  colors = require('colors'),
   help = join(__dirname, 'help.txt'),
   insight = require('../lib/plugins/insight.js'),
   async = require('async'),
@@ -10,6 +12,9 @@ var fs = require('fs'),
 function getUserHome() {
   return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 }
+
+
+
 
 // grunt with the plugin registered
 var grunt = require('grunt').npmTasks(join(__dirname, '../'));
@@ -29,7 +34,10 @@ var opts = cli.options,
 
 // custom help, on `h5bp help`
 if(/^help/.test(route)) {
-  if(/^help$/.test(route)) return fs.createReadStream(help).pipe(process.stdout);
+  if(/^help$/.test(route)) {
+    var compiled = _.template( fs.readFileSync( help, 'utf8' ) );
+    console.log( compiled() );
+  }
   cli.tasks = cmds.join(':');
 }
 
