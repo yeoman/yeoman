@@ -1,0 +1,132 @@
+
+// This file is UTF8 encoded 
+// Spelling-to-phoneme words for Kurdish
+
+
+_0	s'Ifr
+_1	j'Ek
+_2	d'U
+_3	s'e
+_4	dZ'ar
+_5	p'endZ
+_6	S'ES
+_7	h'Eft
+_8	h'EjSt
+_9	n'Eh
+_10	d'Eh
+_11	jazd'E#
+_12	danzd'E#
+_13	sezd'E#
+_14	tSaRd'E#
+_15	panzd'E#
+_16	Sanzd'E#
+_17	hIvd'Eh
+_18	hIZd'Eh
+_19	nozd'Eh
+_2X	b'Ist
+_3X	s'i
+_4X	tS'Il
+_5X	pendZ'i
+_6X	S'est
+_7X	hEft'e
+_8X	heSt'e
+_9X	n'od
+_0C	s'Ed
+_1C	s'Ed
+_0M1	hEz'ar
+_1M1	hEz'ar
+_0M2	mIl'jon
+_1M2	mIl'jon
+
+_0and	_u
+_dpt	_xal
+_??	tipa
+_cap	mezin   // or "ya mezin" after the letter
+
+
+// characters
+// letter names
+_a	a
+b	be
+c	dZe
+ç	tSe
+d	de
+_e	E
+_ê	e
+f	fe
+g	ge
+h	he
+_i	I
+_î	i
+j	Ze
+k	ke
+l	le
+m	me
+n	ne
+_o	o
+p	pe
+q	qe
+r	Re
+s	se
+ş	Se
+t	te
+_u	U
+_û	u
+v	ve
+w	we
+x	xe
+y	je
+z	ze
+
+
+_,	behnok
+_.	xal
+_:	dZotxal
+_;	xalbehnok
+_-	bEndIk
+_?	pIRsniS'an
+_!	banES'an
+%	sEde
+*	steRk
+
+// function words
+
+û	$u+ $pause
+a	$u+
+ê	$u+	
+
+
+
+// pronouns
+ez	$u+
+te	$u+
+wê	$u+
+wî	$u+
+me	$u+
+we	$u+
+wan	$u+
+
+bes	$pause
+an	$u $pause
+anji	$u $pause
+ên	$u
+ya	$u
+yê	$u
+yan	$u
+yên	$u
+ji	$u
+bi	$u
+re	$u
+di	$u $brk
+de	$u
+kir	$u
+got	$u
+
+
+// abbreviations
+hwd	hEr||wEki||dIn
+
+// pronunciation exceptions
+
+lê	$u+
+nebû	$1

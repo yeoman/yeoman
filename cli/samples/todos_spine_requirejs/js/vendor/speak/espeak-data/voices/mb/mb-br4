@@ -1,0 +1,9 @@
+language pt 7
+name brazil-mbrola-4
+gender female
+pitch 140 220
+
+dictrules 2 3 4
+
+mbrola br4 ptbr4_phtrans
+

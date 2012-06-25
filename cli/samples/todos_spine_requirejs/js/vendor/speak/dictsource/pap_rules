@@ -1,0 +1,139 @@
+// This file is UTF8 encoded
+// Spelling-to-phoneme rules for Papiamento (Curacao, Netherlands Antilles)
+
+.group a
+        a        a
+        aa       a:
+        ai       aI
+
+.group b
+        b        b
+
+.group c
+        c        k
+        c (Y     s
+        ch       tS
+
+.group d
+        d        d
+        dj       dZ
+
+.group e
+        e        e
+        ee       e:
+        ei       eI
+        eu       ew
+
+.group è
+        è        'E
+
+.group f
+        f        f
+
+.group g
+        g        g
+        g (Y     x
+        gu (Y    g
+
+.group h
+        h        h
+
+.group i
+        i        i
+        i (A     j
+     A) i (K     j
+        ij       eI
+
+.group j
+        j        j
+
+.group k
+        k        k
+
+.group l
+        l        l
+
+.group m
+        m        m
+
+.group n
+        n        n
+        n (_     N
+     &) nan (_   n%an
+
+.group ñ
+        ñ        n^
+
+.group o
+        o        o
+        oe       u
+        oo       o:
+        ou       ow
+
+.group ò
+        ò        'O
+
+.group p
+        p        p
+
+.group q
+        q        k
+        qu (A    kw
+        qui      kwi
+
+.group r
+        r        R
+
+.group s
+        s        s
+        sh       S
+
+.group t
+        t        t
+
+.group u
+        u        u
+        u (A     w
+        ui       uj
+        uu       y
+
+.group ù
+        ù        Y
+        ùi       Yj
+
+.group  ü
+        ü        y
+        üi       yj
+
+.group v
+        v        v
+
+.group w
+        w        w
+
+.group x
+        x        ks
+     _) x (A     z
+
+.group y
+        y        j
+     K) y (K     i
+
+.group z
+        z        z
+        zj       Z
+
+.group
+        '        ?
+        á        ''a
+        é        ''e
+        í        ''i
+        ó        ''o
+        ú        ''u
+        ç        s
+
+        $        dOlO
+
+
+
+

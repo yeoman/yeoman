@@ -1,0 +1,158 @@
+// translation exceptions for Albanian
+// This file is UTF-8 encoded
+ 
+// alphabet
+_a	a
+b	b@
+c	ts@
+ç	tS@
+d	d@
+dh	D@
+_e	e
+f	f@
+g	g@
+gj	dZ;@
+h	h@
+_i	i
+j	j@
+k	k@
+l	l@
+ll	ll@
+m	m@
+n	n@
+nj	n^@
+_o	O
+p	p@
+q	c@
+r	R@
+rr	RR2@
+s	s@
+sh	S@
+t	t@
+th	T@
+_u	u
+v	v@
+w	w@
+x	dz@
+_y	y
+xh	dZ@
+z	z@
+zh	Z@
+
+
+// numbers
+_0	z'E**O
+_1	n^'I#
+_2	d'y
+_3	tR'E
+_4	k'at@R
+_5	p'Es@/
+_6	dZ;'aSt@/
+_7	St'at@/
+_8	t'Et@/
+_9	n'Vnt@/
+_10	Dj'Et@/
+_11	n^'I#mb@/Djet@/
+_12	d'ymb@/Djet@/
+_13	tR'Emb@/Djet@/
+_14	k'at@rmb@/Djet@/
+_15	p'Es@mb@/Djet@/
+_16	dZ;'aSt@mb@/Djet@/
+_17	St'at@mb@/Djet@/
+_18	t'Et@mb@/Djet@/
+_19	n'Vnt@mb@/Djet@/
+
+_2X	n^'I#zEt
+_3X	tR'iDjet%@/
+_4X	d'yzEt
+_5X	p'Es@/Djet%@/
+_6X	dZ;'aSt@/Djet%@/
+_7X	St'at@/Djet%@/
+_8X	t'Et@/Djet%@/
+_9X	n'Vnt@/Djet%@/
+
+_0C	c,ind
+_0M1	m,ij@/
+_0M2	miLi'On
+_0M3	miLi'ard
+_0and	%E
+_dpt	_pR'esja
+
+
+// symbols
+_#9	tab  // ??
+_#32	speIs
+_??	SkR'On^a
+_cap	_Em'aDE
+
+*	ylli  $max3	// ylli
++	pllus  $max3	// pllus
+.	pik  $max3	// pikë
+=	baRab'aRt	// barabart
+!	piktSud'itsE  $max3	// pikëuditëse
+%	p@tSindja  $max3 // pëçindja
+@	manki		// manki
+&	_DE		// dhe
+/	pj'Estim	// pjestim
+€	EuRO		// euro
+#	haS		// ??
+~	tilda/		// ??
+^	s'iRkumfllEks	// ??
+
+
+_,	pResja/		// presja
+_-	m'inus		// minus
+_:	dy||pika/	// dy pika
+_;	pikpResja/	// pikëpresja
+_<	m'@E||v,OgEl	// më e vogel
+_>	m'@Em'aDE	// më e madhe
+_?	pikpytjE	// pikëpytje
+__	n,Vn||v'iz	// nën vizë
+_"	apOstROf	// apostrof
+_(	kll'apaE||v'Og@l  // kllapa e vogël (e majtë)
+_)	kll'apaE||v'Og@lE||dj'aTt // kllapa e vogël (e djathtë)
+_[	kll'apaE||m'aDE	// kllapa e madhe
+_]	kll'apaE||m'aDEE||dj'aTt
+_{	kll'apaE||m'EsmE
+_}	kll'apaE||m'EsmEE||dj'aTt
+_\	vizEmaItT'yEsE
+
+// unstressed words
+i	$u+
+u	$u+
+
+e	$u+ $brk
+e	e	$atend   // name of letter 'e'
+dhe	$u+ $pause   // and
+ose	$u+ $pause   // or
+mirëpo	$u+ $pause   // but
+nëse	$u+ $pause   // if
+cili	$u+ $pause   // which
+(i cili)	i_ts'iLi
+cila	$u+ $pause   // which
+sikur	$u+ $pause   // as
+si	$u+ $pause   // as 
+
+më	$u+
+në	$u+
+që	$u+
+së	$u+
+të	$u+
+
+për	$u+
+me	$u+
+se	$u+
+nga	$u+
+ka	$u+
+
+janë	$u+
+
+
+// pronunciation exceptions
+muaj	muaI
+muaji	m'uaI;i
+tuaj    tuaI
+
+(sa më)	samm
+kështu	$2
+

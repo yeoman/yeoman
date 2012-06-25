@@ -1,0 +1,27 @@
+These are the spelling-to-phoneme pronunciation rules and exceptions lists
+for each language.
+
+You can make changes and then re-compile them to produce the "_dict"
+file in the  espeak-data  data directory (eg. "en_dict") which the
+speak program used.
+
+Use:
+  speak --compile=<voicename>
+
+to compile the data for a particular language.  It automatically replaces
+the corresponding _dict file in  espeak-data, ready for use by the 
+speak  program.
+
+An "_extra" file, (eg. en_extra) can be used to in addition to the "_list" file
+to add exception words without disturbing the official "_list" file.
+It is treated as an extension of the "_list" file.
+
+
+Language Notes:
+
+Russian.  An additional dictionary of Russian words and their stress positions
+   is available at http://espeak.sourceforge.net/data/russian_data.zip.
+   This allows eSpeak to put the stress on the correct syllable of Russian words.
+
+
+

@@ -1,0 +1,149 @@
+
+// This file is UTF8 encoded 
+// Spelling-to-phoneme rules for Indonesian
+
+.group a
+        a        a
+     a) a        _|a
+    A_) a        _|a
+    au) a        _|a
+        ai       aI
+        au       aU
+
+.group b
+        b        b
+     _) be (@@   b@
+        be (n    b@
+
+
+.group c
+        c        tS
+        ch       X
+
+.group d
+        d        d
+        dj       dZ     / Dutch
+
+.group e
+        e        E
+     e) e        _|E
+    A_) e        _|E
+        e (_     E
+
+.group f
+        f        f
+        ff       f
+
+.group g
+        g        g
+
+.group h
+        h        h
+
+.group i
+        i        i
+        ie       i
+     i) i        _|i
+    A_) i        _|i
+
+.group j
+        j        dZ
+
+.group k
+        k        k
+        k (_     k
+        kh       x
+     _) ke (@@   k@
+        ke (n    k@
+
+
+.group l
+        l        l
+        ll       l
+
+.group m
+        m        m
+
+     _) me (@@   m@
+     _) mempe (@    m@mp@
+
+.group n
+        n        n
+        ng       N
+        ny       n^
+
+.group o
+        o        o
+     o) o        _|o
+    A_) o        _|o
+        o (r     O
+        oe       u        // Dutch spelling
+
+.group p
+        p        p
+        pp       p
+        ph       f
+
+     _) pe (@@   p@
+
+
+.group q
+        q        k
+        qu       kw
+
+.group r
+        r        R2
+        r (K     R
+     e) r (K     R
+
+
+.group s
+        s        s
+        ss       s
+        sy       C   // perhaps [S;] ??
+        sj       C
+
+     _) se (@@   s@
+
+
+.group t
+        t        t
+        tj       tS      // Dutch
+     _) tel      t@l
+     _) ter (@@  t@R
+
+
+
+.group u
+        u        u
+     u) u        _|u
+    A_) u        _|u
+
+.group v
+        v        v
+
+.group w
+        w        w
+
+.group x
+        x        ks
+     _) x        z
+
+.group y
+        y        j
+
+.group z
+        z        z
+
+.group
+        $        dOlaR
+
+
+    __) - (_D    t,andak'uR2aN
+
+        *        b'intaN
+     *) * (*
+        ** 
+    **) * (_         _::
+
+

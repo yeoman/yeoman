@@ -1,0 +1,194 @@
+
+// "hbs" is the ISO 639-3 code for Serbian/Croatian/Bosnian macrolanguage
+// This file is UTF-8 encoded
+
+//The next line gives a voice which is used to find a phoneme table to use to compile this dictionary
+//voice=hr
+
+// Conditional rules:
+// ?1  Croatian
+// ?2  Serbian
+// ?3  Bosnian (Bosna and Hercegovina)
+// ?4  Serbian & Bosnian
+
+.group a
+        a        a
+        a (j     A
+        a (r     A        // don't reduce to [&]
+
+.group b
+        b        b
+
+.group c
+        c        ts
+
+.group č
+        č        tS
+
+.group ć
+        ć        tS;
+
+.group d
+        d        d
+        dz       dz
+        dž       dZ
+
+.group đ
+        đ        dZ;
+
+.group e
+        e        E
+     j) e        e
+        e (j     e
+     _) exe      %ekse        // filetype
+?2   _) exe      %eikse       // filetype
+
+.group f
+        f        f
+
+.group g
+        g        g
+
+.group h
+        h        h
+     _) h        x
+
+.group i
+        i        i
+    ._) ini      %ini         // filetype
+
+.group j
+        j        j
+    XA) j (_     j_      // short pause after final [j] in one-syllable words
+
+.group k
+        k        k
+
+.group l
+        l        l
+     K) l (K     l-
+        lj (+    l^
+     v) lj       lj
+
+.group m
+        m        m
+
+.group n
+        n        n
+        n (g     N
+        n (k     N
+
+        nj       n^
+
+.group o
+        o        o
+        ou       oU
+
+.group p
+        p        p
+
+.group q
+        q        k
+        qu       kv
+?2      qu       ku
+
+.group r
+        r        R
+     A) r (A     R
+     K) r (A     r*    // this phoneme expands to [@-*]
+        rr       R
+        r (_     R
+
+     K) r (K     R2
+
+
+.group s
+        s        s
+
+.group š
+        š        S
+
+.group t
+        t        t
+
+.group u
+        u        u
+
+.group v
+        v        v
+
+.group w
+        w        v
+
+.group x
+        x        ks
+
+.group y
+        y        j
+     K) y (K     i
+
+
+.group z
+        z        z
+
+.group ž
+        ž        Z
+
+.group
+        á        a:
+        é        e:
+        í        i:
+        ó        o:
+        ú        u:
+
+        ä        _^_DE   // use German voice
+        ö        _^_DE
+        ü        _^_DE
+        ß        _^_DE
+
+        $        d'ol&R
+
+   __)  - (_D    minus
+   A_)  - (_D    _
+   C_)  - (_D    _
+
+
+.group 0xce   // Greek letters
+
+	α	'alf&
+	ά	'alf&||t'onos
+	β	b'et&
+	γ	g'am&
+	δ	d'elt&
+	ε	'epsIlon
+	έ	'epsIlon||t'onos
+	ζ	z'et&
+	η	'et&
+	ή	'et&||t'onos
+	θ	tx'et&
+	ι	j'ot&
+	ί	j'ot&||t'onos
+	κ	k'ap&
+	λ	l'amd&
+	μ	m'i
+	ν	n'i
+	ξ	ks'i
+	ο	'omIkr*on_
+
+.group 0xcf   // Greek letters
+
+	π	p'i
+	ρ	R'o
+	σ	s'igm&
+	ς	gr-tSko_||z'avr-Sno_||s'igm&
+	τ	t'au
+	υ	gr-tSki_||'ipsIlon
+	ύ	gr-tSki||'ipsIlon||t'onos
+	φ	f'i
+	χ	x'i
+	ψ	ps'i
+	ω	'omeg&
+	ώ	'omeg&||t'onos
+	ό	'omIkr*on||t'onos
+
+

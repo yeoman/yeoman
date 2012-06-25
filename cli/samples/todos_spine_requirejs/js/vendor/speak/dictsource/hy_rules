@@ -1,0 +1,184 @@
+// translation rules for Armenian (East)
+//  (consonants are changed for Armenian-West in the voice file "hy-west")
+// This file is UTF-8 encoded
+
+.L01 բ գ թ կ պ տ ք
+.L02 ու այ իւ իյ ոյ               // other vowel sounds
+
+// ligature
+.replace
+և  եւ
+
+
+.group ա
+        ա        a
+        այ       aI
+        այ (_    a
+
+.group բ
+        բ        b
+     _) բ (C     b@
+
+.group գ
+        գ        g
+     _) գ (C     g@
+
+.group դ
+        դ        d
+     _) դ (C     d@
+
+.group ե
+        ե        e
+     _) ե        je
+        եա       ja
+        եօ       jo
+
+.group զ
+        զ        z
+     _) զ (L01   @z
+     _) զ (C     z@
+
+.group է
+        է        e
+        էօ       W
+        էյ       eI
+
+.group ը
+        ը        @
+
+.group թ
+        թ        t#
+     _) թ (C     t#@
+
+.group ժ
+        ժ        Z
+
+.group ի
+        ի        i
+        իւ       y
+        իւ (_    iv
+        իյ       i@
+
+.group լ
+        լ        l
+     _) լ (C     l@
+
+.group խ
+        խ        X
+
+.group ծ
+        ծ        ts
+     _) ծ (C     ts@
+
+.group կ
+        կ        k
+     _) կ (C     k@
+
+.group հ
+        հ        h
+     _) հ (C     h@
+
+.group ձ
+        ձ        dz
+     _) ձ (C     dz@
+
+.group ղ
+        ղ        r"
+     _) ղ (C     r"@
+
+.group ճ
+        ճ        c
+     _) ճ (C     c@
+
+.group մ
+        մ        m
+     _) մ (C     m@
+     C) մ (_     @m
+   L02) մ (_     m
+
+.group յ
+        յ        h       // ?? [j]
+     _) յ (C     h@
+
+.group ն
+        ն        n
+     _) ն (C     n@
+     C) ն (_     @n
+   L02) ն (_     n
+
+.group շ
+        շ        S
+     _) շ (տ     @S
+     _) շ (C     S@
+
+.group ո
+        ո        o
+     _) ո        vo
+        ու       u
+        ու (A    v
+        ոյ       uj   // ?? uj or uy
+     A) ոյ       oj   // ?? oj or oy
+        ոյ (_    o
+
+.group չ
+        չ        tS
+     _) չ (C     tS@
+
+.group պ
+        պ        p
+     _) պ (C     p@
+
+.group ջ
+        ջ        dZ
+     _) ջ (C     dZ@
+
+.group ռ
+        ռ        **
+     _) ռ (C     **@
+
+.group ս
+        ս        s
+     _) ս (L01   @s
+     _) ս (C     s@
+
+.group վ
+        վ        v
+     _) վ (C     v@
+
+.group տ
+        տ        t        // ?? [dd]
+     _) տ (C     t@
+
+.group ր
+        ր        r
+     _) ր (C     r@
+     C) ր (_     @r
+   L02) ր (_     r
+
+.group ց
+        ց        ts#
+     _) ց (C     ts#@
+
+.group ւ
+        ւ        v
+     _) ւ (C     v@
+
+.group փ
+        փ        p#
+     _) փ (C     p'@
+
+.group ք
+        ք        k#       // ?? [kk]
+     _) ք (C     k#@
+
+.group օ
+        օ        o
+
+.group ֆ
+        ֆ        f
+     _) ֆ (C     f@
+
+.group
+        $	dol@
+
+

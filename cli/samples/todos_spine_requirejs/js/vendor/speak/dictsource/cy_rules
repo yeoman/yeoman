@@ -1,0 +1,286 @@
+// translation rules for Welsh language
+// This file is UTF-8 encoded
+
+.group a
+     _)  a (_      A:
+         a         A:
+         a (C      a
+         a (CC     a
+         aa        A:
+
+         a (b      A:
+         a (d      A:
+         a (g      A:
+         a (ch     A:
+         a (th     A:
+         a (ff     A:
+         a (s      A:
+         a (f      A:
+         a (dd     A:
+
+         ae        AY
+         ai        aI
+         au        aY
+      @) au (_     a
+         aw (+     aU
+
+
+.group b
+     _)  b (_      bi:
+         b         b
+
+.group c
+     _)  c (_      Ek
+     _)  ch (_     Ex
+         c         k
+         ch        x
+     e)  ch        C
+     i)  ch        C
+     u)  ch        C
+
+     _)  cwn       kUm
+
+
+.group d
+     _)  d (_      di:
+     _)  dd (_     ED
+         d         d
+         dd        D
+
+.group e
+     _)  e (_      e:
+         e         e:
+         e (C      E
+         e (CC     E
+         ee        e:
+         e (b      e:
+         e (d      e:
+         e (g      e:
+         e (ch     e:
+         e (th     e:
+         e (ff     e:
+         e (s      e:
+         e (f      e:
+         e (dd     e:
+
+         ei        @I
+         ey        @I
+         eu        @Y
+         ew (+     eU
+         e (wA     E
+
+.group f
+     _)  f (_      Ev
+     _)  ff (_     Ef
+         f         v
+         ff        f
+
+.group g
+     _)  g (_      Eg
+         g         g
+         gwl       gw@-l
+         gwn       gw@-n
+
+.group h
+     _)  h (_      hA:
+         h         h
+
+.group i
+     _)  i (_      i:
+         i         i:
+         i (C      I
+         i (CC     I
+         ii        i:
+         i (b      i:
+         i (d      i:
+         i (g      i:
+         i (ch     i:
+         i (th     i:
+         i (ff     i:
+         i (s      i:
+         i (f      i:
+         i (dd     i:
+         i (l      i:
+         i (n      i:
+         i (r      i:
+
+         i (A      j
+         iw (+     Iu
+
+.group j
+     _)  j (_      dZV
+         j         dZ
+
+.group k
+     _)  k (_      kV
+         k         k
+
+.group l
+     _)  l (_      El
+     _)  ll (_     El#
+         l         l
+         ll        l#
+
+     _)  llan      l#an
+
+
+.group m
+     _)  m (_      Em
+         m         m
+
+.group n
+     _)  n (_      En
+     _)  ng (_     EN
+         n         n
+         ng        N
+
+.group o
+     _)  o (_      o:
+         o         o:
+         o (C      O
+         o (CC     O
+         oo        o:
+
+         o (b      o:
+         o (d      o:
+         o (g      o:
+         o (ch     o:
+         o (th     o:
+         o (ff     o:
+         o (s      o:
+         o (f      o:
+         o (dd     o:
+
+         oe        OY
+         oi        OI
+         ou        OY
+
+.group p
+     _)  p (_      pi:
+     _)  ph (_     fi:
+         p         p
+         ph        f
+
+.group q
+     _)  q (_      kwA:
+         q         k
+         qu        kw
+
+.group r
+     _)  r (_      Er
+     _)  rh (_     hro:
+         r         r
+         rh        hr
+
+.group s
+     _)  s (_      Es
+         s         s
+         si (A     S
+
+.group t
+     _)  t (_      ti:
+     _)  th (_     ET
+         t         t
+         th        T
+
+.group u
+     _)  u (_      ,Ib'EdOl  // ???
+         u         y:
+         u (C      Y
+         u (CC     Y
+         uu        y:
+
+         u (b      y:
+         u (g      y:
+         u (d      y:
+         u (ch     y:
+         u (th     y:
+         u (ff     y:
+         u (s      y:
+         u (f      y:
+         u (dd     y:
+         u (ll     y:
+         u (l      y:
+         u (n      y:
+         u (r      y:
+
+         uw (+     Yu
+
+.group v
+     _)  v (_      vi:
+         v         v
+
+.group w
+     _)  w (_      u:
+     g)  w         w
+         w         u:
+     &)  w (K+     U
+         w (C      U
+         w (CC     U
+         ww        u:
+
+         w (b      u:
+         w (d      u:
+         w (g      u:
+         w (ch     u:
+         w (th     u:
+         w (ff     u:
+         w (s      u:
+         w (f      u:
+         w (dd     u:
+
+         w (A      w
+         wy        uY
+
+.group x
+     _)  x (_      Eks
+         x         ks
+
+.group y
+     _)  y (_      V
+         y (@+     V
+         y         y:
+         y (C      Y
+         y (CC     Y
+
+         y (d      y:
+         y (s      y:
+         y (th     y:
+         y (ch     y:
+         y (g      y:
+         y (dd     y:
+
+     _)  y (w      j
+         yw (+     Yu
+     _)  yn (_     @n
+     _)  yn (_n    @
+
+.group z
+     _)  z (_      zu:
+         z         z
+
+.group
+         â         A:
+         ê         e:
+         î         i:
+         ô         o:
+         û         y:
+         ŵ         u:
+         ŷ         y:
+
+         à         a
+         è         E
+         ì         I
+         ò         O
+         ù         Y
+         ẁ         U
+         ỳ         Y
+
+         ï         i:
+
+         'ch (_S3  x
+         'n (_S2   n
+         'r (_S2   r
+
+         .         puYnt
+

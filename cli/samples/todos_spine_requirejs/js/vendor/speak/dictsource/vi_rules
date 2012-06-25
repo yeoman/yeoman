@@ -1,0 +1,718 @@
+// replace combining (tone) accents with single characters
+.replace
+à	à
+á	á
+ả	ả
+ã	ã
+ạ	ạ
+
+
+ằ	ằ
+ắ	ắ
+ẳ	ẳ
+ẵ	ẵ
+ặ	ặ
+
+ầ	ầ
+ấ	ấ
+ẩ	ẩ
+ẫ	ẫ
+ậ	ậ
+
+è	è
+é	é
+ẻ	ẻ
+ẽ	ẽ
+ẹ	ẹ
+
+ề	ề
+ế	ế
+ể	ể
+ễ	ễ
+ệ	ệ
+
+ì	ì
+í	í
+ỉ	ỉ
+ĩ	ĩ
+ị	ị
+
+ò	ò
+ó	ó
+ỏ	ỏ
+õ	õ
+ọ	ọ
+
+ồ	ồ
+ố	ố
+ổ	ổ
+ỗ	ỗ
+ộ	ộ
+
+ờ	ờ
+ớ	ớ
+ở	ở
+ỡ	ỡ
+ợ	ợ
+
+ù	ù
+ú	ú
+ủ	ủ
+ũ	ũ
+ụ	ụ
+
+ừ	ừ
+ứ	ứ
+ử	ử
+ữ	ữ
+ự	ự
+
+ỳ	ỳ
+ý	ý
+ỷ	ỷ
+ỹ	ỹ
+ỵ	ỵ
+
+
+//================================
+//  Consonants
+//================================
+
+.group b
+        b          b
+     _) b          _b
+
+.group c
+        c          k
+        c (_       kh
+        ch         c         // try [tS;] [tS] [c]
+
+.group d
+        d          J         // try [z] [J] [dZ] [dZ;] [J^]
+
+.group đ
+        đ          d
+     _) đ          _d
+
+.group f
+        f          f
+
+
+.group g
+        g          Q         // try [g] [Q]
+        gh         Q         // or [g]  [Q]
+        g (i       D         // try [D] [z] [j] [J^] [z;] [J] [dZ]
+        g (ì       D
+        g (í       D
+        g (ỉ       D
+        g (ĩ       D
+        g (ị       D
+        gi         D
+
+.group h
+        h          h
+
+
+.group j
+        j          Z
+
+
+.group k
+        k          k
+        k (_       kh
+        kh         x
+
+.group l
+        l          l
+
+.group m
+        m          m
+
+.group n
+        n          n
+        ng         N
+        ngh        N
+        nh         n^
+
+.group ñ
+        ñ          n^
+
+.group p
+        p          p
+        ph         f
+
+.group q
+        q          k
+        q (_       kh
+        qu         kw
+
+.group r
+        r          z.        // try [z] [z.] [r] [z;]
+
+.group s
+        s          s.        // try [s.] [s] [S]
+
+.group t
+        t          t[
+        th         t
+        tr         cr        // try [cr] [tr] [tS;] [tS] [c] [dZ] [dz;]
+
+.group v
+        v          v
+
+.group w
+        w          w
+
+.group x
+        x          s
+
+.group z
+        z          z
+
+
+//================================
+//  Vowels
+//================================
+
+.group a
+        a          a:
+        ai         a:I
+        aì         a:I2
+        aí         a:I3
+        aỉ         a:I4
+        aĩ         a:I5
+        aị         a:I6
+        ay         aI
+        aỳ         aI2
+        aý         aI3
+        aỷ         aI4
+        aỹ         aI5
+        aỵ         aI6
+        ao         a:U
+        aò         a:U2
+        aó         a:U3
+        aỏ         a:U4
+        aõ         a:U5
+        aọ         a:U6
+        au         aU
+        aù         aU2
+        aú         aU3
+        aủ         aU4
+        aũ         aU5
+        aụ         aU6
+
+.group à
+        à          a:2
+        ài         a:I2
+        ày         aI2
+        ào         a:U2
+        àu         aU2
+
+.group á
+        á          a:3
+        ái         a:I3
+        áy         aI3
+        áo         a:U3
+        áu         aU3
+
+.group ả
+        ả          a:4
+        ải         a:I4
+        ảy         aI4
+        ảo         a:U4
+        ảu         aU4
+
+.group ã
+        ã          a:5
+        ãi         a:I5
+        ãy         aI5
+        ão         a:U5
+        ãu         aU5
+
+.group ạ
+        ạ          a:6
+        ại         a:I6
+        ạy         aI6
+        ạo         a:U6
+        ạu         aU6
+
+//================================
+.group ă
+        ă          a
+
+.group ằ
+        ằ          a2
+
+.group ắ
+        ắ          a3
+
+.group ẳ
+        ẳ          a4
+
+.group ẵ
+        ẵ          a5
+
+.group ặ
+        ặ          a6
+
+//=================================
+.group â
+        â          @
+        ây         @I
+        âu         @U
+
+.group ầ
+        ầ          @2
+        ầy         @I2
+        ầu         @U2
+
+.group ấ
+        ấ          @3
+        ấy         @I3
+        ấu         @U3
+
+.group ẩ
+        ẩ          @4
+        ẩy         @I4
+        ẩu         @U4
+
+.group ẫ
+        ẫ          @5
+        ẫy         @I5
+        ẫu         @U5
+
+.group ậ
+        ậ          @6
+        ậy         @I6
+        ậu         @U6
+
+//===========================
+.group e
+        e          E
+        eo         EU
+        eò         EU2
+        eó         EU3
+        eỏ         EU4
+        eỗ         EU5
+        eọ         EU6
+
+.group è
+        è          E2
+        èo         EU2
+
+.group é
+        é          E3
+        éo         EU3
+
+.group ẻ
+        ẻ          E4
+        ẻo         EU4
+
+.group ẽ
+        ẽ          E5
+        ẽo         EU5
+
+.group ẹ
+        ẹ          E6
+        ẹo         EU6
+
+//============================
+
+.group ê
+        ê          e
+        êu         eU
+
+.group ề
+        ề          e2
+        ều         eU2
+
+.group ế
+        ế          e3
+        ếu         eU3
+
+.group ể
+        ể          e4
+        ểu         eU4
+
+.group ễ
+        ễ          e5
+        ễu         eU5
+
+.group ệ
+        ệ          e6
+        ệu         eU6
+
+
+//============================
+.group i
+        i          i
+        i (A       j
+        ia         i@
+        ià         i@2
+        iá         i@3
+        iả         i@4
+        iã         i@5
+        iạ         i@6
+        iê         i@
+        iề         i@2
+        iế         i@3
+        iể         i@4
+        iễ         i@5
+        iệ         i@6
+        iu         iU
+        iù         iU2
+        iú         iU3
+        iủ         iU4
+        iũ         iU5
+        iụ         iU6
+//        iêu      i@U
+
+.group ì
+        ì          i2
+        ì (A       j2
+        ìa         i@2
+        ìu         iU2
+
+.group í
+        í          i3
+        í (A       j3
+        ía         i@3
+        íu         iU3
+
+.group ỉ
+        ỉ          i4
+        ỉ (A       j4
+        ỉa         i@4
+        ỉu         iU4
+
+.group ĩ
+        ĩ          i5
+        ĩ (A       j5
+        ĩa         i@5
+        ĩu         iU5
+
+.group ị
+        ị          i6
+        ị (A       j6
+        ịa         i@6
+        ịu         iU6
+
+
+
+//=========================
+.group o
+        o          O
+        o (A       w
+        oi         OI
+        oì         OI2
+        oí         OI3
+        oỉ         OI4
+        oĩ         OI5
+        oị         OI6
+
+.group ò
+        ò          O2
+        òi         OI2
+        ò (A       w2
+
+.group ó
+        ó          O3
+        ói         OI3
+        ó (A       w3
+
+.group ỏ
+        ỏ          O4
+        ỏi         OI4
+        ỏ (A       w4
+
+.group õ
+        õ          O5
+        õi         OI5
+        õ (A       w5
+
+.group ọ
+        ọ          O6
+        ọi         OI6
+        ọ (A       w6
+
+
+//=============================
+.group ô
+        ô          o
+        ôi         oI
+
+.group ồ
+        ồ          o2
+        ồi         oI2
+
+.group ố
+        ố          o3
+        ối         oI3
+
+.group ổ
+        ổ          o4
+        ổi         oI4
+
+.group ỗ
+        ỗ          o5
+        ỗi         oI5
+
+.group ộ
+        ộ          o6
+        ội         oI6
+
+
+
+//=============================
+.group ơ
+        ơ          @:
+        ơi         @:I
+        ơu         @:U
+
+.group ờ
+        ờ          @:2
+        ời         @:I2
+        ờu         @:U2
+
+.group ớ
+        ớ          @:3
+        ới         @:I3
+        ớu         @:U3
+
+.group ở
+        ở          @:4
+        ởi         @:I4
+        ởu         @:U4
+
+.group ỡ
+        ỡ          @:5
+        ỡi         @:I5
+        ỡu         @:U5
+
+.group ợ
+        ợ          @:6
+        ợi         @:I6
+        ợu         @:U6
+
+
+
+//=============================
+.group u
+        u          u
+        u (A       w
+     A) u          w
+        ui         uI
+        uì         uI2
+        uí         uI3
+        uỉ         uI4
+        uĩ         uI5
+        uị         uI6
+        ua         u@
+        uà         u@2
+        uá         u@3
+        uả         u@4
+        uã         u@5
+        uạ         u@6
+        uô         u@
+        uồ         u@2
+        uố         u@3
+        uổ         u@4
+        uỗ         u@5
+        uộ         u@6
+        uôi        u@j
+        uồi        u@j2
+        uối        u@j3
+        uổi        u@j4
+        uỗi        u@j5
+        uội        u@j6
+
+.group ù
+        ù          u2
+        ù (A       w2
+        ùi         uI2
+        ùa         u@2
+
+.group ú
+        ú          u3
+        ú (A       w3
+        úi         uI3
+        úa         u@3
+
+.group ủ
+        ủ          u4
+        ủ (A       w4
+        ủi         uI4
+        ủa         u@4
+
+.group ũ
+        ũ          u5
+        ũ (A       w5
+        ũi         uI5
+        ũa         u@5
+
+.group ụ
+        ụ          u6
+        ụ (A       w6
+        ụi         uI6
+        ụa         u@6
+
+//=============================
+.group ư
+        ư          y
+        ưi         yI
+        ưa         y@
+        ươ         y@
+        ườ         y@2
+        ướ         y@3
+        ưở         y@4
+        ưỡ         y@5
+        ượ         y@6
+        ưu         yw
+        ươi        y@j
+        ười        y@j2
+        ưới        y@j3
+        ưởi        y@j4
+        ưỡi        y@j5
+        ượi        y@j6
+        ươu        y@w
+        ườu        y@w2
+        ướu        y@w3
+        ưởu        y@w4
+        ưỡu        y@w5
+        ượu        y@w6
+
+.group ừ
+        ừ          y2
+        ừi         yI2
+        ừa         y@2
+        ừu         yw2
+
+.group ứ
+        ứ          y3
+        ứi         yI3
+        ứa         y@3
+        ứu         yw3
+
+.group ử
+        ử          y4
+        ửi         yI4
+        ửa         y@4
+        ửu         yw4
+
+.group ữ
+        ữ          y5
+        ữi         yI5
+        ữa         y@5
+        ữu         yw5
+
+.group ự
+        ự          y6
+        ựi         yI6
+        ựa         y@6
+        ựu         yw6
+
+
+
+.group y
+        y          i
+        y (A       j
+        ya         i@
+        yà         i@2
+        yá         i@3
+        yả         i@4
+        yã         i@5
+        yạ         i@6
+        yê         i@
+        yề         i@2
+        yế         i@3
+        yể         i@4
+        yễ         i@5
+        yệ         i@6
+//        yêu      i@U
+
+.group ỳ
+        ỳ          i2
+        ỳ (A       j2
+        ỳa         i@2
+
+.group ý
+        ý          i3
+        ý (A       j3
+        ýa         i@3
+
+.group ỷ
+        ỷ          i4
+        ỷ (A       j4
+        ỷa         i@4
+
+.group ỹ
+        ỹ          i5
+        ỹ (A       j5
+        ỹa         i@5
+
+.group ỵ
+        ỵ          i6
+        ỵ (A       j6
+        ỵa         i@6
+
+.group 0xce   // Greek letters
+// 0xce is the first byte of the utf-8 code for these characters 
+
+        α          a:1n_|f'a:1
+        ά          a:1n_|f'a:1
+        β          b'e1_|t['a:1
+        γ          Q'a:1_|m'a:1
+        δ          J'E1n_|t['a:1
+        ε          E1p_|s'i1_|l'O1n
+        έ          E1p_|s'i1_|l'O1n
+        ζ          D'e1_|t['a:1
+        η          e1_|t['a:1
+        ή          e1_|t['a:1
+        θ          t'e1_|t['a:1
+        ι          i1_|'o1_|t['a:1
+        ί          i1_|'o1_|t['a:1
+        κ          k'a:1p_|p'a:1
+        λ          l'a1m_|_d'a:1
+        μ          mw'i1
+        ν          nw'i1
+        ξ          s'i7
+        ο          o1_|m'i1_|kz.'O7n
+
+.group 0xcf   // Greek letters
+
+        π          p'i1
+        ρ          z.'o1
+        σ          s'i3c_|m'a:1
+        ς          s'i3c_|m'a:1
+        τ          t['o1
+        υ          u1p_|s'i1_|l'O1n
+        ύ          u1p_|s'i1_|l'O1n
+        φ          f'i1
+        χ          c'i1
+        ψ          ps'i1
+        ω          o1_|m'e1_|Q'a:7
+        ώ          o1_|m'e1_|Q'a:7
+        ό          o1_|m'i1_|kz.'O7n
+
+
+.group
+        %          f'@2n||tS;'am
+        !          _:c'@3m_|t'a:7n_:
+        ! (\! 
+//            :            koUl@n
+    D_) h (_DD_    D'@:2     // omit colon in time, eg: 2:30
+        $          d'o||l'a
+        !=         x,o1N_|_b'a2N_
+        >=         l'@:3n_|h'@:1n_|hw,a6kh_b'a2N
+        <=         n^'O4_|h'@:1n_|hw,a6kh_b'a2N
+
+
+    __) - (_D      cr'y2
+    A_) - (_D      _
+    C_) - (_D      _
+
+
+        .          c'@3m_
+        . (.       _:
+    \.) . 
+

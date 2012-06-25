@@ -1,0 +1,8 @@
+language fr 7
+name french-mbrola-4
+gender female
+
+dictrules 1
+pitch 140 220
+mbrola fr1 fr1_phtrans
+

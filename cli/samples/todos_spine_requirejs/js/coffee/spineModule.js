@@ -6,6 +6,7 @@ define(
     // once we've got it we can delete the window.Spine reference and then force all of our code
     // to just require this module.
 
+
     var _innerSpine = null;
     var findSpine = function() {
         if(_innerSpine == null && window.Spine) {
@@ -16,5 +17,4 @@ define(
     };
 
     return findSpine; 
-}());
-
+}());  

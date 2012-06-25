@@ -1,0 +1,172 @@
+
+// This file is UTF8 encoded
+
+// NOTE:  An additional file: ru_listx  contains a large collection of
+// Russian words which are marked with their correct stress position.
+//
+// To improve Russian pronunciation, download this from
+// http://espeak.sourceforge.net and put the ru_listx file in the same
+// directory as this ru_list file, and then do the command:
+//   speak --compile=ru 
+
+
+
+// Numbers
+_0	n'ojl^
+_1	ojd;'in
+_1f	odn'a
+_2	dv'A
+_2f	dv;'e
+_3	tR;'i
+_4	tS;It'yR;I
+_5	p;'jat;
+_6	S'Es;t;
+_7	s;'ejm
+_8	v'os;E2m
+_9	d;'evI3t;
+_10	d;'es;It;
+_11	Od;'innVttsVt;
+_12	dv;In'AttsVt;
+_13	tR;In'AttsVt;
+_14	tS;It'y@-*nVttsVt;
+_15	p;Itn'AttsVt;
+_16	SE#stn'AttsVt;
+_17	s;Imn'AttsVt;
+_18	vOs;Imn'AttsVt;
+_19	d;E2v;Itn'AttsVt;
+_2X	dv'AttsVt;
+_3X	tr;'ittsVt;
+_4X	s'o@-*Ok
+_5X	p;Vd;d;Is;'jat
+_6X	SE2z;d;d;Is;'jat
+_7X	s;'emd;E2s;Vt
+_8X	v'os;E2md;E2s;Vt
+_9X	d;evIn'ostO
+_0C	st'o
+_2C	dv;'es;t;I
+_3C	tr;'ista
+_4C	tS;It'yr;E2sta
+_5C	p;,It;s'ot
+_6C	S,E#s;t;s'ot
+_7C	s;,Ims'ot
+_8C	vOs;Ims'ot
+_9C	devits'ot
+_1MA1	t'ys;ItS;V     // no '1' before thousand
+_0MA1	t'ys;ItS;i
+_0M1	t'ys;VtS;
+_1MA2	m;,IlI;'on
+_0MA2	m;,IlI;'ona
+_0M2	m;,IlI;'onof
+_1MA3	m;,IlI;'art
+_0MA3	m;,IlI;'arda
+_0M3	m;,IlI;'artof
+_dpt	_:'i_:        // start of decimal fraction
+_dpt2	_d;Is;'atYx   // end of decimal fraction
+
+// characters
+№	 номер	$text
+
+
+// prepositions
+в	v $u         // to,in,at
+от	  $u         // from
+с	s $u         // with,from,since
+у	u $u         // by
+на        $u         // on
+для	  $u         // for
+
+
+// conjunctions
+и	i $u $pause    // and
+а	 $u $pause    // and
+а	 $atend
+но	$u $pause    // but
+ибо	$u $pause    // for
+
+ибо	$u $pause    // if
+хотя	$2 $pause       // although
+чтобы	$pause       // in order that
+
+
+// pronouns
+я       $u           // I
+
+
+// questions
+что     Sto  $u $pause     // what, that
+
+
+// misc.
+не	$u           // negative
+
+
+// auxillary verbs
+быть	$u1       // to be
+побыть	$u2
+
+есмь	$u1
+еси	$u2
+есть	$u1
+есмы	$u1
+есте	$u1
+суть	$u1
+
+был	$u1
+были	$u1
+было	$u1
+побыл	$u1
+побыла	$u3
+побыло	$u2
+побыли	$u2
+
+буду	$u1
+будешь	$u1
+будет	$u1
+будем	$u1
+будете	$u1
+будут	$u1
+побуду	$u2
+побудешь $u2
+побудет	$u2
+побудем	$u2
+побудете $u2
+побудут	$u2
+
+мочь    $u         // can
+смочь	$u1
+
+могу	$u2
+можешь	$u1
+может	$u1
+можем	$u1
+можете	$u1
+могут	$u1
+
+мог	$u1
+могла	$u2
+могло	$u2
+могли	$u2
+смог	$u1
+смогла	$u2
+смогло	$u2
+смогли	$u2
+
+смогу	$u1
+сможешь	$u1
+сможет	$u1
+сможем	$u1
+сможете	$u1
+смогут	$u1
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+_в	vE
+в       vE  $atend
+_с	Es
+с       Es  $atend
+
+
+// exceptions
+радио         r'ad;Io

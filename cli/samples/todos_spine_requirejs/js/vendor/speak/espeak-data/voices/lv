@@ -1,0 +1,6 @@
+name latvian
+language lv
+gender male
+
+replace 03  o  o:
+

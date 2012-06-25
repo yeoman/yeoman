@@ -1,0 +1,174 @@
+// translation rules for Albanian
+// This file is UTF-8 encoded
+
+.L02 b d g gj xh
+.L03 dh gj ll nj rr sh th xh zh   // 2-letter consonants
+
+.group a
+        a        a
+        aj       aI
+        a (_     A   // if stressed
+        a (rK    A
+
+     @) at (_    =at
+     @) ave (_   =avE
+     @) arëve (_ =aR@vE
+     @) ani (q_  =ani
+
+.group b
+        b        b
+
+.group c
+        c        ts
+
+.group ç
+        ç        tS
+
+.group d
+        d        d
+        dh       D
+
+.group e
+        e        E
+     j) e        e
+    n^) e        e
+     q) e        e
+     l) e        e
+    ll) e        E
+    sh) e        e
+        e (j     e
+        ej (K    eI
+        e (sh    e
+        e (sj    e
+
+     @) en (_    =En
+     @) es (_    =Es
+     @) et (_    =Et
+     @) eve (_   =EvE
+     @) evi (q_  =Evi
+
+.group ë
+        ë        V
+    n^) ë        I#
+    AC) ë (_     @/    // silent
+   Aht) ë (_     @/    // silent
+   Ast) ë (_     @/    // silent
+   AjC) ë (_     @/    // silent
+   ArC) ë (_     @/    // silent
+  AL03) ë (_     @/    // silent
+     @) ë (X     %V
+
+     @) ëse (_   =@sE
+     @) ësi (_   =@si
+     @) ëta (_   =@ta
+     @) ëve (_   =@vE
+     @) ëvi (_   =@vi
+     @) ësisht (_ =sISt
+
+.group f
+        f        f
+
+.group g
+        g        g
+        gj       dZ;
+
+.group h
+        h        h
+        h (K     hh
+
+.group i
+        i        i
+        ie       je
+        ij (K    i:
+
+   @ic) i (_     'i
+   @ër) i (_     'i
+     @) im (_    =im
+     @) in (_    =In
+     @) i (q_    =i
+     @) i (t_    =I
+        i (un_   'i
+
+.group j
+        j        j
+
+.group k
+        k        k
+
+.group l
+        l        L
+        ll       ll
+
+.group m
+        m        m
+
+.group n
+        n        n
+        nj       n^
+
+.group o
+        o        O
+        oj (K    OI
+        oi (l_   OI
+        ovi(q_  =Ovi
+
+.group p
+        p        p
+
+.group q
+        q        c
+
+.group r
+        r        R
+        r (K     R
+        rr       RR2
+     _) rr       @R2
+
+     _) rre (gulla @R2'e
+
+
+.group s
+        s        s
+        sh       S
+
+//   L02) sh       @-S     // epenthetic
+
+.group t
+        t        t
+        th       T
+
+.group u
+        u        u
+        ua       wA   // diphthong ??
+        u (ajK   w
+     t) u (an_   'u
+        u (ar_   'u
+//        ue       we
+
+        u (ara_  'u
+        u (esve_ 'u
+     @) u (n_    =u
+     @) u (r_    =u
+
+.group v
+        v        v
+
+.group w
+        w        w
+
+.group x
+        x        dz
+        xh       dZ
+        x (_     ks
+
+.group y
+        y        y
+        ye       yE    // diphthong
+
+.group z
+        z        z
+        zh       Z
+
+
+.group
+	$	dOllari

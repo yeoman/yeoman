@@ -1,0 +1,398 @@
+
+// This file is UTF8 encoded 
+// Spelling-to-phoneme words for Latvian
+
+
+// names of Latvian letters
+a	a
+ā	a:
+b	be
+c	tse
+č	tSe
+d	de
+e	e
+ē	e:
+f	ef
+// g	ga  // defined in lv_rules
+ģ	Je
+h	ha
+i	i
+ī	i:
+j	je
+k	ka
+ķ	ce
+l	el
+ļ	el^
+m	em
+n	en
+ņ	en^
+o	uo
+p	pe
+r	eRR2
+ŗ	er	// soft r
+s	es
+š	eS
+t	te:
+u	u
+ū	u:
+v	ve
+z	ze
+ž	Ze
+
+//  diphthong consonants
+dz	dze:
+dž	dZe:
+
+// Latin letters
+q	ku:
+w	dubult've
+x	iks
+y	igR2ek
+
+
+// numbers
+_0	n'ulle
+_1	v'iens
+_2	d'ivi
+_3	tRi:s
+_4	tS'etR2i
+_5	p'ietsi
+_6	s'eSi
+_7	s'eptin^i
+_8	'astuon^i
+_9	d'evin^i
+_10	d'esmit
+_11	v'ienpadsmit
+_12	d'ivpadsmit
+_13	tR'i:spadsmit
+_14	tS'etR2padsmit
+_15	p'ietspadsmit
+_16	s'eSpadsmit
+_17	s'eptin^padsmit
+_18	'astuon^padsmit
+_19	d'evin^padsmit
+_2X	d'ivdesmit
+_3X	tR'i:sdesmit
+_4X	tS'etR2desmit
+_5X	p'ietsd,esmit
+_6X	s'eSdesmit
+_7X	s'eptin^desmit
+_8X	'astuon^desmit
+_9X	d'evin^desmit
+_0C	s'imti_
+_1C	s'imts
+_0M1	t'u:kstuo:Si
+_1M1	t'u:kstuo:tis
+_0M2	m'iljo:ni
+_1M2	m'iljo:ns
+_dpt	k'omats_
+
+// ordinal numbers
+_ord	ais	// default ending
+_1o	p'iR2mais
+_2o	'otR2ais
+_3o	tR'eSais
+_4o	tS'etuRtais
+_5o	p'iektais
+_6o	s'estais
+_7o	s'epti:tais
+_8o	'astotais
+_9o	d'evi:tais
+_0Co	s'imtais
+
+
+// accent names  (Mostly English names, please fix)
+_lig	l'igatu:R2a
+_acu	'akju:t
+_ac2	d'ubultsakju:t
+_brv	'i:suma
+_ced	s'edi:la
+_cir	d'iakR2itiska:
+_dia	'umlauts
+_dot	p'unkts
+_grv	gR2'a:v
+_hac	h'atSek
+_mcn	m'akR2on
+_ogo	'ogonek
+_rng	R2'ing
+_stk	str'o:k
+_tld	t'ilde
+
+
+// character names
+_cap	lielais
+_?A	buR2ts
+_??	R2akstzi:me
+_#9	tabulato:R2s
+_#32	tukSums
+
+_!	izsaukumzi:me
+_"	pe:din^as
+_#	resti:te
+_'	apostro:fs
+_(	'iekava
+_)	'iekava||ts'iet
+_,	komats
+_-	mi:nuss
+_.	punkts
+_:	ko:ls
+_;	semiko:ls
+_<	m'aza:ks||p'aR2
+_>	l'iela:ks||p'aR2
+_?	jauta:jumzi:me
+_@	at
+_[	kv'adR2a:tiekava
+_]	kv'adR2a:tiekava||ts'iet
+_^	sakne
+__	pasvi:tR2uojumzi:me
+_`	'apgR2ieztais||'apostR2ofs
+_{	f'igu:R2iekava
+_|	sta:vsvi:tR2a
+_}	f'igu:R2iekava||ts'iet
+_~	tilde
+_¦	s'adali:ta||st'a:vsvi:tR2a
+_«	p'e:din^as
+_´	aktsents
+_»	p'e:din^as||ts'iet
+_¿	'apgR2iezta:||j'auta:jumzi:me
+_‒	duomuzi:me
+_‖	d'ubultsta:st,a:vsvi:tR2a
+
+=	_viena:ds_  $max3
+*	zvaigzni:te  $max3
+%	pR2otsenti  $max3
++	pluss  $max3
+@	at_:
+&	_!%un
+/	sli:psvi:tRa  $max3
+\	'apgR2iezta:||sl'i:psvi:tRa
+$	dola:R2i
+€	eiRo
+&	un
+¢	tsenti
+£	ma:R2tsin^as
+¥	je:nas
+₨	R2u:pi:jas
+§	sektsija
+¶	paR2agR2a:fs   // in en_rules
+©	auto:R2tiesi:bas
+®	R2eJistR2e:ts
+°	gR2a:di
+−	mi:nuss
+±	plusmi:nuss
+µ	mikRo:
+¼	ts'etuR2td,al^a
+½	puse
+¾	tR2'i:s||ts,etuR2tdal^as
+×	R2eiz
+÷	dali:ts
+€	eiR2o:
+♯	die:zs
+♭	bemo:ls
+
+// unstressed words
+aiz	$u
+ap	$u
+apakš	$u
+ar	$u
+bez	$u
+caur	$u
+dēļ	$u
+gar	$u
+iekš	$u
+iz	$u
+kopš	$u
+labad	$u
+līdz	$u
+no	$u
+nu	$u
+pa	$u
+par	$u
+pār	$u
+pēc	$u
+pie	$u
+pirms	$u
+pret	$u
+priekš	$u
+starp	$u
+uz	$u
+virs	$u
+zem	$u
+
+// pronouns
+es	$u
+tu	$u
+viņš	$u
+viņa	$u
+mēs	$u
+jūs	$u
+viņi	$u
+viņas	$u
+
+// conjunctions
+un	$u $pause
+bet	$u $pause
+vai	$u $pause
+
+
+// exception words with stress on 2nd syllable
+aizvien	$2
+arvien	$2
+jebkad	$2
+jebkur	$2
+nekad	$2
+nekur	$2
+pagalam	$2
+palaikam	$2
+papilnam	$2
+paretam	$2
+patiešām	$2
+patlaban	$2
+pavisam	$2
+tāpat	$2
+tepat	$2
+tikpat	$2
+tikvien	$2
+turpat	$2
+turpretī	$2
+
+// 1st word unstressed, 2nd word stressed
+(kaut cik)	$2
+(kaut kā)	$2
+(nez kad)	$2
+(nezin kur)	$3
+
+
+// stress on last syllable
+neparko	$3
+itnekur	$3
+
+//stress on 2nd syllable (international words)
+adadžo		$2
+kakao           $2
+maestro		$2
+piano		$2
+solfedžo	$2
+
+//stress on last syllable (international words)
+ateljē		$3
+dekoltē		$3
+foajē		$3
+frikasē		$3
+galifē		$3
+kanapē		$3
+komunikē	$4
+portjē		$2
+protežē		$3
+
+
+///////////////////
+// Abbreviations //
+///////////////////
+apr	apR2i:lis
+a/s	akciju sabiedR2i:ba
+//      aug	augusts      // confusing with augt
+b-ba	biedR2i:ba
+bij	bijuSais
+dec	decembR2is
+dr	dokto:R2s
+dz	dzimis
+dzīv	dzi:vuojis
+fak	fakulta:te
+febr	febR2ua:R2is
+iesk	ieskaituot
+janv	janva:R2is
+jūl	ju:lijs
+jūn	ju:nijs
+lp	lapa
+lat	lati:n^u
+latv	latvieSu
+Ls	lati  $capital
+lu	$abbrev
+lvu	$abbrev
+maks	maksima:lais
+min	minimums
+(min-ja)	ministR2ija
+nod	nuodal^a
+nos	nuosaukums
+nr	numuR2
+nov	novembR2is
+okt	okto:bR2is
+pad	paduome
+pag	pagasts
+pak	paka:pe
+piem	pieme:R2am
+pr-ks	pR2iekSnieks
+psrs	$abbrev
+raj	R2ajuons
+rpi	$abbrev
+(sav-ba)	savieni:ba
+(sab-ba)	sabiedR2i:ba
+sept	septembR2is
+skat	skati:t
+sv	sve:tais
+st	sant
+šķ	SciR2a
+
+// words with [o] 
+adadžo          $alt
+aikido	        $alt
+anno	        $alt
+automoto        $alt
+bandžo          $alt
+bendžo          $alt
+bingo           $alt
+bolero          $alt
+bravo           $alt
+bruno           $alt
+bruto	        $alt
+depo            $alt
+dingo       	$alt
+domino	        $alt
+džudo           $alt
+čello	        $alt
+embargo	        $alt
+esperanto	$alt
+facto	        $alt
+fiasko	        $alt
+foto            $alt
+hallo	        $alt
+hugo            $alt
+indigo          $alt
+inkognito       $alt
+intermeco       $alt
+kakao           $alt
+kastro          $alt
+kazino          $alt
+microsoft       $alt
+moto            $alt
+lego            $alt
+lumbago	        $alt
+maestro	        $alt
+metro           $alt
+moto            $alt
+odo             $alt
+oto             $alt
+panno	        $alt
+pianīno	        $alt
+rančo           $alt
+retro           $alt
+rokoko	        $alt
+roks            $alt
+sambo           $alt
+solfedžo        $alt
+sonera          $alt
+triko           $alt
+trimo           $alt
+uno             $alt
+veto            $alt
+žabo            $alt
+
+
+
+
+
+
+
+
+

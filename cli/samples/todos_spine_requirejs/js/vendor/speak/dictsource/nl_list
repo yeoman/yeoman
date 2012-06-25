@@ -1,0 +1,1406 @@
+
+// This file in UTF8 encoded
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+b	be:
+c	se:
+d	de:
+e       e:
+f	Ef
+g	Qe:
+h	ha:
+i	i:
+j	je:
+k	ka:
+l	El
+m	Em
+n	En
+p	pe:
+q	ky
+r	Er
+s	Es
+t	te:
+v	fe:
+w	ve:
+x	Iks
+y	EI
+z	zEt
+
+_s	Es
+_t	te:
+
+_cap	h'o:fdlEt@r
+_?A	l'Et@r
+_??	s'imbo:l
+
+// accent names
+_lig	l'ixa:tyr
+_acu	'a:ix,y
+_ac2	d'8bEl'a:ixy	
+_brv	b@-*'e:v@
+_ced	s'e:dIl@
+_cir	s'IrkOnfle:ks@
+_dia	'8mlVUt
+_dot	p'8nt
+_grv	Q@-*'a:v@
+_hac	h'a:tSEk
+_mcn	m'Ak@-*On
+_ogo	'o:xo:nEk
+_rng	k'o:*o:na:
+_stk	st@-*'e:p
+_tld	t'Ild@
+
+
+// punctuation
+.	p8nt		$max3
+_,	k'Oma:
+_:	d'8b@l@p,8nt
+_;	p'8ntkOm,a:
+/	sl'As
+\	b'AkkslAs
+_?	v@-*'a:xte:k@n
+_!	'Wyt@-*upt,e:k@n
+_"	'a:nha:lInxste:k@n
+@	_:'a:p@nst,a:rt;@_:
+#	h'Ekj@		$max3
+%	p@-*o:s'Ent
+_(	h'a:kj@_|'o:pe:n@n
+_)	h'a:kj@sl'Wyt@n
+_{	v'irkAnt@h,a:k
+_}	v'irkAnt@h,a:ksl'Wyt@n
+_-	k'OpElt,e:k@n
++	pl'8s		$max3
+*	st'E*rEt;@	$max3
+__	l'IgEntst@-*'e:pj@
+€	'Y:*o:t,e:k@n
+
+
+// numbers
+_0	n'8l
+_1	'e:n
+_2	tv#'e:
+_3	dr'i
+_4	f'ir
+_5	f'EIf
+_6	z'Es
+_7	z'e:f@n
+_8	'Axt
+_9	n'e:x@n
+_10	t'in
+_11	'Elf
+_12	tw'a:lf
+_13	d'Ertin
+_14	f'e:rtin
+_15	f'EIftin
+_16	z'Estin
+_17	z'e:f@ntin
+_18	'Axtin
+_19	n'e:x@ntin
+_2X	tv#'Int@x
+_3X	d'Ert@x
+_4X	f'e:rt@x
+_5X	f'EIft@x
+_6X	z'Est@x
+_7X	z'e:f@nt@x
+_8X	t'Axt@x
+_9X	n'e:g@nt@x
+_0C	h'OndErt
+_0M1	d'WyzEnt
+_0M2	m'iljun
+_0M3	m'iljArt
+_0M4	b'iljun
+_0and	En
+_dpt	_k'Oma:
+
+_ord	d@
+_ord20	st@
+_1o	'I:rst@
+_2o	tv#'e:d@
+_3o	d'Erd@
+_4o	v'ird@
+_5o	v'EIfd@
+_6o	z'Esd@
+_7o	z'e:v@nd@
+_8o	'Axtst@
+_0Co	h'OndErtst@
+
+
+// abbreviations
+eu	e:_y: $abbrev
+kmo     $abbrev
+KMI	$abbrev
+KNMI	$abbrev
+nr	n8m@r
+nvda	$abbrev
+VMMa    $abbrev
+
+
+// articles
+de	d@
+het	h@t	$only
+een	@n	$only
+ən	@n   // char.replacement for 'n
+ət	@t   // char.replacement for 't
+
+// pronouns
+ik		$u
+me		$u
+jij		$u
+je		$u
+gij		$u
+ge		$u
+u		$u
+hij		$u
+zij		$u
+ze		$u
+het		h@t //otherwise pronounced as het
+wij		$u
+we		$u
+jullie		$u
+hen		$u
+zich		$u
+
+// possessives
+mijn		$u
+m'n		m@n
+jouw		$u
+uw		$u
+zijn		$u
+z'n		z@n
+haar		$u
+d'r		d@r
+ons		$u
+onze		$u
+jullie		$u
+hun		$u
+
+// demonstrative
+deze		$u
+die		$u $brk
+dit		$u
+dat		$u
+wat		$u
+er		@r
+waar		$pause
+
+// prepositions
+in	$only	$u+ $brk	// in
+op	$only	$u+ $brk	// in
+aan	$only	$u+ $brk	// at, on
+bij	$only	$u+ $pause	// at, near
+om	$only	$u+ $brk	// at
+met	$only	$u+ $brk	// with, by
+over	$only	$u+ $pause	// about
+na	$only	$u+ $pause	// after
+naar	$only	$u+		// to
+door	$only	$u+ $brk	// through, by
+te	$only	$u+ $brk	// to
+tot	$only	$u+ $pause	// until
+uit	$only	$u+ $brk	// from, out of
+voor	$only	$u+ $pause	// for, in front of
+van	$only	$u+		// from, of
+zonder	$only	$u+ $pause	// without
+
+// adverbs, etc.
+ook	$only	$u+	// any
+zo	$only	$u+
+sommige	$only	$u+	// some
+
+
+// conjunctions
+en	$u $pause	// and
+én      En $pause       // stressed and
+dus	$u $pause	// so
+maar	$u $pause	// but
+of	$u $pause	// or
+want	$u $pause	// for
+
+als	$u $pause	// if,when
+alsof	$pause		// as if
+behalve	$pause		// except
+dat	$u $pause	// that
+hoewel	$pause		// although
+of	$u $pause	// whether
+omdat	$pause		// because
+nadat	$u $pause	// after
+nudat	$pause		// now that
+sinds	$pause		// since
+tenzij	$pause		// unless
+terwijl	$pause		// while
+totdat	$pause		// until
+toen	$pause		// when (in past)
+voordat	$pause		// before
+wanneer	$pause		// when
+zoals	$pause		// just
+zolang	$pause		// as long as
+zover	$pause		// as far as
+
+
+
+// negative
+niet	n,it	$strend
+(niet meer) _n'it||m,e:r
+
+// questions
+
+
+// auxillary verbs  (be, have, can, etc)
+zijn	$u	// to be
+ben	$u
+bent	$u
+is	$u
+was	$u
+waren	$u
+geweest	$u
+
+hebben  $u          // to have
+heb	$u
+hebt	$u
+heeft   $u
+hadden	$u
+gehad	$u
+
+zullen	$u            // will, shall
+zal	$u
+zult	$u
+zou	$u
+zouden	$u
+
+kunnen	$u            // can
+kan	$u
+kunt	$u
+kon	$u
+konden	$u
+gekund	$u
+
+mogen	$u             // to be allowed
+mag	$u
+mocht	$u
+mochten	$u
+gemogen	$u
+
+willen	$u            // to want
+wil	$u
+wilt	$u
+wou	$u
+wilde	$u
+wilden	$u
+gewild	$u
+
+worden	$u
+wordt	$u
+werd	$u
+
+// some common adjectives and adverbs
+
+
+// Pronounce as English
+
+android  _^_EN
+airlines _^_EN
+base    _^_EN
+delete	_^_EN
+crash _^_EN
+escape	_^_EN
+(e-mail) i:me:l
+enterprise _^_EN
+entertainment _^_EN
+exploit _^_EN
+fact    _^_EN
+home	_^_EN
+game	_^_EN
+hardware        _^_EN
+homepage	_^_EN
+items	_^_EN
+laptop	_^_EN
+malware _^_EN
+medical _^_EN
+milkshake _^_EN
+multitouch _^_EN
+netbook nEtbuk
+(page down)	_^_EN
+(page up)	_^_EN
+offline _^_EN
+online _^_EN
+player	_^_EN
+patch _^_EN
+race _^_EN
+research _^_EN
+site _^_EN
+sites _^_EN
+software _^_EN
+speak 	_^_EN
+the	D@
+time _^_EN
+tweaker tv#ik@r
+ultimate _^_EN
+up	_^_EN
+website _^_EN
+websites _^_EN
+weekend _^_EN
+
+
+// verbs where -ent is not a stressed ending
+bakent		$alt
+effent		$alt
+jegent		$alt
+kerstent	$alt
+ketent		$alt
+loochent	$alt
+oefent		$alt
+opent		$alt
+regent		$alt
+rekent		$alt
+stevent		$alt
+tekent		$alt
+wapent		$alt
+zegent		$alt
+
+
+// words where -er is not a stressed verb ending
+
+achter		$alt
+achterkleinkinder	$alt
+ader		$alt
+ander		$alt
+anker		$alt
+badder		$alt
+bagger		$alt
+baker		$alt
+baster		$alt
+beender		$alt
+belemmer	$alt
+beter		$alt
+bibber		$alt
+bitter		$alt
+bladder		$alt
+blader		$alt
+blaker		$alt
+blikker		$alt
+blubber		$alt
+blunder		$alt
+bolder		$alt
+bolster		$alt
+boter		$alt
+broeder		$alt
+buffer		$alt
+bulder		$alt
+bulldozer	$alt
+bumper		$alt
+bunker		$alt
+charter		$alt
+cijfer		$alt
+cluster		$alt
+computer	kOmpj'ut@r $alt  // ??  "$2 $alt" doesn't work
+consuminder	$alt
+counter		$alt
+cover		k8v@r $alt
+dabber		$alt
+daver		$alt
+deemstar	$alt
+dender  	$alt
+dobber  	$alt
+dokter  	$alt
+donder		$alt
+donker  	$alt
+dotter  	$alt
+duister		$alt
+dwater		$alt
+eergister  	$alt
+eier		$alt
+emmer  		$alt
+ender		$alt
+enter  		$alt
+erger  		$alt
+etter  		$alt
+filter		$alt
+fladder		$alt
+flakker		$alt
+flikker		$alt
+flipper		$alt
+flodder		$alt
+flonker		$alt
+flotter		$alt
+fluister	$alt
+foeter		$alt
+folder		$alt
+folter		$alt
+gabber		$alt
+gader		$alt
+geester		$alt
+gemoeder	$alt
+gibber		$alt
+gister		$alt
+glibber		$alt
+glimmer		$alt
+glinster	$alt
+glitter		$alt
+glunder		$alt
+goeder		$alt
+halter 		$alt
+hamer		$alt
+hamster 	$alt
+haper		$alt
+helder		$alt
+herinner	$alt
+herover		$alt
+hinder		$alt
+hoender		$alt
+honger		$alt
+huiver		$alt
+hunker		$alt
+ijver		$alt
+ijzer		$alt
+imker		$alt
+inburger	$alt
+inkader		$alt
+jakker		$alt
+jammer		$alt
+joeker		$alt
+jonger		$alt
+kader		$alt
+kaffer		$alt
+kalefater	$alt
+kalver		$alt
+kamfer		$alt
+kanker		$alt
+kaper		$alt
+kaver		$alt
+keilder		$alt
+kenter		$alt
+keper		$alt
+kerker		$alt
+ketter		$alt
+keuter		$alt
+kicker		$alt
+kieper		$alt
+kinder		$alt
+kladder		$alt
+klapper		$alt
+klater		$alt
+klauter		$alt
+klaver		$alt
+kledder		$alt
+klepper		$alt
+kletter		$alt
+kleuter		$alt
+klieder		$alt
+klinker		$alt
+klodder		$alt
+kluister	$alt
+knapper		$alt
+knetter		$alt
+kneuter		$alt
+knikker		$alt
+knipper		$alt
+knisper		$alt
+knister		$alt
+koekeloer	$alt
+koester		$alt
+koeter		$alt
+koffer		$alt
+koker		$alt
+kolder		$alt
+kommer		$alt
+koper		$alt
+kuier		$alt
+kwetter		$alt
+labber		$alt
+lager		$alt
+lammer		$alt
+laser		$alt
+laster		$alt
+lauwer		$alt
+lazer		$alt
+lebber		$alt
+leder		$alt  // gelederen
+leger		$alt
+lekker		$alt
+lemmer		$alt
+lepper		$alt
+ler		$alt
+letter		$alt
+leuter		$alt
+lever		$alt
+lieder		$alt
+lobber		$alt
+lodder		$alt
+lommer		$alt
+louter		$alt
+lubber		$alt
+luier		$alt
+luimer		$alt
+luister		$alt
+mager		$alt
+marmer		$alt
+meander		$alt
+meerder		$alt
+meester		$alt
+meier		$alt
+mekker		$alt
+mieter		$alt
+mijmer		$alt
+millimeter	$alt
+minder		$alt
+modder		$alt
+moeder		$alt
+moker		$alt
+monster		$alt
+mopper		$alt
+nader		$alt
+neder		$alt
+nuchter		$alt
+nummer		$alt
+ober		$alt
+offer		$alt
+onder		$alt
+orber		$alt
+ouder		$alt
+over		$alt
+palaver		$alt
+pantser		$alt
+pauper		$alt
+peiger		$alt
+peper		$alt
+peuter		$alt
+pieker		$alt
+pieter		$alt
+pinkster	$alt
+pleister	$alt
+pletter		$alt
+ploeter		$alt
+plunder		$alt
+poeder		$alt
+poeier		$alt
+poker		$alt
+polder		$alt
+puber		$alt
+pulver		$alt
+purper		$alt
+rader		$alt
+raster		$alt
+redder		$alt
+ridder		$alt
+rooster		$alt
+rubber		$alt
+ruiter		$alt
+runder		$alt
+sakker		$alt
+schamper	$alt
+schater		$alt
+schemer		$alt
+schetter	$alt
+schilder	$alt
+schipper	$alt
+schitter	$alt
+schouder	$alt
+schutter	$alt
+sidder		$alt
+sjacher		$alt
+skeeler		$alt
+skelter		$alt
+slechter	$alt
+slenter		$alt
+slidder		$alt
+slinger		$alt
+slobber		$alt
+slodder		$alt
+sloeber		$alt
+sluier		$alt
+sluimer		$alt
+snater		$alt
+snipper		$alt
+snotter		$alt
+snuister	$alt
+sober		$alt
+sodemieter	$alt
+somber		$alt
+spetter		$alt
+spijker		$alt
+splinter	$alt
+sputter		$alt
+steiger		$alt
+stekker		$alt
+stotter		$alt
+stuiter		$alt
+stumper		$alt
+sudder		$alt
+suiker		$alt
+supporter	$alt
+tater		$alt
+teder		$alt
+teister		$alt
+temper		$alt
+tetter		$alt
+teuter		$alt
+timmer		$alt
+tover		$alt
+treiter		$alt
+trompetter	$alt
+tuier		$alt
+tutter		$alt
+twitter		$alt
+uier		$alt
+vinger		$alt
+vlieger		$alt
+vlinder		$alt
+vlotter		$alt
+voeder		$alt
+volker		$alt
+vorder		$alt
+waaier		$alt
+wakker		$alt
+wapper		$alt
+water		$alt
+wedijver	$alt
+wegwijzer	$alt
+wester		$alt
+wijder		$alt
+wilder		$alt
+winter		$alt
+wipper		$alt
+woeker		$alt
+wonder		$alt
+zeker		$alt
+zever		$alt
+zilver		$alt
+zinder		$alt
+zolder		$alt
+zomer		$alt
+zonder		$alt
+zuiver		$alt
+zwabber		$alt
+zwakker		$alt
+zwanger		$alt
+
+
+// words where -age  is [a:Q@] not French ['a:Z@]
+drage		$alt
+hedentendage	$alt
+gestage		$alt $2
+grage		$alt
+inzage		$alt
+lage		$alt
+oplage		$alt
+sage		$alt
+lrage		$alt
+vrage		$alt
+
+// -age exceptions
+amperage	Amp@r'a:Z@
+camouflage	ka:mufl'a:Z@
+courtage	kurt'a:Z@
+curettage	kyr@t'a:Z@
+drainage	drEn'a:Z@
+equipage	e:kwip'a:Z@
+jumelage	Zym@l'a:Z@
+metrage		me:tr'a:Z@
+outillage	utij'a:Z@
+vrijage		vre:j'a:Z@
+
+// stress on final -et
+facet		$2
+pincet		$2
+cachet		kAS'E
+crochet		krOS'E
+manchet		mAnS'Et
+planchet	plAnS'Et
+pochet		pOS'Et
+cadet		$2
+kadet		$2
+biljet		$2
+sajet		$2
+sujet		syZ'Et
+banket		$2
+boeket		$2
+briket		$2
+etiket		$3
+klinket		klINk'Et
+koket		$2
+kroket		$2
+loket		$2
+musket		$2
+pakket		$2
+parket		$2
+piket		$2
+raket		$2
+winket		$2
+amulet		$3
+ballet		$2
+cabriolet	ka:briol'Et
+corselet	$3
+couplet		kupl'Et
+doublet		dubl'Et
+epaulet		e:po:l'Et
+filet		fil'e:
+gilet		Zil'Et
+kotelet		$3
+omelet		$3
+palet		$2
+pamflet		$2
+pistolet	pisto:l'Et
+poulet		pul'Et
+reglet		re:Ql'Et
+skelet		sk@l'Et
+tablet		$2
+toilet		tv#Al'Et
+violet		$3
+bajonet		$3
+cabinet		$3
+carnet		$2
+castagnet	kAstAn^'Et
+kabinet		$3
+klarinet	$3
+kornet		$2
+marionet	$4
+sonnet		$2
+spinet		$2
+vignet		vIn^'Et
+karpet		$2
+lampet		$2
+pipet		$2
+toupet		tup'Et
+trompet		$2
+baret		$2
+cabaret		ka:ba:r'Et
+floret		$2
+lazaret		$3
+minaret		$3
+portret		$2
+sigaret		$3
+closet		klo:z'Et
+corset		$2
+falset		$2
+kwartet		$2
+kwintet		$2
+motet		$2
+nonet		$2
+octet		$2
+septet		$2
+sextet		$2
+brevet		br@v'Et
+corvet		$2
+servet		$2
+buffet		byf'Et
+budget		b8dZ'Et
+rozet		$2
+sorbet		$2
+duet		dy'Et
+jacquet		Zak'Et
+menuet		me:ny'Et
+silhouet	silu'Et
+tourniquet	turnik'Et
+
+amorette	$3
+amourette	a:mu*'Et@
+anisette	a:niz'Et@
+brunette	$2
+cassette	$2
+chambrette	Sambr'Et@
+coquette	ko:k'Et@
+couchette	kuS'Et
+courgette	kurZ'Et
+diskette	$2
+estafette	$3
+etiquette	e:tik'Et@
+kokette		$2
+maisonnette	mEzOn'Et@
+majorette	$3
+maquette	ma:k'Et@
+modinette	$3
+musette		$2
+pirouette	pi*uv#'Et@
+pochette	pOS'Et
+operette	o:p@r'Et@
+raclette	$2
+roulette	rul'Et@
+soubrette	subr'Et@
+suffragette	syfra:Z'Et@
+ultraviolette	8ltra:vio:l'Et@
+vedette		v@d'Et@
+violette	$3
+wasserette	$3
+
+// ending -el is stressed
+isabel		$3
+libel		$2
+mirabel		$3
+tabel		$2
+
+// ending -eum is stressed  ['e:8m]
+atheneum	$alt
+colosseum	$alt
+jubileum	$alt
+lyceum		$alt
+mausoleum	$alt
+museum		$alt
+carbolineum	$alt
+linoleum	$alt $2
+marmoleum	$alt
+petroleum	$alt $2
+
+// ending -ot is stressed
+fagot		$2
+kapot		$2
+patriot		$3
+komplot		$2
+poliglot	$3
+marmot		$2
+schavot		$2
+
+// words ending in el, elt, elde, elden, elend, elende, eld, ele, elen
+// with stress on the previous syllable,
+// also words ending in er. etc.
+
+beter		$alt
+
+	// adjectives
+edel		$alt
+enkel		$alt
+gammel		$alt
+heikel		$alt
+ijdel		$alt
+jofel		$alt
+kregel		$alt
+kreupel		$alt
+luttel		$alt
+nobel		$alt
+nozel		$alt
+schamel		$alt
+sensibel	$alt
+simpel		$alt
+sjofel		$alt
+soepel		$alt
+troebel		$alt
+vermetel	$alt
+	// nouns
+amandel		$alt
+appel		$alt
+artikel		$alt
+ginsel		$alt   // beginsel
+discipel	dIs'ip@l $alt
+engel		$alt
+fabel		$alt
+gruwel		$alt
+heuvel		$alt
+hommel		$alt
+letsel		$alt
+mazel		$alt
+meubel		$alt
+middel		$alt
+mirakel		$alt
+mossel		$alt
+parabel		$alt
+perikel		pe:r'ik@l $alt
+raadsel		$alt
+roersel		$alt
+schepsel	$alt
+schijnsel	$alt
+stoppel		$alt
+zemel		$alt
+	// verbs
+aarzel		$alt
+adel		$alt
+angel		$alt
+babbel		$alt
+barrel		$alt
+bazel		$alt
+bedel		be:d@l $alt
+beitel		$alt
+bengel		$alt
+beugel		$alt
+beuzel		$alt
+biggel		$alt
+bikkel		$alt
+bobbel		$alt
+bochel		$alt
+boemel		$alt
+borrel		$alt
+borstel		$alt
+bottel		$alt
+brabbel		$alt
+breidel		$alt
+broddel		$alt
+brokkel		$alt
+bubbel		$alt
+buffel		$alt
+buitel		$alt
+bundel		$alt
+bungel		$alt
+bussel		$alt
+cirkel		$alt
+dartel		$alt
+diggel		$alt
+dissel		$alt
+dobbel		$alt
+doezel		$alt
+dommel		$alt
+dompel		$alt
+dremmel 	$alt
+drentel		$alt
+dreutel		$alt
+drevel 		$alt
+dribbel		$alt
+droppel		$alt
+druppel		$alt
+dubbel		$alt
+duikel		$alt
+duimel		$alt
+duivel		$alt
+duizel		$alt
+duvel		$alt
+dwarrel		$alt
+eikel		$alt
+fakkel		$alt
+fezel		$alt
+fiedel		$alt
+foefel		$alt
+foezel		$alt
+fonkel		$alt
+friemel		$alt
+frommel		$alt
+frummel		$alt
+frutsel		$alt
+futsel		$alt
+gaffel		$alt
+gesel	Qe:s@l $alt
+giebel		$alt
+giechel		$alt
+gijzel		$alt
+gispel		$alt
+gniffel		$alt
+goochel		$alt
+gorgel		$alt
+grabbel		$alt
+grendel		$alt
+greppel		$alt
+griezel		$alt
+griffel		$alt
+gruizel		$alt
+guichel		$alt
+hachel		$alt
+hagel		$alt
+hakkel		$alt
+haksel		$alt
+handel		$alt
+haspel		$alt
+heibel		$alt
+hekel		$alt
+hemel		$alt
+hengel		$alt
+hevel		$alt
+hinkel		$alt
+hobbel		$alt
+hoepel		$alt
+hompel		$alt
+huichel		$alt
+huikel		$alt
+huppel		$alt
+hussel		$alt
+hutsel		$alt
+ijzel		$alt
+jengel		$alt
+jodel		$alt
+joekel		$alt
+jubel		$alt
+kabbel		$alt
+kabel		$alt
+kachel		$alt
+kakel		$alt
+kantel		$alt
+kapittel	$alt
+kapsel		$alt
+karbonkel	$alt
+kartel		$alt
+kavel		$alt
+kegel		$alt
+ketel		$alt
+keutel		$alt
+keuvel		$alt
+kevel		$alt
+kibbel		$alt
+kietel		$alt
+kinkel		$alt
+kittel		$alt
+klepel		$alt
+klingel		$alt
+klippel		$alt
+klungel		$alt
+knabbel		$alt
+kneukel		$alt
+knevel		$alt
+knibbel		$alt
+knobbel		$alt
+knokel		$alt
+knuffel		$alt
+knuppel		$alt
+knutsel		$alt
+koepel		$alt
+kogel		$alt
+konkel		$alt
+koppel		$alt
+korrel		$alt
+krabbel		$alt
+krauwel		$alt
+krengel		$alt
+kreukel		$alt
+kribbel		$alt
+kriebel		$alt
+kringel		$alt
+krinkel		$alt
+kroezel		$alt
+kronkel		$alt
+kruimel		$alt
+kukel		$alt
+kunstel		$alt
+kwabbel		$alt
+kwakkel		$alt
+kwansel		$alt
+kwartel		$alt
+kwebbel		$alt
+kwezel		$alt
+kwispel		$alt
+label	le:b@l $alt
+lepel		$alt
+lispel		$alt
+lummel		$alt
+mangel		$alt
+martel		$alt
+mazzel		$alt
+mengel		$alt
+mergel		$alt
+metsel		$alt
+mispel		$alt
+moffel		$alt
+mommel		$alt
+monkel		$alt
+morrel		$alt
+mummel		$alt
+murmel		$alt
+nachel		$alt
+nagel		$alt
+nestel		$alt
+netel		$alt
+neutel		$alt
+neuzel		$alt
+nevel		$alt
+nikkel		$alt
+orakel		$alt
+paddel	pEd@l $alt
+pantoffel	$alt
+parel		$alt
+pegel		$alt
+pekel		$alt
+pendel		$alt
+peuzel		$alt
+piemel		$alt
+piepel		$alt
+pimpel		$alt
+pingel		$alt
+pinkel		$alt
+poedel		$alt
+poekel		$alt
+popel		$alt
+prevel		$alt
+priegel		$alt
+prikkel		$alt
+pruttel		$alt
+puzzel		$alt
+rafel		$alt
+raffel		$alt
+rakel		$alt
+rammel		$alt
+ransel		$alt
+ratel		$alt
+rebbel		$alt
+regel		$alt
+reutel		$alt
+reuzel		$alt
+ribbel		$alt
+riffel		$alt
+rijmel		$alt
+rimpel		$alt
+ringel		$alt
+rinkel		$alt
+ritsel		$alt
+rochel		$alt
+roddel		$alt
+rodel		$alt
+roefel		$alt
+roffel		$alt
+rommel		$alt
+rompel		$alt
+ronsel		$alt
+sabbel		$alt
+sabel		$alt
+sappel		$alt
+schakel		$alt
+scharminkel	$alt
+scharrel	$alt
+schimmel	$alt
+schnabbel	$alt
+schoffel	$alt
+schommel	$alt
+schotel		$alt
+schrikkel	$alt
+schrompel	$alt
+schuifel	$alt
+scrabbel	skrEb@l $alt
+settel		$alt
+shuffel		S8f@l
+shuttel		S8t@l
+siepel		$alt
+sijpel		$alt
+sikkel		$alt
+singel		$alt
+sjoemel		$alt
+sleutel 	$alt
+slungel		$alt
+smiespel	$alt
+smikkel		$alt
+smispel		$alt
+smoezel		$alt
+smokkel		$alt
+snabbel		$alt
+sneuvel		$alt
+snoezel		$alt
+snorkel		$alt
+snuffel		$alt
+spartel		$alt
+spiegel		$alt
+spijbel		$alt
+spikkel		$alt
+sprankel	$alt
+sprenkel	$alt
+sprokkel	$alt
+staffel		$alt
+stamel		$alt
+stapel		$alt
+stechel		$alt
+steggel		$alt
+stempel		$alt
+stiefel		$alt
+stijfsel	$alt
+stippel		$alt
+stommel		$alt
+strengel	$alt
+stribbel	$alt
+strompel	$alt
+strubbel	$alt
+struikel	$alt
+stuntel		$alt
+suizel		$alt
+sukkel		$alt
+swaffel		$alt
+tackel		tEk@l
+tafel		$alt
+takel		$alt
+tegel		$alt
+tempel		$alt
+teugel		$alt
+teutel		$alt
+tichel		$alt
+tingel		$alt
+tinkel		$alt
+tintel		$alt
+tippel		$alt
+titel		$alt
+tokkel		$alt
+tortel		$alt
+trappel		$alt
+treuzel		$alt
+trippel		$alt
+troetel		$alt
+troggel		$alt
+trommel		$alt
+tuimel		$alt
+tunnel		$alt
+tuttel		$alt
+twijfel		$alt
+twinkel		$alt
+vendel		$alt
+vezel		$alt
+vijzel		$alt
+vlegel		$alt
+vleugel		$alt
+vogel		$alt
+wafel		$alt
+waffel		$alt
+waggel		$alt
+wakkel		$alt
+wandel		$alt
+wankel		$alt
+warrel		$alt
+wauwel		$alt
+weifel		$alt
+wemel		$alt
+wentel		$alt
+wervel		$alt
+wichel		$alt
+wiebel		$alt
+wiegel		$alt
+wiemel		$alt
+wikkel		$alt
+wimpel		$alt
+winkel		$alt
+wissel		$alt
+worstel		$alt
+wortel		$alt
+wriemel		$alt
+zabbel		$alt
+zadel		$alt
+zamel		$alt
+zegel		$alt
+zetel		$alt
+zoedel		$alt
+zwachtel	$alt
+zwavel		$alt
+zwendel		$alt
+zwengel		$alt
+zwiebel		$alt
+zwijmel		$alt
+
+
+// -s is not plural
+chaos		xa:Os
+
+// all words on _aard are treated as suffix in the rules.
+
+
+// pronunciation exceptions
+accessoire      aksEsv#'ar@
+accessoires     aksEsv#'ar@s
+actiepunt	Aksip8nt
+agenda		$2
+alles		Al@s
+amino		$1
+amnestie	$3
+april		a:pr'Il
+armand		_^_FR
+augustus	VUQ'8st8s
+be		$abbrev   // used as domain abbrev for Belgium and in a lot of other names
+beha            be:_h'a:
+bijziend	$2	// bijziendheid
+blitzkrieg	blItskri:g
+boudoir		budv#'a:r
+bourgondier	burx'o:ndi:@r
+braille		brAj@
+circuit		sIrku'i
+chalet		Sa:lE
+champagne	SAmp'An^@
+champignon	SAmpij'On
+chanson		SA~s'O~
+chapiter	$2
+charade		$2   // ?? what is plural
+chassis		SAs'i
+chat		tSEt
+check		tSEk
+chiffon		Sif'On
+crèches		krES@s
+contour		ko:nt'ur
+coureur		ku:r'Y:r
+damascering     damA;s'e:rIN
+december	$2
+dieet		$2
+divers		div'Ers
+diftongering    dIft,ON'e:rIN
+doordat		$2
+dynastie	$3
+eensgelijks	e:nsQ@l'EIks
+elfstedentocht	,Elf'ste:d@ntoQt
+emaille		,e:m'Aij@
+enorm		$2
+eucharistie	$4
+februari	fe:bry'a:ri
+fiche		fiS@
+franchise	frA'Si:z@
+gamasche	Qa:m'AS
+gazet		$2
+gouache		Qu'AS
+gefrituurd	$3
+impregnering    Impr,EQn'e:IN
+inductie	$2
+ingewikkeld	$3
+ingrijpend	$2
+ingeval		$3
+ingevolge	$3
+ingrediënt	$4
+ingenieur	Inzj@nj'Y:r
+informatie	$3
+januari		$3
+journaal	Surn'a:l
+maxima		$1
+meteen		mEt'e:n
+metro		me:tro:
+minima		$1
+nabij		nab'EI
+november	$2
+oktober		$2
+onderhandelingsnota	,ond@r'hAnd@lINs,no:ta:
+ongastvrij	OnQAstv@-*'EI
+ongelooflijk	$3
+ongemakkelijk	$3
+ongelukkig	$3
+ongerieflijk	$3
+ongrondwettig	$3
+partijvoorzitters $2
+pistache	pist'AS
+proces		$2
+projectielen    $3
+renaissance	rEne:s'A~s@
+reservoir	re:zErvv#'a:r
+revanche	r@vA~nS
+regime		$2
+roman		$2
+sacristie	$3
+saint		_^_FR
+salomo		$1
+september	$2
+sms'jes		EsEm'Es_j@s
+spektakel	$2
+tegennatuur	$4
+travestie	$3
+verderop	$3
+volledig	$2
+waarschijnlijk	$2
+ziekenhuisbevalling   zi:k@nhWysb@vAlIN
+zover           zo:v'Er
+
+
+
+// names
+(al-qaeda)      Al_:k'AjdA
+Beckham         bEk@m
+Betty           bE:ti
+charlotte	$2
+Dewever		d@'v#e:v@r
+Henin		_^_FR
+Inge		IN@
+Ingeborg	INe:bOrx
+Ingmar		INmAr
+Ingrid		IN@-*It
+Justine		_^_FR
+kennedy		kEn@dE
+Laurent		lo:r'An^
+Nys		nEIsd'WyzEnt
+
+//Trademarks
+Belga		bElQa:
+Facebook        fEisbuk
+Ubuntu		u:'bu:ntu:
+Wikipedia	$3
+google          gu:g@l
+
+// places
+alexandrië	$3
+canada		$1
+Kinshasa	kInS'a:sa:
+new york        _^_EN
+Rochefort	roS'for
+Vlaanderen      vla:nd@r@n
+Zelzate		zelzat@
+
+(vond dat de) vOn_tA_t@

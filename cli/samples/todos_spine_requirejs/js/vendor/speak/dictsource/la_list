@@ -1,0 +1,303 @@
+// This file is UTF-8 encoded
+// all words lower case
+
+// Uses of $alt:
+// 1.  Change ['i:] to [=I@] at end of word 
+
+
+// Letter names
+//========
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+a	a:
+b	be:
+c	ke:
+d	de:
+e	e:
+f	Ef
+g	ge:
+h	ha:
+i	i:
+//j
+k	ka:
+l	El
+m	Em
+n	En
+o	o:
+p	pe:
+q	kwu: // k<w>u:
+r	Er
+s	Es
+t	te:
+u	u:
+v	u: // same as u
+//w
+x	Eks
+y	i: 'graIka
+z	'ze:ta
+
+// ABBREVIATIONS
+//========
+
+(a. u. c.)   ab||wRb,E||kOnd'i:ta //ab urbe condita
+(a. d.)      'antE||d'I;Em      //ante diem;
+(D. M.)      d,i:s||m'a:nIbUs   //Dīs Mānibus
+ib           'Ibi:||d,Em //ibīdem
+ibd          'Ibi:||d,Em //ibīdem
+Idib         'i:dIbUs //Īdibus, from Īdūs
+Idq          i:d'EmkwE //īdemque
+(i. e.)      ,Id||Est //id est
+
+
+// FUNCTION WORDS
+//========
+
+// adverbs
+
+non
+
+// Pronouns:
+// Relative pronouns. These should probably be unstressed most of the time, hence the $u markers.
+// However, since some of them are identical to interrogative pronouns, which should be
+// stressed, we will not 'unstress' these to be on the safe side.
+
+quī $u
+quae $u
+quod $u
+quae $u
+// cūius $u (also an interrogative pronoun)
+quōrum $u
+quārum $u
+// cui $u (also an interrogative pronoun)
+quibus $u
+// quem $u (also an interrogative pronoun)
+quās $u
+quam $u
+quōs $u
+// quō $u (also an interrogative pronoun)
+
+
+// Personal pronouns.
+// Note that the nominative forms are not marked as unstressed. This is because
+// Latin is a pro-drop language like Italian or Polish, and therefore nominative
+// personal pronouns should often be emphasised.
+
+// ego $u (probably should be stressed as it is nominative)
+// nōs $u (probably should be stressed as it is nominative)
+// t? $u (probably should be stressed as it is nominative)
+// vōs $u (probably should be stressed as it is nominative)
+// is $u (probably should be stressed as it is nominative)
+// e? $u (probably should be stressed as it is nominative)
+// i? $u (probably should be stressed as it is nominative)
+// ea $u (probably should be stressed as it is nominative)
+// eae $u (probably should be stressed as it is nominative)
+// id $u (probably should be stressed as it is nominative)
+// ea $u (probably should be stressed as it is nominative)
+
+meī $u
+nostrum $u
+tu? $u
+vestrum $u
+mihi $u
+nōbīs $u
+tibi $u
+vōbīs $u
+mē $u
+// nōs (identical to nominative form)
+tē $u
+// vōs (identical to nominative form)
+
+eius $u
+eōrum $u
+eārum $u
+eō $u
+eōs $u
+iīs $u
+eum $u
+eīs $u
+eam $u
+eās $u
+id $u
+ea $u
+eī $u
+eā $u
+
+// Reflexive pronouns - should these all be unstressed?
+
+se $u
+su? $u
+sibi $u
+
+
+
+// prepositions
+
+a $u
+ac $u
+ad $u
+ab $u
+in $u
+cum $u
+e $u
+ex $u
+ante $u
+apud $u
+circa $u
+circum $u
+contra $u
+de $u
+erga $u
+extra $u
+in $u
+infra $u
+inter $u
+intra $u
+iuxta $u
+ob $u
+penes $u
+per $u
+pone $u
+post $u
+prae $u
+praeter $u
+praeterea $u
+pro $u
+prope $u
+propius $u
+proximus $u
+propter $u
+secundum $u
+sine $u
+sub $u
+subter $u
+super $u
+supra $u
+trans $u
+ultra $u
+versus $u
+
+// conjunctions
+
+atque $pause
+atqui $pause
+at $pause
+aut $pause
+autem $pause
+dum $pause
+enim $pause
+et $u $brk
+etenim $pause
+etiam $pause
+ergo $pause
+etsi $pause
+idcirco $pause
+ideo $pause
+nam $pause
+namque $pause
+nec $pause
+nisi $pause
+propterea $pause
+prout $pause
+quamdiu $pause
+quamquam $pause
+quando $pause
+quasi $pause
+quemadmodum $pause
+quoad $pause
+quod $pause
+
+
+// forms of esse
+
+sum $u
+es $u
+est $u
+sumus $u
+estis $u
+sunt $u
+
+erām $u
+erās $u
+erāt $u
+erāmus $u
+erātis $u
+erant $u
+
+erō $u
+eris $u
+erit $u
+erimus $u
+eritis $u
+erunt $u
+
+fuī $u
+fuīstī $u
+fuit $u
+fuimus $u
+fuīstis $u
+fuereunt $u
+
+fueram $u
+fuerās $u
+fuerat $u
+fuerāmus $u
+fuerātis $u
+fuērunt $u
+
+fuerō $u
+fuerīs $u
+fuerit $u
+fuerīmus $u
+fuerītis $u
+fuerunt $u
+
+este $u
+esto $u
+estote $u
+sunto $u
+
+
+// numerals
+
+ii	II	// word, not numeric
+vi	wI	// word, not numeric
+
+i		'u:nUs $capital 
+ii		d'UO $allcaps
+vi		s,Eks $allcaps 
+
+// eSpeak translates Roman numbers to Arabic numerals
+_0	n'Ulla
+_1	'u:nUs 
+_2	d'UO 
+_3	t@-*,e:s 
+_4	kw'at:UOR 
+_5	kw'i:NkwE 
+_6	s,Eks
+_7	s'EptEm 
+_8	'Okto: 
+_9	n'OwEm 
+_10	d'EkEm 
+
+_11	'u:ndEkIm
+_12	dU'OdEkIm
+_13	t@-*,e:d'EkIm
+_14	kwat:w'ORdEkIm
+_15	kw,i:nd'EkIm
+_16	s'EdEkIm
+_17	sEpt'EndEkIm
+_18	dUOdEwIg'IntI
+_19	u:ndEwIg'IntI 
+
+_2X	wi:g'Inti:
+_3X	t@-*i:g'Inta:
+_4X	kwad@-*a:g'Inta:
+_5X	kwi:Nkwa:g'Inta:
+_6X	sEksa:g'Inta:
+_7X	sEptUa:g'Inta:
+_8X	Okto:g'Inta:
+_9X	no:na:g'Inta:
+_0C	k'EntUm
+_0M1	m'IllE

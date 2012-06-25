@@ -1,0 +1,695 @@
+//test
+// Russian translation rules
+// This file is UTF8 encoded
+
+// Special characters:
+// A  vowel:   а о у ы э  е ё и ю я
+// B  soft consonant:  ь й ч щ
+// C  any consonant:
+// F  consonant, not hard: ??
+// G  voiced: б в г д ж з
+// H  hard consonant:  ъ ж ц ш
+// Y  iotated vowel, softsign:  ь е ё и ю я
+
+
+.group а
+	_) а (_   	a
+	_) а      	a
+   	а (_   	a
+	B) а (_   	V
+   	а      	V
+
+.group б
+	_) б (_   	bE
+   	б (_   	p
+   	б (кь  	p
+   	б (кY  	p
+   	б (сь  	p
+   	б (сY  	p
+   	б (ть  	p
+   	б (тY  	p
+   	б (хь  	p
+   	б (хY  	p
+   	б (хкь 	p
+   	б (хкY 	p
+   	б (ч   	p
+   	б (щ   	p
+
+   	б (ь   	b;
+   	б (Y   	b;
+   	б (бь  	b;
+   	б (бY  	b;
+   	б (бмь 	b;
+   	б (бмY 	b;
+   	б (бвь 	b;
+   	б (бвY 	b;
+   	б (мь  	b;
+   	б (мY  	b;
+   	б (вY  	b;
+   	б (вь  	b;
+
+   	б (ь_  	p;
+   	б (пь  	p;
+   	б (пY  	p;
+   	б (фь  	p;
+   	б (фY  	p;
+   	б (ффь 	p;
+   	б (ффY 	p;
+
+   	б      	b
+
+.group в
+	_) в (_   	vE
+   	в (_   	f
+   	в (кь  	f
+   	в (кY  	f
+   	в (сь  	f
+   	в (сY  	f
+   	в (ть  	f
+   	в (тY  	f
+   	в (хь  	f
+   	в (хY  	f
+   	в (хкY 	f
+   	в (хкь 	f
+   	в (ч   	f
+   	в (щ   	f
+
+   	в (ь   	v;
+   	в (Y   	v;
+   	в (бь  	v;
+   	в (бY  	v;
+   	в (мь  	v;
+   	в (мY  	v;
+   	в (вь  	v;
+   	в (вY  	v;
+   	в (вбь 	v;
+   	в (вбY 	v;
+   	в (вмь 	v;
+   	в (вмY 	v;
+
+   	в (ь_  	f;
+   	в (п'  	f;
+   	в (ф'  	f;
+
+   	в      	v
+
+.group г
+	_) г (_   	gE
+  _мно) г (о_ 	g
+   	г (к   	x
+   	
+   	г (_  	k   	
+   	г (пY  	k
+   	г (пь  	k
+   	г (сь  	k
+   	г (сY  	k
+   	г (ть  	k
+   	г (тY  	k
+   	г (фь  	k
+   	г (фY  	k
+   	г (ффь 	k
+   	г (ффY 	k
+   	г (хь  	k
+   	г (хY  	k
+   	г (хкY 	k
+   	г (хкь 	k
+
+   	г (ь   	g;
+   	г (Y   	g;
+
+   е)  г (ося_	v
+  _се) г (о   	v
+   Cе) г (о_  	v
+   Cо) г (о_  	v
+ _мое) г (о_  	v
+_твое) г (о_  	v
+  _не) г (о_  	v
+   _е) г (о_  	v
+ _все) г (о_  	v
+ 
+   	г      	g
+
+.group д
+	_) д (_   	dE
+   	д (_   	t
+
+   	д (кь  	t
+   	д (кY  	t
+   	д (пь  	t
+   	д (пY  	t
+   	д (фь  	t
+   	д (фY  	t
+   	д (ффь 	t
+   	д (ффY 	t
+   	д (хь  	t
+   	д (хY  	t
+   	д (хкY 	t
+   	д (хкь 	t
+
+   	д (ь   	d;
+   	д (Y   	d;
+   	д (дь  	d;
+   	д (дY  	d;
+   	д (зь  	d;
+   	д (зY  	d;
+   	д (нь  	d;
+   	д (B   	d;
+
+   	д (ь_  	t;
+   	д (ть  	t;
+   	д (тY  	t;
+   	д (сь  	t;
+   	д (сY  	t;
+
+   	д      	d
+
+.group е
+	_) е (_   	je
+	_) е      	jI3   	//second position
+	A) е (_   	jI3   	//second position
+	ъ) е (_   	jI3   	//second position
+	ь) е (_   	jI3   	//second position
+
+   инт) е (р  	E% // интернет, интернационал, ... ??????????
+  бакт) е (р  	E% // бактериальный, антибактериальный, ...
+  барт) е (р  	E%
+ 	т) е (ст 	E%
+компьют) е (р 	E%
+// 	A) е      	jE2
+// 	ъ) е      	jE2
+// 	ь) е      	jE2
+
+	A) е      	je
+	ъ) е      	je
+	ь) е      	je
+   	е      	e
+
+// 	H) е (_   	E#
+// 	H) е      	E2
+
+//    	е (_   	I2
+//    	е      	E3
+
+
+.group ж
+	_) ж (_   	ZE
+   	ж (_   	S
+   	ж (кY  	S
+   	ж (кь  	S
+   	ж (пY  	S
+   	ж (пь  	S
+   	ж (сь  	S
+   	ж (сY  	S
+   	ж (ть  	S
+   	ж (тY  	S
+   	ж (фь  	S
+   	ж (фY  	S
+   	ж (ффь 	S
+   	ж (ффY 	S
+   	ж (хь  	S
+   	ж (хY  	S
+   	ж (хкY 	S
+   	ж (хкь 	S
+   	жч     	S;
+
+   	ж      	Z
+
+.group з
+	_) з (_   	zE
+
+   	з (_   	s
+
+   	з (кY  	s
+   	з (кь  	s
+   	з (пь  	s
+   	з (пY  	s
+   	з (фь  	s
+   	з (фY  	s
+   	з (ффь 	s
+   	з (ффY 	s
+   	з (хь  	s
+   	з (хY  	s
+   	з (хкY 	s
+   	з (хкь 	s
+   	з (щ   	s
+
+   	з (ь   	z;
+   	з (Y   	z;
+   	з (дь  	z;
+   	з (дY  	z;
+   	з (зь  	z;
+   	з (зY  	z;
+   	з (здь 	z;
+   	з (здY 	z;
+   	з (знь 	z;
+   	з (знY 	z;
+   	з (знB 	z;
+   	з (нь  	z;
+   	з (нY  	z;
+   	з (нB  	z;
+
+   	з (зь_ 	s;
+   	з (зY_ 	s;
+   	з (здь_	s;
+   	з (здY_	s;
+   	з (знь_	s;
+   	з (знY_	s;
+   	з (знB_	s;
+   	з (ть  	s;
+   	з (тY  	s;
+   	з (сь  	s;
+   	з (сY  	s;
+
+   	з (ж   	Z
+   	з (ш   	S
+   	зщ   	S;
+   	зч   	S;
+   	з      	z
+
+.group и
+	_) и (_   	i
+	_) и      	I
+   	и (_   	I
+   	и      	i
+	ж) и      	y
+	ш) и      	y
+	H) и      	y     	// preceded by hard consonant
+
+
+.group й
+	_) й (_   	,i'k@-*'AtkOjI
+   	й      	j
+
+.group к
+	_) к (_   	kA
+   	к (б   	g
+   	к (бь  	g
+   	к (бY  	g
+   	к (г   	g
+   	к (гь  	g
+   	к (гY  	g
+   	к (д   	g
+   	к (дь  	g
+   	к (дY  	g
+   	к (дB  	g
+   	к (ж   	g
+   	к (з   	g
+   	к (зь  	g
+   	к (зY  	g
+
+   	к (ь   	k;
+   	к (Y   	k;
+
+   	к      	k
+
+.group л
+	_) л (_   	El^
+   	л (Y   	l^
+   	л      	l
+
+.group м
+	_) м (_   	Em
+   	м (ь   	m;
+   	м (Y   	m;
+   	м (бь  	m;
+   	м (бY  	m;
+   	м (пY  	m;
+   	м (пь  	m;
+   	м (вь  	m;
+   	м (вY  	m;
+   	м (фь  	m;
+   	м (фY  	m;
+   	м (ффь 	m;
+   	м (ффY 	m;
+
+   	м      	m
+
+.group н
+	_) н (_   	En_
+  	// н (ь   	n# ?
+ 	//  н (Y   	n# ?
+//    	н (B   	n^
+//    	н (дь  	n^
+//    	н (дY  	n^
+//    	н (дB  	n^
+//    	н (ть  	n^
+//    	н (тY  	n^
+//    	н (зь  	n^
+//    	н (зY  	n^
+//   	н (сь  	n^
+//    	н (сY  	n^
+//    	н (нь  	n^
+//    	н (нY  	n^
+//    	н (нB  	n^
+     	н (_   	n_
+
+   	биз) не (с nE%
+
+   	н      	n
+
+
+.group о
+   	о      	o
+//    	о (B   	oj
+//    	о (FY  	oj
+
+.group п
+	_) п (_   	pE
+   	п (б   	b
+   	п (г   	b
+   	п (гY  	b
+   	п (гь  	b
+   	п (д   	b
+   	п (дь  	b
+   	п (дY  	b
+   	п (дB  	b
+   	п (ж   	b
+   	п (з   	b
+   	п (зь  	b
+   	п (зY  	b
+
+   	п (ь   	p;
+   	п (Y   	p;
+   	п (пь  	p;
+   	п (пY  	p;
+   	п (пфь 	p;
+   	п (пфY 	p;
+   	п (пмь 	p;
+   	п (пмY 	p;
+   	п (фь  	p;
+   	п (фY  	p;
+   	п (ффь 	p;
+   	п (ффY 	p;
+   	п (мь  	p;
+   	п (мY  	p;
+
+   	п (б'  	b;
+
+   	п      	p
+
+.group р
+	_) р (_ Er	
+   	р (ь   	rI^
+   	р (Y   	r;
+   	р (B   	r;
+   	р      	r
+
+.group с
+	_) с (_   	Es
+
+   	с (б   	z
+   	с (г   	z
+   	с (д   	z
+   	с (ж   	z
+   	с (з   	z
+
+   	с (ь   	s;
+   	с (Y   	s;
+   	с (ть  	s
+   	с (тY  	s;
+   	с (сь  	s;
+   	с (сY  	s;
+   	с (нь  	s;
+   	с (нY  	s;
+   	с (нB  	s;
+
+   	с (зь  	z;
+   	с (зY  	z;
+   	с (дь  	z;
+   	с (дY  	z;
+   	с (дB  	z;
+
+   	с (ж   	Z
+   	с (ш   	S
+   	с (щ   	s;s;
+   	сч    	S;
+
+   	с      	s
+
+.group т
+	_) т (_   	tE
+
+   	т (б   	d
+   	т (г   	d
+   	т (д   	d
+   	т (ж   	d
+   	т (з   	d
+
+   	т (ь   	t;
+   	т (Y   	t;
+   	т (ть  	t;
+   	т (тY  	t;
+   	т (сь  	t;
+   	т (сY  	t;
+   	т (нь  	t;
+   	т (нY  	t;
+   	т (нB  	t;
+
+   	т (зь  	d;
+   	т (зY  	d;
+   	т (дь  	d;
+   	т (дY  	d;
+   	т (дB  	d;
+
+   	т (ж   	d
+	Y) тс     	ts
+    
+   	т      	t
+
+.group у
+	_) у (_   	u
+	B) у      	u#
+   	у      	u
+
+.group ф
+	_) ф (_   	Ef
+   	ф (б   	v
+   	ф (г   	v
+   	ф (гь  	v
+   	ф (гY  	v
+   	ф (д   	v
+   	ф (дь  	v
+   	ф (дY  	v
+   	ф (дB  	v
+   	ф (ж   	v
+   	ф (з   	v
+   	ф (зь  	v
+   	ф (зY  	v
+
+   	ф (ь   	f;
+   	ф (Y   	f;
+   	ф (пь  	f;
+   	ф (пY  	f;
+   	ф (пфь 	f;
+   	ф (пфY 	f;
+   	ф (пмь 	f;
+   	ф (пмY 	f;
+   	ф (фY  	f;
+   	ф (фь  	f;
+   	ф (мь  	f;
+   	ф (мY  	f;
+
+   	ф (б'  	v;
+
+   	ф      	f
+
+.group х
+	_) х (_   	xA
+   	х (б   	x
+   	х (бь  	x
+   	х (бY  	x
+   	х (бмь 	x
+   	х (бмY 	x
+   	х (бвь 	x
+   	х (бвY 	x
+   	х (г   	x
+   	х (гь  	x
+   	х (гY  	x
+   	х (д   	x
+   	х (дь  	x
+   	х (дY  	x
+   	х (дB  	x
+   	х (ж   	x
+   	х (з   	x
+   	х (зь  	x
+   	х (зY  	x
+   	х (_бы 	x
+
+   	х (ь   	x//С  	надо сделать эту фонему
+   	х (Y   	x//С
+   	х (кь  	x//С
+   	х (кY  	x//С
+
+   	х      	x
+
+.group ц
+	_) ц (_   	tsE
+   	ц (б   	dz
+   	ц (бь  	dz
+   	ц (бY  	dz
+   	ц (бмь 	dz
+   	ц (бмY 	dz
+   	ц (бвь 	dz
+   	ц (бвY 	dz
+   	ц (г   	dz
+   	ц (гь  	dz
+   	ц (гY  	dz
+   	ц (д   	dz
+   	ц (дь  	dz
+   	ц (дY  	dz
+   	ц (дB  	dz
+   	ц (ж   	dz
+   	ц (з   	dz
+   	ц (зь  	dz
+   	ц (зY  	dz
+
+   	ц      	ts
+
+.group ч
+	_) ч (_   	tS;e
+   	ч (б   	dZ;
+   	ч (бь  	dZ;
+   	ч (бY  	dZ;
+   	ч (бмь 	dZ;
+   	ч (бмY 	dZ;
+   	ч (бвь 	dZ;
+   	ч (бвY 	dZ;
+   	ч (г   	dZ;
+   	ч (гь  	dZ;
+   	ч (гY  	dZ;
+   	ч (д   	dZ;
+   	ч (дь  	dZ;
+   	ч (дY  	dZ;
+   	ч (дB  	dZ;
+   	ч (ж   	dZ;
+   	ч (з   	dZ;
+   	ч (зь  	dZ;
+   	ч (зY  	dZ;
+  	 
+   лу) ч (ше      t
+
+//Варианты окончаний женских отчеств типа Никитична
+   	ч (на_  	S
+   	ч (ну_  	S
+   	ч (не_  	S
+   	ч (ны_  	S
+   	ч (ной_ 	S
+
+ коне) ч (но   	S
+  ску) ч (н    	S
+   яи) ч (ни   	S
+пустя) ч (н    	S
+скворе)ч (н    	S
+ деви) ч (н    	S
+	_) ч (то    	S
+ 
+   	ч      	tS;
+
+.group ш
+	_) ш (_   	SA
+   	ш (б   	Z
+   	ш (бь  	Z
+   	ш (бY  	Z
+   	ш (бмь 	Z
+   	ш (бмY 	Z
+   	ш (бвь 	Z
+   	ш (бвY 	Z
+   	ш (г   	Z
+   	ш (гь  	Z
+   	ш (гY  	Z
+   	ш (д   	Z
+   	ш (дь  	Z
+   	ш (дY  	Z
+   	ш (дB  	Z
+   	ш (ж   	Z
+   	ш (з   	Z
+   	ш (зь  	Z
+   	ш (зY  	Z
+
+   	ш      	S
+
+.group щ
+	_) щ (_   	S;ja
+   	щ (б   	Z;
+   	щ (бь  	Z;
+   	щ (бY  	Z;
+   	щ (бмь 	Z;
+   	щ (бмY 	Z;
+   	щ (бвь 	Z;
+   	щ (бвY 	Z;
+   	щ (г   	Z;
+   	щ (гь  	Z;
+   	щ (гY  	Z;
+   	щ (д   	Z;
+   	щ (дь  	Z;
+   	щ (дY  	Z;
+   	щ (дB  	Z;
+   	щ (ж   	Z;
+   	щ (з   	Z;
+   	щ (зь  	Z;
+   	щ (зY  	Z;
+
+   	щ      	S;
+
+
+.group ъ
+	_) ъ (_   	tv;'8@-*dyjzn'Ak
+   	ъ (Y   	j
+ъ
+
+.group ы
+	_) ы (_   	y
+   	ы      	y
+
+.group ь
+	_) ь (_   	m;'jak;I#jzn'Ak
+ь
+   	ь (Y   	j
+
+.group э
+	_) э (_   	e
+	_) э      	E#
+   	э (_   	E#
+   	э      	E2
+
+.group ю
+	_) ю (_   	ju
+   	ю      	u"
+	_) ю      	ju
+	ь) ю      	ju
+	ъ) ю      	ju
+	A) ю      	ju
+	следу) ю (щ
+
+
+
+.group я
+.. TODO: in unstressed position it sometimes sounds more like [i] than like [V]
+	_) я (_   	ja
+	_) я      	ja    	//second position
+	A) я (_   	ja    	//second position
+	ъ) я (_   	ja    	//second position
+	ь) я (_   	ja    	//second position
+
+	A) я      	ja
+	ъ) я      	ja
+	ь) я      	ja
+   // C) я      	ja# ?
+
+   	я (_   	V
+   	я      	V
+
+.group ё
+	_) ё (_   	j8
+	_) ё      	'j8
+	ж) ё      	'O
+	ш) ё      	'O
+   	ё      	'8
+
+// If we find a Latin letter a-z, then translate as English
+// (This is now done automatically by the eSpeak program)
+
+.group
+   	$      	dolar
+
+

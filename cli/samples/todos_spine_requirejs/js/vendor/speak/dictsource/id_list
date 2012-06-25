@@ -1,0 +1,151 @@
+
+// This file is UTF8 encoded 
+// Spelling-to-phoneme words for Indonesian
+
+a	a
+b	be
+c	tSe
+d	de
+e	e
+f	Ef
+g	ge
+h	ha
+i	i
+j	dZe
+k	ka
+l	El
+m	Em
+n	En
+o	o
+p	pe
+q	ki
+r	ER
+s	Es
+t	te
+u	u
+v	fe
+w	we
+x	Eks
+y	je
+z	zEt
+
+_0	n'ol
+_1	s'atu
+_2	d'ua
+_3	t'iga
+_4	'@mpat
+_5	l'ima
+_6	'@nam
+_7	t'udZuh
+_8	d@l'apan
+_9	s@mb'ilan
+_10	s@p'uluh
+_11	s'@b@las
+_12	d'uab@las
+_13	t'igab@las
+_14	'@mpatb@las
+_15	l'imab@las
+_16	'@namb@las
+_17	t'udZuhb@las
+_18	d@l'apanb@las
+_19	s@mb'ilanb@las
+_2X	d'uapuluh
+_3X	t'igapuluh
+_4X	'Empatpuluh
+_5X	l'imapuluh
+_6X	'Enampuluh
+_7X	t'udZuhpuluh
+_8X	d@l'apanpuluh
+_9X	s@mb'ilanpuluh
+_0C	R'atus_|
+_1C	s@R2'atus_|
+_0M1	R'ibu_
+_1M1	s@r'ibu_
+_0M2	dZ'uta_
+_1M2	s@dZ'uta_
+_0M3	m'iljaR
+_1M3	s@m'iljaR
+_dpt	_k,oma_
+
+_cap	b'EsaR    // after the letter
+_??	k,odeh'uR2uf
+
+// accented letters
+_lig	d'aIgRaf
+_acu	akj'ut
+_ac2	dub@lakj'ut
+_brv	bR2'i:v
+_ced	s@d'ila
+_cir	t'opi
+_dia	'umlaUt
+_dot	d'Ot
+_grv	gR2'av
+_hac	h'atSEk
+_mcn	m'akR2On
+_ogo	'OgonEk
+_rng	R2'iNg
+_stk	stR'ok
+_tld	t'ild@
+
+// punctuation
+_!	t,anda||s'ER2u
+_"	t,andak'utip
+£	ponst'ER2liN
+%	p@R2s'En	$max3
+^	t,andat'opi
+&	t,andad'an
+*	b'intaN		$max3
++	t'ambah		$max3
+=	s,ama||d'ENan	$max3
+~	t'ilde
+#	p'agaR		$max3
+@	a||k'EOng
+/	g,aR2is||m'iR2iN	$max3
+\	'bEkslES
+_(	k,uR2uN||b'uka
+_)	k,uR2uN||t'utup
+__	g,aR2is||b'awah
+_-	t,andah'ubuN
+_{	k,uR2uN||kuR2'awal
+_}	k,uR2uN||kuR2,awal||t'utup
+_[	k,uR2uN||s'iku
+_]	k,uR2uN||s,iku||t'utup
+_:	t,iti?||d'ua
+_;	t,iti?||k'oma
+_'	k,utip||t'uNgal
+_<	k,uR2aN||d'aR2i
+_>	l,Ebih||d'aR2i
+_,	k'oma
+_.	t'iti?
+_?	t,anda||t'an^a
+
+
+// unstressed words
+suatu		$u
+dari		$u
+pada		$u
+daripada	$u
+ke		k@ $u
+di		$u
+si		$u
+sang		$u
+hang		$u
+yang		$u
+dan		$u
+atau		$u
+untuk		$u
+ialah		$u
+adalah		$u
+sebagai		$u
+bahwa		$u
+per		p@r $u
+
+
+// exceptions
+// (use phoneme [E2] for an unstressed 'e' which does not reduce to [@] )
+
+bebek		bEbE2?
+becek		bEtSE2?
+bekas		$2
+perang		$2
+

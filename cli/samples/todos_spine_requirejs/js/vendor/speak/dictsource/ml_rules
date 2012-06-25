@@ -1,0 +1,282 @@
+
+// This file is UTF8 encoded 
+// Spelling to phoneme rules for Malayalam
+
+// A means vowel letters (not vowel signs)
+// B means a combining vowel sign or a virama
+
+
+.replace
+൦	0	// Convert Malayalam numbers
+൧	1
+൨	2
+൩	3
+൪	4
+൫	5
+൬	6
+൭	7
+൮	8
+൯	9
+ോ	ോ 
+ൊ	ൊ
+ൌ	ൌ
+
+
+
+.group ക
+	ക	ka
+	ക (B	k
+
+.group ഖ
+	ഖ	kha
+	ഖ (B	kh
+
+.group ഗ
+	ഗ	ga
+	ഗ (B	g
+
+.group ഘ
+	ഘ	gha
+	ഘ (B	gh
+
+.group ങ
+	ങ	Na
+	ങ (B	N
+
+.group ച
+	ച	ca
+	ച (B	c
+
+.group ഛ
+	ഛ	cha
+	ഛ (B	ch
+
+.group ജ
+	ജ	Ja
+	ജ (B	J
+
+.group ഝ
+	ഝ	Jha
+	ഝ (B	Jh
+
+.group ഞ
+	ഞ	n^a
+	ഞ (B	n^
+
+.group ട
+	ട	t.a
+	ട (B	t.
+
+.group ഠ
+	ഠ	th.a
+	ഠ (B	th.
+
+.group ഡ
+	ഡ	d.a
+	ഡ (B	d.
+
+.group ഢ
+	ഢ	dh.a
+	ഢ (B	dh.
+
+.group ണ
+	ണ	n.a
+	ണ (B	n.
+
+.group ത
+	ത	ta
+	ത (B	t
+
+.group ഥ
+	ഥ	tha
+	ഥ (B	th
+
+.group ദ
+	ദ	da
+	ദ (B	d
+
+.group ധ
+	ധ	dha
+	ധ (B	dh
+
+.group ന
+	ന	na
+	ന (B	n
+
+.group പ
+	പ	pa
+	പ (B	p
+
+.group ഫ
+	ഫ	pha
+	ഫ (B	p
+
+_പ്രൊ) ഫ (സര്	fa
+
+
+.group ബ
+	ബ	ba
+	ബ (B	b
+
+.group ഭ
+	ഭ	bha
+	ഭ (B	bh
+
+.group മ
+	മ	ma
+	മ (B	m
+
+.group യ
+	യ	ja
+	യ (B	j
+
+.group ര
+	ര	ra
+	ര (B	r
+
+.group റ
+	റ	R2a
+	റ (B	R2
+     ന്) റ	d#
+	റ്റ	t.t.   // ?? R2R2 = t.t.
+
+.group ല
+	ല	la
+	ല (B	l
+
+.group ള
+	ള	l.a
+	ള (B	l.
+
+.group ഴ    // retroflex [r.] ?
+	ഴ	r.a
+	ഴ (B	r.
+
+.group വ
+	വ	va
+	വ (B	v
+
+.group ശ
+	ശ	S;a
+	ശ (B	S;
+
+.group ഷ
+	ഷ	s.a
+	ഷ (B	s.
+
+.group സ
+	സ	sa
+	സ (B	s
+
+.group ഹ
+	ഹ	ha
+	ഹ (B	h
+
+
+// chillu consonants
+.group ൺ
+	ൺ	n.
+
+.group ൻ
+	ൻ	n
+
+.group ർ
+	ർ	r
+
+.group ൽ
+	ൽ	l
+
+.group ൾ
+	ൾ	l.
+
+.group ൿ
+	ൿ	k
+
+
+.group 0xe0b4   // characters which start with UTF-8 bytes: [e0 b4]
+
+	ഽ	// avagraha
+
+	ം	m	// anusvara (this should nasalize the vowel)
+
+	ഃ	h	// visarga
+
+	അ	a
+
+	ആ	a:
+
+	ഇ	i
+
+	ഈ	i:
+
+	ഉ	u
+
+	ഊ	u:
+
+	ഋ	Ry
+
+	എ	e
+     _) എ	;e
+
+	ഏ	e:
+     _) ഏ	;e:
+
+	ഐ	aI
+
+	ഒ	o
+
+	ഓ	o:
+
+	ഔ	aU
+
+// combining vowel signs
+
+	ാ	a:
+
+	ി	i
+	ി  (ല്K     I
+
+.group 0xe0b5   // characters which start with UTF-8 bytes: [e0 b5]
+
+	ീ	i:
+
+	ു	u
+
+	ൂ	u:
+
+	ൃ	r-
+
+	ൄ	r-:
+
+	െ	e
+
+	േ	e:
+
+	ൈ	aI
+
+	ൊ	o
+
+	ോ	o:
+
+	ൌ	aU
+	ൗ	aU   // au length mark, treat at [aU] ?
+
+	്	// virama
+	ൎ	// chillu-virama (unofficial)
+	്്	// espeak uses double-virama for "virama + U+200d" (zero-width joiner), to indicate a chillu character
+	്  (_   y //   epenthetic vowel at end of word
+
+	ൠ	Ry:
+
+	ൡ	ly:
+
+
+
+.group 0xe0a4  // devanagari
+	\340\244  _^_HI  // switch to hindi voice
+.group 0xe0a5  // devanagari
+	\340\245  _^_HI
+
+
+.group
+	$	do:l.ar
