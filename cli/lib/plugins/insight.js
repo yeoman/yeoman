@@ -29,7 +29,7 @@ var msg = "\
 ==========================================================================\n\
 We're constantly looking for ways to make " + opts.pkgname + " better!    \n\
 May we anonymously report usage statistics to improve the tool over time? \n\
-More info: http://yeoman.github.com/docs/                                 \n\
+More info: http://goo.gl/GPtU9 & http://yeoman.io                         \n\
 ==========================================================================";
 
 
