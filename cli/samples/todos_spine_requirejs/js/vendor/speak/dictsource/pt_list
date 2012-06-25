@@ -1,0 +1,892 @@
+
+// This file in UTF8 encoded
+
+// Options
+// ?1  European Portuguese
+// ?2  Brazilian Portuguese
+// ?3  Epenthetic [I] between consonants
+// ?4  Brazil mbrola voice
+
+//  $alt   change [e] or [o] in the stressed syllable to [E] or [O]
+//  $alt2  change [E] or [O] in the stressed syllable to [e] or [o]
+//  Any [E] or [O] phonemes in unstressed words must be listed explicitly
+
+
+// Note for "pt-pt" [R] is the same sound as [r]
+//      for "pt" [y] is the same sound as [i]
+
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+// accent names
+_lig	ligad'u*&
+_acu	&g'udU
+_ac2	&g'udUd'uplU	
+_brv	bR'Evi
+_ced	sedZ'ilj&
+?1 _ced	syd'il^&
+_cir	sirku~Nfl'EksU
+_dia	tR'em&
+_dot	p'oNtU
+_grv	gR'avi
+_hac	ka*'oN
+_mcn	makR'oN
+_ogo	ogon'ek
+_rng	&~n'EU
+?1 _rng	&~n'El
+_stk	b'ax&
+_tld	tS'iU
+?1 _tld	til
+
+
+// character names
+
+_á	$accent
+_à	$accent
+_à	$accent
+_â	$accent
+_ã	$accent
+ç	$accent
+_é	$accent
+_ê	$accent
+_í	$accent
+_ó	$accent
+_ô	$accent
+_õ	$accent
+_ú	$accent
+_ü	$accent
+ß	_^_DE
+
+v	ve       // not Roman numbers
+x	Sis#
+
+_cap	maI'uskulU
+_?A	l'etR&_
+_??	s'imbolU_
+_#32	esp'asU
+?1 _#32	Sp'asU
+_#9	tab
+
+*	&ste*'iskU	$max3
+=	__igw'&l_	$max3
+.	p'oNtU		$max3
++	maIs#		$max3
+%	pors'eINtU	$max3
+&	_'e_
+@	&x'ob&
+¤	'eU*U
+€	'eU*U
+§	p&*'agRafU
+
+
+_!	,eskl&mas'&U~
+_"	'asp&s#
+
+?1   _#	k,ardin'al
+?2   _#	k,ardZin'aU
+_$	s,ifR'&U~
+_&	'e
+?1   _'	ap'Ostr,ofy
+?2   _'	&p'OstRofU
+_(	,abRipa*'eINtezy
+_)	f,ES&pa*'eINtezy
+_*	&ste*'iskU
+_−	m'enUs
+
+_,	v'irgul&
+_-	'ifeIN
+_/	b'aQ&
+_:	d,oIsp'oNtus
+_;	p,oNtu_iv'irgul&
+_<      men'Or
+?1   _=	igw'al
+?2   _=	igw'aU
+_>	maI'Or
+_?	,iNtex,ogas'&U~
+_[	,abRikowS'etSi
+_\	b,ax&,iNvertS'id&
+_]	f,ES&kowS'etSi
+_^	s,irku~Nfl'Eksu
+__	s,ublin^'adu
+_`	gR'avi
+_{	,abRiS'avi
+?1   _|	b,ax&v,ertSik'al
+?2   _|	b,ax&v,ertSik'aU
+_}	f,ES&S'avi
+?1   _~	t'il
+?2   _~	tS'iU
+_¡	,eskl&mas,&U~,iNvertS'id&
+_¿	,iNtex,ogas,&U~,iNvertS'id&
+
+_"	'abRi;'asp&||d'upl&s#
+_º	Oz'in^U
+_ª	az'in^U
+°	gR'aU
+
+
+// numeric
+//********
+
+?1 _0	z'E*u
+?2 _0	z'E*U
+?1 _1	'um
+?2 _1	'u~N
+   _2	d'oIs#
+   _3	tR'es#
+?1 _4	kw'atru
+?2 _4	kw'atRu
+   _5	s'iNku
+   _6	s'eIs#
+?1 _7	s'Ety
+?2 _7	s'EtSy
+   _8	'oItu
+   _9	n'Ovy
+   _10	d'Es#
+
+_11	'oNzy
+_12	d'ozy
+?1_13	tr'ezy
+?2_13	tR'ezi
+?1_14	k&t'orzy
+?2_14	kat'orzy
+_15	k'iNzy
+?1_16	dyz&s'eis#
+?2_16	d,ezes'eIs#
+?1_17	dyz&s'Ety
+?2_17	d,ezes'EtSy
+?1_18	dyz'Oitu
+?2_18	dez'oItu
+?1_19	dyz&n'Ovy
+?2_19	dezen'Ovy
+?1_2X	v'iNty
+?2_2X	v'iNtSy
+_3X	tR'iNt&
+
+?1_4X	kw&*'eNt&
+?2_4X	kwa*'eINt&
+_5X	siNkw'eINt&
+?1_6X	sys'eINt&
+?2_6X	ses'eINt&
+?1_7X	syt'eINt&
+?2_7X	set'eINt&
+_8X	oIt'eINt&
+?1   _9X	nuv'eINt&
+?2   _9X	nov'eINt&
+_1C0	s'eIN
+?1_0C	s'eINtus#
+?2_0C	s'eINtUs#
+_1C	s'eINtu
+?1_2C	duz'eINtus#
+?2_2C	duz'eINtUz
+?1_3C	tryz'eNtus#
+?2_3C	tRez'eNtUz
+?1_5C	kin^'eINtus#
+?2_5C	kin^'eINtUz
+?1_0M1	m'il_
+?2_0M1	m'iU_
+?1_1M1	m'il_
+?2_1M1	m'iU_
+
+?1_0M2	milj'o~js#
+?2_0M2	milj'o~jz
+_1M2	'u~milj'&U~
+?1_0M3	bilj'o~js#
+?2_0M3	bilj'o~jz
+_1M3	'u~mbilj'&U~
+?1_0M4	trilj'o~js#
+?2_0M4	trilj'o~jz
+_1M4	'u~ntrilj'&U~
+_0and	i
+_dpt    _v'irgul&
+// _0Z2	seNt'Ezim&     // 100ths
+// _0Z3	mil'Ezim&      // 1000ths
+
+// not roman numbers
+vi	vi
+
+
+// ABBREVIATIONS
+//**************
+aapp	$abbrev 
+abadv	$abbrev
+abc	$abbrev 
+a.c	'as'e
+adsl	$abbrev
+ae	$abbrev 
+aids	$abbrev 
+apedv	$abbrev
+avc	$abbrev 
+bios	b'i,OS
+d.c	d,es'e
+cne	$abbrev 
+cpu	$abbrev
+cpuc	$abbrev
+dpoc	$abbrev 
+ecg	$abbrev 
+edp	$abbrev
+?1   etc	,ets'Et:*&
+?2   etc	,ets'Ete*&
+e.u.a	Eua
+eua	$abbrev
+fbi	$abbrev
+hiv	$abbrev 
+(http ://)	ag,atete'pe_
+icc	$abbrev 
+ieee	$abbrev // Institute of Electrical and Electronics Engineers 
+iss	$abbrev 
+jpeg	Z,Ot&p'Eg
+mpeg	,Emp'Eg
+nba	$abbrev 
+nvda	$abbrev
+oms	$abbrev 
+omt	$abbrev 
+osi	$abbrev
+?1   sa       ,Esj'a
+?1   sos       ,Esj,O'Es
+ue	$abbrev 
+unts	$abbrev
+usb	$abbrev
+
+
+dr	$dot
+dra	$dot
+mr	$dot
+mrs	$dot
+prof	pr'Of	$dot
+profº	pR,ofes'or
+profª	pR,ofes'o*&
+sr	$dot
+?1 sra	,Es;'Errj'a	$dot
+?2 sra	$dot
+
+// articles
+o	$u+	$nounf
+a	$u+	$nounf
+os	$u+	$nounf
+as	$u+	$nounf
+?1 a    & $u+   $nounf
+
+um	$u	$nounf
+uma	$u	$nounf
+uns	$u	$nounf
+umas	$u	$nounf
+
+
+// pronouns
+eu	$u+	$verbf
+tu	$u+
+você	vos'e	$u+
+ele	'ely	$u+
+ela	$u+
+nós	$u+
+vós	$u+
+vocês	$u+
+eles	$u+
+elas	$u+
+
+me	$u	// reflexive
+te	$u 
+nos	$u 
+la	$u
+lo	$u
+las	$u
+los	$u
+//se	$u
+
+?2	este	$u+	$nounf	'estSi       // this
+?2	estes	$u+	$nounf	'estSis       // these
+?2	esta	'Est& $u+	$nounf
+?2	neste	$u+	$nounf	n'estSi      //in this
+?2	nestes	$u+	n'estSis      //in these
+?2	esse	$u+	$nounf	'esi       // that
+essa	'Es&  $u+
+desse	d'esy	$u+
+nesse	n'esy	$u+
+aquele	&k'ely	$u+	$nounf       // that
+aquela	$u+
+daquele	d&k'ely	$u+	$nounf
+
+	que	$u      // pronunciation is in pt_rules
+
+// possessive adjectives
+meu	$u+	$nounf
+minha	$u+
+meus	$u+
+minhas	$u+
+teu	$u+	$nounf
+tua	$u+
+teus	$u+
+tuas	$u+
+seu	$u+	$nounf
+sua	$u+
+seus	$u+
+suas	$u+
+?2	nosso	$u+ //	n'OsU
+?2	nossa	$u+	n'Os&
+?2	nossos	$u+	n'OsUs
+?2	nossas	$u+	n'Os&s
+dele	dely	$u1+
+dela	$u+
+deles	$u+
+delas	$u+
+nele	nely	$u1+
+
+// prepositions
+de	$u	// of,from
+do	$u	$nounf
+da	$u	$nounf
+dos	$u
+das	$u
+dum	$u
+duma	$u
+duns	$u
+dumas	$u
+
+em	$u  // in,on,at
+no	nu $u	$nounf
+na	$u
+?2	nos	nus# $u
+nas	$u
+num	$u
+numa	$u
+nuns	$u
+numas	$u
+
+por	$u	// by,for,through
+pelo	$u
+?2	pela	$u	p'el&
+pelos	$u
+?2	pelas	$u	p'el&s
+
+ao	$u
+à	,a:
+aos	$u
+às	,a:s
+
+para	$u		// for,to
+pro	$u	$nounf
+pra	$u
+pros	$u
+pras	$u
+prò	$u
+prà	$u
+pròs	$u
+pràs	$u
+
+com	$u		// with
+?2	sem		// without
+?2	até	$u	// until
+?2	desde	$u	// from,since
+?2	entre		// between,among
+?2	por	$u	// by,for,through
+?2	sobre	s'obRy		// on,above,about
+?2	sob		// under,below
+?2	debaixo		// under,below
+
+?2	durante
+
+
+// conjunctions
+?1	e	i $u	// and
+?2	e	i $u   // and
+se	$u		// if
+
+
+?2	mas	$u	// but
+?2	porém		// however
+?2	todavia		// yet
+?2	contudo		// nevertheless
+
+?2	ou	$u	// or
+?2	quer		// whether
+
+?2	assim		// thus
+?2	portanto	// therefore
+
+?2	porque		// because
+?2	pois		// because
+?2	como	$u	// as
+
+?2	embora		// although
+?2	apesar		// despite
+
+
+?2	caso			// if
+?2	(desde que)	d'esdZiki/ 	// provided that
+?2	(exceto se)	es'Etusi/  	// unless
+?2	(salvo se)	s'alvusi/  	// unless
+
+?2	(para que)	p,a*&ki/          // so that
+
+
+
+?2	quando			// when
+?2	onde	$u	// where
+?2	apenas			// as soon as
+?2	mal			// as soon as, hardly
+?2	(logo que)	l'Oguki/		// as soon as
+?2	(antes que)     '&~NtSiski/ 	// before
+?2	(depois que)    dep'OIski/ 	// after
+?2	(sempre que)    s'eNpriki/ 	// whenever
+?2	enquanto 			// while
+
+
+// negative
+
+// questions
+
+
+// auxillary verbs  (be, have, can, etc)
+	// ser, to be
+ser	$u
+sou	$u
+é	E  $u
+és	Es $u
+somos	$u
+sois	$u
+são	$u
+
+era	E*& $u1	// .. imperfect
+éramos	$u
+éreis	$u
+eram	E*&U~  $u1
+
+fui	$u      // .. preterite
+foste	$u
+foi	$u
+fomos	$u
+fostes	$u
+
+fora	$u      // .. pluperfect
+fômamos	$u
+fôreis	$u
+foram	fo*&U~  $u1
+
+serei	$u	// .. future
+?2 será	se*a	$u2
+seremos	$u
+sereis	$u
+serão	$u
+
+seria	$u      // .. conditional
+seríamos $u
+seríeis	$u
+seriam	$u
+
+	// estar - to be
+estar	$u
+estou	$u
+está	$u	est'a
+estamos	$u
+estais	$u
+estão	$u
+
+estava	$u
+estávamos	$u
+astavam	$u
+
+estive	$u
+?2 esteve	estevy	$u2
+estivemos	$u
+estiveram	$u
+estiver	$u	estSiv'Er
+
+estarei	$u
+estará	$u
+estaremos	$u
+estarão	$u
+
+
+      // ter - to have
+ter	$u
+tenho	$u
+tens	$u
+tem	$u
+temos	$u
+tendes	$u
+têm	$u
+
+tinha	$u
+tínhamos	$u
+tínheis	$u
+tinham	$u
+
+tive	$u
+tiveste	$u
+teve	tevy	$u1
+tivemos	$u
+tivestes	$u
+tiveram	$u
+
+tivera	$u
+tivéramos	$u
+tivéreis	$u
+tiveram	$u
+
+terei	$u
+terás	$u
+terá	$u
+teremos	$u
+tereis	$u
+terão	$u
+
+      // fazer - to do
+fazer	$u+
+faço	$u+
+faz	$u+
+fazemos	$u+
+fazem	$u+
+
+
+	// poder - can
+poder	$u+
+posso	$u+
+pode	$u+
+podemos	$u+
+podem	$u+
+
+podia	$u+
+podíamos	$u+
+podiam	$u+
+
+pude	$u+
+pôde	$u+
+pudemos	$u+
+puderam	$u+
+
+poderei	$u3+
+poderá	$u3+
+poderemos	$u+
+poderão	$u+
+
+
+	// ir - to go  (used to make future tense)
+vou	$u+
+vai	$u+
+vamos	$u+
+vão	$u+
+
+	// haver
+há	$u+
+
+
+// Letter names
+_a      a
+_e      E
+_o	O
+a       a $atend
+e       E $atend        // assume letter-e at end of sentence
+o       O $atend
+
+
+// some common adjectives and adverbs
+alguns		$u	// some
+algumas		$u	// some
+não		n,&U~ $strend	// not
+
+// Words with two possible pronounciations
+jogo	Z'OgU	$verb
+gosto	g'OstU	$verb
+começo	kom'EsU	$verb
+almoço	aUm'OsU	$verb
+retorno	xet'OrnU	$verb
+acordo	&k'OrdU	$verb
+governo	gov'ernU	$noun
+?2 olho	'oljU	$noun
+?4 olho	'ol^U	$noun
+?2 colher	kolj'Er	$noun
+?4 colher	kol^'Er	$noun
+
+
+// MAIN WORD DICTIONARY
+//*********************
+// $alt   changes stressed [e] or [o] phoneme to open [E] or [O]
+// $alt2   changes stressed [E] or [O] phoneme to close [e] or [o]
+boca		$alt2
+borboleta	$alt2
+catorze		$alt2
+copo		$alt
+escova		$alt2
+fosse		$alt2
+fossem		$alt2
+hoje		$alt2
+líderes		$alt2
+mexa		m'eS&
+mexi		meS'i
+mexo		m'eSU
+?2 mulher	mulj'Er
+?4 mulher	mul^'Er
+mui		mwi
+muito		mw'iNtU	// -s is included as a suffix
+muita		mw'iNt&
+paexa		paeSa
+perdem		$alt
+preto		$alt2
+onu		$1
+rede		$alt2
+rixa		xiS&
+selvagem	seUv'aZeIN
+suor		swOr
+tapete		$alt2
+teta		$alt2
+
+novos		$alt
+mortos		$alt
+corpos		$alt
+modo		$alt
+modos		$alt
+fogos		$alt
+lopes		$alt
+jogos		$alt
+doce		$alt2
+drogas		$alt
+grosso		$alt2
+torres		$alt2
+
+// Close [o]
+?1 calculadora	$alt2
+?1 professora	$alt2
+?1 senhora	$alt2
+?1 sobre	$alt2
+
+vanessa		$alt2
+violeta		$alt2
+
+
+abacaxi      abakaSy
+axé          aSE
+elixir       eliSir
+?1 fixe       f'iSy
+
+
+// foreign words
+?1 alt        'alt
+?2        agosto        &g'ostU
+?1 back       b'Ek
+?2  backup        bEk'&p
+?2  backups     bEk'&ps
+?1 blind      bl'aind
+?1 braille    b:r'aily
+?2        Braille        bR'aili
+?1 cancel     k'&ns'El
+?1 caps       k'aps
+?1 com        kom
+?1 ctrl       k'oNt:r,Ol
+?1   dat       d'at
+?1 doc        d'Ok
+?1 delete     d'il'it
+?1 design     d,iz'ain
+?1 dj         d,i:dZ'eI
+?1 down       d'a,wn
+?1 download   d'a,wnl'oud
+?2 download        daUNl'owd
+?3 download        dau~Nl'owd
+?1 end        'end
+?1 escape     Sk'eIpy
+?2 esc     'Esk
+?3 esc     'EskI
+?1 explorer   ,ekspl'O:*&r-
+?2        Explorer        ekspl'O*er
+?1 eyes       'aiz
+?1 frame      fr'eImy
+?2 frame      fR'eImi
+?1 gmail      g,em'eIl
+?2 Gmail      Zem'eIl
+?1 google     g'u:g&l 
+?2 google     g'ugol
+?1 hardware   'ard,w'Er-
+?2 hardware   h'ardwe@-
+?1 home       'omy
+?2 home       h'owmi
+?1 hotmail    h'Otm'eIl
+?2 hotmail    hotm'eIl
+?1 install    ,inst'al
+?2 internet   iNtern'Et
+?2 Intranet   iNtRan'Et
+?2        inveja        iNv'EZ&
+?1 kernel     k'Ern,El
+?2 kernel     k'Ern@l
+?1 line       l'ain
+   layout     l'eI,aUt
+?2        logo        l'OgU
+?1 lock       l'Ok
+   mail       m'eIl
+        mails        m'eIls
+?1 maior      m,&j'Or-
+?2 maior      maI'Or
+?2        maiores        maI'O*is
+?1 menor      myn'Or-
+?2 menor      men'Or
+?2        menores        men'O*is
+?2        melhor        melj'Or
+?2        melhores        melj'O*is
+?4        melhor        mel^'Or
+?4        melhores        mel^'O*is
+?2        mouse        m'aUzi
+?1 menu       menu
+?1 next       n'Ekst
+   ok         Ok'eI
+?2 offline    Ofl'aIN
+?2 online     oNlaIN
+   org        Org
+?1 ovo        'ovu
+?1 pause      p'au:z
+   page       p'eIdZ
+?2        pior        pi'Or
+?2        piores        pi'O*is
+preço	$alt2
+python     p'aIT&~N
+queda	$alt
+?1 readme     r'i:dmi:
+?1 sapi       s,ap'i
+?1 scanner    sk'En&r
+?1 shift      S'ift
+?1 scroll     sk:r'ol
+?1 site       s'aIt
+?2 site       s'aItSi
+?1   software   s'Oft,w'Er-
+símbolo	s'imbolU
+?4 símbolo	s'iNbolU
+?2   software   s'Oftwe@-
+?1 space      sp'eIsy
+?1 sporting   sp'Ort,ing
+?1 tab        t'ab
+?1 telemóvel  t,El,Em'OvEl
+?1 telemóveis t,El,Em'OveIs#
+?1 up         &p
+?1 upload     &pl'oud
+?2        web        w'Eb
+?2        verbete        verb'etSi
+?2        verbetes        verb'etSis
+?1 yahoo      'i,ah'u
+?2 yahoo      iah'u
+?1 yes        j'Es
+
+
+// common person names
+alan       'al@n
+louis       _^_FR
+
+
+// foreign product names
+?1 access      'aks,Es
+?1 adobe       &d'Oby
+   debian      d'Ebj&~N
+?1 excel       ,Eks'El
+?1 express     ,Ekspr'Es
+   espeak      isp'i:k
+?1 espeakedit   isp'i:kEd,it
+?1 fedora      _^_EN
+?1   firefox     f'ai&rfOks
+?2    firefox     f'ai@fOks
+?1 front       fr'ont
+?1 jaws        dZ'au:z
+?1 linux       l,in'uks
+?2 linux       l'inUks
+?1 live        l'aiv
+?1 maker       m'eIk&r-
+?1 media       m'Ed,i&
+?1 messenger   m'Es&ndZ&r-
+?1 microsoft   m,ik:r'os,Oft
+?2 microsoft   m'aIkRows'Oft
+?1 movie       m'uvi
+?1 nero        n'Eru
+?1 office      'Of,is
+   openoffice  'opeIN|'Ofis
+?1 outlook     'autl'uk
+?2        Outlook        ,aUtl'uk
+?1 paint       p'aint
+?1 player      pl'eI&r-
+playstation	_^_EN
+?1 point       p'oint
+?1 power       p'aU&r-
+?1 product     p:r'&d&kt
+?1 Publisher   p'&bl,iS&r-
+?1 reader      r'id,&r-
+?1 setup       s'Et'&p
+?1 scout       sk'aut // Nero scout       
+?1 skype       sk'aip
+?2        Skype        sk'aIp
+        Slackware   sl'akwe@-
+?1 smart       sm'art // nero StartSmart
+   speak       spi:k
+   suse        z'u:ts@
+?1 start       st'art // nero StartSmart
+?1 time        t'aImy // nero show time
+   ubuntu      ub'untu
+?1 unix        ,u:n'iks
+?2 unix        j'uniks
+     wagner     v'agner
+?3 wagner        v'agIner
+?1 windows     w'iNd'ou:z
+?2 windows     w'iNdows
+?1 window     w'iNd'ou
+?2 window      w'iNdow
+
+
+// historical/famous person names
+babbage       b'abidZ
+bernhard      bern'ard
+darwin        d'Arwin
+dijkstra      d'ijkstrA:
+einstein      _!'aInSt,aIn
+feynman       f'ainm@n
+freud         fr'OId
+friedrich     fr'i:driS
+gauss         g'aUs
+geisel        g'aIzEU
+gottfried     g'Otfri:t
+hawking       h'o:king
+heisenberg    h'aIzEnberg
+hitler        h'itler
+isaac         iz'&k
+lavoisier     lavwazj'e
+leibniz       l'aIbni:ts
+montesquieu   m,oNteskj'e
+neumann       n'OIman
+newton        n'i;utoN
+oppenheimer   _!'Op@nh,aImar
+richard       x'iS&rd
+riemann       r'i:man
+rijndael      x'ain;d'al
+rousseau      Rus'o
+schrödinger   Sr'edinger
+stephen       st'i:v@n
+steve         st'i:v
+turing        t'u*iNg
+voltaire      vOlt'Er
+von           f%On
+
+
+// foreign common names/surnames
+?1   alison       &l'is&N
+?1   cleverson    kl'Evyrs&N
+?2   cleverson    kl'EversoN
+?1   elton        'Elt&N
+?1   halison      &l'is&N
+klein       kl'aIn      // Very common on southern Brazil.
+?1   kleverson       kl'Evers&N
+krueger     kR'iZer
+krüger      kR'iZer
+kühl        k'il
+?1   nelson       n'Els&N
+mueler      m'iler
+mueller     m'iler
+müler       m'iler
+müller      m'iler
+ronchi      r'OnCi:
+vogel       f'o:g@l
+volkmann    f'Olkman
+
+
+
+
+
+
+
+
+
+

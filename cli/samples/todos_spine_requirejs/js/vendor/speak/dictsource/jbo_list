@@ -1,0 +1,93 @@
+
+// This file is UTF8 encoded 
+// Spelling to phoneme words for Lojban (an artificial constructed language).
+
+// Note: initial/final "." has already been removed
+
+// Numbers
+_0	no
+_1	pa
+_2	Re
+_3	Si
+_4	vo
+_5	mu
+_6	xa
+_7	ze
+_8	bi
+_9	so
+_dpt	pi_
+
+
+_a	abu
+b	b@
+c	S@
+d	d@
+_e	ebu
+f	f@
+g	g@
+_i	ibu
+j	Z@
+k	k@
+l	l@
+m	m@	// should "words" l,m,n,r say the syllable consonant?
+n	n@
+_o	obu
+p	p@
+r	R@
+s	s@
+t	t@
+_u	ubu
+v	v@
+x	x@
+y	'@bu
+z	z@
+
+h	@h'@bu
+q	k'@bu
+w	v'@bu
+
+
+// stressed cmavo
+cai	S'aI_!
+cu'i	S'uhi_!
+pei	p'eI_!
+ru'e	R'uhe_!
+sai	s'aI_!
+nai	n'aI_!
+na	n'a_!
+ja'a	Z'aha_!
+
+
+// unstressed words. Note single-syllable cmavo are all unstressed in jbo_rules
+e'o	$u+	// request
+po'e	$u+	// of
+zo'e	$u+	// pronoun
+
+
+i	i_:	$u	// sentence break (recognised by eSpeak program). Try a short pause after ".i"
+
+// end-of-clause [_;_] before these
+noi	_;_noI	$u
+poi	_;_poI	$u
+no'u	_;_nohu	$u
+po'u	_;_pohu	$u
+goi	_;_goI	$u
+
+ija	_;_iZa		// should this series be unstressed?
+ijanai	_;_iZan'aI
+ije	_;_iZe
+ije'i	_;_iZehi
+ijenai	_;_iZenaI
+ijo	_;_iZo
+ijonai	_;_iZon'aI
+inaja	_;_inaZa
+
+to	_::to	$u	// start parenthesis, pause but don't raise intonation
+
+// terminators (include a pause after)
+ku	ku_::	$u
+boi	boI_::	$u
+vau	vaU_::	$u
+kei	keI_::	$u
+toi	toI_::	$u
+

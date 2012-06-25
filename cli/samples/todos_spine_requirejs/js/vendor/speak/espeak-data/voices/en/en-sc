@@ -1,0 +1,16 @@
+name en-scottish
+language en-sc
+language en 4
+gender male
+
+phonemes en-sc
+dictrules 5 6 7
+stressLength  180 130 200 200 0 0 250 270
+
+replace 03 @ V
+replace 03 I i
+replace 03 I2 i
+replace 01 aI aI2
+replace 02 a a/
+replace 02 u: U
+replace 02 3: VR

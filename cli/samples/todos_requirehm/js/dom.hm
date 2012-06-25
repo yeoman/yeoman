@@ -1,3 +1,0 @@
-export function alerts(msg){
-	console.log('DOM:' + msg);
-}

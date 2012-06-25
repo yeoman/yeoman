@@ -1,0 +1,1482 @@
+//maintainer: Willem van der Walt
+// email: wvdwalt@csir.co.za
+// tel: +27 12 8413996
+// Meraka Institute, CSIR
+//With contributions by Christo de Klerk
+
+
+// This file is UTF-8 encoded
+// all words lower case
+
+
+// abbreviations
+(http ://)       hA:te@te@p'e@_
+adv         atfuk'A:t
+atkv        $abbrev
+bpk         b@p&rk
+bv          beIf'o@rbe@lt $dot
+dr          d'Okt@r $dot
+e.a             _:En_'and@r
+edms        eI@ndOms
+ens         Enso@fo@rts $dot
+fak         $abbrev
+genl        x2@n@rA:l
+insp        InspEkt'Y@r $dot
+isbn        $abbrev
+kapt kapt'eIn $dot
+mnr         mIn'e@r $dot
+mej         m@jWfr@U $dot
+mev         m@fr@U $dot
+pres        pr@s@d'Ent $dot
+prof        pruf'Es@r $dot
+sabc            $abbrev
+sanrb       $abbrev
+sms'e         Es_Em_'Es@
+sauk	    $abbrev
+st          s@nt $dot
+supt        suprEntEnd'Ent $dot
+tv          te@fe@_
+vsa         $abbrev
+
+// letter names
+// any letter which also appear as words should be prefixed by a _ here
+_a         A:
+b         be@
+c         se@
+d         de@
+e         e@
+f         Ef
+g         x2e@
+h         hA:
+i         i
+j         je@
+k         kA:
+l         &l
+m         Em
+n         En
+o         o@
+p         pe@
+q         ky
+//r         &r
+s         Es
+t         te@
+_u         y
+v         fe@
+w         ve@
+x         Eks
+y         eI
+z         zEd
+à         $accent $atend
+á         $accent
+ä         $accent
+è         $accent
+é         $accent
+ê         $accent
+ë         $accent
+ì         $accent
+í         $accent
+ï         $accent
+ò         $accent
+ó         $accent
+ô         $accent
+ö         $accent
+ù         $accent
+ú         $accent
+û         $accent
+ü         $accent
+ý         $accent
+
+_cap	h'o@flEt@r
+_??	s@mb'o@l
+_?A	l'Et@r
+
+// accent names
+_lig	d'Wb@llEt@r
+_acu	ak'yt
+_ac2	d'Wb@lakyt	
+_brv	k'Orte@k@n
+_ced	s@dIla
+_cir	k'api
+_dia	d'e@lte@k@n
+_dot	p'Wnt
+_grv	x2raf'Is
+_hac	k'A:rOn
+_mcn	m'akrOn
+_ogo	o@x2o@n,&k
+_rng	'A:nb&l
+_stk	str'e@p
+_tld	t'Ild@
+
+// symbols
+_'	tik
+_"	hA:l_|A:n
+_-	kOp@lte@k@n
+__	leIn
+_?	frA:x2te@k@n
+_:	dWb@lpWnt
+_;	kOmapWnt
+_,	kOma
+_|	afstre@p
+_(	lINshaki
+_)	r&x2shaki
+_[	lINs||blOkhaki
+_]	r&x2s||blOkhaki
+_{	lINs||krWlhaki
+_}	r&x2s||krWlhaki
+_<	kleIn@r_|as
+_>	x2ro@t@r_|as
+
+=	_x2@l'eIk_	$max3
+*	st&r	$max3
++	pl'Ws	$max3
+.	pWnt	$max3
+~	tIld@	$max3
+%	p@rs'Ent	$max3
+#	nOm@r	$max3
+&	_|amp&rsant
+£	pO:nt
+€	Y@ru
+/	stre@p	$max3
+@	beI_:
+\	trystre@p
+
+¥	jEn
+§	afde@l@N
+¶	parax2rA:f
+¶¶	parax2rA:v@
+¤	mWnte@k@n
+©	kup'ir&x2
+°	x2rA:d@
+−	minWs
+±	plWs_OfminWs
+µ	mikru
+×	mA:l
+÷	x2@de@ldY@r
+♯	krYys
+♭        mOl
+¼	@kwart
+½	@halv@
+¾	drikwart
+⅓	d&:rd@
+⅔	tw,e@d'&:rd@s
+
+// numeric
+_0	'nWl
+_1	_'e@n
+_1a	_'e@n
+_2	'twe@
+_3	'dri
+_4	'fi:r
+_5	'feIf
+_6	'sEs
+_7	'se@v@
+_8	_'ax2t
+_9	'ne@x2@
+_10     'tin
+_11     _'&lf
+_12     'tw'A:lf
+_13     'd&rtin
+_14     'fe@rtin
+_15     'feIftin
+_16     'sEstin
+_17     'se@v@ntin
+_18     _'ax2tin
+_19     'ne@x2@ntin
+_2X     'twIntIx2
+_3X     'd&rtIx2
+_4X     'fe@rtIx2
+_5X     'feIftIx2
+_6X     'sEstIx2
+_7X     'se@v@ntIx2
+_8X     'tax2tIx2
+_9X     'ne@x2@ntIx2
+_0C     'hOn@rt
+_0M1    'd'Yys@nt
+_0M2    mIlj'un
+_0M3     mIlj'art
+_0and   _!En
+_dpt    'pWnt
+_roman  rum'eIns@   
+
+// ordinal numbers
+_#de	d@
+_#ste	st@
+_1o	_'e@r
+_2o	tw'e@
+_3o	d'&:r
+_7o	s'e@v@n
+_8o	_'ax2
+_9o	ne@x2@n
+_0Co	h'On@rtst@
+
+
+// Place names
+
+acapulco    akap'ulk@U
+afganistan  afg'anistan
+alaska      al'aska
+albanië     alb'A:ne@:@-
+algerië     alx2'e@re@:@-
+amanzimtoti $4 
+antwerpen   antv&rp@n
+avignon     _^_FR
+babilon     babilOn
+babilonië   babil'o@ni;@
+bainskloof  beInsklo@f
+bangladesj  baNglad'ES
+barcelona   bars@l'o@na
+barkly      _^_EN
+bellevue    b&lvju:
+bermuda     $2
+bethlehem   bEt_liEm
+boedapest   budapEst
+boekarest   bukarEst
+bogotá      bOgOt'A:
+bolivië     bul'Ivi:@
+bonnievale  _^_EN
+boplaas     bo@plA:s
+bordeaux    bOrd'@U
+boston      _^_EN
+brittanje   $2
+brooklyn    _^_EN
+(buenos aires) bwEnOs_'aIrEs
+burundi     bur'undi
+caledon     kalidOn
+carolina    karul'ina
+ceres       se@r@s
+cesaréa     s@s@ri:ja
+ceylon      s@lOn
+chicago     _^_EN
+china       S'ina
+clanwilliam kl&:nw'ili@m
+clifton     _^_EN
+colenso     kul'E:ns@U
+colesberg   ko@lsb&rx2
+constantia  $2
+christiana  kr@stij'A:na
+damaskus    d@maskWs
+denemarke   de@n@mark@
+djakarta    dZak'arta
+doebaai     $2
+duitswes    dYytsv'Es
+efese       e@f@s@
+ermelo      &rm@lo@
+florida     flOrida
+franschhoek frA~nsh'uk
+fraserburg  freIz@rbWrx2
+gadara      x2@dA:ra
+galilea     x2al@l'i:a
+gdansk      g@-dansk
+genève      Z@nE:v
+germiston   _^_EN
+getsémané   x2Ets'e@mani
+gonubie     g@nu:bi
+goudini     $2
+gordonsbaai gO:rd@nsb'AI
+(graaff reinet) x2rA:f||r@n'Et
+grahamstad  x2rA:mstat
+griekeland  x2rik@lant
+groblersdal x2rObl@rsd'al
+havana      hav'ana
+hermon      $1
+hirosjima   hiruS'ima
+ingwavuma   iNgwav'u:ma
+israel      IsraI:l
+italië      it'A:li;@
+jeffreysbaai dZEfrisb'AI
+junín       x2un'in
+kalafong    kalaf'ON
+kanada      kanad%a
+kanaän      kA:nA:an
+kaïro       ka_'iru
+kameroen    kam@r'un
+kenia       ki:nia
+kimberley   kimb@rli
+kinshasa    kinS'A:sa
+kongo       kONgu
+knysna      neIsna
+kuruman     kuruman
+kwa         kwa $u $only // KwaZulu, etc.
+kwazulu     kwaz'ulu // Kwazulu (lowercase z)
+lady        _^_EN // Lady Grey/Lady Smith
+ladybrand   leIdibr'ant
+laingsburg  leInsbWrx2
+lesotho     l@sutu
+limpopo     l@mpo@po@
+lockerbie   _^_EN
+(los angeles) lOs_'andZ@li:z	
+macedonië   mas@d'o@ni@
+madagaskar  madax2'askar
+majuba      maj'uba
+malmesbury  mA:msb@ri
+maputo      map'u:tu
+mauritius   mOr'iSjWs
+milaan      $2
+mesopotamië mEsuput'A:mi@
+miami       _^_EN
+mpumalanga  mpu:mal'aNga
+monaco      mOn'A:ku
+montagu     mOnt@ky
+moreletapark mOr@l,Etap'ark
+moorreesburg mur'e@sbWrx2
+mouillepunt mulipWnt
+(thaba nchu) tab'A:||ntSu
+europa      Y@r'o@pa
+nigel       _^_EN
+nineve      nIn@fi
+oberammergau o@b@r'am@rgaU
+oklahoma    @Ukl@h'@Uma
+outeniekwa  @Ut@n'ikwa
+oxford      _^_EN
+palermo     pal'&rmu
+pelindaba   p&l@nd'A:ba
+perú        p@ru
+philadelphia  f@l@d'&lfi;a
+piketberg   p@kEtb&rx2
+portugal    pOrtyx2al
+potchefstroom pOtSIfstr'o@m
+rhône       _^_FR
+richardsbaai ritS@dsb'AI
+riviersonderend r@fi:rsOn@r_'Ent
+robertson   _^_EN
+salvador    salvadO:r
+santiago    santi;'A:gu
+secunda     s@kunda
+senekal     se@n@kal
+seychelle   seIS'&l@
+seychelles  seIS'&lz
+singapoer   siNgapur
+soshanguve  sOSaNg'u:vE
+soweto      suw'E:tu
+springs     _^_EN $capital
+sunnyside   _^_EN
+suriname    syrin'A:m@
+swellendam  $3
+tankwa      taNkwa
+tokio       to@kiu
+trafalgar   traf'algar
+tunisië     $2
+turkye      $2
+ulundi      ul'undi
+upington    apiNt@n
+vanrhynsdorp fanr'eInsdOrp
+vesuvius    v@su:viWs
+viëtnam     vj'Etnam
+walhalla    $2
+wallonië    val'o@ni@
+washington  _^_EN
+wellington  wEliNt@n
+wimbledon   _^_EN
+wolseley    wulsli
+uganda      ug'anda
+uruguay     urugwaI
+wakloof     vA:klo@f
+zimbabwe    zI:mb'ab_wE
+zulu        zulu // Kwazulu-Natal
+
+
+// People names
+abdullah    abd'ula
+Abiméleg    abin'e@lEx2
+abraham     A:bram
+ackerman    ak@rman
+adam        adam
+adriaan     A:drijan
+adrie       A:dri
+agnes       _^_EN
+albertus    alb'&rtWs
+alfred      _^_EN
+allah       %alA:
+amelia      am'i:lija
+annalet     anal'Et
+André       'andreI
+annette     an'Et
+anthonie    ant'o@ni
+antoinette  antun'Et
+antonius    ant'o@nijWs
+archimedes  arx2im'e@dEs
+aristoteles arist'o@t@lEs
+armstrong   _^_EN
+arthur      _^_EN
+astarte     $2
+badenhorst  bA:d@nhOrst
+athene      at'e@n@
+barbara     bA:b@ra
+basson      $2
+bea         bi:ja
+belcher     _^_EN
+benade      b@nA:di
+benjamin    bEndZ@m@n
+bennett     bEn@t
+benson      _^_EN
+bertha      b&rta
+bester b'Est@r
+betjie      bEici
+betsie      bEtsi
+beyers      beI@rs
+blignault   blIx2n@Ut
+blomerus    blum'e@rWs
+blum        blum
+boris       bOr@s	
+borodin     bOrud'in
+botha       bo@ta
+bouwer      b@U@r
+braham      brA:m
+brian       _^_EN
+bredenkamp  bre@d@nkamp
+bruwer      bruw'&:r
+brünhilde   _^_DE
+caesar      siz@r
+	cameron     _^_EN
+carl        kA:r@L
+carlyle     _^_EN
+carol       _^_EN
+carmen      karmEn
+casanova    kasan'o@va
+cecil       sEs@l
+cecile      s@si:l
+cecilia     s@si:lia
+charl       SA:l
+charles     _^_EN
+charlie     tSA:li
+charmaine   SA:m'eI:n
+chaucer     _^_EN
+chopin      S%OpA~
+claire      _^_EN
+clark       _^_EN
+conradie    $2
+chris       krIs
+christo     krIstu
+christof    krIstOf
+christoffel   kr@stOf@l
+christiaan  krIstiA:n
+christian   krIstian
+christelle  kr@st&l
+christina   kr@stina 
+christine   kr@st'i:n
+cindy       sIndi
+coetzee     kuts'e@
+collins     _^_EN
+cronjé      krOnj'e@
+cussons     kas@ns
+cynthia     _^_EN
+dalene      dal'e@n
+danielle    dani;'&l
+darwin      _^_EN
+daniël      d'A:ni:@l
+david       _^_EN
+(da vinci)  da||v'intSi
+debora      d@bo@ra
+debussy     d@bus'i:
+de		d@ $only
+(de la)     d@||la $u // de la Rey/de la Bat, etc.
+delila      d@lIla
+delilah     _^_EN
+der         d@r
+derick      dErik
+deventer d'e@v@nt@r
+diana       dij'A:na
+donaldson   _^_EN
+dorothea    dOr@t'i:ja
+dostojewski dOstOj'Evski
+du		$u
+duncan      daNk@-n
+(du pisanie) du||pis'A:ni
+(du plessis) du||pl@s'i
+(du plooy)   d@||ploI
+(du preez)  d@||pr'e@
+(du toit)   d@||toI
+dustin      _^_EN
+duvenage    dyv@nA:x2@	
+dvorak      d@-v'O:Zak
+einstein    aInstaI:n
+eksteen     $1
+elana       il'A:na
+eldorado    &ldOr'A:d@U
+elisabeth   il'isabEt
+elize       il'i:z
+elmien      $2
+elsabe      &ls@bi
+elsabé      &ls@bi
+elvis       _^_EN
+emmarentia  Emar'e~nSja
+engelbrecht EN@lbr&x2t
+erasmus     $2
+ernest      _^_EN
+esegiël    is'e@x2i:	@l
+estelle     %ist&l
+etienne     Eti@n
+eugene      judZ'i:n
+eugène     yZ'En
+farao       fA:ro@
+ferreira    f@r&:r@
+filemon     f'il@mOn
+fischer     fiS@r
+flaubert    _^_FR
+floris      $1
+fouché      fuS'e@
+fourie      fur'i
+francois    franSwa
+françois    frA~nsw'A:
+gabriël     x2A:bri@l
+gandhi      gandi
+gatsby      _^_EN
+george      _^_EN
+georgina    dZO:dZ'ina
+gerhard     x2&rart
+gerhardus   $2
+gertie      gI:ti
+gertruida   $2
+gilbert     _^_EN
+gloria      glO:ria
+gordon      _^_EN
+grange      x2rA:nsi
+gregory     _^_EN
+greta       gre@ta
+grieg       gri:g
+grové       x2ruv'e@
+gulliver      _^_EN
+gustav      gustaf
+guy         _^_EN
+hamlet      _^_EN
+havenga     hA:f@Nx2a
+haydn       hAId@n
+helen       _^_EN
+helena      hil'e@na
+helene      hi:l'i:n
+helloïse    hEluw'i:z
+henry       _^_EN
+hercules    $1
+herklaas    $1
+herkules    $1
+hewitt      _^_EN
+hilde       hild@
+ibsen       ibs@n
+ilse 'ilz@
+ingrid      iNgr@d
+isabel      is@b&l
+isis        $1
+iskariot    isk'ariOt
+jaco        jaku
+jakomina    jakum'ina
+james       _^_EN
+jane        _^_EN
+	janine      dZ@ni:n	
+Jean        ZA~n $capital
+jesebel     je@s@b&l
+jessica     _^_EN
+jimmy       _^_EN
+joachim     juw'A:x2@m
+joan        _^_EN
+joey        dZ@Ui
+johl        jo@l
+jones       _^_EN
+jordaan     $2
+joris       $1
+josef       jo@s@f
+josephina   jo@s@f'ina
+josé          _^_ES
+juan        x2wan
+juanita     juan'ita
+julia       _^_EN
+jung        juN
+khayyam     kaj'am
+kelvin      _^_EN
+kim         _^_EN $capital
+kleopatra   kliu:p'A:tra
+krige       krix2@
+labuschagne labWsk'ax2ni
+lafras      $2
+langenhoven laN@nho@f@n
+lasarus     lA:s@r%Ws
+lategan     lA:t@x2an
+le l@ $only
+leana       li'A:na
+leandra     li'andra
+leipoldt    lAIpOlt
+leonardo    liu:n'ardu
+leonie      li'o@ni
+levi        le@fi
+lewies      l@vis
+lewis       _^_EN
+liesbet     lisbEt
+lilian      _^_EN
+loubser     l@UpS@r
+louis       luI
+louise      luw'i:z
+lucretia    lukr'i:Sja
+lukas       lukas
+lulu        lulu
+mabalêl     mabal'&l
+mabel       _^_EN
+macgill     m@gjil
+mackintosh  _^_EN
+madelene	mad@l'e@n
+mbeki       mbE:ki
+madelene    mad@l'e@n
+magdalena   $3
+malan       mal'an
+malherbe      mal'&rb@
+mantovani   mantOv'A:ni
+mara        mA:ra
+marelie     mar@li
+margaret    _^_EN
+margaretha  marx2ar'e@ta
+marguerite  mA:g@r'i:t
+marie       mA:ri
+marius      mA:riWs
+marlene     marl'e@:n
+marlise     marl'i:s
+martha      marta
+marthinus   mart'inWs
+martiens    $2
+martin m'A:rt@n
+mary        _^_EN
+mathias     mat'i:jas
+mathilda    mat'Ilda
+matteus     mat'i:Ws
+matthee     mat'e@
+mattheüs    mat'i:Ws
+matthéüs    mat'i:Ws
+maud        mO:d
+maureen     _^_EN
+mefistofeles mEfist'o@f@l@s
+melanie     m@lA:ni
+meraai      m@rAI
+messias     m@sijas
+metusalem   m@t'ysalEm
+michael     _^_EN
+michelle    miS'&l
+michiel $2
+mike        _^_EN
+miriam      mIri@m
+mohammed    muh'am@t
+morkel        mOrk@l
+morné       mOrn'eI
+mostert     m'Ost@rt
+mouton      mut'On
+mozart      mo@tsart
+myburgh     meIbWrx2
+naomi       na_'o@mi
+natasha n%at'aSa
+natasja     n%at'aSa
+naudé       nOd'e@
+nefertiti   nEf@rt'iti
+neil        _^_EN
+nelson      _^_EN
+nicholas    _^_EN
+niklaas     niklA:s
+oedipus     o@dipWs
+olga        Olga
+ontong      OntON
+patrick     _^_EN
+petoors     p@to@rs
+phillips    fIl@ps
+pierre p'e@r
+petronella  pe@trun'&la
+petrus      pe@trWs
+phoebe      fi:bi
+picasso     pik'asu
+pinokkio    pin'Oki;u
+pretorius   pr@to@riWs
+prometheus  prum'e@ti;Ws
+pythagoras  pit'A:x2o@ras
+quijote     kix2'OtE
+quixote     kix2'OtE
+rachmaninoff rax2m'aninOf
+rademeyer   rA:d@meI@r
+rall        rA:l
+raymond     _^_EN
+rebekka     r@bEka
+reinette    r@nEt
+renette     r@nEt
+renée       r@neI
+retha       re@ta
+retief      r@tif
+rhodes      _^_EN
+richard     _^_EN
+riekert     rik@rt
+robert      _^_EN
+robin       _^_EN
+roger       _^_EN
+ronel       run'&l
+rossouw     r@s@U
+rousseau    r@s@U
+ruda        ruda
+rupert      rup@rt
+sabrina     sabr'ina
+salomo      sA:l@mo@
+samuel      sA:my@l
+sandra      sandra
+sappho      sapfu
+schalk sk'alk
+scheepers   ske@p@rs
+schmidt     Smit
+schoeman    skuman
+scholtz     skO:lts
+schoor      sko@r
+schutte     skWt@
+sebastian   s@bastian
+servaas     s@rfA:s
+shakespeare _^_EN
+sharon      S&r@-n
+sheila      Si:la
+sigmund     sigmunt
+sophia      suf'i:ja
+sophie      _^_EN
+springsteen _^_EN
+stephan     ste@fan
+stephanus   st@fA:nWs
+stephen     _^_EN
+stevenson   _^_EN
+stevens     _^_EN
+strauss     straUs
+stockenström stOk@nstro@m
+stuart      _^_EN
+suzanne     suz'A:n
+suzette     suz'Et
+tania       tanja
+telemann    te@l@man
+terblanche  t@rblA:nS
+theo        tiu
+theron tr'On
+thessalonicense tEsalo@nis'E:ns@
+thys        teIs
+timotheus   t@m'o@tiWs
+toerien     $2
+totius      to@SiWs
+trudie      trudi
+versfeld    f&rsf&lt
+veronica    _^_EN
+victor      _^_EN
+victoria    _^_EN
+viljoen     $2
+villiers    vIli@rs
+vincent     _^_EN
+violet      _^_EN $capital
+visagie     fis'A:x2i
+volschenk   fOlskENk
+watson      _^_EN
+william     _^_EN
+wilson      _^_EN
+yolande     jul'and@
+yvonne      iv'On
+zyl         seIl
+marais      mar'E:
+mandela     mand'E:la
+celliers    sIlj'e@
+cilliers    sIlj'e@
+joubert     jub'&:r
+scarlatti   $2
+schalkwyk   skalkveIk
+schreiner   SraIn@r
+tony        t@Uni
+trichardt   trix2A:rt
+vera        ve@ra
+verwey      f@rveI
+virginia    _^_EN
+vivaldi     viv'aldi
+viviers     v@v@je@
+wilhelm     v@lh&l@-m
+williston   _^_EN
+khumalo     kum'A:lu
+zuma        zu:ma
+
+// Other proper names
+absa        absa
+alibama     $3
+antares     $2
+boeing      _^_EN
+checkers    tSEk@rs
+chevrolet   _^_FR
+chrysler    kraIsl@r
+citroên     s@trun
+ferrari     f@rA:ri
+isuzu       is'u:zu
+lamborghini lambOrg'i:ni
+martini     mart'i:ni
+naspers     nasp&rs
+peugeot     pW:Z@U
+(pick n pay) p,ik||@n||p'eI
+porsche     pOrS@
+port        pOrt $1
+prestik     prEstik
+rover       _^_EN
+sesotho     s@s'u:tu
+sorbonne    _^_FR
+sotho       su:tu
+toyota      $2
+venda       vEnda
+vicks       viks
+volvo       vOlvu
+wimpy       wImpi
+
+// Some Bible names
+amos          'A:mOs
+deuteronomium dY@t@ro@n'o@miWm
+habakuk       h'abakWk
+hosea         hus'i:a
+jeremia       j%e@r@m'ia
+jesaja        $2
+josua         j'o@Sia
+levitikus     $2
+maleagi       $3
+miga          m'ix2a
+obadja        o@b'atja
+sagaria       sax2ar'ia
+sefanja       s@f'anja
+
+// article
+
+die		$u
+
+
+
+// unstressed and auxiliary verbs
+
+is		$u $verbf
+het		$u $verbf
+sal		$u $verbf
+sou 		$u $verbf
+kan		$u $strend $verbf
+kon		$u $strend $verbf
+mag		max2 $verbf
+moes		mus $verbf
+moet		mut $verbf
+wil		$u $strend $only $verbf
+word		$u $verbf
+wou		$u $verbf
+gaan            $u $only $verbf
+
+
+// conjunctions and questions
+
+//maar
+toe		$u $verbf
+//tog
+
+en		$u $pause $verbf
+want		$pause
+of		$u $pause
+dan		$pause $verbf
+anders		$pause $verbf
+al		$pause $verbf
+daarom		$pause $verbf
+dus		$pause $verbf
+gevolglik	$2 $pause $verbf
+daarna		$pause $verbf
+desondanks      dEs?OndaNks $pause $verbf
+ondanks         'OndaNks $pause
+verder		f'&rd@r $pause
+nogtans		$pause $verbf
+inteendeel      $2 $pause
+intussen	$pause $verbf
+omdat		$pause
+sodat		$pause
+voordat		$pause
+nadat		$pause
+ofskoon         $2 $pause
+totdat		tOdat $pause
+as		,as  $pause
+soos		$pause
+solank		s%o@laNk $pause
+sodra		$pause
+sowel 		so@v'&l
+sedert		$pause
+alhoewel        alhuv'&l $pause
+tensy		$2 $pause
+aangesien	$pause
+wie		$pause
+wanneer		$1 $pause
+waar		$pause
+waarom		$pause
+waarheen	$pause
+weliswaar 	v'&l@-svA:r $pause
+hoe		$pause
+hoekom		$pause
+hoeveel		$pause
+wat		$pause
+watter		$pause
+ás		as '!as
+
+// prepositions
+aan		$u $strend2
+agter		$u $strend2
+bo		$u $strend2
+by		$u
+in		$u
+met		$u
+na		$u
+om		$u $strend2
+onder		$u $strend2
+op		$u $strend2
+van		$u
+vir		$u
+
+
+// misc unstressed
+dat		$u $strend
+te		t@ $verbf
+nie $unstressend $verbextend
+
+soos		$u
+beker		be@k@r
+bekers		be@k@rs
+
+
+
+// pronouns
+ek	&k 	$u $verbf
+jy		$u $verbf
+u		$u $verbf
+hy		$u $verbf
+sy		$u $verbf
+dit		$u $verbf
+ons		o~ns $u $verbf
+julle		$u $verbf
+hulle		$u $verbf
+hulleself       hWl@s&lf $verbf
+my		$u $verbf
+jou		$u $only $verbf
+hom		$u $verbf
+haar		$u $only $verbf
+se		Es@ $capital $only
+
+dis		$u
+
+
+
+// phrase with words spoken together
+
+(à la carte)	a||la||k'art
+(carpe diem)	karpE||di:Em
+(nie waar nie)	n,i||v,A:r||n'i
+(sy aan sy)	s,eI||an||s'eI
+
+
+// main word list
+
+aangaande     $2
+aanstaande    $2
+adagio        ad'A:dZi;%@U
+afgaanse      afg'A:ns@
+afgane        afg'A:n@
+africana      $3
+afkere        afke@r@
+agamemnon     ax2am'EmnOn
+aggressie     $2
+agterstevoor  $4
+agterweë      $3
+aha           A:h'!A:
+algaande      $2
+alge          alx2@
+algehele      alx2@h,e@l@
+allegro       al'Egru
+allergene     $3
+almiskie      $3
+alom          al_'Om
+alreeds       $2
+altemit       $3
+amelee        am@le@
+amen          A:mEn
+anale         an'A:l@
+anima         $1
+animus        animus
+as't          as@t $u
+asof          asOf
+asook         %as_o@k
+aspris        $2
+asseblief     as@bl'if
+assessore     $3
+attraksie     $2
+(au pair)     @U||p'&:r
+aversie       av'&rsi
+
+babelaas      bab@lA:s
+barrikade     $3
+beide         beId@
+bekaf         b&kaf
+belangriker   b@laNr@k,Ir
+bene          be@n@
+beswil        bEsv@l	
+besnedene     b@sne@d@n@	
+bestes        bEst@s
+beta          be@ta $only
+betlehemster  bEtli:Emst&r
+bewe          be@v@
+bewend        be@v@nt
+bewering      b@ve@rIN
+biopsie       bi'Opsi
+bomaat      bo@mA:t
+bordegoed     bO:rd@x2ut
+borgene       bOrx2@n@
+boskaas       $2
+bostaande b'o@stA:nd@
+bourgeois     _^_FR
+bourgeoisie   _^_FR
+breyani       brij'A:ni
+briewemes     briv@mEs
+	bêretyd       b&:r@teIt
+
+cabernet      kab@rn'eI
+camembert     kam@mb'&:r
+camouflage    kamufl'A:Z
+cannelloni    $3
+capita        kapita
+cappuccino    kaputS'i:nu
+casino        kas'i:n@U
+cedille       s@dIl@
+charisma      kar'Isma
+cinsaut       s@nso@
+cliché 	kliS'eI:
+clivia        klIvija
+cognac        kOn^ak
+confetti      $2
+crescendo     kr@SEndu
+crimpelene    kr@mp@li:n
+croissant     _^_FR
+crèche        krES
+
+dadelik       dA:d@lIk
+dagorde       dax2_Ord@
+dagster       dax2st&r
+daisy         deIzi
+darem         dar@m
+dawidster     dA:v@tst&r
+déjà          _^_FR
+dekade        dEk'A:d@
+dekreling     dEkre@l@N
+deurentyd     dy@r@nteIt
+deurgaans     $1
+deurkruis     $2
+deurry        dY@rreI
+deurstaan     $2
+deurstraalde  $2
+diffuus       d@fy:s	
+dikwels       dIkv@ls
+diplomasie    d@plo@mas'i
+disleksie     $2
+divan         div'an
+doktore       $2
+doyen       dO:j'En
+droomster     dro@mst&r
+dubbelken     dWb@lkEn
+dunnes        dWn@s
+dusver        dWsf&r
+
+edelagbare    $3
+eenkeer       $1
+efesiër       if'e@si@r
+effata        Ef'A:ta
+effense       Ef@ns@
+eks           Eks
+ekself %&ks'&lf
+elders        &ld@rs
+elementale    El@mEnt'A:l@
+elite         il'i:t
+encore        A~NkO:r
+enige         e@nIx2@
+eone          $2
+era           e@ra
+erger         &rg@r
+ergering      &rg@r@N
+espeak        i:;spi:k
+(et cetera)   Ets'Et@ra
+euro          Y@ru
+ewentwil      e@v@ntv@l
+exodus        Eks'o@dWs
+
+fakture       $2
+fetakaas      fEtakA:s
+figuur        f@x2yr
+filippense    f@l@pEns@
+finalis       $3
+finaliste     $3
+fort          fOrt
+forte         fOrt@
+
+g'n           x2In
+gaandeweg     x2A:nd@v&x2
+garages       g@rA:dZ@s
+gebrokener    x2@bro@k@n@r
+gee           x2e@
+geen	      x2e@n
+geldelike     x2&ld@l@k@
+gelerendheid  x2@le@r@ntheIt
+genade        $2
+	gener         x2e@n@r
+	generlei      x2e@n@rleI
+genesis       x2e@n@s@s 
+//gesamentlik   x2@sA:m@ntl@k
+gentleman     _^_EN
+germolene     dZI:m@l'i:n
+gewellys      x2e@v@lleIs
+gladiator     x2ladi'A:tOr
+globale       x2lo@b'A:l@
+gooi          x2OI
+gomorra       x2@mOra
+graffiti      graf'iti
+gratis        x2r'A:t@s
+grondys       x2rO:nt_eIs
+
+hallo         h'Il,@U
+handtertjie   hant&:rci
+hanou         hA:n@U
+hardop        hart?Op
+hartster      hartst&r
+heeltemal     he@lt@mal
+heimat      haImat
+hek           h&k
+hekke         h&k@
+helaas        he@l'A:s
+here          he@r@
+herero        hEr'E:ru
+herrysenis    h&r'eIs@n@s
+hierso        hi:rsO
+hippie        _^_EN
+hoera         hur'A:
+hoewel        huv'&l
+hokaai        hOkAI
+hoofsaaklik   $2
+hoogedele     ho@x2	_e@d@l@
+hosanna       hus'ana
+hotagter      hOt_ax2t@r
+
+ibis          $1
+idee          $2
+idilles     id'Il@s
+ignoreer      ix2no@r'e@r
+impromptu     impr'Omptu
+inagneming    @nax2ne@m@N
+indien        Indin $verb
+induna        ind'u:na
+infame        @nfA:m@
+ingevolge     $3
+inkatha       iNk'A:ta
+inkluis       $2
+insomnia      @nsOmnija
+intens @nt'Ens
+intensiteit   $4
+ironieë       irun'i:@
+
+jantwak       jantw'ak
+jawoord       jA:vo@rt
+jupiter       jupit@r
+
+kafee         kaf'e@
+kaliefa       kal'ifa
+kameraderie   kam@rA:d@r'i
+kapittel      kap'It@l
+katswink      katsv@nk
+kaviaar       kavi'A:r
+kennisvaardig $1
+kimono        $2
+klaasvakie    $2
+klimeid       klImeIt
+knapsekêrel   knaps@k&:r@l
+kolossense    kOl@s'e~ns@
+komaan        kOmA:n
+konfyttertjie kOnf'eIt&:rci
+konkawe       kOnk'A:v@
+konte         $1
+kopaar        kOp_A:r
+kopiereg      kup'ir&x2
+korswel       kOrsv@l
+kotiljons     kOt@lj'o~ns
+kritiek       krIt'ik
+kulture       $2
+kunsmatige    kWnsm'A:t@x2@
+kwansuis      $2
+
+lasagne       las'anj@
+legaat        l@x2A:t
+legate        l@x2A:t@
+libido        l@bidu
+liefdespel    lifd@sp&l
+lipstiek      lIpstik
+lokaas        lOk_A:s
+londense      lOnd@ns@
+lord          _^_EN
+luidop        lYyt_Op
+lykwaak       leIkvA:k
+
+macaroni      makar'o@ni
+macho         matS@U
+madame        mad'A:m
+madamoiselle  _^_FR
+maskering     mask'e@r@N $only
+massaal       $2
+massale       $2
+meegee        me@x2e@
+memorabilia   mEmOrab'ilija
+mercedes      $2
+meregebied    me@r@x2@bit
+merlot        m&rl'o@
+midwinter     mIdv@nt@r
+militêre      mIl@t'&:r@
+minister      m@nIst@r
+minute        m@nyt@
+minuut        m@nyt
+misbruik      $2 $verb
+misbruikte    $2
+miskien       $2
+misterie      m@ste@ri
+(modus operandi) m,o@dWs||o@p@r'andi
+monsieur      _^_FR
+motore        mo@t'o@r@
+motor         mo@t@r
+motorry       mo@t@rreI
+motortjie     mo@t@rki
+
+nadele        nA:de@l@
+nadenke       $1
+nagana        nag'A:na
+namens        nA:m@ns
+nasarener     nasar'e@n@r
+nassau      nas'@U
+nature        nat'yr@
+nalatigheid   nA:l'A:t@x2eIt
+namate        $2
+negeer        n@x2e@r
+negering      n@x2e@r@N
+negester      ne@x2@st&r
+netjies       nE:icis
+netjiese      nEicis@
+netsowel      nEtso@v&l
+nikswerd      nIksv&:rt
+nimmermeer    $1
+nirvana       n@rvA:na
+nogeens       nOx2_e@ns
+normale       nOrm'A:l@
+nousedae      n@Us@dA:
+numeri        nWm@ri
+
+oeuvre        W:vr@
+oftewel       Oft@v&l
+omgeef        $2
+ommekeer      Om@ke@r
+omrede        $2
+omtrent       Omtr'Ent
+onbegrip      $1
+onbruik       $1
+onderrig      On@r'Ix2 $verb
+ondersoek     $3 $verb
+onderweg      $3
+onderwerp     $3 $verb
+onderwyl      $3
+onderwyser    $3
+ondeug        $1 $only
+ondeugde      $1 $only
+onding        $1
+oneer         On_e@r $only
+ongeag        $1
+ongeduld      $1
+ongeloof      $1
+ongelyk       $1
+ongemak       $1
+ongerief      $1
+ongeriefie    $1
+ongewens      $1
+ongewensde    $3
+ongewoons     $1
+onguns        $1
+onkunde       $1
+onmag         $1
+onmin         $1
+onomwonde     $3
+oorboord      $2
+oorleg        $2
+ooreenkomste  $2
+oorstroom     $2
+oorwaai       $1
+oplaas        $2
+onraad        $1
+onrus         $1
+onvermoë      $1
+oorkom        $2
+oorle         o@rl@
+oorleef       $2
+oorry         o@reI
+oorsee        $2
+oorsese       $2
+oorval        $2 $verb
+opend         Op_Ent
+oraal         o@r'A:l
+orale         o@r'A:l@
+oranjepers    o@r'anj@p&:rs
+oudsher       @Utsh&r
+
+pandemonium   pand@m'o@niWm
+papperel      pap@r'&l
+parate        par'A:t@
+parke         park@
+parkie        $1
+parte         $1
+patos         pA:tOs
+patriotisme   patri|ut'Ism@
+pedaledemping p@dA:l@dEmp@N
+penorent      pEno@rEnt
+per           p@r $only
+petite        p@tit
+pikanienie    pikan'ini
+pinot         pinu
+pinotage      pinut'A:Z
+pirouette     p@ru:'Et
+plaasjaap     plA:sjA:p
+plasenta      plas'Enta
+poinsettia    pOIns'Etia
+pond          po~nt
+potpourri     pOtpur'i
+primate       $2
+profetes      prOf@t'Es
+(pro forma) pro@||f'Orma
+
+rebelleer     r@b@le@r
+rededele      re@d@de@l@
+regie         r@Zi:
+rekent        re@k@nt
+renaissance   rEn@s'A~ns
+retoriek      r@tur'ik
+riesling      ri:sliN
+rimpeling     rImp@l@N
+rinkink       $2
+rondeel       $2
+ronder      rOnd@r
+rooipers      roIp&:rs
+roterende rut'e@r@nd@
+rottenes      rOt@nEs
+rukkerig      rWk@r@x2
+ruspes        rWsp@s
+rymelary      reIm@lar'eI
+
+saint         sInt $u
+salami        sal'A:mi
+salute        sal'yt@
+samelewing    sA:m@l,e@v@N
+sanhedrin     sanh'e@dr@n
+sangemeenskap sanx2@me@nskap
+sedeer        s@de@r
+sedertdien    $3
+sektore       $2
+sinagoge      s@n@x2o@x2@
+senatore      s@nat'o@r@
+siesta        si;'Esta
+singenot      sInx2@nOt
+sir           _^_EN
+skepsele      skEps@l@
+skollienes    skOlin,Es
+skuldelas     skWld@las
+s'n           s@n $u
+slaparm       slap_ar@-m
+sopas         $2
+spaghetti     sp%agEt%i
+sobere s'o@b@r@
+sombere s'Omb@r@
+sodra         so@dr'A:
+sodoende      s'o@d,und@
+sogenaamde    s'o@x2@n,A:md@
+sondenes      sOnd@nEs
+sononder      sOn_On@r
+sonop         sOn_Op
+sonore        sun'o@r@
+sover         so@f&r
+staccato      $2
+sterwens      st&rv@ns
+stilswye      $1
+strydros      streIt_rOs
+subiet        sWb'it	
+suburbia      sWb'Wrbija
+swangerswaar  swaN@rswA:r
+swetterjoel   $3
+séance        s%e@A~ns
+
+tanga         taNga
+tangas        taNgas
+tango         taNx2u
+tenminste     $2
+tequila       t@ki:la
+terdeë       $2
+terug         t@-rWx2
+tesaam        t@sA:m
+tesourus      t@s@UrWs
+tevrede       t@fre@d@
+thula         tu:la
+toegee        tux2e@
+toereken      ture@k@n
+tornado       $2
+totale        tut'A:l@
+totsiens      $2
+tragiek       trax2'ik
+trapesium     trap'e@si:Wm
+tsoenami      tsun'A:mi
+
+uitdaging     YydA:x2@N
+uiteraard     Yyt@r_'A:rt
+uitermate     $3
+uniforme      $3
+
+vaarwel       fA:rv'&l
+vakant        f%ak'ant
+vakante       f%akant@
+vanaf         fanaf
+vandat      $1
+vanmelewe     fanm@l'e@v@
+vanne         fan@
+veraf         f&r_af
+verafgeleë    f&rafx2@le@@
+verby         f@rbeI
+verdere       f&rd@r@
+ver           f'&:r
+verderaan     f&:rd@r_A:n
+vereduifie    fe@r@dYyfi
+verg          f&rx2
+vergeleë      f&:rx2@l,e@@
+vergete       f@rx2e@t@
+verkeerdom    f@rke@rt_Om
+verlangste    f@rlaNst@
+vermy         $2
+verre         f&:r@
+verregaande f&r@x2'A:nd@
+verreweg      f&r@v&x2
+verse         f&:rs@
+vers          f&:rs
+verste        f&rst@
+verte         f&rt@
+verweg        f&:rv&x2
+via           via
+voelentheid   ful@ntheIt
+volheid       $1
+volpunte      $1
+volspoed      $1
+volswanger    $1
+volte         $1
+voluit        fOl_Yyt
+voorgee       fo@rx2e@
+voorkeer      $1
+voorkom       $2 $only
+voorlente     $1
+voormalige    fo@rm'A:l@x2@
+voornemens    fo@rne@m@ns
+//voorsien      $2
+voorwaar      $2
+vorendag      $3
+vorige        fo@r@x2@
+voëlent       fo@@l_Ent
+vraprys       frA:preIs
+vrek          fr&k
+vu            _^_FR
+
+waarskynlik   $2
+waarskynlike  $2
+watwo         vatvo@
+watwou        vatv@U
+weergalm      $2
+weerklink     $2
+weggewens     v&x2@v'E:ns
+welaf         v&l_af
+weleer        v&l_'e@r
+wentaktiek    $1
+willens       vIl@ns
+wysgere       veIsx2e@r@
+
+êrenster      &:r@nst@r

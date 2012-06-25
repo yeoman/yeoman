@@ -1,0 +1,86 @@
+
+// This file is UTF8 encoded 
+// Spelling-to-phoneme words for Armenian
+
+// names of letters
+_ա	aIb
+բ	ben
+գ	gim
+դ	da
+ե	jetS
+զ	za
+_է	e
+_ը	'@t#
+թ	t#o
+ժ	Ze
+ի	ini
+լ	lyn
+խ	Xe
+ծ	tsa
+կ	ken
+հ	ho
+ձ	dza
+ղ	r"ad
+ճ	ce
+մ	men
+յ	hi
+ն	nu
+շ	Sa
+ո	vo
+չ	tSa
+պ	pe
+ջ	dZe
+ռ	**a
+ս	se
+վ	vev
+տ	tyn
+ր	re
+ց	tso
+ւ	hyn
+փ	p#yr
+ք	k#e
+_օ	o
+ֆ	fe
+
+_cap	m,ets_|
+_??	g,iR
+
+a	a
+b	bi
+c	si
+d	di
+e	e
+f	ef
+
+
+
+// numbers
+_0	z@**'o
+_1	m'ek
+_2	jerk'u
+_3	jer'ek#
+_4	tS'ors
+_5	h'ing
+_6	v'ets#
+_7	j'ot#
+_8	'ut#
+_9	'in@
+_10	t'as@
+_1X	tasn'a
+_2X	k#s'an
+_3X	jeres'un
+_4X	k#a**as'un
+_5X	hisun
+_6X	vat#sun
+_7X	jeot#anas'un
+_8X	ut#s'un
+_9X	innas'un
+_0C	harj'ur
+_0M1	haz'ar
+_0M2	mil'on
+_dpt	_sto**ak'el_
+
+
+// function words
+
+

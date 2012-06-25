@@ -1,0 +1,246 @@
+// This file is UTF-8 encoded
+
+// Reference:
+// Allen, W. Sidney. Vox Latina — a Guide to the Pronunciation of Classical Latin.
+// Cambridge University Press, Second edition, 2003. ISBN 0-521-37936-9.
+
+// Orthographic notes:
+//
+// In classical latin the letters A B C D E F G H I K L M N O P Q R S T V X Y Z were
+// used. I and V were used for both the vowels /i/ and /u/, and the semivowels /j/ and
+// /w/. Here the distinction between U and the V for /u/ and /w/ is assumed, as is the
+// case in most modern texts. Also long vowels are indicated with macrons. Diaresis is
+// used to prevent a diphtong being formed. Y with macron has to be replaced by 'yy', 
+// since this character is incompatible with older unicode versions.
+
+
+.replace
+â	ā
+ê	ē
+î	ī
+ô	ō
+û	ū
+ŷ	yy
+
+
+.L01 ae au eu oe a e i o u yy y ā ē ī ō ū ë ü é æ
+.L02 ng qu pr tr cr chr br dr gr pl cl bl gl ph th ch 
+
+.group a
+             a            a
+    // Weak penultimate syllable: put stress on antepenutimate
+             a (L01X      =a
+             a (CL01X     =a
+             a (L02L01X   =a
+             a (guL01X    =a
+             a (x+        a
+    // Diphtongs
+             ae (+++      aI
+             au (+++      aU
+
+
+.group ā
+             ā            a:
+
+
+.group æ
+             æ            aI
+
+.group b
+             b            b
+             bb           b:
+
+
+.group c
+             c            k
+             cc           k:
+             cch          k:<h> // e.g. bracchium
+             ch           k<h>
+
+
+.group d
+             d            d
+             dd           d:
+
+
+.group e
+             e            E
+    // Weak penultimate syllable: put stress on antepenutimate
+             e (L01X      =E
+             e (CL01X     =E
+             e (L02L01X   =E
+             e (guL01X    =E
+             e (x+        E
+    // Diphtongs
+             eu (+++      EU
+
+
+.group ē
+             ē            e:
+
+
+
+.group f
+             f            f
+             ff           f:
+
+
+.group g
+             g            g
+             gg           g:
+             g (n         N
+             ggu (A       g:w // Does this ever occur?
+             gu (A        gw //g<w>
+
+
+.group h
+             h            h
+             h:           h:
+
+
+.group i
+             i            I
+    // Weak penultimate syllable: put stress on antepenutimate
+             i (L01X      =I
+             i (CL01X     =I
+             i (L02L01X   =I
+             i (guL01X    =I
+             i (x+        I
+    // Two adjacent 'i's should be separated by a glottal stop
+             i (iX        =I?
+             i (i         I?
+    // Cases in which 'i' is pronounced as the semi-vowel /j/
+          _) i (A         j
+          A) i (A+        j:
+    // Exceptions where u is a consonant
+         qu) i (L01X++    =I
+         qu) i (A++        I
+         gu) i (L01X++    =I
+         gu) i (A++        I
+         _u) i (L01X++    =I
+         _u) i (A++        I
+         Au) i (L01X++    =I
+         Au) i (A++        I
+    // Exceptions to the exceptions
+         au) i (A+++       j:
+         eu) i (A+++       j:
+
+
+.group ī
+             ī            i:
+
+
+.group k
+             k            k
+             kk           k:
+
+
+.group l
+             l            l
+             ll           l:
+
+
+.group m
+             m            m
+             mm           m:
+
+
+.group n
+             n            n
+             nn           n:
+             n (g         N
+             n (c         N
+             n (k         N
+             n (x         N
+             n (q         N
+
+
+.group o
+             o            O
+    // Weak penultimate syllable: put stress on antepenutimate
+             o (L01X      =O
+             o (CL01X     =O
+             o (L02L01X   =O
+             o (guL01X    =O
+             o (x+        O
+    // Diphtongs
+             oe (+++      OI
+
+
+.group ō
+             ō            o:
+
+
+.group p
+             p            p
+             pp           p:
+             pph          p:<h>
+             ph           p<h>
+
+
+.group qu
+             qu           kw //k<w>
+
+
+.group r
+          C) r            @-*
+             r            R
+          _) r            R
+             rr           R*
+          A) r (A         R
+
+
+.group s
+             s            s
+             ss           s:
+
+
+.group t
+             t            t
+             tt           t:
+             tth          t:<h> //Does this occur? It does at least across word boundaries e.g. leget Thyni
+             th           t<h>
+
+
+.group u
+             u            U
+    // Weak penultimate syllable: put stress on antepenutimate
+             u (L01X      =U
+             u (CL01X     =U
+             u (L02L01X   =U
+             u (guL01X    =U
+             u (x+        U
+    // Cases in which 'u' is pronounced as the semi-vowel /w/
+          A) u (A++       w
+          _) u (A+        w
+
+
+.group ū
+             ū            u:
+
+
+
+.group v
+             v            w
+          _) v            w
+             vv (+++      w:
+
+
+.group x
+             x            ks
+
+
+.group y
+             y            y  // Kirshenbaum I.
+             yy           y: // Should be y with macron, which is not present in older Unicode versions
+
+
+.group z
+             z            z
+             zz           z:
+          A) z (A         z:
+
+
+.group
+             j            j
+             w            w

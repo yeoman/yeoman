@@ -1,0 +1,1369 @@
+
+// ***************************************************************************
+// *   Copyright (C) 2006 to 2010 by Jonathan Duddington                     *
+// *   email: jonsd@users.sourceforge.net                                    *
+// *                                                                         *
+// *   This program is free software; you can redistribute it and/or modify  *
+// *   it under the terms of the GNU General Public License as published by  *
+// *   the Free Software Foundation; either version 3 of the License, or     *
+// *   (at your option) any later version.                                   *
+// *                                                                         *
+// *   This program is distributed in the hope that it will be useful,       *
+// *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+// *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+// *   GNU General Public License for more details.                          *
+// *                                                                         *
+// *   You should have received a copy of the GNU General Public License     *
+// *   along with this program; if not, write see:                           *
+// *               <http://www.gnu.org/licenses/>.                           *
+// ***************************************************************************/
+
+.L01 l r
+.L02 c f h k p q s t z // unvoiced, except s+vowel
+
+// This file is UTF-8 encoded
+
+.group a
+     _) a (_       A:
+        a          A
+        aa         A:
+        ah (+      A:
+        ael        A:El
+        ae         E:
+        ae (CC     E
+
+        a (C%      a
+        a (CC      a
+        a (sch     a
+        a (x       a
+   &CC) a (_       =A:
+
+        ai         aI
+        ay         aI
+        au         aU
+        auh (_     aU
+
+        ab (t_     A:p
+        ag (t_     A:k
+
+     _) ab (C@P2   _!'ap
+     _) ab (äP2    _!'ap
+     _) ab (C@P2   _!'ap
+     _) ab (nor    %ap
+     _) ab (or     ap_|
+     _) ab (sor    %ap
+     _) ab (str    %ap
+     _) ab (sur    %ap
+     _) abb (a     %ab
+     _) abb (rev   ab
+     _) abd (+     apd
+     _) aben (d    A:b@n
+     _) aberr      ab_|Er
+     _) ab (er@P2  'ap
+     _) ab (i      ap
+     _) ab (j      ap
+     _) ab (se     ap
+     _) ab (so     %ap
+     _) ab (sz     ap
+     _) abzu (@P4  'aptsu:
+     _) ac (et     ats
+     _) ad (ju     at
+     _) an (@P2    _!'an
+     _) an (a      %an
+     _) a (natioP1 'A:
+     _) anath      anat
+     _) an (der    an
+     _) angli (C   aNgli:
+     _) anglo (@   ,aNglo:
+     _) anheim (C@P6 anh'aIm
+     _) animal     ,ani:mA:l
+     _) anim       ,ani:m
+     _) ani (s     %ani:
+        a (Co_     'A:
+     _) anti (@P4  ,antI
+     _) an (tw     an
+     _) auf (@P3   _!'aUf
+     _) aus (@P3   _!'aUs
+     _) aus (ku    aUs
+
+        a (_       A:
+        a (C_      A:
+     @) a (bl_     'A:
+     @) a (bel_    'A:
+     s) a (g       A:
+    @l) a (g       A:
+  schl) ag (ge     A:k
+   scl) a (g       A:
+   spr) a (ch      A:
+     s) a (m_      A:
+     s) a (mkeit   A:
+    gr) a (mm_     'a
+        a (isier   a
+     _) achs (@P4  'aks
+     _) achs (el   'aks
+     j) ag (d      A:k
+        age (_$w_alt  'A:Z@
+        age (n_$p_alt  'A:Z@
+     _) air        _^_EN
+     m) air (_     aI3
+        ai (sch    A:I
+    tr) ain        En
+        air (_     E:r
+        akqu       %akv
+    @A) al (_      'A:l
+     b) al (_      'A:l
+     g) al (_      'A:l
+     k) al (_      'A:l
+     n) al (_      'A:l
+  &kan) al (_      ,A:l
+ &sign) al (_      ,A:l
+     r) al (_      'A:l
+     t) al (_      'A:l
+     _) aller (@P5 'al@r
+     m) a (lt_     A:l
+   ker) am (ik     'A:m
+     @) an (_      'A:n
+     @) ance (_    'A~s
+    fr) ance (_    'A~s@
+   ein) an (der    'an
+     @) ant (_     'ant
+     _) anthropo   ,antro:p%o:
+     _) anti (@P4  ,anti:
+        anier (_N  'A:ni:3
+     _) an (ten    an
+     _) an (th     an
+     _) appe (ll@  ,apE
+     _) archa (i   %arCA
+        arier (_N  'A:ri:3
+    @l) ar (_      'A:r
+    @t) ar (_      'A:r
+        a (rch_    'A:
+     @) at (_      'A:t
+     @) atisch (_S6 'A:tIS
+     @) atisieren (_S9 A:tIs'i:r@n
+        a (tion    a
+     _) ato (m     %ato:
+     _) au (Ceinand aU
+     _) aufent     aUf@nt
+        austra (l  %aUstrA
+     _) authen     aUtEn
+        ay (_N     EI
+     m) ayr (_     aI3
+     p) ay         EI
+
+.group b
+     _) b (_       be:
+     _) b (L01A    b  // allow bl br  at start of word
+        b          b
+     b) b 
+        b (_N      p
+        b (L02     p
+        blich      plIC
+        b (sA      b
+        bt (_N     pt
+
+     _) be (@P2    b@
+  &Cen) be (C@     b@
+  ungs) be (C@     b@
+     _) b (eHC     b
+     _) be (C%     bE
+     _) bei        b'aI
+     _) beige (_   be:S
+     _) beige (@   baIg@
+     _) be (inhP2  b@
+     _) beo (b     b,@o:
+
+     _) ba (lA     b%a
+     _) ba (ll@    b%a
+     &) bar (_S3   bA:r
+     &) bare (_S4  bA:r@
+     &) barem (_S5 bA:r@m
+     &) baren (_S5 bA:r@n
+     &) barer (_S5 bA:r3
+     &) bares (_S5 bA:r@s
+     _) b (ebC     b
+     _) b (ecC     b
+     _) b (eet     b
+     _) b (enzin   b
+     _) b (erC     b
+        be (reich  b@
+     _) b (esen    b
+     _) b (ess     b
+     _) b (esten   b
+        bestia     bEsti:'A:
+     _) b (eug     b
+     _) b (eul     b
+     _) b (eut     b
+
+    _o) b (C       p
+        baby       _^_EN
+        beten      be:t@n
+     _) bike       _^_EN
+     _) bis (hP3   b%Is
+     _) blue       _^_EN
+        board      _^_EN
+     _) boom       _^_EN
+        bo (sh     bo:
+     _) bundes     b'Und@s
+
+.group c
+     _) c (_       se:
+     _) c (L01A    k  // allow cl cr  at start of word
+     _) ch (L01A   k
+     _) ch (a      S
+     _) ch (A      C
+     _) ch (o      k
+
+        c          k
+     c) c 
+
+        ch         C
+     a) ch         x
+     o) ch         x
+     u) ch         x
+    fu) ch (s      k
+    äu) ch         C
+    eu) ch         C
+     C) chen (_S4  C@n
+     ä) chen (_    C@n
+     e) chen (_    C@n
+     ü) chen (_    C@n
+
+        chs        ks        (_
+        ck         k
+
+     _) c (el      S
+    fa) c (et      ts
+     _) cey        tsaI
+        chef (_    SEf
+     _) c (ent     ts
+        chance     SA~s@
+        chara (kt  k%ara
+     _) ch (ic     S
+     _) ch (if     S
+     _) ch (il     S
+        chip (_    tSIp      // English
+
+   bre) ch (en     x
+        ch (ord    k
+        ch (or_    k
+        ch (ör     k
+        chro       kro:
+    nä) chs (t     Cs
+    wa) chstu (m   kstu:
+        c (ie      s
+   pla) c (ie      ts
+        coat (_    _^_EN
+     _) code       ko:t
+     _) computer(@P   kOmpj'u:t3
+     _) cow        _^_EN
+        crew       _^_EN
+        cup        _^_EN
+     _) cyber      saIb3
+
+.group d
+     _) d (_       de:
+     _) d (rA      d  // allow dr at start of word
+     _) d (schA    d
+     _) d (shA     d
+        d          d
+     d) d 
+        d (_N      t
+        d (L02     t
+        dlich      tlIC
+        d (sA      d
+        ds (_      ts
+        dt         t
+        ddt        t
+
+  soun) d          d
+     _) darüber (@P7 dar'y:b@r
+     _) darum (@P5 dar'Um
+     _) darunter (@P8 dar'Unt@r
+     _) daten (@P5 d'at@n
+     _) deal       _^_EN
+     _) de (if     de:
+     _) de (ikP2   d%e:
+     _) de (instaP2 d%e:
+     _) deme       de:mE
+        demo (g    de:mo:
+        demo (k    de:mo:
+        design     _^_EN
+        dge (_     _^_EN
+     _) dia        d,i:a
+     _) diver      d%i:vEr
+     _) dort (C@P4 d'Ort
+        drive      _^_EN
+     _) drug       _^_EN
+     _) durch (@P5 d'UrC
+     _) durch (b   d%UrC
+     _) durch (f   d%UrC
+     _) durch (kr  d%UrC
+     _) durch (la  d%UrC
+     _) durchque   d%UrCkve:
+     _) durch (schau d%UrC
+     _) durch (st  d%UrC
+     _) durch (su  d%UrC
+     _) durch (tre d%UrC
+     _) durch (w   d%UrC
+     _) durch (wachP5 d'UrC
+     _) durchweg   dUrCve:k
+
+
+.group e
+     _) e (_       e:
+        e          e:
+        ee         e:
+        eh (+      e:
+
+        e (C%      E
+        e (CC      E
+        e (sch     E
+        e (x       E
+
+        ei         aI
+        eu         OY
+        ey         aI
+        ey (_      e:
+
+        eb (t_     e:p
+        eg (t_     e:k
+
+        een (_     'e:n-
+        ell (_     'El
+    ll) e (l       e:
+     &) e (_S1     @
+    @t) e (_S1     @
+     &) e (BB_     E2
+        e (gt_+    e:
+     @) e (kt_     'E
+    @@) e (kt_     E
+     &) el (_      @l
+     &) eln (_NS1  n
+     &) elnd (_    @lnd
+     &) e (lt_     @
+     &) em (_NS2   @m
+     &) em (_      'e:m
+     _) end (C@P3  'Ent
+     _) endo (@    ,Endo:
+     @) en (_S2    @n
+     &) end (_NS3  @nt
+     &) ende (_S4  @nd@
+     &) endem (_S5 @nd@m
+     &) enden (_S5 @nd@n
+     &) ender (_S5 @nd3
+     &) endes (_S5 @nd@s
+     &) end (_     @nd
+   ier) end (_NS3  @nt
+   ier) end (_     @nd
+     @) enhaft (_  =@nhaft
+     @) ent (_     'Ent
+     @) entlich    @ntl%IC
+    @m) ent (_     'Ent
+    @m) ente (_    'Ent@
+     @) e (pt_     'E
+     @) er (C      3
+     @) e (rr      E
+     @) e (rti     E
+     @) e (rnC     E
+     @) er (_S2    @r
+     &) ere (_S3   @r@
+     &) erem (_S4  @r@m
+     &) eren (_S4  @r@n
+     &) erer (_S4  @r3
+     &) eres (_S4  @r@s
+     &) er (X_     3:
+        er (d_     e:r
+     &) er (r_     E
+     w) er (k_     Er
+     &) erin (_    @rIn
+     &) erisch (_  @rIS
+   exp) er (t      Er
+     @) es (_S2    @s
+     &) et (_S2    @t
+     &) est (_S3   @st
+     &) este (_S4  @st@
+     &) estem (_S5 @st@m
+     &) esten (_S5 @st@n
+     &) ester (_S5 @st3
+     &) estes (_S5 @st@s
+
+     &) en (@      E2n       // [E2] can reduce to [@]
+  //      &) er (C@       E2r
+     &) el (@      E2l
+     m) e (nt      E
+
+     @) ei (_      'aI
+    rl) ei (_      aI
+   &fr) ei (_      ,aI
+    @@) erisch     @rIS
+     &) erung (_   =@rUN
+
+        echo       ECo:
+     h) ee (_      'e:
+     _) e (ff      %E
+     l) e (g_      'e:
+        eih (_     aI
+     _) eil (aP3   'aIl
+     _) eil (fP3   'aIl
+     _) ein (@P3   _!'aIn
+        ein (and   _|%aIn
+     _) eine (r@   aIn@
+     _) einig      aInIg
+     m) eir (_     aI3
+     _) eisen (@P5 'aIz@n
+     _) e (lek     %e:
+     _) elektro (@P7 e:l'Ektro:
+     _) elen       e:lEn
+   mod) e (l@      E
+     s) e (lig     e:
+     _) emp (@P3   _|%Emp
+     _) emph (@    %Emf
+     _) emp (ir    %Emp
+    br) ems        Ems       // brems-t, not brem-st
+     _) ene (rg    %e:nE
+     _) energie    e:nErg'i:
+     @) en (i      e:n
+     @) e (nsi     E
+     _) ent (@P3   _|%Ent
+     _) enten      Ent@n
+     _) ent (er    Ent
+   pat) ent        'Ent
+     t) en (t      En
+    qu) en (tA     En
+     &) en (tum    @n
+     &) e (nzK     'E
+     _) epi (@     ,e:pi:
+     _) epi (sk    e:pI
+     _) er (@P2    _|%Er
+     _) er (gie    Er
+     &) er (ig_    @r
+     &) er (igst   @r
+     _) er (beK    Er
+     _) er (HC     Er        //  lC, mC, nC, rC
+        er (o_     'e:r
+     _) ergeb (nis Erg'e:b
+     _) erst (CP4  'Erst
+     _) ers (tr+   _|%ErS
+     @) er (v      Er
+   mod) er (n      Er
+
+     _) entert     _^_EN
+        er (dig    e:r
+     _) erob (er   %Ero:b
+     @) esen (_    e:z@n
+     @) ett (_     'Et
+        eum (_     'e:Um
+    @@) eum (_     =e:Um
+     _) eur (op    %OY
+     @) eur (_     'Y:r
+        euse (_    'Y:z@
+        eusen (_   'Y:z@n
+  schl) eu (s      OY
+     h) eu (se++   OY
+
+
+.group f
+     _) f (_       Ef
+        f          f
+     f) f 
+     _) f (L01A    f   // allow fl fr  at start of word
+     _) f (jord    f
+
+     _) faks (i    f%akz
+     _) farb (C@P4 f'arp
+     _) farb (l@P4 f'arb
+     _) fein (@P4  f'aIn
+     _) fertig (C@P6 f'ErtiC
+     _) fest (@P4  f'Est
+     _) flug       fl'u:g
+        foto       fo:to:
+     _) free       _^_EN
+     _) feudal     f%OYdA:l
+     _) feuer (@   fOY@r
+     _) frev       fre:f
+     _) froh (@P4  fr'o:
+     _) frohlock   fro:l'Ok
+     _) fung (A    fUNg
+
+.group g
+     _) g (_       ge:
+     _) g (L01A    g  // allow _gl _gr
+        g          g
+        g (g 
+        g (_N      k
+        g (L02     k
+        glich      klIC
+        g (sA      g
+        gd (_N     kt
+     _) gh (A      g
+     _) g (nA      g@-  // allow _gn
+     B) gn (A      g@-n
+
+     i) gt (_      Ct
+    ei) gt (_      kt
+        gtet (_    kt@t
+        gtest      kt@st
+
+     _) g (eHC     g         //  hC, lC, mC, nC, rC
+
+ massa) g          Z
+     @) ght (_     _^_EN
+        graph      grAf
+        graph (_   gr'A:f
+        green      _^_EN
+        guide      _^_EN
+        gue (_     k
+
+.group ge
+     _) ge (@P2    g@
+  ungs) ge (C@     g@
+     _) ge (beX    ge:
+        geben      ge:b@n
+        ge(birg    g@
+     _) gegen (@P5 ge:g@n
+        gegen      ge:g@n
+        gegn       ge:gn
+        gehen      ge:@n
+     _) geh (eX    ge:
+        gei (+     gaI
+     _) ge (imp    g@
+        ge (mach   g@
+        ge (mal    g@
+     _) ge (mK     gE
+     _) ge (nK     gE
+        ge (tr     g@
+        general    ge:nEr'al
+        general (is ge:n@ral
+     _) ge (ner    gE
+     _) geo        g,e:o:
+     _) ge (orP2   g@
+     _) ge (org    g%e:
+        ge (rman   gE
+        ge (rät    g@
+        ge (strig  gE
+
+.group h
+     _) h (_       hA:
+        h          h
+     h) h 
+    ch) h          h
+
+     _) herab (P5  hEr'ab
+     _) heran (P5  hEr'an
+     _) herauf (P6 hEr'aUf
+     _) heraus (P6 hEr'aUs
+     _) herbei (P6 hEr'baI
+     _) herein (P6 hEr'aIn
+     _) herüber (P7 hEr'y:b3
+     _) herum (P5  hEr'Um
+     _) herunter (P8 hEr'Unt3
+     _) hervor (P6 hErf'Or
+     _) hier (@    h%i:r
+     _) hilf (@P4  h'Ilf
+     _) hilfs (@P5 h'Ilfs
+     _) hilfe (@P5 h'Ilf@
+
+     _) hinab (P5  hIn'ab
+     _) hinan (P5  hIn'an
+     _) hinauf (P6 hIn'aUf
+     _) hinaus (P6 hIn'aUs
+     _) hinein (P6 hIn'aIn
+     _) hingegen   hIng'e:g@n
+     _) hinüber (P7 hIn'y:b3
+     _) hinum (P5  hIn'Um
+     _) hinunter (P8 hIn'Unt3
+     _) hinweg (P6 hInv'e:g
+     _) hinzu (P5  hInts'u:
+
+     _) hinge (@P5 h'Ing@
+     _) hinter (@P6 h,Int3
+
+     _) hand (CP4  h'ant
+     _) hand (lung hand
+     _) haupt (@@P5 h'aUpt
+     _) haus (@P4  h'aUs
+ //         @) heit (_S4       haIt
+     _) hero       h%e:ro:
+     _) herz (er@P4 h'Erts
+     _) high       _^_EN
+     _) hinter (@  h,Int3
+     _) hoch (@P4  h'o:x
+        hoch       ho:x
+        homogen    h,o:mo:ge:n
+     _) hyper (@P5 h'y:p3
+
+
+.group i
+     _) i (_       i:
+        i          i:
+        ih (+      i:
+
+        i (C%      I
+        i (CC      I
+        i (sch     I
+        i (x       I
+
+     @) i (ng      I
+   &CC) i (_       =i:
+
+     @) i (bl_     'i:
+     @) i (bel_    'i:
+        ib (t_     i:p
+
+     @) i (at_     I
+        i (d_      'i:
+        i (dee     %i:
+        i (erin    =i:
+     @) ig (+      Ig#       // [ig] or [iC]
+        igh (K     _^_EN
+
+        i (i       i:_!
+
+     s) ik (_      'i:k
+    @r) ik (_      Ik
+    br) ik (_      'i:k
+    @t) ik (_      =i:k
+ polit) ik         'i:k
+     @) ik (el_    'i:k
+
+     _) illeg      ,Ile:g
+     _) i (llu     %I
+     _) i (mag     I
+        i (Co_     'i:
+        ik (o_     i:k
+     &) im (o_     =i:m
+     r) i (na_     'i:
+//          @) ing (_N      _^_EN
+     _) in (k      %In
+     _) inter      Int@r
+     &) in (_      i2n
+     l) in (_      'i:n
+     m) in (_      'i:n
+     s) in (_      'i:n
+     z) in (_      'i:n
+     @) in (o_     'i:n
+     @) ion (_     j'o:n
+     g) ion (_     i'o:n
+     @) io (n      Io:
+        io         Io:
+     @) is (_      Is
+     &) isch (_    =IS
+        is (mus_   'Is
+     @) ist (_     'Ist
+     @) it (_N     'It
+     @) ite (_     'i:t@
+     @) ität (_S4  i:t'E:t
+
+     &) ium (_     =i:Um
+    @s) i (v_      'i:
+    @t) i (v_      'i:
+
+
+.group ie
+        ie         i:
+        ieh        i:
+     @) ie (_      'i:
+     @) ie (_$w_alt  =I@
+
+     &) ie (ll_    I'E
+     &) ie (r_     'i:
+        ie (rs@    'i:
+     u) ie (r_     _|'i:
+     &) ie (rlich  'i:
+  bank) ie (r      I'e:
+  barr) ie (r      I'e:
+financ) ie (r      I'e:
+   arr) ie (r      I'e:
+ hotel) ie (r      I'e:
+  prem) ie (r      I'e:
+   hyg) ie (n      I'e:
+  ital) ie (n      I'e:
+     d) ienst      i:nst
+     r) ien (@     IEn
+     &) ien (_     =I@n
+    &b) ien (_     =i:@n
+    @g) ien (_     'i:@n
+    @m) ien (_     'i:@n
+    ph) ien (_     'i:@n
+    &n) ien (_     I@n
+    @p) ien (_     'i:@n
+    &r) ien (_     =i:@n
+   ser) ien (_     'i:@n
+  tter) ien (_     'i:@n
+   eor) ien (_     'i:@n
+   gor) ien (_     'i:@n
+   etr) ien (_     'i:@n
+ dustr) ien (_     'i:@n
+    @s) ien (_     'i:@n
+    @t) ien (_     'i:@n
+     &) iens (_    =I;@ns
+        ient (_    I'Ent
+     &) ienz (_    I'Ents
+   sch) ie (n      i:
+     @) ie (reX    'i:
+        ierungs    'i:rUNs
+        ierung     'i:rUN
+bakter) ie         =I@
+ famil) ie         =I@
+   fer) ie (n      =I@
+   fol) ie (_      =I@
+formal) ie         =I@
+  stud) ie (_      =I@
+    in) ie (_      I@
+
+
+.group j
+     _) j (_       jOt
+        j          j
+
+
+.group k
+     _) k (_       kA:
+        k          k
+     _) k (L01A    k   // allow _kl _kr
+     _) k (ha      k
+     _) k (nA      k   // allow _kn
+     k) k 
+
+//          @) keit (_S4    kaIt
+//          @) keiten (_S6  kaIt@n
+
+        ka (rtoff  k%a
+        ko (e@     ko:
+        kolleg     k%Ole:g
+     _) komme (C@  k%OmE
+     _) ko (mp     k%O
+     _) ko (mpost  kO
+     _) ko (n@     k%O
+     _) ko (nter   kO
+
+
+.group l
+     _) l (_       El
+        l          l
+     l) l 
+
+        lady       _^_EN
+     _) land (C@P4 l'ant
+     _) landes (@P6 l'and@s
+     _) lang (C@P4 l'aN
+     _) lang (t@   l'aN
+        langsam    l'aNzA:m
+     _) leb (C     le:p
+     _) leb (C@@P3 'le:p
+     _) leben (dig le:b'En
+     _) lehr (C@P4 l'e:r
+     _) leit (@P4  l'aIt
+     _) lern (@@P4 l'Ern
+     _) lexi (@    lEksi:
+     &) lich (_S4  lIC
+     &) liche (_S5 lIC@
+     &) lichem (_S6 lIC@m
+     &) lichen (_S6 lIC@n
+     &) licher (_S6 lIC3
+     &) liches (_S6 lIC@s
+     &) lichere (_S7 lIC@r@
+     &) licherem (_S8 lIC@r@m
+     &) licheren (_S8 lIC@r@n
+     &) licherer (_S8 lIC@r@3
+     &) licheres (_S8 lIC@r@s
+     &) lichste (_S7 lICst@
+     &) lichstem (_S8 lICst@m
+     &) lichsten (_S8 lICst@n
+     &) lichster (_S8 lICst@r
+     &) lichstes (_S8 lICst@s
+     &) lichkeit (_S8 lICkaIt
+     &) lichung (_S7 lIC%UN
+     @) lo (gisch  l'o:
+     _) luft (CP4  l'Uft
+
+.group m
+     _) m (_       Em
+        m          m
+     m) m 
+
+        manager    manEdZ3r
+     _) manch      manC    // for 'manchen'
+        marine     mA:r'i:n@
+     _) meß (@P3   m'Es
+     _) menag      m%e:nA:Z
+     _) met (all   m%e:t
+     _) meth       m%e:t
+        meter      m'e:t3
+     _) metro (@P5 m,e:tro:
+     _) micro      _^_EN
+     _) miet (C@P4 m'i:t
+     _) mikro (@P5 m,i:kro:
+     _) mit (P3    m'It
+        mitt       mIt
+        mitt (eil  mItt
+     _) m (nem     m   // allow _mnem
+     _) mo (rb     m%O
+     _) mono (@    m,o:no:
+     _) motor      m'o:to:r
+     _) ms         _^_EN
+        musik      m%u:zi:k
+
+.group n
+     _) n (_       En
+        n          n
+     n) n 
+        ng         N
+//             ng (A        Ng
+//             ng (l        Ng
+     o) ng (e      ng
+     o) ng (A      Ng
+     u) ng (i      Ng
+        ng (r      Ng
+        nk         Nk
+        nk (A      nk
+    fu) nk         Nk
+
+     _) natur (C@P5  nA:t'u:r
+     _) na (tür    n%A:
+        nce (_     _^_EN
+     _) ne (b      ne:
+        nebeneina (nd n,e:b@n_|aIn'a
+     _) neben (@P5 n'e:b@n
+     _) ne (g      ne:
+        neglig     ne:gli:Z
+        neglige    ne:gli:Z
+     &) ness (_N   _^_EN
+        news       _^_EN
+        nieder     ni:d3
+
+.group o
+     _) o (_       o:
+        o          o:
+        oh (+      o:
+        oo         o:
+        oe         Y:
+        oe (CC     W
+        ou         u:
+
+        o (C%      O
+        o (CC      O
+        o (sch     O
+        o (x       O
+   &CC) o (_       =o:
+        o (Co_     'o:
+        o (lo_     o:
+
+        ob (t_     o:p
+        og (t_     o:k
+
+     _) ober (@P4  _|,o:b3
+     _) ober (eX   o:b@r
+     _) ober (ste  o:b3
+     _) ob (jek    %Op
+     _) obst (reP4 'o:pst
+        oe (_      o:@
+     @) oen (_S1   n
+    _n) o (e       o:
+     @) o (g_      'o:
+     t) ogen (_    o:g'e:n
+     @) o (gin_    'o:
+        o (l_      'o:
+        o (lsam    o:
+        o (m_      'o:
+    @A) o (n_      'o:
+        one (_     'o:n@
+        onen (_    'o:n@n
+  zitr) on         'on
+     @) oo (_      u:
+     r) oo (m      u:
+     z) oo (m      u:
+    &t) or (_      =o:r
+        orches     OrkEs
+     &) oren (_    'o:r@n
+     _) orts (@P4  'Orts
+        oso (_     'o:zo:
+     _) oster      'o:st@r
+    st) o (ss      o:
+        oy (K      OY
+
+
+
+.group p
+     _) p (_       pe:
+        p          p
+     p) p
+     _) p (L01A    p     // allow _pl _pr
+     _) pf (A      pF
+     _) pf (L01A   pF    // allow _pfl _pfr
+     _) ph (A      f     // allow _ph
+     _) ph (L01A   f     // allow _phl _phr
+     _) phth (A    ft
+        ph         f
+     _) p (neu     p     // allow _pneu
+     _) p (sA      p     // allow _ps
+     _) p (tol     p
+
+        pake (t    p%ake:
+     _) para (@    p,ara
+        passagie   pasaZ'i:
+     _) peri       p,e:ri:
+     _) perio      p,e:rIo:
+     _) periphe    p,e:ri:fe:
+     _) personen (@P8 pErs'o:n@n
+        philie     f'i:li:
+     _) photo      f,o:to:
+     _) pro (@     %pro:
+     _) probe      pro:b@
+
+        po (em     p%o:
+        po (et     p%o:
+        poesie     po:e:z'i:
+     _) poly (@P4  p,o:ly:
+     _) polygon (@P7 po:ly:g'o:n
+        partei     p%artaI
+     _) perfe (k   p%ErfE
+     _) polik      p'o:li:k
+     _) po (lit    p%o:
+        pool       _^_EN
+        power      paU@r
+     _) preß (@P4  pr'Es
+     _) primär (P6 pri:m'E:r
+     _) prinzipien (@P9 prInts'i:pI@
+     _) privat (@P6 pri:v'A:t
+        problem    pr%o:ble:m
+     _) psycho (@P6 ps,y:Co:
+     _) psycho (ti psy:C'o:
+     _) pu (e      p%u:
+
+.group q
+     _) q (_       ku:
+        q          k
+        qu         kv
+     @) que (_     =k
+
+.group r
+     _) r (_       Er
+        r          r
+        r (r 
+     b) r          r    // uses phonemes @-*
+     _) rh (A      r    // allow _rh
+
+        rangier    rA:NZ'i:r
+     _) re (d      re:
+        ressourc   rEs'Urs
+
+.group s
+     _) s (_       Es
+        s          s
+        s (A       z
+        s (_NS1    s
+        s (_       z         // suffix has been removed
+     A) s (_N      s
+     A) s (_       z
+        ss         s
+        sst (@     sSt
+
+     _) s (cA      s    // allow _sc
+     _) s (cr      s    // allow _scr
+     _) sch (A     S
+     _) sch (L01A  S
+     _) sch (mA    S
+     _) sch (nA    S
+     _) sch (w     S
+     _) sh (A      S
+     _) sh (rA     S
+     _) s (kA      s    // allow _sk
+     _) s (kL01A   s    // allow _skl _skr
+     _) s (lA      s
+     _) s (mA      s
+     _) s (nA      s
+     _) s (pA      S
+     _) s (phA     s
+     _) s (plA     S
+     _) s (plend   s
+     _) s (prA     S
+     _) s (quA     s
+     _) s (tA      S
+     _) s (trA     S
+     _) s (ve      s
+     _) s (wA      s
+     _) s (zA      s
+
+        sch        S
+        sh (K      S
+        sou (nd    saU
+     p) s (a       s
+     p) s (i       s
+     t) s (i       s
+     k) s (i       s
+   _be) sp         Sp
+   _ge) sp         Sp
+  _ver) sp         Sp
+        sp (an     Sp
+        sp (eich   Sp
+        sp (err    Sp
+        sph        sf
+        sp (iel    Sp
+        sp (r      Sp
+    &C) st (_S2    st
+    &C) ste (_S3   st@
+    &C) stem (_S4  st@m
+    &C) sten (_S4  st@n
+    &C) ster (_S4  st3
+    &C) stes (_S4  st@s
+
+   _be) st         St
+   _ge) st         St
+  _ver) st         St
+        ste (ll    StE
+     a) ste (ll    stE
+
+     _) safe       _^_EN
+     &) schaft (_S6 Saft
+
+     ä) schen      sC@n      // but not wäschen
+    wä) schen      S@n
+    fe) schen      sC@n
+    ie) schen      sC@n
+     h) schen      sC@n
+     ö) schen      sC@n      // but not löschen
+    lö) schen      S@n
+    rö) schen      S@n
+    äu) schen      sC@n      // but not täuschen
+   täu) schen      S@n
+
+        schein (lich S'aIn
+     _) schul (@P5 S'u:l
+     _) schul (d   S'Ul
+
+        schwer     Sve:r
+     _) sechs (P5  z'Eks
+     _) selbst (@@P6 z'Elpst
+        service (_S7 z%Ervi:s
+        shop       _^_EN
+     _) sky        _^_EN
+        soldat     z%OldA:t
+        so (rt_    s_|O
+
+        speed      _^_EN
+  stau) ss         s
+     _) st (ilA    st
+     @) straße (_S6 str,A:s@
+     _) street     _^_EN
+        style      _^_EN
+        synthesi   _^_EN
+        system     z%Iste:m
+
+.group t
+     _) t (_       te:
+        t          t
+     t) t
+     _) th (A      t   // allow _th
+     _) th (rA     t   // allow _thr
+        th (K      t
+     K) th         t
+     _) t (rA      t   // allow  _tr
+     _) tsch (A    tS
+     _) t (setse   t
+     _) tw (A      tw
+        tz         ts
+
+    &t) te (_      @
+//         &t) ten (_       @n
+
+   ier) t (_S1     t
+   ier) te (_S2    t@
+   ier) tem (_S3   t@m
+   ier) ten (_S3   t@n
+   ier) ter (_S3   t3
+   ier) tes (_S3   t@s
+   ier) tet (_S3   t@t
+   ier) tere (_S4  t@r@
+   ier) terem (_S5 t@r@m
+   ier) teren (_S5 t@r@n
+   ier) terer (_S5 t@r3
+   ier) teres (_S5 t@r@s
+   ier) tst (_S3   tst
+   ier) tste (_S4  tst@
+   ier) tstem (_S5 tst@m
+   ier) tsten (_S5 tst@n
+   ier) tster (_S5 tst3
+   ier) tstes (_S5 tst@s
+   ier) test (_S4  t@st
+   ier) teste (_S5 t@st@
+   ier) testem (_S6 t@st@m
+   ier) testen (_S6 t@st@n
+   ier) tester (_S6 t@st3
+   ier) testes (_S6 t@st@s
+
+     _) talent     tal'Ent
+        tch        tS
+        t (chen_   t
+     _) teen       _^_EN
+     _) tele (@    t,e:le:
+     _) thermo     tErmo:
+        tuerei (_  tu:@r'aI
+        thrill     _^_EN
+   _pa) th         t
+        the (era   te:
+     _) tief (@P4  t'i:f
+     @) tient (_   tsI'Ent
+     @) tion       tsI,o:n
+     @) tion (_    tsI'o:n
+     _) trail      _^_EN
+     _) tranqu     _^_EN
+        traver     tr%avEr
+     _) tw         _^_EN
+
+.group u
+     _) u (_       u:
+        u          u:
+        uh (+      u:
+        uell       u:'El
+        u (e       u:
+     r) ue (_      u:@
+     t) ue (_      u:@
+        ue (_      'y:
+
+        u (C%      U
+        u (CC      U
+        u (sch     U
+        u (x       U
+     @) u (ng      U
+
+        ub (t_     u:p
+        ug (t_     u:k
+
+     _) um (@P2    Um
+     _) umbe (@P4  'Umb@
+     _) umge (@P4  'Umg@
+     _) umge (b    Umg'e:
+     _) um (orgP2  'Um
+     _) um (stAP2  'Um
+     @) u (m_      U
+    rt) u (m_      u:
+     _) un         Un
+     _) un (@P2    _|'Un
+     _) unab (@P4  _|,Un_|ap
+     _) unan (@P4  _|'Un_|an
+     _) unauf (@P5 _|'Un_|aUf
+     _) unaus (@P5 _|'Un_|aUs
+     _) unbe (@P4  _|'Unb@
+     _) unein (@P5 _|'Un_|aIn
+     _) unge (@P4  _|'Ung@
+     _) unver (@P5 _|'UnfEr
+     _) un (i      u:n
+     _) un (in@P2  _|'Un
+     _) unum (@P4  _|'Un_|Um
+     _) under      _^_EN
+     _) unter (@P5 _|,Unt3
+     _) unter (eX  Unt@r
+
+
+   rep) u (bl      u:
+     s) u (ch      u:
+     &) uela (_    u:,e:la
+     @) uerisch (_ 'u:rIS
+     _) ultra (@P5 ,Ultra
+        um (_      Um
+     t) um (_      u:m
+     &) ungs (A    %UNs_|    // upto "ungs" is a prefix?
+        u (pt_     'U
+     _) u (rk      u:
+     _) u (rl      u:
+     _) u (rv      u:
+        us (_      Us
+    _d) u (sch     u:
+     _) user       _^_EN
+    Al) u (t_      u:
+
+     _) ueber (@P5 _|,y:b3
+
+
+.group v
+     _) v (_       faU
+        v          v
+     v) v 
+        v (_N      f
+     _) v (A       v
+
+     _) v (lad     v
+     _) v (lies    f
+     _) v (ri      f
+
+     _) vie        fi:
+     _) vi (CC     vI
+     _) vi         vi:
+
+        vater      fA:t3
+        väter      fE:t3
+     _) v (ati_    f
+     _) v (ät      f
+     _) v (ie      f
+     _) v (iet     v
+     _) v (iz      f
+        v (og      f
+        v (oll     f
+        v (olk     f
+        v (ölC     f
+     _) v (on      f
+
+     _) vehe       ve:he:
+     _) ver (@P3   f%Er
+     _) ve (rbal   vE
+     _) ve (rbos   v%E
+     _) ve (rsat   vE
+     _) ve (rsie   vE
+     _) ve (rsif   vE
+     _) ve (rsion  vE
+     _) ve (rteb   vE
+     _) ve (rtik   vE
+     @) versich    fErz,IC
+     @) vergess    fErg,Es
+     @) verfahren (_S9 fErf,A:r@n
+     _) viel (@P4  f'i:l
+     _) vier (g@P4 f'i:r
+     _) viet       vIEt
+     _) voll (C@P4 f'Ol
+     _) voll (br   f%Ol
+     _) voll (end  f%Ol_|
+     _) voll (ko   f%Ol
+     _) voll (stre f%Ol
+     _) voll (z    f%Ol
+     _) vorder     fOrd@r
+     -) vorha (nd  fo:rh'a
+     _) vor (ne    'fo:r
+     _) vor (n     fOr
+
+     _) vor (@P3   'fo:r
+     _) voraus (P6 fo:r'aUs
+     _) vorbei (P6 fo:r'baI
+     _) vorher (P6 fo:rh'e:r
+     _) vorüber (P7 fo:r'yb3
+
+.group w
+     _) w (_       ve:
+        w          v
+     _) wh (A      v
+     _) w (lad     v
+     _) w (rA      v
+
+     @) wert (_    vErt
+     _) wh         _^_EN
+     &) ware (_    _^_EN
+     _) wasch (@P5 v'aS
+     _) wasser (@P6 v'as@r
+     _) weg (C@P3  v'e:k
+     _) weit (C@P4 v'aIt
+     _) weiter (@P6 v'aIt@r
+     _) weither    vaIthe:r
+     _) wieder (@P6 vi:d3
+     _) wo (hin    v%o:
+     _) wohl (@P4  v'o:l
+        work       _^_EN
+
+
+.group x
+     _) x (_       Iks
+        x          ks
+
+
+.group y
+     _) y (_       ypsIlOn
+
+        y          y:
+        y (CC      y
+        y (x       y
+     _) y (A       j
+     A) y (A       j
+     @) y (_       I
+     t) y (_       _^_EN
+
+.group z
+     _) z (_       tsEt
+        z          ts
+        z (z
+     _) z (den     z
+     _) z (wA      ts   // allow _zw
+
+     _) zentral (@P7 tsEntr'A:l
+     _) zentral (i tsEntral
+     _) zer (@P3   tsEr
+     _) zere (b    tse:re:
+     _) zere (m    tse:re:
+        ziell      tsj'El
+     _) zie (ge@P3 ts'i:
+     _) zeit (@P4  ts'aIt
+     _) ziel (@P4  ts'i:l
+     _) zier (@P4  ts'i:r
+     _) zigaretten (@P10 tsi:gar'Et@n
+     _) zigeu      tsi:g'OY
+     _) zu (C@P2   ts%u:
+     _) zu (eP2    ts%u:
+     _) zu (g@     tsu:
+     _) zu (gu@P2  ts%u:
+     _) zu (nC     tsU
+     _) zurück (@P6 tsu:r'yk
+     _) zusammen (@P8  tsu:z'am@n
+     _) zyklo (@P5 ,tsy:klo:
+        zylin      ts%i:lIn
+
+.group ä
+        ä          E:
+        äh (+      e:
+        äu         OY
+
+        ä (C%      E
+        ä (CC      E
+        ä (sch     E
+
+        äb (t_     E:p
+        äg (t_     E:k
+     t) ät (_      'E:t
+        ä (um_N    'E:
+
+.group ö
+        ö          Y:
+        öh (+      Y:
+
+        ö (_       'Y:
+        ö (C%      W
+        ö (CC      W
+        ö (sch     W
+
+.group ü
+        ü          y:
+        üh (+      y:
+
+        ü (C%      y
+        ü (CC      y
+        ü (sch     y
+        ü (x       y
+
+        üb (t_     y:p
+        üg (t_     y:k
+
+     _) über (@P4  _|,y:b3
+     _) über (be@P4 _!'y:b3
+     _) über (gangs y:b3
+
+.group ß
+     _) ß (_       EstsEt
+        ß          s
+
+
+.group
+        é          e:
+        ée         'e:
+        é (_       'e:
+        æ          E
+        ø          W
+        ç          s
+        č          tS
+        š          S
+        ž          Z
+
+        , (D       kOma
+        $          dOl'A:
+
+    __) - (_D      mi:nUs
+    D_) - (_D      daS
+     _) - (_D      _
+

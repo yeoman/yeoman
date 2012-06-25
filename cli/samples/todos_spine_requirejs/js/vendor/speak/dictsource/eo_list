@@ -1,0 +1,288 @@
+// This file is UTF-8 encoded
+
+// Numbers
+_0		nul
+_1		'unu
+_2		d'u
+_3		t@-r'i
+_4		kv'aR
+_5		kv'in
+_6		s'es
+_7		s'ep
+_8		'ok
+_9		n'aU
+_1X		d'ek
+_2X		d'udek
+_3X		t@-*'idek
+_4X		kv'aRdek
+_5X		kv'indek
+_6X		s'esdek
+_7X		s'epdek
+_8X		'okdek
+_9X		n'aUdek
+_1C		ts'ent
+_0C		tsent
+_1M1		m'il_
+_0M1		m,il_
+_0M2		mili'ono
+_0M3		mili'ardo
+_0M4		duili'ono
+_dpt		_komo_
+
+// ordinal numbers
+_#a		%a
+_#aj		%aI
+_#an		%an
+_#ajn		%aIn
+_#-a		%a
+_#-aj		%aI
+_#-an		%an
+_#-ajn		%aIn
+
+// accent names
+_lig	ligat'uRa
+_acu	dekst@-*ak'oRna
+_ac2	duoblak'oRna
+_brv	h'oka
+_ced	tsed'ila
+_cir	tsiRkumfl'eksa
+_dia	dupunkta
+_dot	p'unkta
+_grv	maldekst@-*ak'oRna
+_hac	hatS'eka
+_mcn	st@-*'ia
+_ogo	subh'oka
+_rng	R'inga
+_stk	st@-*eka
+_tld	t'ilda
+
+_cap	maI,uskla
+_??	lit,eRo
+_#9	t'abo
+_#32	sp'atso
+
+_.	punkto
+_:	dupunkto
+_;	punktokomo
+_,	komo
+_?	demandosigno
+_!	_k@-*isigno_
+_-	dividost@-*eko
+__	subst@-*eko
+_'	apost@-*'ofo
+_"	tsito
+~	tildo
+°	gradoI
+%	p@-*otsento	$max3
+@	_tSe_
+&	_kaI
+=	egala	$max3
+\	deklivo
+/	oblikvo
+|	duktosigno
+*	asteRisko	$max3
+©       kopiRaIto
+_(	parentezo
+_)	f'eRmaparent'ezo
+_[	R'ektak@-*'ampo
+_]	f'eRmaRektak@-*'ampo
+_{	k'uRbak@-*'ampo
+_}	f'eRmakuRbak@-*'ampo
+_<	angulk@-*'ampo
+_>	f'eRmaangulk@-*'ampo
+_«	du'oblak@-*'ampo
+_»	f'eRmadu,oblak@-*'ampo
+
+
+v	vo	// not Roman numbers
+x	ikso
+
+
+
+// Abbreviations
+a.k	,antaUk@-*'isto $dot
+akk	alinome
+anst	anstataU	$dot
+bea	$abbrev
+bv	bon,volu%
+ekz	ekzemple	$dot
+(ekz-e)	ekzemple
+i.a	'i'a
+k.a	kaIal'iaI
+k.c	kaItset'eRe
+Kg	k'ilog@-*'amoI
+Km	k'ilom'et-*oI
+kp	k,omp'aru	$dot
+k.s	kaI,si'mile
+n.b	n'otu||b'one
+nro	numeRo
+pĝ	padZo		$dot
+p.k	p,ostk@-*'isto	$dot
+ps	p,ostask@-*'ibo
+p.s	p,ostask@-*'ibo
+str	st@-*'ato
+t.e	tio,estas
+t.n	t'iel,nom'ata
+uea	$abbrev
+uk	$abbrev
+ktp	kaIt'iel,pl,u_
+k.t.p	kaIt'iel,pl,u_
+
+
+
+Jan	i,anu'aRo	// months
+Feb	f,eb@-*u'aRo
+Mar	m'a@-*to
+Apr	ap@-*'ilo
+Maj	m'aIo%
+Jun	iun'io
+Jul	iul'io
+Aŭg	augusto%
+Sept	sep,temb@-*o
+Okt	ok,tob@-*o
+//Nov	nov,emb@-*o (problem: no difference between Nov and nov- [es: nov-jorko] )
+Dec	detsemb@-*o
+
+l'              la
+la              %la
+ne              $u+     // negative
+ĉu              $u $brk  // interogative particle and conjunction
+ĉi              $u      // this
+ia              $u      // any
+
+// prepositions
+de              $u+ $brk
+(de la)         dela	$u $brk
+
+antaŭ           $u+ $pause
+apud            $u+ $pause
+ol              $u+ $brk
+ĉe              $u+ $pause
+da              $u+
+al              $u+ $brk
+(al la)         alla $u $brk
+el              $u+ $pause
+(el la)         ella $u $pause
+en              $u+ $brk
+(en la)         enla $u $brk
+ĝis		$u+ $pause
+inter		$u+ $pause
+je		$u $brk
+
+kun             $u+ $pause
+laŭ		$u+ $brk
+per             $u+ $brk
+(pere de)	pe@-*e%d'e $u+ $brk
+(fare de)	fa@-*e%d'e $u+ $brk
+preter          $u+ $brk
+pri		$u+ $pause
+por             $u+ $pause
+post		$u+ $pause
+pro             $u+ $pause
+sen		$u+ $pause
+sub             $u+ $pause
+sur             $u+ $pause
+
+dum             $u $pause
+tra             $u $pause
+
+// misc adverbs etc
+eĉ              $brk
+pli	pl,i
+plej	pl,eI
+
+// pronouns
+mi              $u
+ci              $u
+li              $u
+ŝi              $u
+ĝi              $u
+ni              $u
+vi              vi $u
+ili             $u
+oni             $u
+si              $u
+
+mia             $u+
+cia             $u+
+lia             $u+
+ŝia             $u+
+ĝia             $u+
+nia             $u+
+via             $u+
+ilia            $u+
+sia             $u+
+
+miaj             $u+
+ciaj             $u+
+liaj             $u+
+ŝiaj             $u+
+ĝiaj             $u+
+niaj             $u+
+viaj             $u+
+iliaj            $u+
+siaj             $u+
+
+// aux verbs
+esti            $u+
+estas           $u+
+estis           $u+
+estos           $u+
+estus           $u+
+
+povas           $u+      // can
+povis           $u+
+povos           $u+
+povus           $u+
+
+devas           $u+      // must
+devis           $u+
+devos           $u+
+devus           $u+
+
+iras            $u+      // go
+iris            $u+
+iros            $u+
+irus            $u+
+
+metas           $u+      // put
+metis           $u+
+metos           $u+
+metus           $u+
+
+havi		$u+
+havas		$u+
+havis		$u+
+havos		$u+
+
+eble            $u       // may
+
+kia             $u+ $pause
+kie             $u+ $pause
+kiel            $u+ $pause
+kio             $u+ $pause
+kiu             $u+ $pause
+kiuj            $u+ $pause
+kiun            $pause
+kiujn           $pause
+kiam            $u+ $pause
+
+tio             $u+
+tiam            $brk
+
+
+// conjunctions
+ke		$u $pause      // that (conj)
+aŭ		$u $pause
+ĉar		$u $pause
+kaj		$u $pause
+sed		$u $pause	//but
+nek		$u $pause
+se		$u $pause
+ju		$u $brk
+des		$u $pause
+do		$pause	       // therefore, so, then
+ekde		$pause         // since
+tamen		$pause		//however (avversative)
+
+

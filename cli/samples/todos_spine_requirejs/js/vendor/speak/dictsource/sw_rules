@@ -1,0 +1,129 @@
+
+// Swahili translation rules
+// This file is UTF-8 encoded
+
+
+.group a
+        a        a
+        aa       a:
+
+.group b
+        b        b
+
+.group c
+        c        k
+        ch       tS
+
+.group d
+        d        d
+        dh       D
+
+.group e
+        e        e
+        ee       e:
+
+.group f
+        f        f
+
+.group g
+        g        g
+        gh       Q
+
+
+.group h
+        h        h
+
+.group i
+        i        i
+        ii       i:
+
+.group j
+        j        J
+
+.group k
+        k        k
+        kh       x
+
+.group l
+        l        l
+
+.group m
+        m        m
+     _) m        m-
+        m (A     m
+     K) m (@@    _|m
+     K) m (C     m-
+     K) m (b@@   _|m
+     K) m (v@@   _|m
+     K) m (w@@   _|m
+
+.group n
+        n        n
+     _) n        n-
+        n (A     n
+        n (@@    n
+        ny       n^
+        n (ch    n^
+        n (j     n^
+        ng'      N
+        n (k     N
+     _) n (k     N-
+     _) n (k@@   N-
+        n (g     N
+     _) n (g     N-
+     _) n (g@@   N-
+
+.group o
+        o        o
+        oo       o:
+
+.group p
+        p        p
+
+.group q
+        q        k
+
+.group r
+        r          R
+     A) r (A       R
+     C) r (A       @-*
+        rr         RR
+
+.group s
+        s        s
+        sh       S
+
+.group t
+        t        t
+        th       T
+
+.group u
+        u        u
+        uu       u:
+
+.group v
+        v        v
+
+.group w
+        w        w
+
+.group x
+        x        ks
+
+.group y
+        y        j
+
+.group z
+        z        z
+
+
+.group
+        $        dola
+        %        asilimia
+
+        *        n^ota
+    *)  * (*
+        **
+   **)  * (_     _::
+
+

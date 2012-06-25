@@ -1,0 +1,639 @@
+// translation rules for Czech
+// This file is UTF-8 encoded
+
+// Letter groups:
+// G   voiced: bdgjlmnrvwzaeiouy
+
+.group a
+        a        a
+        au       aU
+
+     m) ai (l    eI
+     p) age      eIdZ
+     p) aste (_  eIst
+    tr) ack      ek
+
+
+.group á
+        á        a:
+
+.group ä
+        ä        e
+
+.group b
+        b        b
+        b (_     p
+        b (_G    b
+        bě       bje
+
+        back     bek
+        basic    beIzik
+        board    bo:rd
+
+
+.group c
+        c        ts
+        ch       x
+
+     _) c (al    k
+     _) c (lau   k
+     _) c (om    k
+     _) c (or    k
+     _) creati   kreati
+   _ma) c (r     k
+   _pa) ck (a    k
+    re) cogni (t kogni
+    _s) ca (n    ke
+    _s) c (o     k
+        cover    kavr-
+        c (us    k
+    lo) ck       k
+    pa) ck       k
+   pas) c (al    k
+    re) c (o     k
+        ctrl     kont@-*ol
+
+
+.group č
+        č        tS
+
+.group d
+        d        d
+        d (_     t
+        d (_G    d
+        d (ě     J
+        d (i     J
+        d (í     J
+        d (iT    d     // word has $alt attribute
+        d (íT    d
+        dz       dz
+        dz (_    ts
+        dz (_G   dz
+        dž       dZ
+        dž (_    tS
+        dž (_G   dZ
+
+
+.group di
+        di (a    di
+        di (e_   dij
+        di (e    di
+        di (gi   di
+        di (j    di
+        di (k    di
+        di (o    di
+        di (r    di
+        di (u    di
+        di (scip di
+        diskredi  disk@-*edi
+        di (sk   di
+        di (sp   di
+        disti (c  disti
+        di (st   di
+   _au) di       di
+     _) di (a    dij
+     _) di (á    di
+     _) di (ch   di
+     _) dick     dik
+     _) di (f    di
+     _) di (g    di
+     _) di (let  di
+     _) di (me   di
+     _) di (mi   di
+     _) di (p    di
+     _) di (rc   Ji
+     _) di (rk   Ji
+     _) disco    disko
+     _) di (s    di
+     _) di (van  di
+     _) di (ver  di
+     _) di (vid  di
+     _) di (vizna Ji
+     _) di (vizny Ji
+     _) di (z    di
+   cho) di (s    Ji
+    _e) di       di
+ _expe) di       di
+  _gla) di       di
+  _hle) di       Ji
+  _kar) di       di
+   _mo) di       di
+   _ne) di (p    di
+    _o) di (nst  di
+  _pol) di       di
+  _sar) di       di
+ _scan) di       di
+  _tra) di       di
+     a) di (k    di
+    an) di (d    di
+   dar) di (z    di
+   eto) di       di
+        di (a_   di
+        di (e_   dij
+        di (i_   dij
+        di (o_   dij
+        di (u_   dij
+        di (nik  di
+        di (sm   di
+        di (st   di
+        di (tik  di
+        di (um_  di
+    in) di       di
+    ko) di (fi   di
+   kre) di (t    di
+    la) di (s    di
+   man) di (t    di
+    me) di       di
+    mé) di       di
+    mě) di       di
+    mi) di       di
+     n) di (c    di
+     o) di (c    di
+    or) di       di
+   ral) di       di
+    ře) di (sk   Ji
+   rio) di (c    di
+  tope) di (c    di
+   tra) di (c    di
+
+
+.group ď
+        ď        J
+        ď (_     c
+        ď (_G    J
+
+.group e
+        e        e
+        ej (K    eI
+        eu       eU
+
+     k) ey       i:
+
+
+.group é
+        é        e:
+
+.group ě
+        ě        e
+
+.group f
+        f        f
+        fě       fje
+
+.group g
+        g        g
+        g (_     k
+        g (_G    g
+
+
+.group h
+        h        h
+        h (_     x
+        h (_G    h
+
+.group i
+        i        i
+        ia       %ia
+        ie       %ie
+        iu       %iu
+
+        ia (_    ia
+        ie (_    ije
+        ii (_    iji
+        io (_    ijo
+        iu (_    iju
+     _) i (on    j
+
+     C) ight     ajt   // right, night
+
+
+.group í
+        í        i:
+
+.group j
+        j        j
+
+.group k
+        k        k
+        kk       k
+
+.group l
+        l        l
+        ll       l
+     K) l (K     l-
+
+     _) laser    leIzr
+
+
+.group ľ
+        ľ        l^
+
+.group m
+        m        m
+        mě       mn^e
+
+     _) manager  menedZr-
+     _) message  mesidZ
+     _) mic (ro  majk
+
+
+.group n
+        n        n
+        n (n
+        n (g     N
+        n (k     N
+        n (ě     n^
+        n (i     n^
+        n (í     n^
+        n (iT    n    // word has $alt attribute
+        n (íT    n
+
+        new      n^u:
+
+
+.group ni
+    _a) ni (m    ni
+anorga) ni       ni
+ _bota) ni       ni
+  _bro) ni       n^i
+   _cy) ni       ni
+  _ebo) ni       ni
+   _et) ni (c    ni
+_galva) ni       ni
+ _huma) ni       ni
+_hygie) ni       ni
+  _imu) ni (t    ni
+   _ka) ni (b    ni
+ _kolo) ni       ni
+_mícha) ni       n^i
+   _mo) ni       ni
+   _mu) ni       ni
+   _na) ni (tr   ni
+     _) nikoti   nikoti
+     _) ni (l    ni
+     _) ni (tro  ni
+     _) ni (tro_ n^i
+ _orga) ni       ni
+   _pa) ni (ck   ni
+   _sa) ni (t    ni
+   _se) ni (l    ni
+   _te) ni (s    ni
+  _tré) ni       ni
+    _u) ni       ni
+   ale) ni (t    ni
+     a) ni (d    ni
+     a) ni (kov  ni
+     a) ni (k    ni
+     a) ni (z    ni
+   cha) ni (c    ni
+   cha) ni (k    ni
+    či) ni (t    n^i
+    do) ni (c    ni
+  echa) ni (s    ni
+   efi) ni       ni
+   ele) ni (t    ni
+ endro) ni       ni
+     e) ni (k    ni
+     e) ni (s    ni
+ eremo) ni       ni
+  erma) ni       ni
+    fi) niti     niti
+    fo) ni (c    ni
+    ge) ni       ni
+    gé) ni       ni
+     g) ni (t    ni
+    go) ni       ni
+ harmo) ni       ni
+     i) ni (k    ni
+        ni (a_   ni
+        ni (e_   nij
+        ni (i_   nij
+        ni (o_   nij
+        ni (u_   nij
+        ni (nik  ni
+        ni (sm   ni
+        ni (st   ni
+        ni (tik  ni
+        ni (um_  ni
+     i) ni (ci   ni
+     i) ni (t    ni
+  _hli) ni (t    n^i
+   iro) ni       ni
+   kli) ni       ni
+     k) ni (p    ni
+  komu) ni       ni
+   kto) ni       ni
+  loud) ni       n^i
+    ma) ni (f    ni
+    ma) ni (p    ni
+    mi) ni       ni
+    mu) ni (k    ni
+    mu) ni (s    ni
+ námoř) ni       n^i
+    na) ni (s    ni
+        ni (ak   ni
+        ni (í    nij
+        ni (kl   ni
+        ni (zuj  ni
+    no) ni (m    ni
+     o) ni (d    ni
+     o) ni (k    ni
+     o) ni (s    ni
+   pod) ni (k    n^i
+   pro) ni (k    n^i
+    ro) ni (c    ni
+synchro) ni      ni
+  stoj) ni       n^i
+  tago) ni (s    ni
+    tu) ni (s    ni
+     u) ni (k    n^i
+     u) ni (t    ni
+    vi) ni (t    n^i
+     v) ni (kl   n^i
+    vz) ni (k    n^i
+    za) ni (k    n^i
+    ze) ni (t    ni
+
+
+.group ň
+        ň        n^
+
+.group o
+        o        o
+        ou       oU
+
+     v) oice     ojs
+     t) oo (l    u:
+    gr) ou (p    u:
+ _wind) ow       oU
+
+
+.group ó
+        ó        o:
+
+.group ô
+        ô        uo
+
+.group p
+        p        p
+        pp (A_   p
+        pě       pje
+
+.group q
+        q        kv
+        qu       kv
+
+.group r
+       K) r (K     r-
+
+        r        R
+        rr       R
+        right    Rajt
+
+
+.group ř
+        ř        R^
+     p) ř        R^/   // quieter after unvoiced consonant
+     f) ř        R^/
+     t) ř        R^/
+     k) ř        R^/
+
+.group s
+        s        s
+        ss (_    s
+        ss (A_   s
+
+        scape    skeIp
+        shift    Sift
+  _pre) s (id    z
+        selec (t silek
+        space    speIs
+     e) s (id    z
+
+
+.group š
+        š        S
+
+.group t
+        t        t
+        tt (_    t
+        tt (A_   t
+        t (ě     c
+        t (i     c
+        t (í     c
+        t (iT    t       // word has $alt attribute
+        t (íT    t
+
+.group ti
+   _an) ti       ti
+_atlan) ti       ti
+  _bes) ti       ti
+  _cen) ti       ti
+ _dese) ti       ci
+_dvace) ti       ci
+_eklip) ti       ti
+  _flo) ti       ti
+  _ins) ti       ti
+  _jus) ti       ti
+ _kons) ti       ti
+  _kon) ti (n    ti
+_kosme) ti       ti
+   _ky) ti (c    ci
+   _ma) ti (n    ci
+  _mul) ti       ti
+   _op) ti (c    ti
+_pales) ti       ti
+   _pe) ti (č    ti
+  _pla) ti (n    ti
+ _posi) ti       ti
+_preven) ti      ti
+  _pro) ti       ci
+  _res) ti (t    ti
+   _ru) ti       ti
+   _sa) ti (r    ti
+   _sa) ti (ř    ti
+  _sen) ti       ti
+  _sta) tisti    tisti
+_stras) ti       ci
+   _tě) ti       ci
+ _téma) ti       ti
+     _) ti (b    ti
+     _) ti (ci   ti
+     _) ti (mb   ti
+     _) time     tajm
+        time (_  tajm
+     _) ti (nk   ti
+     _) ti (ran  ti
+     _) ti (tan  ti
+     _) ti (tán  ti
+     _) ti (tul  ti
+     _) ti (x    ti
+  _ver) ti (k    ti
+    ak) ti       ti
+   ama) ti (c    ti
+   ama) ti (k    ti
+    an) ti (k    ti
+    an) ti (l    ti
+    an) ti (s    ti
+   apa) ti (c    ti
+   apa) ti (č    ti
+    ap) ti (v    ci
+  arke) ti (ng   ti
+ aroma) ti       ti
+     a) ti (c    ti
+     a) ti (k    ti
+     a) ti (n    ti
+     a) tisti    tisti
+     a) ti (v    ti
+     a) ti (z    ti
+    au) ti       ti
+    ás) ti (c    ci
+    bo) ti (z    ti
+   cha) ti (c    ci
+     c) ti       ci
+  desá) ti       ci
+   des) ti (l    ti
+   dos) ti       ci
+ drama) ti       ti
+    dr) ti       ci
+    ek) ti       ti
+   ema) ti (c    ti
+   ema) ti (k    ti
+    en) ti (n    ti
+  eore) ti (c    ti
+    ep) ti (k    ti
+   ero) ti (c    ti
+     e) ti (c    ti
+     e) ti (k    ti
+     e) ti (v    ti
+     e) ti (z    ti
+   eví) ti       ci
+     ě) ti (c    ci
+    gi) ti (m    ti
+     i) ti (k    ti
+        ti (a_   ti
+        ti (e_   tij
+        ti (i_   tij
+        ti (o_   tij
+        ti (u_   tij
+        ti (nik  ti
+        ti (sm   ti
+        ti (st   ti
+        ti (tik  ti
+        ti (um_  ti
+   hos) ti       ci
+    in) ti (m    ti
+  nves) ti       ti
+   kon) ti       ti
+   kos) ti (c    ci
+   kri) ti       ti
+     k) ti (v    ti
+    la) ti (n    ci
+  lech) ti       ci
+    li) ti (c    ti
+    ma) ti (ck   ti
+    ma) ti (c    ci
+    ma) ti (ka   ti
+    mo) ti (v    ti
+    ms) ti       ci
+    ne) ti (c    ti
+     n) ti (c    ti
+     n) ti (n    ti
+  ompa) ti (b    ti
+    op) ti       ti
+    or) ti (m    ti
+    os) ti (c    ti
+     o) ti (k    ti
+    pě) ti       ci
+   ple) ti       ci
+    ře) ti (c    ci
+  řice) ti       ci
+  rimi) ti (v    ti
+    ri) ti (c    ti
+    ri) ti (k    ti
+    rk) ti       ti
+    ro) ti (k    ti
+    ro) ti (v    ci
+     r) ti (z    ti
+   rvi) ti       ti
+   šes) ti       ci
+     s) ti (k    ti
+     s) ti (mul  ti
+     s) ti (p    ti
+ suges) ti       ti
+        ti (ck   ti
+        ti (f    ti
+        timoni (t timoni
+        tini (u  tinij
+        ti (tul  ti
+  toma) ti (c    ti
+   uma) ti (c    ti
+     u) ti (k    ti
+  vani) ti (t    ti
+   ven) ti (l    ti
+    vě) ti (v    ci
+    xo) ti (k    ti
+     x) ti (l    ti
+  ympa) ti       ti
+     ý) ti (ck   ti
+_flegma) ti      ti
+   _ul) ti (m    ti
+  _abs) ti       ti
+   kul) ti (v    ti
+
+
+.group ť
+        ť        c
+
+.group u
+        u        u
+
+.group ú
+        ú        u:
+
+.group ů
+        ů        u:
+
+.group v
+        v        v
+        vě       vje
+
+.group w
+        w        v
+        wave     veIf
+
+.group x
+        x        ks
+     e) xoti (c  gzoti
+
+.group y
+        y        i
+        y (í     ij
+
+.group ý
+        ý        i:
+
+.group z
+        z        z
+        z (_     s
+        z (_G    z
+
+.group ž
+        ž        Z
+        ž (_     S
+        ž (_G    Z
+
+.group
+        ë        e
+        ĺ        l-
+        ö        e:
+        ŕ        r-
+        ü        i
+
+	$	dola:R
+
+
+   __)  - (_D    mi:nus
+   A_)  - (_D    _
+   C_)  - (_D    _
+

@@ -1,0 +1,19 @@
+
+
+export function randomColor() {
+    return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+}
+
+export function RGBtoHex(rgb_color) {
+    if (rgb_color.substr(0, 1) === '#') {
+        return rgb_color;
+    }
+    var digits = /(.*?)rgb\((\d+), (\d+), (\d+)\)/.exec(rgb_color);
+
+    var red = parseInt(digits[2]);
+    var green = parseInt(digits[3]);
+    var blue = parseInt(digits[4]);
+
+    var hex = (red << 16) | (green << 8) | blue;
+    return digits[1] + '#' + hex.toString(16);
+}

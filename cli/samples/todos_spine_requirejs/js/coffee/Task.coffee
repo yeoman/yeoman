@@ -1,6 +1,7 @@
 define (require, exports, module) ->
   module.exports = Task
   
+  
   Spine = require "coffee/spineModule"
   
   class Task extends Spine.Model

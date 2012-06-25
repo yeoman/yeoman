@@ -1,0 +1,245 @@
+// translation rules for Catalan
+// This file is UTF8 encoded
+
+// symbols
+_cap	m'aJ^us   // eg: "Capital-B"
+_??	s'imbOl
+_#9`	tab
+_#32	@sp'aj
+
+// NOTE: Some of these pronunciations may still be in
+// Spanish, and need to be changed.
+
+// accent names
+_lig	liQaD'u**a
+_acu	aQ'uDo
+_ac2	d'Oble||aQ'uDo	
+_brv	b**'eBe
+_ced	t**Enk'aDa
+_cir	siRkumfl'Eks
+_dia	dj'E**esis
+_dac	d'Oble||aQ'uDo	
+_dot	p'unt
+_grv	g**'aBe
+_hac	ka**'On
+_mcn	mak**'On
+_ogo	kol'ita
+_rng	an'iJ^o
+_stk	b'a*Ra	 // ??
+_tld	t'ilde
+
+
+// names of symbols
+_.	pun
+_,	koma
+_;	p,unik'oma
+_:	d'os||p'uns
+_!	s'ign@||da#dmi**a#sj'o
+_?	s'ign@||dint@RR2UQa#sj'o
+_¡	aB**'iRaDmi**aTj'On
+_¿	aB**'iRintE*R,oQaTj'On
+_<	m@n'o||_:_:k@
+_>	ma#Z;'o||_:_:k@
+_'	a#p'Ost**'Uf
+_"	kUm'Et@s
+-	m'En^s
+__	b'aRR2a#||B'ajS;a#
+_/	ba*Ra
+_\	b'a*RaimbERt'iDa
+_`	a#ks'Ent,UB'E**t
+_(	'ob**@||pa#**'Ent@zis
+_)	t'anka#||pa#**'Ent@zis
+_[	'ob**@||kla#wD'at,o*
+_]	t'anka#||kla#wD'at,o*
+_{	'ob**@||kl'aws
+_}	t'anka#||kl'aws
+_«	'ob**@||kUm'Et@s
+_»	t'anka#||kUm'Et@s
+
+=	iQw'al $max3
++	m*es  $max3
+#	kUjS;in'Et  $max3
+*	aste*'isk  $max3
+
+^	siRkumfl'Eks
+€	'Ew*U
+%	p@Rs@nt'adZ;@
+&	_:_:'i;||_:a#Nl'Eza#
+@	a*R'oBa
+/	ba*Ra
+©	kopi*R'aIt
+£	lliu**@s
+¶	pa#**'aQ**a#f
+§	a#pa#**t'at	// o secció?
+
+
+// numbers
+_0	z'e**U
+_1	'u
+_2	d'Os
+_3	t**'es
+_4	kw'at**@
+_5	s'iNk
+_6	s'is
+_7	s'Et
+_8	v#'ujt
+_9	n'ow
+_10	d'ew
+_11	'Onz@
+_12	d'odz@
+_13	t**'Edz@
+_14	ka#t'oRz@
+_15	k'inz@
+_16	s'Edz@
+_17	dis'Et
+_18	diB'ujt
+_19	din'ou
+_20	v#'in
+_2X	v#,inti
+_3X	t**'Enta#
+_4X	kwa#**'anta#
+_5X	sinkw'anta#
+_6X	s@jS;'anta#
+_7X	s@t'anta#
+_8X	v#ujt'anta#
+_9X	nU**'anta#
+_0C	s'Ent|s
+_1C	s'Ent
+_5C	sins'Ents
+_7C	s,ets'Ents
+_9C	n,Ous'Ents
+_0M1	m'il
+_0M2	mil^'on@s
+_dpt	_koma
+//_roman	Rom'a
+
+vi	vi	// not a Roman number
+
+
+// function words
+
+// articles
+el	$u
+la	$u
+els	$u
+les	$u
+un	$u
+una	$u
+uns	$u
+unes	$u
+
+// prepositions
+a	$u $brk
+al	$u $brk
+als	$u $brk
+de	$u
+del	$u
+dels	$u
+el      $u $brk
+en      $u $brk
+per	$u $brk
+pel	$u $brk
+pels	$u $brk
+
+amb	$brk
+entre	$brk
+
+
+// conjunctions
+i	$u $pause
+o       $u $pause
+
+
+// auxiliary verbs
+sóc	sok $u+
+ets	ets $u+
+és	es $u+
+som	$u+
+sou	$u+
+són	son $u+
+
+era	$u+
+eres	$u+
+érem	$u+
+éreu	$u+
+eren	$u+
+
+fui	$u+
+fores	$u+
+fou	$u+
+fórem	$u+
+fóreu	$u+
+foren	$u+
+fóra	$u+
+
+seré	$u+
+seràs	$u+
+serà	$u+
+serem	$u+
+sereu	$u+
+seran	$u+
+
+seria	$u+
+series	$u+
+seríem	$u+
+seríeu	$u+
+serien	$u+
+
+// haver
+he	E	$u+
+has	as	$u+
+ha	a	$u+
+hem	Em	$u+
+heu	Ew	$u+
+han	an	$u+
+
+havia	$u+
+havies	$u+
+haviem	$u+
+havieu	$u+
+havien	$u+
+
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+_a      a
+a	a  $atend
+_i      i
+i	i  $atend
+_o      o
+o	o  $atend
+
+b	be
+c	se
+ç	se,t**@nkaDa#
+d	de
+f	Efa#
+g	Je
+h	ak
+j	Z;Ota#
+k	ke
+l	Ela#
+ŀl	Ela#,Z@min'aDa#
+l·l	Ela#,Z@min'aDa#
+ll	'Eia#
+m	Ema#
+n	Ena#
+ñ	En^@
+p	pe
+q	ku
+r	ERR2@
+s	Ess@
+t	te
+v	'v#e||b'aIS;a#
+w	'v#e||d'obl@
+x	iks
+y	'i||g**EQa#
+z	zeta#
+
+
+// pronunciation exceptions
+
+

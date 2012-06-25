@@ -1,9 +1,12 @@
 define (require, exports, module) ->
   module.exports = TaskApp
 
+  
   Spine = require "coffee/spineModule"
   Task = require "cs!coffee/Task"
   Tasks = require "cs!coffee/Tasks"
+  Helper = require "hm!hm/helper"
+  jQuery = require "jquery"
   
   # this code is not part of this app, it's only meant to illustrate a problem
   # I've found with wrapping Spine in a module and then removing the globally 
@@ -12,7 +15,6 @@ define (require, exports, module) ->
   # this works fine!
   MyManager = new Spine.Manager()
   try 
-    # this doesn't work... somewhere in here there's a call to a Spine that is not defined.
     MyStack = new Spine.Stack()
   catch error
     console.log error 
@@ -26,7 +28,7 @@ define (require, exports, module) ->
     elements:
       ".items":     "items"
       ".countVal":  "count"
-      ".clear":     "clear"
+      ".clear":     "cleared"
       "form input": "input"
     
     constructor: ->
@@ -43,20 +45,23 @@ define (require, exports, module) ->
     addAll: =>
       Task.each(@addOne)
   
+    clear: ->
+      Task.destroyDone()
+
     create: (e) ->
       e.preventDefault()
       Task.create(name: @input.val())
+      #Helper.say('Rememeber to ' + @input.val())
       @input.val("")
-    
-    clear: ->
-      Task.destroyDone()
-      
+     
     renderCount: =>
+      #Helper.addAnimation()
+      #Helper.colorize()
       active = Task.active().length
       @count.text(active)
       
       inactive = Task.done().length
       if inactive 
-        @clear.show()
+        @cleared.show()
       else
-        @clear.hide()
+        @cleared.hide()

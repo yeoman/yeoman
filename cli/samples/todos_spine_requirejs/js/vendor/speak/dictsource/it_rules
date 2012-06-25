@@ -1,0 +1,412 @@
+// translation rules
+// This file is UTF-8 encoded
+
+// letter groups
+// A  any vowel
+// C  any consonant
+// K  not a vowel (i.e. consonant or end-of-word)
+// Y  front vowels: e i (& accents)
+.L01 a à o ò ó u ù
+.L02 e é è
+
+
+.group a
+		a	a
+		ai (K   aI
+                ao (_N   aU
+                au	a%u
+
+	@C)	a (_S1q  a     // lookup it_list without suffix
+	@i)	a (_S1q  a     // lookup it_list without suffix
+
+	@)	a (cA_	=a
+	@)	a (che_	=a
+		a (istA_  a
+		a (ismo_  a
+	@)	a (bile_  'a
+	@)	a (ggine_ 'a
+
+	_)	ae (r    aI
+//	@)	a (no_	=a     //ByFilo, this seems to make it_listx longer
+	@)	avano (_S5  'avano
+		a (tterA_   'a
+
+.group à
+		à	''a
+		ài (K   ''aI
+                ào (_N   ''aU
+                àu	''a%u
+
+.group b
+		b       b
+		bb      b:
+
+.group c
+		c	k
+		cc	k:
+		c ('    tS
+		c (Y    tS
+		cc (Y   tS:
+		ch	k
+		cch	k:
+		ci (A	tS    // or L01 ?
+		cci (A  tS:   // or L01 ?
+	@)	co (lA_ =ko
+		
+.group d
+		d	d
+		dd	d:
+	n)	dere    =deRe
+
+.group e
+		e        e
+		ei       Ej (K
+	@C)	e (_S1q  e     // lookup it_list without suffix
+	@Ar)	e (_     e
+
+		e (C_    E
+		e (A     E
+		e (C%A_  E    // doubled consonant
+		e (CiCA_ E
+		e (CulA_ E
+		e (llu   E
+		e (st    E
+		e (ttA_	 e
+	c)	e (ttA_  E
+		e (tti@	 E
+		e (zzA_  e
+
+		e (r     E
+		e (rsi_N e
+	A)	e (r_	 'E
+
+	_r)	e	 E
+
+//	@)	e (ce_	=e
+	@)	e (ci_	=e
+
+		e (l     E
+	r)	e (m     E
+		e (monA_ 'e
+		e (nA_   E
+	g)	e (ne    E
+		e (ngA_  e
+		e (nCA_  E
+	@m)	e (ntA_  e
+       %C)	e (rA_   =E
+	C)	e (re_	 =E
+	gg)	e (ro_   E
+	f)	e (rm    e
+	@)	e (rrimo_ 'E
+	@)	e (simo_  'e
+	h)	e (ss    e
+	m)	e (ss    e
+	_sC)	e (ss    e
+		e (ssa_  e
+		e (tr    E
+		e (ti    E
+
+		e (vi_   E
+		e (vo_   E
+	@)	e (volA_ 'e
+		e (zA    E
+
+.group f
+		f	f
+
+	@A)	f (ilo_  =f
+	A)	f (ero_  =f
+		
+.group g
+		g	g
+		gg	g:
+		gh	g
+		g (Y	dZ
+		gi (A	dZ   // any vowel, or L01 ?
+		gi (a_	dZ'i#  // [i] only if stressed
+		gì (a_	dZ'i#  // [i] only if stressed
+	n)	gi (a_	dZ
+		gg (Y	dZ:
+		ggi (A  dZ:  // or L01 ?
+	@)	gger (lo_ =dZ:eR
+		gl (i	l^
+		gl (ì	l^
+		gli (A  l^
+	_)	gl	gl
+		gn	n^
+		gu (A   gw
+
+	
+.group h
+		h
+	_)	ha      h'a
+	_)	hà      h'a
+
+.group i
+		i	i
+		i (A	j
+	l)	i (A	%i
+	r)	i (A	%i
+       _C)	i (a    i
+       _C)	i (à    i
+		i (o    i
+		i (ò	i
+		i (ó	i
+        @)      ia (_   =i%a
+	@)	ià (_	i'a
+	X)	ia (_	'ia
+	af)	ia (_	'ia
+	fon)	ia (_	'ia
+	scop)	ia (_	'ia
+	er)	ia (_	'ia
+	gor)	ia (_   'ia
+	metr)	ia (_	'ia
+	t)	ia (_	'ia
+        @)      io (_S1q   =i%o
+	a)	i (+	j
+	à)	i (+	j
+	L02)	i (+	j
+	o)	i (+	j
+
+	@C)	i (_S1q  i     // lookup it_list without suffix
+
+        @)      i (Ante_   i
+		i (acA_   'i
+		i (asi_   'i
+	@)	i (bile_  'i
+	@)	i (cA_	  =i
+	tr)	i (ce_     i
+	@)	i (chA_   =i
+        @)      i (dA_    =i
+        @)      i (dere_  'i
+	@)	ie (rA_    i'E
+	@)	ié (rA_    i'E
+	@)	iè (rA_    i'E
+	@)	i (gA_	  =i
+		i (genA_  'i
+	c)	i (lA_    =i
+	g)	i (lA_    =i
+	ss)	i (lA_    =i
+	b)	i (le_    =i
+	m)	i (le_    =i
+		i (lA_    =i
+	@)	i (ma_	  =i
+	r)	i (ma_	   i
+	laCr)	i (ma_	  =i
+	st)	i (ma_     i
+	enz)	i (ma_     i
+        @)	i (mo_    =i
+		inas (_   'inas
+		i (ne_    =i
+	@)	issima(_S6 'issima
+	@)	issime(_S6 'issime
+	@)	issimi(_S6 'issimi
+	@)	issimo(_S6 'issimo
+	@)	issero(_S6 'issero
+	p)	i (te_    =i
+
+		
+.group j
+		j	j
+
+.group k
+		k	k
+		kk	k:
+		
+.group l
+		l	l
+               ll (C    l_
+               ll (_    l
+		
+.group m
+		m	m
+	A)	mi (a_  m'i
+
+		
+.group n
+		n	n
+		n (g	N
+		n (gY   n
+		n (k	N
+		
+.group o
+		o	o
+		oi	O%I
+		oi (o_  o%I
+		oi (sCA_ o'i
+
+		o (C%A_	O    // doubled consonant
+		o (CACA_  O
+		o (Cr     O
+		o (CC_    O
+
+
+	@C)	o (_S1q  o     // lookup it_list without suffix 
+	@i)	o (_S1q  o     // lookup it_list without suffix 
+
+	i)	o          O
+	i)	o (ne      o
+	i)	o (so_     o
+
+	m)	o (bile    O
+		o (ca_     O
+		o (co_     O
+	@)	o (di_     =o
+	@)	o (do_     =o
+	@)	o (fono_   'O
+		o (genA_   'O
+	l)	o (gico_   'O
+	@)	o (gnolo_  'o
+	@)	o (grafo_  'O
+		o (lX       O
+	nd)	o (lA_     =O
+	ns)	o (lA_     =O
+	CC)	o (lA_     =O
+	u)	o (lA_      O
+	v)	o (lA_     =o
+	@)	o (la_      O
+	gn)	o (la_      O
+		o (li       O
+	@)	o (liA_     O
+	@)	o (lo_     =O
+	i)	o (lA_      O
+       ci)	o (lA_     =O
+	@)	o (logo_   'O
+	c)	o (ltA_     O
+	sc)	o (ltA_     o
+	v)	o (lt       O
+	@)	o (metro_  'O
+	@)	o (ma_      O
+	@)	o (mo_      O
+	dr)	o (mo_     =o
+		o (ni       O
+		o (ni_      o
+                o (no_      O
+	@)	o (nomo_   'O
+	@)	o (nzolo_  'o
+		o (o        O
+		o (polA_   'O
+	sc)	o (p        O
+		o (r	    O
+		o (re_      o
+	f)	o (rmA_     o
+		o (si_      O
+		o (ss       O
+	Ar)	o (ssA_     o
+		o (st       O
+		o (stracA_  'O
+		o (ttol     O
+		o (zA       O
+
+	
+.group p
+		p	p
+		pp	p:
+        _)      pn (@@   n
+	_)	ps (A@	s
+	@m)	p (ere_ =p
+
+.group q
+		q	kw2
+		qu	kw2
+
+.group r
+	C)	r	@-*
+		r	@-*
+	_)	r	@-*
+		rr	R*
+	A)	r (A	R
+		
+.group s
+		s	s
+	_)	s	s
+	A)	s (A	z
+
+	l)      s       s
+	p)      s       s
+	k)	s	s
+		s (c	s
+		s (f	s
+		s (k	s
+		s (p	s
+		s (q	s
+		ss	ss
+		s (t	s
+		s (x	s
+		sc (Y	S
+		sci (A  S
+		sci (i	S%i
+		sci (ì	S%i
+		sch (Y	sk
+		sh (K	S    // foreign words
+	K)	sh	S    // foreign words
+	@)	sia	z'ia
+	@C)	sia	s'ia
+	@)	sià	zi'a
+	@)	s (_S1	s	
+		
+.group t
+		t	t
+		tt	t:
+		
+.group u
+		u	u
+		u (A	w2
+	Kr)	u (A	u
+	Kl)	u (A	u
+
+	@)	u (dine_  'u
+	@)	u (colo_  'u
+		u (ito_ 'u
+	@)	u (lA_	=u
+
+.group v
+		v	v
+	
+.group w
+		w	w2
+
+.group x
+		x	ks
+		
+.group y
+		y	j
+		y (K	i        // foreign words
+	
+		
+.group z
+		z	ts
+	A)	zz	ts:
+
+        _)	z (i	dz
+        _)	z (ì	dz
+		z (L01A	dz
+
+.group
+		è	''E
+		èi (K	''Ej
+
+		é	''e
+		éi (K	''eI
+
+		ì	''i
+		ó	''o
+		ói	''o|I
+
+		ò	''O
+		òi	''OI
+
+		ù	''u
+
+		$	dollaro
+		, (D    v'irgola
+		!       _p'untoesklamat'ivo_
+	!)	!
+		?	_p'untointeRogat'ivo_
+	?)	?
+
+        __)  - (_D         meno
+        A_)  - (_D        _
+        C_)  - (_D        _
+
+		§	setsi'one

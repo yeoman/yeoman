@@ -1,0 +1,118 @@
+
+// Kurdish translation rules
+// This file is UTF-8 encoded
+
+.L01 î iy ê ew ey   // front vowels
+
+.group a
+        a        a
+
+     @) a (_S1   %a
+     @) an (_S2  %an
+
+.group b
+        b        b
+
+.group c
+        c        dZ
+
+.group ç
+        ç        tS
+
+.group d
+        d        d
+
+.group e
+        e        E
+        e (_     E#
+        ew       eU
+        ey       eI
+
+.group ê
+        ê        e
+
+     @) ê (_S1   %e
+     @) ên (_S2  %en
+
+
+.group f
+        f        f
+
+.group g
+        g        g
+        g (L01   J
+
+.group h
+        h        h
+
+.group i
+        i        I
+
+.group î
+        î        i
+
+.group j
+        j        Z
+
+.group k
+        k        k
+        k (L01   c
+
+.group l
+        l        l
+
+.group m
+        m        m
+
+.group n
+        n        n
+
+.group o
+        o        o
+
+.group p
+        p        p
+
+.group q
+        q        q
+
+.group r
+        r        R
+        rr       R
+     A) r (A     *
+
+.group s
+        s        s
+
+.group ş
+        ş        S
+
+.group t
+        t        t
+
+.group u
+        u        U
+
+.group û
+        û        u
+
+.group v
+        v        v
+
+.group w
+        w        w
+
+.group x
+        x        x
+        xwe      xw8
+
+.group y
+        y        j
+
+.group z
+        z        z
+
+.group
+        ö        I:
+        ü        y
+        $        dUlar

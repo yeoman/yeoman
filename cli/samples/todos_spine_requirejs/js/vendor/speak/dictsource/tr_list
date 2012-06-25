@@ -1,0 +1,298 @@
+
+// This file is UTF8 encoded 
+// Spelling-to-phoneme words for Turkish
+
+a	a
+b	be
+c	dZE
+ç	tSE
+d	dE
+e	E
+f	fE
+g	JE
+ğ	jumuS'ak||J'E
+h	hE
+ı	@
+i	i
+j	ZE
+k	ka
+l	lE
+m	mE
+n	nE
+_o	O
+ö	W
+p	pE
+q	kvE
+r	RE
+s	sE
+ş	SE
+t	tE
+u	u
+ü	y
+v	vE
+w	dubElv'E
+x	Eks
+y	jE
+z	zE
+
+_cap	byj'Yk
+_??	sEmb'Ol
+_?A	haRf
+
+// accent names
+//_lig	
+_acu	vURg'UimI
+_ac2	tS'IftvURg'UimI	
+_brv	k@s'altmaimI
+_ced	h'aRf
+_cir	Sapk'a
+_dia	Umla'Ut
+_dot	YstnOkt'a
+_grv	'aksanimI
+_hac	t'ERsSapk'a
+_mcn	uz'atmaimI
+_ogo	ogon'Ek
+_rng	halk'a
+//_stk	
+_tld	tIld'E
+
+
+// symbols
+_.	nOkt'a
+_,	vIRJ'Yl
+_;	nOktal'@vIRJ'Yl
+_:	ik'InOkt'a
+_…	'YtSnOkt'a
+_?	soR'UiSa*et,I
+_!	Ynl'EmiSa*et,I
+_-	k'@satSIzg'I
+_–	'uzUntSIzg'I
+_/	ej'IktSIzg'I
+_"	t@Rn'akiSa*et'I
+_'	apOstR'Of
+_^	IndZ'EltmEiSa*et'I
+&	_!v'E
+_&	v'EiSa*et'I
+_@	kUjRUkl'U'a
+_\	t'ERs||ej,IktSIzg'I
+_(	atSpa*ant'Ez
+_)	kapapa*ant'Ez
+_’	tEkt@Rn'ak
+_‘	tEkt@Rn'ak
+
+¶	pa*agR'af
+§	tSEnJ'El
+°	de*edZ'E
+_#	dij'Ez
+_~	jaklaS'@k
+__	,alttSIzg'I
+*	j'@ld@z		$max3
+=	ESIt		$max3
+%	jYzdE		$max3
++	aRt@		$max3
+€	avRO
+
+
+_0	s@f@R
+_1	biR
+_2	ici
+_3	YtS
+_4	dWRt
+_5	beS
+_6	alt@
+_7	jedi
+_8	seciz
+_9	dokuz
+_10	on
+_11	'onbiR
+_12	'onici
+_1X	on
+_2X	jiRmi
+_3X	otuz
+_4X	k@Rk
+_5X	elli
+_6X	altm@S
+_7X	jetmiS
+_8X	seksEn
+_9X	doksan
+_0C	jyz
+_2C	'icijyz
+_0M1	bIn
+_0M2	miljon
+_0M3	miljar
+_dpt	_viRg,Yl_|
+
+
+// Abbreviations
+ab	$abbrev $only
+abd	$abbrev $only
+abgs	$abbrev
+afp	$abbrev
+aihm	$abbrev
+akm	$abbrev
+akp	$abbrev
+aöf	$abbrev
+ap	$abbrev $only
+atm	$abbrev
+atv	$abbrev
+avm	$abbrev
+ekg	$abbrev
+epdk	$abbrev
+ftaa	$abbrev
+gsyih	$abbrev
+ihd	$abbrev
+ımkb	$abbrev
+imkb	$abbrev
+imf	$abbrev
+imkb	$abbrev
+oecd	$abbrev
+ogs	$abbrev
+osb	$abbrev
+ödp	$abbrev
+öfk	$abbrev
+öıb	$abbrev
+öib	$abbrev
+öiv	$abbrev
+öss	$abbrev
+ösym	$abbrev
+ötv	$abbrev
+öyk	$abbrev
+şti	$abbrev
+tihv	$abbrev
+tmmob	$abbrev
+tmo	$abbrev
+tpao	$abbrev
+tsi	$abbrev
+tsyd	$abbrev
+tse	$abbrev
+ubp	$abbrev
+usd	$abbrev
+ykm 	$abbrev
+
+
+// function words
+
+// conjunctions
+ve	$u $brk	// and
+yoksa	$u $brk	// or
+veya	$u $brk	// or
+ama	$brk $1	// but
+ki	$u $brk	// that
+
+mı	$u $only	// question
+mi	$u $only
+mu	$u $only
+mü	$u $only
+
+
+// pronouns
+bu	$u+ $only	// this
+şu	$u+ $only	// that
+
+ben	$u+ $only	// I
+sen	$u+ $only	// you
+o	$u+ $only	// it
+siz	$u+ $only	// we
+biz	$u+ $only	// you
+
+
+
+bir	$u+ $only	// a (or one)
+
+da	$u $only	// also
+de	$u $only
+ta	$u $only
+te	$u $only
+
+ile	$u $only
+
+
+// EXCEPTIONS
+merhaba		$1
+
+// If the word has a prefix for strengthening the meaning of the word, stress
+// is at the prefix:
+banka $1
+bembeyaz $1
+dosdoğru $1
+dümdüz $1
+kıpkırmızı $1
+kıskıvrak $1
+masmavi $1
+mosmor $1
+pespembe $1
+posta $1
+radyo $1
+sapsarı $1
+sımsıcak $1
+simsiyah $1
+
+// Names
+Hitler $1
+
+// Place Names
+// For place names with two syllables stress is at first syllable:
+// For Place names that has three or more syllables, generally stress is at
+// the syllable which has more letters or at the syllable which ends with a consonant:
+Afyon $1
+Ağrı $1
+Almanya $2
+Amasya $2
+Ankara $1
+Antalya $2
+Artvin $1
+Avrupa $1
+Aydın $1
+Bartın $1
+Batman $1
+Bayburt $1
+Bingöl $1
+Bitlis $1
+Bodrum $1
+Bolu $1
+Burdur $1
+Bursa $1
+Çanakkale $2
+Çankırı $1
+Çorum $1
+Denizli $2
+Düzce $1
+Edirne $2
+Hakkari $1
+Hatay $1
+Iğdır $1
+İngiltere $3
+İskenderun $2 
+Isparta $2
+İstanbul $2
+İsveç $1
+İzmir $1
+Kastamonu $1
+Kayseri $1
+Kilis $1
+Kırklareli $1
+Konya $1
+Kurtuluş $1
+Kütahya $2
+Malatya $2
+Mardin $1
+Mersin $1
+Mudanya $2
+Muğla $1
+Niğde $1
+Ordu $1
+Pütürge $2
+Rize $1
+Sakarya $2
+Samsun $1
+Siirt $1
+Sinop $1
+Şırnak $1
+Sivas $1
+Tekirdağ $2
+Tokat $1
+Tunceli $1
+Ukrayna $2
+Urfa $1
+Uşak $1
+Yozgat $1

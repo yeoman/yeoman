@@ -1,0 +1,764 @@
+
+// Swedish translation rules
+// This file is UTF8 encoded
+
+.group a
+        a          A:
+    ik) a          %a
+        a (CC      a
+        a (vs      A:
+        a (vb      A:
+        a (vd      A:
+        a (va      a
+        a (rt_     A:
+     _) a (rt      %a
+        a (vg      A:
+        a (r_      a
+        a (s_      a
+     p) a (d_      a
+     k) a (k       A:
+    kl) a (r       A:
+   ikl) a (r_      a
+ xempl) a (r       A:
+    sv) a (r       A:
+    sv) a (rt      a
+     b) a (k       A:
+    bl) a (d       A:
+    gl) a (d       A:
+    gl) a (d%      a
+     b) a (kte     a
+     k) a (s_      a
+     k) a (ni      a
+     b) a (r_      A:
+    lt) a (t       A:
+    _b) a (k       A:
+    bb) a (r_      a
+        a (C%      a
+//      r) a (C%    a
+        a (_       a
+        a (re      a
+        a (rn      A:
+        a (rna     a
+     l) a (rs      A:
+   idr) a          A:
+     k) a (ta      %a
+     m) a (j       a
+    om) a (t       A:
+     m) a (ter     a
+    st) a (rt      A:
+    gr) a (m       a
+        a (x       a
+     p) a (nel     a
+        a (uto     a
+     k) a (n       a
+     n) a (d       a
+     j) a (n       a
+        a (de      a
+    eg) a (n       a
+    er) a (d       a
+  form) a (ti      a
+    er) a (t       a
+     d) a (n       a
+    st) a (t_      a
+   tot) a (l       'A:
+   _gl) a (s       A:
+    gl) a (s%      a
+     v) a (ld      A:
+     v) a (rd      A:
+    sm) a (rt      A:
+     r) a (t       A:
+     s) a (maC     a
+    ng) a (d       a
+     m) a (n       a
+//     t) a (t	 A:
+   ent) a (r       A:
+        a (t_      a
+        ast        ast
+     s) a (s       a
+     s) a (d       a
+    er) a (t       a
+    åg) a (n       a
+     t) a (n       a
+    el) a (d       a
+    nn) a (n       a
+  mell) a (n       a
+   _sk) a (d       A:
+  ansv) a (r       A:
+    ll) a (de      a
+    _v) a (nl      A:
+     d) a (d       a
+   ppd) a (t       a
+     r) a (ba      a
+   ass) a          a
+     l) a (g       A:
+     l) a (gg      a
+     d) a (g       A:
+     d) a (g%      a
+    ik) a (ns      'A:
+     t) a (g       A:
+     t) a (g%      a
+     f) a (rt      'A:
+     f) a (rl      'A:
+     f) a (ren     A:
+     n) a (ti      %a
+     s) a (ti      %a
+     t) a (ti      %a
+    ks) a (m       a
+    ts) a (m       a
+//    tt) a (C    a
+     n) a (l_      'A:
+    tt) a (ga      A:
+    tt) a (get     A:
+    tt) a (git     A:
+
+     &) a          a
+    dd) a (C       a
+
+    dr) a (t       a
+    dr) a (d       a
+    nd) a (r       a
+   str) a          a
+   edr) a (r       A:
+     s) a (kn      A:
+     s) a (ks      A:
+     s) a (ke      A:
+     t) a (ls      A:
+    at) a          a
+    ep) a (r       %a
+        arbet      aRbe:t
+        amerik     amERIk
+        agera      age:Ra
+    pl) a (nera    %a
+        analy      analy:
+     _) avta       A:vtA:
+     _) avge       A:vj'e:
+     v) a (lf      A:
+  delt) a          A:
+   ret) a (g       A:
+   edr) a (g       A:
+    sk) a (da      A:
+    sk) a (de      A:
+    sk) a (p       A:
+     t) a (lC      A:
+     t) a (l%      a
+     v) a (ria     a
+     b) a (r       A:
+     t) a (l_      'A:
+     t) a (l_      'A:
+     b) a (r%      a
+        a (bo      a
+        alkohol    alkUho:l
+        allvar     allvA:R
+
+.group b
+        b          b
+        b (b 
+        bevakn     bEvA:kn
+        bredband   bRe:dband
+        begrav     bEgRA:v
+        begrip     bEgR'i:p
+        beslag     bEsl'A:g
+        beslagta   bEsl'A:gtA:
+        betal      b%Et'A:l
+
+
+.group c
+        c          k
+        cc         ks
+        cc (A      ks        // ??
+        c (e       s
+        c (i       s
+        c (y       s
+        c (ä       s
+        c (ö       s
+        ch         S
+        ch (ef     sx
+        ck         k
+        ck (A      k:        // ??
+        computer   _^_EN
+        click      _^_EN
+
+.group d
+        d          d
+        d (d 
+        dagen      dA:gEn
+        daglig     dA:glIg
+        diske      dIskE
+        dju        j'u-
+        djung      j'8N
+        dum        d8m
+        datorer    dat'u:RER
+        dator      dA:tOR
+        data       dA:ta
+        databas    dA:tabA:s
+        drogen     dRo:gEn
+        droger     dRo:gER
+        design     _^_EN
+        download   _^_EN
+
+
+.group e
+        e          e:
+     h) e (m       E
+        e (CC      E
+     &) e          %E
+   med) e (l       E
+
+        e (j       E
+     d) e (lv      e:
+     d) e (c       E
+     d) e (ls      e:
+     m) e (dde     e:
+     d) e (ln      e:
+     d) e (lt      e:
+     l) e (dn      e:
+     d) e (bat     E
+    ch) e (f       E:
+        e (ta      E
+        e (x       E
+     &) e (_       %E
+     &) es (_      %Es
+     &) en (_      %En
+     &) ens (_     %Ens
+     &) er (_      %ER
+     &) et (_S2    %Et       // ??
+        e (ve      E
+     t) e (lef     E
+     h) et (_      e:t
+     m) e (ny      E
+     n) e (ds      e:
+    br) e (v       e:
+    sv) e (r       E
+     s) e (p       %E
+    ka) e (l       E
+     b) e (l_      E
+   nyh) e (t       e:
+     r) e (sul     E
+     r) e (sur     E
+     r) e (dak     E
+     b) e (f       %E
+     b) e (g       %E
+     b) e (k       %E
+     b) e (h       %E
+     b) e (s       %E
+     b) e (v       %E
+     b) e (l       %E
+     b) e (t       %E
+     b) e (r       %E
+     r) e (g       %E
+     s) e (k       %E
+     v) e (ta      e:
+     r) e (ta      e:
+     r) e (dn      e:
+     l) e (ta      e:
+        e (nli     e:
+        e (gent    E
+    pr) e (n       %E
+    mp) e (l       %E
+    pr) e (c       %E
+    sp) e (c       %E
+     g) e (n       %E
+     _) e (tik     E
+     r) e (ce      E
+     m) e (tod     E
+     p) e (ri      E
+   xtr) e (m       e:
+     v) e (k       e:
+    it) e (t_      e:
+    st) e (mC      'e:
+     s) e (ra      e:
+     r) e (ra      e:
+     n) e (ra      e:
+     f) e (ra      e:
+     g) e (ra      e:
+     m) e (ra      e:
+     d) e (ra      e:
+     l) e (ra      e:
+     t) e (ra      e:
+     m) e (del     e:
+     d) e (lse     %E
+     g) e (nom     e:
+  liot) e (k       e:
+     c) e (r       e:
+     l) e (da      e:
+    gh) e (t       e:
+     h) e (ten     e:
+    st) e (k       e:
+   yst) e (m       e:
+    it) e (t       e:
+    _h) e (ta      e:
+        ember      'EmbER
+        e (rsä     e:
+        e (rsatt   e:
+        e (nbar    e:
+        e (rin     e:
+     p) e (da      E
+     r) e (tur     %E
+        e (xemp    %E
+        elek       'ElEk
+        espeak     _^_EN
+        ekonom     'Eku:n,O:m
+        erens      ER'ans
+        esent      Es'Ent
+        enhet      e:nhe:t
+
+.group f
+        f          f
+        f (f 
+        familj     fam'Ilj
+        formad     fORmad
+        face       _^_EN
+
+.group g
+        g          g
+        gg         g
+        g (e       j
+        g (i       j
+    or) g (ar      j
+    or) g (en      j
+        g (y       j
+        g (ä       j
+        g (ö       j
+        g (t       k
+        g (n       N
+        gj         j
+    lä) g (e       g
+    vä) g          g
+    lo) g (i       g
+     y) g (e       g
+     y) g (a       g
+     y) g (o       g
+     a) g (e       g
+     i) g (i       g
+     a) g (i       g
+   sla) g          g
+        gjor       ju:R
+        gani       gan'I
+        garage     gaR'A:S
+        garant     g%aR'ant
+        gata       gA:ta
+        glöm       glWm
+        guid (e    g'ajd
+        group      _^_EN
+
+.group h
+        h          h
+        h (h 
+        hj         j
+        hjälp      jElp
+        hög        hY:g
+        heading    _^_EN
+
+.group i
+        i          i:
+        i (CC      I
+        i (nf      %I
+        i (g_      I
+        i (nstr    %I
+     s) i (t       I
+    dr) i (v       i:
+
+        item       _^_EN
+   _fl) i (k       i:
+     t) i (d       i:
+   skr) i (v       i:
+     v) i (sn      i:
+     l) i (kna     i:
+     l) i (c       I
+     d) i (r       I
+     t) i (s       I
+     c) i          I
+     c) i (s_      i:
+    Cl) i (kaC     %I
+    kr) i (ti      I
+    kr) i (te      I
+    kr) i (s       i:
+    kr) i (st      i:
+  krit) i (k_      i:
+        ikon       Ik'o:n
+        ibili      IbIlI
+        itut       Itu-t
+        imag       _^_EN
+
+.group j
+        j          j
+
+        java       jA:va
+        j (uster   sx
+        jou (r     sxU
+
+.group k
+        k          k
+
+//        kk       k
+//        kk (A    k:  // double k not used
+//        k ( er   k
+//        k ( en   k
+        kj         S;
+     _) k (e       S;
+     _) k (iC%     k
+     _) k (i       S;
+     _) k (y       S;
+     _) k (ä       S;
+        k (änd     S;
+        k (änt     S;
+        k (änn     S;
+     _) k (ö       S;
+        k (öp      S;
+        karta      kA:Rta
+        kategori   katEg,u:Ri:
+        kalend     kal'End
+        kommun     kOm'u-n
+        kommunika  kOm8nIka
+        kontor     kOnt'u:R
+        känsl      S;Ensl
+
+.group l
+        l          l
+        l (l 
+        lg (_      lj
+     _) lj         j
+        låg        l'o:g
+        lju        j'u-
+        ligen      lIgEn
+        lager      lA:gER
+
+.group m
+        m          m
+        m (m 
+        menu       _^_EN
+        människ    m'EnIsx,
+        medl       m'e:dl
+        maga       maga
+        meny       mEn'y:
+        minimera   mIni:m'e:Ra
+        maria      m%aR'i:a
+        marie      m%aR'i:
+        maximera   maksi:m'e:Ra
+        motor      m'u:tOR
+        motorer    m'Otu:RER
+        model      mOd'El
+        musik      mu-s'i:k
+        medvet     me:dv'e:t
+        masken     maskEn
+        maskera    maske:Ra
+        mjuk       mju-k
+        masker     maskER
+        medborg    me:dbORj
+        mobil      mObi:l
+        modem      mOde:m
+
+.group n
+        n          n
+        n (n 
+        ng         N
+    fu) ng (er     ng
+        n (k       N
+        network    _^_EN
+        normal     nORmA:l
+        natur      n'at'u-R
+        nali       nalI
+        navig      n%av%Ig
+
+.group o
+        o          u:
+
+//sort
+        o (C%      U
+        o (CC      O
+    pr) o (b       %O
+        o (bb      O
+    pr) o (c       %U
+    pr) o (cent    %O
+        och        'Ok
+     s) o (ci      %U
+        o (ck      O
+     g) o (d       u:
+     k) o (d       o:
+    bl) o (d       'u:
+    pr) o (d       %O
+        o (dd      O
+        o (ff      O
+     l) o (g       'o:
+    kr) o (g       u:
+     l) o (gg      'O
+     _) o (j       O
+    pr) oj         Osx'
+     b) o (k       u:
+     d) o (k       O
+     k) o (k       'u:
+     l) o (k       %U
+    kr) o (k       u:
+     p) o (lis     %O
+        o (ll      O
+     k) o (lu      %O
+        o (m_      O
+        o (mm      O
+     d) o (n       O
+     f) o (n       'o:
+     g) o (n       O
+     l) o (n       O
+    kr) o (n       u:
+    ss) o (n       O
+        o (ni      'o:
+        o (ns      U
+     k) o (ns      O
+    nn) o (ns      O
+        operat     OpERat
+     k) o (pi      'O
+        o (pp      O
+     p) o (pu      O
+     g) o (r       U
+     s) o (r       'O
+    lk) o (r       o:
+        o (rC      u:
+     n) o (r_      O
+     s) o (r_      O
+     t) o (r_      O
+    rs) o (rd      u:
+        o (rde     o:
+        o (rg      O
+        o (rk      O
+     f) o (rm      'O
+    st) o (rm      O
+   inf) o (rmati   %O
+        o (rr      O
+     C) o (rs      O
+     b) o (rt      O
+     k) o (rt      O
+    pp) o (rt      O
+    sp) o (rt      O
+   upp) o (rt      o:
+     k) o (rv      O
+        osparat    u:spA:Rat
+        o (ss      O
+     b) o (st      u:
+     m) o (t       'u:
+     f) o (tb      u:
+        o (tt      O
+     l) o (v       'o:
+    pr) o (v       u:
+     n) o (vell    %O
+     b) o (x       'O
+//endsort
+
+.group p
+        p          p
+        p (p 
+        pion       pI;'u:n
+        påstå      po:sto:
+        paket      pak'e:t
+        parentes   paR@nt,e:s
+        privat     pRIvA:t
+        potatis    pOt'A:tIs
+
+.group q
+        q          k
+        q (q 
+        qu         kw
+
+.group r
+        r          R
+     r) r 
+        rs         s.
+        rsi (o     Rsx'
+        rsk        s.k
+        rsk (i     Rsx
+        rss        s.
+        rg (_      Rj
+        radera     Rad'e:Ra
+        rediger    R%EdIsx'e:R
+        rafik      Raf'i:k
+        regel      Re:gEl
+        resor      R'e:sOR
+        rekord     REk'o:Rd
+        risk       RIsk
+        rubrik     R8bR'i:k
+
+.group s
+        s          s
+        ss         s
+        sch        S
+        sj         sx
+        sk (e      sx
+        sk (i      sx
+        sk (y      sx
+        sk (ä      sx
+        sk (ö      sx
+    fi) s (k       s
+    fu) s (k       s
+        skj        S;
+        stj        sx
+        sio (n     sx'u:
+        ssio (n    sx'u:
+        skype      sk'ajp
+        spegel     spe:gEl
+        segel      se:gEl
+        spel       spe:l
+        select     _^_EN
+        säg        sEj
+        service    sY:Rvi:s
+        spara      spA:Ra
+        sjack      sjak
+        svara      svA:Ra
+        slog       sl'u:g
+        stått      stOt
+        sverige    svERjE
+        säkerhet   s'E:k@Rh,e:t
+        skärm      sx'ERm
+        segla      se:gla
+        skolor     sku:lOR
+        snegla     sne:gla
+        spegla     spe:gla
+        semest     sEm'Est
+        sweden     _^_EN
+
+.group t
+        t          t
+        tt         t
+        tt (A      t:        // ??
+        ti (on     sx'
+        tj         S;
+    &C) te (_S2    tE        // ??
+        task       _^_EN
+        talsyntes  t'A:lsynt,e:s
+        tabell     tab'El
+        tagit      t'A:gIt
+        tangent    tanjEnt
+        teknik     tEkn'i:k
+
+.group u
+        u          u-
+        u (tb      u-
+        u (tf      u-
+        u (tg      u-
+        u (ts      u-
+        u (tr      u-
+        u (tv      u-
+   dat) u (m       8
+        u (CC      8
+        u (n       8
+        u (tl      u-
+    sj) u (k       u-
+     j) u (ni      u-
+     j) u (l       u-
+     r) u (m_      8:
+        utmärk     'u-tm@Rk
+     b) u (tik     8
+     v) u (x       8
+   lin) u (x       %8
+        uppge      8pje:
+        u (tn      u-
+        u (tr      u-
+        u (ng      8
+        u (nkC     %8
+        u (kti     %8
+        upload     _^_EN
+
+.group v
+        v          v
+        v (v 
+        vali       valI
+        varandra   vaRandRa
+        varn       vA:Rn
+        varan      vA:Ran
+        verk       vERk
+        verktyg    vERkty:g
+
+.group w
+        w          v
+        window     _^_EN
+        wise       _^_EN
+        wire       _^_EN
+
+.group x
+        x          ks
+        x (x 
+
+.group y
+        y          y:
+        y (CC      y
+     t) y (d       'y:
+     s) y (s       %y
+     t) y (g       'y:
+     s) y (nska    y:
+
+.group z
+        z          s
+        zz         z
+
+.group å
+        å          o:
+        å (CC      o:
+        å (C%      O
+        å (ng      O
+    tr) å (d       'o:
+     l) å (s       'o:
+     l) å (ss      'O
+     v) å (r       'o:
+     r) å (k       o:
+     h) å (r       'o:
+     m) å (l       o:
+     n) å (l       o:
+    sk) å (l       o:
+     h) å (l       o:
+     h) å (ll      O
+
+.group ä
+        ä          E:
+        ä (CC      E
+        ä (r       E:
+        ä (rd      E:
+    tr) ä (d       E:
+     v) ä (lk      E:
+     l) ä (sn      E:
+     v) ä (rd      E:
+    sk) ä (rg      E:
+     l) ä (st      E:
+     n) ä (tt      E
+
+     v) ä (x       E
+     n) ä (t       E:
+     f) ä (rd      E:
+     b) ä (r       E:
+     r) ä (k       E:
+        ärl (d     'E:R
+
+
+.group ö
+        ö          Y:
+        ö (CC      'W
+     f) ö (rd      'Y:
+     f) ö (rk      %W
+     l) ö (sn      'Y:
+     l) ö (st      'Y:
+        ö (vr      'Y:
+     r) ö (m       'W
+
+
+.group
+        é          'e:
+
+
+        %          pROs'Ent
+        $          d'OlaR
+        +          pl8s
+        &          _:'Ok
+        @          sn'A:bElA:
+        /          sn'e:dstREk
+        €          'EvRu:
+
+
+        .          p'8Nt
+        . (.       _:
+    \.) . 
+
+    __) - (_D      m'i:n8s
+    A_) - (_D      _
+    C_) - (_D      _
+    --) - 
+
+        *          sx'E:Rna
+     *) * (* 
+** 
+    **) * (_       _::
