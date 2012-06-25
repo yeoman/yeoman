@@ -6,10 +6,11 @@ Yeoman is a robust and opinionated client-side stack, comprised of tools and fra
 
 Yeoman is fast, performant and is optimized to work best in modern browsers.
 
+
 ## Installing
 
 ```shell
-    ./setup/install.sh
+./setup/install.sh
 ```
 
 Oh. That's it.
@@ -20,27 +21,28 @@ Oh. That's it.
 Here's a small shell script that you can save as `server.sh` which opens and servers the current directory on the port specified:
 
 ```shell
-    port=$1
-    if [ $#  -ne  1 ]
-    then
-      port=8000
-    fi
+port=$1
+if [ $#  -ne  1 ]
+then
+  port=8000
+fi
 
-    if [ $(uname -s) == "Darwin" ]
-    then
-      open=open
-    else
-      open=xdg-open
-    fi
+if [ $(uname -s) == "Darwin" ]
+then
+  open=open
+else
+  open=xdg-open
+fi
 
-    $open http://localhost:$port && python -m SimpleHTTPServer $port;
+$open http://localhost:$port && python -m SimpleHTTPServer $port;
 ```
 
 For example, run this guy as:
 
 ```shell
-    ./server.sh 8000
+./server.sh 8000
 ```
+
 
 ## Documentation
 
@@ -55,3 +57,9 @@ Yeoman supports:
 * Chrome on Android
 * Mobile Safari
 
+
+## Contribute
+
+### Style Guide
+
+This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core_Style_Guidelines) with an exception of two space indentation and multiple var statements. Please ensure any pull requests follow this closely.
