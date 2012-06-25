@@ -86,7 +86,6 @@ yeoman.warnOn = '*';
 //
 //   // includes, this would bypass the prompt for project inclusion
 //   // this maps the remote name property
-//   "include_bootstrap": "y",
 //   "include_compass_bootstrap": "y",
 //   "include_twitter": "y"
 // };
@@ -199,7 +198,7 @@ yeoman.end = function end(init, props, cb) {
 
   // add the Jasmine runner and basic environment
   grunt.util._.extend(files, this.jasmineFilesToCopy(init, props), {
-  	// Extra files to copy
+    // Extra files to copy
     'config.rb': 'init/yeoman/config.rb'
   });
 
@@ -295,11 +294,11 @@ yeoman.remotes = function _remotes(props, cb) {
   // prompt for inclusion on remaining remotes (bootstrap, compass bootstrap)
   var repos = Object.keys(remotes).map(function(remote) {
 
-  	// Node.js loads hidden files (.DS_Store) when doing
-  	// require() against a folder, we don't want those
-  	if (remote[0] !== '.') {
+    // Node.js loads hidden files (.DS_Store) when doing
+    // require() against a folder, we don't want those
+    if (remote[0] !== '.') {
       return new remotes[remote]({ props: props, grunt: grunt });
-  	}
+    }
   }).sort(function(a, b) {
     return a.priority < b.priority ? -1 : 1;
   });
@@ -307,7 +306,7 @@ yeoman.remotes = function _remotes(props, cb) {
   // process each one
   (function next(repo) {
     if(!repo) return cb();
-    
+
     // prompting if any specific to this project information needs to be done,
     // then fetch & copy
     repo.init(function(err) {
@@ -385,14 +384,16 @@ yeoman.wireFiles = function(props, cb){
 
       if(repo.files.js){
         repo.files.js.forEach(function(n){
-            yeoman.jsFiles += ('\n<script src="' + repo.files.path + '/' + n + '"></script>\n');
-        }); 
+            var path = repo.files.path;
+            yeoman.jsFiles += ('\n<script src="' + (path ? path + '/' : '') + n + '"></script>\n');
+        });
       }
 
       if(repo.files.css){
         repo.files.css.forEach(function(n){
-            yeoman.cssFiles += ('\n <link rel="stylesheet" href="' + repo.files.path + "/" + n  + '">\n');
-        }); 
+            var path = repo.files.path;
+            yeoman.cssFiles += ('\n <link rel="stylesheet" href="' + (path ? path + '/' : '') + n  + '">\n');
+        });
       }
 
     }
