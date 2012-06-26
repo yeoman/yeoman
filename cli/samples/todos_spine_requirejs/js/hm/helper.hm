@@ -2,7 +2,7 @@
 
 // Imports and modules
 
-module colorizr at "hm/randomColor"; 
+module colorizr at "hm/randomColor";
 module speech at "vendor/speak/speakClient";
 import { animator: animateNyan } from "hm/nyan";
 
@@ -10,7 +10,7 @@ import { animator: animateNyan } from "hm/nyan";
 // Privates
 
 function getItems(){
-	return jQuery('.item');
+	return jQuery('.item.done');
 }
 
 // Exports

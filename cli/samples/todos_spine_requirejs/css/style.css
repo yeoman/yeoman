@@ -34,10 +34,10 @@ html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 10
 
 html, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
-body { 
-  margin: 0; 
-  font-size: 1em; 
-  line-height: 1.4; 
+body {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.4;
   font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   line-height: 1.4em;
   background: #eeeeee;
@@ -231,12 +231,12 @@ td { vertical-align: top; }
   width: 520px;
   margin: 0 auto 40px auto;
   background: white;
-  
+
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
   -o-box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
   box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;
-  
+
   -moz-border-radius: 0 0 5px 5px;
   -o-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -264,7 +264,7 @@ td { vertical-align: top; }
   outline: none;
   padding: 6px;
   border: 1px solid #999999;
-  
+
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
   -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
@@ -315,13 +315,13 @@ td { vertical-align: top; }
   display: block;
   margin: 20px -20px -20px -20px;
   overflow: hidden;
-  
+
   color: #555555;
   background: #f4fce8;
   border-top: 1px solid #ededed;
   padding: 0 20px;
   line-height: 36px;
-  
+
   -moz-border-radius: 0 0 5px 5px;
   -o-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0 0 5px 5px;
@@ -333,23 +333,23 @@ td { vertical-align: top; }
   float: right;
   line-height: 20px;
   text-decoration: none;
-  
+
   background: rgba(0, 0, 0, 0.1);
   color: #555555;
   font-size: 11px;
   margin-top: 8px;
   padding: 0 10px 1px;
-  
+
   -moz-border-radius: 12px;
   -webkit-border-radius: 12px;
   -o-border-radius: 12px;
   border-radius: 12px;
-  
+
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
   -o-box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0; 
-  
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 0 0;
+
   cursor: pointer;
 }
 
@@ -372,8 +372,14 @@ td { vertical-align: top; }
 
 
 
+img[src$="nyan.gif"] {
+  width: 40px;
+  -webkit-transition: .5s;
+}
 
-
+img[src$="nyan.gif"]:hover {
+  -webkit-transform: scale(4);
+}
 
 
 
