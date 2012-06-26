@@ -23,6 +23,11 @@ module.exports = function(grunt) {
                 grunt.log.error(error);
                 done(false);
             } else {
+                // FIXME: no part of the next three lines is okay.
+                if (!~stdout.indexOf('└')){
+                  grunt.log.writeln('\nInstalled into js/browser_modules: ');
+                  return exec('cd js && nest ls && cd ..', puts);
+                }
                 done(true);
             }
         }
