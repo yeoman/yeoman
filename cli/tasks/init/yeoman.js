@@ -380,20 +380,30 @@ yeoman.wireFiles = function(props, cb){
 (function next(repo) {
     if(!repo) return cb();
 
+
     // Generate paths and store for wiring
     if(repo.files){
 
+      var filePath = repo.files.path;
+
+      // Remote scripts
       if(repo.files.js){
         repo.files.js.forEach(function(n){
-            var path = repo.files.path;
-            yeoman.jsFiles += ('<script src="' + (path ? path + '/' : '') + n + '"></script>\n');
+            yeoman.jsFiles += ('<script src="' + (filePath ? filePath + '/' : '') + n + '"></script>\n');
         });
       }
 
+      // Remote stylesheets
       if(repo.files.css){
         repo.files.css.forEach(function(n){
-            var path = repo.files.path;
-            yeoman.cssFiles += ('<link rel="stylesheet" href="' + (path ? path + '/' : '') + n  + '">\n');
+            yeoman.cssFiles += ('<link rel="stylesheet" href="' + (filePath ? filePath + '/' : '') + n  + '">\n');
+        });
+      }
+
+      // Any other remote files to be added
+      if(repo.files.add){
+        repo.files.add.forEach(function(n){
+           fs.writeFileSync(path.resolve(n.path), n.content, 'utf8');
         });
       }
 
