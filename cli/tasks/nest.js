@@ -11,6 +11,9 @@ module.exports = function(grunt) {
 
         command += this.args.join(' ');
 
+        // wrap in cd to put these in the right folder
+        command = 'cd js && ' + command + ' && cd ..';
+
         function puts(error, stdout, stderr) {
 
             // grunt.log.write('\n\nnest output:\n');
