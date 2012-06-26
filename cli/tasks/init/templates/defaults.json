@@ -10,5 +10,6 @@
   "js_safe_name": "init_test",
   "git_user": "username",
   "include_compass_bootstrap": "y",
-  "include_twitter": "y"
+  "include_requirejs": "y",
+  "include_requirehm": "y"
 }
