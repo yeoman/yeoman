@@ -14,7 +14,7 @@ module.exports = requirehm;
 
 function requirehm(opts) {
 
-  this.name = opts.name || 'addyosmani';
+  this.name = opts.name || 'requirehm';
   this.user = opts.user || 'addyosmani';
   this.repo = opts.repo || 'require-hm';
   this.title = "experimental support for ECMAScript 6 Modules";
