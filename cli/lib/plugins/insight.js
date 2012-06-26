@@ -1,6 +1,7 @@
 var fs = require('fs'),
     join = require('path').join,
     spawn = require('child_process').spawn,
+    colors = require('colors'),
     prompt = require('prompt');
 
 
@@ -26,11 +27,11 @@ module.exports = {
           if (!err) return opts.cb();
 
 var msg = "\
-==========================================================================\n\
-We're constantly looking for ways to make " + opts.pkgname + " better!    \n\
+==========================================================================\n".grey + "\
+We're constantly looking for ways to make ".yellow + opts.pkgname.bold.red + " better!    \n\
 May we anonymously report usage statistics to improve the tool over time? \n\
 More info: http://goo.gl/GPtU9 & http://yeoman.io                         \n\
-==========================================================================";
+==========================================================================".grey;
 
 
           prompt.message = '[' + '?'.green + ']';
