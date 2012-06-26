@@ -41,8 +41,13 @@
     reporters like a jasmine.TrivialReporter or jasmine.HtmlReporter
     to see the results py pointing your browser to your spec runner.
   -->
+  <script>
+    if (window.phantom)
+      document.write('<script src="runner/headless.js"><\/script>');
+    else
+      document.write('<script src="runner/html.js"><\/script>');
+  </script>
 
-  <script src="runner/headless.js"></script>
 </head>
 <body>
 
