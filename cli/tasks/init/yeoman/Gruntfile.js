@@ -113,7 +113,7 @@ module.exports = function(grunt) {
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'css/style.css': ['css/**/*.css']
+      'css/main.css': ['css/**/*.css']
     },
 
     // Renames JS/CSS to prepend a hash of their contents for easier
