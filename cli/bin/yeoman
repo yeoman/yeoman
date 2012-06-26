@@ -58,8 +58,12 @@ if(/^install|uninstall|search|list|lookup|update/.test(route)) {
 }
 
 /* Yeoman Insight =========================================================== */
-async.series([function(cb){
+async.series([function(cb) {
 
+  // Are we dealing with yeoman in a test environment? If so, skip the
+  // insight prompt. This is specifically put into the environment by
+  // our test spawn helper.
+  if(process.env.yeoman_test) return cb();
 
   insight.init({
     pkgname    : pkg.name,
