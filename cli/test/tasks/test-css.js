@@ -39,8 +39,8 @@ describe('CSS task', function() {
         done();
       });
 
-      it('Then ./test/css/style.css should be the same as test/fixtures/css/expected.css', function(done) {
-        helpers.assertFile('.test/css/style.css', 'test/fixtures/css/expected.css');
+      it('Then ./test/css/main.css should be the same as test/fixtures/css/expected.css', function(done) {
+        helpers.assertFile('.test/css/main.css', 'test/fixtures/css/expected.css');
         done();
       });
 
