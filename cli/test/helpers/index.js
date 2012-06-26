@@ -107,6 +107,10 @@ helpers.spawn = function(options, cb) {
   //
   var env = process.env;
 
+  // specific flag to ensure we bypass insight prompt, even when these
+  // tests are not run within an npm scripts (eg direct use of mocha)
+  env.yeoman_test = true;
+
   var child = spawn(options.cmd, [options.bin].concat(options.args), { cwd: options.base, env: env });
   if(!silent) child.stderr.pipe(process.stderr);
   if(!silent) child.stdout.pipe(process.stdout);
