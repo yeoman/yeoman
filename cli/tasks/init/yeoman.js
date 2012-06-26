@@ -403,7 +403,6 @@ yeoman.wireFiles = function(props, cb){
       // Any other remote files to be added
       if(repo.files.add){
         repo.files.add.forEach(function(n){
-          console.log(n);
            fs.writeFileSync(path.resolve(n.path), n.content, 'utf8');
         });
       }
