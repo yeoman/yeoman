@@ -21,9 +21,22 @@ function CompassBootstrap(opts) {
   this.title = "Twitter Bootstrap (Compass version)";
 
   // Files to wire up
+
+  // add: an array of objects containing a path to write to
+  // as well as the content to be written, which can either
+  // be explicitly defined or pulled in from a file. Used for
+  // scaffolding any additional files that can't be pulled in
+  // from a remote repo.
+
+  // XXX: Should we simply store these files under support and
+  // pull them in instead of being explicit?
+
   this.files = {
-    css: [
-      'css/sass/_compass_twitter_bootstrap.css'
+    add:[
+      { 
+        path:  'css/sass/main.scss', 
+        content: '@import "compass_twitter_bootstrap";'
+      }
     ],
     js: [
       'js/vendor/bootstrap/bootstrap-alert.js',
