@@ -67,7 +67,7 @@ describe('USEMIN task', function() {
         done();
       });
 
-      it('Then .test/usemin.html should be the same as test/fixtures/usemin/index.html', function(done) {
+      it('Then .test/usemin.html should be the same as test/fixtures/usemin/reved.html', function(done) {
         // todo: task log output doesn't return things that were changed between
         // <!-- build:<target> path/to/foo.js --> directives
         helpers.assertFile('.test/usemin.html', 'test/fixtures/usemin/reved.html');
@@ -85,9 +85,9 @@ describe('USEMIN task', function() {
 
       // XXX add step definition for this one. Should readdir the ./test/css
       // dir, guessing the revision instead of hardcoding here
-      it('And I should see img/f67f4a27.6.jpg in .test/css/style.css', function(done) {
+      it('And I should see img/f67f4a27.6.jpg in .test/css/app.css', function(done) {
         var test = new RegExp('img/f67f4a27.6.jpg');
-        fs.readFile('.test/css/e1823e1a.style.css', function(err, body) {
+        fs.readFile('.test/css/e66fc2fd.app.css', function(err, body) {
           if(err) return done(err);
           assert.ok(test.test(body), 'Missing reved img in style.css');
           done();
