@@ -426,6 +426,7 @@ yeoman.simplifyFileTree = function(files){
           file.match(/^readme\.md/)       ||
           file.match(/^404\.html/)        ||
           file.match(/^robots\.txt/)      ||
+          file.match(/^js\/plugins\.js/)  ||
 
           file.match(/^js\/vendor\/README\.md/)   ||
           file.match(/^js\/vendor\/tests/)

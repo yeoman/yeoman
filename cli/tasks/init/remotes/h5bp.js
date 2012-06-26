@@ -36,7 +36,7 @@ function H5BP(opts) {
   // latest commit on h5bp repo, to test things out and to always pull from a
   // specific sha1 (thus making the cache thing more robust, master or other
   // branch are likelly to change)
-  this.version = opts.version || '3942ee1775b07b6a1c725f064e066f39998a5069';
+  this.version = opts.version || '60afc94b2d7eaaf44ece1befd31d486ad982b805';
 
   this.priority = 1;
   // no prompt for inclusion
