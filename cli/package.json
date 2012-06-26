@@ -34,9 +34,9 @@
     "colors": "~0.6.0"
   },
   "devDependencies": {
-    "mocha": "~1.0.3"
+    "mocha": "~1.2"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/tasks/*.js --silent"
+    "test": "node node_modules/mocha/bin/mocha --reporter nyan test/tasks/*.js"
   }
 }
