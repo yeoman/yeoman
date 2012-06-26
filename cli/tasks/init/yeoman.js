@@ -386,14 +386,14 @@ yeoman.wireFiles = function(props, cb){
       if(repo.files.js){
         repo.files.js.forEach(function(n){
             var path = repo.files.path;
-            yeoman.jsFiles += ('\n<script src="' + (path ? path + '/' : '') + n + '"></script>\n');
+            yeoman.jsFiles += ('<script src="' + (path ? path + '/' : '') + n + '"></script>\n');
         });
       }
 
       if(repo.files.css){
         repo.files.css.forEach(function(n){
             var path = repo.files.path;
-            yeoman.cssFiles += ('\n <link rel="stylesheet" href="' + (path ? path + '/' : '') + n  + '">\n');
+            yeoman.cssFiles += ('<link rel="stylesheet" href="' + (path ? path + '/' : '') + n  + '">\n');
         });
       }
 
