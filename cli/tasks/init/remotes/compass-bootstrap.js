@@ -22,9 +22,6 @@ function CompassBootstrap(opts) {
 
   // Files to wire up
   this.files = {
-    css: [
-      'css/sass/_compass_twitter_bootstrap.css'
-    ],
     js: [
       'js/vendor/bootstrap/bootstrap-alert.js',
       'js/vendor/bootstrap/bootstrap-button.js',
