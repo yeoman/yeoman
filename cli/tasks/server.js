@@ -144,7 +144,8 @@ module.exports = function(grunt) {
 
   // The server task always run with the watch task, this is done by
   // aliasing the server task to the relevant set of task to run.
-  grunt.registerTask('server', 'yeoman-server watch');
+  // We also initialize the staging folder first.
+  grunt.registerTask('server', 'clean mkdirs yeoman-server watch');
 
   // Reload handlers
   // ---------------
@@ -204,6 +205,7 @@ module.exports = function(grunt) {
     // Start server.
     grunt.log
       .subhead('Starting static web server on port ' + port + '.')
+      .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
       .writeln('Hit Ctrl+C to quit.');
 
     var server = connect.apply(null, middleware).listen(port, function() {
