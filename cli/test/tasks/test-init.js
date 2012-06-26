@@ -34,7 +34,7 @@ describe('Init task', function() {
         'test'                                     : 'Directory',
         'config.rb'                                : 'File',
         'package.json'                             : 'File',
-        'grunt.js'                                 : 'File',
+        'Gruntfile.js'                             : 'File',
         'robots.txt'                               : 'File',
         'readme.md'                                : 'File',
         '404.html'                                 : 'File',
@@ -74,21 +74,9 @@ describe('Init task', function() {
       });
 
       var expected = this.expected = {
-        'tests'                        : 'Directory',
-        '.jshintrc'                    : 'File',
-        'README.md'                    : 'File',
-        'bootstrap-alert.js'           : 'File',
-        'bootstrap-button.js'          : 'File',
-        'bootstrap-carousel.js'        : 'File',
-        'bootstrap-collapse.js'        : 'File',
-        'bootstrap-dropdown.js'        : 'File',
-        'bootstrap-modal.js'           : 'File',
-        'bootstrap-popover.js'         : 'File',
-        'bootstrap-scrollspy.js'       : 'File',
-        'bootstrap-tab.js'             : 'File',
-        'bootstrap-tooltip.js'         : 'File',
-        'bootstrap-transition.js'      : 'File',
-        'bootstrap-typeahead.js'       : 'File',
+        'bootstrap'                    : 'Directory',
+        'hm.js'                        : 'File',
+        'require.js'                   : 'File',
         'jquery-1.7.2.js'              : 'File',
         'jquery-1.7.2.min.js'          : 'File',
         'modernizr-2.5.3.min.js'       : 'File'
@@ -120,7 +108,8 @@ describe('Init task', function() {
         'compass_twitter_bootstrap'                  : 'Directory',
         '_compass_twitter_bootstrap.sass'            : 'File',
         '_compass_twitter_bootstrap_awesome.sass'    : 'File',
-        '_compass_twitter_bootstrap_responsive.sass' : 'File'
+        '_compass_twitter_bootstrap_responsive.sass' : 'File',
+        'main.scss'                                  : 'File'
       };
 
       var remaining = expected.length;
@@ -132,10 +121,6 @@ describe('Init task', function() {
           var type = expected[entry.props.basename];
           assert.equal(entry.props.type, type, entry.props.basename + ' is not a ' + type);
         });
-    });
-
-    it('And Gruntfile.js should be there', function(done) {
-      fs.stat('.test/grunt.js', done);
     });
 
     it('And have the expected configuration');
