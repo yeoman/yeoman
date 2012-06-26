@@ -5,7 +5,7 @@ define (require, exports, module) ->
   Spine = require "coffee/spineModule"
   Task = require "cs!coffee/Task"
   Tasks = require "cs!coffee/Tasks"
-  Helper = require "hm!hm/helper"
+  Fun = require "hm!hm/fun"
   jQuery = require "jquery"
 
 
@@ -49,12 +49,11 @@ define (require, exports, module) ->
     create: (e) ->
       e.preventDefault()
       Task.create(name: @input.val())
-      Helper.say('Rememeber to ' + @input.val())
+      # Fun.say('Remember to ' + @input.val())
       @input.val("")
 
     renderCount: =>
-      #Helper.addAnimation()
-      #Helper.colorize()
+      # Fun.addAnimation()
       active = Task.active().length
       @count.text(active)
 

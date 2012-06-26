@@ -2,9 +2,9 @@
 
 // Imports and modules
 
-module colorizr at "hm/randomColor";
 module speech at "vendor/speak/speakClient";
 import { animator: animateNyan } from "hm/nyan";
+
 
 
 // Privates
@@ -12,6 +12,8 @@ import { animator: animateNyan } from "hm/nyan";
 function getItems(){
 	return jQuery('.item.done');
 }
+
+
 
 // Exports
 
@@ -25,12 +27,3 @@ export function say(msg){
 		speech.speak(msg);
 	}
 }
-
-// Randomize item backgrounds and foregrounds
-export function colorize(){
-	var items = getItems();
-	items.each(function(i,x){
-		$(this).css({"background": colorizr.randomColor(), "color": colorizr.randomColor()});
-	});
-}
-
