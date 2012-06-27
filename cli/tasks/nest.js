@@ -7,9 +7,10 @@ module.exports = function(grunt) {
         // Tell grunt this task is asynchronous.
         var done = this.async(),
             exec = require('child_process').exec,
-            command = "nest ";
+            command = "nest ",
+            that = this;
 
-        command += this.args.join(' ');
+        command += that.args.join(' ');
 
         // wrap in cd to put these in the right folder
         command = 'cd js && ' + command + ' && cd ..';
@@ -24,7 +25,7 @@ module.exports = function(grunt) {
                 done(false);
             } else {
                 // FIXME: no part of the next three lines is okay.
-                if (!~stdout.indexOf('└')){
+                if (that.args[0] == 'install' && !~stdout.indexOf('└')){
                   grunt.log.writeln('\nInstalled into js/browser_modules: ');
                   return exec('cd js && nest ls && cd ..', puts);
                 }
