@@ -46,10 +46,10 @@ yeoman.dir = path.join(__dirname, 'yeoman');
 yeoman.description = 'Init a new project.';
 
 // Welcome message
-yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n'.rainbow.bold;
+yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n'.yellow.bold;
 
 // Template-specific notes to be displayed before question prompts.
-yeoman.notes = '... More notes to come here ...'.yellow;
+yeoman.notes = ''; //... More notes to come here ...'.yellow;
 
 // Any existing file or directory matching this wildcard will cause a warning.
 yeoman.warnOn = '*';
