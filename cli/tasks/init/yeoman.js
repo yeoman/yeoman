@@ -49,7 +49,7 @@ yeoman.description = 'Init a new project.';
 yeoman.welcome =
 '\n        _   .--------------------------.' + 
 '\n      _|' + 'o'.red + '|_ |    ' + 'Welcome to Yeoman,'.yellow.bold + '    |' +
-'\n       '+ '(_)'.yellow + '  |   ' + 'ladies and gentlemen!'.yellow.bold + '  |' + 
+'\n       '+ '|_|'.yellow + '  |   ' + 'ladies and gentlemen!'.yellow.bold + '  |' + 
 '\n     / \\' + 'Y'.red + '/ \\' + ' o'.yellow + '_________________________|' + 
 '\n    ||  :  |\//                          ' + 
 '\n    '+'o'.yellow + '/' + ' ---'.red + ' \\                            ' + 
