@@ -46,7 +46,16 @@ yeoman.dir = path.join(__dirname, 'yeoman');
 yeoman.description = 'Init a new project.';
 
 // Welcome message
-yeoman.welcome = '\nWelcome to Yeoman, ladies and gentlemen!\n'.yellow.bold;
+yeoman.welcome =
+'\n        _   .--------------------------.' + 
+'\n      _|' + 'o'.red + '|_ |    ' + 'Welcome to Yeoman,'.yellow.bold + '    |' +
+'\n       '+ '(_)'.yellow + '  |   ' + 'ladies and gentlemen!'.yellow.bold + '  |' + 
+'\n     / \\' + 'Y'.red + '/ \\' + ' o'.yellow + '_________________________|' + 
+'\n    ||  :  |\//                          ' + 
+'\n    '+'o'.yellow + '/' + ' ---'.red + ' \\                            ' + 
+'\n      _\\ /_                             ' + 
+'\n'.yellow.bold;
+
 
 // Template-specific notes to be displayed before question prompts.
 yeoman.notes = ''; //... More notes to come here ...'.yellow;
