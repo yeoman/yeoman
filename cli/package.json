@@ -37,6 +37,6 @@
     "mocha": "~1.2"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --reporter nyan test/tasks/*.js"
+    "test": "node node_modules/mocha/bin/mocha --reporter nyan test/tasks/test-*.js --silent"
   }
 }
