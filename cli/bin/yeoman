@@ -3,29 +3,24 @@ var fs = require('fs'),
   join = require('path').join,
   _ = require('underscore'),
   colors = require('colors'),
-  help = join(__dirname, 'help.txt'),
   insight = require('../lib/plugins/insight.js'),
+  yeoman = require('../'),
   async = require('async'),
   pkg = require('../package.json'),
-  compiled = _.template( fs.readFileSync( help, 'utf8' ) );
+  compiled = _.template( fs.readFileSync( join(__dirname, 'help.txt'), 'utf8' ));
 
 // Returns the user's home directory in a platform agnostic way.
 function getUserHome() {
   return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 }
 
-
-
-
 // grunt with the plugin registered
 var grunt = require('grunt').npmTasks(join(__dirname, '../'));
 
-// Get back a reference to the internal grunt cli object (Yes, it's hacky) We
-// need this to be able to read grunt command line parsed options and tasks to
-// run to hook our internal additional logic.
-//
-// Another (nicer) alternative is to redo the command line parsing with nopt,
-// but it'll add yet another dependency for a very little thing
+// Get back a reference to the internal grunt cli object so that we can read
+// command line parsed options from grunt, to run our internal additional
+// logic.
+
 var cli =  require('grunt/lib/grunt/cli');
 
 // command line options and remaining args
@@ -43,7 +38,7 @@ if(/^help/.test(route)) {
 
 // add the plugin version on `--version`
 if(opts.version) {
-  console.log('h5bp  v%s', pkg.version);
+  return console.log('%s  v%s', pkg.name, pkg.version);
 }
 
 // Matches everything after init to prevent
@@ -53,8 +48,13 @@ if(/^init/.test(route)) {
 }
 
 // a nest command?
-if(/^install|uninstall|search|list|lookup|update/.test(route)) {
+if(/^install|^uninstall|^search|^list|^lookup|^update/.test(route)) {
   cli.tasks = 'nest' + ':' + cmds.join(':');
+}
+
+// a generate command? Kick off the generator logic instead
+if(/^generate/.test(route)) {
+  return yeoman.generators.init(cli);
 }
 
 /* Yeoman Insight =========================================================== */
@@ -73,7 +73,7 @@ async.series([function(cb) {
   });
 
 
-},function(cb){
+}, function(cb){
 
   // if the route is empty
   if(/^$/.test(route)) {
