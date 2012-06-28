@@ -54,7 +54,7 @@ if(/^install|^uninstall|^search|^list|^lookup|^update/.test(route)) {
 
 // a generate command? Kick off the generator logic instead
 if(/^generate/.test(route)) {
-  return yeoman.generators.init(cli);
+  return yeoman.generators.init(grunt);
 }
 
 /* Yeoman Insight =========================================================== */
