@@ -85,6 +85,11 @@ generators.invoke = function invoke(namespace, args, options, config) {
     return console.log( generator.help() );
   }
 
+  // also show help if --help was specifically passed
+  if(options.help) {
+    return console.log( generator.help() );
+  }
+
   // hacky, might change.
   // attach the invoke helper to the generator instance
   generator.invoke = invoke;
