@@ -41,8 +41,11 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app/css');
   this.mkdir('app/templates');
 
-  this.hookFor('js-framework');
-  this.hookFor('css-framework');
+  this.hookFor('javascript-engine');
+  this.hookFor('stylesheet-engine');
+  this.hookFor('template-engine');
+
+  this.hookFor('controller');
 };
 
 AppGenerator.prototype.lib = function lib() {

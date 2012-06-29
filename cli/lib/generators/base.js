@@ -9,8 +9,20 @@ module.exports = Base;
 function Base(args, options, config) {
   events.EventEmitter.call(this);
   this.args = args;
-  this.options = options;
-  this.config = config;
+  this.config = config || {};
+
+  // setup default options
+  // XXX most of these values are not used yet. Are here as reference to some of
+  // the rails default options.
+  this.options = _.defaults(options, {
+    assets: true,
+    javascripts: true,
+    stylesheets: true,
+    'javascript-engine': 'js',
+    'stylesheet-engine': 'sass',
+    'template-engine': 'handlebars',
+    'test-framework': 'jasmine'
+  });
 
   this.arguments = [];
 }
@@ -106,6 +118,3 @@ Base.prototype.defaultFor = function defaultFor(name) {
   else if(config && config[name]) name = config[name];
   return name;
 };
-
-
-

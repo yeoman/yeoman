@@ -123,8 +123,7 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
 
   if(base) lookups.push(base + ':' + name);
   if(context) lookups.push(name + ':' + context);
-
-  if(!base && !context) lookups.push(name);
+  if(base) lookups.push(base);
 
   return generators.lookup(lookups) || generators.lookup(lookups, internal);
 };
@@ -142,11 +141,11 @@ generators.lookup = function lookup(namespaces, basedir) {
   paths.forEach(function(rawPath) {
     if(generator) return;
 
-    ['yeoman/generators', 'generators'].forEach(function(base) {
+    ['yeoman/generators', 'generators/yeoman', 'generators'].forEach(function(base) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
-        console.log('>>', namespaces, 'search in ', path);
+        // console.log('>>', namespaces, 'search in ', path);
         generator = require(path);
         // dynamically attach the generator filepath where it was found
         // to the given class, and the associated namespace
