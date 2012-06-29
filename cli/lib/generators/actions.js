@@ -26,7 +26,12 @@ actions.sourceRoot = function sourceRoot(root) {
 // Sets the destination root for this thor class. Relatives path are added to
 // the directory where the script was invoked and expanded.
 actions.destinationRoot = function destinationRoot(root) {
-  if(root) this._destinationRoot = root;
+  if(root) {
+    this._destinationRoot = root;
+    if(!path.existsSync(root)) this.mkdir(root);
+    process.chdir(root);
+  }
+
   return this._destinationRoot || './';
 };
 
@@ -38,7 +43,6 @@ actions.destinationRoot = function destinationRoot(root) {
 // (most likely cwd)
 actions.copy = function copy(source, destination, options) {
   source = path.join(this.sourceRoot(), source);
-  destination = path.join(this.destinationRoot(), destination);
   return grunt.file.copy(source, destination, options);
 };
 
@@ -46,19 +50,6 @@ actions.read = function read(filepath, encoding) {
   filepath = path.join(this.sourceRoot(), filepath);
   return grunt.file.read(filepath, encoding);
 };
-
-actions.write = function write(filepath, content) {
-  filepath = path.join(this.destinationRoot(), filepath);
-  return grunt.file.write(filepath, content);
-};
-
-actions.mkdir = function mkdir(dirpath) {
-  dirpath = path.join(this.destinationRoot(), dirpath);
-  return grunt.file.mkdir(dirpath);
-};
-
-// template
-
 
 // Gets an underscore template at the relative source, executes it and makes a copy
 // at the relative destination. If the destination is not given it's assumed
@@ -74,3 +65,17 @@ actions.template = function template(source, destination, data) {
 };
 
 
+// Copies recursively the files from source directory to root directory
+actions.directory = function directory(source, destination) {
+  var root = path.join(this.sourceRoot(), source),
+    files = grunt.file.expandFiles(path.join(root, '**'));
+
+  destination = destination || source;
+
+  // get the path relative to the template root, and copy to the relative destination
+  files.forEach(function(filepath) {
+    var src = filepath.slice(root.length),
+      dest = path.join(destination, src);
+    grunt.file.copy(filepath, dest);
+  });
+};
