@@ -149,7 +149,7 @@ with the following content:
       yeoman.generators.Base.apply(this, arguments);
     }
 
-    util.inherits(Generator, yeoman.generatos.Base);
+    util.inherits(Generator, yeoman.generators.Base);
 
     Generator.prototype.createInitializerFile = function() {
       this.createFile('config/initializers/initializer.js', "# Add initialization content here");
@@ -176,7 +176,7 @@ To invoke our new generator, we just need to do:
 
 Before we go on, let’s see our brand new generator description:
 
-$ yeoman generate initializer --help
+    $ yeoman generate initializer --help
 
 yeoman is usually able to generate good descriptions if a generator is
 namespaced, as `yeoman.generators.ModelGenerator`, but not in this particular
