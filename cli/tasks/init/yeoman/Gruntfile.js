@@ -36,7 +36,10 @@ module.exports = function(grunt) {
     // https://github.com/sindresorhus/grunt-shell#grunt-shell
     shell: {
       compass: {
-        command: 'compass compile'
+        command: 'compass compile',
+        stdout: function( out ){
+          console.log( out );
+        }
       }
     },
 
