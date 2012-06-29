@@ -6,9 +6,9 @@ var path = require('path'),
 var actions = module.exports;
 
 // put this version of grunt into verbose mode
-grunt.option.init({
-  verbose: true
-});
+// grunt.option.init({
+//   verbose: true
+// });
 
 // The action mixin is comprised of Grunt's file and log API, and made
 // available for generators to use as instance methods directly for the file API,
@@ -23,8 +23,8 @@ actions.sourceRoot = function sourceRoot(root) {
   return this._sourceRoot;
 };
 
-// Sets the destination root for this thor class. Relatives path are added to
-// the directory where the script was invoked and expanded.
+// Sets the destination root for this class. Relatives path are added to the
+// directory where the script was invoked and expanded.
 actions.destinationRoot = function destinationRoot(root) {
   if(root) {
     this._destinationRoot = root;

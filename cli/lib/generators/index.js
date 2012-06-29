@@ -1,6 +1,7 @@
 
 var path = require('path');
 
+//
 // Inspired by
 // https://github.com/rails/rails/blob/master/railties/lib/rails/generators.rb
 // module
@@ -73,6 +74,15 @@ generators.invoke = function invoke(namespace, args, options, config) {
   // Generator constructor.
   if(!generator.sourceRoot()) {
     generator.sourceRoot(path.join(klass.path, 'templates'));
+  }
+
+  // validate the generator (show help on missing argument / options)
+  var requiredArgs = generator.arguments.some(function(arg) {
+    return arg.config && arg.config.required;
+  });
+
+  if(!args.length && requiredArgs) {
+    return console.log('oh snap');
   }
 
   // hacky, might change.
