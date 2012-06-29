@@ -74,8 +74,7 @@ actions.directory = function directory(source, destination) {
 
   // get the path relative to the template root, and copy to the relative destination
   files.forEach(function(filepath) {
-    var src = filepath.slice(root.length),
-      dest = path.join(destination, src);
-    grunt.file.copy(filepath, dest);
+    var src = filepath.slice(root.length);
+    grunt.file.copy(filepath, path.join(destination, src));
   });
 };
