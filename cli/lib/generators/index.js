@@ -9,23 +9,28 @@ var path = require('path');
 
 var generators = module.exports;
 
+// hoist up top level class the generator extend
+generators.Base = require('./base');
+
 generators.init = function init(grunt) {
   // get back arguments without the generate prefix
   var cli = grunt.cli,
     args = cli.tasks.slice(1),
     name = args.shift();
 
-  // keep the reference to the passed in grunt object
-  generators.grunt = grunt;
   // figure out the base application directory
   generators.base = path.dirname(grunt.file.findup(process.cwd(), 'Gruntfile.js'));
+
+  // and "init" grunt as much as possible
+
+  // and cd into it
+  grunt.file.setBase(generators.base);
 
   if(!name) {
     return generators.help('generate');
   }
 
   generators.invoke(name, args, cli.options);
-
 };
 
 // show help message with available generators
@@ -51,7 +56,14 @@ generators.invoke = function invoke(namespace, args, config) {
   }
 
   // create a new generator from this class
-  klass.start(args, config);
+  var generator = new klass(args, config);
+
+  // and start if off
+  generator.invoke(namespace, {
+    args: args,
+    options: config
+  });
+
 };
 
 
@@ -112,7 +124,6 @@ generators.lookup = function lookup(namespaces, basedir) {
       } catch(e) {
         // not a loadpath error? bubble up the exception
         if(!~e.message.indexOf(path)) throw e;
-        console.log('oh snap', e);
       }
     });
   });
