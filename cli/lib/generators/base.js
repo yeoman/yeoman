@@ -60,9 +60,6 @@ Base.prototype.invoke = function invoke(name, config) {
 //
 
 Base.prototype.argument = function argument(name, config) {
-  console.log('create arg', name, config);
-  var self = this;
-
   this.arguments.push({
     name: name,
     config: config
