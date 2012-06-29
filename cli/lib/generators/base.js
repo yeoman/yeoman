@@ -1,5 +1,7 @@
 
-var util = require('util'),
+var fs = require('fs'),
+  path = require('path'),
+  util = require('util'),
   events = require('events'),
   actions = require('./actions'),
   _ = require('underscore');
@@ -144,11 +146,24 @@ Base.prototype.defaultFor = function defaultFor(name) {
 
 // Generate the default banner for help output, depending on argument type
 // XXX should probably be breaked up in its own Argument class, like Thor does.
-Base.prototype.bannerFor = function defaultFor(config) {
+Base.prototype.bannerFor = function bannerFor(config) {
   return config.type === Boolean ? '' :
     config.type === String ? config.name.toUpperCase() :
     config.type === Number ? 'N' :
     config.type === Object ? 'key:value' :
     config.type === Array ? 'one two three' :
     ''
+};
+
+
+// Tries to get the description from a USAGE file one folder above the source
+// root otherwise uses a default description.
+Base.prototype.help = function help() {
+  var filepath = path.join(this.sourceRoot(), '../USAGE'),
+    exists = path.existsSync(filepath);
+
+  return exists ? fs.readFileSync(filepath, 'utf8') : [
+    'Description:',
+    '    Create files for ' + this.generatorName + ' generator.'
+  ].join('\n');
 };
