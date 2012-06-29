@@ -27,10 +27,10 @@ module.exports = {
           if (!err) return opts.cb();
 
 var msg = "\
-==========================================================================\n".grey + "\
-We're constantly looking for ways to make ".yellow + opts.pkgname.bold.red + " better!    \n\
+==========================================================================".grey + "\n\
+We're constantly looking for ways to make ".yellow + opts.pkgname.bold.red + " better! \n\
 May we anonymously report usage statistics to improve the tool over time? \n\
-More info: http://goo.gl/GPtU9 & http://yeoman.io                         \n\
+More info: http://goo.gl/GPtU9 & http://yeoman.io".yellow + "\n\
 ==========================================================================".grey;
 
 
