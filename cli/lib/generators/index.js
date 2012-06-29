@@ -11,6 +11,7 @@ var generators = module.exports;
 
 // hoist up top level class the generator extend
 generators.Base = require('./base');
+generators.NamedBase = require('./named-base');
 
 generators.init = function init(grunt) {
   // get back arguments without the generate prefix
