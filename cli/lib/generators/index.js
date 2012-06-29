@@ -21,14 +21,20 @@ generators.init = function init(grunt) {
 
   // figure out the base application directory
   generators.cwd = process.cwd();
-  generators.base = grunt.file.findup(generators.cwd, 'Gruntfile.js');
+  generators.gruntfile = grunt.file.findup(generators.cwd, 'Gruntfile.js');
+  generators.base = generators.gruntfile ? path.dirname(generators.gruntfile) : generators.cwd;
 
   // when a Gruntfile is found, make sure to cdinto that path. This is the
   // root of the yeoman app (should probably check few other things too, this
   // gruntfile may be in another project up to this path), otherwise let the
   // default cwd be (mainly for app generator).
-  if(generators.base) {
-    generators.base = path.dirname(generators.base);
+  if(generators.gruntfile) {
+    // init the grunt config if a Gruntfile was found
+    try {
+      require(generators.gruntfile).call(grunt, grunt);
+    } catch(e) {
+      grunt.log.write(msg).error().verbose.error(e.stack).or.error(e);
+    }
     process.chdir(generators.base);
   }
 
@@ -36,7 +42,7 @@ generators.init = function init(grunt) {
     return generators.help('generate');
   }
 
-  generators.invoke(name, args, cli.options);
+  generators.invoke(name, args, cli.options, grunt.config());
 };
 
 // show help message with available generators
@@ -44,10 +50,9 @@ generators.help = function help(command) {
   console.log('show help message for', command);
 };
 
-
 // Receives a namespace, arguments and the options list to invoke a generator.
 // It's used as the default entry point for the generate command.
-generators.invoke = function invoke(namespace, args, config) {
+generators.invoke = function invoke(namespace, args, options, config) {
   var names = namespace.split(':'),
     name = names.pop(),
     klass = generators.findByNamespace(name, names.join(':'));
@@ -62,7 +67,7 @@ generators.invoke = function invoke(namespace, args, config) {
   }
 
   // create a new generator from this class
-  var generator = new klass(args, config);
+  var generator = new klass(args, options, config);
 
   // configure the given sourceRoot for this path, if it wasn't already in the
   // Generator constructor.
@@ -70,10 +75,19 @@ generators.invoke = function invoke(namespace, args, config) {
     generator.sourceRoot(path.join(klass.path, 'templates'));
   }
 
+  // hacky, might change.
+  // attach the invoke helper to the generator instance
+  generator.invoke = invoke;
+
+  // and few other informations
+  generator.namespace = klass.namespace;
+  generator.generatorName = name;
+
   // and start if off
-  generator.invoke(namespace, {
+  generator.run(namespace, {
     args: args,
-    options: config
+    options: options,
+    config: config
   });
 
 };
@@ -132,10 +146,12 @@ generators.lookup = function lookup(namespaces, basedir) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
+        console.log('>>', namespaces, 'search in ', path);
         generator = require(path);
         // dynamically attach the generator filepath where it was found
-        // to the given class
+        // to the given class, and the associated namespace
         generator.path = path;
+        generator.namespace = rawPath.split('/').join(':');
 
       } catch(e) {
         // not a loadpath error? bubble up the exception

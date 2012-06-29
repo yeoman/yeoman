@@ -40,6 +40,9 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app/js');
   this.mkdir('app/css');
   this.mkdir('app/templates');
+
+  this.hookFor('js-framework');
+  this.hookFor('css-framework');
 };
 
 AppGenerator.prototype.lib = function lib() {
@@ -49,5 +52,7 @@ AppGenerator.prototype.lib = function lib() {
 AppGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.mkdir('spec');
+
+  this.hookFor('test-framework');
 };
 

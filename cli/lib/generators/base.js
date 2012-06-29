@@ -6,10 +6,11 @@ var util = require('util'),
 
 module.exports = Base;
 
-function Base(args, options) {
+function Base(args, options, config) {
   events.EventEmitter.call(this);
   this.args = args;
   this.options = options;
+  this.config = config;
 
   this.arguments = [];
 }
@@ -20,17 +21,16 @@ util.inherits(Base, events.EventEmitter);
 _.extend(Base.prototype, actions);
 
 
-// Receives a name and invokes it. The name is a string (either "method" or
-// "namespace:method"). You can also supply the arguments, options and
-// configuration values for the method to be invoked, if none is given, the
-// same values used to initialize the invoker are used to initialize the
-// invoked.
+// Runs all methods in this given generator.
+// "namespace:method"). You can also supply the arguments for the method to be
+// invoked, if none is given, the same values used to initialize the invoker
+// are used to initialize the invoked.
 //
 // XXX curently, all is asumed to be run synchronously. We may have the need to
 // run async thing, if that's so, always assume a method is synchronous unless
 // a special this.async() handler is invoked (like Grunt).
 
-Base.prototype.invoke = function invoke(name, config) {
+Base.prototype.run = function run(name, config) {
   var args = config.args || this.args,
     opts = config.options || this.options,
     self = this;
@@ -65,7 +65,7 @@ Base.prototype.argument = function argument(name, config) {
     config: config
   });
 
-  // create the accesor for this named argument, its value is direcly tied to
+  // create the accessor for this named argument, its value is direcly tied to
   // the position of the given argument, and the order of specified arguments
   // for this class.
   this.__defineGetter__(name, function() {
@@ -82,5 +82,30 @@ Base.prototype.argument = function argument(name, config) {
     return config.type === Array ? this.args.slice(position) : this.args[position];
   });
 };
+
+
+
+// Invoke a generator based on the value supplied by the user to the
+// given option named "name". An option is created when this method
+// is invoked and you can set a hash to customize it.
+
+Base.prototype.hookFor = function hookFor(name, config) {
+  // resolve the name of our hook. This can be defined through cli options or
+  // via Gruntfile's generators config.
+  name = this.defaultFor(name);
+
+  // and try to invoke the generator, looking up for hook:context
+  this.invoke(name + ':' + this.generatorName, this.args, this.options, this.config);
+};
+
+// Return the default value for the option name given doing a lookup in
+// cli options and Gruntfile's generator config.
+Base.prototype.defaultFor = function defaultFor(name) {
+  var config = this.config.generators;
+  if(this.options[name]) name = this.options[name]
+  else if(config && config[name]) name = config[name];
+  return name;
+};
+
 
 
