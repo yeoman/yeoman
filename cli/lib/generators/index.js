@@ -70,6 +70,15 @@ generators.invoke = function invoke(namespace, args, options, config) {
   // create a new generator from this class
   var generator = new klass(args, options, config);
 
+  // hacky, might change.
+  // attach the invoke helper to the generator instance
+  generator.invoke = invoke;
+
+  // and few other informations
+  generator.namespace = klass.namespace;
+  generator.generatorName = name;
+
+
   // configure the given sourceRoot for this path, if it wasn't already in the
   // Generator constructor.
   if(!generator.sourceRoot()) {
@@ -90,21 +99,12 @@ generators.invoke = function invoke(namespace, args, options, config) {
     return console.log( generator.help() );
   }
 
-  // hacky, might change.
-  // attach the invoke helper to the generator instance
-  generator.invoke = invoke;
-
-  // and few other informations
-  generator.namespace = klass.namespace;
-  generator.generatorName = name;
-
   // and start if off
   generator.run(namespace, {
     args: args,
     options: options,
     config: config
   });
-
 };
 
 
