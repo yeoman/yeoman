@@ -82,7 +82,7 @@ generators.invoke = function invoke(namespace, args, options, config) {
   });
 
   if(!args.length && requiredArgs) {
-    return console.log('oh snap');
+    return console.log( generator.help() );
   }
 
   // hacky, might change.

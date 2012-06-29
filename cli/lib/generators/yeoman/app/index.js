@@ -4,7 +4,7 @@ var util = require('util'),
 
 module.exports = AppGenerator;
 
-function AppGenerator() {
+function AppGenerator(args, options, config) {
   yeoman.generators.NamedBase.apply(this, arguments);
   this.destinationRoot(this.name);
 
