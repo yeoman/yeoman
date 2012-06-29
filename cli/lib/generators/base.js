@@ -70,8 +70,30 @@ Base.prototype.run = function run(name, config) {
 // Besides, arguments are used inside your code as an accessor (self.argument),
 // while options are all kept in a hash (self.options).
 //
+// Options
+// -------
+//
+// desc     - (todo) Description for the argument.
+// required - If the argument is required or not.
+// optional - (todo) If the argument is optional or not.
+// type     - (todo) The type of the argument, can be :string, :hash, :array, :numeric.
+// default  - (todo) Default value for this argument. It cannot be required
+//             and have default values.
+// banner   - (todo) String to show on usage notes.
+//
+//
 
 Base.prototype.argument = function argument(name, config) {
+  // config handling. Should probably be breaked up in its own Argument class,
+  // like Thor does.
+  config.name = name;
+  _.defaults(config, {
+    required: true,
+    type: String
+  });
+
+  config.banner = config.banner || this.bannerFor(config);
+
   this.arguments.push({
     name: name,
     config: config
@@ -117,4 +139,16 @@ Base.prototype.defaultFor = function defaultFor(name) {
   if(this.options[name]) name = this.options[name]
   else if(config && config[name]) name = config[name];
   return name;
+};
+
+
+// Generate the default banner for help output, depending on argument type
+// XXX should probably be breaked up in its own Argument class, like Thor does.
+Base.prototype.bannerFor = function defaultFor(config) {
+  return config.type === Boolean ? '' :
+    config.type === String ? config.name.toUpperCase() :
+    config.type === Number ? 'N' :
+    config.type === Object ? 'key:value' :
+    config.type === Array ? 'one two three' :
+    ''
 };
