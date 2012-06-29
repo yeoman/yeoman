@@ -20,12 +20,17 @@ generators.init = function init(grunt) {
     name = args.shift();
 
   // figure out the base application directory
-  generators.base = path.dirname(grunt.file.findup(process.cwd(), 'Gruntfile.js'));
+  generators.cwd = process.cwd();
+  generators.base = grunt.file.findup(generators.cwd, 'Gruntfile.js');
 
-  // and "init" grunt as much as possible
-
-  // and cd into it
-  grunt.file.setBase(generators.base);
+  // when a Gruntfile is found, make sure to cdinto that path. This is the
+  // root of the yeoman app (should probably check few other things too, this
+  // gruntfile may be in another project up to this path), otherwise let the
+  // default cwd be (mainly for app generator).
+  if(generators.base) {
+    generators.base = path.dirname(generators.base);
+    process.chdir(generators.base);
+  }
 
   if(!name) {
     return generators.help('generate');
@@ -58,6 +63,12 @@ generators.invoke = function invoke(namespace, args, config) {
 
   // create a new generator from this class
   var generator = new klass(args, config);
+
+  // configure the given sourceRoot for this path, if it wasn't already in the
+  // Generator constructor.
+  if(!generator.sourceRoot()) {
+    generator.sourceRoot(path.join(klass.path, 'templates'));
+  }
 
   // and start if off
   generator.invoke(namespace, {
@@ -122,6 +133,10 @@ generators.lookup = function lookup(namespaces, basedir) {
 
       try {
         generator = require(path);
+        // dynamically attach the generator filepath where it was found
+        // to the given class
+        generator.path = path;
+
       } catch(e) {
         // not a loadpath error? bubble up the exception
         if(!~e.message.indexOf(path)) throw e;
