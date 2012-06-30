@@ -37,6 +37,9 @@ generators.init = function init(grunt) {
   generators.gruntfile = grunt.file.findup(generators.cwd, 'Gruntfile.js');
   generators.base = generators.gruntfile ? path.dirname(generators.gruntfile) : generators.cwd;
 
+  // try to locate locally installed yeoman plugin
+  generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
+
   // keep reference to this grunt object, so that other method of this module may use its API.
   generators.grunt = grunt;
 
@@ -66,8 +69,18 @@ generators.help = function help(args, options, config) {
   var internalPath = path.join(__dirname, '../..'),
     internal = generators.lookupHelp(internalPath, args, options, config),
     users = generators.lookupHelp(process.cwd(), args, options, config),
-    all = internal.concat(users);
+    grunt = generators.grunt;
 
+  // try load in any node_modules/yeoman-*/lib/generators too
+  var plugins = generators.plugins.map(function(plugin) {
+    return generators.lookupHelp(path.resolve(plugin), args, options, config);
+  }).reduce(function(a, b) {
+    a = a.concat(b);
+    return a;
+  }, []);
+
+  // group them all together
+  var all = users.concat(plugins).concat(internal);
 
   // sort out the namespaces
   var namespaces = all.map(function(generator) {
@@ -122,7 +135,7 @@ generators.help = function help(args, options, config) {
 // Prints a list of generators.
 generators.printList = function printList(base, namespaces) {
   // should use underscore.string for humanize, camelize and so on.
-  console.log( base.charAt(0).toUpperCase() + base.slice(1) + ':');
+  console.log( base.charAt(0).toUpperCase() + base.slice(1) + ':' );
   namespaces.forEach(function(ns) {
     console.log('  ' + ns);
   });
@@ -214,7 +227,8 @@ generators.invoke = function invoke(namespace, args, options, config) {
 //
 generators.findByNamespace = function findByNamespace(name, base, context) {
   var lookups = [],
-    internal = path.join(__dirname, '../..');
+    internal = path.join(__dirname, '../..'),
+    generator;
 
   // keep track of loaded path in lookup case no generator were found, to be able to
   // log where we searched
@@ -224,7 +238,26 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
   if(context) lookups.push(name + ':' + context);
   if(base) lookups.push(base);
 
-  return generators.lookup(lookups) || generators.lookup(lookups, internal);
+  // XXX test with different context, make sure it won't re-execute the same generator
+  // or might ends up in infinite loop
+  lookups.push(name);
+
+  // first search locally, ./lib/generators
+  generator = generators.lookup(lookups);
+
+  if(!generator) {
+    // then try in each yeoman plugin
+    generators.plugins.forEach(function(plugin) {
+      generator = generator || generators.lookup(lookups, path.resolve(plugin));
+    });
+  }
+
+  if(!generator) {
+    // finally try in yeoman's bultin
+    generator = generators.lookup(lookups, path.join(__dirname, '../..'));
+  }
+
+  return generator;
 };
 
 // Receives namespaces in an array and tries to find matching generators in the
@@ -240,7 +273,7 @@ generators.lookup = function lookup(namespaces, basedir) {
   paths.forEach(function(rawPath) {
     if(generator) return;
 
-    ['yeoman/generators', 'generators/yeoman', 'generators'].forEach(function(base) {
+    ['generators/yeoman', 'generators'].forEach(function(base) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
