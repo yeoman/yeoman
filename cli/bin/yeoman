@@ -57,6 +57,12 @@ if(/^generate/.test(route)) {
   return yeoman.generators.init(grunt);
 }
 
+// a new command? kick off the app generator logic
+if(/^new/.test(route)) {
+  grunt.cli.tasks = ['generate', 'app'].concat(grunt.cli.tasks.slice(1));
+  return yeoman.generators.init(grunt);
+}
+
 /* Yeoman Insight =========================================================== */
 async.series([function(cb) {
 
