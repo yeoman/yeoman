@@ -69,7 +69,7 @@ actions.template = function template(source, destination, data) {
 actions.directory = function directory(source, destination) {
   var self = this,
     root = path.join(this.sourceRoot(), source),
-    list = grunt.file.expandFiles(path.join(root, '**'));
+    list = grunt.file.expandFiles({ dot: true }, path.join(root, '**'));
 
   destination = destination || source;
 
