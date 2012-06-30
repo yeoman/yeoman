@@ -139,7 +139,10 @@ generators.invoke = function invoke(namespace, args, options, config) {
   }
 
   if(!klass) {
-    return console.log('Could not find generator', namespace);
+    console.log('Could not find generator', namespace);
+    return console.log('Tried in:\n' + generators.loadedPath.map(function(path) {
+      return ' - ' + path;
+    }).join('\n'));
   }
 
   // create a new generator from this class
@@ -210,6 +213,10 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
   var lookups = [],
     internal = path.join(__dirname, '../..');
 
+  // keep track of loaded path in lookup case no generator were found, to be able to
+  // log where we searched
+  generators.loadedPath = [];
+
   if(base) lookups.push(base + ':' + name);
   if(context) lookups.push(name + ':' + context);
   if(base) lookups.push(base);
@@ -234,6 +241,8 @@ generators.lookup = function lookup(namespaces, basedir) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
+        // keep track of loaded path
+        generators.loadedPath && generators.loadedPath.push(path);
         // console.log('>>', namespaces, 'search in ', path);
         generator = require(path);
         // dynamically attach the generator filepath where it was found
