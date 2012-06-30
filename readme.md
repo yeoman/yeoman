@@ -95,7 +95,7 @@ Yeoman is an open-source project by Google which builds on top of a number of op
 * Addy Osmani
 * Mickael Daniel
 * Sindre Sorhus
-* Eric Bidelman
+* [Eric Bidelman](http://ericbidelman.com)
 
 and other developers. 
 
