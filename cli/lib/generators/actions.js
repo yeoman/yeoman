@@ -67,14 +67,19 @@ actions.template = function template(source, destination, data) {
 
 // Copies recursively the files from source directory to root directory
 actions.directory = function directory(source, destination) {
-  var root = path.join(this.sourceRoot(), source),
-    files = grunt.file.expandFiles(path.join(root, '**'));
+  var self = this,
+    root = path.join(this.sourceRoot(), source),
+    list = grunt.file.expandFiles(path.join(root, '**'));
 
   destination = destination || source;
 
   // get the path relative to the template root, and copy to the relative destination
-  files.forEach(function(filepath) {
+  list.forEach(function(filepath) {
     var src = filepath.slice(root.length);
-    grunt.file.copy(filepath, path.join(destination, src));
+    grunt.file.copy(filepath, path.join(destination, src), {
+      process: function(content) {
+        return grunt.template.process(content, self)
+      }
+    });
   });
 };
