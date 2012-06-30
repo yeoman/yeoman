@@ -9,8 +9,18 @@ function AppGenerator(args, options, config) {
   this.destinationRoot(this.name);
 
   // setup some dummy data content for the template to pass. Will change.
-  this.pkg = {};
-  this.pkg.author = {};
+  this.pkg = {
+    title: this.name,
+    name: this.name,
+    version: '0.0.0',
+    homepage: '',
+    author: {
+      name: 'author'
+    },
+    licenses: [{
+      type: 'MIT'
+    }]
+  };
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);

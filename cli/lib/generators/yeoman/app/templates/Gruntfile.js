@@ -178,10 +178,6 @@ module.exports = function(grunt) {
     uglify: {}
   });
 
-
-  {% if (plugin) { %}
-  grunt.loadNpmTasks('{%= plugin %}');
-  {% } %}
   // Alias the `test` task to run the `jasmine` task instead
   grunt.registerTask('test', 'jasmine');
 

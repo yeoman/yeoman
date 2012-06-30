@@ -221,6 +221,8 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
   if(context) lookups.push(name + ':' + context);
   if(base) lookups.push(base);
 
+  lookups.push(name);
+
   return generators.lookup(lookups) || generators.lookup(lookups, internal);
 };
 
@@ -272,17 +274,40 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
 
   var found = ['yeoman/generators', 'generators/yeoman', 'generators'].map(function(p) {
     var prefix = path.join(basedir, 'lib', p),
-      pattern = path.join(prefix, '**', 'index.js');
+      pattern = path.join(prefix, '**', 'index.js'),
+      files = grunt.file.expandFiles(pattern);
 
-    return grunt.file.expandFiles(pattern).map(function(filepath) {
+    // don't load up under special path, like an immediate `templates/` dirname
+    files = files.filter(function(file) {
+      return path.basename(path.dirname(file)) !== 'templates';
+    });
+
+    return files.map(function(filepath) {
       var shorten = filepath.slice(prefix.length + 1),
-        namespace = shorten.split(path.join('/')).slice(0, -1).join(':');
+        namespace = shorten.split(path.join('/')).slice(0, -1).join(':'),
+        mod;
+
+      try {
+        mod = require(filepath);
+      } catch(e) {
+        if(!(/Cannot find module ['"]yeoman['"]/.test(e.message))) {
+          // not a yeoman loading issue? bubble up the exception
+          throw e;
+        }
+
+        console.log('[Error] loading generator at', filepath);
+        console.log('Make sure you have the yeoman module installed locally:');
+        console.log();
+        console.log('  npm install yeoman');
+        console.log();
+        console.log();
+      }
 
       return {
         root: prefix,
         path: shorten,
         fullpath: filepath,
-        module: require(filepath),
+        module: mod,
         namespace: namespace
       }
     });
