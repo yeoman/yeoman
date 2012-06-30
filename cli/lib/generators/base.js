@@ -23,7 +23,14 @@ function Base(args, options, config) {
     'javascript-engine': 'js',
     'stylesheet-engine': 'sass',
     'template-engine': 'handlebars',
-    'test-framework': 'jasmine'
+    'test-framework': 'jasmine',
+
+    // we use js-framework here to hook into bootstrap js plugins by default
+    // but it might evry well be done a bit differently (or we consider bootstrap
+    // as we would consider backbone or amber)
+    //
+    // We may use a different hook, or handle the bootstrap scaffolding directly here.
+    'js-framework': 'bootstrap'
   });
 
   this.arguments = [];

@@ -15,12 +15,15 @@ generators.Base = require('./base');
 generators.NamedBase = require('./named-base');
 
 // hidden namespaces don't show up in the help output
+// XXX hidden namespaces for now means app context, should we filter them
+// automatically in help output?
 generators.hiddenNamespaces = [
   'yeoman:app',
   'sass:app',
   'js:app',
   'jasmine:app',
-  'handlebars:app'
+  'handlebars:app',
+  'bootstrap:app'
 ];
 
 generators.init = function init(grunt) {
@@ -220,8 +223,6 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
   if(base) lookups.push(base + ':' + name);
   if(context) lookups.push(name + ':' + context);
   if(base) lookups.push(base);
-
-  lookups.push(name);
 
   return generators.lookup(lookups) || generators.lookup(lookups, internal);
 };

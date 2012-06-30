@@ -64,7 +64,6 @@ actions.template = function template(source, destination, data) {
   return this;
 };
 
-
 // Copies recursively the files from source directory to root directory
 actions.directory = function directory(source, destination) {
   var self = this,
@@ -78,7 +77,7 @@ actions.directory = function directory(source, destination) {
     var src = filepath.slice(root.length);
     grunt.file.copy(filepath, path.join(destination, src), {
       process: function(content) {
-        return grunt.template.process(content, self)
+        return grunt.template.process(content, self);
       }
     });
   });
