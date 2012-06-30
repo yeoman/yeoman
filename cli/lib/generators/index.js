@@ -14,6 +14,15 @@ var generators = module.exports;
 generators.Base = require('./base');
 generators.NamedBase = require('./named-base');
 
+// hidden namespaces don't show up in the help output
+generators.hiddenNamespaces = [
+  'yeoman:app',
+  'sass:app',
+  'js:app',
+  'jasmine:app',
+  'handlebars:app'
+];
+
 generators.init = function init(grunt) {
   // get back arguments without the generate prefix
   var cli = grunt.cli,
@@ -24,6 +33,9 @@ generators.init = function init(grunt) {
   generators.cwd = process.cwd();
   generators.gruntfile = grunt.file.findup(generators.cwd, 'Gruntfile.js');
   generators.base = generators.gruntfile ? path.dirname(generators.gruntfile) : generators.cwd;
+
+  // keep reference to this grunt object, so that other method of this module may use its API.
+  generators.grunt = grunt;
 
   // when a Gruntfile is found, make sure to cdinto that path. This is the
   // root of the yeoman app (should probably check few other things too, this
@@ -40,15 +52,78 @@ generators.init = function init(grunt) {
   }
 
   if(!name) {
-    return generators.help('generate');
+    return generators.help(args, cli.options, grunt.config());
   }
 
   generators.invoke(name, args, cli.options, grunt.config());
 };
 
 // show help message with available generators
-generators.help = function help(command) {
-  console.log('show help message for', command);
+generators.help = function help(args, options, config) {
+  var internalPath = path.join(__dirname, '../..'),
+    internal = generators.lookupHelp(internalPath, args, options, config),
+    users = generators.lookupHelp(process.cwd(), args, options, config),
+    all = internal.concat(users);
+
+
+  // sort out the namespaces
+  var namespaces = all.map(function(generator) {
+    return generator.namespace;
+  });
+
+  // filter hidden namespaces
+  namespaces = namespaces.filter(function(ns) {
+    return !~generators.hiddenNamespaces.indexOf(ns);
+  });
+
+  // group them by namespace
+  var groups = {}
+  namespaces.forEach(function(namespace) {
+    var base = namespace.split(':')[0];
+    if(!groups[base]) groups[base] = [];
+    groups[base] = groups[base].concat(namespace);
+  });
+
+  // default help message
+  var out = [
+    'Usage: yeoman generate GENERATOR [args] [options]',
+    '',
+    'General options:',
+    '  -h, [--help]     # Print generator\'s options and usage',
+    // XXX below are options that are present in rails generators we might want
+    // to handle
+    '  -p, [--pretend]  # Run but do not make any changes',
+    '  -f, [--force]    # Overwrite files that already exist',
+    '  -s, [--skip]     # Skip files that already exist',
+    '  -q, [--quiet]    # Suppress status output',
+    '',
+    'Please choose a generator below.',
+    ''
+  ].join('\n');
+
+  console.log(out);
+
+  // strip out the yeoman base namespace
+  groups.yeoman = groups.yeoman.map(function(ns) {
+    return ns.replace(/^yeoman:/, '');
+  });
+
+  // print yeoman default first
+  generators.printList('yeoman', groups.yeoman);
+  Object.keys(groups).forEach(function(key) {
+    if(key === 'yeoman') return;
+    generators.printList(key, groups[key]);
+  });
+};
+
+// Prints a list of generators.
+generators.printList = function printList(base, namespaces) {
+  // should use underscore.string for humanize, camelize and so on.
+  console.log( base.charAt(0).toUpperCase() + base.slice(1) + ':');
+  namespaces.forEach(function(ns) {
+    console.log('  ' + ns);
+  });
+  console.log();
 };
 
 // Receives a namespace, arguments and the options list to invoke a generator.
@@ -106,7 +181,6 @@ generators.invoke = function invoke(namespace, args, options, config) {
     config: config
   });
 };
-
 
 //
 // Yeoman finds namespaces by looking up special directories, and namespaces
@@ -177,6 +251,57 @@ generators.lookup = function lookup(namespaces, basedir) {
   return generator;
 };
 
+// This will try to load any generator in the load path to show in help.
+//
+// XXX try to lookup for generator files in the node's loadpath too (eg. node_modules)
+// Note may end up in the convention than rails, with generator named after
+// {name}_generator.js pattern. Easier for path lookup.
+generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
+  var grunt = generators.grunt;
+
+  basedir = basedir || generators.base;
+
+  var found = ['yeoman/generators', 'generators/yeoman', 'generators'].map(function(p) {
+    var prefix = path.join(basedir, 'lib', p),
+      pattern = path.join(prefix, '**', 'index.js');
+
+    return grunt.file.expandFiles(pattern).map(function(filepath) {
+      var shorten = filepath.slice(prefix.length + 1),
+        namespace = shorten.split(path.join('/')).slice(0, -1).join(':');
+
+      return {
+        root: prefix,
+        path: shorten,
+        fullpath: filepath,
+        module: require(filepath),
+        namespace: namespace
+      }
+    });
+  });
+
+  // reduce it down to a single array
+  found = found.reduce(function(a, b) {
+    a = a.concat(b);
+    return a;
+  }, []);
+
+  // filter out non generator based module
+  found = found.filter(function(generator) {
+    if(typeof generator.module !== 'function') return false;
+    generator.instance = new generator.module(args, options, config);
+    return generator.instance instanceof generators.Base;
+  }).sort(function(a, b) {
+    return a.namespace < b.namespace;
+  });
+
+  // and ensure we won't return same generator on different namespace
+  var paths = [];
+  return found.filter(function(generator) {
+    var known = !~paths.indexOf(generator.fullpath);
+    paths.push(generator.fullpath);
+    return known;
+  });
+};
 
 // Convert namespaces to paths by replacing ":" for "/".
 generators.namespacesToPaths = function namespacesToPaths(namespaces) {
