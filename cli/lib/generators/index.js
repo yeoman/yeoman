@@ -88,6 +88,9 @@ generators.help = function help(args, options, config) {
     return generator.namespace;
   });
 
+  // ensure we don't help loaded twice generator
+  namespaces = generators.grunt.util._.uniq(namespaces);
+
   // filter hidden namespaces
   namespaces = namespaces.filter(function(ns) {
     return !~generators.hiddenNamespaces.indexOf(ns);
