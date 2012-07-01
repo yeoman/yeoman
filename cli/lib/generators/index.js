@@ -57,7 +57,6 @@ generators.init = function init(grunt) {
   // try to locate locally installed yeoman plugin
   generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
 
-
   if(!name) {
     return generators.help(args, cli.options, grunt.config());
   }
@@ -175,6 +174,7 @@ generators.invoke = function invoke(namespace, args, options, config) {
   // and few other informations
   generator.namespace = klass.namespace;
   generator.generatorName = name;
+  generator.generatorPath = klass.path;
 
 
   // configure the given sourceRoot for this path, if it wasn't already in the
