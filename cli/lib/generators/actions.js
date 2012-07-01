@@ -5,6 +5,16 @@ var path = require('path'),
 
 var actions = module.exports;
 
+// Might change. Make sure to always put grunt.file.write into verbose mode,
+// and reset to false afterwards
+var _write = grunt.file.write;
+grunt.file.write = function write() {
+  grunt.option('verbose', true);
+  _write.apply(grunt.file, arguments);
+  grunt.option('verbose', false);
+};
+
+
 // The action mixin is comprised of Grunt's file and log API, and made
 // available for generators to use as instance methods directly for the file API,
 // and through the `log` property for the log API.
@@ -28,15 +38,6 @@ actions.destinationRoot = function destinationRoot(root) {
   }
 
   return this._destinationRoot || './';
-};
-
-actions.write = function write() {
-  var verbose = grunt.option('verbose');
-  // always write in verbose mode
-  grunt.option('verbose', true);
-  grunt.file.write.apply(grunt.file, arguments);
-  // reset the verbose flag to what it was
-  grunt.option('verbose', verbose);
 };
 
 // Make some of the file API aware of our source / destination root paths.
