@@ -1,70 +1,17 @@
 
 Rails-like generators. Grunt based.
 
-Default File structure
-----------------------
+Two new commands were added: `new` and `generate`
 
-      .
-      ├── Gruntfile.js
-      ├── (other project root files)
-      │
-      ├── intermediate (/..) (probably temp/, tmp/, or hidden folder)
-      ├── publish      (/..) (probably deploy/)
-      │
-      ├── app
-      │   ├── index.html
-      │   ├── browser_modules (probably in app/js instead)
-      │   │   ├── jquery
-      │   │   │   ├── browser.json
-      │   │   │   └── jquery.js
-      │   │   └── jquery-ui
-      │   │       ├── browser.json
-      │   │       └── jquery-ui.js
-      │   ├── js
-      │   │   ├── controllers
-      │   │   │   ├── people_controller.js
-      │   │   │   └── person_controller.js
-      │   │   ├── main.js
-      │   │   ├── models
-      │   │   │   └── person.js
-      │   │   ├── vendor
-      │   │   │   ├── ember-data.js
-      │   │   │   ├── ember.js
-      │   │   │   └── jquery.js
-      │   │   └── views
-      │   │       ├── people
-      │   │       │   ├── edit_view.js
-      │   │       │   ├── index_view.js
-      │   │       │   └── list_view.js
-      │   │       └── shared
-      │   │           ├── frame_view.js
-      │   │           └── split_view.js
-      │   ├── css
-      │   │   └── main.css
-      │   │   └── sass
-      │   │      └── main.scss
-      │   └── templates
-      │       └── people
-      │           ├── edit.handlebars
-      │           ├── index.handlebars
-      │           └── list.handlebars
-      ├── spec
-      │   ├── controllers
-      │   │   ├── people_controller_spec.js
-      │   │   └── person_controller_spec.js
-      │   └── views
-      │       └── shared
-      │           ├── frame_view_spec.js
-      │           └── split_view_spec.js
-      └── test
-          ├── index.html
-          ├── jasmine
-          │   ├── jasmine-html.js
-          │   ├── jasmine.css
-          │   └── jasmine.js
-          └── spec_helper.js
+`new` is actually the same command internally than `generate app`.
 
 
+---
+
+Note: This documentation is not up-to-date with the actual code, but still give
+a good overview of the rails generator system we take a lot of inspiration from
+(http://guides.rubyonrails.org/generators.html) and the overall generator layer
+in place.
 
 Generator - Rails 3 like
 ------------------------
@@ -125,10 +72,14 @@ just invoking `yeoman generate`:
     $ cd myapp
     $ yeoman generate
 
+**Note:** Right now, there's nothing stoping users from using the `generate`
+command from outside a yeoman application. rails prevent that, we should too.
+`new` should be use prior to that, and the user must be within the yeoman app.
+
 You will get a list of all generators that comes with yeoman. If you need a
 detailed description of the helper generator, for example, you can simply do:
 
-$ yeoman generate helper --help
+    $ yeoman generate helper --help
 
 ### Creating Your First Generator
 
@@ -152,7 +103,7 @@ with the following content:
     util.inherits(Generator, yeoman.generators.Base);
 
     Generator.prototype.createInitializerFile = function() {
-      this.createFile('config/initializers/initializer.js', "# Add initialization content here");
+      this.write('config/initializers/initializer.js', "# Add initialization content here");
     };
 
 **Note** Maybe we can provide some OO sugar instead of the typical constructor
@@ -160,8 +111,9 @@ call + util.inherits. Very much Backbone inspired, with some auto-propagated
 `extend` method on generators (maybe even based on Backbone.Model or something)
 
 `createFile` is method provided by `yeoman.generators.Base`, and is a basic
-facade to `grunt.file` API. Generators method can be found in the docco
-generated documentation.
+facade to `grunt.file` API. When we "write" things, this happen relative to the
+working directory (that is the Gruntfile location, the Gruntfile is resolved
+internally, walking up the FS until one is found).
 
 Our new generator is quite simple: it inherits from `yeoman.generators.Base`
 and has one method definition. Each public method in the generator is executed
@@ -169,6 +121,9 @@ when a generator is invoked (first level method in the prototype chain, eg.
 `Base` class method are not called).  Finally, we invoke the `create_file`
 method that will create a file at the given destination with the given
 content.
+
+**Note**: So, generators should do their task synchronously. We lack right now
+the API to be able to do things asynchronously (which we might need).
 
 To invoke our new generator, we just need to do:
 
@@ -178,8 +133,7 @@ Before we go on, let’s see our brand new generator description:
 
     $ yeoman generate initializer --help
 
-yeoman is usually able to generate good descriptions if a generator is
-namespaced, as `yeoman.generators.ModelGenerator`, but not in this particular
+yeoman is usually able to generate good descriptions, but not in this particular
 case. We can solve this problem in two ways. The first one is calling desc
 inside our generator:
 
@@ -204,13 +158,16 @@ Now we can see the new description by invoking --help on the new generator. The
 second way to add a description is by creating a file named `USAGE` in the same
 directory as our generator. We are going to do that in the next step.
 
+**Note**: Right now, the only option is the second way, through a `USAGE` file.
+The `desc` method is not there yet, but can be added fairly easily.
+
 ### Creating Generators with Generators
 
 Generators themselves have a generator:
 
     $ yeoman generate generator initializer
       create  lib/generators/initializer
-      create  lib/generators/initializer/initializer_generator.js
+      create  lib/generators/initializer/index.js
       create  lib/generators/initializer/USAGE
       create  lib/generators/initializer/templates
 
@@ -234,18 +191,24 @@ of `yeoman.Generators.Base`. This means that our generator expects at least one
 argument, which will be the name of the initializer, and will be available in
 our code in the variable `name`.
 
-We can see that by invoking the description of this new generator (don’t forget
-to delete the old generator file):
+We can see that by invoking the description of this new generator:
 
     $ yeoman generate initializer --help
+
     Usage:
       yeoman generate initializer NAME [options]
+
+**Note**: The banner is not automatically generated yet for generators (the
+Usage: thing above). Same for options and arguments defined by the generator,
+they should show up during the help output. Right now, the USAGE file is dumped
+to the console as is.
 
 We can also see that our new generator has an instance method called `sourceRoot`.
 
 This method points to where our generator templates will be placed, if any, and
 by default it points to the created directory
-`lib/generators/initializer/templates`.
+`lib/generators/initializer/templates` (so the `sourceRoot(__dirname,
+'templates')` can be removed, this is the default).
 
 In order to understand what a generator template means, let’s create the file
 lib/generators/initializer/templates/initializer.js with the following content:
@@ -254,13 +217,21 @@ lib/generators/initializer/templates/initializer.js with the following content:
 
 And now let’s change the generator to copy this template when invoked:
 
-  class InitializerGenerator < yeoman::Generators::NamedBase
-    source_root File.expand_path("../templates", __FILE__)
+    var util = require('util'),
+      yeoman = require('yeoman');
 
-    def copy_initializer_file
-      copy_file "initializer.rb", "config/initializers/#{file_name}.rb"
-    end
-  end
+    module.exports = Generator;
+
+    function Generator() {
+      yeoman.generators.NamedBase.apply(this, arguments);
+      // if your templates/ location differ, feel free to set it with sourceRoot()
+    }
+
+    util.inherits(Generator, yeoman.generatos.NamedBase);
+
+    Generator.prototype.copyInitializerFile = function() {
+      this.copy('initializer.js', 'config/initializers/' + name + '.js');
+    };
 
 And let’s execute our generator:
 
@@ -268,31 +239,40 @@ And let’s execute our generator:
 
 We can see that now an initializer named `core_extensions` was created at
 `config/initializers/core_extensions.js` with the contents of our template. That
-means that `copyFile` copied a file in our source root to the destination path
-we gave. The method `filename` is automatically created when we inherit from
-`yeoman.Generators.NamedBase`.
-
-The methods that are available for generators are covered in the final section
-of this guide.
+means that `copy` copied a file in our source root to the destination path
+we gave. The property `name` is automatically created when we inherit from
+`yeoman.Generators.NamedBase`, and match the value of the given argument
+(`NamedBase` automatically specify an argument via `this.argument`)
 
 ### Generators Lookup
 
 When you run `yeoman generate initializer core_extensions` yeoman requires these
 paths in turn until one is found:
 
-    yeoman/generators/initializer/index.js
-    yeoman/generators/initializer.js
     lib/generators/initializer/index.js
     lib/generators/initializer.js
+    lib/generators/yeoman/initializer/index.js
+    lib/generators/yeoman/initializer.js
 
 **Note**: `index.js` may be anything else, as long the module entry point is
 defined in a package.json.
 
-If none is found you get an error message.
+**Seconc Note**: While true, the help output might miss a generator. It looks
+for file below lib/generators at few locations, searching for `index.js` files.
 
-The examples above put files under the application’s `lib`, unless they start
-with `yeoman/` which means these paths are resolved below yeoman installation
-directory (and are internal).
+yeoman will do this lookup at few different places, in this order:
+
+- relative to the working directory, from within a yeoman application.
+- relative to any `node_modules/yeoman-*` module. These are called "yeoman
+  plugins", they should package up their generator in the `lib/generators`
+  directory.
+
+This mean that users may override part or the whole set of generator used by
+yeoman, either at an application level, with custom handcrafted generator or
+via "yeoman plugin" (a node package that defines a set of generators in their
+`lib/generators` directory).
+
+If none is found you get an error message.
 
 ### Customizing your Workflow
 
@@ -300,8 +280,8 @@ Yeoman own generators are flexible enough to let you customize scaffolding. They
 can be configured in your application Gruntfile, these are some defaults:
 
       generators: {
-        template_engine: 'handlebars',
-        test_framework: {
+        'template-engine': 'handlebars',
+        'test-framework': {
           name: 'mocha',
           options: {
             ui: 'bdd'
@@ -309,14 +289,17 @@ can be configured in your application Gruntfile, these are some defaults:
         }
       }
 
-Looking at this output, it’s easy to understand how generators work in Rails
-3.0 and above.
+Looking at this output, it’s easy to understand how generators work in yeoman.
 
 Generator relies on hook and other generators, some don't actually generate
 anything, they just invokes others to do the work.
 
 This allows us to add/replace/remove any of those invocations. For instance,
-the `controller` generator invokes `handlebars`, `view` and `mocha` generators.
+the `controller` generator invokes the `view` and `test-framework` hooks. These
+hooks tries to resolve their value from cli options first, then look at the
+Gruntfile for a generator property with the corresponding hook name, and
+finally defaults to the hook name if none were found.
+
 Since each generator has a single responsibility, they are easy to reuse,
 avoiding code duplication.
 
