@@ -53,7 +53,7 @@ if(/^install|^uninstall|^search|^list|^lookup|^update/.test(route)) {
 }
 
 // a generate command? Kick off the generator logic instead
-if(/^generate/.test(route)) {
+if(/^(generate)|(g)$/.test(cmds[0])) {
   return yeoman.generators.init(grunt);
 }
 
