@@ -4,6 +4,8 @@ var util = require('util'),
 
 module.exports = Generator;
 
+// XXX might be removed to controller generator at framework level
+
 function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
 
@@ -15,7 +17,6 @@ function Generator() {
 
 util.inherits(Generator, yeoman.generators.NamedBase);
 
-Generator.prototype.createInitializerFile = function() {
-  this.log.ok('Logging through grunt log API');
+Generator.prototype.createControllerFile = function() {
   this.write('app/js/controllers/' + this.name + '.js', "// Add initialization content here");
 };
