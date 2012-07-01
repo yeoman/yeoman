@@ -1,5 +1,4 @@
 Description:
-    Explain the generator
     Stubs out an application directory with bootstrap js plugins into
     app/js/vendor/bootstrap
 
