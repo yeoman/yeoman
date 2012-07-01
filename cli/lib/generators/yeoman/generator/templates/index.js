@@ -10,7 +10,7 @@ function Generator() {
   // this is the default. Uncomment and change the path if you want
   // to change the source root directory for this generator.
   //
-  // this.sourceRoot(path.join(__dirname, '../templates'));
+  // this.sourceRoot(path.join(__dirname, 'templates'));
 
 }
 

@@ -37,9 +37,6 @@ generators.init = function init(grunt) {
   generators.gruntfile = grunt.file.findup(generators.cwd, 'Gruntfile.js');
   generators.base = generators.gruntfile ? path.dirname(generators.gruntfile) : generators.cwd;
 
-  // try to locate locally installed yeoman plugin
-  generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
-
   // keep reference to this grunt object, so that other method of this module may use its API.
   generators.grunt = grunt;
 
@@ -56,6 +53,10 @@ generators.init = function init(grunt) {
     }
     process.chdir(generators.base);
   }
+
+  // try to locate locally installed yeoman plugin
+  generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
+
 
   if(!name) {
     return generators.help(args, cli.options, grunt.config());
@@ -238,9 +239,7 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
   if(context) lookups.push(name + ':' + context);
   if(base) lookups.push(base);
 
-  // XXX test with different context, make sure it won't re-execute the same generator
-  // or might ends up in infinite loop
-  lookups.push(name);
+  if(!lookups.length) lookups.push(name);
 
   // first search locally, ./lib/generators
   generator = generators.lookup(lookups);
@@ -298,9 +297,9 @@ generators.lookup = function lookup(namespaces, basedir) {
 
 // This will try to load any generator in the load path to show in help.
 //
-// XXX try to lookup for generator files in the node's loadpath too (eg. node_modules)
-// Note may end up in the convention than rails, with generator named after
-// {name}_generator.js pattern. Easier for path lookup.
+// XXX Note may end up in the convention than rails, with generator named after
+// {name}_generator.js pattern. Easier for path lookup. Right now, generators
+// are stucked with the `index.js` name.
 generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
   var grunt = generators.grunt;
 
