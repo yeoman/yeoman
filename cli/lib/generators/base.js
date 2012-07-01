@@ -137,8 +137,14 @@ Base.prototype.hookFor = function hookFor(name, config) {
   // via Gruntfile's generators config.
   name = this.defaultFor(name);
 
+  config = config || {};
+
+  var args = config.args || this.args,
+    options = config.options || this.options,
+    gruntConfig = config.config || this.config;
+
   // and try to invoke the generator, looking up for hook:context
-  this.invoke(name + ':' + this.generatorName, this.args, this.options, this.config);
+  this.invoke(name + ':' + this.generatorName, args, options, gruntConfig);
 };
 
 // Return the default value for the option name given doing a lookup in
@@ -166,7 +172,7 @@ Base.prototype.bannerFor = function bannerFor(config) {
 // Tries to get the description from a USAGE file one folder above the source
 // root otherwise uses a default description.
 Base.prototype.help = function help() {
-  var filepath = path.join(this.sourceRoot(), '../USAGE'),
+  var filepath = path.join(this.generatorPath, 'USAGE'),
     exists = path.existsSync(filepath);
 
   return exists ? fs.readFileSync(filepath, 'utf8') : [
