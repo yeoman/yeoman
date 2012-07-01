@@ -4,7 +4,8 @@ var fs = require('fs'),
   util = require('util'),
   events = require('events'),
   actions = require('./actions'),
-  _ = require('underscore');
+  _ = require('underscore'),
+  grunt = require('grunt');
 
 module.exports = Base;
 
@@ -58,7 +59,6 @@ Base.prototype.run = function run(name, config) {
 
   var methods = Object.keys(this.__proto__);
   methods.forEach(function(method) {
-    console.log('..', method, '..');
     self[method].apply(self, args);
   });
 };

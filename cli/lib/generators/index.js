@@ -164,6 +164,9 @@ generators.invoke = function invoke(namespace, args, options, config) {
     }).join('\n'));
   }
 
+
+  generators.grunt.log.subhead('.. Invoke ' + namespace + ' ..');
+
   // create a new generator from this class
   var generator = new klass(args, options, config);
 
