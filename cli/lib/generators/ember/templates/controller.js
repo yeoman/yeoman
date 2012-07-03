@@ -1,4 +1,4 @@
-<%= application_name.camelize %>.<%= class_name %>Controller = Ember.ObjectController.extend({
+<%= _.camelize(appname) %>.<%= _.classify(name) %>Controller = Ember.ObjectController.extend({
   // Implement your controller here.
 });
 

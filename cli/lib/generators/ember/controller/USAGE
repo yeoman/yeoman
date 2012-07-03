@@ -1,0 +1,11 @@
+Options:
+    --array       # Create an Ember.ArrayController to represent multiple objects
+
+Description:
+    Creates a new Ember.js controller
+
+Example:
+    yeoman generate controller Thing
+
+    This will create:
+        app/js/controllers/thing-controller.js
