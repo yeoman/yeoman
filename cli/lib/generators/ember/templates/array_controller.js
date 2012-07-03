@@ -1,4 +1,4 @@
-<%= application_name.camelize %>.<%= class_name %>Controller = Ember.ArrayController.extend({
+<%= _.camelize(appname) %>.<%= _.classify(name) %>Controller = Ember.ArrayController.extend({
   // Implement your controller here.
   //
   // An ArrayController has a `content` property, which you should

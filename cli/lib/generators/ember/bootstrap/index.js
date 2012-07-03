@@ -27,8 +27,9 @@ Generator.prototype.injectEmber = function injectEmber() {
 Generator.prototype.createDirLayout = function createDirLayout() {
   var self = this;
   this.dirs.forEach(function(dir) {
-    self.log.ok('create >> app/js/' + dir);
+    self.log.write('Creating app/js/' + dir + ' directory...')
     self.mkdir(path.join('app/js', dir));
+    self.log.ok();
   });
 };
 
