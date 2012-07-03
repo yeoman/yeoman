@@ -51,21 +51,33 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app/css');
   this.mkdir('app/templates');
 
+  // resolved to js by default (could be switched to coffee for instance)
   this.hookFor('javascript-engine');
-  this.hookFor('stylesheet-engine');
-  this.hookFor('template-engine');
 
-  this.hookFor('controller');
+  // resolved to sass by default (could be switched to less for instance)
+  this.hookFor('stylesheet-engine');
+
+  // init a framework specific controller. resolved to ? by default
+  this.hookFor('js-framework', { as: 'controller' });
+
+  // init a framework specific model. resolved to ? by default
+  this.hookFor('js-framework', { as: 'model' });
+
+  // init a framework specific view. resolved to ? by default
+  this.hookFor('js-framework', { as: 'view' });
 };
 
 AppGenerator.prototype.lib = function lib() {
   this.mkdir('lib');
+
+  // init a generator ? a readme explaining the purpose of the lib/ folder?
 };
 
 AppGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.mkdir('spec');
 
+  // resolved to jasmine by default (could be switched to mocha for instance)
   this.hookFor('test-framework');
 };
 

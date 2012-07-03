@@ -5,16 +5,6 @@ var path = require('path'),
 
 var actions = module.exports;
 
-// Might change. Make sure to always put grunt.file.write into verbose mode,
-// and reset to false afterwards
-// var _write = grunt.file.write;
-// grunt.file.write = function write() {
-//   grunt.option('verbose', true);
-//   _write.apply(grunt.file, arguments);
-//   grunt.option('verbose', false);
-// };
-
-
 // The action mixin is comprised of Grunt's file and log API, and made
 // available for generators to use as instance methods directly for the file API,
 // and through the `log` property for the log API.
