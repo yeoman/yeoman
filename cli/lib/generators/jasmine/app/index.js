@@ -2,7 +2,10 @@
 var util = require('util'),
   yeoman = require('../../../../');
 
-// js:app generator
+// jasmine:app generator
+//
+// Setup the test/ directory.
+//
 
 module.exports = Generator;
 
@@ -11,4 +14,8 @@ function Generator() {
 }
 
 util.inherits(Generator, yeoman.generators.Base);
+
+Generator.prototype.setupEnv = function setupEnv() {
+  this.directory('.', 'test');
+};
 
