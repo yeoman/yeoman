@@ -141,10 +141,11 @@ Base.prototype.hookFor = function hookFor(name, config) {
 
   var args = config.args || this.args,
     options = config.options || this.options,
-    gruntConfig = config.config || this.config;
+    gruntConfig = config.config || this.config,
+    context = config.as || this.generatorName;
 
   // and try to invoke the generator, looking up for hook:context
-  this.invoke(name + ':' + this.generatorName, args, options, gruntConfig);
+  this.invoke(name + ':' + context, args, options, gruntConfig);
 };
 
 // Return the default value for the option name given doing a lookup in
