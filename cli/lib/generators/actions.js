@@ -7,12 +7,12 @@ var actions = module.exports;
 
 // Might change. Make sure to always put grunt.file.write into verbose mode,
 // and reset to false afterwards
-var _write = grunt.file.write;
-grunt.file.write = function write() {
-  grunt.option('verbose', true);
-  _write.apply(grunt.file, arguments);
-  grunt.option('verbose', false);
-};
+// var _write = grunt.file.write;
+// grunt.file.write = function write() {
+//   grunt.option('verbose', true);
+//   _write.apply(grunt.file, arguments);
+//   grunt.option('verbose', false);
+// };
 
 
 // The action mixin is comprised of Grunt's file and log API, and made
@@ -48,12 +48,20 @@ actions.destinationRoot = function destinationRoot(root) {
 // (most likely cwd)
 actions.copy = function copy(source, destination, options) {
   source = path.join(this.sourceRoot(), source);
-  return grunt.file.copy(source, destination, options);
+  grunt.file.copy(source, destination, options);
+  return this;
 };
 
 actions.read = function read(filepath, encoding) {
   filepath = path.join(this.sourceRoot(), filepath);
   return grunt.file.read(filepath, encoding);
+};
+
+actions.write = function write(filepath, encoding) {
+  grunt.option('verbose', true);
+  grunt.file.write(filepath, encoding);
+  grunt.option('verbose', false);
+  return this;
 };
 
 // Gets an underscore template at the relative source, executes it and makes a copy
@@ -79,11 +87,15 @@ actions.directory = function directory(source, destination) {
 
   // get the path relative to the template root, and copy to the relative destination
   list.forEach(function(filepath) {
-    var src = filepath.slice(root.length);
-    grunt.file.copy(filepath, path.join(destination, src), {
+    var src = filepath.slice(root.length),
+      dest = path.join(destination, src);
+
+    self.log.write('Writing ' + dest + '...');
+    grunt.file.copy(filepath, dest, {
       process: function(content) {
         return grunt.template.process(content, self);
       }
     });
+    self.log.ok();
   });
 };
