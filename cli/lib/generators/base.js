@@ -31,7 +31,7 @@ function Base(args, options, config) {
     // as we would consider backbone or amber)
     //
     // We may use a different hook, or handle the bootstrap scaffolding directly here.
-    'js-framework': 'bootstrap'
+    'js-framework': 'ember'
   });
 
   this.arguments = [];
@@ -88,7 +88,7 @@ Base.prototype.run = function run(name, config) {
 // type     - (todo) The type of the argument, can be :string, :hash, :array, :numeric.
 // default  - (todo) Default value for this argument. It cannot be required
 //             and have default values.
-// banner   - (todo) String to show on usage notes.
+// banner   - String to show on usage notes.
 //
 //
 
@@ -122,7 +122,8 @@ Base.prototype.argument = function argument(name, config) {
     // Array / String, default is assumed to be String.)
     //
     // XXX add handling for Number, Array, String, Object (aka hash object)
-    return config.type === Array ? this.args.slice(position) : this.args[position];
+    var value = config.type === Array ? this.args.slice(position) : this.args[position];
+    return position >= this.args.length ? config.defaults : value;
   });
 };
 

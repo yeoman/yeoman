@@ -19,11 +19,9 @@ generators.NamedBase = require('./named-base');
 // automatically in help output?
 generators.hiddenNamespaces = [
   'yeoman:app',
+  'yeoman:js',
   'sass:app',
-  'js:app',
-  'jasmine:app',
-  'handlebars:app',
-  'bootstrap:app'
+  'jasmine:app'
 ];
 
 generators.init = function init(grunt) {
