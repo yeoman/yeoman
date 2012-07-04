@@ -66,7 +66,7 @@ module.exports = function(grunt) {
       },
       // only used with `yeoman server`
       reload: {
-        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*'],
+        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*', '**/*.html', '**/*.htm'],
         tasks: 'reload'
       }
     },
