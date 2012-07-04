@@ -52,9 +52,9 @@ if(/^init/.test(route)) {
   cli.tasks = 'init:yeoman';
 }
 
-// a nest command?
+// a bower command?
 if(/^install|uninstall|search|list|lookup|update/.test(route)) {
-  cli.tasks = 'nest' + ':' + cmds.join(':');
+  cli.tasks = 'bower' + ':' + cmds.join(':');
 }
 
 /* Yeoman Insight =========================================================== */
