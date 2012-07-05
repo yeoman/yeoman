@@ -9,7 +9,7 @@ var util = require('util'),
 
 module.exports = Generator;
 
-function Generator(name, options, config) {
+function Generator(args, options, config) {
 
   yeoman.generators.Base.apply(this, arguments);
 
