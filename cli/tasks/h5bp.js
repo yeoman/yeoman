@@ -87,11 +87,6 @@ module.exports = function(grunt) {
         str + new Array(max - str.length + 1).join(' ');
   });
 
-  // To-be-implemented tasks
-  grunt.registerTask('manifest', 'TBD - Generates appcache manifest file.', function() {
-    grunt.log.error('not yet implemented');
-  });
-
   var now = +new Date();
   grunt.registerTask('time', 'Print sucess status with elapsed time', function() {
     grunt.log.ok('Build sucess. Done in ' + ((+new Date() - now) / 1000) + 's');
