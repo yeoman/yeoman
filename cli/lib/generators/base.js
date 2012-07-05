@@ -27,7 +27,7 @@ function Base(args, options, config) {
     'test-framework': 'jasmine',
 
     // we use js-framework here to hook into bootstrap js plugins by default
-    // but it might evry well be done a bit differently (or we consider bootstrap
+    // but it might eevry well be done a bit differently (or we consider bootstrap
     // as we would consider backbone or amber)
     //
     // We may use a different hook, or handle the bootstrap scaffolding directly here.
@@ -48,7 +48,7 @@ _.extend(Base.prototype, actions);
 // invoked, if none is given, the same values used to initialize the invoker
 // are used to initialize the invoked.
 //
-// XXX curently, all is asumed to be run synchronously. We may have the need to
+// XXX currently, all is assumed to be run synchronously. We may have the need to
 // run async thing, if that's so, always assume a method is synchronous unless
 // a special this.async() handler is invoked (like Grunt).
 
@@ -93,7 +93,7 @@ Base.prototype.run = function run(name, config) {
 //
 
 Base.prototype.argument = function argument(name, config) {
-  // config handling. Should probably be breaked up in its own Argument class,
+  // config handling. Should probably be put in its own Argument class,
   // like Thor does.
   config.name = name;
   _.defaults(config, {
@@ -108,26 +108,22 @@ Base.prototype.argument = function argument(name, config) {
     config: config
   });
 
-  // create the accessor for this named argument, its value is direcly tied to
-  // the position of the given argument, and the order of specified arguments
-  // for this class.
-  this.__defineGetter__(name, function() {
-    var position = -1;
-    this.arguments.forEach(function(arg, i) {
-      if(position !== -1) return;
-      if(arg.name === name) position = i;
-    });
-
-    // a bit of coercion and type handling, to be improved (just dealing with
-    // Array / String, default is assumed to be String.)
-    //
-    // XXX add handling for Number, Array, String, Object (aka hash object)
-    var value = config.type === Array ? this.args.slice(position) : this.args[position];
-    return position >= this.args.length ? config.defaults : value;
+  var position = -1;
+  this.arguments.forEach(function(arg, i) {
+    if(position !== -1) return;
+    if(arg.name === name) position = i;
   });
+
+  // a bit of coercion and type handling, to be improved (just dealing with
+  // Array / String, default is assumed to be String.)
+  //
+  // XXX add handling for Number, Array, String, Object (aka hash object)
+  var value = config.type === Array ? this.args.slice(position) : this.args[position];
+  value = position >= this.args.length ? config.defaults : value;
+
+  this[name] = value;
+  return this;
 };
-
-
 
 // Invoke a generator based on the value supplied by the user to the
 // given option named "name". An option is created when this method
