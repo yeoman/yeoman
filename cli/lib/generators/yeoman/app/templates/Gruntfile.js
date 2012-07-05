@@ -92,6 +92,11 @@ module.exports = function(grunt) {
       staging: 'app/'
     },
 
+    // Below, all paths are relative to the staging directory, which is a copy
+    // of the app/ directory. Any .gitignore, .ignore and .buildignore file
+    // that might appear in the app/ tree are used to ignore these values
+    // during the copy process.
+
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
       'css/main.css': ['css/**/*.css']
@@ -105,7 +110,7 @@ module.exports = function(grunt) {
       img: 'img/**'
     },
 
-    // update references in html to revved files
+    // update references in html / css to revved files
     usemin: {
       html: ['**/*.html'],
       css: ['**/*.css']
@@ -139,6 +144,9 @@ module.exports = function(grunt) {
       }
     },
 
+    // rjs configuration. You don't necessary need to specify here the typical
+    // `path` configuration, the rjs task will parse these values from your
+    // main module, using `require.config()`
     rjs: {
       modules: [{
         name: 'main',
