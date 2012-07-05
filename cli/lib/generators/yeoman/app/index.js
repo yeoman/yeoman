@@ -8,22 +8,12 @@ function AppGenerator(args, options, config) {
   yeoman.generators.NamedBase.apply(this, arguments);
   this.destinationRoot(this.name);
 
-  // setup some dummy data content for the template to pass. Will change.
-  this.pkg = {
-    title: this.name,
-    name: this.name,
-    version: '0.0.0',
-    homepage: '',
-    author: {
-      name: 'author'
-    },
-    licenses: [{
-      type: 'MIT'
-    }]
-  };
-
   // setup the test-framework property, Gruntfile template will need this
   this.test_framework = options['test-framework'] || 'jasmine';
+
+  // clenup the name propery from trailing /, typical usage of directories.
+  // update the args object, it's used to initialize js-framework hooks
+  this.args[0] = this.args[0].replace(/\/$/, '');
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);

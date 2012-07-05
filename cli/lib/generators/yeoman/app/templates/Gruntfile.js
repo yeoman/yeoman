@@ -131,7 +131,7 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
-        dest: 'js/<%= pkg.name %>-<%= pkg.version %>.js'
+        dest: 'js/build.js'
       }
     },
 
@@ -139,8 +139,8 @@ module.exports = function(grunt) {
     // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
     min: {
       dist: {
-        src: 'js/<%= pkg.name %>-<%= pkg.version %>.js',
-        dest: 'js/main.js'
+        src: 'js/build.js',
+        dest: 'js/build.min.js'
       }
     },
 
