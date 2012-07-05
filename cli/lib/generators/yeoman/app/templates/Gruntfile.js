@@ -10,25 +10,11 @@ module.exports = function(grunt) {
     // Project configuration
     // ---------------------
 
-    // pull in package.json data
-    pkg: '<json:package.json>',
-    // and build banner from these information
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
-
-    // Dev utilities and configuration
-    // -------------------------------
-
     // coffee to js compilation
     coffee: {
       dist: {
-        src: 'js/**/*.coffee',
-        dest: 'js'
+        src: 'app/js/**/*.coffee',
+        dest: 'app/js'
       }
     },
 
@@ -54,15 +40,14 @@ module.exports = function(grunt) {
     watch: {
       coffee: {
         files: '<config:coffee.dist.src>',
-        tasks: 'coffee'
+        tasks: 'coffee reload'
       },
       compass: {
-        files: ['css/sass/**/*.sass', 'css/sass/**/*.scss'],
+        files: ['app/css/sass/**/*.sass', 'app/css/sass/**/*.scss'],
         tasks: 'shell:compass reload'
       },
-      // only used with `yeoman server`
       reload: {
-        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*'],
+        files: ['app/css/**/*.css', 'app/js/**/*.js', 'app/img/**/*'],
         tasks: 'reload'
       }
     },
@@ -71,7 +56,7 @@ module.exports = function(grunt) {
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
-      files: ['grunt.js', 'js/**/*.js', 'test/**/*.js']
+      files: ['Gruntfile.js', 'app/js/**/*.js', 'spec/**/*.js']
     },
 
     // specifying JSHint options and globals
@@ -103,11 +88,8 @@ module.exports = function(grunt) {
     // final build output
     output: 'publish',
 
-    // filter any files matching one of the below pattern during mkdirs task
-    // the pattern in the .gitignore file should work too.
-    exclude: '.git* build/** node_modules/** grunt.js package.json *.md css/sass/'.split(' '),
     mkdirs: {
-      staging: '<config:exclude>'
+      staging: 'app/'
     },
 
     // concat css/**/*.css files, inline @import, output a single minified css
