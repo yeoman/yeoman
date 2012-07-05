@@ -11,7 +11,7 @@ function AppGenerator(args, options, config) {
   // setup the test-framework property, Gruntfile template will need this
   this.test_framework = options['test-framework'] || 'jasmine';
 
-  // clenup the name propery from trailing /, typical usage of directories.
+  // cleanup the name property from trailing /, typical usage of directories.
   // update the args object, it's used to initialize js-framework hooks
   this.args[0] = this.args[0].replace(/\/$/, '');
 }
@@ -46,7 +46,7 @@ AppGenerator.prototype.app = function app() {
 
   // create the index.html file (until we remotely fetch again h5bp repository,
   // and copy index.html + stripped conversion)
-  this.copy('index.html', 'index.html');
+  this.copy('index.html', 'app/index.html');
 
   // resolved to js by default (could be switched to coffee for instance)
   this.hookFor('javascript-engine');
