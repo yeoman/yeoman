@@ -82,19 +82,34 @@ module.exports = function(grunt) {
           basename = output.replace(path.extname(output), ''),
           content = lines.join('\n');
 
-        // parse out the list of assets to handle, and update the grunt config accordingly
-        var assets = lines.map(function(tag) {
-          return (tag.match(/(href|src)=["']([^'"]+)["']/) || [])[2];
-        });
-
-        // concat / min / css config
+        // concat / min / css / rjs config
         var concat = grunt.config('concat') || {},
           min = grunt.config('min') || {},
-          css = grunt.config('css') || {};
+          css = grunt.config('css') || {},
+          rjs = grunt.config('rjs') || {};
+
+        // parse out the list of assets to handle, and update the grunt config accordingly
+        var assets = lines.map(function(tag) {
+          // a bit more handling to detect data-main path instead
+          var main = tag.match(/data-main=['"]([^'"]+)['"]/);
+          if(main) {
+            rjs.modules = (rjs.modules || []).concat({
+              name: path.relative(rjs.appDir, main[1])
+            });
+            return main[1] + '.js';
+          }
+
+          return (tag.match(/(href|src)=["']([^'"]+)["']/) || [])[2];
+        });
 
         // update concat config for this block
         concat[output] = assets;
         grunt.config('concat', concat);
+
+
+        // update rjs config as well, as during path lookup we might have
+        // updated it on data-main attribute
+        grunt.config('rjs', rjs);
 
         // min config, only for js type block
         if(type === 'js') {
