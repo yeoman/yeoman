@@ -21,6 +21,11 @@ function AppGenerator(args, options, config) {
       type: 'MIT'
     }]
   };
+
+
+  // setup the test-framework property, Gruntfile template will need this
+  this.test_framework = options['test-framework'] || 'jasmine';
+
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);

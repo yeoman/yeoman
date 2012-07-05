@@ -45,9 +45,8 @@ module.exports = function(grunt) {
       dest: ''
     },
 
-    // Jasmine headless test through PhantomJS
-    // > https://github.com/creynders/grunt-jasmine-task
-    jasmine: {
+    // Headless test through PhantomJS
+    <%= test_framework %>: {
       all: ['test/**/*.html']
     },
 
@@ -179,6 +178,6 @@ module.exports = function(grunt) {
   });
 
   // Alias the `test` task to run the `jasmine` task instead
-  grunt.registerTask('test', 'jasmine');
+  grunt.registerTask('test', '<%= test_framework %>');
 
 };
