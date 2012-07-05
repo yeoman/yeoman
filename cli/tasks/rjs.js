@@ -5,12 +5,20 @@ var fs = require('fs'),
 
 module.exports = function(grunt) {
   grunt.task.registerTask('rjs', 'Optimizes javascript that actually is built with requirejs.', function () {
-    this.requiresConfig(this.name);
+    var options = grunt.config(this.name) || {},
+      modules = options.modules;
+
+    if(!options.modules) {
+      grunt.log.writeln('No module found in rjs configuration, bypassing the task...');
+      return;
+    }
+
     grunt.helper('rjs:optimize:js', grunt.config(this.name), this.async());
   });
 
   grunt.registerHelper('rjs:optimize:js', function(options, cb) {
     if(!cb) { cb = options; options = {}; }
+    options.modules = options.modules || [];
 
     // update options to reflect the same paths configuration than runtime's
     options = grunt.helper('rjs:paths', options);
