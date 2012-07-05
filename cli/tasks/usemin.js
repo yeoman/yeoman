@@ -18,6 +18,12 @@ var fs = require('fs'),
 //
 // Thx to @krzychukula for the new, super handy replace helper.
 //
+// ---
+//
+// usemin-handler: is a special task which uses the build block HTML comments
+// in markup to get back the list of files to handle, and initialize the grunt
+// configuration appropriately, and automatically.
+//
 
 module.exports = function(grunt) {
 
@@ -35,7 +41,7 @@ module.exports = function(grunt) {
       // get extension and trigger corresponding helpers
       var ext = path.extname(p).slice(1);
 
-      grunt.log.subhead('usemin - ' + p);
+      grunt.log.subhead('usemin:' + name + ' - ' + p);
 
       // make sure to convert back into utf8, `file.read` when used as a
       // forEach handler will take additional arguments, and thus trigger the
@@ -43,13 +49,13 @@ module.exports = function(grunt) {
       content = content.toString();
 
       // ext-specific directives handling and replacement of blocks
-      if(!!grunt.task._helpers['usemin:pre:' + ext]) {
-        content = grunt.helper('usemin:pre:' + ext, content);
+      if(!!grunt.task._helpers['usemin:pre:' + name]) {
+        content = grunt.helper('usemin:pre:' + name, content);
       }
 
       // actual replacement of revved assets
-      if(!!grunt.task._helpers['usemin:post:' + ext]) {
-        content = grunt.helper('usemin:post:' + ext, content);
+      if(!!grunt.task._helpers['usemin:post:' + name]) {
+        content = grunt.helper('usemin:post:' + name, content);
       }
 
       // write the new content to disk
@@ -57,6 +63,56 @@ module.exports = function(grunt) {
     });
 
   });
+
+  grunt.registerMultiTask('usemin-handler', 'Using HTML markup as the primary source of information', function() {
+    var files = grunt.file.expandFiles(this.data).map(function(filepath) {
+      return {
+        path: filepath,
+        body: grunt.file.read(filepath)
+      };
+    });
+
+    files.forEach(function(file) {
+      var blocks = getBlocks(file.body);
+      Object.keys(blocks).forEach(function(dest) {
+        var lines = blocks[dest].slice(1, -1),
+          parts = dest.split(':'),
+          type = parts[0],
+          output = parts[1],
+          basename = output.replace(path.extname(output), ''),
+          content = lines.join('\n');
+
+        // parse out the list of assets to handle, and update the grunt config accordingly
+        var assets = lines.map(function(tag) {
+          return (tag.match(/(href|src)=["']([^'"]+)["']/) || [])[2];
+        });
+
+        // concat / min / css config
+        var concat = grunt.config('concat') || {},
+          min = grunt.config('min') || {},
+          css = grunt.config('css') || {};
+
+        // update concat config for this block
+        concat[output] = assets;
+        grunt.config('concat', concat);
+
+        // min config, only for js type block
+        if(type === 'js') {
+          min[basename + '.min.js'] = output;
+          grunt.config('min', min);
+        }
+
+        // css config, only for css type block
+        if(type === 'css') {
+          css[basename + '.min.css'] = output;
+          grunt.config('css', css);
+        }
+      });
+    });
+  });
+
+  // Helpers
+  // -------
 
   // usemin:pre:* are used to preprocess files with the blocks and directives
   // before going through the global replace
