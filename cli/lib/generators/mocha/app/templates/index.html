@@ -12,7 +12,7 @@
 
   <!-- assertion framework -->
   <% if (assert_framework) { %>
-  <script src="<%=  assert_framework %>.js"></script>
+  <script src="lib/<%=  assert_framework %>.js"></script>
     <% if (assert_framework === 'chai') { %>
       <% if(assert_style) { %>
   <script><%= assert_style %> = chai.<%= assert_style %></script>
