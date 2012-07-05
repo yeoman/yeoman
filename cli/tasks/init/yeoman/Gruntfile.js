@@ -66,7 +66,7 @@ module.exports = function(grunt) {
       },
       // only used with `yeoman server`
       reload: {
-        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*'],
+        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*', '**/*.html', '**/*.htm'],
         tasks: 'reload'
       }
     },
@@ -147,7 +147,7 @@ module.exports = function(grunt) {
     // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
     concat: {
       dist: {
-        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
+        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js', 'js/browser_modules/*.js'],
         dest: 'js/<%= pkg.name %>-<%= pkg.version %>.js'
       }
     },
