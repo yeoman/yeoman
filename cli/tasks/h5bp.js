@@ -33,6 +33,15 @@ module.exports = function(grunt) {
     // build - (default) no html optimizations
     "default": 'coffee concat shell:compass css min img usemin manifest',
 
+    // (experimental) usemin handler
+    // Consider the usemin task and its block parsing to get back the list of
+    // assets files to handle, either they are css or js.
+    //
+    // It eliminates the need of specifying configuration and path for css,
+    // concat, min and rjs task. rjs optimizer is triggered if data-main
+    // attribute is used with the <script /> tag.
+    usemin: 'coffee shell:compass usemin-handler concat css min img usemin manifest',
+
     // text - same as build but without image (png/jpg) optimizing
     text: 'coffee concat css min rev usemin manifest',
 
@@ -56,9 +65,8 @@ module.exports = function(grunt) {
   var targetList = grunt.log.wordlist(Object.keys(targets));
   grunt.registerTask('build', 'Run a predefined target - build:<target> \n' + targetList, function(target) {
     var valid = Object.keys(targets);
-    if(!target) {
-      target = 'default';
-    }
+    target = target || 'usemin';
+
     if(!~valid.indexOf(target)) {
       grunt.log
         .error('Not a valid target')
