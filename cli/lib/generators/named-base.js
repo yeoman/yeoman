@@ -4,7 +4,7 @@ var util = require('util'),
 
 module.exports = NamedBase;
 
-function NamedBase(args, options) {
+function NamedBase(args, options, config) {
   Base.apply(this, arguments);
   this.argument('name', { type: String, required: true });
 }
