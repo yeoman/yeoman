@@ -22,10 +22,8 @@ function AppGenerator(args, options, config) {
     }]
   };
 
-
   // setup the test-framework property, Gruntfile template will need this
   this.test_framework = options['test-framework'] || 'jasmine';
-
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);
@@ -55,6 +53,10 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app/js');
   this.mkdir('app/css');
   this.mkdir('app/templates');
+
+  // create the index.html file (until we remotely fetch again h5bp repository,
+  // and copy index.html + stripped conversion)
+  this.copy('index.html', 'index.html');
 
   // resolved to js by default (could be switched to coffee for instance)
   this.hookFor('javascript-engine');
