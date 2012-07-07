@@ -301,19 +301,30 @@ Base.prototype.optionsHelp = function optionsHelp() {
   var self = this,
     widths = [],
     options = [],
-    rows = [];
+    rows = [],
+    out = '',
+    pad = 0;
 
   options = this._options.filter(function(o) {
     return !o.hide;
   });
 
-  rows = options.map(function(o) {
+  var hookOpts = this._hooks.map(function(hook) {
+    return hook.generator && hook.generator._options;
+  }).reduce(function(a, b) {
+    a = a.concat(b);
+    return a;
+  }, []).filter(function(opts) {
+    return opts && opts.name !== 'help';
+  });
+
+  rows = options.concat(hookOpts).map(function(o) {
     return [
       '',
       o.alias ? '-' + o.alias + ', ' : '',
       '--' + o.name,
       o.desc ? '# ' + o.desc : '',
-      o.defaults ? 'Default: ' + o.defaults + '': '',
+      o.defaults == null ? '' : 'Default: ' + o.defaults,
     ];
   });
 
@@ -324,14 +335,16 @@ Base.prototype.optionsHelp = function optionsHelp() {
     _.max(rows.map(function(row) { return row[3].length; })) + 2
   ];
 
-  var pad = new Array(widths.slice(0, 3).reduce(function(a, b) {
+  pad = new Array(widths.slice(0, 3).reduce(function(a, b) {
     return a + b;
   }, 1)).join(' ');
 
-  return rows.map(function(row) {
+  out += rows.map(function(row) {
     var defaults = row[4] ? '\n' + pad + '# ' + row[4] : '';
     return self.log.table(widths, row) + defaults;
   }).join('\n');
+
+  return out;
 };
 
 
