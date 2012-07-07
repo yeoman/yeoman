@@ -21,7 +21,8 @@ generators.hiddenNamespaces = [
   'yeoman:app',
   'yeoman:js',
   'sass:app',
-  'jasmine:app'
+  'jasmine:app',
+  'mocha:app'
 ];
 
 generators.init = function init(grunt) {
@@ -146,6 +147,11 @@ generators.printList = function printList(base, namespaces) {
 // Receives a namespace, arguments and the options list to invoke a generator.
 // It's used as the default entry point for the generate command.
 generators.invoke = function invoke(namespace, args, options, config) {
+
+  // keep track of loaded path in lookup case no generator were found, to be able to
+  // log where we searched
+  generators.loadedPath = [];
+
   var names = namespace.split(':'),
     name = names.pop(),
     klass = generators.findByNamespace(name, names.join(':'));
@@ -235,10 +241,6 @@ generators.findByNamespace = function findByNamespace(name, base, context) {
     internal = path.join(__dirname, '../..'),
     generator;
 
-  // keep track of loaded path in lookup case no generator were found, to be able to
-  // log where we searched
-  generators.loadedPath = [];
-
   if(base) lookups.push(base + ':' + name);
   if(context) lookups.push(name + ':' + context);
   if(base) lookups.push(base);
@@ -276,7 +278,7 @@ generators.lookup = function lookup(namespaces, basedir) {
   paths.forEach(function(rawPath) {
     if(generator) return;
 
-    ['generators/yeoman', 'generators'].forEach(function(base) {
+    ['yeoman/generators', 'generators'].forEach(function(base) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
@@ -309,7 +311,7 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
 
   basedir = basedir || generators.base;
 
-  var found = ['yeoman/generators', 'generators/yeoman', 'generators'].map(function(p) {
+  var found = ['yeoman/generators', 'generators'].map(function(p) {
     var prefix = path.join(basedir, 'lib', p),
       pattern = path.join(prefix, '**', 'index.js'),
       files = grunt.file.expandFiles(pattern);
