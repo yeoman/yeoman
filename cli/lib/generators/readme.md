@@ -1,3 +1,7 @@
+yeoman-generate(1) -- Generate things
+=====================================
+
+---
 
 Rails-like generators. Grunt based.
 
@@ -5,48 +9,74 @@ Two new commands were added: `new` and `generate`
 
 `new` is actually the same command internally than `generate app`.
 
-
 ---
 
-Note: This documentation is not up-to-date with the actual code, but still give
-a good overview of the rails generator system we take a lot of inspiration from
-(http://guides.rubyonrails.org/generators.html) and the overall generator layer
-in place.
+todo: https://gist.github.com/3780adc43a90cd2cdfcc
 
-Generator - Rails 3 like
-------------------------
+yeoman generate
+---------------
 
-Rails 3 generators provide a really neat and a really powerfull way to
-customize them to really fit your preferences.
+The `yeoman generate` command uses templates to create a whole lot of things.
+Running `yeoman generate` by itself gives a list of available generators:
 
-You can access generators with the `generate` command (or simply `g`).
+You can also use the alias `g` to invoke the generator command: `yeoman g`
 
-If you run this without any arguments, you'll get a list of available
-generators inside of your yeoman application.
+    $ yeoman generate
+    Usage: yeoman generate GENERATOR [args] [options]
 
-If you run a given generator with the `--help` option, you'll get some help
-information including the list of options at the top:
+    ...
+    ...
 
-    yeoman g controller --help
+    Please choose a generator below.
 
-    Description:
-        Stubs out a new controller and its views. Pass the controller name, either
-        CamelCased or under_scored, and a list of views as arguments.
+    Yeoman:
+      controller
+      generator
+      ...
+      ...
 
-        To create a controller within a module, specify the controller name as a
-        path like 'parent_module/controller_name'.
+**Note**: You can install more generators through npm package and you can even
+create your own!
 
-        This generates a controller class in app/controllers and invokes helper,
-        template engine and test framework generators.
+Using generators will save you a large amount of time by writing boilerplate
+code, code that is necessary for the app to work.
 
-    Example:
-        `yeoman generate controller people edit index list debit credit close`
+Let's make our own controller with the controller generator. But what command
+should we use?  Let's ask the generator:
 
-        Credit card controller with URLs like /credit_card/debit.
-            Controller:      app/js/controllers/people_controller.js
-            Test:            spec/controllers/people_controller_spec.js
-            Views:           app/views/people/edit_view.js [...]
-            Templates:       app/templates/people/edit.handlebars [...]
+**Note**: All generators available have help text. You can try adding --help or
+-h to the end, for example `yeoman generate controller --help`
+
+    .. Invoke controller ..
+    Usage:
+      yeoman generate controller NAME one two three [options]
+
+    Options:
+      -h, --help          # Print generator's options and usage
+          --js-framework  # Js framework to be invoked
+                          # Default: ember
+
+
+The controller generator is expecting parameters in the form of `generate
+controller ControllerName action1 action2`
+
+Let's make a `Greeting` controller with an action of `hello`.
+
+
+    $ yeoman generate controller Greeting hello
+
+> TODO output
+
+
+What all did this generate? If made sure a bunch of directories where in our
+application, and created a controller file, a view file and / or template file
+and a test file.
+
+Yeoman comes with a generator for data models too.
+
+    $ yeoman generate model
+
+> TODO help output
 
 
 Creating and Customizing Yeoman Generators & Templates
@@ -64,32 +94,27 @@ Creating and Customizing Yeoman Generators & Templates
 
 ### First contact
 
-When you create an application using the `yeoman` command, you are in fact using a
-Yeoman generator. After that, you can get a list of all available generators by
-just invoking `yeoman generate`:
+When you create an application using the `yeoman new` command, you are in fact
+using a Yeoman generator. After that, you can get a list of all available
+generators by just invoking `yeoman generate`:
 
     $ yeoman new myapp
     $ cd myapp
     $ yeoman generate
 
-**Note:** Right now, there's nothing stoping users from using the `generate`
-command from outside a yeoman application. rails prevent that, we should too.
-`new` should be use prior to that, and the user must be within the yeoman app.
-
 You will get a list of all generators that comes with yeoman. If you need a
-detailed description of the helper generator, for example, you can simply do:
+detailed description for a given generator, you can simply do:
 
-    $ yeoman generate helper --help
+    $ yeoman generate [generator] --help
 
 ### Creating Your First Generator
 
 Generators are built on top of Grunt. Grunt provides powerful options parsing
 and a great API for manipulating files. For instance, let’s build a generator
-that creates an initializer file named initializer.js inside
-config/initializers.
+that creates an initializer file named initializer.js inside `app/js/`
 
-The first step is to create a file at lib/generators/initializer_generator.js
-with the following content:
+The first step is to create a file at `lib/generators/initializer/index.js with
+the following content:
 
     var util = require('util'),
       yeoman = require('yeoman');
@@ -103,27 +128,47 @@ with the following content:
     util.inherits(Generator, yeoman.generators.Base);
 
     Generator.prototype.createInitializerFile = function() {
-      this.write('config/initializers/initializer.js', "# Add initialization content here");
+      this.write('app/js/initializer.js', "// Add initialization content here\n");
     };
 
-**Note** Maybe we can provide some OO sugar instead of the typical constructor
-call + util.inherits. Very much Backbone inspired, with some auto-propagated
-`extend` method on generators (maybe even based on Backbone.Model or something)
-
-`createFile` is method provided by `yeoman.generators.Base`, and is a basic
-facade to `grunt.file` API. When we "write" things, this happen relative to the
+`write` is a method provided by `yeoman.generators.Base`, and is a basic facade
+to `grunt.file` API. When we "write" things, this happen relative to the
 working directory (that is the Gruntfile location, the Gruntfile is resolved
-internally, walking up the FS until one is found).
+internally, walking up the FS until one is found. This is most likely the root
+of the yeoman application).
 
 Our new generator is quite simple: it inherits from `yeoman.generators.Base`
-and has one method definition. Each public method in the generator is executed
-when a generator is invoked (first level method in the prototype chain, eg.
-`Base` class method are not called).  Finally, we invoke the `create_file`
-method that will create a file at the given destination with the given
-content.
+and has one method definition. Each "public" method in the generator is
+executed when a generator is invoked (first level method in the prototype
+chain, eg.  `Base` class method are not called). There are two exceptions,
+generators won't run:
+
+- any method begining with the `_` prefix.
+- a `constructor` method, specifically used with generators written in
+  CoffeeScript
+
+Finally, we invoke the `write` method that will create a file at the given
+destination with the given content.
 
 **Note**: So, generators should do their task synchronously. We lack right now
-the API to be able to do things asynchronously (which we might need).
+the API to be able to do things asynchronously (which we might need). A
+`this.async()` method should be implemented, returns a new handler to call on
+completion.
+
+Now, we can see that the initializer generator available to use if we output
+the list of available generators in this application:
+
+    $ yeoman generate
+
+    Usage: yeoman generate GENERATOR [args] [options]
+    ...
+
+    Please choose a generator below.
+
+    ...
+
+    Initializer:
+      initializer
 
 To invoke our new generator, we just need to do:
 
@@ -132,8 +177,11 @@ To invoke our new generator, we just need to do:
 Before we go on, let’s see our brand new generator description:
 
     $ yeoman generate initializer --help
+    .. Invoke initializer ..
+    Description:
+        Create files for initializer generator.
 
-yeoman is usually able to generate good descriptions, but not in this particular
+Yeoman is usually able to generate good descriptions, but not in this particular
 case. We can solve this problem in two ways. The first one is calling desc
 inside our generator:
 
@@ -145,21 +193,18 @@ inside our generator:
     function Generator() {
       yeoman.generators.Base.apply(this, arguments);
 
-      this.desc('This generate creates an initializer file at config/initializers');
+      this.desc('This generator creates an initializer file at app/js/');
     }
 
-    util.inherits(Generator, yeoman.generatos.Base);
+    util.inherits(Generator, yeoman.generators.Base);
 
     Generator.prototype.createInitializerFile = function() {
-      this.createFile('config/initializers/initializer.js', "# Add initialization content here");
+      this.write('app/js/initializer.js', "// Add initialization content here");
     };
 
 Now we can see the new description by invoking --help on the new generator. The
 second way to add a description is by creating a file named `USAGE` in the same
 directory as our generator. We are going to do that in the next step.
-
-**Note**: Right now, the only option is the second way, through a `USAGE` file.
-The `desc` method is not there yet, but can be added fairly easily.
 
 ### Creating Generators with Generators
 
