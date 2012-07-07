@@ -14,7 +14,6 @@ function Base(args, options, config) {
   this.args = args;
   this.config = config || {};
 
-  this.usage = '';
   this.description = '';
 
   // setup default options
@@ -37,7 +36,14 @@ function Base(args, options, config) {
     'js-framework': 'ember'
   });
 
-  this.arguments = [];
+  // holder for parsed arguments
+  this._arguments = [];
+
+  // holder for parsed options
+  this._options = [];
+
+  // holder for hooks
+  this._hooks = [];
 }
 
 util.inherits(Base, events.EventEmitter);
@@ -45,16 +51,15 @@ util.inherits(Base, events.EventEmitter);
 // "include" the actions module
 _.extend(Base.prototype, actions);
 
-
-// Runs all methods in this given generator.
-// "namespace:method"). You can also supply the arguments for the method to be
-// invoked, if none is given, the same values used to initialize the invoker
-// are used to initialize the invoked.
 //
-// XXX currently, all is assumed to be run synchronously. We may have the need to
-// run async thing, if that's so, always assume a method is synchronous unless
-// a special this.async() handler is invoked (like Grunt).
-
+// Runs all methods in this given generator. You can also supply the arguments
+// for the method to be invoked, if none is given, the same values used to
+// initialize the invoker are used to initialize the invoked.
+//
+// XXX currently, all is assumed to be run synchronously. We may have the need
+// to run async thing, if that's so, always assume a method is synchronous
+// unless a special this.async() handler is invoked (like Grunt).
+//
 Base.prototype.run = function run(name, config) {
   var args = config.args || this.args,
     opts = config.options || this.options,
@@ -94,9 +99,8 @@ Base.prototype.run = function run(name, config) {
 //             and have default values.
 // banner   - String to show on usage notes.
 //
-//
-
 Base.prototype.argument = function argument(name, config) {
+  config = config || {};
   // config handling. Should probably be put in its own Argument class,
   // like Thor does.
   config.name = name;
@@ -107,13 +111,13 @@ Base.prototype.argument = function argument(name, config) {
 
   config.banner = config.banner || this.bannerFor(config);
 
-  this.arguments.push({
+  this._arguments.push({
     name: name,
     config: config
   });
 
   var position = -1;
-  this.arguments.forEach(function(arg, i) {
+  this._arguments.forEach(function(arg, i) {
     if(position !== -1) return;
     if(arg.name === name) position = i;
   });
@@ -129,21 +133,65 @@ Base.prototype.argument = function argument(name, config) {
   return this;
 };
 
+// Adds an option to the set of generator expected options, only used to
+// generate generator usage. By default, generators get all the cli option
+// parsed by nopt as a this.options Hash object.
+//
+// - name       - The name of the argument
+// - options    - Hash of configuration values where:
+//   - desc     -- Description for the argument.
+//   - type     -- Type for this argument, either Boolean, String or Number.
+//   - default  -- Default value for this argument.
+//   - banner   -- String to show on usage notes.
+//   - hide     -- If you want to hide this option from the help.
+//
+Base.prototype.option = function option(name, config) {
+  config = config || {};
+  // config handling. Should probably be put in its own Argument class,
+  // like Thor does.
+  config.name = name;
+
+  _.defaults(config, {
+    desc: 'Description for ' + name,
+    type: Boolean,
+    defaults: false,
+    hide: false
+  });
+
+  this._options.push(config);
+};
+
+
+//
 // Invoke a generator based on the value supplied by the user to the
 // given option named "name". An option is created when this method
 // is invoked and you can set a hash to customize it.
-
+//
+// XXX change how the hookFor is made. They need to be done in the
+// constructor, and for each create the corresponding option.
+//
 Base.prototype.hookFor = function hookFor(name, config) {
+  config = config || {};
+
   // resolve the name of our hook. This can be defined through cli options or
   // via Gruntfile's generators config.
   name = this.defaultFor(name);
-
-  config = config || {};
 
   var args = config.args || this.args,
     options = config.options || this.options,
     gruntConfig = config.config || this.config,
     context = config.as || this.generatorName;
+
+  // XXX delay the invocation, should be done during run, after each "self"
+  // method. Also, should move the invocation API (invoke, run) elsewhere,
+  // probably in the generator entry point module (generators/index.js)
+
+  this._hooks.push({ name: name, config: config });
+
+  this.option(name, {
+    desc: _.humanize(name),
+    defaults: this.options[name] || ''
+  });
 
   // and try to invoke the generator, looking up for hook:context
   this.invoke(name + ':' + context, args, options, gruntConfig);
@@ -177,21 +225,83 @@ Base.prototype.desc = function desc(description) {
   return this;
 };
 
-
 // Tries to get the description from a USAGE file one folder above the source
 // root otherwise uses a default description.
 Base.prototype.help = function help() {
   var filepath = path.join(this.generatorPath, 'USAGE'),
-    exists = path.existsSync(filepath);
+    exists = path.existsSync(filepath),
+    self = this;
 
   var out = [
     'Usage:',
-    '  ' + (this.usage || 'yeoman generate ' + this.generatorName),
+    '  ' + this.usage(),
     '',
-    'Description:',
-    '  ' + (this.description || 'Create files for ' + this.generatorName + ' generator.')
-  ].join('\n');
+    // exists ? '' : 'Description:',
+    // exists ? fs.readFileSync(filepath, 'utf8') : '\n  ' +
+    //   (this.description || 'Create files for ' + this.generatorName + ' generator.')
+  ];
 
-  out += exists ? fs.readFileSync(filepath, 'utf8') : '';
-  return out;
+  // build options
+  if(this._options.length) {
+    out = out.concat([
+      'Options:',
+      this.optionsHelp(),
+      ''
+    ]);
+  }
+
+  // append USAGE file is any
+  if(exists) {
+    out.push(fs.readFileSync(filepath, 'utf8'));
+  }
+
+  return out.join('\n');
 };
+
+// Output usage information for this given class, depending on its arguments /
+// options / hooks
+Base.prototype.usage = function usage() {
+  var arguments = this._arguments.map(function(arg) {
+    return arg.config.banner;
+  }).join(' ');
+
+  var options = this._options.length ? '[options]' : '',
+    name = this.namespace ? 'yeoman:app' : '',
+    cmd = this.namespace ? 'new' : 'generate';
+
+  return 'yeoman ' + cmd + ' ' + name + ' ' + arguments + ' ' + options;
+};
+
+// print the list of options in formatted table
+Base.prototype.optionsHelp = function optionsHelp() {
+  var self = this,
+    widths = [],
+    options = [],
+    rows = [];
+
+  options = this._options.filter(function(o) {
+    return !o.hide;
+  });
+
+  rows = options.map(function(o) {
+    return [
+      '',
+      o.alias ? '-' + o.alias : '',
+      '--' + o.name,
+      o.desc ? '# ' + o.desc : ''
+    ];
+  });
+
+  widths = [
+    2,
+    _.max(options.map(function(o) { return (o.alias || '').length; })),
+    _.max(options.map(function(o) { return ('--' + o.name).length; })) + 5,
+    _.max(options.map(function(o) { return (o.desc ? '# ' + o.desc : '').length; }))
+  ];
+
+  return rows.map(function(row) {
+    return self.log.table(widths, row);
+  }).join('\n');
+};
+
+
