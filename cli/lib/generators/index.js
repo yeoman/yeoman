@@ -25,6 +25,12 @@ generators.hiddenNamespaces = [
   'mocha:app'
 ];
 
+// keep track of loaded path in lookup case no generator were found, to be able to
+// log where we searched
+generators.loadedPath = [];
+
+// Main entry point of the generator layer, requires a Grunt object from which
+// we read cli options and tasks, and kick off the appropriate generator.
 generators.init = function init(grunt) {
   // get back arguments without the generate prefix
   var cli = grunt.cli,
@@ -57,10 +63,10 @@ generators.init = function init(grunt) {
   generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
 
   if(!name) {
-    return generators.help(args, cli.options, grunt.config());
+    return generators.help(args, cli.options, grunt.config() || {});
   }
 
-  generators.invoke(name, args, cli.options, grunt.config());
+  generators.invoke(name, args, cli.options, grunt.config() || {});
 };
 
 // show help message with available generators
@@ -150,44 +156,25 @@ generators.invoke = function invoke(namespace, args, options, config) {
 
   // keep track of loaded path in lookup case no generator were found, to be able to
   // log where we searched
+  // reset the loadedPath on invoke
   generators.loadedPath = [];
 
-  var names = namespace.split(':'),
-    name = names.pop(),
-    klass = generators.findByNamespace(name, names.join(':'));
+  // create the given generator
+  var generator = generators.create(namespace, args, options, config);
 
-  // try by forcing the yeoman namespace, if none is specified
-  if(!klass && !names.length) {
-    klass = generators.findByNamespace(name, 'yeoman');
-  }
-
-  if(!klass) {
+  // unable to find one
+  if(!generator) {
+    // output some help unless we're following some hooks, and silent flag is turned on
     console.log('Could not find generator', namespace);
     return console.log('Tried in:\n' + generators.loadedPath.map(function(path) {
       return ' - ' + path;
     }).join('\n'));
   }
 
-
-  generators.grunt.log.subhead('.. Invoke ' + namespace.replace(/^yeoman:/, '') + ' ..');
-
-  // create a new generator from this class
-  var generator = new klass(args, options, config);
-
-  // hacky, might change.
-  // attach the invoke helper to the generator instance
-  generator.invoke = invoke;
-
-  // and few other informations
-  generator.namespace = klass.namespace;
-  generator.generatorName = name;
-  generator.generatorPath = klass.path;
-
-
   // configure the given sourceRoot for this path, if it wasn't already in the
   // Generator constructor.
   if(!generator.sourceRoot()) {
-    generator.sourceRoot(path.join(klass.path, 'templates'));
+    generator.sourceRoot(path.join(generator.generatorPath, 'templates'));
   }
 
   // validate the generator (show help on missing argument / options)
@@ -204,6 +191,7 @@ generators.invoke = function invoke(namespace, args, options, config) {
     return console.log( generator.help() );
   }
 
+  generators.grunt.log.subhead('.. Invoke ' + namespace.replace(/^yeoman:/, '') + ' ..');
   // and start if off
   generator.run(namespace, {
     args: args,
@@ -212,23 +200,63 @@ generators.invoke = function invoke(namespace, args, options, config) {
   });
 };
 
+// Generator factory. Get a namespace, locate, instantiate, init and return the
+// given generator.
+generators.create = function create(namespace, args, options, gruntConfig, silent) {
+  var names = namespace.split(':'),
+    name = names.pop(),
+    klass = generators.findByNamespace(name, names.join(':'));
+
+  // try by forcing the yeoman namespace, if none is specified
+  if(!klass && !names.length) {
+    klass = generators.findByNamespace(name, 'yeoman');
+  }
+
+  if(!klass) return;
+
+  // create a new generator from this class
+  var generator = new klass(args, options, gruntConfig);
+
+  // hacky, might change.
+  // attach the invoke helper to the generator instance
+  generator.invoke = generators.invoke;
+
+  // and few other informations
+  generator.namespace = klass.namespace;
+  generator.generatorName = name;
+  generator.generatorPath = klass.path;
+
+  // follup registered hooks, and instantiate each resolved generator
+  // so that we can get access to expected arguments / options
+  generator._hooks = generator._hooks.map(function(hook) {
+    var config = gruntConfig.generator,
+      resolved = options[hook.name] || config[hook.name];
+
+    hook.context = resolved + ':' + (hook.as || name);
+    hook.args = hook.args || args;
+    hook.config = hook.config || config;
+    hook.options = hook.options || options;
+    hook.generator = generators.create(hook.context, hook.args, hook.options, hook.config, true);
+    return hook;
+  });
+
+  return generator;
+};
+
 //
 // Yeoman finds namespaces by looking up special directories, and namespaces
 // are directly tied to their file structure.
 //
-//    findByNamespace('jasmine', 'yeoman', 'integration')
+//    findByNamespace('jasmine', 'yeoman')
 //
 // Will search for the following generators:
 //
-//    "yeoman:jasmine", "jasmine:integration", "jasmine"
+//    "yeoman:jasmine", "jasmine"
 //
 // Which in turns look for these paths in the load paths:
 //
 //    generators/yeoman/jasmine/index.js
 //    generators/yeoman/jasmine.js
-//
-//    generators/jasmine/integration/index.js
-//    generators/jasmine/integration.js
 //
 //    generators/jasmine/index.js
 //    generators/jasmine.js
@@ -236,19 +264,12 @@ generators.invoke = function invoke(namespace, args, options, config) {
 // Load paths include `lib/` from within the yeoman application (user one), and
 // the internal `lib/yeoman` path from within yeoman itself.
 //
-generators.findByNamespace = function findByNamespace(name, base, context) {
-  var lookups = [],
-    internal = path.join(__dirname, '../..'),
-    generator;
-
-  if(base) lookups.push(base + ':' + name);
-  if(context) lookups.push(name + ':' + context);
-  if(base) lookups.push(base);
-
-  if(!lookups.length) lookups.push(name);
+generators.findByNamespace = function findByNamespace(name, base) {
+  var internal = path.join(__dirname, '../..'),
+    lookups = base ? [base + ':' + name , base] : [name];
 
   // first search locally, ./lib/generators
-  generator = generators.lookup(lookups);
+  var generator = generators.lookup(lookups);
 
   if(!generator) {
     // then try in each yeoman plugin

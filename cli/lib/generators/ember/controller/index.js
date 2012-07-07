@@ -1,7 +1,8 @@
 
 var path = require('path'),
   util = require('util'),
-  yeoman = require('../../../../');
+  yeoman = require('../../../../'),
+  _ = require('underscore');
 
 module.exports = Generator;
 
@@ -16,11 +17,13 @@ function Generator() {
    });
 
   this.appname = path.basename(process.cwd());
+
+  this.filename = _.dasherize(this.name).replace(/^-/, '');
 }
 
 util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
   var filename = this.options.array ? 'array_controller.js' : 'controller.js';
-  this.template(filename, path.join('app/js/controllers', this.name + '-controller.js'));
+  this.template(filename, path.join('app/js/controllers', this.filename + '-controller.js'));
 };
