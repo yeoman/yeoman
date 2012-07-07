@@ -13,13 +13,13 @@ function Generator(args, options, config) {
 
   yeoman.generators.Base.apply(this, arguments);
 
-  this.option('assert_framework', {
+  this.option('assert-framework', {
     type: String,
     defaults: 'chai',
     desc: 'Choose your prefered assertion library'
   });
 
-  this.option('assert_style', {
+  this.option('assert-style', {
     desc: 'Choose the asssert style you wish to use (assert, expect, should). Only enabled with chai.',
     type: String,
     defaults: 'expect'
