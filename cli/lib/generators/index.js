@@ -107,13 +107,13 @@ generators.help = function help(args, options, config) {
     'Usage: yeoman generate GENERATOR [args] [options]',
     '',
     'General options:',
-    '  -h, [--help]     # Print generator\'s options and usage',
+    '  -h, --help     # Print generator\'s options and usage',
     // XXX below are options that are present in rails generators we might want
     // to handle
-    '  -p, [--pretend]  # Run but do not make any changes',
-    '  -f, [--force]    # Overwrite files that already exist',
-    '  -s, [--skip]     # Skip files that already exist',
-    '  -q, [--quiet]    # Suppress status output',
+    // '  -p, [--pretend]  # Run but do not make any changes',
+    // '  -f, [--force]    # Overwrite files that already exist',
+    // '  -s, [--skip]     # Skip files that already exist',
+    // '  -q, [--quiet]    # Suppress status output',
     '',
     'Please choose a generator below.',
     ''
