@@ -13,7 +13,7 @@ function AppGenerator(args, options, config) {
 
   // cleanup the name property from trailing /, typical usage of directories.
   // update the args object, it's used to initialize js-framework hooks
-  this.args[0] = this.args[0].replace(/\/$/, '');
+  if(this.name) this.args[0] = this.args[0].replace(/\/$/, '');
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);
