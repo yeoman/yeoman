@@ -9,13 +9,11 @@ function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, '../templates'));
 
-  // XXX to be implemented, help generating usage output
-  // this.option('array', {
-  //   type: Boolean,
-  //   default: false,
-  //   desc: 'Create an Ember.ArrayController to represent multiple objects'
-  //  });
-
+  this.option('array', {
+    type: Boolean,
+    defaults: false,
+    desc: 'Create an Ember.ArrayController to represent multiple objects'
+   });
 
   this.appname = path.basename(process.cwd());
 }
