@@ -23,13 +23,13 @@ function Base(args, options, config) {
     assets: true,
     javascripts: true,
     stylesheets: true,
-    'javascript-engine': 'js',
+    'javascript-engine': 'yeoman:js',
     'stylesheet-engine': 'sass',
     'template-engine': 'handlebars',
     'test-framework': 'jasmine',
 
     // we use js-framework here to hook into bootstrap js plugins by default
-    // but it might eevry well be done a bit differently (or we consider bootstrap
+    // but it might very well be done a bit differently (or we consider bootstrap
     // as we would consider backbone or amber)
     //
     // We may use a different hook, or handle the bootstrap scaffolding directly here.
@@ -71,9 +71,22 @@ Base.prototype.run = function run(name, config) {
     opts = config.options || this.options,
     self = this;
 
+  this._running = true;
+
   var methods = Object.keys(this.__proto__);
   methods.forEach(function(method) {
     self[method].apply(self, args);
+  });
+
+  // go through all registered hooks, and invoke them in series
+  this._hooks.forEach(function(hook) {
+    var resolved = self.defaultFor(hook.name),
+      gruntConfig = hook.config || self.config,
+      options = hook.options || self.options,
+      context = hook.as || self.generatorName,
+      args = hook.args || self.args;
+
+    self.invoke(resolved + ':' + context, args, options, gruntConfig);
   });
 };
 
@@ -164,7 +177,15 @@ Base.prototype.option = function option(name, config) {
     hide: false
   });
 
-  this._options.push(config);
+  // avoid duplicated option, update existing one
+  var opt = this._options.filter(function(o) {
+    return o.name === name;
+  })[0];
+
+  if(!opt) this._options.push(config);
+  else opt = config;
+
+  return this;
 };
 
 
@@ -179,28 +200,23 @@ Base.prototype.option = function option(name, config) {
 Base.prototype.hookFor = function hookFor(name, config) {
   config = config || {};
 
-  // resolve the name of our hook. This can be defined through cli options or
-  // via Gruntfile's generators config.
-  name = this.defaultFor(name);
+  // enforce use of hookFor during instantiation
+  if(this._running) {
+    return this.emit('error', new Error(
+      'hookFor must be used within the constructor only'
+    ));
+  }
 
-  var args = config.args || this.args,
-    options = config.options || this.options,
-    gruntConfig = config.config || this.config,
-    context = config.as || this.generatorName;
-
-  // XXX delay the invocation, should be done during run, after each "self"
-  // method. Also, should move the invocation API (invoke, run) elsewhere,
-  // probably in the generator entry point module (generators/index.js)
-
-  this._hooks.push({ name: name, config: config });
-
+  // add the corresponding option to this class, so that we output these hooks
+  // in help
   this.option(name, {
-    desc: _.humanize(name),
+    desc: _.humanize(name) + ' to be invoked',
     defaults: this.options[name] || ''
   });
 
-  // and try to invoke the generator, looking up for hook:context
-  this.invoke(name + ':' + context, args, options, gruntConfig);
+  this._hooks.push(_.defaults(config, {
+    name: name
+  }));
 };
 
 // Return the default value for the option name given doing a lookup in
@@ -294,21 +310,27 @@ Base.prototype.optionsHelp = function optionsHelp() {
   rows = options.map(function(o) {
     return [
       '',
-      o.alias ? '-' + o.alias + ',' : '',
+      o.alias ? '-' + o.alias + ', ' : '',
       '--' + o.name,
-      o.desc ? '# ' + o.desc : ''
+      o.desc ? '# ' + o.desc : '',
+      o.defaults ? 'Default: ' + o.defaults + '': '',
     ];
   });
 
   widths = [
     2,
-    _.max(options.map(function(o) { return (o.alias || '').length; })) + 3,
-    _.max(options.map(function(o) { return ('--' + o.name).length; })) + 5,
-    _.max(options.map(function(o) { return (o.desc || '').length; })) + 2
+    _.max(rows.map(function(row) { return row[1].length; })),
+    _.max(rows.map(function(row) { return row[2].length; })) + 2,
+    _.max(rows.map(function(row) { return row[3].length; })) + 2
   ];
 
+  var pad = new Array(widths.slice(0, 3).reduce(function(a, b) {
+    return a + b;
+  }, 1)).join(' ');
+
   return rows.map(function(row) {
-    return self.log.table(widths, row);
+    var defaults = row[4] ? '\n' + pad + '# ' + row[4] : '';
+    return self.log.table(widths, row) + defaults;
   }).join('\n');
 };
 
