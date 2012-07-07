@@ -44,6 +44,12 @@ function Base(args, options, config) {
 
   // holder for hooks
   this._hooks = [];
+
+  // init general options, these are common to all generators
+  this.option('help', {
+    alias: 'h',
+    desc: 'Print generator\'s options and usage'
+  });
 }
 
 util.inherits(Base, events.EventEmitter);
@@ -266,10 +272,12 @@ Base.prototype.usage = function usage() {
   }).join(' ');
 
   var options = this._options.length ? '[options]' : '',
-    name = this.namespace ? 'yeoman:app' : '',
-    cmd = this.namespace ? 'new' : 'generate';
+    name = this.namespace === 'yeoman:app' ? '' : this.namespace + ' ',
+    cmd = this.namespace === 'yeoman:app' ? 'new' : 'generate';
 
-  return 'yeoman ' + cmd + ' ' + name + ' ' + arguments + ' ' + options;
+  name = name.replace(/^yeoman:/, '');
+
+  return 'yeoman ' + cmd + ' ' + name + arguments + ' ' + options;
 };
 
 // print the list of options in formatted table
@@ -286,7 +294,7 @@ Base.prototype.optionsHelp = function optionsHelp() {
   rows = options.map(function(o) {
     return [
       '',
-      o.alias ? '-' + o.alias : '',
+      o.alias ? '-' + o.alias + ',' : '',
       '--' + o.name,
       o.desc ? '# ' + o.desc : ''
     ];
@@ -294,9 +302,9 @@ Base.prototype.optionsHelp = function optionsHelp() {
 
   widths = [
     2,
-    _.max(options.map(function(o) { return (o.alias || '').length; })),
+    _.max(options.map(function(o) { return (o.alias || '').length; })) + 3,
     _.max(options.map(function(o) { return ('--' + o.name).length; })) + 5,
-    _.max(options.map(function(o) { return (o.desc ? '# ' + o.desc : '').length; }))
+    _.max(options.map(function(o) { return (o.desc || '').length; })) + 2
   ];
 
   return rows.map(function(row) {
