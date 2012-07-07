@@ -1,6 +1,3 @@
-Options:
-    --array       # Create an Ember.ArrayController to represent multiple objects
-
 Description:
     Creates a new Ember.js controller
 

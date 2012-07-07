@@ -1,7 +1,3 @@
-Usage:
-    yeoman generate ember:model field[:type] field[:type]
-
-
 Description:
     Creates a new Ember.js model
 
