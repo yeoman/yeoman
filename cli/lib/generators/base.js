@@ -14,6 +14,9 @@ function Base(args, options, config) {
   this.args = args;
   this.config = config || {};
 
+  this.usage = '';
+  this.description = '';
+
   // setup default options
   // XXX most of these values are not used yet. Are here as reference to some of
   // the rails default options.
@@ -74,19 +77,20 @@ Base.prototype.run = function run(name, config) {
 //
 // Instead of:
 //
-//   yeoman generate --name=NAME
+//   yeoman generate --name NAME
 //
-// Besides, arguments are used inside your code as an accessor (self.argument),
-// while options are all kept in a hash (self.options).
+// Besides, arguments are used inside your code as a property (this.argument),
+// while options are all kept in a hash (this.options).
 //
 // Options
 // -------
 //
-// desc     - (todo) Description for the argument.
+// desc     - Description for the argument.
 // required - If the argument is required or not.
-// optional - (todo) If the argument is optional or not.
-// type     - (todo) The type of the argument, can be :string, :hash, :array, :numeric.
-// default  - (todo) Default value for this argument. It cannot be required
+// optional - If the argument is optional or not.
+// type     - The type of the argument, can be String, Number, Array, Object
+//            (in which case considered as an Hash object, key:value).
+// defaults - Default value for this argument. It cannot be required
 //             and have default values.
 // banner   - String to show on usage notes.
 //
@@ -167,14 +171,27 @@ Base.prototype.bannerFor = function bannerFor(config) {
 };
 
 
+// Defines the usage and the description of this class.
+Base.prototype.desc = function desc(description) {
+  this.description = description || '';
+  return this;
+};
+
+
 // Tries to get the description from a USAGE file one folder above the source
 // root otherwise uses a default description.
 Base.prototype.help = function help() {
   var filepath = path.join(this.generatorPath, 'USAGE'),
     exists = path.existsSync(filepath);
 
-  return exists ? fs.readFileSync(filepath, 'utf8') : [
+  var out = [
+    'Usage:',
+    '  ' + (this.usage || 'yeoman generate ' + this.generatorName),
+    '',
     'Description:',
-    '    Create files for ' + this.generatorName + ' generator.'
+    '  ' + (this.description || 'Create files for ' + this.generatorName + ' generator.')
   ].join('\n');
+
+  out += exists ? fs.readFileSync(filepath, 'utf8') : '';
+  return out;
 };
