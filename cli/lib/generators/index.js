@@ -169,7 +169,7 @@ generators.invoke = function invoke(namespace, args, options, config) {
   }
 
 
-  generators.grunt.log.subhead('.. Invoke ' + namespace + ' ..');
+  generators.grunt.log.subhead('.. Invoke ' + namespace.replace(/^yeoman:/, '') + ' ..');
 
   // create a new generator from this class
   var generator = new klass(args, options, config);

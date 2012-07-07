@@ -14,6 +14,24 @@ function AppGenerator(args, options, config) {
   // cleanup the name property from trailing /, typical usage of directories.
   // update the args object, it's used to initialize js-framework hooks
   if(this.name) this.args[0] = this.args[0].replace(/\/$/, '');
+
+  // resolved to js by default (could be switched to coffee for instance)
+  this.hookFor('javascript-engine');
+
+  // resolved to sass by default (could be switched to less for instance)
+  this.hookFor('stylesheet-engine');
+
+  // init a framework specific controller. resolved to ? by default
+  this.hookFor('js-framework', { as: 'controller' });
+
+  // init a framework specific model. resolved to ? by default
+  this.hookFor('js-framework', { as: 'model' });
+
+  // init a framework specific view. resolved to ? by default
+  this.hookFor('js-framework', { as: 'view' });
+
+  // resolved to jasmine by default (could be switched to mocha for instance)
+  this.hookFor('test-framework');
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);
@@ -47,34 +65,15 @@ AppGenerator.prototype.app = function app() {
   // create the index.html file (until we remotely fetch again h5bp repository,
   // and copy index.html + stripped conversion)
   this.copy('index.html', 'app/index.html');
-
-  // resolved to js by default (could be switched to coffee for instance)
-  this.hookFor('javascript-engine');
-
-  // resolved to sass by default (could be switched to less for instance)
-  this.hookFor('stylesheet-engine');
-
-  // init a framework specific controller. resolved to ? by default
-  this.hookFor('js-framework', { as: 'controller' });
-
-  // init a framework specific model. resolved to ? by default
-  this.hookFor('js-framework', { as: 'model' });
-
-  // init a framework specific view. resolved to ? by default
-  this.hookFor('js-framework', { as: 'view' });
 };
 
 AppGenerator.prototype.lib = function lib() {
   this.mkdir('lib');
-
   // init a generator ? a readme explaining the purpose of the lib/ folder?
 };
 
 AppGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.mkdir('spec');
-
-  // resolved to jasmine by default (could be switched to mocha for instance)
-  this.hookFor('test-framework');
 };
 
