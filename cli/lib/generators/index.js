@@ -191,7 +191,7 @@ generators.invoke = function invoke(namespace, args, options, config) {
   }
 
   // validate the generator (show help on missing argument / options)
-  var requiredArgs = generator.arguments.some(function(arg) {
+  var requiredArgs = generator._arguments.some(function(arg) {
     return arg.config && arg.config.required;
   });
 
