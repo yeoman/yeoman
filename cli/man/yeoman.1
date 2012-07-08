@@ -1,0 +1,151 @@
+.\" Generated with Ronnjs 0.3.8
+.\" http://github.com/kapouer/ronnjs/
+.
+.TH "YEOMAN" "1" "July 2012" "" ""
+.
+.SH "NAME"
+\fByeoman\fR \-\- Yeoman CLI tool
+.
+.SH "What am I?"
+Yeoman is a robust and opinionated client\-side stack, comprised of tools and
+frameworks that can help developers quickly build beautiful web applications\.
+We take care of providing everything needed to get started without any of the
+normal headaches associated with a manual setup\.
+.
+.P
+Yeoman is fast, performant and is optimized to work best in modern browsers\.
+.
+.P
+For more information about the project, see \fIhttp://yeoman\.io\fR\|\.
+.
+.SH "Installing"
+.
+.IP "\(bu" 4
+Clone this repo and \fBcd\fR into it
+.
+.IP "\(bu" 4
+Run the following command at the terminal:
+.
+.IP "" 0
+.
+.P
+\fBshell
+\|\./setup/install\.sh\fR
+.
+.IP "\(bu" 4
+Navigate to a new directory and run \fByeoman init\fR to make sure everything is
+working as expected\.
+.
+.IP "" 0
+.
+.SS "Trouble\-shooting"
+If for any reason you experience exceptions after the yeoman installation
+process above, you may find the following steps resolve these issues:
+.
+.P
+\fB
+$ cd yeoman/cli
+$ sudo npm install \-g
+# when complete then run\.\.
+$ sudo npm link\fR
+.
+.SH "Running"
+Here\'s a small shell script that you can save as \fBserver\.sh\fR which opens and
+servers the current directory on the port specified:
+.
+.P
+\fB\fR`shell
+port=$1
+if [ $#  \-ne  1 ]
+then
+  port=8000
+fi
+.
+.P
+if [ $(uname \-s) == "Darwin" ]
+then
+  open=open
+else
+  open=xdg\-open
+fi
+.
+.P
+$open http://localhost:$port && python \-m SimpleHTTPServer $port; \fB\fR`
+.
+.P
+For example, run this guy as:
+.
+.P
+\fBshell
+\|\./server\.sh 8000\fR
+.
+.SH "Documentation"
+The current documentation for Yeoman can be found here \fIhttp://yeoman\.github\.com/docs\fR\|\. If you are a new contributor and require
+access to this repository, feel free to ask\.
+.
+.SH "Browser Support"
+Yeoman supports:
+.
+.IP "\(bu" 4
+Modern browsers (latest versions of Chrome, Safari, Firefox, Opera and IE10)
+.
+.IP "\(bu" 4
+Chrome on Android
+.
+.IP "\(bu" 4
+Mobile Safari
+.
+.IP "" 0
+.
+.SH "Contribute"
+.
+.SS "Repos"
+.
+.IP "\(bu" 4
+Yeoman (CLI, Insights) \fIhttp://github\.com/yeoman/yeoman\fR
+.
+.IP "\(bu" 4
+Yeoman I/O Holding Page \fIhttp://github\.com/yeoman/yeoman\.io\fR
+.
+.IP "\(bu" 4
+Yeoman I/O Site \fIhttp://github\.com/yeoman/yeoman\.io\fR(site branch)
+.
+.IP "\(bu" 4
+Yeoman Docs \fIhttp://github\.com/yeoman/docs\fR
+.
+.IP "" 0
+.
+.SS "Style Guide"
+This project follows the jQuery Style
+Guide \fIhttp://docs\.jquery\.com/JQuery_Core_Style_Guidelines\fR with an exception
+of two space indentation and multiple var statements\. Please ensure any pull
+requests follow this closely\. If you notice existing code which doesn\'t follow
+these practices, feel free to shout and we will address this\.
+.
+.SH "About"
+Yeoman is an open\-source project by Google which builds on top of a number of
+open\-source solutions\. These include Grunt, Twitter Bootstrap and Compass\.
+Version 1 of the project features the combined efforts of:
+.
+.IP "\(bu" 4
+Paul Irish
+.
+.IP "\(bu" 4
+Addy Osmani
+.
+.IP "\(bu" 4
+Mickael Daniel
+.
+.IP "\(bu" 4
+Sindre Sorhus
+.
+.IP "\(bu" 4
+Eric Bidelman \fIhttp://ericbidelman\.com\fR
+.
+.IP "" 0
+.
+.P
+and other developers\.
+.
+.P
+We will be aiming to officially release the project in late July, 2012\.
