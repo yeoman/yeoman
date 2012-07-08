@@ -4,10 +4,13 @@
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "version": "0.0.1",
   "homepage": "http://yeoman.io",
+  "main": "./yeoman",
   "bin": {
     "yeoman": "./bin/yeoman"
   },
-  "main": "./yeoman",
+  "directories": {
+    "man": "./man"
+  },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
     "open": "0.0.2",
@@ -33,9 +36,11 @@
     "colors": "~0.6.0"
   },
   "devDependencies": {
-    "mocha": "~1.2"
+    "mocha": "~1.2",
+    "ronn": "~0.3.8"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha --reporter nyan test/tasks/test-*.js --silent"
+    "test": "node node_modules/mocha/bin/mocha --reporter nyan test/tasks/test-*.js --silent",
+    "manpages": "./scripts/docs-build"
   }
 }
