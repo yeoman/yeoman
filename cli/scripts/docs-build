@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+DOCS_FILES=$(find doc/*.md)
+MAN_FOLDER=man/
+RONN=./node_modules/.bin/ronn
+
+mkdir -p $MAN_FOLDER
+
+function ronnify {
+  $RONN --roff $1 > $2
+}
+
+for file in $DOCS_FILES; do
+  docpath=${file/doc/man}
+  ronnify $file ${docpath/.md/.1}
+done
+
