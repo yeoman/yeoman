@@ -3,20 +3,66 @@ var fs = require('fs'),
   path = require('path');
 
 //
-// ### Usemin Task
+// ### Usemin
+
+// Replaces references to non-optimized scripts or stylesheets
+// into a set of HTML files (or any templates/views).
 //
-// Replaces references ton non-optimized scripts / stylesheets into a
-// set of html files (or any template / views).
+// The users markup should be considered the primary source of information 
+// for paths, references to assets which should be optimized.We also check 
+// against files present in the relevant directory () (e.g checking against 
+// the revved filename into the 'intermediate/') directory to find the SHA 
+// that was generated.
 //
-// Right now the replacement is based on the filename parsed from
-// content and the files present in accoding dir (eg. looking up
-// matching revved filename into `intermediate/` dir to know the sha
-// generated).
-//
-// Todo: Use a file dictionary during build process and rev task to
+// Todos:
+// * Use a file dictionary during build process and rev task to
 // store each optimized assets and their associated sha1.
+// * Update usemin-handler to follow @necolas proposed structure
 //
 // Thx to @krzychukula for the new, super handy replace helper.
+//
+// #### Usemin-handler
+// 
+// A special task which uses the build block HTML comments in markup to 
+// get back the list of files to handle, and initialize the grunt configuration 
+// appropriately, and automatically.
+//
+// Custom HTML "block" comments are provided as an API for interacting with the 
+// build script. These comments adhere to the following pattern:
+//
+//     <!-- build:<type> <path> -->
+//       ... HTML Markup, list of script / link tags.
+//     <!-- endbuild -->
+//
+// - type: is either js or css.
+// - path: is the file path of the optimized file, the target output. 
+//
+// An example of this in completed form can be seen below:
+//
+//    <!-- build:js js/app.js -->
+//      <script src="js/app.js"></script>
+//      <script src="js/controllers/thing-controller.js"></script>
+//      <script src="js/models/thing-model.js"></script>
+//      <script src="js/views/thing-view.js"></script>
+//    <!-- endbuild -->
+//
+// 
+// Internally, the task parses your HTML markup to find each of these blocks, and
+// initializes for you the corresponding Grunt config for the concat / min tasks
+// when `type=js`, the concat / css tasks when `type=css`.
+//
+// The task also handles use of RequireJS, for the scenario where you specify
+// the main entry point for your application using the "data-main" attribute
+// as follows:
+//
+//     <!-- build:js js/app.min.js -->
+//     <script data-main="js/main" src="js/vendor/require.js"></script>
+//     <!-- -->
+//
+// One doesn't need to specify a concat/min/css or rjs configuration anymore.
+//
+// Inspired by previous work in https://gist.github.com/3024891
+// For related sample, see: cli/test/tasks/usemin-handler/index.html
 //
 
 module.exports = function(grunt) {
@@ -35,7 +81,7 @@ module.exports = function(grunt) {
       // get extension and trigger corresponding helpers
       var ext = path.extname(p).slice(1);
 
-      grunt.log.subhead('usemin - ' + p);
+      grunt.log.subhead('usemin:' + name + ' - ' + p);
 
       // make sure to convert back into utf8, `file.read` when used as a
       // forEach handler will take additional arguments, and thus trigger the
@@ -43,13 +89,13 @@ module.exports = function(grunt) {
       content = content.toString();
 
       // ext-specific directives handling and replacement of blocks
-      if(!!grunt.task._helpers['usemin:pre:' + ext]) {
-        content = grunt.helper('usemin:pre:' + ext, content);
+      if(!!grunt.task._helpers['usemin:pre:' + name]) {
+        content = grunt.helper('usemin:pre:' + name, content);
       }
 
       // actual replacement of revved assets
-      if(!!grunt.task._helpers['usemin:post:' + ext]) {
-        content = grunt.helper('usemin:post:' + ext, content);
+      if(!!grunt.task._helpers['usemin:post:' + name]) {
+        content = grunt.helper('usemin:post:' + name, content);
       }
 
       // write the new content to disk
@@ -57,6 +103,76 @@ module.exports = function(grunt) {
     });
 
   });
+
+  grunt.registerMultiTask('usemin-handler', 'Using HTML markup as the primary source of information', function() {
+    var files = grunt.file.expandFiles(this.data).map(function(filepath) {
+      return {
+        path: filepath,
+        body: grunt.file.read(filepath)
+      };
+    });
+
+    files.forEach(function(file) {
+      var blocks = getBlocks(file.body);
+      Object.keys(blocks).forEach(function(dest) {
+        var lines = blocks[dest].slice(1, -1),
+          parts = dest.split(':'),
+          type = parts[0],
+          output = parts[1],
+          basename = output.replace(path.extname(output), ''),
+          content = lines.join('\n');
+
+        // concat / min / css / rjs config
+        var concat = grunt.config('concat') || {},
+          min = grunt.config('min') || {},
+          css = grunt.config('css') || {},
+          rjs = grunt.config('rjs') || {};
+
+        // parse out the list of assets to handle, and update the grunt config accordingly
+        var assets = lines.map(function(tag) {
+          
+          // RequireJS uses a data-main attribute on the script tag to tell RequireJS
+          // to load up the scripts/mainEntryPoint.js file. The below regex should be
+          // able to handle both cases of data-main="scripts/main" as well as 
+          // data-main="scripts/main.js"
+
+          var main = tag.match(/data-main=['"]([^'"]+)['"]/);
+          if(main) {
+            rjs.modules = (rjs.modules || []).concat({
+              name: path.relative(rjs.appDir, main[1])
+            });
+            return main[1] + '.js';
+          }
+
+          return (tag.match(/(href|src)=["']([^'"]+)["']/) || [])[2];
+        });
+
+        // update concat config for this block
+        concat[output] = assets;
+        grunt.config('concat', concat);
+
+
+        // update rjs config as well, as during path lookup we might have
+        // updated it on data-main attribute
+        grunt.config('rjs', rjs);
+
+        // min config, only for js type block
+        if(type === 'js') {
+          min[basename + '.min.js'] = output;
+          grunt.config('min', min);
+        }
+
+        // css config, only for css type block
+        if(type === 'css') {
+          css[basename + '.min.css'] = output;
+          grunt.config('css', css);
+        }
+      });
+    });
+  });
+
+  // Helpers
+  // -------
 
   // usemin:pre:* are used to preprocess files with the blocks and directives
   // before going through the global replace
@@ -226,6 +342,22 @@ function getBlocks(body) {
       last.push(l);
     }
   });
+
+// Todo: Change to match @necolas suggested structure for the usemin blocks.
+// {
+//   type: 'css',
+//   dest: 'css/site.css',
+//   src: [
+//     'css/normalize.css',
+//     'css/main.css' 
+//   ],
+//   raw: [
+//     '    <!-- build:css css/site.css -->',
+//     '    <link rel="stylesheet" href="css/normalize.css">',
+//     '    <link rel="stylesheet" href="css/main.css">',
+//     '    <!-- endbuild -->' 
+//   ]
+// }
 
   return sections;
 }

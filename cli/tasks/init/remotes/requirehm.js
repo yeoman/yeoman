@@ -5,25 +5,20 @@ var fs = require('fs'),
   Repo = require('./util/repo'),
   fstream = require('fstream');
 
-// XXX
-//   - Fetch code may go directly in the fetch method of the Base class
-//   - This file file become the base class (and be renamed)
-//
-
 module.exports = requirehm;
 
 function requirehm(opts) {
 
   this.name = opts.name || 'requirehm';
-  this.user = opts.user || 'addyosmani';
+  this.user = opts.user || 'jrburke';
   this.repo = opts.repo || 'require-hm';
   this.title = "experimental support for ECMAScript 6 Modules";
 
-  this.version = opts.version || '12dd2cc037b1cda98b1ac34e2ae6e31686de1acb';
+  this.version = opts.version || '9e1773f332d9d356bb6e7d976f9220f3a1371747';
 
   this.files = {};
   this.files.path = 'js/vendor';
-  this.files.js = ['hm.js'];
+  this.files.js = ['hm.js','esprima.js'];
 
   this.priority = 5;
 
@@ -32,18 +27,26 @@ function requirehm(opts) {
 
 util.inherits(requirehm, Repo);
 
+
+
 requirehm.prototype.copy = function copy(cb) {
-  // XXX provide a glob based API to copy specific files from the cached
-  // folder to the root one
-  fstream.Reader(path.join(this.cache, 'dist'))
-    .on('error', cb)
-    .pipe(fstream.Writer({
-      path: path.join(__dirname, '../yeoman/root/js/vendor'),
-      type: 'Directory'
-    }))
-    .on('error', cb)
-    .on('close', cb)
-    .on('close', this.emit.bind(this, 'copy'));
+
+  var self = this;
+
+  this.files.js.forEach(function( currentFile ){
+
+    fstream.Reader(path.join(self.cache, currentFile))
+      .on('error', cb)
+      .pipe(fstream.Writer({
+        path: path.join(__dirname, '../yeoman/root/js/vendor', currentFile),
+        type: 'File'
+      }))
+      .on('error', cb)
+      .on('close', cb)
+      .on('close', self.emit.bind(self, 'copy'));
+
+  });
+
 };
 
 requirehm.prototype.end = function end(cb) {
