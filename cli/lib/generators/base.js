@@ -75,6 +75,10 @@ Base.prototype.run = function run(name, config) {
 
   var methods = Object.keys(this.__proto__);
   methods.forEach(function(method) {
+    // prevent specific methods from running. This include any private-like
+    // method (prefixed with _) and coffee-specific method like constructor.
+    if(method.charAt(0) === '_') return;
+    if(method === 'constructor') return;
     self[method].apply(self, args);
   });
 
