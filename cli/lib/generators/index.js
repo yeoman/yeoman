@@ -152,7 +152,9 @@ generators.printList = function printList(base, namespaces) {
 
 // Receives a namespace, arguments and the options list to invoke a generator.
 // It's used as the default entry point for the generate command.
-generators.invoke = function invoke(namespace, args, options, config) {
+generators.invoke = function invoke(namespace, args, options, config, cb) {
+  // noop when no async handler provided
+  cb = cb || function() {};
 
   // keep track of loaded path in lookup case no generator were found, to be able to
   // log where we searched
@@ -197,7 +199,7 @@ generators.invoke = function invoke(namespace, args, options, config) {
     args: args,
     options: options,
     config: config
-  });
+  }, cb);
 };
 
 // Generator factory. Get a namespace, locate, instantiate, init and return the
