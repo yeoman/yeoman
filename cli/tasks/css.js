@@ -24,6 +24,10 @@ module.exports = function(grunt) {
     // async task
     var cb = this.async();
 
+    // concat prior to rjs optimize css, and before min max info
+    grunt.log.write('Writing css files to ' + target + '...');
+    grunt.file.write(target, grunt.helper('mincss', files));
+
     // replace @import statements
     //
     // XXX no error handling in this helper so far..
@@ -31,8 +35,6 @@ module.exports = function(grunt) {
     // if it is bubble the error back here
     grunt.helper('rjs:optimize:css', target, function() {
       // do the minification once inline imports are done
-      grunt.log.write('Writing css files to ' + target + '...');
-      grunt.file.write(target, grunt.helper('mincss', target));
       grunt.log.ok();
       cb();
     });
