@@ -3,26 +3,31 @@ var fs = require('fs'),
   path = require('path');
 
 //
-// ### Usemin Task
-//
-// Replaces references ton non-optimized scripts / stylesheets into a
-// set of html files (or any template / views).
-//
-// Right now the replacement is based on the filename parsed from
-// content and the files present in accoding dir (eg. looking up
-// matching revved filename into `intermediate/` dir to know the sha
-// generated).
+// ### Usemin
+
+// Replaces references to non-optimized scripts or stylesheets
+// into a set of HTML files (or any templates/views) for the purposes
+// of wiring. 
+
+// The users markup should be considered the primary source of information 
+// for paths, references to assets which should be optimized.We also check 
+// against files present in the relevant directory () (e.g checking against 
+// the revved filename into the 'intermediate/') directory to find the SHA 
+// that was generated.
 //
 // Todo: Use a file dictionary during build process and rev task to
 // store each optimized assets and their associated sha1.
 //
 // Thx to @krzychukula for the new, super handy replace helper.
 //
-// ---
-//
-// usemin-handler: is a special task which uses the build block HTML comments
+// ### Usemin-handler
+// 
+// A special task which uses the build block HTML comments
 // in markup to get back the list of files to handle, and initialize the grunt
 // configuration appropriately, and automatically.
+//
+// Inspired by previous work in https://gist.github.com/3024891
+// For related sample, see: cli/test/tasks/usemin-handler/index.html
 //
 
 module.exports = function(grunt) {
@@ -90,7 +95,12 @@ module.exports = function(grunt) {
 
         // parse out the list of assets to handle, and update the grunt config accordingly
         var assets = lines.map(function(tag) {
-          // a bit more handling to detect data-main path instead
+          
+          // RequireJS uses a data-main attribute on the script tag to tell RequireJS
+          // to load up the scripts/mainEntryPoint.js file. The below regex should be
+          // able to handle both cases of data-main="scripts/main" as well as 
+          // data-main="scripts/main.js"
+
           var main = tag.match(/data-main=['"]([^'"]+)['"]/);
           if(main) {
             rjs.modules = (rjs.modules || []).concat({
