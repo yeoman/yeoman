@@ -1,6 +1,8 @@
 
-var path = require('path'),
+var fs = require('fs'),
+  path = require('path'),
   grunt = require('grunt'),
+  fetch = require('../utils/fetch'),
   _ = grunt.util._;
 
 var actions = module.exports;
@@ -88,4 +90,71 @@ actions.directory = function directory(source, destination) {
     });
     self.log.ok();
   });
+};
+
+// Fetch a remote tarball, and untar at the given location
+actions.tarball = fetch;
+
+// Download a single file at the given destination.
+actions.fetch = function(url, destination, cb) {
+  this.mkdir(path.dirname(destination));
+  fetch.request(url)
+    .on('error', cb)
+    .pipe(fs.createWriteStream(destination))
+    .on('error', cb)
+    .on('close', cb);
+};
+
+// Remotely fetch a package on github, store this into a _cache folder,
+// and provide a "remote" object as an a facade API to ourself (part of
+// genrator API, copy, template, directory)
+actions.remote = function(username, repo, branch, cb) {
+  if(!cb) { cb = branch; branch = 'master'; }
+
+  var self = this,
+    cache = path.join(__dirname, '../../_cache/', username, repo, branch),
+    url = 'http://nodeload.github.com/' + [username, repo, 'tarball', branch].join('/');
+
+  fs.stat(cache, function(err) {
+    // already cached
+    if(!err) return done();
+    // first time fetch
+    self.tarball(url, cache, done);
+  });
+
+  // XXX remote should probably be in its own file,
+  function done(err) {
+    if(err) return cb(err);
+
+    var files = grunt.file.expandFiles(path.join(cache, '**')).map(function(filepath) {
+      return filepath.slice(cache.length + 1);
+    });
+
+    var remote = {};
+
+    remote.copy = function copy(source, destination, options) {
+      source = path.join(cache, source);
+      grunt.file.copy(source, destination, options);
+      return this;
+    };
+
+    remote.template = function template(source, destination, data) {
+      // data is meant to be the whole instance for now. Will change.
+      data = data || self;
+      destination = destination || source;
+      source = path.join(cache, source);
+
+      var body = grunt.template.process(grunt.file.read(source), data);
+      self.write(destination, body);
+    };
+
+    remote.directory = function directory(source, destination) {
+      var root = self.sourceRoot();
+      self.sourceRoot(cache);
+      self.directory(source, destination);
+      self.sourceRoot(root);
+    };
+
+    cb(err, remote, files);
+  }
 };

@@ -56,15 +56,43 @@ AppGenerator.prototype.gitignore = function gitignore() {
   this.copy('gitignore', '.gitignore');
 };
 
+
+AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
+  var cb = this.async();
+  // Fecth allows the download of single files, into the destination directory
+  this.fetch('https://raw.github.com/h5bp/html5-boilerplate/master/index.html', 'index.html', function(err) {
+    if(err) return cb(err);
+    cb();
+  });
+
+};
+
+AppGenerator.prototype.fetchPackage = function fetchPackage() {
+  this.log.writeln('Fetching h5bp/html5-boilerplate pkg');
+
+  var cb = this.async();
+
+  this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
+    if(err) return cb(err);
+
+    // Remote allows the download of full repository, copying of single of
+    // multiple files with glob patterns. `remote` is your API to access this
+    // fetched (or cached) package, to copy or process through _.template
+
+    // remote.copy('index.html', 'index.html');
+    // remote.template('index.html', 'will/be/templated/at/index.html');
+
+    remote.directory('.', 'app');
+    cb();
+  });
+
+};
+
 AppGenerator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/js');
   this.mkdir('app/css');
   this.mkdir('app/templates');
-
-  // create the index.html file (until we remotely fetch again h5bp repository,
-  // and copy index.html + stripped conversion)
-  this.copy('index.html', 'app/index.html');
 };
 
 AppGenerator.prototype.lib = function lib() {
