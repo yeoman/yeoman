@@ -62,37 +62,66 @@ _.extend(Base.prototype, actions);
 // for the method to be invoked, if none is given, the same values used to
 // initialize the invoker are used to initialize the invoked.
 //
-// XXX currently, all is assumed to be run synchronously. We may have the need
-// to run async thing, if that's so, always assume a method is synchronous
-// unless a special this.async() handler is invoked (like Grunt).
-//
-Base.prototype.run = function run(name, config) {
+Base.prototype.run = function run(name, config, cb) {
   var args = config.args || this.args,
     opts = config.options || this.options,
     self = this;
 
+  cb = cb || function() {};
+
   this._running = true;
 
   var methods = Object.keys(this.__proto__);
-  methods.forEach(function(method) {
+  (function next(method) {
+    if(!method) return self.runHooks(cb);
+
     // prevent specific methods from running. This include any private-like
     // method (prefixed with _) and coffee-specific method like constructor.
-    if(method.charAt(0) === '_') return;
-    if(method === 'constructor') return;
-    self[method].apply(self, args);
-  });
+    if(method.charAt(0) === '-') return next(methods.shift());
+    if(method.constructor === '-') return next(methods.shift());
 
-  // go through all registered hooks, and invoke them in series
-  this._hooks.forEach(function(hook) {
+    // very very basic async management, could be done better using event and
+    // EventEmitter ability of Generators.
+    var wait = false;
+    self.async = function async() {
+      wait = true;
+      return function(err) {
+        if(err) self.emit('error', err);
+        next(methods.shift());
+      };
+    };
+
+    // run the given method
+    self[method].apply(self, args);
+
+    // async wasn't called, assume synchronous behaviour, go next right away
+    if(!wait) next(methods.shift());
+
+  })(methods.shift());
+};
+
+// Go through all registered hooks, and invoke them in series
+Base.prototype.runHooks = function runHooks(cb) {
+  var self = this,
+    hooks = this._hooks;
+
+  (function next(hook) {
+    if(!hook) return cb();
+
     var resolved = self.defaultFor(hook.name),
       gruntConfig = hook.config || self.config,
       options = hook.options || self.options,
       context = hook.as || self.generatorName,
       args = hook.args || self.args;
 
-    self.invoke(resolved + ':' + context, args, options, gruntConfig);
-  });
+    self.invoke(resolved + ':' + context, args, options, gruntConfig, function(err) {
+      if(err) return cb(err);
+      next(hooks.shift());
+    });
+
+  })(hooks.shift());
 };
+
 
 //
 // Adds an argument to the class and creates an attribute getter for it.
@@ -227,7 +256,7 @@ Base.prototype.hookFor = function hookFor(name, config) {
 // cli options and Gruntfile's generator config.
 Base.prototype.defaultFor = function defaultFor(name) {
   var config = this.config.generators;
-  if(this.options[name]) name = this.options[name]
+  if(this.options[name]) name = this.options[name];
   else if(config && config[name]) name = config[name];
   return name;
 };
@@ -241,7 +270,7 @@ Base.prototype.bannerFor = function bannerFor(config) {
     config.type === Number ? 'N' :
     config.type === Object ? 'key:value' :
     config.type === Array ? 'one two three' :
-    ''
+    '';
 };
 
 
@@ -261,7 +290,7 @@ Base.prototype.help = function help() {
   var out = [
     'Usage:',
     '  ' + this.usage(),
-    '',
+    ''
     // exists ? '' : 'Description:',
     // exists ? fs.readFileSync(filepath, 'utf8') : '\n  ' +
     //   (this.description || 'Create files for ' + this.generatorName + ' generator.')
@@ -287,7 +316,7 @@ Base.prototype.help = function help() {
 // Output usage information for this given class, depending on its arguments /
 // options / hooks
 Base.prototype.usage = function usage() {
-  var arguments = this._arguments.map(function(arg) {
+  var args = this._arguments.map(function(arg) {
     return arg.config.banner;
   }).join(' ');
 
@@ -297,7 +326,7 @@ Base.prototype.usage = function usage() {
 
   name = name.replace(/^yeoman:/, '');
 
-  return 'yeoman ' + cmd + ' ' + name + arguments + ' ' + options;
+  return 'yeoman ' + cmd + ' ' + name + args + ' ' + options;
 };
 
 // print the list of options in formatted table
@@ -328,7 +357,7 @@ Base.prototype.optionsHelp = function optionsHelp() {
       o.alias ? '-' + o.alias + ', ' : '',
       '--' + o.name,
       o.desc ? '# ' + o.desc : '',
-      o.defaults == null ? '' : 'Default: ' + o.defaults,
+      o.defaults == null ? '' : 'Default: ' + o.defaults
     ];
   });
 
