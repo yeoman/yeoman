@@ -25,41 +25,48 @@ module.exports = function(grunt) {
   //
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-mocha/tasks'));
-  grunt.loadTasks(join(__dirname, '../node_modules/grunt-shell/tasks'));
 
   // and build targets, these are equivalent to alias except that we
   // defined a single task and use arguments to trigger the appropriate
   // target
   var targets = {
     // build - (default) no html optimizations
-    "default": 'coffee concat shell:compass css min img usemin manifest',
+    "default": 'coffee concat compass css min img usemin manifest',
+
+    // (experimental) usemin handler
+    // The usemin task and its block parsing will return a list of assets
+    // to handle. These include CSS and JS files.
+    //
+    // It eliminates the need for specifying configuration and path data for css,
+    // concat, min and rjs tasks. The rjs optimizer is triggered if the data-main
+    // attribute is used with the <script /> tag.
+    usemin: 'coffee shell:compass usemin-handler concat rjs css min img rev usemin manifest',
 
     // text - same as build but without image (png/jpg) optimizing
-    text: 'coffee concat css min rev usemin manifest',
+    text: 'coffee concat compass css min rev usemin manifest',
 
     // require - same as build but uses r.js for requirejs modules
-    rjs: 'coffee shell:compass css img rjs manifest',
+    rjs: 'coffee compass css img rjs manifest',
 
     // buildkit - minor html optimizations, all html whitespace/comments
     // maintained
     // (todo: inline script/style minified)
-    buildkit: 'coffee concat css min img rev usemin manifest html:buildkit',
+    buildkit: 'coffee concat compass css min img rev usemin manifest html:buildkit',
 
     // basics - same as build minus plugs minor html optimizations
     // (extra quotes and comments removed)
     // (todo: inline script/style minified)
-    basics: 'coffee concat css min img rev usemin manifest html:basics',
+    basics: 'coffee concat compass css min img rev usemin manifest html:basics',
 
     // minify - same as build plus full html minification,
-    minify: 'coffee concat css min img rev usemin manifest html:compress'
+    minify: 'coffee concat compass css min img rev usemin manifest html:compress'
   };
 
   var targetList = grunt.log.wordlist(Object.keys(targets));
   grunt.registerTask('build', 'Run a predefined target - build:<target> \n' + targetList, function(target) {
     var valid = Object.keys(targets);
-    if(!target) {
-      target = 'default';
-    }
+    target = target || 'usemin';
+
     if(!~valid.indexOf(target)) {
       grunt.log
         .error('Not a valid target')
