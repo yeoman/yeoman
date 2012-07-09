@@ -34,11 +34,11 @@ module.exports = function(grunt) {
     "default": 'coffee concat shell:compass css min img usemin manifest',
 
     // (experimental) usemin handler
-    // Consider the usemin task and its block parsing to get back the list of
-    // assets files to handle, either they are css or js.
+    // The usemin task and its block parsing will return a list of assets
+    // to handle. These include CSS and JS files.
     //
-    // It eliminates the need of specifying configuration and path for css,
-    // concat, min and rjs task. rjs optimizer is triggered if data-main
+    // It eliminates the need for specifying configuration and path data for css,
+    // concat, min and rjs tasks. The rjs optimizer is triggered if the data-main
     // attribute is used with the <script /> tag.
     usemin: 'coffee shell:compass usemin-handler concat rjs css min img rev usemin manifest',
 
