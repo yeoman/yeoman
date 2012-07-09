@@ -224,9 +224,6 @@ yeoman.end = function end(init, props, cb) {
   // XXX Generate package.json file?
   init.writePackageJSON('package.json', props);
 
-  // Wire up written dependencies to index
-  yeoman.wireFiles(props, function(err) {});
-
   // All done!
   cb();
 
@@ -358,79 +355,6 @@ yeoman.jasmineFilesToCopy = function jasmineFilesToCopy(init, props) {
   return files;
 };
 
-
-
-yeoman.wireFiles = function(props, cb){
-
-  var grunt = this.grunt;
-
-  // Placeholders
-  // Before </head>
-  yeoman.cssFiles = "";
-  // Before </body>
-  yeoman.jsFiles = "";
-
-
-  // Current index content
-  var indexData = fs.readFileSync(path.resolve('index.html'), 'utf8');
-
-  // Map over remote repos to get them in the right priority order
-  var repos = Object.keys(remotes).map(function(remote) {
-
-  if (remote[0] !== '.') {
-      return new remotes[remote]({ props: props, grunt: grunt });
-    }
-  }).sort(function(a, b) {
-    return a.priority < b.priority ? -1 : 1;
-  });
-
-
-// For each repo, generate the script or stylesheet refrences for their final files
-(function next(repo) {
-    if(!repo) return cb();
-
-
-    // Generate paths and store for wiring
-    if(repo.files){
-
-      var filePath = repo.files.path;
-
-      // Remote scripts
-      if(repo.files.js){
-        repo.files.js.forEach(function(n){
-            yeoman.jsFiles += ('<script src="' + (filePath ? filePath + '/' : '') + n + '"></script>\n');
-        });
-      }
-
-      // Remote stylesheets
-      if(repo.files.css){
-        repo.files.css.forEach(function(n){
-            yeoman.cssFiles += ('<link rel="stylesheet" href="' + (filePath ? filePath + '/' : '') + n  + '">\n');
-        });
-      }
-
-      // Any other remote files to be added
-      if(repo.files.add){
-        repo.files.add.forEach(function(n){
-           fs.writeFileSync(path.resolve(n.path), n.content, 'utf8');
-        });
-      }
-
-    }
-
-  next(repos.shift());
-
-  })(repos.shift());
-
-
-  // Write back the wired up file
-  indexData = indexData.replace('</head>', yeoman.cssFiles + '</head>');
-  indexData = indexData.replace('</body>', yeoman.jsFiles + '</body>');
-
-  fs.writeFileSync(path.resolve('index.html'), indexData, 'utf8');
-
-
-};
 
 // We use this a chance to blacklist files or remap any particular paths
 yeoman.simplifyFileTree = function(files){
