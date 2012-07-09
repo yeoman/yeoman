@@ -308,5 +308,21 @@ function getBlocks(body) {
     }
   });
 
+// Todo: Change to match @necolas suggested structure for the usemin blocks.
+// {
+//   type: 'css',
+//   dest: 'css/site.css',
+//   src: [
+//     'css/normalize.css',
+//     'css/main.css' 
+//   ],
+//   raw: [
+//     '    <!-- build:css css/site.css -->',
+//     '    <link rel="stylesheet" href="css/normalize.css">',
+//     '    <link rel="stylesheet" href="css/main.css">',
+//     '    <!-- endbuild -->' 
+//   ]
+// }
+
   return sections;
 }
