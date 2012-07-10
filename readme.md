@@ -74,6 +74,10 @@ Yeoman supports:
 * Mobile Safari
 
 
+## Platform Support
+
+Yeoman 1.0 will support Mac OSX and will attempt to support Linux as well. We will be aiming to bring in support for Windows in a future version of the project.
+
 ## Contribute
 
 ### Repos
@@ -89,12 +93,29 @@ This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core
 
 ## About
 
-Yeoman is an open-source project by Google which builds on top of a number of open-source solutions. These include Grunt, Twitter Bootstrap and Compass. Version 1 of the project features the combined efforts of:
+Yeoman is an open-source project by [Google](http://google.com) which builds on top of [Grunt](https://github.com/cowboy/grunt) and [node-build-script](http://github.com/h5bp/node-build-script). We utilize a number of useful open-source solutions including:
 
-* Paul Irish
-* Addy Osmani
-* Mickael Daniel
-* Sindre Sorhus
+* Twitter Bootstrap
+* Html5 Boilerplate
+* Modernizr
+* Twitter Bower
+* Node
+* NPM
+* Compass
+* socket.io
+* coffeescript
+* mocha
+* jasmine
+* PhantomJS
+
+and [more](https://github.com/yeoman/yeoman/wiki/Dependencies)
+
+Version 1 of the project features the combined efforts of:
+
+* [Paul Irish](http://paulirish.com)]
+* [Addy Osmani](http://addyosmani.com)
+* [Mickael Daniel](http://blog.mklog.fr/)
+* [Sindre Sorhus](http://http://sindresorhus.com/)
 * [Eric Bidelman](http://ericbidelman.com)
 
 and other developers. 
