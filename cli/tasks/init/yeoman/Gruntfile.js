@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       },
       compass: {
         files: ['css/sass/**/*.sass', 'css/sass/**/*.scss'],
-        tasks: 'shell:compass reload'
+        tasks: 'compass reload'
       },
       // only used with `yeoman server`
       reload: {
