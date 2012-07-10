@@ -1,0 +1,12 @@
+Description:
+    Creates a default Angular folder layout in app/js/
+
+Example:
+    yeoman generate bootstrap Thing
+
+    This will create:
+        app/js/app.js
+        app/js/controllers/
+        app/js/helpers/
+        app/js/templates/
+
