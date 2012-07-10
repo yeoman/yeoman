@@ -208,9 +208,15 @@ module.exports = function(grunt) {
       .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
       .writeln('Hit Ctrl+C to quit.');
 
-    var server = connect.apply(null, middleware).listen(port, function() {
-      open('http://localhost:' + port);
-    });
+    var server = connect.apply(null, middleware)
+      .on('error', function( err ) {
+        if ( err.code === 'EADDRINUSE' ) {
+          port = server.listen(0).address().port; // Pick a random port
+        }
+      })
+      .listen(port, function() {
+        open('http://localhost:' + port);
+      });
 
     // create the reactor object
     grunt.helper('reload:reactor', {
