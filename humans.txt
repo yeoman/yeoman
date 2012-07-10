@@ -28,7 +28,7 @@
 
 
 
-/* SITE */
+/* PROJECT */
 
     Standards: HTML5, CSS3, JS
     Components: 
