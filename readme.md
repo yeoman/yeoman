@@ -115,7 +115,7 @@ Version 1 of the project features the combined efforts of:
 * [Paul Irish](http://paulirish.com)]
 * [Addy Osmani](http://addyosmani.com)
 * [Mickael Daniel](http://blog.mklog.fr/)
-* [Sindre Sorhus](http://http://sindresorhus.com/)
+* [Sindre Sorhus](http://sindresorhus.com/)
 * [Eric Bidelman](http://ericbidelman.com)
 
 and other developers. 
