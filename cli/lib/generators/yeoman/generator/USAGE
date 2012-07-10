@@ -1,0 +1,11 @@
+Description:
+    Stubs out a new generator at lib/generators. Pass the generator name as an argument.
+
+Example:
+    `yeoman generate generator Awesome`
+
+    creates a standard awesome generator:
+        lib/generators/awesome/
+        lib/generators/awesome/index.js
+        lib/generators/awesome/USAGE
+        lib/generators/awesome/templates/

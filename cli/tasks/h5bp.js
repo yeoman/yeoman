@@ -24,6 +24,7 @@ module.exports = function(grunt) {
   // with abs path.
   //
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
+  grunt.loadTasks(join(__dirname, '../node_modules/grunt-mocha/tasks'));
 
   // and build targets, these are equivalent to alias except that we
   // defined a single task and use arguments to trigger the appropriate
