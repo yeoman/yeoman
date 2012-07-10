@@ -14,6 +14,20 @@ function Generator() {
   // should we figure it out automatically? and made available through an
   // appname property, function of something.
   this.appname = path.basename(process.cwd());
+
+  // the api to hookFor and pass arguments may vary a bit.
+  this.hookFor('backbone:view', {
+    args: [ 'application' ]
+  });
+  this.hookFor('backbone:model', {
+    args: [ 'application' ]
+  });
+  this.hookFor('backbone:collection', {
+    args: [ 'application' ]
+  });
+  this.hookFor('backbone:router', {
+    args: [ 'application' ]
+  });
 }
 
 util.inherits(Generator, yeoman.generators.Base);
@@ -34,21 +48,5 @@ Generator.prototype.createDirLayout = function createDirLayout() {
 
 Generator.prototype.createAppFile = function createAppFile() {
   this.template('app.js', 'app/js/' + this.appname + '.js');
-};
-
-Generator.prototype.createAppStubs = function createAppStubs() {
-  // the api to hookFor and pass arguments may vary a bit.
-  this.hookFor('backbone:view', {
-    args: [ 'application' ]
-  });
-  this.hookFor('backbone:model', {
-    args: [ 'application' ]
-  });
-  this.hookFor('backbone:collection', {
-    args: [ 'application' ]
-  });
-  this.hookFor('backbone:router', {
-    args: [ 'application' ]
-  });
 };
 
