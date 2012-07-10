@@ -1,0 +1,17 @@
+// LARGE DESKTOP & UP
+// ------------------
+
+@media (min-width: 1200px)
+  // Fixed grid
+  +bootstrap-grid-core(70px, 30px)
+  // Fluid grid
+  +bootstrap-grid-fluid(5.983%, 2.564%)
+  // Input grid
+  +bootstrap-grid-input(70px, 30px)
+  // Thumbnails
+  .thumbnails
+    margin-left: -30px
+  .thumbnails > li
+    margin-left: 30px
+  .row-fluid .thumbnails
+    margin-left: 0

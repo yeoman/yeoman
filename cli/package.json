@@ -33,7 +33,8 @@
     "faye-websocket": "~0.4.2",
     "prompt": "~0.2.1",
     "underscore": "1.3.3",
-    "colors": "~0.6.0"
+    "colors": "~0.6.0",
+    "grunt-mocha": "~0.1.1"
   },
   "devDependencies": {
     "mocha": "~1.2",

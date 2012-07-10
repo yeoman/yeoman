@@ -1,0 +1,8 @@
+Description:
+    Creates a new Ember.js model
+
+Example:
+    yeoman generate model Thing
+
+    This will create:
+        app/js/models/thing-model.js

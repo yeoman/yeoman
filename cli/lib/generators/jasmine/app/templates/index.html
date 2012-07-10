@@ -1,0 +1,55 @@
+<!doctype html>
+<head>
+  <title>Jasmine Spec Runner</title>
+
+  <link rel="stylesheet" href="lib/jasmine-1.2.0/jasmine.css">
+  <script src="lib/jasmine-1.2.0/jasmine.js"></script>
+  <script src="lib/jasmine-1.2.0/jasmine-html.js"></script>
+
+  <!-- include source files here... -->
+  <script src="../js/main.js"></script>
+
+  <!-- include spec files here... -->
+  <!--
+    the `src/introduction.js` include the Jasmine introduction, with a
+    lot of inline comments to help you get started with Jasmine. This is
+    meant to be replaced by your own tests.
+
+    The same introduction than the Jasmine doc page:
+    http://pivotal.github.com/jasmine/
+
+    https://raw.github.com/pivotal/jasmine/gh-pages/src/introduction.js
+  -->
+  <script src="spec/introduction.js"></script>
+
+  <!--
+    Choose a jasmine reporter.
+
+    runner/ directory includes both environment for basic HTML reporting
+    and a runner with the minimal amount of configuration required for
+    running Jasmine specs in an headless environment.
+
+    - headless.js:
+    If you are on Unix or Windows, notice that there are a few issues
+    running Jasmine specs via grunt-jasmine-task and PhantomJS if you
+    change this default environment (see
+    https://github.com/creynders/grunt-jasmine-task/issues/2 and
+    https://github.com/creynders/grunt-jasmine-task/issues/4)
+
+    - html.js:
+    You may choose to use a slighly different environment with
+    reporters like a jasmine.TrivialReporter or jasmine.HtmlReporter
+    to see the results py pointing your browser to your spec runner.
+  -->
+  <script>
+    if (window.phantom)
+      document.write('<script src="runner/headless.js"><\/script>');
+    else
+      document.write('<script src="runner/html.js"><\/script>');
+  </script>
+
+</head>
+<body>
+
+</body>
+</html>

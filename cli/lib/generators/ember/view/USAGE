@@ -1,0 +1,9 @@
+Description:
+    Creates a new Ember.js view and associated Handlebars template
+
+Example:
+    yeoman generate view Thing
+
+    This will create:
+        app/js/views/thing-view.js
+        app/js/templates/thing.handlebars
