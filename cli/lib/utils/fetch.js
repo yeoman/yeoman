@@ -9,10 +9,15 @@ var fs = require('fs'),
 var proxy = process.env.http_proxy || process.env.HTTP_PROXY ||
     process.env.https_proxy || process.env.HTTPS_PROXY || '';
 
+module.exports = fetch;
+
+// re-expose the request with proxy defaults, so that we can
+// reuse this instance of request.
+fetch.request = request.defaults({ proxy: proxy });
+
 // heavily based on npm's util/untar.js file
-module.exports = function fetch(tarball, target, cb) {
-  var r = request.defaults({ proxy: proxy  }),
-    now = +new Date;
+function fetch(tarball, target, cb) {
+  var now = +new Date;
 
   var log = this.log
     .subhead('Fetching ' + tarball)
@@ -22,7 +27,7 @@ module.exports = function fetch(tarball, target, cb) {
   var extractOpts = { type: 'Directory', path: target, strip: 1 };
 
   // remote request --> zlib.Unzip() --> untar into h5bp/root
-  var req = r.get(tarball).on('error', cb);
+  var req = fetch.request.get(tarball).on('error', cb);
 
   req.on('data', function() { log.write('.'); }).on('end', function() {
     log.ok().writeln();
