@@ -61,11 +61,9 @@ AppGenerator.prototype.gitignore = function gitignore() {
 
 
 
-function domUpdate(filePath, tagName, content, mode){
+function domUpdate(html, tagName, content, mode){
 
-  var indexData = fs.readFileSync(path.resolve(filePath), 'utf8');
-  $ = cheerio.load(indexData);
-
+  $ = cheerio.load(html);
 
   if(content !== undefined){
     if(mode === 'a'){
@@ -75,46 +73,53 @@ function domUpdate(filePath, tagName, content, mode){
       //prepend
       $(tagName).prepend(content);
     }
-    fs.writeFileSync(filePath, $.html(), 'utf8');
+    //fs.writeFileSync(filePath, $.html(), 'utf8');
+    return $.html();
   }else{
     console.error('Please supply valid content to be updated.');
  }
 
-};
+}
 
-// Usage: appendTo('index.html', 'body', 'some content');
-function appendTo(filePath, tagName, content){
-  domUpdate(filePath, tagName, content, 'a');
-};
+function append(html, tagName, content){
+  return domUpdate(html, tagName, content, 'a');
+}
 
-// Usage: prependTo('index.html', 'body', 'some content');
-function prependTo(filePath, tagName, content){
-  domUpdate(filePath, tagName, content, 'p');
-};
+function prepend(html, tagName, content){
+  return domUpdate(html, tagName, content, 'p');
+}
 
 // Generate a usemin-handler block
 function generateBlock(blockType, optimizedPath, filesStr){
   var blockStart = "\n<!-- build:" + blockType + " " + optimizedPath +" -->\n";
   var blockEnd = "<!-- endbuild -->";
   return blockStart + filesStr + blockEnd;
-};
+}
 
 // Append scripts, specifying the optimized path and generating the
 // necessary usemin blocks
-function appendScripts(filePath, optimizedPath, sourceScriptList){
+function appendScripts(html, optimizedPath, sourceScriptList){
   var scripts = "";
   sourceScriptList.forEach(function(n){
       scripts += ('<script src="' + n + '"></script>\n');
   });
   var blocks = generateBlock('js', optimizedPath, scripts);
-  appendTo(filePath, 'body', blocks);
-};
+  return append(html, 'body', blocks);
+}
 
 // Append a directory of scripts
-function appendScriptsDir(filePath, optimizedPath, sourceScriptDir){
+function appendScriptsDir(html, optimizedPath, sourceScriptDir){
   var sourceScriptList = fs.readdirSync(sourceScriptDir);
-  appendScripts(filePath, optimizedPath, sourceScriptList);
-};
+  return appendScripts(html, optimizedPath, sourceScriptList);
+}
+
+function readFileAsString(filePath){
+  return fs.readFileSync(path.resolve(filePath), 'utf8');
+}
+
+function writeFileFromString(html, filePath){
+   fs.writeFileSync(path.resolve(filePath), html, 'utf8');
+}
 
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
@@ -123,14 +128,15 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     if(err) return cb(err);
     cb();
 
-    // XXX Next, we need to start doing this in one go to avoid the need to write to the file more than once.
-    // Probably just read index once, perform updates, do a final write.
+    var indexData = readFileAsString('index.html');
 
     // Twitter Bootstrap plugins
-    appendScriptsDir('index.html', 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
+    indexData = appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
 
     // Ember MVC components
-    appendScripts('index.html', 'js/app.js', ['app/js/controllers/myapp-controller.js','app/js/models/myapp-model.js', 'app/js/views/myapp-view.js']);
+    indexData = appendScripts(indexData, 'js/app.js', ['app/js/controllers/myapp-controller.js','app/js/models/myapp-model.js', 'app/js/views/myapp-view.js']);
+
+    writeFileFromString(indexData, 'index.html');
 
   });
 };
