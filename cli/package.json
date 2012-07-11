@@ -24,6 +24,7 @@
     "request": "~2.9.200",
     "html-minifier": "~0.4.5",
     "which": "~1.0.5",
+    "cheerio": "~0.8.3",
     "fstream": "~0.1.18",
     "fstream-ignore": "0.0.5",
     "tar": "~0.1.13",
