@@ -231,7 +231,7 @@ generators.create = function create(namespace, args, options, gruntConfig, silen
   // follup registered hooks, and instantiate each resolved generator
   // so that we can get access to expected arguments / options
   generator._hooks = generator._hooks.map(function(hook) {
-    var config = gruntConfig.generator,
+    var config = gruntConfig.generator || {},
       resolved = options[hook.name] || config[hook.name];
 
     hook.context = resolved + ':' + (hook.as || name);
