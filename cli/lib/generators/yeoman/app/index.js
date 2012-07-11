@@ -112,7 +112,6 @@ function appendScripts(filePath, optimizedPath, sourceScriptList){
 
 // Append a directory of scripts
 function appendScriptsDir(filePath, optimizedPath, sourceScriptDir){
-  var scripts = "";
   var sourceScriptList = fs.readdirSync(sourceScriptDir);
   appendScripts(filePath, optimizedPath, sourceScriptList);
 };
