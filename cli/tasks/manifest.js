@@ -20,7 +20,7 @@ var fs = require('fs'),
         // Tell grunt this task is asynchronous.
         var done = this.async(),
             exec = require('child_process').exec,
-            command = 'phantomjs ' +  confessPath  + ' ' + localServer +' ' + confessTask + ' >' + manifestTarget + ' ' + confessConfig;
+            command = 'phantomjs "' +  confessPath  + ' ' + localServer +' ' + confessTask + '" > ' + manifestTarget + ' "' + confessConfig + '"';
 
         command += this.args.join(' ');
 
