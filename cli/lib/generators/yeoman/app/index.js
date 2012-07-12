@@ -1,11 +1,11 @@
 
 var util = require('util'),
-    cheerio = require('cheerio'),
     fs = require('fs'),
     path = require('path'),
     yeoman = require('../../../../');
 
 module.exports = AppGenerator;
+
 
 function AppGenerator(args, options, config) {
   yeoman.generators.NamedBase.apply(this, arguments);
@@ -35,6 +35,7 @@ function AppGenerator(args, options, config) {
 
   // resolved to jasmine by default (could be switched to mocha for instance)
   this.hookFor('test-framework');
+
 }
 
 util.inherits(AppGenerator, yeoman.generators.NamedBase);
@@ -60,83 +61,57 @@ AppGenerator.prototype.gitignore = function gitignore() {
 };
 
 
-
-function domUpdate(html, tagName, content, mode){
-
-  $ = cheerio.load(html);
-
-  if(content !== undefined){
-    if(mode === 'a'){
-      //append
-      $(tagName).append(content);
-    }else if(mode === 'p'){
-      //prepend
-      $(tagName).prepend(content);
-    }
-    //fs.writeFileSync(filePath, $.html(), 'utf8');
-    return $.html();
-  }else{
-    console.error('Please supply valid content to be updated.');
- }
-
-}
-
-function append(html, tagName, content){
-  return domUpdate(html, tagName, content, 'a');
-}
-
-function prepend(html, tagName, content){
-  return domUpdate(html, tagName, content, 'p');
-}
-
-// Generate a usemin-handler block
-function generateBlock(blockType, optimizedPath, filesStr){
-  var blockStart = "\n<!-- build:" + blockType + " " + optimizedPath +" -->\n";
-  var blockEnd = "<!-- endbuild -->";
-  return blockStart + filesStr + blockEnd;
-}
-
-// Append scripts, specifying the optimized path and generating the
-// necessary usemin blocks
-function appendScripts(html, optimizedPath, sourceScriptList){
-  var scripts = "";
-  sourceScriptList.forEach(function(n){
-      scripts += ('<script src="' + n + '"></script>\n');
-  });
-  var blocks = generateBlock('js', optimizedPath, scripts);
-  return append(html, 'body', blocks);
-}
-
-// Append a directory of scripts
-function appendScriptsDir(html, optimizedPath, sourceScriptDir){
-  var sourceScriptList = fs.readdirSync(sourceScriptDir);
-  return appendScripts(html, optimizedPath, sourceScriptList);
-}
-
-function readFileAsString(filePath){
-  return fs.readFileSync(path.resolve(filePath), 'utf8');
-}
-
-function writeFileFromString(html, filePath){
-   fs.writeFileSync(path.resolve(filePath), html, 'utf8');
-}
-
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
+  var self = this;
+  
   // Fecth allows the download of single files, into the destination directory
   this.fetch('https://raw.github.com/h5bp/html5-boilerplate/master/index.html', 'index.html', function(err) {
     if(err) return cb(err);
     cb();
 
-    var indexData = readFileAsString('index.html');
+    // Resolve path to index.html
+    var indexOut = path.resolve('index.html');
 
-    // Twitter Bootstrap plugins
-    indexData = appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
+    // Read in as string for further update
+    var indexData = self.readFileAsString(indexOut);
 
-    // Ember MVC components
-    indexData = appendScripts(indexData, 'js/app.js', ['app/js/controllers/myapp-controller.js','app/js/models/myapp-model.js', 'app/js/views/myapp-view.js']);
+    // Strip sections of H5BP we're going to overwrite
+    indexData = self.removeScript(indexData, 'js/plugins.js');
+    indexData = self.removeScript(indexData, 'js/main.js');
 
-    writeFileFromString(indexData, 'index.html');
+    // Wire Twitter Bootstrap plugins (usemin: app/js/plugins.js)
+    indexData = self.appendScripts(indexData,
+        'app/js/plugins.js',
+       ["app/js/vendor/bootstrap/bootstrap-alert.js",  
+        "app/js/vendor/bootstrap/bootstrap-dropdown.js",  
+        "app/js/vendor/bootstrap/bootstrap-tooltip.js",
+        "app/js/vendor/bootstrap/bootstrap-all.js",
+        "app/js/vendor/bootstrap/bootstrap-modal.js",
+        "app/js/vendor/bootstrap/bootstrap-transition.js",
+        "app/js/vendor/bootstrap/bootstrap-button.js",
+        "app/js/vendor/bootstrap/bootstrap-popover.js", 
+        "app/js/vendor/bootstrap/bootstrap-typeahead.js",
+        "app/js/vendor/bootstrap/bootstrap-carousel.js",  
+        "app/js/vendor/bootstrap/bootstrap-scrollspy.js",
+        "app/js/vendor/bootstrap/bootstrap-collapse.js",  
+        "app/js/vendor/bootstrap/bootstrap-tab.js"]);
+    // Alternative: indexData = _this.appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
+
+    // Wire RequireJS/AMD (usemin: app/js/amd-app.js)
+    indexData = self.appendScriptSpecial(indexData,
+      'app/js/amd-app.js',
+      ['app/js/vendor/require.js'],'amd');
+
+    // Wire Ember MVC components (usemin: app/js/myapp.js)
+    indexData = self.appendScripts(indexData, 
+        'app/js/myapp.js', 
+        ['app/js/controllers/myapp-controller.js',
+         'app/js/models/myapp-model.js', 
+        'app/js/views/myapp-view.js']);
+
+    // Write out final file
+    self.writeFileFromString(indexData, indexOut);
 
   });
 };

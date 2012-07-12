@@ -3,6 +3,7 @@ var fs = require('fs'),
   path = require('path'),
   util = require('util'),
   events = require('events'),
+  wiring = require('./wiring'),
   actions = require('./actions'),
   _ = require('underscore'),
   grunt = require('grunt');
@@ -56,6 +57,9 @@ util.inherits(Base, events.EventEmitter);
 
 // "include" the actions module
 _.extend(Base.prototype, actions);
+
+// "include" the wiring module
+_.extend(Base.prototype, wiring);
 
 //
 // Runs all methods in this given generator. You can also supply the arguments
