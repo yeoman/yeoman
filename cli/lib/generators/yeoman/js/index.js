@@ -12,4 +12,6 @@ util.inherits(Generator, yeoman.generators.Base);
 
 Generator.prototype.createSomething = function() {
   this.directory('bootstrap', 'app/js/vendor/bootstrap');
+  this.directory('requirejs', 'app/js/vendor/');
+  this.directory('main', 'app/js/');
 };
