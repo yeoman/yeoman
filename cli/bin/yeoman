@@ -48,7 +48,7 @@ if(/^init/.test(route)) {
 }
 
 // a bower command?
-if(/^install|^uninstall|^search|^list|^lookup|^update/.test(route)) {
+if(/^install|^uninstall|^search|^list|^ls|^lookup|^update/.test(route)) {
   cli.tasks = 'bower' + ':' + cmds.join(':');
 }
 
