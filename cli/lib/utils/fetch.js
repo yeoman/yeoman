@@ -44,7 +44,6 @@ function fetch(tarball, target, cb) {
     // then tar extract into h5bp/root
     .pipe(tar.Extract(extractOpts))
     .on('entry', function(entry) {
-      log.write('.');
       entry.props.uid = entry.uid = 501;
       entry.props.gid = entry.gid = 20;
     })
@@ -56,4 +55,4 @@ function fetch(tarball, target, cb) {
       log.writeln().ok( ('Done in ' + extractOpts.path).green ).writeln();
       cb();
     });
-};
+}
