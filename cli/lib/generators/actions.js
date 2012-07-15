@@ -5,14 +5,39 @@ var fs = require('fs'),
   fetch = require('../utils/fetch'),
   _ = grunt.util._;
 
+// The action mixin is comprised of Grunt's file, log, helper and prompt API,
+// and made available for generators to use as instance methods directly for
+// the file API, and through the `log` property for the log API.
+
 var actions = module.exports;
 
-// The action mixin is comprised of Grunt's file and log API, and made
-// available for generators to use as instance methods directly for the file API,
-// and through the `log` property for the log API.
-
+// File API
+// --------
+// 1:1 relationship with grunt.file.
 _.extend(actions, grunt.file);
+
+// Helper API
+// ----------
+// 1:1 relationship with grunt.helper
+actions.helper = grunt.helper;
+
+// Prompts API
+// -----------
+// 1:1 relationship with grunt.helpers for prompt, prompt_for, and
+// prompt_for_obj
+actions.prompt = grunt.helper.bind(grunt, 'prompt');
+actions.promptFor = grunt.helper.bind(grunt, 'prompt_for');
+actions.promptForObj = grunt.helper.bind(grunt, 'prompt_for_obj');
+
+// Log API
+// -------
+// as self.log property. 1:1 relationship with grunt.log
 actions.log = grunt.log;
+
+// Internal API
+// ------------
+// Specifics of our generator API, additonal logic and tweaks to file behaviour
+// and so on.
 
 // Stores and return the source root for this class
 actions.sourceRoot = function sourceRoot(root) {

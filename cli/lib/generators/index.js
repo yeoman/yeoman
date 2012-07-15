@@ -29,17 +29,40 @@ generators.hiddenNamespaces = [
 // log where we searched
 generators.loadedPath = [];
 
+// parse out `grunt.cli` for arguments and options and do the necessary
+// conversion to avoid some warnings and built-in help/version output when
+// grunt initialiaze.
+generators.prepare = function prepare(grunt) {
+  var cli = grunt.cli;
+
+  generators.args = cli.tasks.slice(1);
+  generators.name = generators.args.shift();
+  generators.options = grunt.util._.extend({}, cli.options);
+
+  // Don't complain about missing Gruntfile, we want all positional arguments
+  // as is to be passed to generators. the `init:` prefix workarounds this
+  // Gruntfile check internally by Grunt, letting us getting into the Grunt
+  // init yeoman template, which then init and delegate the groundwork to the
+  // generator layer, where those `init:thing` are stripped out again.
+  cli.tasks = cli.tasks.map(function(arg) {
+    return arg === 'init' ? 'init:yeoman' :
+      'init:' + arg;
+  });
+
+  // prevent special flags like --help to conflict with generators options.
+  cli.options.help = false;
+};
+
 // Main entry point of the generator layer, requires a Grunt object from which
 // we read cli options and tasks, and kick off the appropriate generator.
 generators.init = function init(grunt) {
-  // get back arguments without the generate prefix
-  var cli = grunt.cli,
-    args = cli.tasks.slice(1),
-    name = args.shift();
+  var args = generators.args,
+    name = generators.name,
+    opts = generators.options;
 
   // figure out the base application directory
   generators.cwd = process.cwd();
-  generators.gruntfile = grunt.file.findup(generators.cwd, 'Gruntfile.js');
+  generators.gruntfile = grunt.file.findup(generators.cwd, '{G,g}runtfile.{js,coffee}');
   generators.base = generators.gruntfile ? path.dirname(generators.gruntfile) : generators.cwd;
 
   // keep reference to this grunt object, so that other method of this module may use its API.
@@ -56,17 +79,21 @@ generators.init = function init(grunt) {
     } catch(e) {
       grunt.log.write(msg).error().verbose.error(e.stack).or.error(e);
     }
+
+    // and cd into that base, all generators should write relative to the
+    // application root.
     process.chdir(generators.base);
   }
 
   // try to locate locally installed yeoman plugin
   generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
-
   if(!name) {
-    return generators.help(args, cli.options, grunt.config() || {});
+    // no generator to invoke, output the general help output
+    return generators.help(args, opts, grunt.config() || {});
   }
 
-  generators.invoke(name, args, cli.options, grunt.config() || {});
+  // and invoke
+  generators.invoke(name, args, opts, grunt.config() || {});
 };
 
 // show help message with available generators
@@ -101,7 +128,7 @@ generators.help = function help(args, options, config) {
   });
 
   // group them by namespace
-  var groups = {}
+  var groups = {};
   namespaces.forEach(function(namespace) {
     var base = namespace.split(':')[0];
     if(!groups[base]) groups[base] = [];
@@ -371,7 +398,7 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
         fullpath: filepath,
         module: mod,
         namespace: namespace
-      }
+      };
     });
   });
 
