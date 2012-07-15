@@ -63,4 +63,38 @@ describe('Generators', function() {
     it('should output according help / usage');
   });
 
+  describe('yeoman.generators.printList', function() {
+    it('should output according help / usage');
+  });
+
+  describe('yeoman.generators.invoke', function() {
+    it('should output the list of paths lookup on invalid generator');
+    it('should output generator specific help on --help');
+    it('should create, invoke and run the specified generator');
+  });
+
+  describe('yeoman.generators.create', function() {
+    it('should return undefined on invalid generators');
+    it('should properly create the specified generator');
+    it('should have namespace information attached');
+    it('should have name / path information attached');
+    it('should have hooks registered created and available as `_hooks`');
+  });
+
+  describe('yeoman.generators.findByNamespace', function() {
+    it('should do the necessary lookup and return specified generator');
+  });
+
+  describe('yeoman.generators.lookup', function() {
+    it('should do the necessary lookup and return specified generator');
+  });
+
+  describe('yeoman.generators.lookupHelp', function() {
+    it('should load any generator in the load path and return an array of generators');
+  });
+
+  describe('yeoman.generators.namespacesToPaths', function() {
+    it('should convert namespaces to paths by replacing ":" for "/"');
+  });
+
 });

@@ -74,9 +74,9 @@ actions.read = function read(filepath, encoding) {
   return grunt.file.read(filepath, encoding);
 };
 
-actions.write = function write(filepath, encoding) {
+actions.write = function write(filepath, content) {
   grunt.option('verbose', true);
-  grunt.file.write(filepath, encoding);
+  grunt.file.write(filepath, content);
   grunt.option('verbose', false);
   return this;
 };

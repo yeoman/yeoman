@@ -193,7 +193,6 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 
   // unable to find one
   if(!generator) {
-    // output some help unless we're following some hooks, and silent flag is turned on
     console.log('Could not find generator', namespace);
     return console.log('Tried in:\n' + generators.loadedPath.map(function(path) {
       return ' - ' + path;
@@ -227,7 +226,7 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 
 // Generator factory. Get a namespace, locate, instantiate, init and return the
 // given generator.
-generators.create = function create(namespace, args, options, gruntConfig, silent) {
+generators.create = function create(namespace, args, options, gruntConfig) {
   var names = namespace.split(':'),
     name = names.pop(),
     klass = generators.findByNamespace(name, names.join(':'));
