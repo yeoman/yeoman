@@ -44,23 +44,15 @@ if(opts.version) {
 // Matches everything after init to prevent
 // the user from seeing the default grunt init tasks
 if(/^init/.test(route)) {
-  cli.tasks = 'init:yeoman';
+  // required handling of options / arguments to workaround some internal check
+  // of Grunt, and let the generators go through (init and invoked in our front
+  // Grunt template)
+  yeoman.generators.prepare(grunt);
 }
 
 // a bower command?
 if(/^install|^uninstall|^search|^list|^ls|^lookup|^update/.test(route)) {
   cli.tasks = 'bower' + ':' + cmds.join(':');
-}
-
-// a generate command? Kick off the generator logic instead
-if(/^(generate)|(g)$/.test(cmds[0])) {
-  return yeoman.generators.init(grunt);
-}
-
-// a new command? kick off the app generator logic
-if(/^new/.test(route)) {
-  grunt.cli.tasks = ['generate', 'app'].concat(grunt.cli.tasks.slice(1));
-  return yeoman.generators.init(grunt);
 }
 
 /* Yeoman Insight =========================================================== */
@@ -79,7 +71,7 @@ async.series([function(cb) {
   });
 
 
-}, function(cb){
+}, function(cb) {
 
   // if the route is empty
   if(/^$/.test(route)) {
