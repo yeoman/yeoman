@@ -222,11 +222,7 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 
   generators.grunt.log.subhead('.. Invoke ' + namespace.replace(/^yeoman:/, '') + ' ..');
   // and start if off
-  generator.run(namespace, {
-    args: args,
-    options: options,
-    config: config
-  }, cb);
+  generator.run(args, cb);
 };
 
 // Generator factory. Get a namespace, locate, instantiate, init and return the

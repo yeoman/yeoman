@@ -123,10 +123,19 @@ actions.tarball = fetch;
 // Download a single file at the given destination.
 actions.fetch = function(url, destination, cb) {
   this.mkdir(path.dirname(destination));
+
+  var log = this.log.write('Fetching ' + url + '...');
+
   fetch.request(url)
     .on('error', cb)
+    .on('data', log.write.bind(log, '.'))
     .pipe(fs.createWriteStream(destination))
     .on('error', cb)
+    .on('close', function() {
+      log.ok()
+        .write('Writing ' + destination + '...')
+        .ok();
+    })
     .on('close', cb);
 };
 

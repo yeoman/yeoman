@@ -61,17 +61,14 @@ _.extend(Base.prototype, actions);
 // "include" the wiring module
 _.extend(Base.prototype, wiring);
 
-//
 // Runs all methods in this given generator. You can also supply the arguments
 // for the method to be invoked, if none is given, the same values used to
 // initialize the invoker are used to initialize the invoked.
-//
-Base.prototype.run = function run(name, config, cb) {
-  var args = config.args || this.args,
-    opts = config.options || this.options,
-    self = this;
-
+Base.prototype.run = function run(args, cb) {
+  if(!cb) cb = args, args = this.args;
   cb = cb || function() {};
+
+  var self = this;
 
   this._running = true;
 
@@ -226,14 +223,11 @@ Base.prototype.option = function option(name, config) {
 };
 
 
+// Register a hook to invoke a generator based on the value supplied by
+// the user to the given option named "name". An option is created when
+// this method is invoked and you can set a hash to customize it.
 //
-// Invoke a generator based on the value supplied by the user to the
-// given option named "name". An option is created when this method
-// is invoked and you can set a hash to customize it.
-//
-// XXX change how the hookFor is made. They need to be done in the
-// constructor, and for each create the corresponding option.
-//
+// Must be called within the constructor only.
 Base.prototype.hookFor = function hookFor(name, config) {
   config = config || {};
 
@@ -330,7 +324,9 @@ Base.prototype.usage = function usage() {
 
   name = name.replace(/^yeoman:/, '');
 
-  return 'yeoman ' + cmd + ' ' + name + args + ' ' + options;
+  var out = 'yeoman ' + cmd + ' ' + name + args + ' ' + options;
+  if(this.description) out += '\n\n' + this.description;
+  return out;
 };
 
 // print the list of options in formatted table
