@@ -1,9 +1,29 @@
 
-var events = require('events'),
+var path = require('path'),
+  events = require('events'),
   assert = require('assert'),
-  yeoman = require('../../');
+  yeoman = require('../../'),
+  rimraf = require('rimraf'),
+  mkdirp = require('mkdirp'),
+  grunt = require('grunt');
 
 describe('Generators', function() {
+
+  before(function(done) {
+    var cwd = process.cwd(),
+      dirname = path.basename(cwd);
+
+    if(dirname === '.test') return done();
+
+    rimraf('.test', function(err) {
+      if(err) return done(err);
+      mkdirp('.test', function(err) {
+        if(err) return done(err);
+        process.chdir('.test');
+        done();
+      });
+    });
+  });
 
   describe('yeoman.generators', function() {
     it('should have a Base object to extend from', function() {
@@ -44,15 +64,65 @@ describe('Generators', function() {
   });
 
   describe('yeoman.generators.prepare', function() {
-    it('should parse out grunt.cli for arguments and options');
-    it('should setup the invoked generator name from arguments');
-    it('should setup the hash options from grunt.cli.options');
-    it('should prefix each positional arguments with `init:`');
-    it('and turn off the internal grunt help output');
+
+
+    before(function() {
+      grunt.cli.tasks = ['init', 'generatorname', 'some', 'args'];
+      grunt.cli.options = {
+        foo: 'bar',
+        bar: 'baz'
+      };
+
+      yeoman.generators.prepare(grunt);
+
+      this.generators = yeoman.generators;
+      this.tasks = grunt.cli.tasks;
+      this.options = grunt.cli.options;
+    });
+
+    it('should parse out grunt.cli for arguments and options', function() {
+      assert.deepEqual(this.generators.args, ['some', 'args']);
+    });
+
+
+    it('should setup the invoked generator name from arguments', function() {
+      assert.equal(this.generators.name, 'generatorname');
+    });
+
+    it('should setup the hash options from grunt.cli.options', function() {
+      assert.deepEqual(this.generators.options, {
+        foo: 'bar',
+        bar: 'baz'
+      });
+    });
+
+    it('should prefix each positional arguments with `init:`', function() {
+      assert.deepEqual(this.tasks, ['init:yeoman', 'init:generatorname', 'init:some', 'init:args']);
+    });
+
+    it('and turn off the internal grunt help output', function() {
+      assert.equal(this.options.help, false);
+      assert.equal(typeof this.generators.options.help, 'undefined');
+    });
   });
 
   describe('yeoman.generators.init', function() {
-    it('should setup the current working directory property');
+
+    before(function(done) {
+      yeoman.generators.name = 'app';
+      yeoman.generators.args = ['testapp'];
+      this.cwd = process.cwd();
+      this.generator = yeoman.generators.init(grunt);
+      this.generators = yeoman.generators;
+      assert.ok(this.generator, 'init app should return the specified generator');
+      this.generator.on('end', done);
+    });
+
+    it('should setup the current working directory property', function() {
+      assert.equal(this.generators.cwd, this.cwd);
+      assert.equal(this.generators.base, this.cwd);
+    });
+
     it('should find Gruntfile throughout the file tree');
     it('should setup the base property and cd into that directory');
     it('should try to locate installed yeoman plugins');
