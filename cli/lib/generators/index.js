@@ -93,7 +93,7 @@ generators.init = function init(grunt) {
   }
 
   // and invoke
-  generators.invoke(name, args, opts, grunt.config() || {});
+  return generators.invoke(name, args, opts, grunt.config() || {});
 };
 
 // show help message with available generators
@@ -221,7 +221,7 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 
   generators.grunt.log.subhead('.. Invoke ' + namespace.replace(/^yeoman:/, '') + ' ..');
   // and start if off
-  generator.run(args, cb);
+  return generator.run(args, cb);
 };
 
 // Generator factory. Get a namespace, locate, instantiate, init and return the

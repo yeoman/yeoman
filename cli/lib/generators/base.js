@@ -71,6 +71,7 @@ Base.prototype.run = function run(args, cb) {
   var self = this;
 
   this._running = true;
+  this.emit('run');
 
   var methods = Object.keys(this.__proto__);
   (function next(method) {
@@ -99,6 +100,9 @@ Base.prototype.run = function run(args, cb) {
     if(!wait) next(methods.shift());
 
   })(methods.shift());
+
+
+  return this;
 };
 
 // Go through all registered hooks, and invoke them in series
@@ -107,7 +111,10 @@ Base.prototype.runHooks = function runHooks(cb) {
     hooks = this._hooks;
 
   (function next(hook) {
-    if(!hook) return cb();
+    if(!hook) {
+      self.emit('end');
+      return cb();
+    }
 
     var resolved = self.defaultFor(hook.name),
       gruntConfig = hook.config || self.config,
