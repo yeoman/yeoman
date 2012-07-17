@@ -3,6 +3,7 @@ var fs = require('fs'),
   path = require('path'),
   util = require('util'),
   events = require('events'),
+  colors = require('colors'),
   connect = require('connect'),
   WebSocket = require('faye-websocket'),
   open = require('open');
@@ -175,12 +176,12 @@ module.exports = function(grunt) {
   // called. The task is designed to work alongside the `watch` task.
   grunt.registerTask('yeoman-server', 'Launch a preview, LiveReload compatible server', function() {
     // Get values from config, or use defaults.
-    var port = grunt.config('server.port') || 0xDAD,
+    var initPort = grunt.config('server.port') || 0xDAD,
       base = path.resolve(grunt.config('server.base') || '.');
 
     var middleware = [
       // add the special livereload snippet injection middleware
-      grunt.helper('reload:inject', port),
+      grunt.helper('reload:inject'),
       // Serve static files.
       connect.static(base),
       // Serve the livereload.js script,
@@ -202,39 +203,42 @@ module.exports = function(grunt) {
       middleware.unshift(connect.logger('yeoman'));
     }
 
-    // Start server.
-    grunt.log
-      .subhead('Starting static web server on port ' + port + '.')
-      .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
-      .writeln('Hit Ctrl+C to quit.');
-
-    var server = connect.apply(null, middleware)
+    connect.apply(null, middleware)
       .on('error', function( err ) {
         if ( err.code === 'EADDRINUSE' ) {
-          port = server.listen(0).address().port; // Pick a random port
+          this.listen(0); // 0 means random port
         }
       })
-      .listen(port, function() {
+      .listen(initPort, function() {
+        var port = this.address().port;
+
+        // Start server.
+        grunt.log
+          .subhead( 'Starting static web server on port '.yellow + String( port ).red )
+          .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
+          .writeln('Hit Ctrl+C to quit.');
+
+        // create the reactor object
+        grunt.helper('reload:reactor', {
+          server: this,
+          apiVersion: '1.7',
+          host: '0.0.0.0',
+          port: port
+        });
+
         open('http://localhost:' + port);
       });
-
-    // create the reactor object
-    grunt.helper('reload:reactor', {
-      server: server,
-      apiVersion: '1.7',
-      host: '0.0.0.0',
-      port: port
-    });
-
   });
 
 
   // **inject.io** is a grunt helper returning a valid connect / express middleware.
   // Its job is to setup a middleware right before the usual static one, and to
   // bypass the response of `.html` file to render them with additional scripts.
-  grunt.registerHelper('reload:inject', function(port) {
+  grunt.registerHelper('reload:inject', function() {
 
     return function inject(req, res, next) {
+      var port = res.socket.server.address().port;
+
       // build filepath from req.url and deal with index files for trailing `/`
       var filepath = req.url.slice(-1) === '/' ? req.url + 'index.html' : req.url;
 
