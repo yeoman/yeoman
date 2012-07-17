@@ -1,0 +1,9 @@
+Description:
+    The 'yeoman new' command creates a new yeoman application with a default
+    directory structure and configuration at the path you specify.
+
+Example:
+    yeoman new ~/Code/weblog
+
+    This generates a skeletal yeoman installation in ~/Code/weblog.
+    See the README in the newly created application to get going.

@@ -60,7 +60,6 @@ generators.init = function init(grunt) {
     name = generators.name,
     opts = generators.options;
 
-
   // We need to support
 
   // yeoman init
@@ -68,7 +67,8 @@ generators.init = function init(grunt) {
   // yeoman init backbone:model
 
   // support yeoman init, yeoman init generatorName
-  name = name || 'app';
+  // Use the prompts generator in simpleapp
+  name = name || 'simpleapp';
   args[0] = args[0] || name;
 
   // figure out the base application directory
