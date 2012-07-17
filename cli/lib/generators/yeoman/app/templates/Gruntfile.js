@@ -18,12 +18,12 @@ module.exports = function(grunt) {
       }
     },
 
-    // compass compile
-    // https://github.com/sindresorhus/grunt-shell#grunt-shell
-    shell: {
-      compass: {
-        command: 'compass compile'
-      }
+    // compile .scss/.sass to .css using Compass
+    compass: {
+      // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
+      // Either use the config.rb file or specify the options ^ here.
+      options: {},
+      noop: {} // Empty target, otherwise it won't run
     },
 
     // generate application cache manifest
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       },
       compass: {
         files: ['app/css/sass/**/*.sass', 'app/css/sass/**/*.scss'],
-        tasks: 'shell:compass reload'
+        tasks: 'compass reload'
       },
       reload: {
         files: ['app/css/**/*.css', 'app/js/**/*.js', 'app/img/**/*'],
