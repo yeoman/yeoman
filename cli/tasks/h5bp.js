@@ -40,7 +40,7 @@ module.exports = function(grunt) {
     // It eliminates the need for specifying configuration and path data for css,
     // concat, min and rjs tasks. The rjs optimizer is triggered if the data-main
     // attribute is used with the <script /> tag.
-    usemin: 'coffee shell:compass usemin-handler concat rjs css min img rev usemin manifest',
+    usemin: 'coffee compass usemin-handler concat rjs css min img rev usemin manifest',
 
     // text - same as build but without image (png/jpg) optimizing
     text: 'coffee concat compass css min rev usemin manifest',
