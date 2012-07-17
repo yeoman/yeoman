@@ -94,10 +94,6 @@ AppGenerator.prototype.packageJSON = function packageJSON() {
   this.template('package.json');
 };
 
-AppGenerator.prototype.configrb = function configrb() {
-  this.template('config.rb');
-};
-
 AppGenerator.prototype.gitignore = function gitignore() {
   this.copy('gitignore', '.gitignore');
 };
