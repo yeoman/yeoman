@@ -116,6 +116,12 @@ module.exports = function(grunt) {
       css: ['**/*.css']
     },
 
+    // usemin handler should point to the file containing
+    // the usemin blocks to be parsed
+    'usemin-handler': { 
+      html: 'index.html'
+    },
+
     // html minification
     html: {
       files: ['**/*.html']
