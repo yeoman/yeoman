@@ -76,6 +76,9 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     // Read in as string for further update
     var indexData = self.readFileAsString(indexOut);
 
+    indexData = indexData.replace('css/main.css', 'app/css/main.css');
+    indexData = indexData.replace('js/vendor/modernizr-2.5.3.min.js',  'app/js/vendor/modernizr-2.5.3.min.js');
+
     // Strip sections of H5BP we're going to overwrite
     indexData = self.removeScript(indexData, 'js/plugins.js');
     indexData = self.removeScript(indexData, 'js/main.js');
@@ -86,7 +89,6 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
        ["app/js/vendor/bootstrap/bootstrap-alert.js",  
         "app/js/vendor/bootstrap/bootstrap-dropdown.js",  
         "app/js/vendor/bootstrap/bootstrap-tooltip.js",
-        "app/js/vendor/bootstrap/bootstrap-all.js",
         "app/js/vendor/bootstrap/bootstrap-modal.js",
         "app/js/vendor/bootstrap/bootstrap-transition.js",
         "app/js/vendor/bootstrap/bootstrap-button.js",
@@ -97,25 +99,12 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
         "app/js/vendor/bootstrap/bootstrap-collapse.js",  
         "app/js/vendor/bootstrap/bootstrap-tab.js"]);
     // Alternative: indexData = _this.appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
-
-    // Wire RequireJS/AMD (usemin: app/js/amd-app.js)
-    indexData = self.appendScriptSpecial(indexData,
-      'app/js/amd-app.js',
-      ['app/js/vendor/require.js'],'amd');
-
-    // Wire Ember MVC components (usemin: app/js/myapp.js)
-    indexData = self.appendScripts(indexData, 
-        'app/js/myapp.js', 
-        ['app/js/controllers/myapp-controller.js',
-         'app/js/models/myapp-model.js', 
-        'app/js/views/myapp-view.js']);
-
+    
     // Write out final file
     self.writeFileFromString(indexData, indexOut);
 
   });
 };
-
 
 AppGenerator.prototype.fetchPackage = function fetchPackage() {
   this.log.writeln('Fetching h5bp/html5-boilerplate pkg');
