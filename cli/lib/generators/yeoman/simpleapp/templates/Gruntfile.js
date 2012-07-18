@@ -18,11 +18,16 @@ module.exports = function(grunt) {
       }
     },
 
-    // compass compile
-    // https://github.com/sindresorhus/grunt-shell#grunt-shell
-    shell: {
-      compass: {
-        command: 'compass compile'
+    // compile .scss/.sass to .css using Compass
+    compass: {
+      dist: {
+        // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
+        options: {
+          css_dir: 'css',
+          sass_dir: 'css/sass',
+          images_dir: 'img',
+          javascripts_dir: 'js'
+        }
       }
     },
 
@@ -44,7 +49,7 @@ module.exports = function(grunt) {
       },
       compass: {
         files: ['app/css/sass/**/*.sass', 'app/css/sass/**/*.scss'],
-        tasks: 'shell:compass reload'
+        tasks: 'compass reload'
       },
       reload: {
         files: ['app/css/**/*.css', 'app/js/**/*.js', 'app/img/**/*'],

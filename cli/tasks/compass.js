@@ -16,7 +16,7 @@ module.exports = function( grunt ) {
       }
 
       if ( _.isString( val ) ) {
-        args.push( '--' + el + '="' + val + '"' );
+        args.push( '--' + el, val );
       }
     });
 
