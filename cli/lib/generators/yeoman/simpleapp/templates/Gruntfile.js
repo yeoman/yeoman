@@ -115,6 +115,12 @@ module.exports = function(grunt) {
       img: 'img/**'
     },
 
+    // usemin handler should point to the file containing
+    // the usemin blocks to be parsed
+    'usemin-handler': { 
+      html: 'index.html'
+    },
+    
     // update references in html / css to revved files
     usemin: {
       html: ['**/*.html'],
@@ -156,8 +162,8 @@ module.exports = function(grunt) {
       modules: [{
         name: 'main',
       }],
-      dir: 'js',
-      appDir: 'js',
+      dir: 'app/js',
+      appDir: 'app/js',
       baseUrl: './',
       pragmas: {
         doExclude: true
