@@ -15,7 +15,7 @@ var fs = require('fs'),
        var confessConfig = libPath + 'confess.json';
        var confessTask = 'appcache'; //performance, appcache, cssproperties
        var manifestTarget = 'manifest.appcache';
-       var localServer = 'http://localhost:3000';
+       var localServer = 'http://localhost:3501';
 
         // Tell grunt this task is asynchronous.
         var done = this.async(),
