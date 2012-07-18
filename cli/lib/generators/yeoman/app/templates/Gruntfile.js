@@ -20,10 +20,15 @@ module.exports = function(grunt) {
 
     // compile .scss/.sass to .css using Compass
     compass: {
-      // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
-      // Either use the config.rb file or specify the options ^ here.
-      options: {},
-      noop: {} // Empty target, otherwise it won't run
+      dist: {
+        // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
+        options: {
+          css_dir: 'css',
+          sass_dir: 'css/sass',
+          images_dir: 'img',
+          javascripts_dir: 'js'
+        }
+      }
     },
 
     // generate application cache manifest
