@@ -137,7 +137,7 @@ actions.remote = function(username, repo, branch, cb) {
   if(!cb) { cb = branch; branch = 'master'; }
 
   var self = this,
-    cache = path.join(__dirname, '../../_cache/', username, repo, branch),
+    cache = path.join(process.env.HOME || process.env.USERPROFILE, '.yeoman/cache', username, repo, branch),
     url = 'http://nodeload.github.com/' + [username, repo, 'tarball', branch].join('/');
 
   fs.stat(cache, function(err) {
