@@ -104,7 +104,7 @@ generators.init = function init(grunt) {
   }
 
   // and invoke
-  generators.invoke(name, args, opts, grunt.config() || {});
+  return generators.invoke(name, args, opts, grunt.config() || {});
 };
 
 // show help message with available generators
@@ -204,7 +204,6 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 
   // unable to find one
   if(!generator) {
-    // output some help unless we're following some hooks, and silent flag is turned on
     console.log('Could not find generator', namespace);
     return console.log('Tried in:\n' + generators.loadedPath.map(function(path) {
       return ' - ' + path;
@@ -233,16 +232,12 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 
   generators.grunt.log.subhead('.. Invoke ' + namespace.replace(/^yeoman:/, '') + ' ..');
   // and start if off
-  generator.run(namespace, {
-    args: args,
-    options: options,
-    config: config
-  }, cb);
+  return generator.run(args, cb);
 };
 
 // Generator factory. Get a namespace, locate, instantiate, init and return the
 // given generator.
-generators.create = function create(namespace, args, options, gruntConfig, silent) {
+generators.create = function create(namespace, args, options, gruntConfig) {
   var names = namespace.split(':'),
     name = names.pop(),
     klass = generators.findByNamespace(name, names.join(':'));

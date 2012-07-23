@@ -12,7 +12,7 @@ module.exports = Base;
 
 function Base(args, options, config) {
   events.EventEmitter.call(this);
-  this.args = args;
+  this.args = args || [];
   this.config = config || {};
 
   this.description = '';
@@ -20,7 +20,7 @@ function Base(args, options, config) {
   // setup default options
   // XXX most of these values are not used yet. Are here as reference to some of
   // the rails default options.
-  this.options = _.defaults(options, {
+  this.options = _.defaults(options || {}, {
     assets: true,
     javascripts: true,
     stylesheets: true,
@@ -61,19 +61,17 @@ _.extend(Base.prototype, actions);
 // "include" the wiring module
 _.extend(Base.prototype, wiring);
 
-//
 // Runs all methods in this given generator. You can also supply the arguments
 // for the method to be invoked, if none is given, the same values used to
 // initialize the invoker are used to initialize the invoked.
-//
-Base.prototype.run = function run(name, config, cb) {
-  var args = config.args || this.args,
-    opts = config.options || this.options,
-    self = this;
-
+Base.prototype.run = function run(args, cb) {
+  if(!cb) cb = args, args = this.args;
   cb = cb || function() {};
 
+  var self = this;
+
   this._running = true;
+  this.emit('run');
 
   var methods = Object.keys(this.__proto__);
   (function next(method) {
@@ -102,6 +100,9 @@ Base.prototype.run = function run(name, config, cb) {
     if(!wait) next(methods.shift());
 
   })(methods.shift());
+
+
+  return this;
 };
 
 // Go through all registered hooks, and invoke them in series
@@ -110,7 +111,10 @@ Base.prototype.runHooks = function runHooks(cb) {
     hooks = this._hooks;
 
   (function next(hook) {
-    if(!hook) return cb();
+    if(!hook) {
+      self.emit('end');
+      return cb();
+    }
 
     var resolved = self.defaultFor(hook.name),
       gruntConfig = hook.config || self.config,
@@ -226,14 +230,11 @@ Base.prototype.option = function option(name, config) {
 };
 
 
+// Register a hook to invoke a generator based on the value supplied by
+// the user to the given option named "name". An option is created when
+// this method is invoked and you can set a hash to customize it.
 //
-// Invoke a generator based on the value supplied by the user to the
-// given option named "name". An option is created when this method
-// is invoked and you can set a hash to customize it.
-//
-// XXX change how the hookFor is made. They need to be done in the
-// constructor, and for each create the corresponding option.
-//
+// Must be called within the constructor only.
 Base.prototype.hookFor = function hookFor(name, config) {
   config = config || {};
 
@@ -330,7 +331,9 @@ Base.prototype.usage = function usage() {
 
   name = name.replace(/^yeoman:/, '');
 
-  return 'yeoman ' + cmd + ' ' + name + args + ' ' + options;
+  var out = 'yeoman ' + cmd + ' ' + name + args + ' ' + options;
+  if(this.description) out += '\n\n' + this.description;
+  return out;
 };
 
 // print the list of options in formatted table
