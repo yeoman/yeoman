@@ -130,9 +130,6 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     // Read in as string for further update
     var indexData = self.readFileAsString(indexOut);
 
-    //self.template('main.css', path.join('app/css/main.css'));
-
-
     // Prepare default content text
     var defaults = ['HTML5 Boilerplate','Twitter Bootstrap'];
     var contentText = "<h1>Cheerio!</h1><p>You now have</p><ul>";
@@ -168,17 +165,7 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     }
 
     // Iterate over defaults, create content string
-    
-    defaults.forEach(function(i,x){
-      /*
-      if(x === 0){
-        contentText+= " " + i;
-      }else if(!(x === defaults.length-1)){
-        contentText+= "," + i;
-      }else{
-        contentText+= " and " + i;
-      }*/
-
+    defaults.forEach(function(i,x)
       contentText+= "<li>" + i  +"</li>";
     });
 
@@ -205,7 +192,6 @@ AppGenerator.prototype.fetchPackage = function fetchPackage() {
   this.log.writeln('Fetching h5bp/html5-boilerplate pkg');
 
   var cb = this.async();
-  var self = this;
 
   this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
     if(err) return cb(err);
@@ -217,7 +203,6 @@ AppGenerator.prototype.fetchPackage = function fetchPackage() {
     // remote.copy('index.html', 'index.html');
     // remote.template('index.html', 'will/be/templated/at/index.html');
     remote.directory('.', 'app');
-
     cb();
   });
 
