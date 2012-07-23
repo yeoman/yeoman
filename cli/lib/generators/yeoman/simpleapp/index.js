@@ -109,6 +109,7 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   this.remote('twitter', 'bootstrap', function(e, remote, files) {
     if(e) return self.emit('error', e);
     remote.directory('js', dest);
+
     cb();
   });
 };
@@ -129,6 +130,13 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     // Read in as string for further update
     var indexData = self.readFileAsString(indexOut);
 
+    //self.template('main.css', path.join('app/css/main.css'));
+
+
+    // Prepare default content text
+    var defaults = ['HTML5 Boilerplate','Twitter Bootstrap'];
+    var contentText = "<h1>Cheerio!</h1><p>You now have</p><ul>";
+
     indexData = indexData.replace('css/main.css', 'app/css/main.css');
     indexData = indexData.replace('js/vendor/modernizr-2.5.3.min.js',  'app/js/vendor/modernizr-2.5.3.min.js');
 
@@ -138,6 +146,8 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
 
     // Asked for Twitter bootstrap plugins?
     if(self.bootstrap){
+
+    defaults.push('Twitter Bootstrap plugins');
 
     // Wire Twitter Bootstrap plugins (usemin: app/js/plugins.js)
     indexData = self.appendScripts(indexData,
@@ -154,9 +164,30 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
         "app/js/vendor/bootstrap/bootstrap-scrollspy.js",
         "app/js/vendor/bootstrap/bootstrap-collapse.js",
         "app/js/vendor/bootstrap/bootstrap-tab.js"]);
-      // Alternative: indexData = _this.appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
 
     }
+
+    // Iterate over defaults, create content string
+    
+    defaults.forEach(function(i,x){
+      /*
+      if(x === 0){
+        contentText+= " " + i;
+      }else if(!(x === defaults.length-1)){
+        contentText+= "," + i;
+      }else{
+        contentText+= " and " + i;
+      }*/
+
+      contentText+= "<li>" + i  +"</li>";
+    });
+
+
+    contentText+= "</ul><p>installed.</p><h3>Enjoy coding! - Yeoman</h3>";
+
+    // Append the default content
+    indexData = indexData.replace("<body>", "<body>" + contentText);
+
 
     // Wire RequireJS/AMD (usemin: app/js/amd-app.js)
     ///indexData = self.appendScriptSpecial(indexData,
@@ -174,6 +205,7 @@ AppGenerator.prototype.fetchPackage = function fetchPackage() {
   this.log.writeln('Fetching h5bp/html5-boilerplate pkg');
 
   var cb = this.async();
+  var self = this;
 
   this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
     if(err) return cb(err);
@@ -184,11 +216,17 @@ AppGenerator.prototype.fetchPackage = function fetchPackage() {
 
     // remote.copy('index.html', 'index.html');
     // remote.template('index.html', 'will/be/templated/at/index.html');
-
     remote.directory('.', 'app');
+
     cb();
   });
 
+};
+
+AppGenerator.prototype.writeMain = function writeMain(){
+  this.log.writeln('Writing compiled Bootstrap');
+  var cb = this.async();
+  this.template('main.css', path.join('app/css/main.css'));
 };
 
 AppGenerator.prototype.app = function app() {
