@@ -74,9 +74,9 @@ actions.read = function read(filepath, encoding) {
   return grunt.file.read(filepath, encoding);
 };
 
-actions.write = function write(filepath, encoding) {
+actions.write = function write(filepath, content) {
   grunt.option('verbose', true);
-  grunt.file.write(filepath, encoding);
+  grunt.file.write(filepath, content);
   grunt.option('verbose', false);
   return this;
 };
@@ -123,10 +123,19 @@ actions.tarball = fetch;
 // Download a single file at the given destination.
 actions.fetch = function(url, destination, cb) {
   this.mkdir(path.dirname(destination));
+
+  var log = this.log.write('Fetching ' + url + '...');
+
   fetch.request(url)
     .on('error', cb)
+    .on('data', log.write.bind(log, '.'))
     .pipe(fs.createWriteStream(destination))
     .on('error', cb)
+    .on('close', function() {
+      log.ok()
+        .write('Writing ' + destination + '...')
+        .ok();
+    })
     .on('close', cb);
 };
 
