@@ -165,8 +165,8 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     }
 
     // Iterate over defaults, create content string
-    defaults.forEach(function(i,x)
-      contentText+= "<li>" + i  +"</li>";
+    defaults.forEach(function(i,x){
+      contentText += "<li>" + i  +"</li>";
     });
 
 
