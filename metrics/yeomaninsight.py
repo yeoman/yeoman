@@ -51,7 +51,7 @@ class Analytics(object):
       self.__reset_file(f, self.client_id)
       self.record('downloaded')
 
-      self._send_all() 
+      self._send_all()
 
     else:
       f.seek(0)
@@ -148,7 +148,7 @@ class Analytics(object):
     # Proceed with resetting file if everything went well.
     if sent:
       # Reset the file by clearing it and adding in the client id.
-      f = open(LOG_FILE, 'w+') 
+      f = open(LOG_FILE, 'w+')
       self.__reset_file(f, self.client_id)
       f.close()
 

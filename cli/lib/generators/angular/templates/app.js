@@ -5,7 +5,7 @@
 //= require_tree ./templates
 //= require_self
 
-// The angular application is created elsewhere (application.js) 
+// The angular application is created elsewhere (application.js)
 // where this file is required through the pipeline
 
 'use strict';

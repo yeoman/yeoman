@@ -8,10 +8,10 @@ var fs = require('fs'),
 // Replaces references to non-optimized scripts or stylesheets
 // into a set of HTML files (or any templates/views).
 //
-// The users markup should be considered the primary source of information 
-// for paths, references to assets which should be optimized.We also check 
-// against files present in the relevant directory () (e.g checking against 
-// the revved filename into the 'intermediate/') directory to find the SHA 
+// The users markup should be considered the primary source of information
+// for paths, references to assets which should be optimized.We also check
+// against files present in the relevant directory () (e.g checking against
+// the revved filename into the 'intermediate/') directory to find the SHA
 // that was generated.
 //
 // Todos:
@@ -22,12 +22,12 @@ var fs = require('fs'),
 // Thx to @krzychukula for the new, super handy replace helper.
 //
 // #### Usemin-handler
-// 
-// A special task which uses the build block HTML comments in markup to 
-// get back the list of files to handle, and initialize the grunt configuration 
+//
+// A special task which uses the build block HTML comments in markup to
+// get back the list of files to handle, and initialize the grunt configuration
 // appropriately, and automatically.
 //
-// Custom HTML "block" comments are provided as an API for interacting with the 
+// Custom HTML "block" comments are provided as an API for interacting with the
 // build script. These comments adhere to the following pattern:
 //
 //     <!-- build:<type> <path> -->
@@ -35,7 +35,7 @@ var fs = require('fs'),
 //     <!-- endbuild -->
 //
 // - type: is either js or css.
-// - path: is the file path of the optimized file, the target output. 
+// - path: is the file path of the optimized file, the target output.
 //
 // An example of this in completed form can be seen below:
 //
@@ -46,7 +46,7 @@ var fs = require('fs'),
 //      <script src="js/views/thing-view.js"></script>
 //    <!-- endbuild -->
 //
-// 
+//
 // Internally, the task parses your HTML markup to find each of these blocks, and
 // initializes for you the corresponding Grunt config for the concat / min tasks
 // when `type=js`, the concat / css tasks when `type=css`.
@@ -130,10 +130,10 @@ module.exports = function(grunt) {
 
         // parse out the list of assets to handle, and update the grunt config accordingly
         var assets = lines.map(function(tag) {
-          
+
           // RequireJS uses a data-main attribute on the script tag to tell RequireJS
           // to load up the scripts/mainEntryPoint.js file. The below regex should be
-          // able to handle both cases of data-main="scripts/main" as well as 
+          // able to handle both cases of data-main="scripts/main" as well as
           // data-main="scripts/main.js"
 
           var main = tag.match(/data-main=['"]([^'"]+)['"]/);
@@ -349,13 +349,13 @@ function getBlocks(body) {
 //   dest: 'css/site.css',
 //   src: [
 //     'css/normalize.css',
-//     'css/main.css' 
+//     'css/main.css'
 //   ],
 //   raw: [
 //     '    <!-- build:css css/site.css -->',
 //     '    <link rel="stylesheet" href="css/normalize.css">',
 //     '    <link rel="stylesheet" href="css/main.css">',
-//     '    <!-- endbuild -->' 
+//     '    <!-- endbuild -->'
 //   ]
 // }
 
