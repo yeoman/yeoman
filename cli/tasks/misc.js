@@ -122,7 +122,7 @@ module.exports = function(grunt) {
   grunt.registerHelper('copy', function(src, dest, ignores, cb) {
     if(!cb) { cb = ignores; ignores = ['.gitignore', '.ignore', '.buildignore']; }
 
-    function error(msg) { 
+    function error(msg) {
       return function(e) {
           if(!e) {
             grunt.log.writeln();

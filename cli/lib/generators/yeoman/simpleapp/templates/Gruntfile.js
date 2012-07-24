@@ -117,10 +117,10 @@ module.exports = function(grunt) {
 
     // usemin handler should point to the file containing
     // the usemin blocks to be parsed
-    'usemin-handler': { 
+    'usemin-handler': {
       html: 'index.html'
     },
-    
+
     // update references in html / css to revved files
     usemin: {
       html: ['**/*.html'],
