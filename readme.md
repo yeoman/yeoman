@@ -6,17 +6,13 @@ Yeoman is a robust and opinionated client-side stack, comprised of tools and fra
 
 Yeoman is fast, performant and is optimized to work best in modern browsers.
 
-For more information about the project, see [http://yeoman.io](http://yeoman.io).
+For more information about the project, see [yeoman.io](http://yeoman.io).
 
 
 ## Installing
 
 * Clone this repo and `cd` into it
-* Run the following command at the terminal:
-
-```shell
-./setup/install.sh
-```
+* Run this command: `./setup/install.sh`
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
 
 
@@ -27,24 +23,22 @@ following steps resolve these issues:
 
 ```
 $ cd yeoman/cli
-$ sudo npm install -g
-# when complete then run..
-$ sudo npm link
+$ sudo npm install -g && npm link
 ```
 
 ## Running
 
-Here's a small shell script that you can save as `server.sh` which opens and servers the current directory on the port specified:
+Here's a small shell script that you can save as `server.sh` which opens and serves the current directory:
 
-```shell
+```sh
+#!/usr/bin/env sh
+
 port=$1
-if [ $#  -ne  1 ]
-then
+if [ $# -ne 1 ]; then
   port=8000
 fi
 
-if [ $(uname -s) == "Darwin" ]
-then
+if [ $(uname -s) == "Darwin" ]; then
   open=open
 else
   open=xdg-open
@@ -53,11 +47,9 @@ fi
 $open http://localhost:$port && python -m SimpleHTTPServer $port;
 ```
 
-For example, run this guy as:
+You then need to make it executable: `$ chmod +x server.sh`
 
-```shell
-./server.sh 8000
-```
+For example, run this guy as `$ server` (defaults to port 8000), or supply a port yourself `$ server 3000`.
 
 
 ## Documentation
@@ -67,16 +59,14 @@ The current documentation for Yeoman can be found [here](http://yeoman.github.co
 
 ## Browser Support
 
-Yeoman supports:
-
-* Modern browsers (latest versions of Chrome, Safari, Firefox, Opera and IE10)
+* Modern browsers (latest version of Chrome, Safari, Firefox, Opera and IE10)
 * Chrome on Android
 * Mobile Safari
 
 
 ## Platform Support
 
-Yeoman 1.0 will support Mac OSX and will attempt to support Linux as well. We will be aiming to bring in support for Windows in a future version of the project.
+Yeoman 1.0 will support Mac OS X and will attempt to support Linux as well. We will be aiming to bring in support for Windows in a future version of the project.
 
 ## Contribute
 
@@ -84,7 +74,7 @@ Yeoman 1.0 will support Mac OSX and will attempt to support Linux as well. We wi
 
 * [Yeoman (CLI, Insights)](http://github.com/yeoman/yeoman)
 * [Yeoman I/O Holding Page](http://github.com/yeoman/yeoman.io)
-* [Yeoman I/O Site](http://github.com/yeoman/yeoman.io)(site branch)
+* [Yeoman I/O Site](http://github.com/yeoman/yeoman.io) (site branch)
 * [Yeoman Docs](http://github.com/yeoman/docs)
 
 ### Style Guide
@@ -96,29 +86,27 @@ This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core
 Yeoman is an open-source project by [Google](http://google.com) which builds on top of [Grunt](https://github.com/cowboy/grunt) and [node-build-script](http://github.com/h5bp/node-build-script). We utilize a number of useful open-source solutions including:
 
 * Twitter Bootstrap
-* Html5 Boilerplate
+* HTML5 Boilerplate
 * Modernizr
 * Twitter Bower
-* Node
+* Node.js
 * NPM
 * Compass
-* socket.io
-* coffeescript
-* mocha
-* jasmine
+* Socket.IO
+* CoffeeScript
+* Mocha
+* Jasmine
 * PhantomJS
-
-and [more](https://github.com/yeoman/yeoman/wiki/Dependencies)
+* And [more...](https://github.com/yeoman/yeoman/wiki/Dependencies)
 
 Version 1 of the project features the combined efforts of:
 
-* [Paul Irish](http://paulirish.com)]
+* [Paul Irish](http://paulirish.com)
 * [Addy Osmani](http://addyosmani.com)
-* [Mickael Daniel](http://blog.mklog.fr/)
-* [Sindre Sorhus](http://sindresorhus.com/)
+* [Mickael Daniel](http://blog.mklog.fr)
+* [Sindre Sorhus](http://sindresorhus.com)
 * [Eric Bidelman](http://ericbidelman.com)
 
-and other developers. 
+and other developers.
 
 We will be aiming to officially release the project in late July, 2012.
-
