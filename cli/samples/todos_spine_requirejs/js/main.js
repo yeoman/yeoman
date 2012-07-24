@@ -1,14 +1,8 @@
 require.config({
   shim:{
-    'tmpl':{
-      deps: ['jquery']
-    },
-    'local':{
-      deps: ['spine']
-    },
-    'manager':{
-      deps: ['spine']
-    }
+    'tmpl'   :{ deps: ['jquery'] },
+    'local'  :{ deps: ['spine'] },
+    'manager':{ deps: ['spine'] }
   },
   hm: 'hm',
   paths: {
