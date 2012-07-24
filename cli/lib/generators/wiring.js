@@ -115,7 +115,7 @@ Wiring.appendScripts = function appendScripts(html, optimizedPath, sourceFileLis
 	return Wiring.appendFiles(html, 'js', optimizedPath, sourceFileList);
 }
 
-// Simple script removal. 
+// Simple script removal.
 // Todo: establish if Cheerio has workarounds for script selectors
 Wiring.removeScript = function removeScript(html, scriptPath){
 

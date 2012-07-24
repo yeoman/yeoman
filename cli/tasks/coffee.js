@@ -16,7 +16,7 @@ module.exports = function(grunt) {
   grunt.registerHelper('coffee', function(src, destPath) {
     var coffee = require('coffee-script'),
         js = '',
-        dest = path.join(destPath, 
+        dest = path.join(destPath,
                          path.basename(src, '.coffee') + '.js');
 
     try {

@@ -2,7 +2,7 @@ import json
 import os
 
 # Get version of Yeoman out of package file, otherwise use GAE app.yaml version
-# for this app. 
+# for this app.
 def get_app_data():
   version_str = []
   try:
@@ -10,7 +10,7 @@ def get_app_data():
         os.path.dirname(__file__), '..', 'cli', 'package.json'))
     data = json.load(f)
     f.close()
-    return {'cli_name': data['name'], 'version': data['version']} 
+    return {'cli_name': data['name'], 'version': data['version']}
   except:
   	return os.environ['CURRENT_VERSION_ID'].split('.')[0]
 
