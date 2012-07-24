@@ -1,22 +1,20 @@
+# Yeoman CLI
 
-
-## Yeoman CLI
-
-The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project. For more information on the CLI, please see the projects docs.
+The Yeoman CLI presents a command-line interface for creating, building, maintaining, and shipping a project. For more information on the CLI, please see the projects docs.
 
 
 ## Quick start
 
-```
-# sudo npm install -g
-# sudo npm link (otherwise you'll get exceptions at the moment during scaffolding setup)
+```sh
+$ sudo -s 'npm install -g && npm link'
 ```
 
 Next, navigate to where you would like to create a new project and then run:
 
 ```yeoman init```
 
-**run the tests**
+
+## Run tests
 
 You can run the tests via `npm test` if you like. It will:
 
@@ -27,26 +25,19 @@ You can run the tests via `npm test` if you like. It will:
 * and perfom few basic assertions, comparing *.html files in
 `.test/publish` with the expected ones in `test/fixtures`
 
-# Current components
 
-* Compass
-* Grunt
+## Current components
+
 * Twitter Bootstrap
-* Html5 Boilerplate
+* HTML5 Boilerplate
 * Modernizr
-* Node
+* Twitter Bower
+* Node.js
 * NPM
-* Twitter Nest 
-* socket.io
-* coffeescript
-* mocha
-* jasmine
+* Compass
+* Socket.IO
+* CoffeeScript
+* Mocha
+* Jasmine
 * PhantomJS
-* optipng, jpegtran
-* connect
-* html-minifier
-* clean-css
-* node-build-script
-* compass_bootstrap
-
-
+* And [more...](https://github.com/yeoman/yeoman/wiki/Dependencies)
