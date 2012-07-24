@@ -1,68 +1,92 @@
-var util = require('util'),
-  path = require('path');
+var util = require('util');
+var path = require('path');
 
-/*global module:false*/
-module.exports = function(grunt) {
+module.exports = function( grunt ) {
+  'use strict';
 
-  // Project configuration.
   grunt.initConfig({
     lint: {
-      grunt: ['grunt.js', 'tasks/*.js'],
-      lib: ['lib/plugins/*.js']
+      options: {
+        options: {
+          node: true,
+          browser: true,
+          es5 : true,
+          esnext: true,
+          bitwise: true,
+          curly: true,
+          eqeqeq: true,
+          immed: true,
+          latedef: true,
+          newcap: true,
+          noarg: true,
+          //regexp: true,
+          undef: true,
+          //strict: true,
+          trailing: true,
+          smarttabs: true
+        },
+        global: {
+          process: true
+        }
+      },
+      grunt: [
+        'Gruntfile.js',
+        'tasks/*.js'
+      ],
+      lib: [
+        'lib/**/*.js'
+      ],
+      test: [
+        'test/**/*.js'
+      ]
     },
     watch: {
-      files: '<config:lint.grunt>',
-      tasks: 'lint:grunt'
-    },
-    jshint: {
-      options: {
-        es5: true,
-        node: true,
-        curly: false,
-        eqeqeq: true,
-        immed: true,
-        latedef: false,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true
-      }
+      files: '<config:lint>',
+      tasks: 'lint'
     }
   });
 
-  // Default task.
-  grunt.registerTask('default', 'lint');
+  grunt.registerTask( 'default', 'lint' );
 
-  // some debugging helpers
-  grunt.registerTask('list-helpers', 'List all grunt registered helpers', function(helper) {
-    var ls = grunt.log.wordlist(Object.keys(grunt.task._helpers), grunt.util.linefeed);
-    if(!helper) return grunt.log.ok(ls);
-    grunt.log.subhead(helper + ' source:').ok(grunt.task._helpers[helper]);
+  // Debugging helpers
+  grunt.registerTask( 'list-helpers', 'List all grunt registered helpers', function( helper ) {
+    var ls = grunt.log.wordlist( Object.keys( grunt.task._helpers ), grunt.util.linefeed );
+
+    if ( !helper ) {
+      return grunt.log.ok( ls );
+    }
+
+    grunt.log.subhead( helper + ' source:' ).writeln( grunt.task._helpers[ helper ] );
   });
 
-  grunt.registerTask('list-task', 'List all grunt registered tasks', function(t) {
-    var ls = grunt.log.wordlist(Object.keys(grunt.task._tasks), grunt.util.linefeed);
-    if(!t) return grunt.log.ok(ls);
-    grunt.log.subhead(t + ' source:');
-    grunt.helper('inspect', grunt.task._tasks[t]);
+  grunt.registerTask( 'list-tasks', 'List all grunt registered tasks', function( task ) {
+    var ls = grunt.log.wordlist( Object.keys( grunt.task._tasks ), grunt.util.linefeed );
+
+    if ( !task ) {
+      return grunt.log.ok( ls );
+    }
+
+    grunt.log.subhead( task + ' source:' ).writeln( util.inspect( grunt.task._tasks[ task ] ) );
   });
 
-  // and the doc generation for the docs task
-  grunt.registerTask('gendocs', 'Generates docs/index.html from wiki pages', function() {
+  // Doc generation for the docs task
+  grunt.registerTask( 'gendocs', 'Generates docs/index.html from wiki pages', function() {
     var cb = this.async();
 
     var gendoc = grunt.util.spawn({
-      cmd: 'grunt', opts: { cwd: path.join(__dirname, 'scripts/docs') }
+      cmd: 'grunt',
+      opts: {
+        cwd: path.join( __dirname, 'scripts/docs' )
+      }
     }, function() {});
 
-    gendoc.stdout.pipe(process.stdout);
-    gendoc.stderr.pipe(process.stderr);
-    gendoc.on('exit', function(code) {
-      if(code) grunt.warn('Something bad happend', code);
+    gendoc.stdout.pipe( process.stdout );
+    gendoc.stderr.pipe( process.stderr );
+    gendoc.on( 'exit', function( code ) {
+      if ( code ) {
+        grunt.fail.fatal( 'Something bad happend', code );
+      }
       cb();
     });
   });
-
 };
