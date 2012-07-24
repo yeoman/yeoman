@@ -23,7 +23,7 @@ following steps resolve these issues:
 
 ```
 $ cd yeoman/cli
-$ sudo npm install -g && npm link
+$ sudo -s 'npm install -g && npm link'
 ```
 
 ## Running
