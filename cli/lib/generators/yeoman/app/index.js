@@ -60,7 +60,7 @@ AppGenerator.prototype.gitignore = function gitignore() {
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
   var self = this;
-  
+
   // Fecth allows the download of single files, into the destination directory
   this.fetch('https://raw.github.com/h5bp/html5-boilerplate/master/index.html', 'index.html', function(err) {
     if(err) return cb(err);
@@ -82,20 +82,20 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     // Wire Twitter Bootstrap plugins (usemin: app/js/plugins.js)
     indexData = self.appendScripts(indexData,
         'app/js/plugins.js',
-       ["app/js/vendor/bootstrap/bootstrap-alert.js",  
-        "app/js/vendor/bootstrap/bootstrap-dropdown.js",  
+       ["app/js/vendor/bootstrap/bootstrap-alert.js",
+        "app/js/vendor/bootstrap/bootstrap-dropdown.js",
         "app/js/vendor/bootstrap/bootstrap-tooltip.js",
         "app/js/vendor/bootstrap/bootstrap-modal.js",
         "app/js/vendor/bootstrap/bootstrap-transition.js",
         "app/js/vendor/bootstrap/bootstrap-button.js",
-        "app/js/vendor/bootstrap/bootstrap-popover.js", 
+        "app/js/vendor/bootstrap/bootstrap-popover.js",
         "app/js/vendor/bootstrap/bootstrap-typeahead.js",
-        "app/js/vendor/bootstrap/bootstrap-carousel.js",  
+        "app/js/vendor/bootstrap/bootstrap-carousel.js",
         "app/js/vendor/bootstrap/bootstrap-scrollspy.js",
-        "app/js/vendor/bootstrap/bootstrap-collapse.js",  
+        "app/js/vendor/bootstrap/bootstrap-collapse.js",
         "app/js/vendor/bootstrap/bootstrap-tab.js"]);
     // Alternative: indexData = _this.appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
-    
+
     // Write out final file
     self.writeFileFromString(indexData, indexOut);
 
