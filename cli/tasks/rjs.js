@@ -5,8 +5,7 @@ var fs = require('fs'),
 
 module.exports = function(grunt) {
   grunt.task.registerTask('rjs', 'Optimizes javascript that actually is built with requirejs.', function () {
-    var options = grunt.config(this.name) || {},
-      modules = options.modules;
+    var options = grunt.config(this.name) || {};
 
     if(!options.modules) {
       grunt.log.writeln('No module found in rjs configuration, bypassing the task...');
@@ -59,7 +58,9 @@ module.exports = function(grunt) {
 
     // basic require shim.
     sandbox.require = function require(o) {
-      if(!o || !o.paths) return;
+      if ( !o || !o.paths ) {
+        return;
+      }
       // if the first arg passed to require is an Hash object, and has a paths
       // property, pass it through require.config method
       sandbox.require.config(o);

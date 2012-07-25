@@ -9,7 +9,6 @@ module.exports = function( grunt ) {
       options: {
         options: {
           node: true,
-          browser: true,
           es5 : true,
           esnext: true,
           bitwise: true,
@@ -21,7 +20,7 @@ module.exports = function( grunt ) {
           noarg: true,
           //regexp: true,
           undef: true,
-          //strict: true,
+          strict: false,
           trailing: true,
           smarttabs: true
         },
@@ -34,10 +33,10 @@ module.exports = function( grunt ) {
         'tasks/*.js'
       ],
       lib: [
-        'lib/**/*.js'
+        'lib/{plugins,utils}/*.js',
       ],
       test: [
-        'test/**/*.js'
+        //'test/**/*.js'
       ]
     },
     watch: {

@@ -84,8 +84,11 @@ module.exports = function(grunt) {
     // default type
     type = type || config.type || 'compress';
 
-    var valid = !!~Object.keys(options).indexOf(type);
-    if(!valid) return grunt.log.error('not a valid target: ' + type);
+    var valid = Object.keys( options ).indexOf( type ) !== -1;
+
+    if ( !valid ) {
+      return grunt.log.error( 'not a valid target: ' + type );
+    }
 
     // merge default options for predefined type with the grunt's config
     // one.
