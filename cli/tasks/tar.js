@@ -27,9 +27,17 @@ module.exports = function(grunt) {
       output = grunt.option('output') || grunt.config('output'),
       cb = this.async();
 
-    if(!input) grunt.log.error('tar: No input value, please specify one.');
-    if(!output) grunt.log.error('tar: No output value, please specify one.');
-    if(!input || !output) return cb(false);
+    if ( !input ) {
+      grunt.log.error('tar: No input value, please specify one.');
+    }
+
+    if ( !output ) {
+      grunt.log.error('tar: No output value, please specify one.');
+    }
+
+    if ( !input || !output ) {
+      return cb(false);
+    }
 
     // correct extension?
     if(!(/tar|tgz/).test(path.extname(output))) {
@@ -47,17 +55,19 @@ module.exports = function(grunt) {
     // intended to be copied.
     //
     var reader = fstream.Reader({ type: 'Directory', path: input });
-    grunt.helper('packer', reader, output, function(msg) { return function(e) {
-      // no errors.. All ok.
-      if(!e) {
-        grunt.log.ok();
-        return cb();
-      }
-      // hmm, got error, log and fail
-      grunt.log.error('Oh snap >> ' + msg);
-      grunt.log.error(e);
-      return cb(false);
-    }});
+    grunt.helper('packer', reader, output, function(msg) {
+      return function(e) {
+        // no errors.. All ok.
+        if(!e) {
+          grunt.log.ok();
+          return cb();
+        }
+        // hmm, got error, log and fail
+        grunt.log.error('Oh snap >> ' + msg);
+        grunt.log.error(e);
+        return cb(false);
+      };
+    });
   });
 
   //
@@ -83,7 +93,10 @@ module.exports = function(grunt) {
       .on('error', error('tar creation error' + dest));
 
     // if it ends with .tgz, then Gzip it.
-    if(path.extname(dest) === '.tgz') stream = stream.pipe(zlib.Gzip());
+    if ( path.extname( dest ) === '.tgz' ) {
+      stream = stream.pipe( zlib.Gzip() );
+    }
+
     return stream.on('error', error('gzip error ' + dest))
       .pipe(fstream.Writer({ type: 'File', path: dest }))
       .on('error', error('Could not write ' + dest))

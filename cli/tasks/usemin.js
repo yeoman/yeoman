@@ -65,6 +65,87 @@ var fs = require('fs'),
 // For related sample, see: cli/test/tasks/usemin-handler/index.html
 //
 
+
+//
+// Helpers: todo, register as grunt helper
+//
+
+// start build pattern --> <!-- build:[target] output -->
+var regbuild = /<!--\s*build:(\w+)\s*(.+)\s*-->/;
+
+// end build pattern -- <!-- endbuild -->
+var regend = /<!--\s*endbuild\s*-->/;
+
+
+//
+// Returns an hash object of all the directives for the given html. Results is
+// of the following form:
+//
+//     {
+//        'css/site.css ':[
+//          '  <!-- build:css css/site.css -->',
+//          '  <link rel="stylesheet" href="css/style.css">',
+//          '  <!-- endbuild -->'
+//        ],
+//        'js/head.js ': [
+//          '  <!-- build:js js/head.js -->',
+//          '  <script src="js/libs/modernizr-2.5.3.min.js"></script>',
+//          '  <!-- endbuild -->'
+//        ],
+//        'js/site.js ': [
+//          '  <!-- build:js js/site.js -->',
+//          '  <script src="js/plugins.js"></script>',
+//          '  <script src="js/script.js"></script>',
+//          '  <!-- endbuild -->'
+//        ]
+//     }
+//
+function getBlocks(body) {
+  var lines = body.replace(/\r\n/g, '\n').split(/\n/),
+    block = false,
+    sections = {},
+    last;
+
+  lines.forEach(function(l) {
+    var build = l.match(regbuild),
+      endbuild = regend.test(l);
+
+    if(build) {
+      block = true;
+      sections[[build[1], build[2].trim()].join(':')] = last = [];
+    }
+
+    // switch back block flag when endbuild
+    if(block && endbuild) {
+      last.push(l);
+      block = false;
+    }
+
+    if(block && last) {
+      last.push(l);
+    }
+  });
+
+// Todo: Change to match @necolas suggested structure for the usemin blocks.
+// {
+//   type: 'css',
+//   dest: 'css/site.css',
+//   src: [
+//     'css/normalize.css',
+//     'css/main.css'
+//   ],
+//   raw: [
+//     '    <!-- build:css css/site.css -->',
+//     '    <link rel="stylesheet" href="css/normalize.css">',
+//     '    <link rel="stylesheet" href="css/main.css">',
+//     '    <!-- endbuild -->'
+//   ]
+// }
+
+  return sections;
+}
+
+
 module.exports = function(grunt) {
 
   var linefeed = grunt.util.linefeed;
@@ -77,9 +158,6 @@ module.exports = function(grunt) {
 
     files.map(grunt.file.read).forEach(function(content, i) {
       var p = files[i];
-
-      // get extension and trigger corresponding helpers
-      var ext = path.extname(p).slice(1);
 
       grunt.log.subhead('usemin:' + name + ' - ' + p);
 
@@ -119,8 +197,7 @@ module.exports = function(grunt) {
           parts = dest.split(':'),
           type = parts[0],
           output = parts[1],
-          basename = output.replace(path.extname(output), ''),
-          content = lines.join('\n');
+          basename = output.replace(path.extname(output), '');
 
         // concat / min / css / rjs config
         var concat = grunt.config('concat') || {},
@@ -253,7 +330,9 @@ module.exports = function(grunt) {
   grunt.registerHelper('replace', function(content, regexp) {
     return content.replace(regexp, function(match, src) {
       //do not touch external files
-      if(src.match(/\/\//)) return match;
+      if ( src.match(/\/\//) ) {
+        return match;
+      }
       var basename = path.basename(src);
       var dirname = path.dirname(src);
 
@@ -262,13 +341,17 @@ module.exports = function(grunt) {
       var filepath = grunt.file.expand(path.join('**/*') + basename)[0];
 
       // not a file in intermediate, skip it
-      if(!filepath) return match;
+      if ( !filepath ) {
+        return match;
+      }
       var filename = path.basename(filepath);
       // handle the relative prefix (with always unix like path even on win32)
       filename = [dirname, filename].join('/');
 
       // if file not exists probaly was concatenated into another file so skip it
-      if(!filename) return '';
+      if ( !filename ) {
+        return '';
+      }
 
       var res = match.replace(src, filename);
       // output some verbose info on what get replaced
@@ -281,83 +364,3 @@ module.exports = function(grunt) {
     });
   });
 };
-
-
-//
-// Helpers: todo, register as grunt helper
-//
-
-// start build pattern --> <!-- build:[target] output -->
-var regbuild = /<!--\s*build:(\w+)\s*(.+)\s*-->/;
-
-// end build pattern -- <!-- endbuild -->
-var regend = /<!--\s*endbuild\s*-->/;
-
-
-//
-// Returns an hash object of all the directives for the given html. Results is
-// of the following form:
-//
-//     {
-//        'css/site.css ':[
-//          '  <!-- build:css css/site.css -->',
-//          '  <link rel="stylesheet" href="css/style.css">',
-//          '  <!-- endbuild -->'
-//        ],
-//        'js/head.js ': [
-//          '  <!-- build:js js/head.js -->',
-//          '  <script src="js/libs/modernizr-2.5.3.min.js"></script>',
-//          '  <!-- endbuild -->'
-//        ],
-//        'js/site.js ': [
-//          '  <!-- build:js js/site.js -->',
-//          '  <script src="js/plugins.js"></script>',
-//          '  <script src="js/script.js"></script>',
-//          '  <!-- endbuild -->'
-//        ]
-//     }
-//
-function getBlocks(body) {
-  var lines = body.replace(/\r\n/g, '\n').split(/\n/),
-    block = false,
-    sections = {},
-    last;
-
-  lines.forEach(function(l) {
-    var build = l.match(regbuild),
-      endbuild = regend.test(l);
-
-    if(build) {
-      block = true;
-      sections[[build[1], build[2].trim()].join(':')] = last = [];
-    }
-
-    // switch back block flag when endbuild
-    if(block && endbuild) {
-      last.push(l);
-      block = false;
-    }
-
-    if(block && last) {
-      last.push(l);
-    }
-  });
-
-// Todo: Change to match @necolas suggested structure for the usemin blocks.
-// {
-//   type: 'css',
-//   dest: 'css/site.css',
-//   src: [
-//     'css/normalize.css',
-//     'css/main.css'
-//   ],
-//   raw: [
-//     '    <!-- build:css css/site.css -->',
-//     '    <link rel="stylesheet" href="css/normalize.css">',
-//     '    <link rel="stylesheet" href="css/main.css">',
-//     '    <!-- endbuild -->'
-//   ]
-// }
-
-  return sections;
-}

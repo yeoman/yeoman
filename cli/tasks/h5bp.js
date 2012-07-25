@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     var valid = Object.keys(targets);
     target = target || 'usemin';
 
-    if(!~valid.indexOf(target)) {
+    if ( valid.indexOf( target ) === -1 ) {
       grunt.log
         .error('Not a valid target')
         .error(grunt.helper('invalid targets', targets));
@@ -80,7 +80,9 @@ module.exports = function(grunt) {
 
   grunt.registerHelper('invalid targets', function(valid, code) {
     var msg = Object.keys(valid).map(function(key) {
-      if(/pre|post/.test(key)) return '';
+      if ( /pre|post/.test( key ) ) {
+        return '';
+      }
       return grunt.helper('pad', key, 10) + '# '+ valid[key];
     }).join(grunt.util.linefeed);
 
