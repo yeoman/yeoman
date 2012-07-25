@@ -37,8 +37,11 @@ module.exports = function(grunt) {
 
 
     grunt.helper('copy', source, target, ignores, function(e) {
-      if(e) grunt.log.error(e.stack || e.message);
-      else grunt.log.ok(source + ' -> ' + target);
+      if ( e ) {
+        grunt.log.error( e.stack || e.message );
+      } else {
+        grunt.log.ok( source + ' -> ' + target );
+      }
 
       // Once copy done, ensure the current working directory is the intermediate one.
       grunt.file.setBase(grunt.config('staging'));
@@ -60,8 +63,11 @@ module.exports = function(grunt) {
     var ignores = ['.gitignore', '.ignore', '.buildignore'];
 
     grunt.task.helper('copy', config.staging, config.output, ignores, function(e) {
-      if(e) grunt.log.error(e.stack || e.message);
-      else grunt.log.ok(path.resolve(config.staging) + ' -> ' + path.resolve(config.output));
+      if ( e ) {
+        grunt.log.error( e.stack || e.message );
+      } else {
+        grunt.log.ok( path.resolve( config.staging ) + ' -> ' + path.resolve( config.output ) );
+      }
       cb(!e);
     });
   });
@@ -78,7 +84,9 @@ module.exports = function(grunt) {
   // otherwise `rimraf.sync` is used.
   //
   grunt.registerHelper('rimraf', function(dir, cb) {
-    if(typeof cb !== 'function') return utils.rimraf.sync(dir);
+    if ( typeof cb !== 'function' ) {
+      return utils.rimraf.sync( dir );
+    }
     utils.rimraf(dir, cb);
   });
 
@@ -89,7 +97,9 @@ module.exports = function(grunt) {
   // callback function is passed in.
   //
   grunt.registerHelper('mkdir', function(dir, cb) {
-    if(typeof cb !== 'function') return utils.mkdirp.sync(dir);
+    if ( typeof cb !== 'function' ) {
+      return utils.mkdirp.sync( dir );
+    }
     utils.mkdirp(dir, cb);
   });
 
@@ -132,8 +142,8 @@ module.exports = function(grunt) {
           grunt.log.error('Oh snap >> ' + msg);
           grunt.log.error(e);
           return cb(false);
-      }
-    };
+      };
+    }
 
     var type = typeof dest !== 'string' ? 'stream' :
       path.extname(dest) === '.tar' ? 'tar' :
@@ -149,17 +159,26 @@ module.exports = function(grunt) {
       .on('error', error('fstream-ignore reading error'));
 
     // raw stream pipe it through
-    if(type === 'stream') return stream.pipe(dest)
-      .on('error', error('pipe error with raw stream'))
-      .on('close', error());
+    if ( type === 'stream' )  {
+      return stream.pipe( dest )
+        .on( 'error', error('pipe error with raw stream') )
+        .on( 'close', error() );
+    }
 
     // tar type, create a new "packer": tar.Pack(), zlib.Gzip(), fs.WriteStream
-    if(/tar|tgz/.test(type)) return grunt.helper('packer', stream, dest, error);
+    if ( /tar|tgz/.test( type ) ) {
+      return grunt.helper( 'packer', stream, dest, error );
+    }
 
     // dir type, create a new fstream.Writer and let fstream do all the complicated stuff for us
-    if(type === 'dir') return stream.pipe(fstream.Writer({ path: dest, type: 'Directory' }))
-      .on('error', error('pipe error with dir stream'))
-      .on('close', error());
+    if ( type === 'dir' ) {
+      return stream.pipe( fstream.Writer({
+        path: dest,
+        type: 'Directory'
+      }))
+        .on( 'error', error('pipe error with dir stream') )
+        .on( 'close', error() );
+    }
   });
 
 };

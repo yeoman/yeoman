@@ -20,10 +20,16 @@ module.exports = function(grunt) {
 
   function Reactor(options) {
     this.sockets = {};
-    if(!options.server) throw new Error('Missing server option');
+
+    if ( !options.server ) {
+      throw new Error('Missing server option');
+    }
 
     this.server = options.server;
-    if(!(this.server instanceof connect.HTTPServer)) throw new Error('Is not a valid HTTP server');
+
+    if ( !( this.server instanceof connect.HTTPServer ) ) {
+      throw new Error('Is not a valid HTTP server');
+    }
 
     this.options = options || {};
     this.uid = 0;
@@ -85,23 +91,32 @@ module.exports = function(grunt) {
 
     ws.onmessage = function(event) {
       // message type
-      if(!event.type === 'message') return console.warn('Unhandled ws message type');
+      if ( event.type !== 'message' ) {
+        return console.warn('Unhandled ws message type');
+      }
 
       // parse the JSON data object
       var data = self.parseData(event.data);
 
       // attach the guessed livereload protocol version to the sokect object
       ws.livereloadVersion = data.command ? '1.7' : '1.6';
+
       // data sent wasn't a valid JSON object, assume version 1.6
-      if(!data.command) return ws.send('!!ver:1.6');
+      if ( !data.command ) {
+        return ws.send('!!ver:1.6');
+      }
 
       // valid commands are: url, reload, alert and hello for 1.7
 
       // first handshake
-      if(data.command === 'hello') return self.hello(data, ws);
+      if ( data.command === 'hello' ) {
+        return self.hello( data, ws );
+      }
 
       // livereload.js emits this
-      if(data.command === 'info') return self.info(data, ws);
+      if ( data.command === 'info' ) {
+        return self.info( data, ws );
+      }
     };
 
     ws.onclose = function(event) {
@@ -141,7 +156,7 @@ module.exports = function(grunt) {
   // ===============
 
   // Retain grunt's built-in server task.
-  grunt.renameTask('server', 'grunt-server')
+  grunt.renameTask('server', 'grunt-server');
 
   // The server task always run with the watch task, this is done by
   // aliasing the server task to the relevant set of task to run.
@@ -164,7 +179,9 @@ module.exports = function(grunt) {
   // Factory for the reactor object
   var reactor;
   grunt.registerHelper('reload:reactor', function(options) {
-    if(options && !reactor) reactor = new Reactor(options);
+    if ( options && !reactor ) {
+      reactor = new Reactor( options );
+    }
     return reactor;
   });
 
@@ -244,7 +261,9 @@ module.exports = function(grunt) {
 
       // if ext is anything but .html, let it go through usual connect static
       // middleware.
-      if(path.extname(filepath) !== '.html') return next();
+      if ( path.extname( filepath ) !== '.html' ) {
+        return next();
+      }
 
       // setup some basic headers, at this point it's always text/html anyway
       res.setHeader('Content-Type', connect.static.mime.lookup(filepath));

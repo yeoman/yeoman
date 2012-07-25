@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
   path = require('path'),
   rjs = require('requirejs');
@@ -49,7 +48,9 @@ plugin.handler = function link($, options, cb) {
       src = el.attr('href'),
       file = path.resolve(options.cwd, src);
 
-    if(!path.existsSync(file)) return cb(new Error('no ' + src));
+    if ( !path.existsSync( file ) ) {
+      return cb( new Error( 'no ' + src ) );
+    }
 
     var href = el.data('build') || options.output,
       output = path.join(options.out, href);
@@ -64,7 +65,9 @@ plugin.handler = function link($, options, cb) {
     log.writeln(' › Handle: ' + el.get(0).outerHTML);
     log.writeln((' › Writing optimized CSS file to output ' + output).bold);
     rjs.optimize(config, function(res) {
-      if(!last) return el.remove();
+      if ( !last ) {
+        return el.remove();
+      }
       // update dom tree accordingly
       el.attr('href', href);
       cb(null, res);

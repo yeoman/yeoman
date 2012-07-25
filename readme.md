@@ -81,6 +81,12 @@ Yeoman 1.0 will support Mac OS X and will attempt to support Linux as well. We w
 
 This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core_Style_Guidelines) with an exception of two space indentation and multiple var statements. Please ensure any pull requests follow this closely. If you notice existing code which doesn't follow these practices, feel free to shout and we will address this.
 
+### Pull Request Guidelines
+
+- Lint the code by running `grunt` in the `/cli` folder before submitting a pull request
+- Develop in a topic branch, not master
+
+
 ## About
 
 Yeoman is an open-source project by [Google](http://google.com) which builds on top of [Grunt](https://github.com/cowboy/grunt) and [node-build-script](http://github.com/h5bp/node-build-script). We utilize a number of useful open-source solutions including:
