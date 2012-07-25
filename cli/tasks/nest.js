@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         done(false);
       } else {
         // FIXME: no part of the next three lines is okay.
-        if (that.args[0] == 'install' && !~stdout.indexOf('└')){
+        if ( that.args[0] === 'install' && stdout.indexOf('└') === -1 ) {
           grunt.log.writeln('\nInstalled into js/browser_modules: ');
           return exec('cd js && bower ls && cd ..', puts);
         }
