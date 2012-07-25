@@ -9,15 +9,9 @@ var fs = require('fs'),
 var proxy = process.env.http_proxy || process.env.HTTP_PROXY ||
     process.env.https_proxy || process.env.HTTPS_PROXY || '';
 
-module.exports = fetch;
-
-// re-expose the request with proxy defaults, so that we can
-// reuse this instance of request.
-fetch.request = request.defaults({ proxy: proxy });
-
 // heavily based on npm's util/untar.js file
 function fetch(tarball, target, cb) {
-  var now = +new Date;
+  var now = +new Date();
 
   var log = this.log
     .subhead('Fetching ' + tarball)
@@ -31,7 +25,7 @@ function fetch(tarball, target, cb) {
 
   req.on('data', function() { log.write('.'); }).on('end', function() {
     log.ok().writeln();
-    log.ok( ('Done in ' + (+new Date - now) / 1000 + 's.').green );
+    log.ok( ('Done in ' + (+new Date() - now) / 1000 + 's.').green );
   });
 
   req
@@ -56,3 +50,10 @@ function fetch(tarball, target, cb) {
       cb();
     });
 }
+
+
+module.exports = fetch;
+
+// re-expose the request with proxy defaults, so that we can
+// reuse this instance of request.
+fetch.request = request.defaults({ proxy: proxy });

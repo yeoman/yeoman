@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
   path = require('path'),
   rjs = require('requirejs'),
@@ -78,12 +77,17 @@ plugin.handler = function link($, options, cb) {
       src = el.attr('src'),
       file = path.resolve(options.cwd, src);
 
-    if(!path.existsSync(file)) return cb(new Error('no ' + src));
+    if ( !path.existsSync( file ) ) {
+      return cb( new Error( 'no ' + src ) );
+    }
 
     files = files.concat(fs.readFileSync(file, 'utf8'));
 
     log.writeln(' › Handle: ' + el.get(0).outerHTML);
-    if(!last) return el.remove();
+
+    if ( !last ) {
+      return el.remove();
+    }
 
     var href = el.data('build') || options.output,
       output = path.join(options.out, href);
@@ -91,7 +95,10 @@ plugin.handler = function link($, options, cb) {
     log.writeln((' › Writing optimized JS file to output ' + output).bold);
 
     mkdirp(path.dirname(output), function(e) {
-      if(e) return cb(e);
+      if ( e ) {
+        return cb( e );
+      }
+
       el.attr('src', href);
       var content = files.join(options.separator);
 
@@ -100,10 +107,12 @@ plugin.handler = function link($, options, cb) {
       // minification is a quite costly process. We should store in some cache
       // the minified output, indexed by the sha1 of concatenated files.
       //
-      if(options.minify) log
-        .writeln((' › Minifying JS file to output ' + output).bold)
-        .writeln((' › from ' + set.length + ' file(s)').bold)
-        .writeln((' › This may take a while..').bold);
+      if ( options.minify ) {
+        log
+          .writeln( ( ' › Minifying JS file to output ' + output ).bold )
+          .writeln( ( ' › from ' + set.length + ' file(s)' ).bold )
+          .writeln( (' › This may take a while..').bold );
+      }
 
       content = options.minify ? min(content) : content;
       fs.writeFile(output, content, cb);

@@ -32,15 +32,14 @@ module.exports = function(grunt) {
     var cb = this.async(),
       files = grunt.file.expandFiles(this.file.src);
 
-    var pngfiles = files.filter(function(file) {
-      return !!~png.indexOf(path.extname(file).toLowerCase());
+    var pngfiles = files.filter(function( file ) {
+      return png.indexOf( path.extname( file ).toLowerCase() ) !== -1;
     });
 
-    var jpgfiles = files.filter(function(file) {
-      return !!~jpegs.indexOf(path.extname(file).toLowerCase());
+    var jpgfiles = files.filter(function( file ) {
+      return jpegs.indexOf( path.extname( file ).toLowerCase() ) !== -1;
     });
 
-    var remains = 2;
     grunt.helper('optipng', pngfiles, grunt.config('optipng'), function(err) {
       if(err) {
         grunt.log.error(err);
@@ -62,10 +61,17 @@ module.exports = function(grunt) {
     cb = cb || function() {};
 
     grunt.helper('which', 'optipng', function(err, cmdpath) {
-      if(err) return grunt.helper('not installed', 'optipng', cb);
+      if ( err ) {
+        return grunt.helper( 'not installed', 'optipng', cb );
+      }
+
       var args = opts.args ? opts.args : [];
       args = args.concat(files);
-      if(!files.length) return cb();
+
+      if ( !files.length ) {
+        return cb();
+      }
+
       grunt.log.writeln('Running optipng... ' + grunt.log.wordlist(files));
       var optipng = grunt.util.spawn({
         cmd: cmdpath,
@@ -75,7 +81,9 @@ module.exports = function(grunt) {
       optipng.stdout.pipe(process.stdout);
       optipng.stderr.pipe(process.stderr);
       optipng.on('exit', function(code) {
-        if(code) grunt.warn('optipng exited unexpectedly with exit code ' + code + '.', code);
+        if ( code ) {
+          grunt.warn( 'optipng exited unexpectedly with exit code ' + code + '.', code );
+        }
         cb();
       });
     });
@@ -87,9 +95,15 @@ module.exports = function(grunt) {
     opts.args = opts.args ? opts.args : ['-copy', 'none', '-optimize', '-outfile', 'jpgtmp.jpg'];
 
     grunt.helper('which', 'jpegtran', function(err, cmdpath) {
-      if(err) return grunt.helper('not installed', 'jpegtran', cb);
+      if ( err ) {
+        return grunt.helper( 'not installed', 'jpegtran', cb );
+      }
+
       (function run(file) {
-        if(!file) return cb();
+        if ( !file ) {
+          return cb();
+        }
+
         grunt.log.subhead('** Processing: ' + file);
         var jpegtran = grunt.util.spawn({
           cmd: cmdpath,
@@ -100,7 +114,9 @@ module.exports = function(grunt) {
         jpegtran.stderr.pipe(process.stderr);
 
         jpegtran.on('exit', function(code) {
-          if(code) return grunt.warn('jpgtran exited unexpectedly with exit code ' + code + '.', code);
+          if ( code ) {
+            return grunt.warn( 'jpgtran exited unexpectedly with exit code ' + code + '.', code );
+          }
           // output some size info about the file
           grunt.helper('min_max_stat', 'jpgtmp.jpg', file);
           // copy the temporary optimized jpg to original file
@@ -123,13 +139,18 @@ module.exports = function(grunt) {
       'the command line, this task should work)'
     ].join(' ').replace(/:cmd/g, cmd));
     grunt.log.subhead('Skiping ' + cmd + ' task');
-    if(cb) cb();
+
+    if ( cb ) {
+      cb();
+    }
   });
 
   // **which** helper, wrapper to isaacs/which package plus some fallback logic
   // specifically for the win32 binaries in vendor/ (optipng.exe, jpegtran.exe)
   grunt.registerHelper('which', function(cmd, cb) {
-    if(!win32 || !/optipng|jpegtran/.test(cmd)) return which(cmd, cb);
+    if ( !win32 || !/optipng|jpegtran/.test( cmd ) ) {
+      return which( cmd, cb );
+    }
 
     var cmdpath = cmd === 'optipng' ? '../vendor/optipng-0.7.1-win32/optipng.exe' :
       '../vendor/jpegtran-8d/jpegtran.exe';

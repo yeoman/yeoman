@@ -5,8 +5,39 @@ var fs = require('fs'),
 // the jQuery file content passed in jsdom
 var jquery = fs.readFileSync(path.join(__dirname, '../lib/support/jquery.min.js'), 'utf8');
 
-module.exports = dom;
-dom.processFile = processFile;
+
+
+// ensures is a wrapper to `require`. Failsafe require catching loading error if
+// not installed, displaying a meaningfull help.
+function ensures(name) {
+  return require(name);
+}
+
+
+// ## Helpers
+//
+// The process file function is the asyns.forEach iterator function.  It tries
+// to read the file content from the file system, and bootstrap a jsdom
+// environement for each of these.
+//
+// The processor might have change the dom tree. The content of
+// `window.document.innerHTML` is then used to replace the original file.
+//
+
+function processFile(file, jsdom, cb) {
+  fs.readFile(file, 'utf8', function(err, body) {
+    if ( err ) {
+      return cb( err );
+    }
+
+    jsdom.env({
+      html: body,
+      src: [jquery],
+      done: cb
+    });
+  });
+}
+
 
 // attach helpers if any
 
@@ -34,11 +65,15 @@ function dom(grunt) {
     config = grunt.config;
 
   // dom based task only supported on posix for now
-  if(process.platform === 'win32') return;
+  if ( process.platform === 'win32' ) {
+    return;
+  }
 
   grunt.registerTask('dom', 'Dom-based build system', function() {
     var jsdom = dom.jsdom || (dom.jsdom = ensures('jsdom'));
-    if(!jsdom) return console.log('help install dom');
+    if ( !jsdom ) {
+      return console.log('help install dom');
+    }
 
     config.requires('dom');
     var conf = config('dom'),
@@ -62,10 +97,15 @@ function dom(grunt) {
 
     (function run(files) {
       var f = files.shift();
-      if(!f) return cb();
+
+      if ( !f ) {
+        return cb();
+      }
 
       task.helper('dom:plugin', f, plugins, function(err, body) {
-        if(err) return grunt.fail.warn(err);
+        if ( err ) {
+          return grunt.fail.warn( err );
+        }
         // Write the new content, and keep the doctype safe (innerHTML returns
         // the whole document without doctype).
 
@@ -86,7 +126,9 @@ function dom(grunt) {
 
     var ln = plugins.length;
     processFile(f, function(err, window) {
-      if(err) return cb(err);
+      if ( err ) {
+        return cb( err );
+      }
 
       var $ = window.$;
 
@@ -97,7 +139,9 @@ function dom(grunt) {
         // if(!plugin.name) return cb(new Error('Require plugin.name missing'));
         // if(!plugin.handler) return cb(new Error('Require plugin.handler missing'));
         // if(typeof plugin.handler !== 'function') return cb(new Error('plugin.handler must be a function'));
-        if(!plugin.name || !plugin.handler) return;
+        if ( !plugin.name || !plugin.handler ) {
+          return;
+        }
         // should do this under a single facade do reduce namespace collision
         $.fn[plugin.name] = plugin.handler;
       });
@@ -108,7 +152,11 @@ function dom(grunt) {
           name = plugin.name;
 
         log.writeln(' » Handle ' + el);
-        if(!$.fn[name]) return next();
+
+        if ( !$.fn[ name ] ) {
+          return next();
+        }
+
         var options = $.extend({}, plugin.defaults, config('dom.options'));
         // attach some usefull info / api to the options object
         options.log = options.log || log;
@@ -116,13 +164,17 @@ function dom(grunt) {
 
         options.helpers = options.helpers || task._helpers;
         $(el)[name]($, options, function(err) {
-          if(err) return cb(err);
+          if ( err ) {
+            return cb( err );
+          }
           next();
         });
       });
 
       function next() {
-        if(--ln) return;
+        if ( --ln ) {
+          return;
+        }
         cb(null, window.document.innerHTML, window);
       }
     });
@@ -130,33 +182,5 @@ function dom(grunt) {
 }
 
 
-
-
-// ## Helpers
-//
-// The process file function is the asyns.forEach iterator function.  It tries
-// to read the file content from the file system, and bootstrap a jsdom
-// environement for each of these.
-//
-// The processor might have change the dom tree. The content of
-// `window.document.innerHTML` is then used to replace the original file.
-//
-
-function processFile(file, jsdom, cb) {
-  fs.readFile(file, 'utf8', function(err, body) {
-    if(err) return cb(err);
-    jsdom.env({
-      html: body,
-      src: [jquery],
-      done: cb
-    });
-  });
-}
-
-
-// ensures is a wrapper to `require`. Failsafe require catching loading error if
-// not installed, displaying a meaningfull help.
-function ensures(name) {
-  return require(name);
-}
-
+module.exports = dom;
+dom.processFile = processFile;
