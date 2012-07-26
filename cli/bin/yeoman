@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 var fs = require('fs'),
   join = require('path').join,
-  _ = require('underscore'),
+  grunt = require('grunt'),
   colors = require('colors'),
   insight = require('../lib/plugins/insight.js'),
   yeoman = require('../'),
   async = require('async'),
   pkg = require('../package.json'),
+  _ = grunt.util._,
   compiled = _.template( fs.readFileSync( join(__dirname, 'help.txt'), 'utf8' ));
 
 // Returns the user's home directory in a platform agnostic way.
