@@ -17,7 +17,6 @@
     "rimraf": "~2.0.1",
     "mkdirp": "~0.3.1",
     "async": "~0.1.18",
-    "ncp": "~0.2.6",
     "requirejs": "~2.0.2",
     "clean-css": "~0.3.2",
     "connect": "~1.8.6",
