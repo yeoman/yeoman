@@ -7,7 +7,7 @@ var utils = module.exports;
 // flatiron/utile inspired.
 //
 // Set of common utilities, mainly defining wrapper to various utility modules
-// (like ncp, mkdir, rimraf) as lazy-loaded getters.
+// (like mkdir, rimraf) as lazy-loaded getters.
 //
 
 //
@@ -22,13 +22,6 @@ utils.__defineGetter__('mkdirp', function () {
 //
 utils.__defineGetter__('rimraf', function () {
   return require('rimraf');
-});
-
-//
-// Wrapper to `require('ncp').ncp`
-//
-utils.__defineGetter__('ncp', function () {
-  return require('ncp').ncp;
 });
 
 //
