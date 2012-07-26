@@ -5,9 +5,9 @@ var fs = require('fs'),
   colors = require('colors'),
   insight = require('../lib/plugins/insight.js'),
   yeoman = require('../'),
-  async = require('async'),
   pkg = require('../package.json'),
   _ = grunt.util._,
+  async = grunt.util.async,
   compiled = _.template( fs.readFileSync( join(__dirname, 'help.txt'), 'utf8' ));
 
 // Returns the user's home directory in a platform agnostic way.
@@ -16,7 +16,7 @@ function getUserHome() {
 }
 
 // grunt with the plugin registered
-var grunt = require('grunt').npmTasks(join(__dirname, '../'));
+grunt.npmTasks(join(__dirname, '../'));
 
 // Get back a reference to the internal grunt cli object so that we can read
 // command line parsed options from grunt, to run our internal additional
