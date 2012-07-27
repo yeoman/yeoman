@@ -210,7 +210,6 @@ AppGenerator.prototype.fetchPackage = function fetchPackage() {
 
 AppGenerator.prototype.writeMain = function writeMain(){
   this.log.writeln('Writing compiled Bootstrap');
-  var cb = this.async();
   this.template('main.css', path.join('app/css/main.css'));
 };
 
