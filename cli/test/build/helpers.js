@@ -3,7 +3,8 @@ var fs = require('fs'),
   path = require('path'),
   spawn = require('child_process').spawn,
   rimraf = require('rimraf'),
-  mkdirp = require('mkdirp');
+  mkdirp = require('mkdirp'),
+  Runnable = require('./runnable');
 
 // top level exports
 var helpers = module.exports;
@@ -15,6 +16,23 @@ var yeomanpath = path.join(__dirname, '../../bin/yeoman');
 // tests are not run within an npm scripts (eg direct use of mocha)
 var env = process.env;
 env.yeoman_test = true;
+
+// Top level helper for running specific command on the yeoman cli. Returns a
+// Runnable object with API for asserting stdout output, entering prompts and
+// so on.
+//
+// - cmds     - A String specifying the list of command to run
+//
+// Example:
+//
+//    var yeoman = helpers.run('init --force');
+//
+//    yeoman.
+//
+// Returns a new Runnable object.
+helpers.run = function run(cmds) {
+  return new Runnable([process.execPath, yeomanpath, cmds].join(' '));
+};
 
 // Removes, creates and cd into the specified directory. If the current working
 // directory is the same as the specified one, then acts as a noop. Meant to be
@@ -123,35 +141,3 @@ helpers.gruntfile = function(options) {
   };
 };
 
-// tap.test('defaults', function (t) {
-//   var child = spawn(process.execPath, [__filename, 'child'])
-//   var output = ''
-//   var write = child.stdin.write.bind(child.stdin)
-//   child.stdout.on('data', function (c) {
-//     console.error('data %s', c)
-//     output += c
-//     if (output.match(/Username: \(test-user\) $/)) {
-//       process.nextTick(write.bind(null, '\n'))
-//     } else if (output.match(/Password: \(<default hidden>\) $/)) {
-//       process.nextTick(write.bind(null, '\n'))
-//     } else if (output.match(/Password again: \(<default hidden>\) $/)) {
-//       process.nextTick(write.bind(null, '\n'))
-//     } else {
-//       console.error('prompts done, output=%j', output)
-//     }
-//   })
-//
-//   var result = ''
-//   child.stderr.on('data', function (c) {
-//     result += c
-//     console.error('result %j', c.toString())
-//   })
-//
-//   child.on('close', function () {
-//     result = JSON.parse(result)
-//     t.same(result, {"user":"test-user","pass":"test-pass","verify":"test-pass","passMatch":true})
-//     t.equal(output, 'Username: (test-user) Password: (<default hidden>) Password again: (<default hidden>) ')
-//     t.end()
-//   })
-// })
-//
