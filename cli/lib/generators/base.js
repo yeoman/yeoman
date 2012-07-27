@@ -5,8 +5,8 @@ var fs = require('fs'),
   events = require('events'),
   wiring = require('./wiring'),
   actions = require('./actions'),
-  _ = require('underscore'),
-  grunt = require('grunt');
+  grunt = require('grunt'),
+  _ = grunt.util._;
 
 module.exports = Base;
 
