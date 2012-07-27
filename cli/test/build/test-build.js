@@ -16,28 +16,13 @@ describe('yeoman init && yeoman build', function() {
 
   describe('when I run init app with default prompts', function() {
 
-    // init is a little bit tricky to get done because of the prompt, will be
-    // refactored as another helper for reuse across test
     before(function(done) {
-      var child = this.child = helpers.yeoman('init --force', true),
-        write = child.stdin.write.bind(child.stdin),
-        output = '';
-
-      this.child.stdout.setEncoding('utf8');
-      this.child.stdout.on('data', function(chunk) {
-        if(/would you like/i.test(chunk)) {
-          process.nextTick(write.bind(null, '\n'))
-        } else if (/Do you need to make any changes/.test(chunk)) {
-          process.nextTick(write.bind(null, '\n'))
-        }
-      });
-
-      this.child.on('close', function(code) {
-        if(!code) return done();
-        var err = new Error('Error executing yeoman init: ' + code);
-        err.code = code;
-        done(err);
-      });
+      var yeoman = helpers.run('init --force');
+      // match both prompt for bootstrap plugins, Y/n and location
+      yeoman.prompt(/would you like/i);
+      // match final grunt confirmation
+      yeoman.prompt(/Do you need/);
+      yeoman.end(done);
     });
 
     it('should generate index.html with bootstrap plugins', function() {
