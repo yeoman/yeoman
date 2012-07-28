@@ -55,6 +55,9 @@ module.exports = function(grunt) {
     }
 
     var tasks = ['intro clean mkdirs', targets[target], 'copy time'].join(' ');
+    grunt.log.subhead('Running ' + target + ' target')
+      .writeln('  - ' + grunt.log.wordlist(tasks.split(' '), { separator: ' ' }));
+
     grunt.task.run(tasks);
   });
 
