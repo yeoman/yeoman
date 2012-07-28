@@ -26,12 +26,12 @@ env.yeoman_test = true;
 // Example:
 //
 //    var yeoman = helpers.run('init --force');
-//
-//    yeoman.
+//    yeoman.prompt(/Woud you like/, 'Y');
+//    yeoman.end(done);
 //
 // Returns a new Runnable object.
-helpers.run = function run(cmds) {
-  return new Runnable([process.execPath, yeomanpath, cmds].join(' '));
+helpers.run = function run(cmds, opts) {
+  return new Runnable([process.execPath, yeomanpath, cmds].join(' '), opts);
 };
 
 // Removes, creates and cd into the specified directory. If the current working
@@ -77,15 +77,15 @@ helpers.directory = function directory(dir) {
 //
 // Example:
 //
-//    before(helpers.yeoman('foo'));
+//      before(helpers.yeoman('foo'));
 //
-//    describe('when I run foo', function() {
-//      it('should run foo and expose child process and stdout / stderr output', function() {
-//        console.log(this.stdout);
-//        console.log(this.stderr);
+//      describe('when I run foo', function() {
+//        it('should run foo and expose child process and stdout / stderr output', function() {
+//          console.log(this.stdout);
+//          console.log(this.stderr);
 //
+//        });
 //      });
-//    });
 //
 //
 // Returns a function suitable to use with mocha hooks.
@@ -96,7 +96,6 @@ helpers.yeoman = function (cmds, takeOver) {
   if(takeOver) return spawn(process.execPath, args, options);
 
   return function yeoman(done) {
-    // yeoman child process
     var child = this.child = spawn(process.execPath, args, options);
     var out = this.stdout = '';
     var err = this.stderr = '';
@@ -126,7 +125,7 @@ helpers.yeoman = function (cmds, takeOver) {
 // Returns a function suitable to use with mocha hooks.
 helpers.gruntfile = function(options) {
   return function gruntfile(done) {
-    var config = 'grunt.initConfig(' + JSON.stringify(options, null, 2) + ');'
+    var config = 'grunt.initConfig(' + JSON.stringify(options, null, 2) + ');';
     config = config.split('\n').map(function(line) {
       return '  ' + line;
     }).join('\n');
