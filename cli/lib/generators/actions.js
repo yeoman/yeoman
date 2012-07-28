@@ -64,14 +64,16 @@ actions.destinationRoot = function destinationRoot(root) {
 // - the destination path to be relative to application Gruntfile's directory
 // (most likely cwd)
 actions.copy = function copy(source, destination, options) {
-  source = path.join(this.sourceRoot(), source);
+  source = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
+  grunt.option('verbose', true);
   grunt.file.copy(source, destination, options);
+  grunt.option('verbose', false);
   return this;
 };
 
-actions.read = function read(filepath, encoding) {
-  filepath = path.join(this.sourceRoot(), filepath);
-  return grunt.file.read(filepath, encoding);
+actions.read = function read(source, encoding) {
+  source = this.isPathAbsolute(source) ? source : path.join(this.sourceRoot(), source);
+  return grunt.file.read(source, encoding);
 };
 
 actions.write = function write(filepath, content) {
@@ -168,7 +170,7 @@ actions.remote = function(username, repo, branch, cb) {
 
     remote.copy = function copy(source, destination, options) {
       source = path.join(cache, source);
-      grunt.file.copy(source, destination, options);
+      self.copy(source, destination, options);
       return this;
     };
 

@@ -103,7 +103,7 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
 
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
   this.remote('twitter', 'bootstrap', function(err, remote, files) {
-    if(e) return cb(err);
+    if(err) return cb(err);
     remote.directory('js', dest);
     cb();
   });
@@ -133,20 +133,20 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
 
     defaults.push('Twitter Bootstrap plugins');
 
-    // Wire Twitter Bootstrap plugins (usemin: app/js/plugins.js)
-    indexData = this.appendScripts(indexData, 'app/js/plugins.js', [
-      'app/js/vendor/bootstrap/bootstrap-alert.js',
-      'app/js/vendor/bootstrap/bootstrap-dropdown.js',
-      'app/js/vendor/bootstrap/bootstrap-tooltip.js',
-      'app/js/vendor/bootstrap/bootstrap-modal.js',
-      'app/js/vendor/bootstrap/bootstrap-transition.js',
-      'app/js/vendor/bootstrap/bootstrap-button.js',
-      'app/js/vendor/bootstrap/bootstrap-popover.js',
-      'app/js/vendor/bootstrap/bootstrap-typeahead.js',
-      'app/js/vendor/bootstrap/bootstrap-carousel.js',
-      'app/js/vendor/bootstrap/bootstrap-scrollspy.js',
-      'app/js/vendor/bootstrap/bootstrap-collapse.js',
-      'app/js/vendor/bootstrap/bootstrap-tab.js'
+    // Wire Twitter Bootstrap plugins (usemin: js/plugins.js)
+    indexData = this.appendScripts(indexData, 'js/plugins.js', [
+      'js/vendor/bootstrap/bootstrap-alert.js',
+      'js/vendor/bootstrap/bootstrap-dropdown.js',
+      'js/vendor/bootstrap/bootstrap-tooltip.js',
+      'js/vendor/bootstrap/bootstrap-modal.js',
+      'js/vendor/bootstrap/bootstrap-transition.js',
+      'js/vendor/bootstrap/bootstrap-button.js',
+      'js/vendor/bootstrap/bootstrap-popover.js',
+      'js/vendor/bootstrap/bootstrap-typeahead.js',
+      'js/vendor/bootstrap/bootstrap-carousel.js',
+      'js/vendor/bootstrap/bootstrap-scrollspy.js',
+      'js/vendor/bootstrap/bootstrap-collapse.js',
+      'js/vendor/bootstrap/bootstrap-tab.js'
      ]);
   }
 
@@ -166,15 +166,37 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   // Append the default content
   indexData = indexData.replace('<body>', '<body>\n' + contentText.join('\n'));
 
-  // Wire RequireJS/AMD (usemin: app/js/amd-app.js)
-  indexData = this.appendScripts(indexData, 'js/amd-app.js', ['js/vendor/require.js'], {
-    'data-main': 'js/main'
-  });
-
   // Write out final file
   this.writeFileFromString(indexData, indexOut);
 };
 
+// XXX to be put in a subgenerator like rjs:app, along the fetching or require.js /
+// almond lib
+AppGenerator.prototype.requirejs = function requirejs(){
+  var cb = this.async(),
+    self = this;
+
+  this.remote('jrburke', 'requirejs', '819774388d0143f2dcc7b178a364e875aea6e45a', function(err, remote) {
+    if(err) return cb(err);
+    remote.copy('require.js', 'app/js/vendor/require.js');
+
+    // Wire RequireJS/AMD (usemin: js/amd-app.js)
+    var body = self.read(path.resolve('app/index.html'));
+    body = self.appendScripts(body, 'js/amd-app.js', ['js/vendor/require.js'], {
+      'data-main': 'js/main'
+    });
+    self.write('app/index.html', body);
+
+    // add a basic amd module (should be a file in templates/)
+    self.write('app/js/main.js', [
+      "define(\'main\', function() {",
+      "  return 'yeoman'",
+      "});"
+    ].join('\n'));
+
+    cb();
+  });
+};
 
 AppGenerator.prototype.writeMain = function writeMain(){
   this.log.writeln('Writing compiled Bootstrap');
