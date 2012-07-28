@@ -4,13 +4,10 @@ var fs = require('fs'),
   util = require('util'),
   h5bp = require('../');
 
-//
 // ant build script has a nice notion of environment, this defaults to
 // production. And we only support env=prod for now.
 //
 // not implemented tasks (add noop waithing for their impl): manifest
-//
-
 
 module.exports = function(grunt) {
 
@@ -26,40 +23,23 @@ module.exports = function(grunt) {
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-mocha/tasks'));
 
-  // and build targets, these are equivalent to alias except that we
-  // defined a single task and use arguments to trigger the appropriate
-  // target
+  // build targets: these are equivalent to grunt alias except that we defined
+  // a single task and use arguments to trigger the appropriate target
+  //
+  // - build    - no html compression, no usemin-handler task
+  // - usemin   - (default) same as build but parsing config from markup
+  // - text     - same as usemin but without image (png/jpg) optimizing
+  // - buildkit - minor html optimizations, all html whitespace/comments
+  //              maintained (todo: inline script/style minified)
+  // - basics   - same as buildkit plus minor html optimizations
+  // - minify   - same as build plus full html minification
   var targets = {
-    // build - (default) no html optimizations
-    "default": 'coffee concat compass css min img usemin manifest',
-
-    // (experimental) usemin handler
-    // The usemin task and its block parsing will return a list of assets
-    // to handle. These include CSS and JS files.
-    //
-    // It eliminates the need for specifying configuration and path data for css,
-    // concat, min and rjs tasks. The rjs optimizer is triggered if the data-main
-    // attribute is used with the <script /> tag.
-    usemin: 'coffee compass usemin-handler concat rjs css min img rev usemin manifest',
-
-    // text - same as build but without image (png/jpg) optimizing
-    text: 'coffee concat compass css min rev usemin manifest',
-
-    // require - same as build but uses r.js for requirejs modules
-    rjs: 'coffee compass css img rjs manifest',
-
-    // buildkit - minor html optimizations, all html whitespace/comments
-    // maintained
-    // (todo: inline script/style minified)
-    buildkit: 'coffee concat compass css min img rev usemin manifest html:buildkit',
-
-    // basics - same as build minus plugs minor html optimizations
-    // (extra quotes and comments removed)
-    // (todo: inline script/style minified)
-    basics: 'coffee concat compass css min img rev usemin manifest html:basics',
-
-    // minify - same as build plus full html minification,
-    minify: 'coffee concat compass css min img rev usemin manifest html:compress'
+    "default" : 'coffee compass                rjs concat css min img rev usemin manifest',
+    usemin    : 'coffee compass usemin-handler rjs concat css img rev usemin manifest',
+    text      : 'coffee compass usemin-handler rjs concat css min     rev usemin manifest',
+    buildkit  : 'coffee compass usemin-handler rjs concat css min img rev usemin manifest html:buildkit',
+    basics    : 'coffee compass usemin-handler rjs concat css min img rev usemin manifest html:basics',
+    minify    : 'coffee compass usemin-handler rjs concat css min img rev usemin manifest html:compress'
   };
 
   var targetList = grunt.log.wordlist(Object.keys(targets));
@@ -109,15 +89,9 @@ module.exports = function(grunt) {
     grunt.log.writeln('Compressed size: ' + String(min.size).green + ' bytes minified.');
   });
 
-  // Output some info on given object, using util.inspect
+  // Output some info on given object, using util.inspect, using colorized output.
   grunt.registerHelper('inspect', function(o) {
-    var lf = grunt.util.linefeed;
-    var output = (lf + util.inspect(o, false, 4, true) + lf).split(lf).map(function(line) {
-      return line;
-    });
-    output.forEach(grunt.log.ok, grunt.log);
-    return grunt;
+    return util.inspect(o, false, 4, true);
   });
-
 
 };
