@@ -22,23 +22,23 @@ wiring.domUpdate = function domUpdate(html, tagName, content, mode){
 
   $ = cheerio.load(html);
 
-  if(content !== undefined){
-    if(mode === 'a'){
+  if(content !== undefined) {
+    if(mode === 'a') {
       // append
       $(tagName).append(content);
-    }else if(mode === 'p'){
+    } else if(mode === 'p') {
       // prepend
       $(tagName).prepend(content);
-    }else if(mode === 'r'){
+    } else if(mode === 'r') {
       // replace
       $(tagName).html(content);
-    }else if(mode === 'd'){
+    } else if(mode === 'd') {
       $(tagName).remove();
     }
     return $.html();
-  }else{
+  } else {
     console.error('Please supply valid content to be updated.');
- }
+  }
 
 };
 
@@ -80,8 +80,8 @@ wiring.prependToFile = function appendToFile(path, tagName, content){
 //
 // Returns the new block.
 wiring.generateBlock = function generateBlock(blockType, optimizedPath, filesBlock){
-  var blockStart = "\n<!-- build:" + blockType + " " + optimizedPath +" -->\n";
-  var blockEnd = "<!-- endbuild -->\n";
+  var blockStart = "\n    <!-- build:" + blockType + " " + optimizedPath +" -->\n";
+  var blockEnd = "    <!-- endbuild -->\n";
   return blockStart + filesBlock + blockEnd;
 };
 
@@ -94,27 +94,43 @@ wiring.generateBlock = function generateBlock(blockType, optimizedPath, filesBlo
 // - sourceFileList - the list of files to be appended. We check against the
 //                    fileType to ensure the correct tags are wrapped around
 //                    them and the right usemin blocks generated.
+// - attrs          - A Hash of html attributes to generate along the generated
+//                    script / link tags
 //
 // Returns updated content.
-wiring.appendFiles = function appendFiles(html, fileType, optimizedPath, sourceFileList) {
-
+wiring.appendFiles = function appendFiles(html, fileType, optimizedPath, sourceFileList, attrs) {
   var files = "", blocks, updatedContent;
 
-  if(fileType === "js"){
-    sourceFileList.forEach(function(n){
-        files += ('    <script src="' + n + '"></script>\n');
+  attrs = this.attributes(attrs);
+
+  if(fileType === "js") {
+    sourceFileList.forEach(function(n) {
+        files += ('    <script ' + attrs + ' src="' + n + '"></script>\n');
     });
     blocks = this.generateBlock('js', optimizedPath, files);
     updatedContent = this.append(html, 'body', blocks);
-  }else if(fileType === "css"){
-    sourceFileList.forEach(function(n){
-        files += ('    <link rel="stylesheet" href="' + n  + '">\n');
+  } else if(fileType === "css") {
+    sourceFileList.forEach(function(n) {
+        files += ('    <link ' + attrs + ' rel="stylesheet" href="' + n  + '">\n');
     });
     blocks = this.generateBlock('css', optimizedPath, files);
     updatedContent = this.append(html, 'head', blocks);
   }
 
   return updatedContent;
+};
+
+
+// Computes a given Hash object of attributes into its HTML representation
+//
+// - attrs  - Hash object of attributes to generate
+//
+// Returns the generated string of attributes.
+wiring.attributes = function attributes(attrs) {
+  attrs = attrs || {};
+  return Object.keys(attrs).map(function(key) {
+    return key + '="' + attrs[key] + '"';
+  }).join(' ');
 };
 
 // Scripts alias to appendFiles
@@ -124,10 +140,10 @@ wiring.appendScripts = function appendScripts(html, optimizedPath, sourceFileLis
 
 // Simple script removal.
 // Todo: establish if Cheerio has workarounds for script selectors
-wiring.removeScript = function removeScript(html, scriptPath){
+wiring.removeScript = function removeScript(html, scriptPath) {
   // The following is not supported by Cheerio
   // return this.domUpdate(html, "script[src^=" + scriptPath + "]" , "", "d");
-  return html.replace(' <script (.+) src="' +  scriptPath + '"></script>', "");
+  return html.replace(new RegExp('\\s*<script (.+)?src="' +  scriptPath + '"></script>'), '');
 };
 
 wiring.appendStyles = function appendStyles(html, optimizedPath, sourceFileList, attrs) {
@@ -150,6 +166,6 @@ wiring.readFileAsString = function readFileAsString(filePath) {
   return fs.readFileSync(path.resolve(filePath), 'utf8');
 };
 
-wiring.writeFileFromString = function writeFileFromString(html, filePath){
+wiring.writeFileFromString = function writeFileFromString(html, filePath) {
    fs.writeFileSync(path.resolve(filePath), html, 'utf8');
 };
