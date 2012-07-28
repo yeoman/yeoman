@@ -20,6 +20,7 @@ function Runnable(cmds, options) {
   this._status = 0;
   this._command = '';
   this._prompts = [];
+  this._expects = [];
   this.use(cmds);
 }
 
@@ -47,22 +48,29 @@ Runnable.prototype.use = function use(command) {
 Runnable.prototype.expect = function expect(a, b){
   var self = this;
 
-  // callback
-  if (typeof b === 'function') this.end(b);
-
   // status
   if (typeof a === 'number') {
     this._status = a;
     // body
-    if (b && typeof b !== 'function') this._body = b;
+    if (b && typeof b !== 'function') this.addExpectation(b);
+    else if(typeof b === 'function') this.end(b);
     return this;
   }
 
-  // body
-  this._body = a;
+  this.addExpectation(a);
+
+  // callback
+  if (typeof b === 'function') this.end(b);
 
   return this;
 };
+
+// Adds a new expectation to the list of expected result. Can be either a
+// regexp or a string, in which case direct match (body === stdout)
+Runnable.prototype.addExpectation = function addExpectation(match) {
+  this._expects.push(match);
+};
+
 
 // Adds a new prompt hook to the list of expected prompts, automatically
 // writes the `answer` string provided to child's stdin when the
@@ -73,6 +81,7 @@ Runnable.prototype.prompt = function prompt(matcher, answer) {
     matcher: matcher,
     answer: (answer || '') + '\n'
   });
+  return this;
 };
 
 // Defer invoking `.end()` until the command is done running.
@@ -80,16 +89,15 @@ Runnable.prototype.end = function end(fn) {
   var self = this;
   fn = fn || function() {};
 
-  this.run(function(err, stdout, stderr) {
-    var code = err ? err.code : 0;
+  this.run(function(err, code, stdout, stderr) {
+    if(err) return fn(err, stdout, stderr);
 
     self.emit('done');
     self.emit('end');
 
     self.assert({
       status: code,
-      text: (stdout || stderr),
-      err: err
+      text: (stdout || stderr)
     }, fn);
   });
 
@@ -102,7 +110,7 @@ Runnable.prototype.run = function run(fn) {
     cmds = this._command,
     opts = this.options;
 
-  if(!cmds) return this.emit(new Error('Cannot run withou a command. Use .use!'));
+  if(!cmds) return this.emit(new Error('Cannot run without a command. Use .use!'));
 
   cmds = cmds.split(' ');
 
@@ -134,11 +142,11 @@ Runnable.prototype.run = function run(fn) {
     err += chunk;
   });
 
-  child.on('close', function(code) {
-    if(!code) return fn(null, out, err);
-    var error = new Error('Error executing yeoman init: ' + code);
+  child.on('exit', function(code) {
+    if(!code) return fn(null, code, out, err);
+    var error = new Error('Error executing "' + self._command + '". Code:' + code);
     error.code = code;
-    fn(error, out, err);
+    fn(error, code, out, err);
  });
 
   return this;
@@ -148,35 +156,37 @@ Runnable.prototype.run = function run(fn) {
 // Perform assertions and invoke `fn(err)`.
 Runnable.prototype.assert = function assert(res, fn) {
   var status = this._status,
-    body = this._body,
-    isregexp = body instanceof RegExp,
-    expected,
-    actual,
-    re;
+    expects = this._expects;
 
   // status
   if (status && res.status !== status) {
     return fn(new Error('expected ' + status + ', got ' + res.status), res);
   }
 
-  // body
-  if (body) {
-    // string
-    actual = util.inspect(res.text);
-    expected = util.inspect(body);
+  // expectations
+  var errors = [];
+  expects.forEach(function(expect) {
+    var isregexp = expect instanceof RegExp,
+      expected = util.inspect(expect);
 
-    if (body !== res.text) {
-      // regexp
-      if (isregexp) {
-        if (!body.test(res.text)) {
-          return fn(new Error('expected body ' + res.text + ' to match ' + body));
-        }
-      } else {
-        return fn(new Error('expected ' + expected + ' response body, got ' + actual));
+    // regexp
+    if (isregexp) {
+      if (!expect.test(res.text)) {
+        return errors.push(expected);
       }
+    } else if(!!~res.text.indexOf(expected)) {
+      return errors.push(expected);
     }
-  }
+  });
 
-  fn(null, res);
+  if(!errors.length) return fn(null, res);
+
+  var msg = 'Expected ' + util.inspect(res.text) + '\n to match:\n';
+  msg += errors.map(function(expected) {
+    return ' - ' + expected;
+  }).join('\n');
+
+  fn(new Error(msg), res);
+
 };
 
