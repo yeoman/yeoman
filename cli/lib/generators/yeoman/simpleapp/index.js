@@ -27,20 +27,6 @@ function AppGenerator(args, options, config) {
   // resolved to sass by default (could be switched to less for instance)
   this.hookFor('stylesheet-engine', { as: 'app' });
 
-  // init a framework specific controller. resolved to ? by default
-  // XXX not a named generator, controller for ember is a NamedOne. So we need
-  // to give it something to work with.
-
-  /*
-  this.hookFor('js-framework', { as: 'controller', args: ['app'] });
-
-  // init a framework specific model. resolved to ? by default
-  this.hookFor('js-framework', { as: 'model', args: ['app'] });
-
-  // init a framework specific view. resolved to ? by default
-  this.hookFor('js-framework', { as: 'view', args: ['app'] });
-  */
-
   // resolved to jasmine by default (could be switched to mocha for instance)
   this.hookFor('test-framework', { as: 'app' });
 
@@ -97,116 +83,98 @@ AppGenerator.prototype.gitignore = function gitignore() {
   this.copy('gitignore', '.gitignore');
 };
 
+AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
+  var cb = this.async();
+
+  this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
+    if(err) return cb(err);
+    // we copy the whole repository as our base app/ directory
+    remote.directory('.', 'app');
+    cb();
+  });
+};
+
 AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   // prevent the bootstrap fetch is user said NO
   if(!this.bootstrap) return;
 
   var cb = this.async(),
-    self = this,
     dest = this.bootstrapLocation;
 
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
-  this.remote('twitter', 'bootstrap', function(e, remote, files) {
-    if(e) return self.emit('error', e);
+  this.remote('twitter', 'bootstrap', function(err, remote, files) {
+    if(e) return cb(err);
     remote.directory('js', dest);
-
     cb();
   });
 };
 
+AppGenerator.prototype.writeIndex = function writeIndex() {
+  // Resolve path to index.html
+  var indexOut = path.resolve('app/index.html');
 
-AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
-  var cb = this.async();
-  var self = this;
+  // Read in as string for further update
+  var indexData = this.readFileAsString(indexOut);
 
-  // Fecth allows the download of single files, into the destination directory
-  this.fetch('https://raw.github.com/h5bp/html5-boilerplate/master/index.html', 'index.html', function(err) {
-    if(err) return cb(err);
-    cb();
+  // Prepare default content text
+  var defaults = ['HTML5 Boilerplate','Twitter Bootstrap'];
+  var contentText = [
+    '    <h1>Cheerio!</h1>',
+    '    <p>You now have</p>',
+    '    <ul>'
+  ];
 
-    // Resolve path to index.html
-    var indexOut = path.resolve('index.html');
+  // Strip sections of H5BP we're going to overwrite
+  indexData = this.removeScript(indexData, 'js/plugins.js');
+  indexData = this.removeScript(indexData, 'js/main.js');
 
-    // Read in as string for further update
-    var indexData = self.readFileAsString(indexOut);
-
-    // Prepare default content text
-    var defaults = ['HTML5 Boilerplate','Twitter Bootstrap'];
-    var contentText = "<h1>Cheerio!</h1><p>You now have</p><ul>";
-
-    indexData = indexData.replace('css/main.css', 'app/css/main.css');
-    indexData = indexData.replace('js/vendor/modernizr-2.5.3.min.js',  'app/js/vendor/modernizr-2.5.3.min.js');
-
-    // Strip sections of H5BP we're going to overwrite
-    indexData = self.removeScript(indexData, 'js/plugins.js');
-    indexData = self.removeScript(indexData, 'js/main.js');
-
-    // Asked for Twitter bootstrap plugins?
-    if(self.bootstrap){
+  // Asked for Twitter bootstrap plugins?
+  if(this.bootstrap) {
 
     defaults.push('Twitter Bootstrap plugins');
 
     // Wire Twitter Bootstrap plugins (usemin: app/js/plugins.js)
-    indexData = self.appendScripts(indexData,
-        'app/js/plugins.js',
-       ["app/js/vendor/bootstrap/bootstrap-alert.js",
-        "app/js/vendor/bootstrap/bootstrap-dropdown.js",
-        "app/js/vendor/bootstrap/bootstrap-tooltip.js",
-        "app/js/vendor/bootstrap/bootstrap-modal.js",
-        "app/js/vendor/bootstrap/bootstrap-transition.js",
-        "app/js/vendor/bootstrap/bootstrap-button.js",
-        "app/js/vendor/bootstrap/bootstrap-popover.js",
-        "app/js/vendor/bootstrap/bootstrap-typeahead.js",
-        "app/js/vendor/bootstrap/bootstrap-carousel.js",
-        "app/js/vendor/bootstrap/bootstrap-scrollspy.js",
-        "app/js/vendor/bootstrap/bootstrap-collapse.js",
-        "app/js/vendor/bootstrap/bootstrap-tab.js"]);
+    indexData = this.appendScripts(indexData, 'app/js/plugins.js', [
+      'app/js/vendor/bootstrap/bootstrap-alert.js',
+      'app/js/vendor/bootstrap/bootstrap-dropdown.js',
+      'app/js/vendor/bootstrap/bootstrap-tooltip.js',
+      'app/js/vendor/bootstrap/bootstrap-modal.js',
+      'app/js/vendor/bootstrap/bootstrap-transition.js',
+      'app/js/vendor/bootstrap/bootstrap-button.js',
+      'app/js/vendor/bootstrap/bootstrap-popover.js',
+      'app/js/vendor/bootstrap/bootstrap-typeahead.js',
+      'app/js/vendor/bootstrap/bootstrap-carousel.js',
+      'app/js/vendor/bootstrap/bootstrap-scrollspy.js',
+      'app/js/vendor/bootstrap/bootstrap-collapse.js',
+      'app/js/vendor/bootstrap/bootstrap-tab.js'
+     ]);
+  }
 
-    }
-
-    // Iterate over defaults, create content string
-    defaults.forEach(function(i,x){
-      contentText += "<li>" + i  +"</li>";
-    });
-
-
-    contentText+= "</ul><p>installed.</p><h3>Enjoy coding! - Yeoman</h3>";
-
-    // Append the default content
-    indexData = indexData.replace("<body>", "<body>" + contentText);
-
-
-    // Wire RequireJS/AMD (usemin: app/js/amd-app.js)
-    ///indexData = self.appendScriptSpecial(indexData,
-    ///  'app/js/amd-app.js',
-    ///  ['app/js/vendor/require.js'],'amd');
-
-    // Write out final file
-    self.writeFileFromString(indexData, indexOut);
-
-  });
-};
-
-
-AppGenerator.prototype.fetchPackage = function fetchPackage() {
-  this.log.writeln('Fetching h5bp/html5-boilerplate pkg');
-
-  var cb = this.async();
-
-  this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
-    if(err) return cb(err);
-
-    // Remote allows the download of full repository, copying of single of
-    // multiple files with glob patterns. `remote` is your API to access this
-    // fetched (or cached) package, to copy or process through _.template
-
-    // remote.copy('index.html', 'index.html');
-    // remote.template('index.html', 'will/be/templated/at/index.html');
-    remote.directory('.', 'app');
-    cb();
+  // Iterate over defaults, create content string
+  defaults.forEach(function(i,x){
+    contentText.push('        <li>' + i  +'</li>');
   });
 
+
+  contentText = contentText.concat([
+    '    </ul>',
+    '    <p>installed.</p>',
+    '    <h3>Enjoy coding! - Yeoman</h3>',
+    ''
+  ]);
+
+  // Append the default content
+  indexData = indexData.replace('<body>', '<body>\n' + contentText.join('\n'));
+
+  // Wire RequireJS/AMD (usemin: app/js/amd-app.js)
+  indexData = this.appendScripts(indexData, 'js/amd-app.js', ['js/vendor/require.js'], {
+    'data-main': 'js/main'
+  });
+
+  // Write out final file
+  this.writeFileFromString(indexData, indexOut);
 };
+
 
 AppGenerator.prototype.writeMain = function writeMain(){
   this.log.writeln('Writing compiled Bootstrap');
