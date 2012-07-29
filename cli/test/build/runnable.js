@@ -110,6 +110,7 @@ Runnable.prototype.run = function run(fn) {
     cmds = this._command,
     opts = this.options;
 
+  if(this._run) return fn(null, self.code, self.stdout, self.stderr);
   if(!cmds) return this.emit(new Error('Cannot run without a command. Use .use!'));
 
   cmds = cmds.split(' ');
@@ -118,6 +119,9 @@ Runnable.prototype.run = function run(fn) {
   var child = spawn(cmds.shift(), cmds, opts),
     write = child.stdin.write.bind(child.stdin);
 
+  // mark this runnable as consumed
+  this._run = true;
+
   // case of redirect options turned on, pipe back all stdout / stderr
   // output to parent process
   if(opts.redirect) {
@@ -125,11 +129,11 @@ Runnable.prototype.run = function run(fn) {
     child.stderr.pipe(process.stderr);
   }
 
-  var out = '';
+  self.stdout = '';
   child.stdout.setEncoding('utf8');
   child.stdout.on('data', function(chunk) {
-    out += chunk;
-
+    self.stdout += chunk;
+    self.emit('data', chunk);
     self._prompts.forEach(function(prompt) {
       if(prompt.matcher.test(chunk)) {
         process.nextTick(write.bind(null, prompt.answer));
@@ -137,16 +141,17 @@ Runnable.prototype.run = function run(fn) {
     });
   });
 
-  var err = '';
+  self.stderr = '';
   child.stderr.on('data', function(chunk) {
-    err += chunk;
+    self.stderr += chunk;
   });
 
   child.on('exit', function(code) {
-    if(!code) return fn(null, code, out, err);
+    self.code = code;
+    if(!code) return fn(null, code, self.stdout, self.stderr);
     var error = new Error('Error executing "' + self._command + '". Code:' + code);
     error.code = code;
-    fn(error, code, out, err);
+    fn(error, code, self.stdout, self.stderr);
  });
 
   return this;
