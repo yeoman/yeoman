@@ -2,7 +2,6 @@
 var fs = require('fs'),
   grunt = require('grunt'),
   assert = require('assert'),
-  yeoman = require('../../'),
   helpers = require('./helpers');
 
 var opts = grunt.cli.options;
