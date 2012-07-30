@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
+    "bower": "git+ssh://git@github.com:twitter/bower.git",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
     "mkdirp": "~0.3.1",
