@@ -1,7 +1,7 @@
-var url = require('url'),
-  path = require('path'),
-  join = path.join,
-  fstream = require('fstream');
+var url     = require('url');
+var path    = require('path');
+var join    = path.join;
+var fstream = require('fstream');
 
 module.exports = function(grunt) {
 

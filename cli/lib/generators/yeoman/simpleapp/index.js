@@ -55,7 +55,7 @@ AppGenerator.prototype.askFor = function askFor (argument) {
   }];
 
   this.prompt(prompts, function(e, props) {
-    if(e) return self.emit('error', e);
+    if(e) { return self.emit('error', e); }
 
     // manually deal with the response, get back and store the results.
     // We change a bit this way of doing to automatically do this in the self.prompt() method.
@@ -87,7 +87,7 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
 
   this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
-    if(err) return cb(err);
+    if(err) { return cb(err); }
     // we copy the whole repository as our base app/ directory
     remote.directory('.', 'app');
     cb();
@@ -96,14 +96,14 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
 
 AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   // prevent the bootstrap fetch is user said NO
-  if(!this.bootstrap) return;
+  if(!this.bootstrap) { return; }
 
   var cb = this.async(),
     dest = this.bootstrapLocation;
 
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
   this.remote('twitter', 'bootstrap', function(err, remote, files) {
-    if(err) return cb(err);
+    if(err) { return cb(err); }
     remote.directory('js', dest);
     cb();
   });
@@ -177,7 +177,7 @@ AppGenerator.prototype.requirejs = function requirejs(){
     self = this;
 
   this.remote('jrburke', 'requirejs', '819774388d0143f2dcc7b178a364e875aea6e45a', function(err, remote) {
-    if(err) return cb(err);
+    if(err) { return cb(err); }
     remote.copy('require.js', 'app/js/vendor/require.js');
 
     // Wire RequireJS/AMD (usemin: js/amd-app.js)
