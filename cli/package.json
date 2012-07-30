@@ -11,6 +11,9 @@
   "directories": {
     "man": "./man"
   },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
     "bower": "git+ssh://git@github.com:twitter/bower.git",
