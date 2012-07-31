@@ -19,6 +19,12 @@ module.exports = function(grunt) {
     if(!cb) { cb = options; options = {}; }
     var mods = options.modules || [{ name: options.name }];
 
+    // automatic configuration via mainConfigFile, assumed to be the app entry
+    // point
+    if(options.name) {
+      options.mainConfigFile = options.mainConfigFile || path.join(options.baseUrl, options.name + '.js');
+    }
+
     grunt.log.subhead('Options:')
       .writeln(grunt.helper('inspect', options));
 

@@ -148,6 +148,7 @@ module.exports = function(grunt) {
     rjs: {
       // no minification, is done by the min task
       optimize: 'none',
+      baseUrl: './js',
       wrap: true
     },
 

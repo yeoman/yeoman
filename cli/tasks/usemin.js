@@ -226,7 +226,7 @@ module.exports = function(grunt) {
           if(main) {
             rjs.out = rjs.out || output;
             rjs.name = rjs.name || main[1];
-            rjs.mainConfigFile = rjs.mainConfigFile || (main[1] + '.js');
+            //rjs.mainConfigFile = rjs.mainConfigFile || (main[1] + '.js');
             asset += ',' + main[1] + '.js';
           }
 
