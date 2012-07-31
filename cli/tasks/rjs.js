@@ -7,8 +7,8 @@ module.exports = function(grunt) {
   grunt.task.registerTask('rjs', 'Optimizes javascript that actually is built with requirejs.', function () {
     var options = grunt.config(this.name) || {};
 
-    if(!options.modules) {
-      grunt.log.writeln('No module found in rjs configuration, bypassing the task...');
+    if(!options.modules && !options.name) {
+      grunt.log.writeln('No module or single entry point found in rjs configuration, bypassing the task...');
       return;
     }
 
@@ -17,71 +17,31 @@ module.exports = function(grunt) {
 
   grunt.registerHelper('rjs:optimize:js', function(options, cb) {
     if(!cb) { cb = options; options = {}; }
-    options.modules = options.modules || [];
+    var mods = options.modules || [{ name: options.name }];
 
-    // update options to reflect the same paths configuration than runtime's
-    options = grunt.helper('rjs:paths', options);
+    grunt.log.subhead('Options:')
+      .writeln(grunt.helper('inspect', options));
 
-    grunt.log.subhead('Options:');
-    grunt.helper('inspect', options);
-
-    var originals = options.modules.map(function(m) {
+    var originals = mods.map(function(m) {
       return {
         name: m.name,
-        body: grunt.file.read(path.join(options.baseUrl, options.appDir, m.name + '.js'))
+        body: grunt.file.read(path.join(options.appDir, options.baseUrl, m.name + '.js'))
       };
     });
 
-    rjs.optimize(options, function() {
+    rjs.optimize(options, function(out) {
+      grunt.log.writeln(out);
       originals.forEach(function(m) {
-        var filepath = path.join(options.dir, m.name + '.js');
+        var filepath = path.join(options.dir, options.baseUrl, m.name + '.js');
         grunt.log
-          .writeln('rjs optimized module ' + m.name)
+          .writeln('rjs optimized module: ' + m.name)
           .writeln('>> ' + filepath);
+
         grunt.helper('min_max_info', grunt.file.read(filepath), m.body);
       });
 
       cb();
     });
-  });
-
-  // Given a rjs options Hash object, iterates through each `modules`, read
-  // its content and evaluates each one through node's VM. It looks up for
-  // `require({})` or `require.config({})` calls and get back the paths Hash
-  // object to update the rjs build configuration.
-  grunt.registerHelper('rjs:paths', function(options) {
-    var base = path.join(options.baseUrl, options.appDir);
-
-    // the sandbox object, this is the environment used to parse AMD modules
-    // looking up for runtime configuration
-    var sandbox = {};
-
-    // basic require shim.
-    sandbox.require = function require(o) {
-      if ( !o || !o.paths ) {
-        return;
-      }
-      // if the first arg passed to require is an Hash object, and has a paths
-      // property, pass it through require.config method
-      sandbox.require.config(o);
-    };
-
-    // require.config support, each time a rjs config with paths props
-    // appears, merge the paths configuration (and other options that might
-    // appear here) into the original options object.
-    sandbox.require.config = function config(o) {
-      grunt.util._.extend(options, o);
-    };
-
-    // define noop
-    sandbox.define = function() {};
-
-    options.modules.forEach(function(mod) {
-      var body = grunt.file.read(path.join(base, mod.name + '.js'));
-      vm.runInNewContext(body, sandbox);
-    });
-
-    return options;
   });
 
 };

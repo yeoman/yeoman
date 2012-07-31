@@ -95,8 +95,10 @@ module.exports = function(grunt) {
     var defaults = options.compress;
     grunt.util._.defaults(options[type], defaults);
 
-    grunt.log.write('>> ' + type + '...').subhead('Options:');
-    grunt.helper('inspect', options[type]);
+    grunt.log
+      .write('>> ' + type + '... ')
+      .subhead('Options:')
+      .writeln(grunt.helper('inspect', options[type]));
 
     var files = grunt.file.expandFiles(config.files).map(function(file) {
       var body = grunt.file.read(file);

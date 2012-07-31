@@ -194,19 +194,34 @@ module.exports = function(grunt) {
   // called. The task is designed to work alongside the `watch` task.
   grunt.registerTask('yeoman-server', 'Launch a preview, LiveReload compatible server', function() {
     // Get values from config, or use defaults.
-    var initPort = grunt.config('server.port') || 0xDAD,
-      base = path.resolve(grunt.config('server.base') || '.');
+    var port = grunt.config('server.port') || 0xDAD,
+      base = path.resolve(grunt.config('server.base') || this.args[0] || '.');
 
-    var middleware = [
-      // add the special livereload snippet injection middleware
-      grunt.helper('reload:inject'),
+    grunt.helper('server', {
+      open: true,
+      port: port,
+      base: base
+    });
+  });
+
+  grunt.registerHelper('server', function(opts, cb) {
+    cb = cb || function() {};
+
+    opts.hostname = opts.hostname || 'localhost';
+
+    var middleware = [];
+
+    // add the special livereload snippet injection middleware
+    if(opts.inject) middleware.push(grunt.helper('reload:inject'));
+
+    middleware = middleware.concat([
       // Serve static files.
-      connect.static(base),
+      connect.static(opts.base),
       // Serve the livereload.js script,
       connect.static(path.join(__dirname, 'livereload')),
       // Make empty directories browsable.
-      connect.directory(base)
-    ];
+      connect.directory(opts.base)
+    ]);
 
     // the connect logger format if --debug was specified. Get values from
     // config or use defaults.
@@ -221,18 +236,19 @@ module.exports = function(grunt) {
       middleware.unshift(connect.logger('yeoman'));
     }
 
-    connect.apply(null, middleware)
+    return connect.apply(null, middleware)
       .on('error', function( err ) {
         if ( err.code === 'EADDRINUSE' ) {
           this.listen(0); // 0 means random port
         }
       })
-      .listen(initPort, function() {
+      .listen(opts.port, function() {
         var port = this.address().port;
 
         // Start server.
         grunt.log
           .subhead( 'Starting static web server on port '.yellow + String( port ).red )
+          .writeln( '  - ' + path.resolve(opts.base) )
           .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
           .writeln('Hit Ctrl+C to quit.');
 
@@ -240,11 +256,13 @@ module.exports = function(grunt) {
         grunt.helper('reload:reactor', {
           server: this,
           apiVersion: '1.7',
-          host: '0.0.0.0',
+          host: opts.hostname,
           port: port
         });
 
-        open('http://localhost:' + port);
+        if(opts.open) open('http://' + opts.hostname + ':' + port);
+
+        cb(null, port);
       });
   });
 
