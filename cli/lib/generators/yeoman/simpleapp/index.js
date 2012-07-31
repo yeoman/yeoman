@@ -55,9 +55,15 @@ AppGenerator.prototype.askFor = function askFor (argument) {
   },
   {
     name: 'includeRequireJS',
-    message: 'Would you like to include RequireJS (forAMD support)?',
+    message: 'Would you like to include RequireJS (for AMD support)?',
     default: 'Y/n',
     warning: 'Yes: RequireJS will be placed into the JavaScript vendor directory.'
+  },
+  {
+    name: 'includeRequireHM',
+    message: 'Would you like to support writing ECMAScript 6 modules?',
+    default: 'Y/n',
+    warning: 'Yes: RequireHM will be placed into the JavaScript vendor directory.'
   }];
 
   this.prompt(prompts, function(e, props) {
@@ -68,6 +74,7 @@ AppGenerator.prototype.askFor = function askFor (argument) {
     self.bootstrap = (/y/i).test(props.bootstrap);
     self.bootstrapLocation = props.bootstrapDest;
     self.includeRequireJS = (/y/i).test(props.includeRequireJS);
+    self.includeRequireHM = (/y/i).test(props.includeRequireHM);
 
     // we're done, go through next step
     cb();
@@ -197,10 +204,25 @@ AppGenerator.prototype.requirejs = function requirejs(){
       self.write('app/index.html', body);
 
       // add a basic amd module (should be a file in templates/)
+      self.write('app/js/app.js',[
+          "define([], function() {",
+          "    return 'Hello from Yeoman!'",
+          "});"
+        ].join('\n'));
+
       self.write('app/js/main.js', [
-        "define(\'main\', function() {",
-        "  return 'yeoman'",
-        "});"
+            "require.config({",
+            "  shim:{",
+            "  },",
+            "  paths: {",
+            "    jquery: 'app/js/vendor/jquery-1.7.2'",
+            "  }",
+            "});",
+            " ",
+            "require(['app'], function(app) {",
+            "    // use app here",
+            "    console.log(app);",
+            "});"
       ].join('\n'));
 
       cb();
@@ -208,6 +230,31 @@ AppGenerator.prototype.requirejs = function requirejs(){
 
   }
 };
+
+
+AppGenerator.prototype.requirehm = function requirehm(){
+  var cb = this.async(),
+    self = this;
+
+  if(self.includeRequireHM){
+
+    this.remote('jrburke', 'require-hm', '9e1773f332d9d356bb6e7d976f9220f3a1371747', function(err, remote) {
+      if(err) { return cb(err); }
+      remote.copy('hm.js', 'app/js/vendor/hm.js');
+      remote.copy('esprima.js', 'app/js/vendor/esprima.js');
+
+
+      // Wire RequireJS/AMD (usemin: js/amd-app.js)
+      var mainjs = self.read(path.resolve('app/js/main.js'));
+      mainjs = mainjs.replace('require.config({', 'require.config({\n  hm: "app/hm",\n');
+      mainjs = mainjs.replace('paths: {', 'paths: {\n    esprima: \'app/js/esprima\',');
+      self.write('app/js/main.js', mainjs);
+      cb();
+    });
+
+  }
+};
+
 
 AppGenerator.prototype.writeMain = function writeMain(){
   this.log.writeln('Writing compiled Bootstrap');
