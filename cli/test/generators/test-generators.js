@@ -120,7 +120,6 @@ describe('Generators', function() {
 
     it('should setup the current working directory property', function() {
       assert.equal(this.generators.cwd, this.cwd);
-      assert.equal(this.generators.base, this.cwd);
     });
 
     it('should find Gruntfile throughout the file tree');

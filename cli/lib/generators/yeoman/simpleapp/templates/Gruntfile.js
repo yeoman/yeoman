@@ -26,7 +26,8 @@ module.exports = function(grunt) {
           css_dir: 'css',
           sass_dir: 'css/sass',
           images_dir: 'img',
-          javascripts_dir: 'js'
+          javascripts_dir: 'js',
+          force: true
         }
       }
     },
@@ -137,40 +138,17 @@ module.exports = function(grunt) {
       dist: '<config:rev.img>'
     },
 
-    // default concat configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
-    concat: {
-      dist: {
-        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
-        dest: 'js/build.js'
-      }
-    },
-
-    // default min configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
-    min: {
-      dist: {
-        src: 'js/build.js',
-        dest: 'js/build.min.js'
-      }
-    },
-
     // rjs configuration. You don't necessary need to specify here the typical
     // `path` configuration, the rjs task will parse these values from your
-    // main module, using `require.config()`
+    // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
+    //
+    // name / out / mainConfig file should be used. You can let it blank if
+    // you're using usemin-handler to parse rjs config from markup (default
+    // setup)
     rjs: {
-      modules: [{
-        name: 'main',
-      }],
-      dir: 'app/js',
-      appDir: 'app/js',
-      baseUrl: './',
-      pragmas: {
-        doExclude: true
-      },
-      skipModuleInsertion: false,
-      optimizeAllPluginResources: true,
-      findNestedDependencies: true
+      // no minification, is done by the min task
+      optimize: 'none',
+      wrap: true
     },
 
     // specifying UglifyJS options:

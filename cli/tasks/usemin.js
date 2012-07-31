@@ -183,7 +183,20 @@ module.exports = function(grunt) {
   });
 
   grunt.registerMultiTask('usemin-handler', 'Using HTML markup as the primary source of information', function() {
-    var files = grunt.file.expandFiles(this.data).map(function(filepath) {
+    // collect files
+    var files = grunt.file.expandFiles(this.data);
+
+    // concat / min / css / rjs config
+    var concat = grunt.config('concat') || {},
+      min = grunt.config('min') || {},
+      css = grunt.config('css') || {},
+      rjs = grunt.config('rjs') || {};
+
+    grunt.log
+      .writeln('Going through ' + grunt.log.wordlist(files) + ' to update the config')
+      .writeln('looking for build script HTML comment blocks');
+
+    files = files.map(function(filepath) {
       return {
         path: filepath,
         body: grunt.file.read(filepath)
@@ -196,38 +209,41 @@ module.exports = function(grunt) {
         var lines = blocks[dest].slice(1, -1),
           parts = dest.split(':'),
           type = parts[0],
-          output = parts[1],
-          basename = output.replace(path.extname(output), '');
-
-        // concat / min / css / rjs config
-        var concat = grunt.config('concat') || {},
-          min = grunt.config('min') || {},
-          css = grunt.config('css') || {},
-          rjs = grunt.config('rjs') || {};
+          output = parts[1];
 
         // parse out the list of assets to handle, and update the grunt config accordingly
         var assets = lines.map(function(tag) {
+          var asset = (tag.match(/(href|src)=["']([^'"]+)["']/) || [])[2];
 
-          // RequireJS uses a data-main attribute on the script tag to tell RequireJS
-          // to load up the scripts/mainEntryPoint.js file. The below regex should be
-          // able to handle both cases of data-main="scripts/main" as well as
-          // data-main="scripts/main.js"
-
+          // RequireJS uses a data-main attribute on the script tag to tell it
+          // to load up the main entry point of the amp app
+          //
+          // First time we findd one, we update the name / mainConfigFile
+          // values. If a name of mainConfigFile value are already set, we skip
+          // it, so only one match should happen and default config name in
+          // original Gruntfile is used if any.
           var main = tag.match(/data-main=['"]([^'"]+)['"]/);
           if(main) {
-            rjs.modules = (rjs.modules || []).concat({
-              name: path.relative(rjs.appDir, main[1])
-            });
-            return main[1] + '.js';
+            rjs.out = rjs.out || output;
+            rjs.name = rjs.name || main[1];
+            rjs.mainConfigFile = rjs.mainConfigFile || (main[1] + '.js');
+            asset += ',' + main[1] + '.js';
           }
 
-          return (tag.match(/(href|src)=["']([^'"]+)["']/) || [])[2];
-        });
+          return asset;
+        }).reduce(function(a, b) {
+          b = b.split(',');
+          return a.concat(b);
+        }, []);
+
+        grunt.log.subhead('Found a block:')
+          .writeln(grunt.log.wordlist(lines, { separator: '\n' }))
+          .writeln('Updating config with the following assets:')
+          .writeln('    - ' + grunt.log.wordlist(assets, { separator: '\n    - ' }));
 
         // update concat config for this block
         concat[output] = assets;
         grunt.config('concat', concat);
-
 
         // update rjs config as well, as during path lookup we might have
         // updated it on data-main attribute
@@ -235,17 +251,29 @@ module.exports = function(grunt) {
 
         // min config, only for js type block
         if(type === 'js') {
-          min[basename + '.min.js'] = output;
+          min[output] = output;
           grunt.config('min', min);
         }
 
         // css config, only for css type block
         if(type === 'css') {
-          css[basename + '.min.css'] = output;
+          css[output] = output;
           grunt.config('css', css);
         }
       });
     });
+
+    // log a bit what was added to config
+    grunt.log.subhead('Configuration is now:')
+      .subhead('  css:')
+      .writeln('  ' + grunt.helper('inspect', css))
+      .subhead('  concat:')
+      .writeln('  ' + grunt.helper('inspect', concat))
+      .subhead('  min:')
+      .writeln('  ' + grunt.helper('inspect', min))
+      .subhead('  rjs:')
+      .writeln('  ' + grunt.helper('inspect', rjs));
+
   });
 
   // Helpers
@@ -281,7 +309,7 @@ module.exports = function(grunt) {
 
   grunt.registerHelper('usemin:css', function(content, block, target) {
     var indent = (block.split(linefeed)[0].match(/^\s*/) || [])[0];
-    return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '">');
+    return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '"\/?>');
   });
 
   grunt.registerHelper('usemin:js', function(content, block, target) {
@@ -303,7 +331,7 @@ module.exports = function(grunt) {
     content = grunt.helper('replace', content, /<script.+src=['"](.+)["'][\/>]?><[\\]?\/script>/gm);
 
     grunt.log.verbose.writeln('Update the HTML with the new css filenames');
-    content = grunt.helper('replace', content, /<link rel=["']?stylesheet["']?\shref=['"](.+)["']\s*>/gm);
+    content = grunt.helper('replace', content, /<link rel=["']?stylesheet["']?\shref=['"](.+)["']\s*\/?>/gm);
 
     grunt.log.verbose.writeln('Update the HTML with the new img filenames');
     content = grunt.helper('replace', content, /<img[^\>]+src=['"]([^"']+)["']/gm);
