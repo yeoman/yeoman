@@ -149,9 +149,10 @@ Runnable.prototype.run = function run(fn) {
   child.on('exit', function(code) {
     self.code = code;
     if(!code) return fn(null, code, self.stdout, self.stderr);
-    var error = new Error('Error executing "' + self._command + '". Code:' + code);
-    error.code = code;
-    fn(error, code, self.stdout, self.stderr);
+    var msg = 'Error executing "' + self._command + '". Code:' + code;
+    var err = new Error(msg + '\n\n' + (self.stderr || self.stdout));
+    err.code = code;
+    fn(err, code, self.stdout, self.stderr);
  });
 
   return this;
