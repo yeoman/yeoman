@@ -52,6 +52,12 @@ AppGenerator.prototype.askFor = function askFor (argument) {
     message: 'Where would you like it be downloaded ? (not used if previous answer is no)',
     default: 'app/js/vendor/bootstrap',
     warning: 'You can change the default download location'
+  },
+  {
+    name: 'includeRequireJS',
+    message: 'Would you like to include RequireJS (forAMD support)?',
+    default: 'Y/n',
+    warning: 'Yes: RequireJS will be placed into the JavaScript vendor directory.'
   }];
 
   this.prompt(prompts, function(e, props) {
@@ -61,6 +67,7 @@ AppGenerator.prototype.askFor = function askFor (argument) {
     // We change a bit this way of doing to automatically do this in the self.prompt() method.
     self.bootstrap = (/y/i).test(props.bootstrap);
     self.bootstrapLocation = props.bootstrapDest;
+    self.includeRequireJS = (/y/i).test(props.includeRequireJS);
 
     // we're done, go through next step
     cb();
@@ -176,26 +183,30 @@ AppGenerator.prototype.requirejs = function requirejs(){
   var cb = this.async(),
     self = this;
 
-  this.remote('jrburke', 'requirejs', '819774388d0143f2dcc7b178a364e875aea6e45a', function(err, remote) {
-    if(err) { return cb(err); }
-    remote.copy('require.js', 'app/js/vendor/require.js');
+  if(self.includeRequireJS){
 
-    // Wire RequireJS/AMD (usemin: js/amd-app.js)
-    var body = self.read(path.resolve('app/index.html'));
-    body = self.appendScripts(body, 'js/amd-app.js', ['js/vendor/require.js'], {
-      'data-main': 'js/main'
+    this.remote('jrburke', 'requirejs', '819774388d0143f2dcc7b178a364e875aea6e45a', function(err, remote) {
+      if(err) { return cb(err); }
+      remote.copy('require.js', 'app/js/vendor/require.js');
+
+      // Wire RequireJS/AMD (usemin: js/amd-app.js)
+      var body = self.read(path.resolve('app/index.html'));
+      body = self.appendScripts(body, 'js/amd-app.js', ['js/vendor/require.js'], {
+        'data-main': 'js/main'
+      });
+      self.write('app/index.html', body);
+
+      // add a basic amd module (should be a file in templates/)
+      self.write('app/js/main.js', [
+        "define(\'main\', function() {",
+        "  return 'yeoman'",
+        "});"
+      ].join('\n'));
+
+      cb();
     });
-    self.write('app/index.html', body);
 
-    // add a basic amd module (should be a file in templates/)
-    self.write('app/js/main.js', [
-      "define(\'main\', function() {",
-      "  return 'yeoman'",
-      "});"
-    ].join('\n'));
-
-    cb();
-  });
+  }
 };
 
 AppGenerator.prototype.writeMain = function writeMain(){
