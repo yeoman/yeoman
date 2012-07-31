@@ -67,25 +67,4 @@ module.exports = function( grunt ) {
 
     grunt.log.subhead( task + ' source:' ).writeln( util.inspect( grunt.task._tasks[ task ] ) );
   });
-
-  // Doc generation for the docs task
-  grunt.registerTask( 'gendocs', 'Generates docs/index.html from wiki pages', function() {
-    var cb = this.async();
-
-    var gendoc = grunt.util.spawn({
-      cmd: 'grunt',
-      opts: {
-        cwd: path.join( __dirname, 'scripts/docs' )
-      }
-    }, function() {});
-
-    gendoc.stdout.pipe( process.stdout );
-    gendoc.stderr.pipe( process.stderr );
-    gendoc.on( 'exit', function( code ) {
-      if ( code ) {
-        grunt.fail.fatal( 'Something bad happend', code );
-      }
-      cb();
-    });
-  });
 };
