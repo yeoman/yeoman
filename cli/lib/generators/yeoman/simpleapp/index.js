@@ -199,30 +199,30 @@ AppGenerator.prototype.requirejs = function requirejs(){
       // Wire RequireJS/AMD (usemin: js/amd-app.js)
       var body = self.read(path.resolve('app/index.html'));
       body = self.appendScripts(body, 'js/amd-app.js', ['js/vendor/require.js'], {
-        'data-main': 'js/main'
+        'data-main': 'main'
       });
       self.write('app/index.html', body);
 
       // add a basic amd module (should be a file in templates/)
       self.write('app/js/app.js',[
-          "define([], function() {",
-          "    return 'Hello from Yeoman!'",
-          "});"
-        ].join('\n'));
+        "define([], function() {",
+        "    return 'Hello from Yeoman!'",
+        "});"
+      ].join('\n'));
 
       self.write('app/js/main.js', [
-            "require.config({",
-            "  shim:{",
-            "  },",
-            "  paths: {",
-            "    jquery: 'app/js/vendor/jquery-1.7.2'",
-            "  }",
-            "});",
-            " ",
-            "require(['app'], function(app) {",
-            "    // use app here",
-            "    console.log(app);",
-            "});"
+        "require.config({",
+        "  shim:{",
+        "  },",
+        "  paths: {",
+        "    jquery: 'app/js/vendor/jquery-1.7.2'",
+        "  }",
+        "});",
+        " ",
+        "require(['app'], function(app) {",
+        "    // use app here",
+        "    console.log(app);",
+        "});"
       ].join('\n'));
 
       cb();
@@ -277,4 +277,3 @@ AppGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.mkdir('spec');
 };
-
