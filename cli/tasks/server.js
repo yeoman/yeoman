@@ -2,6 +2,7 @@
 var fs = require('fs'),
   path = require('path'),
   util = require('util'),
+  http = require('http'),
   events = require('events'),
   colors = require('colors'),
   connect = require('connect'),
@@ -27,7 +28,7 @@ module.exports = function(grunt) {
 
     this.server = options.server;
 
-    if ( !( this.server instanceof connect.HTTPServer ) ) {
+    if ( !( this.server instanceof http.Server ) ) {
       throw new Error('Is not a valid HTTP server');
     }
 

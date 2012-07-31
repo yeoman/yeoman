@@ -4,7 +4,6 @@ var fs = require('fs'),
   assert = require('assert'),
   rimraf = require('rimraf'),
   mkdirp = require('mkdirp'),
-  ncp = require('ncp').ncp,
   EventEmitter = require('events').EventEmitter;
 
 // helpers exports

@@ -2,7 +2,8 @@
 var path = require('path'),
   util = require('util'),
   yeoman = require('../../../../'),
-  _ = require('underscore');
+  grunt = require('grunt'),
+  _ = grunt.util._;
 
 module.exports = Generator;
 
