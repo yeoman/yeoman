@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         tasks: 'compass reload'
       },
       reload: {
-        files: ['app/css/**/*.css', 'app/js/**/*.js', 'app/img/**/*'],
+        files: ['app/css/**/*.css', 'app/*.css', 'app/*.htm', 'app/*.html', 'app/*.htm', 'app/js/**/*.js', 'app/img/**/*'],
         tasks: 'reload'
       }
     },
