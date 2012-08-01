@@ -10,6 +10,11 @@ module.exports = function(grunt) {
     // Project configuration
     // ---------------------
 
+    // specify an alternate install location for bower
+    bower: {
+      dir: 'app/js/vendor'
+    },
+
     // coffee to js compilation
     coffee: {
       dist: {
