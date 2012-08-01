@@ -131,9 +131,9 @@ then
 else
     echo "Installing Node.js..."
 
-    curl -O http://nodejs.org/dist/v0.6.19/node-v0.6.19.pkg
+    curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.pkg
     echo "Node.js downloaded, running install script (requires authentication)"
-    sudo installer -pkg node-v0.6.19.pkg -target /
+    sudo installer -pkg node-v0.8.4.pkg -target /
 fi
 
 echo ""
