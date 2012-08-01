@@ -161,8 +161,7 @@ module.exports = function(grunt) {
 
   // The server task always run with the watch task, this is done by
   // aliasing the server task to the relevant set of task to run.
-  // We also initialize the staging folder first.
-  grunt.registerTask('server', 'clean mkdirs yeoman-server watch');
+  grunt.registerTask('server', 'yeoman-server watch');
 
   // Reload handlers
   // ---------------
@@ -200,7 +199,8 @@ module.exports = function(grunt) {
     grunt.helper('server', {
       open: true,
       port: port,
-      base: base
+      base: base,
+      inject: true
     });
   });
 
@@ -292,8 +292,8 @@ module.exports = function(grunt) {
       filepath = path.resolve(filepath.replace(/^\//, ''));
       fs.readFile(filepath, 'utf8', function(e, body) {
         if(e) {
-          res.writeHead(500);
-          return res.end('Error loading' + req.url + '  -- ' + JSON.stringify(e));
+          // go next and silently fail
+          return next();
         }
 
         body = body.replace(/<\/body>/, function(w) {
