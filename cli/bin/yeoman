@@ -24,6 +24,13 @@ grunt.npmTasks(join(__dirname, '../'));
 
 var cli =  require('grunt/lib/grunt/cli');
 
+// avoid the deprecation notice: goo.gl/mk2De
+Object.defineProperty(grunt, 'utils', {
+  get: function() {
+    return grunt.util;
+  }
+});
+
 // command line options and remaining args
 var opts = cli.options,
   cmds = cli.tasks,
