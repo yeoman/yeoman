@@ -51,7 +51,14 @@ if(/^init/.test(route)) {
   yeoman.generators.prepare(grunt);
 }
 
-// a bower command?
+// a bower command
+// Examples:
+// yeoman install jquery
+// yeoman install spine
+// yeoman install backbone (which does jquery etc too.)
+// yeoman update spine
+// yeoman lookup jquery
+// yeoman search jquery
 if(/^install|^uninstall|^search|^list|^ls|^lookup|^update/.test(route)) {
   cli.tasks = 'bower' + ':' + cmds.join(':');
 }
