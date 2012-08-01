@@ -147,6 +147,10 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
 
     defaults.push('Twitter Bootstrap plugins');
 
+/*
+    indexData = this.appendStyles(indexData, 'css/bootstrap-min.css',[
+     'css/bootstrap.css' ]);*/
+
     // Wire Twitter Bootstrap plugins (usemin: js/plugins.js)
     indexData = this.appendScripts(indexData, 'js/plugins.js', [
       'js/vendor/bootstrap/bootstrap-alert.js',
@@ -162,6 +166,14 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
       'js/vendor/bootstrap/bootstrap-collapse.js',
       'js/vendor/bootstrap/bootstrap-tab.js'
      ]);
+  }
+
+  if(this.includeRequireJS){
+    defaults.push('RequireJS');
+  }
+
+  if(this.includeRequireHM){
+    defaults.push('Support for ES6 Modules');
   }
 
   // Iterate over defaults, create content string
@@ -255,10 +267,9 @@ AppGenerator.prototype.requirehm = function requirehm(){
   }
 };
 
-
 AppGenerator.prototype.writeMain = function writeMain(){
   this.log.writeln('Writing compiled Bootstrap');
-  this.template('main.css', path.join('app/css/main.css'));
+  this.template('main.css', path.join('app/css/bootstrap.css'));
 };
 
 AppGenerator.prototype.app = function app() {
