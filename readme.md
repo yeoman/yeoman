@@ -16,6 +16,50 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
 
 
+## Documentation
+
+Yeoman supports a powerful set of high-level commands. These include:
+
+```
+yeoman init      # Initialize and scaffold a new project using generator templates
+yeoman build     # Build an optimized version of your app, ready to deploy
+yeoman server    # Launch a preview server which will begin watching for changes
+yeoman test      # Run a Jasmine test harness in a headless Phantom.js
+
+yeoman install   # Install a package from the clientside package registry
+yeoman uninstall # Uninstall the package
+yeoman update    # Update a package to the latest version
+yeoman list      # List the packages currently installed
+yeoman search    # Query the registry for matching package names
+yeoman lookup    # Look up info on a particular package 
+
+```
+
+A common initial workflow with Yeoman might be:
+
+```
+yeoman init      # invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
+yeoman build     # build your project, creating an optimized version in the publish folder
+yeoman server    # create an intermediate version of your app, firing off a watch process.
+
+```
+
+Some more examples of how to use our commands include:
+
+```
+yeoman init angular:bootstrap  # invoke the AngularJS generator scaffold
+yeoman init angular:controller # invoke the AngularJS Controller sub-generator
+yeoman install jquery underscore [depName] # install a dependency or dependencies
+yeoman update jquery # update a specific dependency (e.g jquery)
+yeoman search jquery # lookup jquery in the bower registry
+
+```
+
+
+The current complete documentation for Yeoman can be found [here](http://yeoman.github.com/docs/docs.html). We also have extended documentation available [here](https://github.com/mklabs/yeoman/wiki/_pages).
+
+
+
 ### Trouble-shooting
 
 If for any reason you experience exceptions after the yeoman installation process above, you may find the
@@ -51,10 +95,6 @@ You then need to make it executable: `$ chmod +x server.sh`
 
 For example, run this guy as `$ server` (defaults to port 8000), or supply a port yourself `$ server 3000`.
 
-
-## Documentation
-
-The current documentation for Yeoman can be found [here](http://yeoman.github.com/docs). If you are a new contributor and require access to this repository, feel free to ask.
 
 
 ## Browser Support
