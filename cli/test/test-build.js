@@ -22,8 +22,7 @@ describe('yeoman init && yeoman build', function() {
       var yeoman = helpers.run('init --force', opts);
       yeoman
         // enter '\n' for both prompts, and grunt confirm
-        .prompt(/Would you like to include (.+) plugins/)
-        .prompt(/Where would you like it be downloaded ?/)
+        .prompt(/would you like/i)
         .prompt(/Do you need to make any changes to the above before continuing?/)
 
         // check few pattern in the process stdout
@@ -173,7 +172,7 @@ describe('yeoman init && yeoman build', function() {
 
     describe('rjs', function() {
       it('should optimize js/main', function() {
-        this.yeoman.expect(/rjs optimized module: js\/main/);
+        this.yeoman.expect(/rjs optimized module: (.+)/);
       });
     });
 
