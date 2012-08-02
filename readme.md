@@ -20,7 +20,7 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 
 Yeoman supports a powerful set of high-level commands. These include:
 
-```
+```shell
 yeoman init      # Initialize and scaffold a new project using generator templates
 yeoman build     # Build an optimized version of your app, ready to deploy
 yeoman server    # Launch a preview server which will begin watching for changes
@@ -37,7 +37,7 @@ yeoman lookup    # Look up info on a particular package
 
 A common initial workflow with Yeoman might be:
 
-```
+```shell
 yeoman init      # invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
 yeoman build     # build your project, creating an optimized version in the publish folder
 yeoman server    # create an intermediate version of your app, firing off a watch process.
@@ -46,13 +46,12 @@ yeoman server    # create an intermediate version of your app, firing off a watc
 
 Some more examples of how to use our commands include:
 
-```
+```shell
 yeoman init angular:bootstrap  # invoke the AngularJS generator scaffold
 yeoman init angular:controller # invoke the AngularJS Controller sub-generator
 yeoman install jquery underscore [depName] # install a dependency or dependencies
 yeoman update jquery # update a specific dependency (e.g jquery)
 yeoman search jquery # lookup jquery in the bower registry
-
 ```
 
 
@@ -65,9 +64,9 @@ The current complete documentation for Yeoman can be found [here](http://yeoman.
 If for any reason you experience exceptions after the yeoman installation process above, you may find the
 following steps resolve these issues:
 
-```
-$ cd yeoman/cli
-$ sudo -s 'npm install -g && npm link'
+```shell
+cd yeoman/cli
+sudo -s 'npm install -g && npm link'
 ```
 
 ## Running
