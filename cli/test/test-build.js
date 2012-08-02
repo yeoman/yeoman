@@ -245,7 +245,8 @@ describe('yeoman init && yeoman build', function() {
       it('should write to manifest.appcache', function() {
         this.yeoman
           .expect('Writing to manifest.appcache')
-          .expect('This manifest was created by confess.js, http://github.com/jamesgpearce/confess');
+          .expect('This manifest was created by confess.js, http://github.com/jamesgpearce/confess')
+          .expect(/CACHE:\ncss\/([1-9a-z]+)\.main\.css/);
       });
     });
 
