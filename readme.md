@@ -126,6 +126,10 @@ This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core
 - Lint the code by running `grunt` in the `/cli` folder before submitting a pull request
 - Develop in a topic branch, not master
 
+### Tests
+
+Yeoman has a test suite to ensure it's reliably and accurately working as a developer tool. You can find the main test suite in [`test/test-build.js`](https://github.com/yeoman/yeoman/blob/master/cli/test/test-build.js), most of the assertions are [checks against yeoman cli stdout](https://github.com/mklabs/yeoman/wiki/test-build).
+
 
 ## About
 
