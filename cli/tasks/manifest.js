@@ -50,7 +50,7 @@ module.exports = function(grunt) {
       // hostname of the url to cache
       hostname: 'localhost',
       // basedir
-      base: this.args[1] || './',
+      base: path.resolve(this.args[1] || './'),
       // if the browser should be "opened" to the app to cache
       open: false,
       // if the reload snippet from livereload should be injected or not
