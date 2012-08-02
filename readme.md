@@ -129,6 +129,14 @@ This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core
 
 Yeoman has a test suite to ensure it's reliably and accurately working as a developer tool. You can find the main test suite in [`test/test-build.js`](https://github.com/yeoman/yeoman/blob/master/cli/test/test-build.js), most of the assertions are [checks against yeoman cli stdout](https://github.com/mklabs/yeoman/wiki/test-build).
 
+To run our test suite:
+
+```sh
+npm test
+```
+
+Do note that if any CLI prompts are not accounted for the test suite will have a timeout failure. 
+
 ### Developer Docs
 
 We have significant developer docs for you if you'd like to hack on Yeoman. 
