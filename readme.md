@@ -130,6 +130,13 @@ This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core
 
 Yeoman has a test suite to ensure it's reliably and accurately working as a developer tool. You can find the main test suite in [`test/test-build.js`](https://github.com/yeoman/yeoman/blob/master/cli/test/test-build.js), most of the assertions are [checks against yeoman cli stdout](https://github.com/mklabs/yeoman/wiki/test-build).
 
+### Developer Docs
+
+We have significant developer docs for you if you'd like to hack on Yeoman. 
+
+Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our first site's docs section](http://yeoman.github.com/docs/docs.html). 
+
+You're also welcome to `git blame` back to commit messages and pull requests. As a project we value comprehensive discussion for our fellow developers. 
 
 ## About
 
