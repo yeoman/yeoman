@@ -40,19 +40,16 @@ More info: http://goo.gl/GPtU9 & http://yeoman.io".yellow + "\n\
           prompt.delimiter = ' ';
 
           var schema = {
-            properties: {
-              optin: {
-                description: "[Y/n]: ",
-                "default"  : 'Y',
-                pattern    : /^[yntf]{1}/i,
-                required   : true
-              }
-            }
+            name       : 'optin',
+            message    : "[Y/n]: ",
+            "default"  : 'Y',
+            validator  : /^[yntf]{1}/i,
+            empty      : false
           };
 
           prompt.start();
           console.log(msg);
-          prompt.get(schema, function(err, result) {
+          prompt.getInput(schema, function(err, result) {
             if (err) { return opts.cb(err); }
 
             if (/n/i.test(result.optin)) {
