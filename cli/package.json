@@ -30,7 +30,6 @@
     "fstream": "~0.1.18",
     "fstream-ignore": "0.0.5",
     "tar": "~0.1.13",
-    "less": "~1.2.1",
     "coffee-script": "~1.3.3",
     "grunt-jasmine-task": "~0.2.2",
     "faye-websocket": "~0.4.2",
