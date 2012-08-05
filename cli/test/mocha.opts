@@ -1,3 +1,9 @@
---reporter spec
---timeout 25000
 --slow 1500
+--timeout 25000
+
+--reporter spec
+
+--globals $
+--globals events
+--globals AssertionError
+--globals TAP_Global_Harness

@@ -40,23 +40,24 @@ actions.log = grunt.log;
 
 // Stores and return the source root for this class
 actions.sourceRoot = function sourceRoot(root) {
-  if ( root ) {
-    this._sourceRoot = root;
+  if( root ) {
+    this._sourceRoot = path.resolve( root );
   }
+
   return this._sourceRoot;
 };
 
 // Sets the destination root for this class. Relatives path are added to the
 // directory where the script was invoked and expanded.
 actions.destinationRoot = function destinationRoot(root) {
-  if(root) {
-    this._destinationRoot = root;
+  if( root ) {
+    this._destinationRoot = path.resolve( root );
 
     if ( !path.existsSync( root ) ) {
       this.mkdir( root );
     }
 
-    process.chdir(root);
+    process.chdir( root );
   }
 
   return this._destinationRoot || './';
