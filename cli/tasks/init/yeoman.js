@@ -36,13 +36,30 @@ template.warnOn = '*';
 // XXX should this exist as it's own helper task?
 console.log(template.welcome);
 
-// The actual grunt init template.
+// The actual grunt init template. We need to support:
+//
+// yeoman init
+// yeoman init backbone
+// yeoman init backbone:model
 template.template = function _template(grunt, init, cb) {
 
   // strip back args from any `init:` prefix
   grunt.cli.tasks = grunt.cli.tasks.map(function(arg) {
     return arg.replace(/^init:/, '');
   });
+
+  // handle the specific case of default generator on `init` (without generator
+  // name).
+
+  // get back the resolved generator name to invoke
+  var name = yeoman.generators.name;
+
+  // and associated cli options (--help, --foo, ...)
+  var opts = yeoman.generators.options;
+
+  if(!name && !opts.help) {
+    yeoman.generators.name = 'simpleapp';
+  }
 
   // delegate the groundwork of scaffolding to the generator layer
   return yeoman.generators.init(grunt);

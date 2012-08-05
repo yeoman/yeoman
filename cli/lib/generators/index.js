@@ -60,17 +60,6 @@ generators.init = function init(grunt) {
     name = generators.name,
     opts = generators.options;
 
-  // We need to support
-
-  // yeoman init
-  // yeoman init backbone
-  // yeoman init backbone:model
-
-  // support yeoman init, yeoman init generatorName
-  // Use the prompts generator in simpleapp
-  name = name || 'simpleapp';
-  args[0] = args[0] || name;
-
   // figure out the base application directory
   generators.cwd = process.cwd();
   generators.gruntfile = grunt.file.findup(generators.cwd, '{G,g}runtfile.{js,coffee}');
