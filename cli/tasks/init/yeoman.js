@@ -3,14 +3,37 @@ var fs = require('fs'),
   path = require('path'),
   colors = require('colors'),
   yeoman = require('../../'),
+  grunt = require('grunt'),
   utils = yeoman.utils;
-
 
 // top level export
 var template = module.exports;
 
+// get back the resolved generator name to invoke
+var name = yeoman.generators.name;
+
+// and associated cli options (--help, --foo, ...)
+var opts = yeoman.generators.options;
+
+// strip back args from any `init:` prefix
+grunt.cli.tasks = grunt.cli.tasks.map(function(arg) {
+  return arg.replace(/^init:/, '');
+});
+
+if(!name && !opts.help) {
+  yeoman.generators.name = 'simpleapp';
+}
+
 // Basic template description.
 template.description = 'Init a new project or components';
+
+// warnOn, specifics to resolved generator.  Any existing file or directory
+// matching this wildcard will cause a warning.
+//
+// Bypass on --help
+if(!opts.help) {
+  template.warnOn = yeoman.generators.warnOn(grunt);
+}
 
 // Welcome message
 template.welcome =
@@ -26,40 +49,16 @@ template.welcome =
 // Template-specific notes to be displayed before question prompts.
 template.notes = '\n'; //... More notes to come here ...'.yellow;
 
-// Any existing file or directory matching this wildcard will cause a warning.
-//
-// XXX thing of a way to dinamycally set this based on what generates the
-// genrator that is likely to be invoked.
-template.warnOn = '*';
-
-// Display welcome message
-// XXX should this exist as it's own helper task?
-console.log(template.welcome);
-
 // The actual grunt init template. We need to support:
 //
 // yeoman init
 // yeoman init backbone
 // yeoman init backbone:model
+//
+// Handles the specific case of default generator on `init` (without generator
+// name).
 template.template = function _template(grunt, init, cb) {
-
-  // strip back args from any `init:` prefix
-  grunt.cli.tasks = grunt.cli.tasks.map(function(arg) {
-    return arg.replace(/^init:/, '');
-  });
-
-  // handle the specific case of default generator on `init` (without generator
-  // name).
-
-  // get back the resolved generator name to invoke
-  var name = yeoman.generators.name;
-
-  // and associated cli options (--help, --foo, ...)
-  var opts = yeoman.generators.options;
-
-  if(!name && !opts.help) {
-    yeoman.generators.name = 'simpleapp';
-  }
+  console.log(template.welcome);
 
   // delegate the groundwork of scaffolding to the generator layer
   return yeoman.generators.init(grunt);
