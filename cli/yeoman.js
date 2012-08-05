@@ -2,9 +2,6 @@
 
 var yeoman = module.exports;
 
-// hoist up any plugins onto the plugin object as lazy-loaded getters.
-yeoman.plugins = require('./lib/plugins');
-
 //
 // custom package utilities, works in tandem with `grunt.util`.
 //
