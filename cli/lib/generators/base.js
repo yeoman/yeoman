@@ -354,8 +354,8 @@ Base.prototype.usage = function usage() {
   }).join(' ');
 
   var options = this._options.length ? '[options]' : '',
-    name = this.namespace === 'yeoman:app' ? '' : this.namespace + ' ',
-    cmd = this.namespace === 'yeoman:app' ? 'new' : 'generate';
+    name = (this.namespace === 'yeoman:app' || !this.namespace) ? '' : this.namespace + ' ',
+    cmd = 'init';
 
   name = name.replace(/^yeoman:/, '');
 
