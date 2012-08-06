@@ -1,6 +1,6 @@
 ## Generators
 
-Yeoman generators allow you to scaffold out a project using a custom setup of boilerplates,
+Generators allow you to scaffold out a project using a custom setup of boilerplates,
 frameworks and dependencies. These are wrapped up in a generator (or scaffold). The basic 
 application generated when calling `yeoman init` actually uses a generator itself and they
 can be quite powerful. 

@@ -3,9 +3,8 @@
 
 Usage: `yeoman init`, `yeoman init generatorName`, `yeoman init generatorName:subgenerator`
 
-The `init` command allows you to kick-start a new project by asking a number of questions
-about what you would like to include. These answers are used to scaffold out a file structure
-for your new application. 
+Helps you kick-start a new web application by asking a number of questions about what you would like to include. 
+These answers are used to scaffold out a file structure for your project.
 
 The default init template is based on:
 

@@ -12,3 +12,5 @@ You should be able to use it on:
 * OSX
 * Unix
 
+Note that dependencies we pull in for the command-line portion of the project are listed in our
+[package.json](https://github.com/yeoman/yeoman/blob/master/cli/package.json) file.
