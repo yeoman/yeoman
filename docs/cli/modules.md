@@ -1,6 +1,3 @@
-
-
-
 ## EcmaScript 6 Modules And Module Support
 
 Note: This content is subject to change and may be removed prior to launch.
