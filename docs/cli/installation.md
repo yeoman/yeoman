@@ -110,6 +110,17 @@ For development, the `npm link` command might be handy (posix only, instead of
 `npm install -g`).
 
 
+### Updating
+
+One of our goals is to implement an easy way to update to the latest version of Yeoman with minimal effort
+on your part. Whilst we hope to get this in place before the first version of the project launches, you can
+otherwise update to the latest version as follows:
+
+* git clone `https://github.com/yeoman/yeoman.git`
+* cd `yeoman/cli`
+* sudo npm install -g
+* sudo npm link
+
 
 ## Uninstall
 
