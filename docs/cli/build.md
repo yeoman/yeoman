@@ -2,9 +2,9 @@
 
 Usage: `yeoman build`, `yeoman build:<target>`
 
-Yeoman leverages third party tools to construct an optimized version of your application that's ready to deploy.
+Constructs an optimized version of your application that's ready to deploy.
 
-We make use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist with compression, optimization and testing.
+Yeoman makes use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist with compression, optimization and testing.
 
 These include:
 
@@ -17,8 +17,9 @@ These include:
 * Creating an Application Cache manifest via Confess.js
 * Using revision filenames or oldernames
 
-We finally publish an optimized version of your application to your project directory
-so that it can be deployed to production right after.
+When you run `yeoman server`, we generate an `intermediate` build directory for your project, containing compiled versions of your Compass and CoffeeScript files as well as all of the other files needed to preview your application. Running `yeoman build` creates a `publish` directory which has completely optimized version of your application that can be deployed to staging.
+
+### Build targets
 
 Yeoman supports a number of build targets to be used with `yeoman build`. To implicitly
 pass the `default` target one would run `yeoman build:default` for example. The complete
@@ -29,6 +30,9 @@ list of supported build targets can be found below:
 * buildkit: Runs `concat css min img rev usemin manifest html:buildkit`
 * basics: Runs `concat css min img rev usemin manifest html:basics`
 * minify: Runs `concat css min img rev usemin manifest html:compress`
+
+
+### Sub-tasks
 
 Each build target above runs a number of different build *tasks*. The supported
 tasks included with Yeoman out of the box are:

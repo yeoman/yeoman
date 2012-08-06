@@ -3,7 +3,7 @@
 
 * `yeoman --help` or `yeoman help`
 
-This will list out the commands and tasks supported by yeoman and should print out the following to the console:
+Lists out the commands and tasks supported by yeoman and should print out the following to the console:
 
 ```shell
 yeoman init      # Initialize and scaffold a new project using generator templates
