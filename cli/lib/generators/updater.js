@@ -56,7 +56,7 @@ updater.getUpdateType = function( currentVersion, remoteVersion ){
 
    	   // Regex against versions for comparison
    	   var current = versionRE.exec(currentVersion),
-           remote  = versionRE.exec(remoteVersion);
+           remote  = remoteVersion.split('.');
 
        // major update?
        if( remote[3] > current[3] ){
@@ -76,13 +76,16 @@ updater.getUpdateType = function( currentVersion, remoteVersion ){
 
 };
 
-updater.getRemoteVersion = function(){
-    // we have to implement getting the latest
-    // version from NPM. We may need to get yeoman
-    // listed privately before this can be done.
-    // XX: do this with another project as a POC
-    // first if we're waiting.
+
+updater.getRemoteVersion = function( packageName, cb ) {
+    npm.load(function() {
+        npm.commands.view( [ packageName, 'versions' ], function( err, data ) {
+            var versions = data[ Object.keys(data)[0] ].versions;
+            cb( versions[ versions.length - 1 ] );
+        });
+    });
 };
+
 
 updater.npmIsOutdated = function(){
   npm.load(function(){
@@ -101,16 +104,23 @@ updater.npmUpdate = function( packageName ){
 
 
 
-updated.runUpdater = function(){
-  var remoteVersion  = "0.1.5", // getRemoteVersion()
-      currentVersion = this.getCurrentVersion(),
-      updateType     = this.getUpdateType( currentVersion, remoteVersion );
+updated.runUpdater = function( packageName ){
+  
+   var self = this;
 
-   if(updateType === updateTypes.major ||
-   	  updateType === updateTypes.minor ||
-   	  updateType === updateTypes.patch ){
+   this.getRemoteVersion( packageName, function( version ){
 
-   	  this.npmUpdate();
-   }
+      var remoteVersion = version;
+      var updateType = self.getUpdateType( currentVersion, remoteVersion );
+      var currentVersion = require('../package.json').version;
+
+      //or var currentVersion = self.getCurrentVersion();
+
+      if( updateType !== updateTypes.uptodate ){
+   	     self.npmUpdate();
+      }
+
+   });
+
 };
 
