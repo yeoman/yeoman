@@ -9,7 +9,7 @@ Lists out the commands and tasks supported by yeoman and should print out the fo
 yeoman init      # Initialize and scaffold a new project using generator templates
 yeoman build     # Build an optimized version of your app, ready to deploy
 yeoman server    # Launch a preview server which will begin watching for changes
-yeoman test      # Run a Jasmine test harness in a headless Phantom.js
+yeoman test      # Run a Mocha test harness in a headless Phantom.js
 
 yeoman install   # Install a package from the clientside package registry
 yeoman uninstall # Uninstall the package
