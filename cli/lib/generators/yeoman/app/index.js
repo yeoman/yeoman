@@ -12,7 +12,7 @@ function AppGenerator(args, options, config) {
   this.destinationRoot(this.name);
 
   // setup the test-framework property, Gruntfile template will need this
-  this.test_framework = options['test-framework'] || 'jasmine';
+  this.test_framework = options['test-framework'] || 'mocha';
 
   // cleanup the name property from trailing /, typical usage of directories.
   // update the args object, it's used to initialize js-framework hooks

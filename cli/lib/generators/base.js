@@ -27,7 +27,7 @@ function Base(args, options, config) {
     'javascript-engine': 'yeoman:js',
     'stylesheet-engine': 'sass',
     'template-engine': 'handlebars',
-    'test-framework': 'jasmine',
+    'test-framework': 'mocha',
 
     // we use js-framework here to hook into bootstrap js plugins by default
     // but it might very well be done a bit differently (or we consider bootstrap
