@@ -162,7 +162,7 @@ module.exports = function(grunt) {
     uglify: {}
   });
 
-  // Alias the `test` task to run the `jasmine` task instead
+  // Alias the `test` task to run the `mocha` task instead
   grunt.registerTask('test', '<%= test_framework %>');
 
 };
