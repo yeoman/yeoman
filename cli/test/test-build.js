@@ -51,12 +51,13 @@ describe('yeoman init && yeoman build', function() {
         .expect(/Writing app\/css\/sass\/compass_twitter_bootstrap\/(.+).sass/)
 
         // test hook - jasmine:app
-        .expect(/Invoke jasmine:app/)
+        .expect(/Invoke mocha:app/)
         .expect(/Writing test\/index\.html/)
-        .expect(/Writing test\/lib\/jasmine-[0-9\.]+\/jasmine\.css/)
-        .expect(/Writing test\/lib\/jasmine-[0-9\.]+\/jasmine\.js/)
-        .expect(/Writing test\/runner\/html\.js/)
-        .expect(/Writing test\/runner\/headless\.js/)
+        .expect(/Writing test\/lib\/chai\.js/)
+        .expect(/Writing test\/lib\/expect\.js/)
+        .expect(/Writing test\/lib\/mocha-1\.2\.2\/mocha\.css/)
+        .expect(/Writing test\/lib\/mocha-1\.2\.2\/mocha\.js/)
+        .expect(/Writing test\/runner\/mocha\.js/)
 
         // run and done
         .end(done);

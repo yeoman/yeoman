@@ -33,7 +33,7 @@ function AppGenerator(args, options, config) {
   // init a framework specific view. resolved to ? by default
   this.hookFor('js-framework', { as: 'view' });
 
-  // resolved to jasmine by default (could be switched to mocha for instance)
+  // resolved to mocha by default (could be switched to jasmine for instance)
   this.hookFor('test-framework');
 
 }
