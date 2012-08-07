@@ -26,36 +26,36 @@ yeoman build     # Build an optimized version of your app, ready to deploy
 yeoman server    # Launch a preview server which will begin watching for changes
 yeoman test      # Run a Jasmine test harness in a headless Phantom.js
 
-yeoman install   # Install a package from the clientside package registry
+yeoman install   # Install a package from the client-side package registry
 yeoman uninstall # Uninstall the package
 yeoman update    # Update a package to the latest version
 yeoman list      # List the packages currently installed
 yeoman search    # Query the registry for matching package names
-yeoman lookup    # Look up info on a particular package 
+yeoman lookup    # Look up info on a particular package
 
 ```
 
 A common initial workflow with Yeoman might be:
 
 ```shell
-yeoman init      # invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
-yeoman build     # build your project, creating an optimized version in the publish folder
-yeoman server    # create an intermediate version of your app, firing off a watch process.
+yeoman init      # Invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
+yeoman build     # Build your project, creating an optimized version in the publish folder
+yeoman server    # Create an intermediate version of your app, firing off a watch process
 
 ```
 
 Some more examples of how to use our commands include:
 
 ```shell
-yeoman init angular:bootstrap  # invoke the AngularJS generator scaffold
-yeoman init angular:controller # invoke the AngularJS Controller sub-generator
-yeoman install jquery underscore [depName] # install a dependency or dependencies
-yeoman update jquery # update a specific dependency (e.g jquery)
-yeoman search jquery # lookup jquery in the bower registry
+yeoman init angular:bootstrap              # Invoke the AngularJS generator scaffold
+yeoman init angular:controller             # Invoke the AngularJS Controller sub-generator
+yeoman install jquery underscore [depName] # Install a dependency or dependencies
+yeoman update jquery                       # Update a specific dependency (e.g jquery)
+yeoman search jquery                       # Lookup jquery in the Bower registry
 ```
 
 
-The current complete documentation for Yeoman can be found [here](http://yeoman.github.com/docs/docs.html). We also have extended documentation available [here](https://github.com/mklabs/yeoman/wiki/_pages).
+See the [complete documentation](http://yeoman.github.com/docs/docs.html) for more. We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available.
 
 
 
@@ -73,7 +73,7 @@ sudo -s 'npm install -g && npm link'
 
 Here's a small shell script that you can save as `server.sh` which opens and serves the current directory:
 
-```sh
+```shell
 #!/usr/bin/env sh
 
 port=$1
@@ -105,7 +105,7 @@ For example, run this guy as `$ server` (defaults to port 8000), or supply a por
 
 ## Platform Support
 
-Yeoman 1.0 will support Mac OS X and will attempt to support Linux as well. We will be aiming to bring in support for Windows in a future version of the project.
+Yeoman 1.0 will support OS X and will attempt to support Linux as well. We will be aiming to bring in support for Windows in a future version of the project.
 
 ## Contribute
 
@@ -135,15 +135,15 @@ To run our test suite:
 npm test
 ```
 
-Do note that if any CLI prompts are not accounted for the test suite will have a timeout failure. 
+Do note that if any CLI prompts are not accounted for the test suite will have a timeout failure.
 
 ### Developer Docs
 
-We have significant developer docs for you if you'd like to hack on Yeoman. 
+We have significant developer docs for you if you'd like to hack on Yeoman.
 
-Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our first site's docs section](http://yeoman.github.com/docs/docs.html). 
+Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our first site's docs section](http://yeoman.github.com/docs/docs.html).
 
-You're also welcome to `git blame` back to commit messages and pull requests. As a project we value comprehensive discussion for our fellow developers. 
+You're also welcome to `git blame` back to commit messages and pull requests. As a project we value comprehensive discussion for our fellow developers.
 
 ## About
 
