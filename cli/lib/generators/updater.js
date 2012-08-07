@@ -9,9 +9,6 @@ var fs = require('fs'),
 
     updater = module.exports,
 
-    // Regular Expression for matching x.x.x
-    versionRE = /([0-9])+\.([0-9])+\.([0-9])/,
-
     // The types of updates supported
     updateTypes = {
 
@@ -55,19 +52,19 @@ updater.getUpdateType = function( currentVersion, remoteVersion ){
    }else{
 
    	   // Regex against versions for comparison
-   	   var current = versionRE.exec(currentVersion),
+   	   var current = currentVersion.split('.'),
            remote  = remoteVersion.split('.');
 
        // major update?
-       if( remote[3] > current[3] ){
+       if( remote[2] > current[2] ){
           return updateTypes.major;	
 
        // minor update?
-       }else if( remote[2] > current[2] ){
+       }else if( remote[1] > current[1] ){
        	  return updateTypes.minor;
 
        // patch?
-       }else if( remote[1] > current[1] ){
+       }else if( remote[0] > current[0] ){
        	  return updateTypes.patch;
        }else{
        	  return "Comparison error.";
