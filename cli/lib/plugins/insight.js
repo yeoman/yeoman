@@ -39,18 +39,20 @@ More info: http://goo.gl/GPtU9 & http://yeoman.io".yellow + "\n\
           prompt.message = '[' + '?'.green + ']';
           prompt.delimiter = ' ';
 
-          var schema = {
-            name       : 'optin',
-            message    : "[Y/n]: ",
-            "default"  : 'Y',
-            validator  : /^[yntf]{1}/i,
-            empty      : false
-          };
+          var properties = [{
+            name: 'optin',
+            message: '[Y/n]: ',
+            "default": 'Y',
+            validator: /^[yntf]{1}/i,
+            empty: false
+          }];
 
           prompt.start();
           console.log(msg);
-          prompt.getInput(schema, function(err, result) {
-            if (err) { return opts.cb(err); }
+          prompt.get(properties, function(err, result) {
+            if (err) {
+              return opts.cb(err);
+            }
 
             if (/n/i.test(result.optin)) {
               spawn('python', insightRecordCmd.concat(['NO_STATS']));
