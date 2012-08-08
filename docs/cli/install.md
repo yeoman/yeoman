@@ -27,13 +27,13 @@ will actually also install Underscore.js and jQuery.js as these are required for
 
 Currently available packages:
 
-* backbone git://github.com/paulirish/package-backbone.git
-* jquery-ui git://github.com/maccman/package-jquery-ui.git
-* jquery-infinite-scroll git://github.com/paulirish/infinite-scroll.git
-* jquery git://github.com/maccman/package-jquery.git
-* knockout git://github.com/SteveSanderson/knockout.git
-* modernizr git://github.com/josh/package-modernizr.git
-* spine git://github.com/maccman/spine.git
-* underscore git://github.com/paulirish/package-underscore.git
+* **backbone** *git://github.com/paulirish/package-backbone.git*
+* **jquery-ui** *git://github.com/maccman/package-jquery-ui.git*
+* **jquery-infinite-scroll** *git://github.com/paulirish/infinite-scroll.git*
+* **jquery** *git://github.com/maccman/package-jquery.git*
+* **knockout** *git://github.com/SteveSanderson/knockout.git*
+* **modernizr** *git://github.com/josh/package-modernizr.git*
+* **spine** *git://github.com/maccman/spine.git*
+* **underscore** *git://github.com/paulirish/package-underscore.git*
 
 For further information, see the section on the package manager.
