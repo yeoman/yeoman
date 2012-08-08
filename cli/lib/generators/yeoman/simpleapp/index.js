@@ -15,7 +15,7 @@ function AppGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   // setup the test-framework property, Gruntfile template will need this
-  this.test_framework = options['test-framework'] || 'jasmine';
+  this.test_framework = options['test-framework'] || 'mocha';
 
   // cleanup the name property from trailing /, typical usage of directories.
   // update the args object, it's used to initialize js-framework hooks
@@ -27,7 +27,7 @@ function AppGenerator(args, options, config) {
   // resolved to sass by default (could be switched to less for instance)
   this.hookFor('stylesheet-engine', { as: 'app' });
 
-  // resolved to jasmine by default (could be switched to mocha for instance)
+  // resolved to mocha by default (could be switched to jasmine for instance)
   this.hookFor('test-framework', { as: 'app' });
 
 }
