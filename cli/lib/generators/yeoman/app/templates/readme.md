@@ -70,10 +70,11 @@ The default directory structure of a generated yeoman application:
       │           └── split_view_spec.js
       └── test
           ├── index.html
-          ├── jasmine
-          │   ├── jasmine-html.js
-          │   ├── jasmine.css
-          │   └── jasmine.js
-          └── spec_helper.js
-
-
+          ├── lib
+          │   ├── chai.js
+          │   ├── expect.js
+          │   └── mocha-1.2.2
+          |       ├── mocha.css
+          |       └── mocha.js
+          └── runner
+              └── mocha.js
