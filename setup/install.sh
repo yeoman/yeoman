@@ -190,7 +190,6 @@ echo "We're going to move fast, but once we're done, "
 echo "you'll have the power of a thousand developers at your blinking cursor."
 echo "Okay here we go..."
 sudo npm install . -g
-sudo npm link
 
 echo ""
 echo "Yah Hoo! Yeoman global is in place, now for some housekeeping.."
