@@ -1,4 +1,3 @@
-
 var path = require('path');
 
 //
@@ -22,6 +21,7 @@ generators.hiddenNamespaces = [
   'yeoman:js',
   'sass:app',
   'jasmine:app',
+  /*jshint scripturl:true */
   'mocha:app'
 ];
 
@@ -87,8 +87,8 @@ generators.init = function init(grunt) {
     // init the grunt config if a Gruntfile was found
     try {
       require(generators.gruntfile).call(grunt, grunt);
-    } catch(e) {
-      grunt.log.write(msg).error().verbose.error(e.stack).or.error(e);
+    } catch( e ) {
+      grunt.log.write( e.message ).error().verbose.error( e.stack) .or.error( e );
     }
 
     // and cd into that base, all generators should write relative to the
@@ -131,18 +131,22 @@ generators.help = function help(args, options, config) {
   });
 
   // ensure we don't help loaded twice generator
-  namespaces = generators.grunt.util._.uniq(namespaces);
+  namespaces = grunt.util._.uniq(namespaces);
 
   // filter hidden namespaces
-  namespaces = namespaces.filter(function(ns) {
-    return !~generators.hiddenNamespaces.indexOf(ns);
+  namespaces = namespaces.filter(function( ns ) {
+    return generators.hiddenNamespaces.indexOf( ns ) === -1;
   });
 
   // group them by namespace
   var groups = {};
   namespaces.forEach(function(namespace) {
     var base = namespace.split(':')[0];
-    if(!groups[base]) groups[base] = [];
+
+    if ( !groups[ base ] ) {
+      groups[ base ] = [];
+    }
+
     groups[base] = groups[base].concat(namespace);
   });
 
@@ -173,7 +177,9 @@ generators.help = function help(args, options, config) {
   // print yeoman default first
   generators.printList('yeoman', groups.yeoman);
   Object.keys(groups).forEach(function(key) {
-    if(key === 'yeoman') return;
+    if ( key === 'yeoman' ) {
+      return;
+    }
     generators.printList(key, groups[key]);
   });
 };
@@ -240,26 +246,28 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 generators.create = function create(namespace, args, options, gruntConfig) {
   var names = namespace.split(':'),
     name = names.pop(),
-    klass = generators.findByNamespace(name, names.join(':'));
+    Klass = generators.findByNamespace(name, names.join(':'));
 
   // try by forcing the yeoman namespace, if none is specified
-  if(!klass && !names.length) {
-    klass = generators.findByNamespace(name, 'yeoman');
+  if(!Klass && !names.length) {
+    Klass = generators.findByNamespace(name, 'yeoman');
   }
 
-  if(!klass) return;
+  if ( !Klass ) {
+    return;
+  }
 
   // create a new generator from this class
-  var generator = new klass(args, options, gruntConfig);
+  var generator = new Klass(args, options, gruntConfig);
 
   // hacky, might change.
   // attach the invoke helper to the generator instance
   generator.invoke = generators.invoke;
 
   // and few other informations
-  generator.namespace = klass.namespace;
+  generator.namespace = Klass.namespace;
   generator.generatorName = name;
-  generator.generatorPath = klass.path;
+  generator.generatorPath = Klass.path;
 
   // follup registered hooks, and instantiate each resolved generator
   // so that we can get access to expected arguments / options
@@ -300,8 +308,7 @@ generators.create = function create(namespace, args, options, gruntConfig) {
 // the internal `lib/yeoman` path from within yeoman itself.
 //
 generators.findByNamespace = function findByNamespace(name, base) {
-  var internal = path.join(__dirname, '../..'),
-    lookups = base ? [base + ':' + name , base] : [name];
+  var lookups = base ? [base + ':' + name , base] : [name];
 
   // first search locally, ./lib/generators
   var generator = generators.lookup(lookups);
@@ -332,14 +339,18 @@ generators.lookup = function lookup(namespaces, basedir) {
   basedir = basedir || generators.base;
 
   paths.forEach(function(rawPath) {
-    if(generator) return;
+    if ( generator ) {
+      return;
+    }
 
     ['yeoman/generators', 'generators'].forEach(function(base) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
         // keep track of loaded path
-        generators.loadedPath && generators.loadedPath.push(path);
+        if ( generators.loadedPath ) {
+          generators.loadedPath.push( path );
+        }
         // console.log('>>', namespaces, 'search in ', path);
         generator = require(path);
         // dynamically attach the generator filepath where it was found
@@ -349,7 +360,9 @@ generators.lookup = function lookup(namespaces, basedir) {
 
       } catch(e) {
         // not a loadpath error? bubble up the exception
-        if(!~e.message.indexOf(path)) throw e;
+        if ( e.message.indexOf( path ) === -1 ) {
+          throw e;
+        }
       }
     });
   });
@@ -416,7 +429,9 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
 
   // filter out non generator based module
   found = found.filter(function(generator) {
-    if(typeof generator.module !== 'function') return false;
+    if ( typeof generator.module !== 'function' ) {
+      return false;
+    }
     generator.instance = new generator.module(args, options, config);
     return generator.instance instanceof generators.Base;
   }).sort(function(a, b) {
@@ -426,7 +441,7 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
   // and ensure we won't return same generator on different namespace
   var paths = [];
   return found.filter(function(generator) {
-    var known = !~paths.indexOf(generator.fullpath);
+    var known = paths.indexOf( generator.fullpath ) === -1;
     paths.push(generator.fullpath);
     return known;
   });

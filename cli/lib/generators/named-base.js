@@ -1,8 +1,6 @@
-
 var util = require('util'),
   Base = require('./base');
 
-module.exports = NamedBase;
 
 function NamedBase(args, options, config) {
   Base.apply(this, arguments);
@@ -10,3 +8,4 @@ function NamedBase(args, options, config) {
 }
 
 util.inherits(NamedBase, Base);
+module.exports = NamedBase;
