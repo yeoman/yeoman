@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
   path = require('path'),
   grunt = require('grunt'),
@@ -41,7 +40,9 @@ actions.log = grunt.log;
 
 // Stores and return the source root for this class
 actions.sourceRoot = function sourceRoot(root) {
-  if(root) this._sourceRoot = root;
+  if ( root ) {
+    this._sourceRoot = root;
+  }
   return this._sourceRoot;
 };
 
@@ -50,7 +51,11 @@ actions.sourceRoot = function sourceRoot(root) {
 actions.destinationRoot = function destinationRoot(root) {
   if(root) {
     this._destinationRoot = root;
-    if(!path.existsSync(root)) this.mkdir(root);
+
+    if ( !path.existsSync( root ) ) {
+      this.mkdir( root );
+    }
+
     process.chdir(root);
   }
 
@@ -153,14 +158,18 @@ actions.remote = function(username, repo, branch, cb) {
 
   fs.stat(cache, function(err) {
     // already cached
-    if(!err) return done();
+    if ( !err ) {
+      return done();
+    }
     // first time fetch
     self.tarball(url, cache, done);
   });
 
   // XXX remote should probably be in its own file,
   function done(err) {
-    if(err) return cb(err);
+    if ( err ) {
+      return cb( err );
+    }
 
     var files = grunt.file.expandFiles(path.join(cache, '**')).map(function(filepath) {
       return filepath.slice(cache.length + 1);

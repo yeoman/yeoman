@@ -20,7 +20,7 @@ var wiring = module.exports;
 //
 wiring.domUpdate = function domUpdate(html, tagName, content, mode){
 
-  $ = cheerio.load(html);
+  var $ = cheerio.load( html );
 
   if(content !== undefined) {
     if(mode === 'a') {
@@ -158,7 +158,7 @@ wiring.appendScriptsDir = function appendScriptsDir(html, optimizedPath, sourceS
 
 // Append a directory of stylesheets
 wiring.appendStylesDir = function appendStylesDir(html, optimizedPath, sourceStyleDir, attrs) {
-  var sourceStlyleList = fs.readdirSync(path.resolve(sourceStyleDir));
+  var sourceStyleList = fs.readdirSync(path.resolve(sourceStyleDir));
   return this.appendFiles(html, 'css', optimizedPath, sourceStyleList, attrs);
 };
 

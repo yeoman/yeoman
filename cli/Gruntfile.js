@@ -34,6 +34,7 @@ module.exports = function( grunt ) {
       ],
       lib: [
         'lib/{plugins,utils}/*.js',
+        'lib/generators/*.js'
       ],
       test: [
         //'test/**/*.js'
