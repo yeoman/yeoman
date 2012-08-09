@@ -2,9 +2,9 @@
 
 Usage: `yeoman install <packageName>`, `yeoman install <package1> <package2>`
 
-Installs a package <name> and any packages that this depends on using Twitter Bower. A package is a folder containing a resource described by a package.json file or a gzipped tarball containing this information.  
+Installs a package <name> and any packages that this depends on using Twitter Bower. A package is a folder containing a resource described by a package.json file or a gzipped tarball containing this information.
 
-Running yeoman install <name> will install the dependencies in your projects browser_modules folder. 
+Running yeoman install <name> will install the dependencies in your projects browser_modules folder.
 
 Example:
 
@@ -13,7 +13,7 @@ yeoman install jquery
 yeoman install jquery spine
 ```
 
-If installing a dependency which has its own dependencies described, these dependencies will also be pulled in. 
+If installing a dependency which has its own dependencies described, these dependencies will also be pulled in.
 
 Example:
 
@@ -29,7 +29,6 @@ Currently available packages:
 
 * **backbone** *git://github.com/paulirish/package-backbone.git*
 * **jquery-ui** *git://github.com/maccman/package-jquery-ui.git*
-* **jquery-infinite-scroll** *git://github.com/paulirish/infinite-scroll.git*
 * **jquery** *git://github.com/maccman/package-jquery.git*
 * **knockout** *git://github.com/SteveSanderson/knockout.git*
 * **modernizr** *git://github.com/josh/package-modernizr.git*
