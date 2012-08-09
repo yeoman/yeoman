@@ -393,7 +393,7 @@ Base.prototype.optionsHelp = function optionsHelp() {
       o.alias ? '-' + o.alias + ', ' : '',
       '--' + o.name,
       o.desc ? '# ' + o.desc : '',
-      !o.defaults ? '' : 'Default: ' + o.defaults
+      o.defaults == null ? '' : 'Default: ' + o.defaults
     ];
   });
 

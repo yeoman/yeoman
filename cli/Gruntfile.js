@@ -22,7 +22,8 @@ module.exports = function( grunt ) {
           undef: true,
           strict: false,
           trailing: true,
-          smarttabs: true
+          smarttabs: true,
+          eqnull: true
         },
         global: {
           process: true
