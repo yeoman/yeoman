@@ -43,6 +43,7 @@ Generator.prototype.writeFiles = function createManifest() {
   this.template('manifest.json', path.join('app', 'manifest.json'), data);
   this.template('index.html', path.join('app', 'index.html'), data);
   this.template('main.js', path.join('app', 'main.js'), data);
+  this.copy('../assets/icon-128.png', path.join('app', 'icon-128.png'));
 
 };
 
