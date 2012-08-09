@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
   path = require('path'),
   util = require('util'),
@@ -8,7 +7,6 @@ var fs = require('fs'),
   grunt = require('grunt'),
   _ = grunt.util._;
 
-module.exports = Base;
 
 function Base(args, options, config) {
   events.EventEmitter.call(this);
@@ -65,7 +63,11 @@ _.extend(Base.prototype, wiring);
 // for the method to be invoked, if none is given, the same values used to
 // initialize the invoker are used to initialize the invoked.
 Base.prototype.run = function run(args, cb) {
-  if(!cb) cb = args, args = this.args;
+  if ( !cb ) {
+    cb = args;
+    args = this.args;
+  }
+
   cb = cb || function() {};
 
   var self = this;
@@ -73,14 +75,20 @@ Base.prototype.run = function run(args, cb) {
   this._running = true;
   this.emit('run');
 
-  var methods = Object.keys(this.__proto__);
+  var methods = Object.keys( Object.getPrototypeOf( this ) );
   (function next(method) {
-    if(!method) return self.runHooks(cb);
-
+    if ( !method ) {
+      return self.runHooks( cb );
+    }
     // prevent specific methods from running. This include any private-like
     // method (prefixed with _) and coffee-specific method like constructor.
-    if(method.charAt(0) === '-') return next(methods.shift());
-    if(method.constructor === '-') return next(methods.shift());
+    if ( method.charAt(0) === '-' ) {
+      return next( methods.shift() );
+    }
+
+    if ( method.constructor === '-' ) {
+      return next( methods.shift() );
+    }
 
     // very very basic async management, could be done better using event and
     // EventEmitter ability of Generators.
@@ -88,7 +96,9 @@ Base.prototype.run = function run(args, cb) {
     self.async = function async() {
       wait = true;
       return function(err) {
-        if(err) self.emit('error', err);
+        if ( err ) {
+          self.emit('error', err);
+        }
         next(methods.shift());
       };
     };
@@ -97,10 +107,11 @@ Base.prototype.run = function run(args, cb) {
     self[method].apply(self, args);
 
     // async wasn't called, assume synchronous behaviour, go next right away
-    if(!wait) next(methods.shift());
+    if ( !wait ) {
+      next( methods.shift() );
+    }
 
-  })(methods.shift());
-
+  }(methods.shift()));
 
   return this;
 };
@@ -123,11 +134,13 @@ Base.prototype.runHooks = function runHooks(cb) {
       args = hook.args || self.args;
 
     self.invoke(resolved + ':' + context, args, options, gruntConfig, function(err) {
-      if(err) return cb(err);
+      if ( err ) {
+        return cb( err );
+      }
       next(hooks.shift());
     });
 
-  })(hooks.shift());
+  }(hooks.shift()));
 };
 
 
@@ -178,8 +191,13 @@ Base.prototype.argument = function argument(name, config) {
 
   var position = -1;
   this._arguments.forEach(function(arg, i) {
-    if(position !== -1) return;
-    if(arg.name === name) position = i;
+    if ( position !== -1 ) {
+      return;
+    }
+
+    if ( arg.name === name ) {
+      position = i;
+    }
   });
 
   // a bit of coercion and type handling, to be improved (just dealing with
@@ -223,8 +241,11 @@ Base.prototype.option = function option(name, config) {
     return o.name === name;
   })[0];
 
-  if(!opt) this._options.push(config);
-  else opt = config;
+  if ( !opt ) {
+    this._options.push( config );
+  } else {
+    opt = config;
+  }
 
   return this;
 };
@@ -261,8 +282,13 @@ Base.prototype.hookFor = function hookFor(name, config) {
 // cli options and Gruntfile's generator config.
 Base.prototype.defaultFor = function defaultFor(name) {
   var config = this.config.generators;
-  if(this.options[name]) name = this.options[name];
-  else if(config && config[name]) name = config[name];
+
+  if ( this.options[ name ] ) {
+    name = this.options[ name ];
+  } else if ( config && config[ name ] ) {
+    name = config[ name ];
+  }
+
   return name;
 };
 
@@ -289,8 +315,7 @@ Base.prototype.desc = function desc(description) {
 // root otherwise uses a default description.
 Base.prototype.help = function help() {
   var filepath = path.join(this.generatorPath, 'USAGE'),
-    exists = path.existsSync(filepath),
-    self = this;
+    exists = path.existsSync(filepath);
 
   var out = [
     'Usage:',
@@ -332,7 +357,11 @@ Base.prototype.usage = function usage() {
   name = name.replace(/^yeoman:/, '');
 
   var out = 'yeoman ' + cmd + ' ' + name + args + ' ' + options;
-  if(this.description) out += '\n\n' + this.description;
+
+  if ( this.description ) {
+    out += '\n\n' + this.description;
+  }
+
   return out;
 };
 
@@ -364,7 +393,7 @@ Base.prototype.optionsHelp = function optionsHelp() {
       o.alias ? '-' + o.alias + ', ' : '',
       '--' + o.name,
       o.desc ? '# ' + o.desc : '',
-      o.defaults == null ? '' : 'Default: ' + o.defaults
+      !o.defaults ? '' : 'Default: ' + o.defaults
     ];
   });
 
@@ -388,3 +417,4 @@ Base.prototype.optionsHelp = function optionsHelp() {
 };
 
 
+module.exports = Base;
