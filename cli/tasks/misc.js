@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     this.requiresConfig('staging');
 
     // store the current working directory, a subset of tasks needs to update
-    // the grunt.file.setBase accordinly on intermediate/ dir. And we might want
+    // the grunt.file.setBase accordinly on temp/ dir. And we might want
     // chdir back to the original one
     var base = grunt.config('base') || grunt.option('base') || process.cwd();
     grunt.config('base', base);
@@ -43,13 +43,13 @@ module.exports = function(grunt) {
         grunt.log.ok( source + ' -> ' + target );
       }
 
-      // Once copy done, ensure the current working directory is the intermediate one.
+      // Once copy done, ensure the current working directory is the temp one.
       grunt.file.setBase(grunt.config('staging'));
       cb(!e);
     });
   });
 
-  grunt.registerTask('copy', 'Copies the whole staging(intermediate/) folder to output (publish/) one', function() {
+  grunt.registerTask('copy', 'Copies the whole staging(temp/) folder to output (dist/) one', function() {
     this.requiresConfig('staging', 'output');
 
     var config = grunt.config(),
