@@ -11,7 +11,7 @@ var fs = require('fs'),
 // The users markup should be considered the primary source of information
 // for paths, references to assets which should be optimized.We also check
 // against files present in the relevant directory () (e.g checking against
-// the revved filename into the 'intermediate/') directory to find the SHA
+// the revved filename into the 'temp/') directory to find the SHA
 // that was generated.
 //
 // Todos:
@@ -368,7 +368,7 @@ module.exports = function(grunt) {
       // of cached files.
       var filepath = grunt.file.expand(path.join('**/*') + basename)[0];
 
-      // not a file in intermediate, skip it
+      // not a file in temp, skip it
       if ( !filepath ) {
         return match;
       }

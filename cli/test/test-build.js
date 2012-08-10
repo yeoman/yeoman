@@ -144,7 +144,7 @@ describe('yeoman init && yeoman build', function() {
         this.yeoman
           .expect(/Copying into/)
           .expect(/Ignoring .gitignore, .ignore, .buildignore/)
-          .expect(/(.+)app -> (.+)intermediate/);
+          .expect(/(.+)app -> (.+)temp/);
       });
     });
 
