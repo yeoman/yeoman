@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       compass: {
-        files: ['app/styles/sass/**/*.sass', 'app/styles/sass/**/*.scss'],
+        files: ['app/styles/**/*.sass', 'app/styles/**/*.scss'],
         tasks: 'compass reload'
       },
       reload: {
