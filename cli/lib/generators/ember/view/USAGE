@@ -5,5 +5,5 @@ Example:
     yeoman generate view Thing
 
     This will create:
-        app/js/views/thing-view.js
-        app/js/templates/thing.handlebars
+        app/scripts/views/thing-view.js
+        app/scripts/templates/thing.handlebars

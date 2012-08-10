@@ -5,4 +5,4 @@ Example:
     yeoman generate model Thing
 
     This will create:
-        app/js/models/thing-model.js
+        app/scripts/models/thing-model.js

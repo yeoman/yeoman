@@ -42,18 +42,18 @@ Generator.prototype.injectBackbone = function injectBackbone() {
 
     // Workaround until copying underscore/lodash-like scripts don't cause issues.
     indexData = this.appendScripts(indexData,
-        'app/js/vendor.js',
+        'app/scripts/vendor.js',
         ['http://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.4.1/lodash.min.js',
         'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js']);
 
-    // Wire MVC components (usemin: app/js/myapp.js)
+    // Wire MVC components (usemin: app/scripts/myapp.js)
     indexData = this.appendScripts(indexData,
-        'app/js/myapp.js',
-        ['app/js/' + this.appname  +'.js',
-        'app/js/views/application-view.js',
-        'app/js/models/application-model.js',
-        'app/js/collections/application-collection.js',
-        'app/js/routes/app-router.js']);
+        'app/scripts/myapp.js',
+        ['app/scripts/' + this.appname  +'.js',
+        'app/scripts/views/application-view.js',
+        'app/scripts/models/application-model.js',
+        'app/scripts/collections/application-collection.js',
+        'app/scripts/routes/app-router.js']);
 
     // Write out final file
     this.writeFileFromString(indexData, indexOut);
@@ -63,13 +63,13 @@ Generator.prototype.injectBackbone = function injectBackbone() {
 Generator.prototype.createDirLayout = function createDirLayout() {
   var self = this;
   this.dirs.forEach(function(dir) {
-    self.log.write('Creating app/js/' + dir + ' directory...')
-    self.mkdir(path.join('app/js', dir));
+    self.log.write('Creating app/scripts/' + dir + ' directory...')
+    self.mkdir(path.join('app/scripts', dir));
     self.log.ok();
   });
 };
 
 Generator.prototype.createAppFile = function createAppFile() {
-  this.template('app.js', 'app/js/' + this.appname + '.js');
+  this.template('app.js', 'app/scripts/' + this.appname + '.js');
 };
 

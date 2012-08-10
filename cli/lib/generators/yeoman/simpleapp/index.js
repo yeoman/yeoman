@@ -50,7 +50,7 @@ AppGenerator.prototype.askFor = function askFor (argument) {
   }, {
     name: 'bootstrapDest',
     message: 'Where would you like it be downloaded ? (not used if previous answer is no)',
-    default: 'app/js/vendor/bootstrap',
+    default: 'app/scripts/vendor/bootstrap',
     warning: 'You can change the default download location'
   },
   {
@@ -104,6 +104,8 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     if(err) { return cb(err); }
     // we copy the whole repository as our base app/ directory
     remote.directory('.', 'app');
+    fs.renameSync( 'app/js', 'app/scripts' );
+    fs.renameSync( 'app/css', 'app/styles' );
     cb();
   });
 };
@@ -124,6 +126,9 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
 };
 
 AppGenerator.prototype.writeIndex = function writeIndex() {
+
+  var $;
+
   // Resolve path to index.html
   var indexOut = path.resolve('app/index.html');
 
@@ -142,29 +147,37 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   indexData = this.removeScript(indexData, 'js/plugins.js');
   indexData = this.removeScript(indexData, 'js/main.js');
 
+  indexData = indexData.replace(/js\/vendor\/jquery/g, 'scripts/vendor/jquery');
+
+  $ = require('cheerio').load( indexData );
+  $('link[href="css/main.css"]').attr('href', 'styles/main.css');
+  $('script[src="js/vendor/modernizr-2.6.1.min.js"]').attr('src', 'scripts/vendor/modernizr-2.6.1.min.js');
+  indexData = $.html();
+  //indexData = this.prependFiles( indexData, 'js', ['js/vendor/modernizr-2.6.1.min.js'] );
+
   // Asked for Twitter bootstrap plugins?
   if(this.bootstrap) {
 
     defaults.push('Twitter Bootstrap plugins');
 
 /*
-    indexData = this.appendStyles(indexData, 'css/bootstrap-min.css',[
-     'css/bootstrap.css' ]);*/
+    indexData = this.appendStyles(indexData, 'styles/bootstrap-min.css',[
+     'styles/bootstrap.css' ]);*/
 
-    // Wire Twitter Bootstrap plugins (usemin: js/plugins.js)
-    indexData = this.appendScripts(indexData, 'js/plugins.js', [
-      'js/vendor/bootstrap/bootstrap-alert.js',
-      'js/vendor/bootstrap/bootstrap-dropdown.js',
-      'js/vendor/bootstrap/bootstrap-tooltip.js',
-      'js/vendor/bootstrap/bootstrap-modal.js',
-      'js/vendor/bootstrap/bootstrap-transition.js',
-      'js/vendor/bootstrap/bootstrap-button.js',
-      'js/vendor/bootstrap/bootstrap-popover.js',
-      'js/vendor/bootstrap/bootstrap-typeahead.js',
-      'js/vendor/bootstrap/bootstrap-carousel.js',
-      'js/vendor/bootstrap/bootstrap-scrollspy.js',
-      'js/vendor/bootstrap/bootstrap-collapse.js',
-      'js/vendor/bootstrap/bootstrap-tab.js'
+    // Wire Twitter Bootstrap plugins (usemin: scripts/plugins.js)
+    indexData = this.appendScripts(indexData, 'scripts/plugins.js', [
+      'scripts/vendor/bootstrap/bootstrap-alert.js',
+      'scripts/vendor/bootstrap/bootstrap-dropdown.js',
+      'scripts/vendor/bootstrap/bootstrap-tooltip.js',
+      'scripts/vendor/bootstrap/bootstrap-modal.js',
+      'scripts/vendor/bootstrap/bootstrap-transition.js',
+      'scripts/vendor/bootstrap/bootstrap-button.js',
+      'scripts/vendor/bootstrap/bootstrap-popover.js',
+      'scripts/vendor/bootstrap/bootstrap-typeahead.js',
+      'scripts/vendor/bootstrap/bootstrap-carousel.js',
+      'scripts/vendor/bootstrap/bootstrap-scrollspy.js',
+      'scripts/vendor/bootstrap/bootstrap-collapse.js',
+      'scripts/vendor/bootstrap/bootstrap-tab.js'
      ]);
   }
 
@@ -206,28 +219,28 @@ AppGenerator.prototype.requirejs = function requirejs(){
 
     this.remote('jrburke', 'requirejs', '819774388d0143f2dcc7b178a364e875aea6e45a', function(err, remote) {
       if(err) { return cb(err); }
-      remote.copy('require.js', 'app/js/vendor/require.js');
+      remote.copy('require.js', 'app/scripts/vendor/require.js');
 
       // Wire RequireJS/AMD (usemin: js/amd-app.js)
       var body = self.read(path.resolve('app/index.html'));
-      body = self.appendScripts(body, 'js/amd-app.js', ['js/vendor/require.js'], {
+      body = self.appendScripts(body, 'scripts/amd-app.js', ['scripts/vendor/require.js'], {
         'data-main': 'main'
       });
       self.write('app/index.html', body);
 
       // add a basic amd module (should be a file in templates/)
-      self.write('app/js/app.js',[
+      self.write('app/scripts/app.js',[
         "define([], function() {",
         "    return 'Hello from Yeoman!'",
         "});"
       ].join('\n'));
 
-      self.write('app/js/main.js', [
+      self.write('app/scripts/main.js', [
         "require.config({",
         "  shim:{",
         "  },",
         "  paths: {",
-        "    jquery: 'app/js/vendor/jquery-1.7.2'",
+        "    jquery: 'app/scripts/vendor/jquery-1.7.2'",
         "  }",
         "});",
         " ",
@@ -252,15 +265,15 @@ AppGenerator.prototype.requirehm = function requirehm(){
 
     this.remote('jrburke', 'require-hm', '9e1773f332d9d356bb6e7d976f9220f3a1371747', function(err, remote) {
       if(err) { return cb(err); }
-      remote.copy('hm.js', 'app/js/vendor/hm.js');
-      remote.copy('esprima.js', 'app/js/vendor/esprima.js');
+      remote.copy('hm.js', 'app/scripts/vendor/hm.js');
+      remote.copy('esprima.js', 'app/scripts/vendor/esprima.js');
 
 
       // Wire RequireJS/AMD (usemin: js/amd-app.js)
-      var mainjs = self.read(path.resolve('app/js/main.js'));
+      var mainjs = self.read(path.resolve('app/scripts/main.js'));
       mainjs = mainjs.replace('require.config({', 'require.config({\n  hm: "app/hm",\n');
-      mainjs = mainjs.replace('paths: {', 'paths: {\n    esprima: \'app/js/esprima\',');
-      self.write('app/js/main.js', mainjs);
+      mainjs = mainjs.replace('paths: {', 'paths: {\n    esprima: \'app/scripts/esprima\',');
+      self.write('app/scripts/main.js', mainjs);
       cb();
     });
 
@@ -269,13 +282,13 @@ AppGenerator.prototype.requirehm = function requirehm(){
 
 AppGenerator.prototype.writeMain = function writeMain(){
   this.log.writeln('Writing compiled Bootstrap');
-  this.template('main.css', path.join('app/css/bootstrap.css'));
+  this.template('main.css', path.join('app/styles/bootstrap.css'));
 };
 
 AppGenerator.prototype.app = function app() {
   this.mkdir('app');
-  this.mkdir('app/js');
-  this.mkdir('app/css');
+  this.mkdir('app/scripts');
+  this.mkdir('app/styles');
   this.mkdir('app/templates');
 };
 
