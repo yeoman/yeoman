@@ -6,7 +6,8 @@
   "homepage": "http://yeoman.io",
   "main": "./yeoman",
   "bin": {
-    "yeoman": "./bin/yeoman"
+    "yeoman": "./bin/yeoman",
+    "_yeomaninsight": "./bin/yeomaninsight.py"
   },
   "directories": {
     "man": "./man"
