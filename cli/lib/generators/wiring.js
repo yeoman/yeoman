@@ -65,7 +65,7 @@ wiring.appendToFile = function appendToFile(path, tagName, content){
 
 // Insert specific content as the first child of each element matched
 // by the tagName selector. Writes to file.
-wiring.prependToFile = function appendToFile(path, tagName, content){
+wiring.prependToFile = function prependToFile(path, tagName, content){
   var html = this.readFileAsString(path);
   var updatedContent = this.prepend(html, tagName, content);
   this.writeFileFromString(path, updatedContent);

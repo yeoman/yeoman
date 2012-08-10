@@ -153,7 +153,6 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   $('link[href="css/main.css"]').attr('href', 'styles/main.css');
   $('script[src="js/vendor/modernizr-2.6.1.min.js"]').attr('src', 'scripts/vendor/modernizr-2.6.1.min.js');
   indexData = $.html();
-  //indexData = this.prependFiles( indexData, 'js', ['js/vendor/modernizr-2.6.1.min.js'] );
 
   // Asked for Twitter bootstrap plugins?
   if(this.bootstrap) {
