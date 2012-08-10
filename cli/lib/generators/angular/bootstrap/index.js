@@ -31,26 +31,26 @@ Generator.prototype.injectAngular = function injectAngular() {
 Generator.prototype.createDirLayout = function createDirLayout() {
   var self = this;
   this.dirs.forEach(function(dir) {
-    self.log.write('Creating app/js/' + dir + ' directory...');
-    self.mkdir(path.join('app/js', dir));
+    self.log.write('Creating app/scripts/' + dir + ' directory...');
+    self.mkdir(path.join('app/scripts', dir));
     self.log.ok();
   });
 };
 
 Generator.prototype.createAppFile = function createAppFile() {
-  this.template('app.js', 'app/js/' + this.appname + '.js');
+  this.template('app.js', 'app/scripts/' + this.appname + '.js');
 };
 
 Generator.prototype.createFiltersFile = function createFiltersFile() {
-  this.template('filters.js', 'app/js/filters.js');
+  this.template('filters.js', 'app/scripts/filters.js');
 };
 
 Generator.prototype.createServicesFile = function createServicesFile() {
-  this.template('services.js', 'app/js/services.js');
+  this.template('services.js', 'app/scripts/services.js');
 };
 
 Generator.prototype.createDirectivesFile = function createDirectivesFile() {
-  this.template('directives.js', 'app/js/directives.js');
+  this.template('directives.js', 'app/scripts/directives.js');
 };
 
 
