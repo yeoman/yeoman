@@ -65,7 +65,6 @@ describe('Generators', function() {
 
   describe('yeoman.generators.prepare', function() {
 
-
     before(function() {
       grunt.cli.tasks = ['init', 'generatorname', 'some', 'args'];
       grunt.cli.options = {
@@ -110,7 +109,7 @@ describe('Generators', function() {
 
     before(function(done) {
       yeoman.generators.name = 'app';
-      yeoman.generators.args = ['testapp'];
+      yeoman.generators.args = ['.test'];
       this.cwd = process.cwd();
       this.generator = yeoman.generators.init(grunt);
       this.generators = yeoman.generators;

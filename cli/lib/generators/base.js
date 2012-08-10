@@ -44,6 +44,9 @@ function Base(args, options, config) {
   // holder for hooks
   this._hooks = [];
 
+  // holder for warns patterns
+  this._warns = [];
+
   // init general options, these are common to all generators
   this.option('help', {
     alias: 'h',
@@ -351,8 +354,8 @@ Base.prototype.usage = function usage() {
   }).join(' ');
 
   var options = this._options.length ? '[options]' : '',
-    name = this.namespace === 'yeoman:app' ? '' : this.namespace + ' ',
-    cmd = this.namespace === 'yeoman:app' ? 'new' : 'generate';
+    name = (this.namespace === 'yeoman:app' || !this.namespace) ? '' : this.namespace + ' ',
+    cmd = 'init';
 
   name = name.replace(/^yeoman:/, '');
 
@@ -416,5 +419,20 @@ Base.prototype.optionsHelp = function optionsHelp() {
   return out;
 };
 
+// Adds a file or a list of files to the warnings stack, can be glob patterns.
+//
+// Used to setup the Grunt init template warnOn property at runtime.
+//
+// - warns*: Can be one or more String or Array of String, representing glob
+// patterns to "warn on".
+//
+// Returns the generator.
+Base.prototype.warnOn = function warnOn() {
+  var warns = Array.prototype.slice.call(arguments);
+  warns.forEach(function(warn) {
+    this._warns = this._warns.concat(warn);
+  }, this);
+  return this;
+};
 
 module.exports = Base;
