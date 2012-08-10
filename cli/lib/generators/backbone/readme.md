@@ -11,23 +11,23 @@ Typical output:
 
 addyo-macbookpro:nyan addyo$ yeoman g backbone:bootstrap
 .. Invoke backbone:bootstrap ..
-Creating app/js/models directory...OK
-Creating app/js/collections directory...OK
-Creating app/js/views directory...OK
-Creating app/js/routes directory...OK
-Creating app/js/helpers directory...OK
-Creating app/js/templates directory...OK
-Writing app/js/nyan.js...OK
+Creating app/scripts/models directory...OK
+Creating app/scripts/collections directory...OK
+Creating app/scripts/views directory...OK
+Creating app/scripts/routes directory...OK
+Creating app/scripts/helpers directory...OK
+Creating app/scripts/templates directory...OK
+Writing app/scripts/nyan.js...OK
 
 .. Invoke backbone:view:bootstrap ..
-Writing app/js/views/application-view.js...OK
-Writing app/js/templates/application.ejs...OK
+Writing app/scripts/views/application-view.js...OK
+Writing app/scripts/templates/application.ejs...OK
 
 .. Invoke backbone:model:bootstrap ..
-Writing app/js/models/application-model.js...OK
+Writing app/scripts/models/application-model.js...OK
 
 .. Invoke backbone:collection:bootstrap ..
-Writing app/js/collections/application-collection.js...OK
+Writing app/scripts/collections/application-collection.js...OK
 
 .. Invoke backbone:router:bootstrap ..
-Writing app/js/routes/app-router.js...OK
+Writing app/scripts/routes/app-router.js...OK

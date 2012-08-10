@@ -27,5 +27,5 @@ function Generator() {
 util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createModelFiles = function createModelFiles() {
-  this.template('model.js', path.join('app/js/models', this.name + '-model.js'));
+  this.template('model.js', path.join('app/scripts/models', this.name + '-model.js'));
 };
