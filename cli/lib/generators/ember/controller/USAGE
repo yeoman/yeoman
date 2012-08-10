@@ -5,4 +5,4 @@ Example:
     yeoman generate controller Thing
 
     This will create:
-        app/js/controllers/thing-controller.js
+        app/scripts/controllers/thing-controller.js

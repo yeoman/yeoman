@@ -19,7 +19,7 @@ module.exports = function(grunt) {
   //    grunt manifest
   //    grunt manifest:appcache:path/to/my/app
   //    grunt manifest:performance:app
-  //    grunt manifest:performance:intermediate
+  //    grunt manifest:performance:temp
   //
   // Advanced options can be configured below for expected options. Can be configures in the application gruntfile.
   //

@@ -1,4 +1,3 @@
-
 var path = require('path');
 
 //
@@ -22,6 +21,7 @@ generators.hiddenNamespaces = [
   'yeoman:js',
   'sass:app',
   'jasmine:app',
+  /*jshint scripturl:true */
   'mocha:app'
 ];
 
@@ -60,17 +60,28 @@ generators.init = function init(grunt) {
     name = generators.name,
     opts = generators.options;
 
-  // We need to support
+  generators.setup(grunt);
 
-  // yeoman init
-  // yeoman init backbone
-  // yeoman init backbone:model
+  if(!name) {
+    // no generator to invoke, output the general help output
+    return generators.help(args, opts, grunt.config() || {});
+  }
 
-  // support yeoman init, yeoman init generatorName
-  // Use the prompts generator in simpleapp
-  name = name || 'simpleapp';
-  args[0] = args[0] || name;
+  // and invoke
+  return generators.invoke(name, args, opts, grunt.config() || {});
+};
 
+// Setup the generator layer and integrate into Grunt state.
+//
+// Setup the `cwd`, `gruntfie`, `base` property on the generator module,
+// walking up the file system to search for a valid Gruntfile, and init the
+// grunt configuration.
+//
+// Change directory to the application Gruntfile dirname, if found.
+//
+// Loads up any `yeoman-*` plugin in the node_modules directory, next to the
+// Gruntfile if found, or relative to current directory.
+generators.setup = function setup(grunt) {
   // figure out the base application directory
   generators.cwd = process.cwd();
   generators.gruntfile = grunt.file.findup(generators.cwd, '{G,g}runtfile.{js,coffee}');
@@ -87,8 +98,8 @@ generators.init = function init(grunt) {
     // init the grunt config if a Gruntfile was found
     try {
       require(generators.gruntfile).call(grunt, grunt);
-    } catch(e) {
-      grunt.log.write(msg).error().verbose.error(e.stack).or.error(e);
+    } catch( e ) {
+      grunt.log.write( e.message ).error().verbose.error( e.stack) .or.error( e );
     }
 
     // and cd into that base, all generators should write relative to the
@@ -98,13 +109,8 @@ generators.init = function init(grunt) {
 
   // try to locate locally installed yeoman plugin
   generators.plugins = grunt.file.expandDirs('node_modules/yeoman-*');
-  if(!name) {
-    // no generator to invoke, output the general help output
-    return generators.help(args, opts, grunt.config() || {});
-  }
 
-  // and invoke
-  return generators.invoke(name, args, opts, grunt.config() || {});
+  return generators;
 };
 
 // show help message with available generators
@@ -131,18 +137,22 @@ generators.help = function help(args, options, config) {
   });
 
   // ensure we don't help loaded twice generator
-  namespaces = generators.grunt.util._.uniq(namespaces);
+  namespaces = grunt.util._.uniq(namespaces);
 
   // filter hidden namespaces
-  namespaces = namespaces.filter(function(ns) {
-    return !~generators.hiddenNamespaces.indexOf(ns);
+  namespaces = namespaces.filter(function( ns ) {
+    return generators.hiddenNamespaces.indexOf( ns ) === -1;
   });
 
   // group them by namespace
   var groups = {};
   namespaces.forEach(function(namespace) {
     var base = namespace.split(':')[0];
-    if(!groups[base]) groups[base] = [];
+
+    if ( !groups[ base ] ) {
+      groups[ base ] = [];
+    }
+
     groups[base] = groups[base].concat(namespace);
   });
 
@@ -173,7 +183,9 @@ generators.help = function help(args, options, config) {
   // print yeoman default first
   generators.printList('yeoman', groups.yeoman);
   Object.keys(groups).forEach(function(key) {
-    if(key === 'yeoman') return;
+    if ( key === 'yeoman' ) {
+      return;
+    }
     generators.printList(key, groups[key]);
   });
 };
@@ -240,26 +252,28 @@ generators.invoke = function invoke(namespace, args, options, config, cb) {
 generators.create = function create(namespace, args, options, gruntConfig) {
   var names = namespace.split(':'),
     name = names.pop(),
-    klass = generators.findByNamespace(name, names.join(':'));
+    Klass = generators.findByNamespace(name, names.join(':'));
 
   // try by forcing the yeoman namespace, if none is specified
-  if(!klass && !names.length) {
-    klass = generators.findByNamespace(name, 'yeoman');
+  if(!Klass && !names.length) {
+    Klass = generators.findByNamespace(name, 'yeoman');
   }
 
-  if(!klass) return;
+  if ( !Klass ) {
+    return;
+  }
 
   // create a new generator from this class
-  var generator = new klass(args, options, gruntConfig);
+  var generator = new Klass(args, options, gruntConfig);
 
   // hacky, might change.
   // attach the invoke helper to the generator instance
   generator.invoke = generators.invoke;
 
   // and few other informations
-  generator.namespace = klass.namespace;
+  generator.namespace = Klass.namespace;
   generator.generatorName = name;
-  generator.generatorPath = klass.path;
+  generator.generatorPath = Klass.path;
 
   // follup registered hooks, and instantiate each resolved generator
   // so that we can get access to expected arguments / options
@@ -300,8 +314,7 @@ generators.create = function create(namespace, args, options, gruntConfig) {
 // the internal `lib/yeoman` path from within yeoman itself.
 //
 generators.findByNamespace = function findByNamespace(name, base) {
-  var internal = path.join(__dirname, '../..'),
-    lookups = base ? [base + ':' + name , base] : [name];
+  var lookups = base ? [base + ':' + name , base] : [name];
 
   // first search locally, ./lib/generators
   var generator = generators.lookup(lookups);
@@ -332,14 +345,18 @@ generators.lookup = function lookup(namespaces, basedir) {
   basedir = basedir || generators.base;
 
   paths.forEach(function(rawPath) {
-    if(generator) return;
+    if ( generator ) {
+      return;
+    }
 
     ['yeoman/generators', 'generators'].forEach(function(base) {
       var path = [basedir, 'lib', base, rawPath].join('/');
 
       try {
         // keep track of loaded path
-        generators.loadedPath && generators.loadedPath.push(path);
+        if ( generators.loadedPath ) {
+          generators.loadedPath.push( path );
+        }
         // console.log('>>', namespaces, 'search in ', path);
         generator = require(path);
         // dynamically attach the generator filepath where it was found
@@ -349,7 +366,9 @@ generators.lookup = function lookup(namespaces, basedir) {
 
       } catch(e) {
         // not a loadpath error? bubble up the exception
-        if(!~e.message.indexOf(path)) throw e;
+        if ( e.message.indexOf( path ) === -1 ) {
+          throw e;
+        }
       }
     });
   });
@@ -416,7 +435,9 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
 
   // filter out non generator based module
   found = found.filter(function(generator) {
-    if(typeof generator.module !== 'function') return false;
+    if ( typeof generator.module !== 'function' ) {
+      return false;
+    }
     generator.instance = new generator.module(args, options, config);
     return generator.instance instanceof generators.Base;
   }).sort(function(a, b) {
@@ -426,7 +447,7 @@ generators.lookupHelp = function lookupHelp(basedir, args, options, config) {
   // and ensure we won't return same generator on different namespace
   var paths = [];
   return found.filter(function(generator) {
-    var known = !~paths.indexOf(generator.fullpath);
+    var known = paths.indexOf( generator.fullpath ) === -1;
     paths.push(generator.fullpath);
     return known;
   });
@@ -437,4 +458,24 @@ generators.namespacesToPaths = function namespacesToPaths(namespaces) {
   return namespaces.map(function(namespace) {
     return namespace.split(':').join('/');
   });
+};
+
+// Returns the list of files generated by a generator, can be glob patterns.
+//
+// Used to setup the Grunt init template warnOn property at runtime.
+generators.warnOn = function warnOn(grunt) {
+  // name of the generator to invoke, as resolved in prepare step
+  var name = generators.name || '';
+  // options, from grunt.cli
+  var opts = generators.options;
+  // generator arguments, from grunt.cli.tasks minus generator name
+  var args = generators.args;
+  // Grunt config, from gruntfile
+  var config = grunt.config() || {};
+
+  // Attempt to locate and create the generator
+  var generator = generators.setup(grunt).create(name, args, opts, config);
+
+  // invalid generator, or empty warnings warn on nothing
+  return generator && generator._warns.length ? generator._warns : '';
 };

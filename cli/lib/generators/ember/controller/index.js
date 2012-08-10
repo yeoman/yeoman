@@ -26,5 +26,5 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
   var filename = this.options.array ? 'array_controller.js' : 'controller.js';
-  this.template(filename, path.join('app/js/controllers', this.filename + '-controller.js'));
+  this.template(filename, path.join('app/scripts/controllers', this.filename + '-controller.js'));
 };
