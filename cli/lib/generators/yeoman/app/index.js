@@ -72,29 +72,29 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
     // Read in as string for further update
     var indexData = self.readFileAsString(indexOut);
 
-    indexData = indexData.replace('css/main.css', 'app/css/main.css');
-    indexData = indexData.replace('js/vendor/modernizr-2.5.3.min.js',  'app/js/vendor/modernizr-2.5.3.min.js');
+    indexData = indexData.replace('css/main.css', 'app/styles/main.css');
+    indexData = indexData.replace('js/vendor/modernizr-2.5.3.min.js',  'app/scripts/vendor/modernizr-2.5.3.min.js');
 
     // Strip sections of H5BP we're going to overwrite
     indexData = self.removeScript(indexData, 'js/plugins.js');
     indexData = self.removeScript(indexData, 'js/main.js');
 
-    // Wire Twitter Bootstrap plugins (usemin: app/js/plugins.js)
+    // Wire Twitter Bootstrap plugins (usemin: app/scripts/plugins.js)
     indexData = self.appendScripts(indexData,
-        'app/js/plugins.js',
-       ["app/js/vendor/bootstrap/bootstrap-alert.js",
-        "app/js/vendor/bootstrap/bootstrap-dropdown.js",
-        "app/js/vendor/bootstrap/bootstrap-tooltip.js",
-        "app/js/vendor/bootstrap/bootstrap-modal.js",
-        "app/js/vendor/bootstrap/bootstrap-transition.js",
-        "app/js/vendor/bootstrap/bootstrap-button.js",
-        "app/js/vendor/bootstrap/bootstrap-popover.js",
-        "app/js/vendor/bootstrap/bootstrap-typeahead.js",
-        "app/js/vendor/bootstrap/bootstrap-carousel.js",
-        "app/js/vendor/bootstrap/bootstrap-scrollspy.js",
-        "app/js/vendor/bootstrap/bootstrap-collapse.js",
-        "app/js/vendor/bootstrap/bootstrap-tab.js"]);
-    // Alternative: indexData = _this.appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/js/vendor/bootstrap'));
+        'app/scripts/plugins.js',
+       ["app/scripts/vendor/bootstrap/bootstrap-alert.js",
+        "app/scripts/vendor/bootstrap/bootstrap-dropdown.js",
+        "app/scripts/vendor/bootstrap/bootstrap-tooltip.js",
+        "app/scripts/vendor/bootstrap/bootstrap-modal.js",
+        "app/scripts/vendor/bootstrap/bootstrap-transition.js",
+        "app/scripts/vendor/bootstrap/bootstrap-button.js",
+        "app/scripts/vendor/bootstrap/bootstrap-popover.js",
+        "app/scripts/vendor/bootstrap/bootstrap-typeahead.js",
+        "app/scripts/vendor/bootstrap/bootstrap-carousel.js",
+        "app/scripts/vendor/bootstrap/bootstrap-scrollspy.js",
+        "app/scripts/vendor/bootstrap/bootstrap-collapse.js",
+        "app/scripts/vendor/bootstrap/bootstrap-tab.js"]);
+    // Alternative: indexData = _this.appendScriptsDir(indexData, 'js/plugins.js', path.resolve('app/scripts/vendor/bootstrap'));
 
     // Write out final file
     self.writeFileFromString(indexData, indexOut);
@@ -125,8 +125,8 @@ AppGenerator.prototype.fetchPackage = function fetchPackage() {
 
 AppGenerator.prototype.app = function app() {
   this.mkdir('app');
-  this.mkdir('app/js');
-  this.mkdir('app/css');
+  this.mkdir('app/scripts');
+  this.mkdir('app/styles');
   this.mkdir('app/templates');
 };
 

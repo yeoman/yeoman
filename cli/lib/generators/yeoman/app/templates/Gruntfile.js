@@ -13,8 +13,8 @@ module.exports = function(grunt) {
     // coffee to js compilation
     coffee: {
       dist: {
-        src: 'app/js/**/*.coffee',
-        dest: 'app/js'
+        src: 'app/scripts/**/*.coffee',
+        dest: 'app/scripts'
       }
     },
 
@@ -23,10 +23,10 @@ module.exports = function(grunt) {
       dist: {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
-          css_dir: 'css',
-          sass_dir: 'css/sass',
+          css_dir: 'styles',
+          sass_dir: 'styles/sass',
           images_dir: 'img',
-          javascripts_dir: 'js'
+          javascripts_dir: 'scripts'
         }
       }
     },
@@ -48,11 +48,11 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       compass: {
-        files: ['app/css/sass/**/*.sass', 'app/css/sass/**/*.scss'],
+        files: ['app/styles/sass/**/*.sass', 'app/styles/sass/**/*.scss'],
         tasks: 'compass reload'
       },
       reload: {
-        files: ['app/css/**/*.css', 'app/js/**/*.js', 'app/img/**/*'],
+        files: ['app/styles/**/*.css', 'app/scripts/**/*.js', 'app/img/**/*'],
         tasks: 'reload'
       }
     },
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
-      files: ['Gruntfile.js', 'app/js/**/*.js', 'spec/**/*.js']
+      files: ['Gruntfile.js', 'app/scripts/**/*.js', 'spec/**/*.js']
     },
 
     // specifying JSHint options and globals
@@ -104,14 +104,14 @@ module.exports = function(grunt) {
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'css/main.css': ['css/**/*.css']
+      'css/main.css': ['styles/**/*.css']
     },
 
     // Renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'js/**/*.js',
-      css: 'css/**/*.css',
+      js: 'scripts/**/*.js',
+      css: 'styles/**/*.css',
       img: 'img/**'
     },
 
@@ -141,8 +141,8 @@ module.exports = function(grunt) {
     // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
     concat: {
       dist: {
-        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
-        dest: 'js/build.js'
+        src: ['scripts/plugins.js', 'scripts/vendor/bootstrap-*.js', 'scripts/main.js'],
+        dest: 'scripts/build.js'
       }
     },
 
@@ -150,8 +150,8 @@ module.exports = function(grunt) {
     // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
     min: {
       dist: {
-        src: 'js/build.js',
-        dest: 'js/build.min.js'
+        src: 'scripts/build.js',
+        dest: 'scripts/build.min.js'
       }
     },
 
@@ -162,8 +162,8 @@ module.exports = function(grunt) {
       modules: [{
         name: 'main',
       }],
-      dir: 'js',
-      appDir: 'js',
+      dir: 'scripts',
+      appDir: 'scripts',
       baseUrl: './',
       pragmas: {
         doExclude: true
