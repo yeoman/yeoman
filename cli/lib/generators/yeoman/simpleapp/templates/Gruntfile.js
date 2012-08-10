@@ -12,14 +12,14 @@ module.exports = function(grunt) {
 
     // specify an alternate install location for bower
     bower: {
-      dir: 'app/js/vendor'
+      dir: 'app/scripts/vendor'
     },
 
     // coffee to js compilation
     coffee: {
       dist: {
-        src: 'app/js/**/*.coffee',
-        dest: 'app/js'
+        src: 'app/scripts/**/*.coffee',
+        dest: 'app/scripts'
       }
     },
 
@@ -28,10 +28,10 @@ module.exports = function(grunt) {
       dist: {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
-          css_dir: 'css',
-          sass_dir: 'css/sass',
+          css_dir: 'styles',
+          sass_dir: 'styles/sass',
           images_dir: 'img',
-          javascripts_dir: 'js',
+          javascripts_dir: 'scripts',
           force: true
         }
       }
@@ -54,11 +54,11 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       compass: {
-        files: ['app/css/sass/**/*.sass', 'app/css/sass/**/*.scss'],
+        files: ['app/styles/sass/**/*.sass', 'app/styles/sass/**/*.scss'],
         tasks: 'compass reload'
       },
       reload: {
-        files: ['app/css/**/*.css', 'app/*.css', 'app/*.htm', 'app/*.html', 'app/*.htm', 'app/js/**/*.js', 'app/img/**/*'],
+        files: ['app/styles/**/*.css', 'styles/*.css', 'app/*.htm', 'app/*.html', 'app/*.htm', 'app/scripts/**/*.js', 'app/img/**/*'],
         tasks: 'reload'
       }
     },
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
-      files: ['Gruntfile.js', 'app/js/**/*.js', 'spec/**/*.js']
+      files: ['Gruntfile.js', 'app/scripts/**/*.js', 'spec/**/*.js']
     },
 
     // specifying JSHint options and globals
@@ -95,9 +95,9 @@ module.exports = function(grunt) {
     // -------------------
 
      // the staging directory used during the process
-    staging: 'intermediate',
+    staging: 'temp',
     // final build output
-    output: 'publish',
+    output: 'dist',
 
     mkdirs: {
       staging: 'app/'
@@ -110,14 +110,14 @@ module.exports = function(grunt) {
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'css/main.css': ['css/**/*.css']
+      'styles/main.css': ['styles/**/*.css']
     },
 
     // Renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'js/**/*.js',
-      css: 'css/**/*.css',
+      js: 'scripts/**/*.js',
+      css: 'styles/**/*.css',
       img: 'img/**'
     },
 
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
     rjs: {
       // no minification, is done by the min task
       optimize: 'none',
-      baseUrl: './js',
+      baseUrl: './scripts',
       wrap: true
     },
 

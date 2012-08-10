@@ -15,5 +15,5 @@ function Generator() {
 util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createControllerFiles = function createControllerFiles() {
-  this.template('router.js', 'app/js/routes/app-router.js');
+  this.template('router.js', 'app/scripts/routes/app-router.js');
 };

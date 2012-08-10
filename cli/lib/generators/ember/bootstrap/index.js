@@ -27,22 +27,22 @@ Generator.prototype.injectEmber = function injectEmber() {
 Generator.prototype.createDirLayout = function createDirLayout() {
   var self = this;
   this.dirs.forEach(function(dir) {
-    self.log.write('Creating app/js/' + dir + ' directory...')
-    self.mkdir(path.join('app/js', dir));
+    self.log.write('Creating app/scripts/' + dir + ' directory...')
+    self.mkdir(path.join('app/scripts', dir));
     self.log.ok();
   });
 };
 
 Generator.prototype.createAppFile = function createAppFile() {
-  this.template('app.js', 'app/js/' + this.appname + '.js');
+  this.template('app.js', 'app/scripts/' + this.appname + '.js');
 };
 
 Generator.prototype.createRouterFile = function createRouterFile() {
-  this.template('router.js', 'app/js/routes/app-router.js');
+  this.template('router.js', 'app/scripts/routes/app-router.js');
 };
 
 Generator.prototype.createStoreFile = function createStoreFile() {
-  this.template('store.js', 'app/js/store.js');
+  this.template('store.js', 'app/scripts/store.js');
 };
 
 Generator.prototype.createAppStubs = function createAppStubs() {
