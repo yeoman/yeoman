@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         tasks: 'coffee'
       },
       compass: {
-        files: ['css/sass/**/*.sass', 'css/sass/**/*.scss'],
+        files: ['css/**/*.sass', 'css/**/*.scss'],
         tasks: 'shell:compass'
       },
       // only used with `yeoman server`
