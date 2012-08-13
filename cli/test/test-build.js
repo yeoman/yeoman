@@ -46,9 +46,9 @@ describe('yeoman init && yeoman build', function() {
 
         // stylesheet hook - sass:app
         .expect(/Invoke sass:app/)
-        .expect(/Writing app\/styles\/sass\/main\.scss/)
-        .expect(/Writing app\/styles\/sass\/_compass_twitter_bootstrap\.sass/)
-        .expect(/Writing app\/styles\/sass\/compass_twitter_bootstrap\/(.+).sass/)
+        .expect(/Writing app\/styles\/main\.scss/)
+        .expect(/Writing app\/styles\/_compass_twitter_bootstrap\.sass/)
+        .expect(/Writing app\/styles\/compass_twitter_bootstrap\/(.+).sass/)
 
         // test hook - jasmine:app
         .expect(/Invoke mocha:app/)

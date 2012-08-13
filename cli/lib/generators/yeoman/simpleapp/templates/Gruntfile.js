@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
           css_dir: 'styles',
-          sass_dir: 'styles/sass',
+          sass_dir: 'styles',
           images_dir: 'img',
           javascripts_dir: 'scripts',
           force: true
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       compass: {
-        files: ['app/styles/sass/**/*.sass', 'app/styles/sass/**/*.scss'],
+        files: ['app/styles/**/*.sass', 'app/styles/**/*.scss'],
         tasks: 'compass reload'
       },
       reload: {
