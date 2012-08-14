@@ -30,7 +30,7 @@ describe('yeoman.generators.Base', function() {
 
     // actual generator
     this.generator = yeoman.generators.setup(grunt)
-        .create('simpleapp', [], {}, {});
+        .create('app', [], {}, {});
   });
 
   // cleaup the test dir, and cd into it
