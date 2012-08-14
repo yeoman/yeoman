@@ -78,5 +78,3 @@ The default directory structure of a generated yeoman application:
           |       └── mocha.js
           └── runner
               └── mocha.js
-
-
