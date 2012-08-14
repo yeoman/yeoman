@@ -21,7 +21,7 @@ grunt.cli.tasks = grunt.cli.tasks.map(function(arg) {
 });
 
 if(!name && !opts.help) {
-  yeoman.generators.name = 'simpleapp';
+  yeoman.generators.name = 'app';
 }
 
 // Basic template description.
