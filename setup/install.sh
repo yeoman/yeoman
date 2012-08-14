@@ -12,7 +12,7 @@ GEMFILE=$(which gem)
 COMPASSFILE=$(gem which compass)
 
 # packages to automatically be installed
-PACKAGES='git optipng libjpeg phantomjs'
+PACKAGES='git optipng jpeg-turbo phantomjs'
 
 
 echo "                                                            "
@@ -109,6 +109,7 @@ function check_or_install_brew_pkg() {
   fi
 }
 
+brew link jpeg-turbo
 
 # where will we return to?
 BACK="$PWD"
