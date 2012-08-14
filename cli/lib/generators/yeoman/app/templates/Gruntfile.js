@@ -10,6 +10,11 @@ module.exports = function(grunt) {
     // Project configuration
     // ---------------------
 
+    // specify an alternate install location for bower
+    bower: {
+      dir: 'app/scripts/vendor'
+    },
+
     // coffee to js compilation
     coffee: {
       dist: {
@@ -26,7 +31,8 @@ module.exports = function(grunt) {
           css_dir: 'styles',
           sass_dir: 'styles',
           images_dir: 'img',
-          javascripts_dir: 'scripts'
+          javascripts_dir: 'scripts',
+          force: true
         }
       }
     },
@@ -52,7 +58,7 @@ module.exports = function(grunt) {
         tasks: 'compass reload'
       },
       reload: {
-        files: ['app/styles/**/*.css', 'app/scripts/**/*.js', 'app/img/**/*'],
+        files: ['app/styles/**/*.css', 'styles/*.css', 'app/*.htm', 'app/*.html', 'app/*.htm', 'app/scripts/**/*.js', 'app/img/**/*'],
         tasks: 'reload'
       }
     },
@@ -104,7 +110,7 @@ module.exports = function(grunt) {
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'css/main.css': ['styles/**/*.css']
+      'styles/main.css': ['styles/**/*.css']
     },
 
     // Renames JS/CSS to prepend a hash of their contents for easier
@@ -115,16 +121,16 @@ module.exports = function(grunt) {
       img: 'img/**'
     },
 
-    // update references in html / css to revved files
-    usemin: {
-      html: ['**/*.html'],
-      css: ['**/*.css']
-    },
-
     // usemin handler should point to the file containing
     // the usemin blocks to be parsed
     'usemin-handler': {
       html: 'index.html'
+    },
+
+    // update references in html / css to revved files
+    usemin: {
+      html: ['**/*.html'],
+      css: ['**/*.css']
     },
 
     // html minification
@@ -137,40 +143,18 @@ module.exports = function(grunt) {
       dist: '<config:rev.img>'
     },
 
-    // default concat configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
-    concat: {
-      dist: {
-        src: ['scripts/plugins.js', 'scripts/vendor/bootstrap-*.js', 'scripts/main.js'],
-        dest: 'scripts/build.js'
-      }
-    },
-
-    // default min configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
-    min: {
-      dist: {
-        src: 'scripts/build.js',
-        dest: 'scripts/build.min.js'
-      }
-    },
-
     // rjs configuration. You don't necessary need to specify here the typical
     // `path` configuration, the rjs task will parse these values from your
-    // main module, using `require.config()`
+    // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
+    //
+    // name / out / mainConfig file should be used. You can let it blank if
+    // you're using usemin-handler to parse rjs config from markup (default
+    // setup)
     rjs: {
-      modules: [{
-        name: 'main',
-      }],
-      dir: 'scripts',
-      appDir: 'scripts',
-      baseUrl: './',
-      pragmas: {
-        doExclude: true
-      },
-      skipModuleInsertion: false,
-      optimizeAllPluginResources: true,
-      findNestedDependencies: true
+      // no minification, is done by the min task
+      optimize: 'none',
+      baseUrl: './scripts',
+      wrap: true
     },
 
     // specifying UglifyJS options:
