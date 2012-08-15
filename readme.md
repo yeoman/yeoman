@@ -9,7 +9,7 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 For more information about the project, see [yeoman.io](http://yeoman.io).
 
 
-## Installing
+## Installing (pre-launch)
 
 * Clone this repo and `cd` into it
 * Run this command: `./setup/install.sh`
@@ -55,7 +55,7 @@ yeoman search jquery                       # Lookup jquery in the Bower registry
 ```
 
 
-See the [complete documentation](http://yeoman.github.com/docs/docs.html) for more. We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available.
+See the [complete documentation](https://github.com/yeoman/yeoman/tree/master/docs/cli) for more. We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
 
 
 
@@ -68,6 +68,8 @@ following steps resolve these issues:
 cd yeoman/cli
 sudo -s 'npm install -g && npm link'
 ```
+
+Should you run into any further problems beyond this, please open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
 ## Running
 
@@ -114,7 +116,6 @@ Yeoman 1.0 will support OS X and will attempt to support Linux as well. We will 
 * [Yeoman (CLI, Insights)](http://github.com/yeoman/yeoman)
 * [Yeoman I/O Holding Page](http://github.com/yeoman/yeoman.io)
 * [Yeoman I/O Site](http://github.com/yeoman/yeoman.io) (site branch)
-* [Yeoman Docs](http://github.com/yeoman/docs)
 
 ### Style Guide
 
@@ -141,7 +142,7 @@ Do note that if any CLI prompts are not accounted for the test suite will have a
 
 We have significant developer docs for you if you'd like to hack on Yeoman.
 
-Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our first site's docs section](http://yeoman.github.com/docs/docs.html).
+Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our first site's docs section](https://github.com/yeoman/yeoman/tree/master/docs/cli).
 
 You're also welcome to `git blame` back to commit messages and pull requests. As a project we value comprehensive discussion for our fellow developers.
 
@@ -173,4 +174,4 @@ Version 1 of the project features the combined efforts of:
 
 and other developers.
 
-We will be aiming to officially release the project in late July, 2012.
+We will be aiming to officially release the project in Q3, 2012.
