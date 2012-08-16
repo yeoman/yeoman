@@ -13,7 +13,12 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 
 * Clone this repo and `cd` into it
 * Run this command: `./setup/install.sh`
+* `cd` into the `/cli` directory and run `sudo npm link`
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
+
+You can keep Yeoman up to date by using `git pull --rebase`.
+
+**Make sure to pull in the latest and test before filing an issue, it might be fixed already**
 
 
 ## Documentation
