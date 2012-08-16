@@ -210,8 +210,8 @@ cd "$BACK" && rm -rf "$TMP"
 
 # Welcome wagon
 echo ""
-echo "My my, I hope you enjoyed that as much as me."
-echo "Yeoman and all it's dependencies are now installed!"
+echo "My my, I hope you enjoyed that as much as I did."
+echo "Yeoman and all its dependencies are now installed!"
 echo ""
 echo "Now that we've got our ducks in a row..."
 echo "You should try starting a new project with yeoman."
