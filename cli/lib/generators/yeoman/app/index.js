@@ -138,9 +138,11 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   // Prepare default content text
   var defaults = ['HTML5 Boilerplate','Twitter Bootstrap'];
   var contentText = [
-    '    <h1>Cheerio!</h1>',
-    '    <p>You now have</p>',
-    '    <ul>'
+    '    <div class="container" style="margin-top:50px">',
+    '        <div class="hero-unit">',
+    '            <h1>Cheerio!</h1>',
+    '            <p>You now have</p>',
+    '            <ul>'
   ];
 
   // Strip sections of H5BP we're going to overwrite
@@ -195,9 +197,11 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
 
 
   contentText = contentText.concat([
-    '    </ul>',
-    '    <p>installed.</p>',
-    '    <h3>Enjoy coding! - Yeoman</h3>',
+    '            </ul>',
+    '            <p>installed.</p>',
+    '            <h3>Enjoy coding! - Yeoman</h3>',
+    '        </div>',
+    '    </div>',
     ''
   ]);
 
