@@ -101,7 +101,8 @@ AppGenerator.prototype.git = function git() {
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
 
-  this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
+  // Using sha since the lastest tag is so old
+  this.remote('h5bp', 'html5-boilerplate', '456211dc54c7a0328485d73cf25443d210d8e1d8', function(err, remote) {
     if(err) { return cb(err); }
 
     remote.copy( '.htaccess', 'app/.htaccess' );
@@ -123,7 +124,7 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
     dest = this.bootstrapLocation;
 
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
-  this.remote('twitter', 'bootstrap', function(err, remote, files) {
+  this.remote('twitter', 'bootstrap', 'v2.0.4', function(err, remote, files) {
     if(err) { return cb(err); }
     remote.directory('js', dest);
     cb();
@@ -226,7 +227,7 @@ AppGenerator.prototype.requirejs = function requirejs(){
 
   if(self.includeRequireJS){
 
-    this.remote('jrburke', 'requirejs', '819774388d0143f2dcc7b178a364e875aea6e45a', function(err, remote) {
+    this.remote('jrburke', 'requirejs', '2.0.5', function(err, remote) {
       if(err) { return cb(err); }
       remote.copy('require.js', 'app/scripts/vendor/require.js');
 
@@ -274,7 +275,7 @@ AppGenerator.prototype.requirehm = function requirehm(){
 
   if(self.includeRequireHM){
 
-    this.remote('jrburke', 'require-hm', '9e1773f332d9d356bb6e7d976f9220f3a1371747', function(err, remote) {
+    this.remote('jrburke', 'require-hm', '0.2.1', function(err, remote) {
       if(err) { return cb(err); }
       remote.copy('hm.js', 'app/scripts/vendor/hm.js');
       remote.copy('esprima.js', 'app/scripts/vendor/esprima.js');
