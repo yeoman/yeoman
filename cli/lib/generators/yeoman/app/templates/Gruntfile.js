@@ -1,5 +1,5 @@
-module.exports = function(grunt) {
-
+module.exports = function( grunt ) {
+  'use strict';
   //
   // Grunt configuration:
   //
@@ -10,12 +10,12 @@ module.exports = function(grunt) {
     // Project configuration
     // ---------------------
 
-    // specify an alternate install location for bower
+    // specify an alternate install location for Bower
     bower: {
       dir: 'app/scripts/vendor'
     },
 
-    // coffee to js compilation
+    // Coffee to JS compilation
     coffee: {
       dist: {
         src: 'app/scripts/**/*.coffee',
@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         options: {
           css_dir: 'styles',
           sass_dir: 'styles',
-          images_dir: 'img',
+          images_dir: 'images',
           javascripts_dir: 'scripts',
           force: true
         }
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       dest: ''
     },
 
-    // Headless test through PhantomJS
+    // headless testing through PhantomJS
     <%= test_framework %>: {
       all: ['test/**/*.html']
     },
@@ -54,20 +54,30 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       compass: {
-        files: ['app/styles/**/*.sass', 'app/styles/**/*.scss'],
+        files: [
+          'app/styles/**/*.{scss,sass}'
+        ],
         tasks: 'compass reload'
       },
       reload: {
-        files: ['app/styles/**/*.css', 'styles/*.css', 'app/*.htm', 'app/*.html', 'app/*.htm', 'app/scripts/**/*.js', 'app/img/**/*'],
+        files: [
+          'app/*.html',
+          'app/styles/**/*.css',
+          'app/scripts/**/*.js',
+          'app/images/**/*'
+        ],
         tasks: 'reload'
       }
     },
 
-
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
-      files: ['Gruntfile.js', 'app/scripts/**/*.js', 'spec/**/*.js']
+      files: [
+        'Gruntfile.js',
+        'app/scripts/**/*.js',
+        'spec/**/*.js'
+      ]
     },
 
     // specifying JSHint options and globals
@@ -94,7 +104,7 @@ module.exports = function(grunt) {
     // Build configuration
     // -------------------
 
-     // the staging directory used during the process
+    // the staging directory used during the process
     staging: 'temp',
     // final build output
     output: 'dist',
@@ -113,12 +123,12 @@ module.exports = function(grunt) {
       'styles/main.css': ['styles/**/*.css']
     },
 
-    // Renames JS/CSS to prepend a hash of their contents for easier
+    // renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
       js: 'scripts/**/*.js',
       css: 'styles/**/*.css',
-      img: 'img/**'
+      img: 'images/**'
     },
 
     // usemin handler should point to the file containing
@@ -127,13 +137,13 @@ module.exports = function(grunt) {
       html: 'index.html'
     },
 
-    // update references in html / css to revved files
+    // update references in HTML/CSS to revved files
     usemin: {
       html: ['**/*.html'],
       css: ['**/*.css']
     },
 
-    // html minification
+    // HTML minification
     html: {
       files: ['**/*.html']
     },
@@ -143,7 +153,7 @@ module.exports = function(grunt) {
       dist: '<config:rev.img>'
     },
 
-    // rjs configuration. You don't necessary need to specify here the typical
+    // rjs configuration. You don't necessarily need to specify the typical
     // `path` configuration, the rjs task will parse these values from your
     // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
     //
@@ -156,10 +166,6 @@ module.exports = function(grunt) {
       baseUrl: './scripts',
       wrap: true
     },
-
-    // specifying UglifyJS options:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options
-    uglify: {}
   });
 
   // Alias the `test` task to run the `mocha` task instead
