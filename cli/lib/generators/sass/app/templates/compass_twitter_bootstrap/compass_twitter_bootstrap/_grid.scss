@@ -1,0 +1,5 @@
+// Fixed (940px)
+@include bootstrap-grid-core($gridColumnWidth, $gridGutterWidth);
+
+// Fluid (940px)
+@include bootstrap-grid-fluid($fluidGridColumnWidth, $fluidGridGutterWidth);
