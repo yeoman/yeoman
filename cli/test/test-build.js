@@ -36,9 +36,7 @@ describe('yeoman init && yeoman build', function() {
         // some expected files from h5bp
         .expect(/Writing app\/index\.html/)
         .expect(/Writing app\/404\.html/)
-        .expect(/Writing app\/apple-touch-icon-(.+).png/)
         .expect(/Writing app\/styles\/main\.css/)
-        .expect(/Writing app\/img\/\.gitignore/)
         .expect(/Writing app\/scripts\/main\.js/)
 
         // same for bootstrap
@@ -202,16 +200,13 @@ describe('yeoman init && yeoman build', function() {
     describe('rev', function() {
       describe('rev: should find and process the following files', function() {
         it('scripts/main.js >> {rev}.main.js', function() {
-          this.yeoman.expect(/scripts\/main.js >> ([a-z0-9]+)\.main.js/i);
-        });
-        it('scripts/plugins.js >> {rev}.plugins.js', function() {
-          this.yeoman.expect(/scripts\/plugins.js >> ([a-z0-9]+)\.plugins.js/i);
+          this.yeoman.expect(/scripts\/main.js >> ([a-z0-9]+)\.main\.js/i);
         });
         it('scripts/vendor/bootstrap-alert.js >> {rev}.bootstrap-alert.js', function() {
-          this.yeoman.expect(/scripts\/vendor\/bootstrap\/bootstrap-alert.js >> ([a-z0-9]+)\.bootstrap-alert.js/i);
+          this.yeoman.expect(/scripts\/vendor\/bootstrap\/bootstrap-alert\.js >> ([a-z0-9]+)\.bootstrap-alert\.js/i);
         });
-        it('scripts/vendor/jquery-1.7.2.js >> {rev}.jquery-1.7.2.js', function() {
-          this.yeoman.expect(/scripts\/vendor\/jquery-1\.7\.2.js >> ([a-z0-9]+)\.jquery-1\.7\.2.js/i);
+        it('scripts/vendor/jquery.min.js >> {rev}.jquery.min.js', function() {
+          this.yeoman.expect(/scripts\/vendor\/jquery-min\.js >> ([a-z0-9]+)\.jquery-min\.js/i);
         });
         it('scripts/vendor/require.js >> {rev}.require.js', function() {
           this.yeoman.expect(/scripts\/vendor\/require\.js >> ([a-z0-9]+)\.require\.js/i);
@@ -221,10 +216,10 @@ describe('yeoman init && yeoman build', function() {
 
     describe('usemin', function() {
       describe('usemin: should find and replace the following files', function() {
-        it('scripts/vendor/modernizr-2.6.1.min.js', function() {
+        it('scripts/vendor/modernizr.min.js', function() {
           this.yeoman
-            .expect('was <script src="scripts/vendor/modernizr-2.6.1.min.js')
-            .expect(/now <script src="scripts\/vendor\/([a-z0-9]+)\.modernizr-2\.6\.1\.min\.js/i);
+            .expect('was <script src="scripts/vendor/modernizr.min.js')
+            .expect(/now <script src="scripts\/vendor\/([a-z0-9]+)\.modernizr.min\.js/i);
         });
         it('scripts/amp-app.js', function() {
           this.yeoman
