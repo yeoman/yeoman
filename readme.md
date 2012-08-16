@@ -69,7 +69,7 @@ cd yeoman/cli
 sudo -s 'npm install -g && npm link'
 ```
 
-Please also note that (pre-launch) commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have Bower installed. As this is currently in private beta, please let us know if you need access and we'll sort that out.
+Please also note that (pre-launch) commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. As this is also currently in private beta, please let us know if you need access and we'll sort that out.
 
 Should you run into any further problems beyond this, please open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
@@ -109,9 +109,11 @@ For example, run this guy as `$ server` (defaults to port 8000), or supply a por
 
 ## Platform Support
 
-Yeoman 1.0 will support OS X and will attempt to support Linux as well. We will be aiming to bring in support for Windows in a future version of the project.
+Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support for Windows in a future version of the project.
 
 ## Contribute
+
+We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) At this time we are primarily focusing on improving the user-experience and stability of Yeoman for our first release. Please keep this in mind if submitting feature requests, which we're happy to consider for future versions.
 
 ### Repos
 
@@ -144,7 +146,7 @@ Do note that if any CLI prompts are not accounted for the test suite will have a
 
 We have significant developer docs for you if you'd like to hack on Yeoman.
 
-Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our first site's docs section](https://github.com/yeoman/yeoman/tree/master/docs/cli).
+Currently you can find much of the details on [mklabs' yeoman wiki](https://github.com/mklabs/yeoman/wiki/_pages) but also [our primary project](https://github.com/yeoman/yeoman/tree/master/docs/cli).
 
 You're also welcome to `git blame` back to commit messages and pull requests. As a project we value comprehensive discussion for our fellow developers.
 
@@ -177,3 +179,7 @@ Version 1 of the project features the combined efforts of:
 and other developers.
 
 We will be aiming to officially release the project in Q3, 2012.
+
+## Disclaimer
+
+If you've been invited to try out the project as a beta tester or contributor, all we ask is that you refrain from publicly publishing/sharing the project sources until we have launched. This is to ensure that the first public version of Yeoman is as stable as possible, but would also stop unicorns from crying. Thanks for understanding :)
