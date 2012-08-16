@@ -167,6 +167,10 @@ else
     echo "Installing Compass for CSS preprocessing magic..."
     sudo gem update --system
     sudo gem install compass --pre
+    # Fix an issue with installing --pre of compass.
+    # Fixed in Compass master, but not released:
+    # https://github.com/chriseppstein/compass/pull/894
+    rubygems-bundler-uninstaller
 fi
 
 # now that we have all our major dependencies in place,
