@@ -13,14 +13,13 @@ import time
 import urllib
 import urllib2
 
-#import settings
-
 NO_STATS = 'NO_STATS'
-CLI_NAME = 'yeoman' #settings.APP['cli_name']
+CLI_NAME = 'yeoman'
 
 # TODO(ericbidelman): Verify expanduser('~') works on other platforms.
-INSIGHT_DIR = os.path.join(os.path.expanduser('~'), '.yeoman', 'insight')
-LOG_FILE = os.path.join(INSIGHT_DIR, '.log') #os.path.join(os.path.dirname(__file__), '.log')
+# ~/.yeoman/insight
+INSIGHT_DIR = os.path.join(os.path.expanduser('~'), '.' + CLI_NAME, 'insight')
+LOG_FILE = os.path.join(INSIGHT_DIR, '.log') # ~/.yeoman/insight/.log
 
 NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
 NUM_SECONDS_TO_STASH_DATA = 0 # Send data as it happens.

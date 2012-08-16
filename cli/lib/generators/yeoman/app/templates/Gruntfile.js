@@ -10,11 +10,16 @@ module.exports = function(grunt) {
     // Project configuration
     // ---------------------
 
+    // specify an alternate install location for bower
+    bower: {
+      dir: 'app/scripts/vendor'
+    },
+
     // coffee to js compilation
     coffee: {
       dist: {
-        src: 'app/js/**/*.coffee',
-        dest: 'app/js'
+        src: 'app/scripts/**/*.coffee',
+        dest: 'app/scripts'
       }
     },
 
@@ -23,10 +28,11 @@ module.exports = function(grunt) {
       dist: {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
-          css_dir: 'css',
-          sass_dir: 'css/sass',
+          css_dir: 'styles',
+          sass_dir: 'styles',
           images_dir: 'img',
-          javascripts_dir: 'js'
+          javascripts_dir: 'scripts',
+          force: true
         }
       }
     },
@@ -48,11 +54,11 @@ module.exports = function(grunt) {
         tasks: 'coffee reload'
       },
       compass: {
-        files: ['app/css/sass/**/*.sass', 'app/css/sass/**/*.scss'],
+        files: ['app/styles/**/*.sass', 'app/styles/**/*.scss'],
         tasks: 'compass reload'
       },
       reload: {
-        files: ['app/css/**/*.css', 'app/js/**/*.js', 'app/img/**/*'],
+        files: ['app/styles/**/*.css', 'styles/*.css', 'app/*.htm', 'app/*.html', 'app/*.htm', 'app/scripts/**/*.js', 'app/img/**/*'],
         tasks: 'reload'
       }
     },
@@ -61,7 +67,7 @@ module.exports = function(grunt) {
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
-      files: ['Gruntfile.js', 'app/js/**/*.js', 'spec/**/*.js']
+      files: ['Gruntfile.js', 'app/scripts/**/*.js', 'spec/**/*.js']
     },
 
     // specifying JSHint options and globals
@@ -89,9 +95,9 @@ module.exports = function(grunt) {
     // -------------------
 
      // the staging directory used during the process
-    staging: 'intermediate',
+    staging: 'temp',
     // final build output
-    output: 'publish',
+    output: 'dist',
 
     mkdirs: {
       staging: 'app/'
@@ -104,27 +110,27 @@ module.exports = function(grunt) {
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'css/main.css': ['css/**/*.css']
+      'styles/main.css': ['styles/**/*.css']
     },
 
     // Renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'js/**/*.js',
-      css: 'css/**/*.css',
+      js: 'scripts/**/*.js',
+      css: 'styles/**/*.css',
       img: 'img/**'
-    },
-
-    // update references in html / css to revved files
-    usemin: {
-      html: ['**/*.html'],
-      css: ['**/*.css']
     },
 
     // usemin handler should point to the file containing
     // the usemin blocks to be parsed
     'usemin-handler': {
       html: 'index.html'
+    },
+
+    // update references in html / css to revved files
+    usemin: {
+      html: ['**/*.html'],
+      css: ['**/*.css']
     },
 
     // html minification
@@ -137,40 +143,18 @@ module.exports = function(grunt) {
       dist: '<config:rev.img>'
     },
 
-    // default concat configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
-    concat: {
-      dist: {
-        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
-        dest: 'js/build.js'
-      }
-    },
-
-    // default min configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
-    min: {
-      dist: {
-        src: 'js/build.js',
-        dest: 'js/build.min.js'
-      }
-    },
-
     // rjs configuration. You don't necessary need to specify here the typical
     // `path` configuration, the rjs task will parse these values from your
-    // main module, using `require.config()`
+    // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
+    //
+    // name / out / mainConfig file should be used. You can let it blank if
+    // you're using usemin-handler to parse rjs config from markup (default
+    // setup)
     rjs: {
-      modules: [{
-        name: 'main',
-      }],
-      dir: 'js',
-      appDir: 'js',
-      baseUrl: './',
-      pragmas: {
-        doExclude: true
-      },
-      skipModuleInsertion: false,
-      optimizeAllPluginResources: true,
-      findNestedDependencies: true
+      // no minification, is done by the min task
+      optimize: 'none',
+      baseUrl: './scripts',
+      wrap: true
     },
 
     // specifying UglifyJS options:

@@ -7,23 +7,7 @@ module.exports = function( grunt ) {
   grunt.initConfig({
     lint: {
       options: {
-        options: {
-          node: true,
-          es5 : true,
-          esnext: true,
-          bitwise: true,
-          curly: true,
-          eqeqeq: true,
-          immed: true,
-          latedef: true,
-          newcap: true,
-          noarg: true,
-          //regexp: true,
-          undef: true,
-          strict: false,
-          trailing: true,
-          smarttabs: true
-        },
+        options: '<json:.jshintrc>',
         global: {
           process: true
         }
@@ -34,6 +18,7 @@ module.exports = function( grunt ) {
       ],
       lib: [
         'lib/{plugins,utils}/*.js',
+        'lib/generators/*.js'
       ],
       test: [
         //'test/**/*.js'

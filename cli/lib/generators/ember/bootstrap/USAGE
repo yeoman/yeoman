@@ -1,14 +1,14 @@
 Description:
-    Creates a default Ember.js folder layout in app/js/
+    Creates a default Ember.js folder layout in app/scripts/
 
 Example:
     yeoman generate bootstrap Thing
 
     This will create:
-        app/js/app.js
-        app/js/models/
-        app/js/controllers/
-        app/js/views/
-        app/js/helpers/
-        app/js/templates/
+        app/scripts/app.js
+        app/scripts/models/
+        app/scripts/controllers/
+        app/scripts/views/
+        app/scripts/helpers/
+        app/scripts/templates/
 

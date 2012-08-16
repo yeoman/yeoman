@@ -8,6 +8,8 @@ module.exports = Generator;
 
 function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
+
+  this.warnOn('lib/generators/' + this.name + '/*');
 }
 
 util.inherits(Generator, yeoman.generators.NamedBase);
