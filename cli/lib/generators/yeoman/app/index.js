@@ -126,7 +126,13 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
   this.remote('twitter', 'bootstrap', 'v2.0.4', function(err, remote, files) {
     if(err) { return cb(err); }
-    remote.directory('js', dest);
+
+    'alert button carousel collapse dropdown modal popover scrollspy tab tooltip transition typeahead'.split(' ')
+    .forEach(function( el ) {
+      var filename = 'bootstrap-' + el + '.js';
+      remote.copy( 'js/' + filename, 'app/scripts/vendor/bootstrap/' + filename );
+    });
+
     cb();
   });
 };
