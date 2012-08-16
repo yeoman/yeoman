@@ -93,8 +93,9 @@ AppGenerator.prototype.packageJSON = function packageJSON() {
   this.template('package.json');
 };
 
-AppGenerator.prototype.gitignore = function gitignore() {
+AppGenerator.prototype.git = function git() {
   this.copy('gitignore', '.gitignore');
+  this.copy('gitattributes', '.gitattributes');
 };
 
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
@@ -102,10 +103,14 @@ AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
 
   this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
     if(err) { return cb(err); }
-    // we copy the whole repository as our base app/ directory
-    remote.directory('.', 'app');
-    fs.renameSync( 'app/js', 'app/scripts' );
-    fs.renameSync( 'app/css', 'app/styles' );
+
+    remote.copy( '.htaccess', 'app/.htaccess' );
+    remote.copy( '404.html', 'app/404.html' );
+    remote.copy( 'index.html', 'app/index.html' );
+    remote.copy( 'robots.txt', 'app/robots.txt' );
+    remote.copy( 'js/vendor/jquery-1.8.0.min.js', 'app/scripts/vendor/jquery.min.js' );
+    remote.copy( 'js/vendor/modernizr-2.6.1.min.js', 'app/scripts/vendor/modernizr.min.js' );
+
     cb();
   });
 };
@@ -149,11 +154,12 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   indexData = this.removeScript(indexData, 'js/plugins.js');
   indexData = this.removeScript(indexData, 'js/main.js');
 
-  indexData = indexData.replace(/js\/vendor\/jquery/g, 'scripts/vendor/jquery');
+  indexData = indexData.replace(/js\/vendor\/jquery[^"]+/g, 'scripts/vendor/jquery.min.js');
 
   $ = require('cheerio').load( indexData );
+  $('link[href="css/normalize.css"]').attr('href', 'styles/normalize.css');
   $('link[href="css/main.css"]').attr('href', 'styles/main.css');
-  $('script[src="js/vendor/modernizr-2.6.1.min.js"]').attr('src', 'scripts/vendor/modernizr-2.6.1.min.js');
+  $('script[src^="js/vendor/modernizr"]').attr('src', 'scripts/vendor/modernizr.min.js');
   indexData = $.html();
 
   // Asked for Twitter bootstrap plugins?
@@ -243,7 +249,7 @@ AppGenerator.prototype.requirejs = function requirejs(){
         "  shim:{",
         "  },",
         "  paths: {",
-        "    jquery: 'app/scripts/vendor/jquery-1.7.2'",
+        "    jquery: 'app/scripts/vendor/jquery.min'",
         "  }",
         "});",
         " ",
@@ -292,6 +298,7 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app');
   this.mkdir('app/scripts');
   this.mkdir('app/styles');
+  this.mkdir('app/images');
   this.mkdir('app/templates');
 };
 
