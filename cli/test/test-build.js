@@ -192,7 +192,7 @@ describe('yeoman init && yeoman build', function() {
     });
 
     describe('css', function() {
-      it('should process css/main.css', function() {
+      it('should process styles/main.css', function() {
         this.yeoman
           .expect(/Running "css:styles\/main.css" \(css\) task/)
           .expect(/Writing css files to styles\/main.css/);
