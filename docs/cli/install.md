@@ -23,6 +23,15 @@ yeoman install backbone
 
 will actually also install Underscore.js and jQuery.js as these are required for Backbone to function correctly.
 
+`yeoman install` also supports installing packages using more than just the package name. Namely:
+
+```
+bower install jquery
+bower install git://github.com/maccman/package-jquery.git
+bower install http://code.jquery.com/jquery-1.7.2.js
+bower install ./repos/jquery
+```
+
 ## Available Packages
 
 Currently available packages:
