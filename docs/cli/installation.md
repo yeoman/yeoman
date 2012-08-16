@@ -1,11 +1,9 @@
 
 ## Installation
 
-Installing Yeoman in an easy process that should take less than 10 minutes using our quick install
-option. We also provide notes on how to perform a more custom installation, should you need to do
-this.
+Installing Yeoman in an easy process that should take less than 10 minutes on OSX. We also provide notes on how to install on Linux or opt for a more custom installation, should you need to do this. At present, Yeoman is not supported on Windows (but we're working on it!).
 
-### Quick-install
+## OSX 
 
 ###Step 1: Install me
 
@@ -30,8 +28,87 @@ If a directory isn't supplied, we'll infer a name based on the directory you're 
 
 We'll then ask you some questions to help scaffold your project out. Simple! 
 
+## Linux
 
-### Manual/Custom Installation
+Yeoman requires a few specific dependencies to be present before it can be installed on Linux. These are Ruby, RVM, Compass, PhantomJS and Node.
+
+#### Install Ruby
+
+Use your relevant package manager to update or install Ruby with the following at a terminal window:
+
+```shell
+$ sudo apt-get install ruby  # for Ubuntu / Debian users
+$ sudo yum install ruby      # for Red Hat / Fedora users
+```
+
+#### Install RVM
+
+Install RVM with ruby:
+
+```shell
+$ curl -L https://get.rvm.io | bash -s stable --ruby
+```
+
+and with rails:
+
+```shell
+$ curl -L https://get.rvm.io | bash -s stable --rails
+```
+
+Finally, to install without the "rubygems-bundler" or "rvm" gems:
+
+```shell
+$ curl -L https://get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"
+```
+
+#### Install Compass using RVM
+
+```shell
+$ rvm wrapper 1.9.3@compass --no-prefix compass
+```
+
+#### Install PhantomJS
+
+```shell
+$ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
+$ git clone git://github.com/ariya/phantomjs.git
+$ cd phantomjs
+$ git checkout 1.6
+./build.sh
+```
+
+#### Install Node and NPM
+
+First:
+
+```shell
+sudo apt-get install libssl-dev
+```
+
+Then 
+
+```shell
+echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
+. ~/.bashrc
+mkdir ~/local
+mkdir ~/node-latest-install
+cd ~/node-latest-install
+curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
+./configure --prefix=~/local
+make install # ok, fine, this step probably takes more than 30 seconds...
+curl http://npmjs.org/install.sh | sh
+```
+
+#### Install Yeoman
+
+* Install [git](http://git-scm.com/book/en/Getting-Started-Installing-Git)
+* Clone the [yeoman repo](https://github.com/yeoman/yeoman/) and `cd` into it
+* Run this command: `./setup/install.sh`
+* Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
+
+
+
+## Custom Installation
 
 There are two main ways to install, using a "global" or a "local" install.
 
@@ -110,7 +187,7 @@ For development, the `npm link` command might be handy (posix only, instead of
 `npm install -g`).
 
 
-### Updating
+## Updating
 
 One of our goals is to implement an easy way to update to the latest version of Yeoman with minimal effort
 on your part. Whilst we hope to get this in place before the first version of the project launches, you can

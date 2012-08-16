@@ -212,7 +212,9 @@ module.exports = function(grunt) {
     var middleware = [];
 
     // add the special livereload snippet injection middleware
-    if(opts.inject) middleware.push(grunt.helper('reload:inject'));
+    if ( opts.inject ) {
+      middleware.push( grunt.helper('reload:inject') );
+    }
 
     middleware = middleware.concat([
       // Serve static files.
@@ -260,7 +262,9 @@ module.exports = function(grunt) {
           port: port
         });
 
-        if(opts.open) open('http://' + opts.hostname + ':' + port);
+        if ( opts.open ) {
+          open( 'http://' + opts.hostname + ':' + port );
+        }
 
         cb(null, port);
       });

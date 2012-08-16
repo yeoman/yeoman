@@ -12,7 +12,7 @@ GEMFILE=$(which gem)
 COMPASSFILE=$(gem which compass)
 
 # packages to automatically be installed
-PACKAGES='git optipng libjpeg phantomjs'
+PACKAGES='git optipng jpeg-turbo phantomjs'
 
 
 echo "                                                            "
@@ -109,6 +109,7 @@ function check_or_install_brew_pkg() {
   fi
 }
 
+brew link jpeg-turbo
 
 # where will we return to?
 BACK="$PWD"
@@ -192,16 +193,17 @@ echo "Okay here we go..."
 sudo npm install . -g
 
 echo ""
-echo "Yah Hoo! Yeoman global is in place, now for some housekeeping.."
-
-# let's ask the user if she is okay with reporting anonymous stats so we can build a better tool
+echo "Yah Hoo! Yeoman global is in place."
 echo ""
-cd ../metrics
-# TODO: creating a path like this probably doesn't work on Windows.
-python setup.py install --quiet --force --user --install-scripts=~/.yeoman/insight
 
-echo "Alright now, that bit is done now, too."
-echo ""
+# # let's ask the user if she is okay with reporting anonymous stats so we can build a better tool
+# echo ""
+# cd ../metrics
+# # TODO: creating a path like this probably doesn't work on Windows.
+# python setup.py install --quiet --force --user --install-scripts=~/.yeoman/insight
+
+# echo "Alright now, that bit is done now, too."
+# echo ""
 
 # hop back to start and kill our temp folder off
 cd "$BACK" && rm -rf "$TMP"
