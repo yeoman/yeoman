@@ -30,11 +30,11 @@ module.exports = function( grunt ) {
     var compass = grunt.util.spawn({
       cmd: 'compass',
       args: ['compile'].concat( args )
-    }, function( err ) {
-      if ( err ) {
-        grunt.fail.fatal( err );
-      }
-      cb();
+    }, function( err, result, code ) {
+      // Since `compass compile` exits with 1 when it has nothing to compile,
+      // we do a little workaround by checking stdout which is then empty
+      // https://github.com/chriseppstein/compass/issues/993
+      cb( code === 0 || !result.stdout );
     });
 
     compass.stdout.pipe( process.stdout );
