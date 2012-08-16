@@ -206,7 +206,7 @@ describe('yeoman init && yeoman build', function() {
           this.yeoman.expect(/scripts\/vendor\/bootstrap\/bootstrap-alert\.js >> ([a-z0-9]+)\.bootstrap-alert\.js/i);
         });
         it('scripts/vendor/jquery.min.js >> {rev}.jquery.min.js', function() {
-          this.yeoman.expect(/scripts\/vendor\/jquery-min\.js >> ([a-z0-9]+)\.jquery-min\.js/i);
+          this.yeoman.expect(/scripts\/vendor\/jquery.min\.js >> ([a-z0-9]+)\.jquery.min\.js/i);
         });
         it('scripts/vendor/require.js >> {rev}.require.js', function() {
           this.yeoman.expect(/scripts\/vendor\/require\.js >> ([a-z0-9]+)\.require\.js/i);
