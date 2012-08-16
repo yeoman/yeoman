@@ -262,6 +262,8 @@ AppGenerator.prototype.requirejs = function requirejs(){
       cb();
     });
 
+  } else {
+    cb();
   }
 };
 
@@ -286,6 +288,8 @@ AppGenerator.prototype.requirehm = function requirehm(){
       cb();
     });
 
+  } else {
+    cb();
   }
 };
 
