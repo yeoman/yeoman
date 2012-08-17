@@ -78,31 +78,6 @@ Please also note that (pre-launch) commands such as `yeoman install`, `yeoman up
 
 Should you run into any further problems beyond this, please open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
-## Running
-
-Here's a small shell script that you can save as `server.sh` which opens and serves the current directory:
-
-```shell
-#!/usr/bin/env sh
-
-port=$1
-if [ $# -ne 1 ]; then
-  port=8000
-fi
-
-if [ $(uname -s) == "Darwin" ]; then
-  open=open
-else
-  open=xdg-open
-fi
-
-$open http://localhost:$port && python -m SimpleHTTPServer $port;
-```
-
-You then need to make it executable: `$ chmod +x server.sh`
-
-For example, run this guy as `$ server` (defaults to port 8000), or supply a port yourself `$ server 3000`.
-
 
 
 ## Browser Support
