@@ -16,7 +16,7 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 * `cd` into the `/cli` directory and run `sudo npm link`
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
 
-You can keep Yeoman up to date by using `git pull --rebase upstream master`.
+You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`.
 
 **Make sure to pull in the latest and test before filing an issue, it might be fixed already**
 
