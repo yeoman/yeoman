@@ -6,7 +6,7 @@ Usage: `yeoman init`, `yeoman init generatorName`, `yeoman init generatorName:su
 Helps you kick-start a new web application by asking a number of questions about what you would like to include. 
 These answers are used to scaffold out a file structure for your project.
 
-The default init template is based on:
+The init template is based on:
 
 * HTML5 Boilerplate for the main base
 * Compass Twitter Bootstrap for the SASS files as the CSS files are authored in SASS
@@ -16,6 +16,26 @@ The default init template is based on:
 
 By default we support Compass and CoffeeScript, so if your project includes any .coffee files, these will be 
 compiled when either `server` or `build` tasks are being run.
+
+If everything has been installed successfully, running `yeoman init` will present you with a welcome
+screen to kick off your project that looks a little like this:
+
+```shell
+
+        _   .--------------------------.
+      _|o|_ |    Welcome to Yeoman,    |
+       |_|  |   ladies and gentlemen!  |
+     / \Y/ \ o_________________________|
+    ||  :  |//                          
+    o/ --- \                            
+      _\ /_                             
+
+
+.. Invoke app ..
+
+Please answer the following:
+[?] Would you like to include the Twitter Bootstrap plugins? (Y/n)
+```
 
 ### custom generators
 
@@ -55,18 +75,38 @@ where the above would result in boilerplate for models, views, collections and a
 the current application directory, as well as Backbone.js and its dependencies being pulled in. One could
 then call the different sub-generators for the Generator as follows:
 
-```
+```shell
 yeoman init backbone:model modelName
 yeoman init backbone:collection collectionName
 yeoman init backbone:view viewName
 yeoman init backbone:router routerName
 ```
 
-Note: At present, there is a bug with the Generators system whereby a Generator/Scaffold may throw an 
-error saying that files will be over-written if a Generator is called. To workaround this issue one should
-pass the `--force`` flag to the Generator as follows:
+To list out all of the generators currently available locally, you can use the `--help` flag as follows:
 
 ```shell
-yeoman init angularjs:bootstrap --force
+yeoman init --help
 ```
 
+This will print out a list of existing generators as follows:
+
+```shell
+Please choose a generator below.
+
+Yeoman:
+  generator
+  controller
+
+Ember:
+  ember:controller
+  ember:model
+  ember:bootstrap
+  ember:view
+
+Backbone:
+  backbone:all
+  backbone:model
+  backbone:router
+  backbone:view
+  backbone:collection
+```
