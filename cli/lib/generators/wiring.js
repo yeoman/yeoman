@@ -138,12 +138,9 @@ wiring.appendScripts = function appendScripts(html, optimizedPath, sourceFileLis
   return this.appendFiles(html, 'js', optimizedPath, sourceFileList, attrs);
 };
 
-// Simple script removal.
-// Todo: establish if Cheerio has workarounds for script selectors
+// Simple script removal
 wiring.removeScript = function removeScript(html, scriptPath) {
-  // The following is not supported by Cheerio
-  // return this.domUpdate(html, "script[src^=" + scriptPath + "]" , "", "d");
-  return html.replace(new RegExp('\\s*<script (.+)?src="' +  scriptPath + '"></script>'), '');
+  return this.domUpdate(html, 'script[src^="' + scriptPath + '"]' , '', 'd');
 };
 
 wiring.appendStyles = function appendStyles(html, optimizedPath, sourceFileList, attrs) {
