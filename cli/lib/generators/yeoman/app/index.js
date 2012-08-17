@@ -160,11 +160,11 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   // Strip sections of H5BP we're going to overwrite
   indexData = this.removeScript(indexData, 'js/plugins.js');
   indexData = this.removeScript(indexData, 'js/main.js');
+  indexData = this.removeStyle(indexData, 'css/normalize.css');
 
   indexData = indexData.replace(/js\/vendor\/jquery[^"]+/g, 'scripts/vendor/jquery.min.js');
 
   $ = require('cheerio').load( indexData );
-  $('link[href="css/normalize.css"]').attr('href', 'styles/normalize.css');
   $('link[href="css/main.css"]').attr('href', 'styles/main.css');
   $('script[src^="js/vendor/modernizr"]').attr('src', 'scripts/vendor/modernizr.min.js');
   indexData = $.html();
