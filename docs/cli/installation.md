@@ -69,6 +69,10 @@ $ rvm wrapper 1.9.3@compass --no-prefix compass
 
 #### Install PhantomJS
 
+To install PhantomJS, we recommend following the [official guide](http://phantomjs.org/download.html#linux).
+
+Alternatively:
+
 ```shell
 $ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
 $ git clone git://github.com/ariya/phantomjs.git
@@ -77,34 +81,41 @@ $ git checkout 1.6
 ./build.sh
 ```
 
-#### Install Node and NPM
+#### Install Node
 
-First:
+We recommend downloading and installing the node binaries directly from [nodejs.org](http://nodejs.org/download/).
+This will save you needing to compile from source. There are also guides available for those wishing to install node
+using a [package manager](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager).
+
+### Install OptiPNG and libjpeg-turbo
+
+You will also need to get the image optimization libraries we use, which can be installed using apt-get as follows:
 
 ```shell
-sudo apt-get install libssl-dev
+$ apt-get install optipng
 ```
-
-Then 
+and
 
 ```shell
-echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
-. ~/.bashrc
-mkdir ~/local
-mkdir ~/node-latest-install
-cd ~/node-latest-install
-curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
-./configure --prefix=~/local
-make install # ok, fine, this step probably takes more than 30 seconds...
-curl http://npmjs.org/install.sh | sh
+$ wget 'http://sourceforge.net/projects/libjpeg-turbo/files/1.0.1/libjpeg-turbo_1.0.1_i386.deb/download' -O libjpeg-turbo_1.0.1_i386.deb
+$ dpkg -i libjpeg-turbo_1.0.1_i386.deb
+
+# ls -l /usr/lib/libjpeg.so.62
+lrwxrwxrwx 1 root root 17 2010-11-12 12:35 /usr/lib/libjpeg.so.62 -> libjpeg.so.62.0.0
+# rm -rf /usr/lib/libjpeg.so.62
+# ln -s /opt/libjpeg-turbo/lib/libjpeg.so.62.0.0 /usr/lib/libjpeg.so.62
 ```
+
 
 #### Install Yeoman
 
-* Install [git](http://git-scm.com/book/en/Getting-Started-Installing-Git)
-* Clone the [yeoman repo](https://github.com/yeoman/yeoman/) and `cd` into it
-* Run this command: `./setup/install.sh`
+* Install [git](http://git-scm.com/book/en/Getting-Started-Installing-Git) if you don't have it already
+* Clone the [yeoman repo](https://github.com/yeoman/yeoman/) and `cd` into the `cli` directory
+* Run this command: `sudo npm install -g`
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
+
+Note: once Yeoman has launched, you'll be able to easily install it via NPM, but for now, the above
+should work.
 
 
 
