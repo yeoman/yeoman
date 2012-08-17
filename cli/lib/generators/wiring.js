@@ -147,6 +147,10 @@ wiring.appendStyles = function appendStyles(html, optimizedPath, sourceFileList,
   return this.appendFiles(html, 'css', optimizedPath, sourceFileList, attrs);
 };
 
+wiring.removeStyle = function removeStyle( html, path ) {
+  return this.domUpdate( html, 'link[href^="' + path + '"]' , '', 'd' );
+};
+
 // Append a directory of scripts
 wiring.appendScriptsDir = function appendScriptsDir(html, optimizedPath, sourceScriptDir, attrs) {
   var sourceScriptList = fs.readdirSync(path.resolve(sourceScriptDir));
