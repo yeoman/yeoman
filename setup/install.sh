@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install.sh: Installation script
 
 # Note for maintenance: we have versions of Node, Compass, and the Yeoman zip hardcoded here.
