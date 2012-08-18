@@ -134,15 +134,23 @@ function haveProg() {
 
 if haveProg apt-get
 then 
-  echo "You are using apt-get. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=1
+  echo "You are using apt-get. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=1
 elif haveProg yum
 then 
-  echo "You are using yum. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=2
+  echo "You are using yum. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=2
 elif haveProg up2date
 then 
-  echo "You are using up2date. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=3
+  echo "You are using up2date. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=3
 else 
-  echo "No linux package managers detected, I'll assume you got a Mac." && MAC=1 && PKGMGR=4
+  echo "No linux package managers detected, I'll assume you got a Mac."
+  MAC=1
+  PKGMGR=4
 fi
 
 echo ""
@@ -180,7 +188,8 @@ fi
 #if on mac, make sure brew is installed
 if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]
 then 
-  echo "Looks like you haven't got brew yet, I'll install that now." && ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+  echo "Looks like you haven't got brew yet, I'll install that now."
+  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 else
   echo "An error occurred installing brew. (Ignore if on linux)."
 fi
@@ -202,10 +211,22 @@ else
   echo "Installing Node.js"
   if [ "$MAC" -eq 1 ]
   then 
-    echo "Downloading Node.js for Mac." && curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.pkg && echo "Node.js downloaded, starting installer." && sudo installer -pkg node-v0.8.4.pkg -target /
+    echo "Downloading Node.js for Mac."
+    curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.pkg
+    echo "Node.js downloaded, starting installer."
+    sudo installer -pkg node-v0.8.4.pkg -target /
   elif [ "$LINUX" -eq 1 ]
   then 
-    echo "Downloading Node.js for Linux." && curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.tar.gz && echo "Compiling and installing Node.js for linux." && tar xvfz node-v0.8.4.tar.gz && cd node-v0.8.4 && ./configure && make && sudo make install && cd .. && echo "Node.js installed for linux."
+    echo "Downloading Node.js for Linux."
+    curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.tar.gz
+    echo "Compiling and installing Node.js for linux."
+    tar xvfz node-v0.8.4.tar.gz
+    cd node-v0.8.4
+    ./configure
+    make
+    sudo make install
+    cd ..
+    echo "Node.js installed for linux."
   else
     echo "An error occurred installing Node.js"
   fi
@@ -216,7 +237,7 @@ echo ""
 #install the rest of the dependencies (MAC)
 if [ "$MAC" -eq 1 ]
 then 
-  echo "Installing dependencies for Mac." &&
+  echo "Installing dependencies for Mac."
   for package in $PACKAGESMAC
   do
     check_or_install_brew_pkg $package
@@ -227,7 +248,8 @@ fi
 #install the rest of the dependencies (LINUX)
 if [ "$LINUX" -eq 1 ]
 then 
-  echo "Installing dependencies for Linux." && echo "Installing $PACKAGESLINUX"
+  echo "Installing dependencies for Linux."
+  echo "Installing $PACKAGESLINUX"
   if [ "$PKGMGR" -eq 1 ]
   then 
     sudo apt-get install $PACKAGESLINUX
