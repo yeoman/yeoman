@@ -176,16 +176,12 @@ else
   echo "An error occurred installing brew. (Ignore if on linux)."
 fi
 
-#check for ruby and ruby gems
-if [ "$RUBYFILE" ] && [ "$GEMFILE" ]; then 
-  echo "Ruby and Gems are already here, good to go."
-else
+#Install RVM and use Ruby 1.9.2
   echo "I'll need to install ruby and rubygems before I can continue."
   echo ""
   curl -L https://get.rvm.io | bash -s stable
   rvm pkg install zlib
   rvm install 1.9.2
-fi
 
 #ensure node is installed
 if [ "$NODEFILE" ]; then 
@@ -251,7 +247,7 @@ if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 else
   echo "Install compass for CSS magic."
-  rvm gem install compass --pre
+  rvm 1.9.2 do gem install compass --pre
   #fix an issue with installing --pre of compass
   rubygems-bundler-uninstaller
 fi
