@@ -172,7 +172,7 @@ fi
 #if on mac, make sure brew is installed
 if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
   echo "Looks like you haven't got brew yet, I'll install that now."
-  ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+  ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 else
   echo "An error occurred installing brew. (Ignore if on linux)."
 fi
