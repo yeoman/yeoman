@@ -182,6 +182,7 @@ fi
   curl -L https://get.rvm.io | bash -s stable
   rvm pkg install zlib
   rvm install 1.9.2
+  rvm use 1.9.2
 
 #ensure node is installed
 if [ "$NODEFILE" ]; then 
@@ -250,7 +251,6 @@ else
   rvm 1.9.2 do gem install compass --pre
   # Fix an issue with installing --pre of compass.
   # https://github.com/chriseppstein/compass/pull/894
-  # Is this still needed?
   rubygems-bundler-uninstaller
 fi
 
