@@ -72,39 +72,33 @@ echo ""
 
 # set the temp dir
 TMP="${TMPDIR}"
-if [ "x$TMP" = "x" ]
-then
+if [ "x$TMP" = "x" ]; then
   TMP="/tmp"
 fi
 TMP="${TMP}/yeoman.$$"
 rm -rf "$TMP" || true
 mkdir "$TMP"
-if [ $? -ne 0 ]
-then
+if [ $? -ne 0 ]; then
   echo "Failed to mkdir $TMP" >&2
   exit 1
 fi
 
 # Check the user has tar installed.
 tar="${TAR}"
-if [ -z "$tar" ]
-then
+if [ -z "$tar" ]; then
   tar="${npm_config_tar}"
 fi
-if [ -z "$tar" ]
-then
+if [ -z "$tar" ]; then
   tar=`which tar 2>&1`
   ret=$?
 fi
-if [ $ret -eq 0 ] && [ -x "$tar" ]
-then
+if [ $ret -eq 0 ] && [ -x "$tar" ]; then
   echo "tar=$tar"
   echo "Good gracious! You've got this version of 'tar' installed:"
   $tar --version
   ret=$?
 fi
-if [ $ret -eq 0 ]
-then
+if [ $ret -eq 0 ]; then
   (exit 0)
 else
   echo "No suitable tar program found."
@@ -113,8 +107,7 @@ fi
 
 function check_or_install_brew_pkg() {
   FILELOCATION=$(which $1)
-  if [ "$FILELOCATION" ]
-  then
+  if [ "$FILELOCATION" ]; then
     echo "$1 is installed."
   else
     echo "Installing $1..."
@@ -132,18 +125,15 @@ function haveProg() {
     [ -x "$(which $1)" ]
 }
 
-if haveProg apt-get
-then 
+if haveProg apt-get; then 
   echo "You are using apt-get. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=1
-elif haveProg yum
-then 
+elif haveProg yum; then 
   echo "You are using yum. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=2
-elif haveProg up2date
-then 
+elif haveProg up2date; then 
   echo "You are using up2date. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=3
@@ -156,11 +146,9 @@ fi
 echo ""
 
 #check which OS
-if [ "$MAC" -eq 1 ]
-then 
+if [ "$MAC" -eq 1 ]; then 
   echo "Installing for mac."
-elif [ "$LINUX" -eq 1 ]
-then
+elif [ "$LINUX" -eq 1 ]; then
   echo "Installing for linux."
 else
   echo "Unable to determine install target!"
@@ -168,17 +156,13 @@ else
 fi
 
 #check which package manager
-if [ "$PKGMGR" -eq 1 ]
-then 
+if [ "$PKGMGR" -eq 1 ]; then 
   echo "Managing packages using apt."
-elif [ "$PKGMGR" -eq 2 ]
-then 
+elif [ "$PKGMGR" -eq 2 ]; then 
   echo "Managing packages using yum."
-elif [ "$PKGMGR" - eq 3 ]
-then 
+elif [ "$PKGMGR" - eq 3 ]; then 
   echo "Managing packages using up2date."
-elif [ "$PKGMGR" -eq 4 ]
-then 
+elif [ "$PKGMGR" -eq 4 ]; then 
   echo "Managing packages using brew."
 else
   echo "Unable to determine package manager!"
@@ -186,8 +170,7 @@ else
 fi
 
 #if on mac, make sure brew is installed
-if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]
-then 
+if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
   echo "Looks like you haven't got brew yet, I'll install that now."
   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 else
@@ -195,8 +178,7 @@ else
 fi
 
 #check for ruby and ruby gems
-if [ "$RUBYFILE" ] && [ "$GEMFILE" ]
-then 
+if [ "$RUBYFILE" ] && [ "$GEMFILE" ]; then 
   echo ""
 else
   echo "You'll need Ruby and RubyGems installed before this installer can continue."
@@ -204,19 +186,16 @@ else
 fi
 
 #ensure node is installed
-if [ "$NODEFILE" ]
-then 
+if [ "$NODEFILE" ]; then 
   echo "Node.js is installed." 
 else
   echo "Installing Node.js"
-  if [ "$MAC" -eq 1 ]
-  then 
+  if [ "$MAC" -eq 1 ]; then 
     echo "Downloading Node.js for Mac."
     curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.pkg
     echo "Node.js downloaded, starting installer."
     sudo installer -pkg node-v0.8.4.pkg -target /
-  elif [ "$LINUX" -eq 1 ]
-  then 
+  elif [ "$LINUX" -eq 1 ]; then 
     echo "Downloading Node.js for Linux."
     MACHINE_TYPE=`uname -m`
       if [ ${MACHINE_TYPE} == 'x86_64' ]; then
@@ -242,8 +221,7 @@ fi
 echo ""
 
 #install the rest of the dependencies (MAC)
-if [ "$MAC" -eq 1 ]
-then 
+if [ "$MAC" -eq 1 ]; then 
   echo "Installing dependencies for Mac."
   for package in $PACKAGESMAC
   do
@@ -253,26 +231,21 @@ then
 fi
 
 #install the rest of the dependencies (LINUX)
-if [ "$LINUX" -eq 1 ]
-then 
+if [ "$LINUX" -eq 1 ]; then 
   echo "Installing dependencies for Linux."
   echo "Installing $PACKAGESLINUX"
-  if [ "$PKGMGR" -eq 1 ]
-  then 
+  if [ "$PKGMGR" -eq 1 ]; then 
     sudo apt-get install $PACKAGESLINUX
-  elif [ "$PKGMGR" -eq 2 ]
-  then 
+  elif [ "$PKGMGR" -eq 2 ]; then 
     sudo yum install $PACKAGESLINUX
-  elif [ "$PKGMGR" -eq 3 ]
-  then 
+  elif [ "$PKGMGR" -eq 3 ]; then 
     sudo up2date install $PACKAGESLINUX
   fi
 fi
 
 #check for compass
 echo ""
-if [ "$COMPASSFILE" ]
-then 
+if [ "$COMPASSFILE" ]; then 
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 else
   echo "Install compass for CSS magic."
