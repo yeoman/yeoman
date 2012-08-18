@@ -141,12 +141,8 @@ then
 elif haveProg up2date
 then 
   echo "You are using up2date. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=3
-elif haveProg brew
-then 
-  echo "You are using brew, I'll assume you got a Mac to go with that." && MAC=1 && PKGMGR=4
-else
-    echo "No package manager found!"
-    exit 1
+else 
+  echo "No linux package managers detected, I'll assume you got a Mac." && MAC=1 && PKGMGR=4
 fi
 
 echo ""
