@@ -248,7 +248,9 @@ if [ "$COMPASSFILE" ]; then
 else
   echo "Install compass for CSS magic."
   rvm 1.9.2 do gem install compass --pre
-  #fix an issue with installing --pre of compass
+  # Fix an issue with installing --pre of compass.
+  # https://github.com/chriseppstein/compass/pull/894
+  # Is this still needed?
   rubygems-bundler-uninstaller
 fi
 
