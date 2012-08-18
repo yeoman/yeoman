@@ -221,6 +221,7 @@ then
   do
     check_or_install_brew_pkg $package
   done
+  brew link jpeg-turbo
 fi
 
 #install the rest of the dependencies (LINUX)
