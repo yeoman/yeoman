@@ -218,15 +218,22 @@ else
   elif [ "$LINUX" -eq 1 ]
   then 
     echo "Downloading Node.js for Linux."
-    curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.tar.gz
-    echo "Compiling and installing Node.js for linux."
-    tar xvfz node-v0.8.4.tar.gz
-    cd node-v0.8.4
-    ./configure
-    make
-    sudo make install
-    cd ..
-    echo "Node.js installed for linux."
+    MACHINE_TYPE=`uname -m`
+      if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+        curl -O http://nodejs.org/dist/v0.8.7/node-v0.8.7-linux-x64.tar.gz
+        echo "installing Node.js for linux."
+        tar xvfz node-v0.8.7-linux-x64.tar.gz
+        cd node-v0.8.7-linux-x64
+        sudo cp -r * /usr/local/
+        cd ..
+      else
+        curl -O http://nodejs.org/dist/v0.8.7/node-v0.8.7-linux-x86.tar.gz
+        echo "installing Node.js for linux."
+        tar xvfz node-v0.8.7-linux-x86.tar.gz
+        cd node-v0.8.7-linux-x86
+        sudo cp -r * /usr/local/
+        cd ..
+      fi
   else
     echo "An error occurred installing Node.js"
   fi
