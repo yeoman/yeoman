@@ -251,7 +251,7 @@ if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 else
   echo "Install compass for CSS magic."
-  sudo gem install compass --pre
+  rvm gem install compass --pre
   #fix an issue with installing --pre of compass
   rubygems-bundler-uninstaller
 fi
