@@ -141,19 +141,7 @@ else
   echo "No linux package managers detected, I'll assume you got a Mac."
   MAC=1
   PKGMGR=4
-if haveProg apt-get
-then 
-  echo "You are using apt-get. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=1
-elif haveProg yum
-then 
-  echo "You are using yum. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=2
-elif haveProg up2date
-then 
-  echo "You are using up2date. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=3
-else 
-  echo "No linux package managers detected, I'll assume you got a Mac." && MAC=1 && PKGMGR=4
 fi
-
 echo ""
 
 #check which OS
