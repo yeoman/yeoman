@@ -298,6 +298,15 @@ echo ""
 echo "Yah Hoo! Yeoman global is in place."
 echo ""
 
+# # let's ask the user if she is okay with reporting anonymous stats so we can build a better tool
+# echo ""
+# cd ../metrics
+# # TODO: creating a path like this probably doesn't work on Windows.
+# python setup.py install --quiet --force --user --install-scripts=~/.yeoman/insight
+
+# echo "Alright now, that bit is done now, too."
+# echo ""
+
 # hop back to start and kill our temp folder off
 cd "$BACK" && rm -rf "$TMP"
 
