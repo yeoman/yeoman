@@ -183,7 +183,7 @@ else
   echo "I'll need to install ruby and rubygems before I can continue."
   echo ""
   curl -L https://get.rvm.io | bash -s stable
-  rvm package install zlib
+  rvm pkg install zlib
   rvm install 1.9.2
 fi
 
