@@ -125,6 +125,7 @@ function haveProg() {
     [ -x "$(which $1)" ]
 }
 
+<<<<<<< HEAD
 if haveProg apt-get; then 
   echo "You are using apt-get. I'll assume you have Linux with that."
   LINUX=1
@@ -141,6 +142,19 @@ else
   echo "No linux package managers detected, I'll assume you got a Mac."
   MAC=1
   PKGMGR=4
+=======
+if haveProg apt-get
+then 
+  echo "You are using apt-get. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=1
+elif haveProg yum
+then 
+  echo "You are using yum. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=2
+elif haveProg up2date
+then 
+  echo "You are using up2date. I'll assume you have Linux with that." && LINUX=1 && PKGMGR=3
+else 
+  echo "No linux package managers detected, I'll assume you got a Mac." && MAC=1 && PKGMGR=4
+>>>>>>> 0e49690612d311081466582c38903c2b6f710a56
 fi
 
 echo ""
