@@ -165,10 +165,7 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   indexData = this.removeScript(indexData, 'js/plugins.js');
   indexData = this.removeScript(indexData, 'js/main.js');
   indexData = this.removeStyle(indexData, 'css/normalize.css');
-
-  indexData = indexData.replace('<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->', 
-  '<link rel="icon" href="/favicon.ico">');
-
+  
   indexData = indexData.replace(/js\/vendor\/jquery[^"]+/g, 'scripts/vendor/jquery.min.js');
 
   $ = require('cheerio').load( indexData );
