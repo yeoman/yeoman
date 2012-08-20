@@ -259,6 +259,12 @@ generators.create = function create(namespace, args, options, gruntConfig) {
     Klass = generators.findByNamespace(name, 'yeoman');
   }
 
+  // if it still hasnt been found, search for an "all" subgenerator
+  if(!Klass && !names.length) {
+    Klass = generators.findByNamespace([name, 'all'].join(':'));
+  }
+
+
   if ( !Klass ) {
     return;
   }

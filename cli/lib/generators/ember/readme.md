@@ -6,18 +6,21 @@ Most of the code here is borrowed to https://github.com/emberjs/ember-rails
 yeoman-ember allows you to include a set of [Ember.JS](http://emberjs.com/)
 generators into your yeoman application.
 
+Usage: 
+`yeoman init ember`
+
 
 Available generators:
 
     ember:view
     ember:model
     ember:controller
-    ember:bootstrap
+    ember:all
 
 ## Architecture
 
 Ember does not require an organized file structure. However, yeoman-ember
-allows you to use `yeman g ember:bootstrap` to create the following directory
+allows you to use `yeman g ember:all` to create the following directory
 structure under `app/scripts`:
 
     controllers/
@@ -29,8 +32,8 @@ structure under `app/scripts`:
 
 *Example:*
 
-    $ yeoman g ember:bootstrap
-    .. Invoke ember:bootstrap ..
+    $ yeoman init ember:all
+    .. Invoke ember:all ..
     Creating app/scripts/models directory...OK
     Creating app/scripts/controllers directory...OK
     Creating app/scripts/views directory...OK
@@ -41,7 +44,7 @@ structure under `app/scripts`:
     Writing app/scripts/routes/app-router.js...OK
     Writing app/scripts/store.js...OK
 
-    .. Invoke ember:view:bootstrap ..
+    .. Invoke ember:view:all ..
     Writing app/scripts/views/application-view.js...OK
     Writing app/scripts/templates/application.handlebars...OK
 
@@ -74,6 +77,4 @@ structure under `app/scripts`:
     Writing app/scripts/controllers/Thing-controller.js...OK
 
 
-#### TBD
 
-Additionally, it would be nice to necessary code to wire up the ember app into `app/scripts/application.js` or something.

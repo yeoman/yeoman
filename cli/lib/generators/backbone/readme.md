@@ -1,16 +1,20 @@
 A backbone generator based on backbone-rails.
 
+Usage:
+`yeoman init backbone`
+
 Available generators:
 
 backbone:model
 backbone:view
 backbone:collection
 backbone:router
+backbone:all
 
 Typical output:
 
-addyo-macbookpro:nyan addyo$ yeoman g backbone:bootstrap
-.. Invoke backbone:bootstrap ..
+addyo-macbookpro:nyan addyo$ yeoman init backbone:all
+.. Invoke backbone:all ..
 Creating app/scripts/models directory...OK
 Creating app/scripts/collections directory...OK
 Creating app/scripts/views directory...OK
