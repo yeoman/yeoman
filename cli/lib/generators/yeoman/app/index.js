@@ -98,6 +98,10 @@ AppGenerator.prototype.git = function git() {
   this.copy('gitattributes', '.gitattributes');
 };
 
+AppGenerator.prototype.favicon = function favicon(){
+  this.copy('favicon.ico', 'app/favicon.ico');
+};
+
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
 
@@ -161,6 +165,9 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   indexData = this.removeScript(indexData, 'js/plugins.js');
   indexData = this.removeScript(indexData, 'js/main.js');
   indexData = this.removeStyle(indexData, 'css/normalize.css');
+
+  indexData = indexData.replace('<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->', 
+  '<link rel="icon" href="/favicon.ico">');
 
   indexData = indexData.replace(/js\/vendor\/jquery[^"]+/g, 'scripts/vendor/jquery.min.js');
 
