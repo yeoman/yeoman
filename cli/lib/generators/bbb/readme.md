@@ -2,6 +2,6 @@ A backbone generator based on backbone boilerplate
 
 available generators:
 
-bbb:app
+bbb:all
 
-usage: yeoman init bbb:app
+usage: `yeoman init bbb` or `yeoman init bbb:all` 
