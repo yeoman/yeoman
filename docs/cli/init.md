@@ -39,24 +39,41 @@ Please answer the following:
 
 ### custom generators
 
-Yeoman comes with a powerful system of Generators for scaffolding out applications using any number
-of boilerplates, frameworks and dependencies. Generators should be called in a project which has already
-been initialized with a basic Yeoman application structure. One can then call a generator as follows:
+Some of our supported custom generators include:
 
 ```shell
-yeoman init generatorName:subgenerator
+yeoman init bbb      #backbone boilerplate
+yeoman init angular  #angularjs seed
+yeoman init ember    #ember app based on ember-rails
 ```
 
-In the case of a Generator named "angularjs", a sub-generator called `bootstrap` may exist for scaffolding
+Yeoman comes with a powerful system of Generators for scaffolding out applications using any number
+of boilerplates, frameworks and dependencies. Generators can be called in a project which has already
+been initialized with a basic Yeoman application structure OR may contain all of the files needed for the
+application structure themselves. By default, one can call a generator as follows:
+
+```shell
+yeoman init generatorName:subgenerator #e.g init angular:all
+```
+
+In the case of a Generator named "angular", a grouping sub-generator called `all` may exist for scaffolding
 out all of the files needed for a new AngularJS application. One would use this as follows:
 
 ```shell
-yeoman init angularjs:bootstrap
+yeoman init angular:all
 ```
 
 The idea here is that the Generator would pull in AngularJS, its common dependencies and write out the
-boilerplate needed for a basic Controller and any other components the framework may require. If one 
-wishes to create further AngularJS controllers, one can simply call the 'controller' sub-generator as 
+boilerplate needed for a basic Controller and any other components the framework may require. 
+
+As we understand that it's unlikely a user will wish to manually type out the ":all" part of each generator, we support a catch-"all". If a generator has a sub-generator (grouper) called "all" we will attempt to call "all" when you try running the top-level generator. This allows a user to simply call:
+
+```shell
+yeoman init angular
+```
+and has it defer to `angular:all` automatically.
+
+If one then wishes to create further AngularJS controllers, one can simply call the 'controller' sub-generator as 
 follows:
 
 ```shell
@@ -68,7 +85,7 @@ where `controllerName` is the name of the Controller you wish to create.
 Similarly, a Backbone.js Generator may be used as follows:
 
 ```shell
-yeoman init backbone:all
+yeoman init backbone
 ```
 
 where the above would result in boilerplate for models, views, collections and a router being written to
@@ -98,9 +115,9 @@ Yeoman:
   controller
 
 Ember:
+  ember:all
   ember:controller
   ember:model
-  ember:bootstrap
   ember:view
 
 Backbone:

@@ -52,8 +52,9 @@ yeoman server    # Create an intermediate version of your app, firing off a watc
 Some more examples of how to use our commands include:
 
 ```shell
-yeoman init angular:bootstrap              # Invoke the AngularJS generator scaffold
+yeoman init angular                        # Invoke the AngularJS generator scaffold
 yeoman init angular:controller             # Invoke the AngularJS Controller sub-generator
+yeoman init bbb                            # Invoke the Backbone Boilerplate generator scaffold
 yeoman install jquery underscore [depName] # Install a dependency or dependencies
 yeoman update jquery                       # Update a specific dependency (e.g jquery)
 yeoman search jquery                       # Lookup jquery in the Bower registry
