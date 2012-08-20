@@ -103,7 +103,7 @@ actions.template = function template(source, destination, data) {
 };
 
 // Copies recursively the files from source directory to root directory
-actions.directory = function directory(source, destination) {
+actions.directory = function directory(source, destination, noProcess) {
   var self = this,
     root = path.join(this.sourceRoot(), source),
     list = grunt.file.expandFiles({ dot: true }, path.join(root, '**'));
@@ -118,7 +118,9 @@ actions.directory = function directory(source, destination) {
     self.log.write('Writing ' + dest + '...');
     grunt.file.copy(filepath, dest, {
       process: function(content) {
-        return grunt.template.process(content, self);
+        if(noProcess !== false){
+          return grunt.template.process(content, self);
+        }
       }
     });
     self.log.ok();
