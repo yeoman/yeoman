@@ -1,4 +1,3 @@
-# Welcome, Friend!
 <pre><code>
             .-:/+ossyhhhddddddddhhhysso+/:-.                
        ./oymNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmho/.         
@@ -12,8 +11,8 @@
        'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'         
         hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy          
         /No---------+Nosh+oyyssyo/d+hm:--------yN:          
-        'Ny          omssyy/ys/ssyohm:         dm           
-    -----dN-----------+mmyssyyssshmd/---------:Nh-----      
+        'Ny          omssyy/ys/ssyohm:         dm                          WELCOME TO YEOMAN MY GOOD SIR
+    -----dN-----------+mmyssyyssshmd/---------:Nh-----             "a robust and opinionated client-side stack"
    'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
     /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      
     'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
