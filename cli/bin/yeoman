@@ -3,7 +3,9 @@ var fs = require('fs'),
   join = require('path').join,
   grunt = require('grunt'),
   colors = require('colors'),
+  path = require('path'),
   insight = require('../lib/plugins/insight.js'),
+  updater = require('../lib/plugins/updater.js'),
   yeoman = require('../'),
   pkg = require('../package.json'),
   _ = grunt.util._,
@@ -75,6 +77,40 @@ Feel free to run ' + 'yeoman'.bold.red + ' ' + 'server'.bold.yellow + ' instead!
 // yeoman search jquery
 if(/^install|^uninstall|^search|^list|^ls|^lookup|^update/.test(route)) {
   cli.tasks = 'bower' + ':' + cmds.join(':');
+}
+
+
+/* Yeoman Upgrade =========================================================== */
+if ( /^upgrade/.test( route ) ) {
+
+   // Query for the latest update
+   updater.getUpdate({
+      name: 'grunt', // pkg.name, we're going to use 'grunt' just for debugging purposes
+      version: pkg.version,
+      
+      success: function(update){
+        console.log('Update type available is:', update.severity);
+        console.log('You have version', update.localVersion);
+        console.log('Latest version is', update.latestVersion);
+
+        // Hook up to prompts API next.
+      },
+      fetchError: function(err){
+        console.log(err.message);
+        console.log(err.httpCode);
+      },
+      npmError: function(err){
+        if (err.errType === "not_found") {
+            console.log("  Package '%s' not found in NPM.", colors.blue(pkg.name));
+            console.log("");
+        } else {
+            console.log("ERROR");
+            console.log(err.reason);
+        }
+      }
+   });
+
+   return console.log('Upgrade checks complete.');
 }
 
 /* Yeoman Insight =========================================================== */
