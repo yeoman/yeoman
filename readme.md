@@ -4,15 +4,15 @@
      .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh'       
      -NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-       
       dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd        
-      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+        
-      .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.        
-       hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh         
-       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/         
-       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'         
-        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy          
-        /No---------+Nosh+oyyssyo/d+hm:--------yN:          
-        'Ny          omssyy/ys/ssyohm:         dm                          WELCOME TO YEOMAN MY GOOD SIR...
-    -----dN-----------+mmyssyyssshmd/---------:Nh-----             "A robust and opinionated client&ndash;side stack"
+      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+                          _   .--------------------------.                    
+      .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.                        _|o|_ |    Welcome to Yeoman,    |                    
+       hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh                          |_|  |   ladies and gentlemen!  |                    
+       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/                        / \Y/ \ o_________________________|                    
+       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'                       ||  :  |//                                              
+        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy                        o/ --- \                                                
+        /No---------+Nosh+oyyssyo/d+hm:--------yN:                          _\ /_                                                 
+        'Ny          omssyy/ys/ssyohm:         dm                           WELCOME TO YEOMAN MY GOOD SIR                         
+    -----dN-----------+mmyssyyssshmd/---------:Nh-----              "A robust and opinionated client&ndash;side stack"            
    'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
     /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      
     'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
