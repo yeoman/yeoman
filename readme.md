@@ -11,8 +11,8 @@
        'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'                       ||  :  |//                                              
         hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy                        o/ --- \                                                
         /No---------+Nosh+oyyssyo/d+hm:--------yN:                          _\ /_                                                 
-        'Ny          omssyy/ys/ssyohm:         dm                           WELCOME TO YEOMAN MY GOOD SIR                         
-    -----dN-----------+mmyssyyssshmd/---------:Nh-----              "A robust and opinionated client&ndash;side stack"            
+        'Ny          omssyy/ys/ssyohm:         dm                   "A robust and opinionated client&ndash;side stack"            
+    -----dN-----------+mmyssyyssshmd/---------:Nh-----      
    'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
     /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      
     'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
