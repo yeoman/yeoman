@@ -1,5 +1,36 @@
 # Welcome, Friend!
 
+            .-:/+ossyhhhddddddddhhhysso+/:-.                
+       ./oymNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmho/.         
+     .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh'       
+     -NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-       
+      dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd        
+      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+        
+      .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.        
+       hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh         
+       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/         
+       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'         
+        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy          
+        /No---------+Nosh+oyyssyo/d+hm:--------yN:          
+        'Ny          omssyy/ys/ssyohm:         dm           
+    -----dN-----------+mmyssyyssshmd/---------:Nh-----      
+   'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
+    /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      
+    'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
+          :Nm'''.:oso+:/smd:      '-/oso:.'                 
+          'NN' /dNNNNNmo':Nm'    'smNNNNNd:                 
+           hN/ .+hdmmho-  hN:     -sdmmdy/'                 
+           /Nh    '.'     hN/        '.'                    
+            mN-           hN/.'                             
+            :Nd'          ymdddy'                           
+             sNy'        '-:::::.'                          
+              sNs'   ':ohdmNNyNNmdyo:'                      
+               oNh--smNNNNNNd'dNNNNNNms-                    
+                :mNNNNNNNNNh. .dNNNNNNNNy.                  
+                :mNNNNNNNd/'   '+dNNNNNNNm-                 
+               'ydmmmdmNms+:-..'  -+ydmmmds'                
+                       ./oyhmmms                            
+
 ## What am I?
 
 Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup.
