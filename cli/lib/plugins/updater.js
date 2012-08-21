@@ -229,13 +229,29 @@ updater.parseUpdateType = function(currentVersion, remoteVersion){
 
 // Run npm update against a specific package name
 updater.npmRunUpdate = function(packageName){
-  childProcess.exec('npm update ' + packageName, function (error, stdout, stderr) {
-     if (error) {
-       console.log(error.stack);
-       console.log('Error code: '+error.code);
-     }
-     console.log('Child Process STDOUT: '+stdout);
-     console.log('Child Process STDERR: '+stderr);
-   });
+
+  var spawn = childProcess.spawn;
+  var bin =  'npm';
+  var args = ['update '  + packageName];
+  var cspr = spawn(bin, args);
+
+  cspr.stdout.setEncoding('utf8');
+
+  cspr.stdout.on('data', function(data) {
+    var str = data.toString(), lines = str.split(/(\r?\n)/g);
+    for (var i=0; i<lines.length; i++) {
+      console.log(lines[i]);
+    }
+  });
+
+  cspr.stderr.on('data', function(data){
+    console.log(data);
+  });
+
+  cspr.on('exit', function (code) {
+    console.log('child process exited with code ' + code);
+    process.exit(code);
+  });
+
 };
 
