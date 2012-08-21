@@ -1,5 +1,34 @@
-# Welcome, Friend!
-
+<pre><code>
+            .-:/+ossyhhhddddddddhhhysso+/:-.                
+       ./oymNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmho/.         
+     .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh'       
+     -NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-       
+      dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd        
+      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+                          _   .--------------------------.                    
+      .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.                        _|o|_ |    Welcome to Yeoman,    |                    
+       hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh                          |_|  |   ladies and gentlemen!  |                    
+       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/                        / \Y/ \ o_________________________|                    
+       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'                       ||  :  |//                                              
+        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy                        o/ --- \                                                
+        /No---------+Nosh+oyyssyo/d+hm:--------yN:                          _\ /_                                                 
+        'Ny          omssyy/ys/ssyohm:         dm                   "A robust and opinionated client&ndash;side stack"            
+    -----dN-----------+mmyssyyssshmd/---------:Nh-----      
+   'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
+    /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      
+    'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
+          :Nm'''.:oso+:/smd:      '-/oso:.'                 
+          'NN' /dNNNNNmo':Nm'    'smNNNNNd:                 
+           hN/ .+hdmmho-  hN:     -sdmmdy/'                 
+           /Nh    '.'     hN/        '.'                    
+            mN-           hN/.'                             
+            :Nd'          ymdddy'                           
+             sNy'        '-:::::.'                          
+              sNs'   ':ohdmNNyNNmdyo:'                      
+               oNh--smNNNNNNd'dNNNNNNms-                    
+                :mNNNNNNNNNh. .dNNNNNNNNy.                  
+                :mNNNNNNNd/'   '+dNNNNNNNm-                 
+               'ydmmmdmNms+:-..'  -+ydmmmds'                
+                       ./oyhmmms                            </code></pre>
 ## What am I?
 
 Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup.
