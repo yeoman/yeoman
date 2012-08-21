@@ -100,18 +100,15 @@ if ( /^upgrade/.test( route ) ) {
         prompt.start();
 
         prompt.get(['update'], function (err, result) {
-          if (err) { return onErr(err); }
+          if (err) {
+            console.log(err);
+            return 1; 
+          }
           if(result.update === 'y'){
               // Disabled for debugging
               // updater.npmRunUpdate(pkg.name);
           }
         });
-
-        function onErr(err) {
-          console.log(err);
-          return 1;
-        }
-
       },
       fetchError: function(err){
         console.log(err.message);
