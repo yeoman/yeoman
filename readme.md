@@ -1,35 +1,35 @@
 # Welcome, Friend!
 
-            .-:/+ossyhhhddddddddhhhysso+/:-.                
+            .-:/ ossyhhhddddddddhhhysso /:-.                
        ./oymNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmho/.         
-     .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh'       
+     .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh&#39;       
      -NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-       
       dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd        
-      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+        
+       NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN         
       .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.        
        hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh         
-       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/         
-       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'         
-        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy          
-        /No---------+Nosh+oyyssyo/d+hm:--------yN:          
-        'Ny          omssyy/ys/ssyohm:         dm           
-    -----dN-----------+mmyssyyssshmd/---------:Nh-----      
-   'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
+       /NNNNNNNNNNNNNNd ds  yhoooyy NNNNNNNNNNNNNN/         
+       &#39;NNNNNNNNNNNNNN/do hsosoys/hssNNNNNNNNNNNNm&#39;         
+        hNNNNNNNNNNNNN:N//d:hmooh sh NNNNNNNNNNNNy          
+        /No--------- Nosh oyyssyo/d hm:--------yN:          
+        &#39;Ny          omssyy/ys/ssyohm:         dm           
+    -----dN----------- mmyssyyssshmd/---------:Nh-----      
+   &#39;dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      
     /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      
-    'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
-          :Nm'''.:oso+:/smd:      '-/oso:.'                 
-          'NN' /dNNNNNmo':Nm'    'smNNNNNd:                 
-           hN/ .+hdmmho-  hN:     -sdmmdy/'                 
-           /Nh    '.'     hN/        '.'                    
-            mN-           hN/.'                             
-            :Nd'          ymdddy'                           
-             sNy'        '-:::::.'                          
-              sNs'   ':ohdmNNyNNmdyo:'                      
-               oNh--smNNNNNNd'dNNNNNNms-                    
+    &#39;yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       
+          :Nm&#39;&#39;&#39;.:oso :/smd:      &#39;-/oso:.&#39;                 
+          &#39;NN&#39; /dNNNNNmo&#39;:Nm&#39;    &#39;smNNNNNd:                 
+           hN/ . hdmmho-  hN:     -sdmmdy/&#39;                 
+           /Nh    &#39;.&#39;     hN/        &#39;.&#39;                    
+            mN-           hN/.&#39;                             
+            :Nd&#39;          ymdddy&#39;                           
+             sNy&#39;        &#39;-:::::.&#39;                          
+              sNs&#39;   &#39;:ohdmNNyNNmdyo:&#39;                      
+               oNh--smNNNNNNd&#39;dNNNNNNms-                    
                 :mNNNNNNNNNh. .dNNNNNNNNy.                  
-                :mNNNNNNNd/'   '+dNNNNNNNm-                 
-               'ydmmmdmNms+:-..'  -+ydmmmds'                
-                       ./oyhmmms                            
+                :mNNNNNNNd/&#39;   &#39; dNNNNNNNm-                 
+               &#39;ydmmmdmNms :-..&#39;  - ydmmmds&#39;                
+                       ./oyhmmms 
 
 ## What am I?
 
