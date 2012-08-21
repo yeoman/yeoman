@@ -4,6 +4,8 @@ var fs = require('fs'),
   grunt = require('grunt'),
   colors = require('colors'),
   path = require('path'),
+  prompt = require('prompt'),
+  actions = require('../lib/generators/actions.js'),
   insight = require('../lib/plugins/insight.js'),
   updater = require('../lib/plugins/updater.js'),
   yeoman = require('../'),
@@ -87,13 +89,29 @@ if ( /^upgrade/.test( route ) ) {
    updater.getUpdate({
       name: 'grunt', // pkg.name, we're going to use 'grunt' just for debugging purposes
       version: pkg.version,
-      
+
       success: function(update){
         console.log('Update type available is:', update.severity);
         console.log('You have version', update.localVersion);
         console.log('Latest version is', update.latestVersion);
 
-        // Hook up to prompts API next.
+        console.log('Would you like to update? y/N');
+
+        prompt.start();
+
+        prompt.get(['update'], function (err, result) {
+          if (err) { return onErr(err); }
+          if(result.update === 'y'){
+              // Disabled for debugging
+              // updater.npmRunUpdate(pkg.name);
+          }
+        });
+
+        function onErr(err) {
+          console.log(err);
+          return 1;
+        }
+
       },
       fetchError: function(err){
         console.log(err.message);
