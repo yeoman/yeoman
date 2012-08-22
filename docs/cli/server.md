@@ -13,8 +13,8 @@ Any changes to CoffeeScript or Compass files result in them being recompiled, me
 no manual intervention is required to write and preview code in the format you feel most
 comfortable with.
 
-`yeoman server` generates an intermediate build directory in your project root which contains
-the compiled files mentioned above as well as the basic blocks needed to preview your application.
+`yeoman server` generates an intermediate build directory in your project root which (called `temp`)
+contains the compiled files mentioned above as well as the basic blocks needed to preview your application.
 A complete build can be generated using `yeoman build`.
 
 To quit the server, simply run `yeoman quit server` and this will kill the Python server

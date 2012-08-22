@@ -17,7 +17,7 @@ These include:
 * Creating an Application Cache manifest via Confess.js
 * Using revision filenames or oldernames
 
-When you run `yeoman server`, we generate an `intermediate` build directory for your project, containing compiled versions of your Compass and CoffeeScript files as well as all of the other files needed to preview your application. Running `yeoman build` creates a `publish` directory which has completely optimized version of your application that can be deployed to staging.
+When you run `yeoman server`, we generate an intermediate build directory called `temp`, containing compiled versions of your Compass and CoffeeScript files as well as all of the other files needed to preview your application. Running `yeoman build` creates a `dist` directory which has completely optimized version of your application that can be deployed to staging.
 
 ### Build targets
 

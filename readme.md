@@ -44,20 +44,28 @@ A common initial workflow with Yeoman might be:
 
 ```shell
 yeoman init      # Invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
-yeoman build     # Build your project, creating an optimized version in the publish folder
-yeoman server    # Create an intermediate version of your app, firing off a watch process
+yeoman build     # Build your project, creating an optimized version in a new `dist` directory
+yeoman server    # Fire off a file watch/server process which also places an 
+                 # intermediate build of your project in `temp`
 
 ```
 
 Some more examples of how to use our commands include:
 
 ```shell
+# Generators for MVC/MV* Frameworks
 yeoman init angular                        # Invoke the AngularJS generator scaffold
 yeoman init angular:controller             # Invoke the AngularJS Controller sub-generator
 yeoman init bbb                            # Invoke the Backbone Boilerplate generator scaffold
+yeoman init ember                          # Invoke the Ember generator scaffold
+
+# Generator for Chrome Apps
+yeoman init chromeapps
+
+# Package management
+yeoman search jquery                       # Lookup jQuery in the Bower registry
 yeoman install jquery underscore [depName] # Install a dependency or dependencies
 yeoman update jquery                       # Update a specific dependency (e.g jquery)
-yeoman search jquery                       # Lookup jquery in the Bower registry
 ```
 
 
