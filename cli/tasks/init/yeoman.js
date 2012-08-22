@@ -59,6 +59,7 @@ template.notes = '\n'; //... More notes to come here ...'.yellow;
 // name).
 template.template = function _template(grunt, init, cb) {
   console.log(template.welcome);
+  console.log('Out of the box I include HTML5 Boilerplate, jQuery and Modernizr.');
 
   // delegate the groundwork of scaffolding to the generator layer
   return yeoman.generators.init(grunt);
