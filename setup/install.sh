@@ -19,6 +19,9 @@ NODEFILE=$(which node)
 GEMFILE=$(which gem)
 COMPASSFILE=$(gem which compass)
 
+# checking if sudo will be needed for Yeoman install
+SUDOCHECK=$( ls -ld /usr/local/bin | grep $USER )
+
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
 PACKAGESLINUX='git optipng libjpeg-turbo8 phantomjs'
@@ -138,7 +141,6 @@ elif haveProg up2date; then
   LINUX=1
   PKGMGR=3
 else 
-  echo "No linux package managers detected, I'll assume you got a Mac."
   MAC=1
   PKGMGR=4
 fi
@@ -146,26 +148,12 @@ echo ""
 
 #check which OS
 if [ "$MAC" -eq 1 ]; then 
-  echo "Installing for mac."
+  echo "Installing on OS X."
 elif [ "$LINUX" -eq 1 ]; then
-  echo "Installing for linux."
+  echo "Installing on Linux."
 else
-  echo "Unable to determine install target!"
+  echo "Unable to determine install target OS! We currently support OS X and Linux."
   exit 1  
-fi
-
-#check which package manager
-if [ "$PKGMGR" -eq 1 ]; then 
-  echo "Managing packages using apt."
-elif [ "$PKGMGR" -eq 2 ]; then 
-  echo "Managing packages using yum."
-elif [ "$PKGMGR" - eq 3 ]; then 
-  echo "Managing packages using up2date."
-elif [ "$PKGMGR" -eq 4 ]; then 
-  echo "Managing packages using brew."
-else
-  echo "Unable to determine package manager!"
-  exit 1
 fi
 
 #if on mac, make sure brew is installed
@@ -173,16 +161,35 @@ if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then
   echo "Looks like you haven't got brew yet, I'll install that now."
   ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 else
-  echo "An error occurred installing brew. (Ignore if on linux)."
+  if [ "$MAC" -eq 1 ]; then
+    echo "An error occurred installing brew."
+    exit 1
+  fi
 fi
 
-#Install RVM and use Ruby 1.9.2
-  echo "I'll need to install ruby and rubygems before I can continue."
-  echo ""
-  curl -L https://get.rvm.io | bash -s stable
-  rvm pkg install zlib
-  rvm install 1.9.2
-  rvm use 1.9.2
+#Install RVM and use Ruby 1.9.3
+echo "I'll need to install ruby and rubygems before I can continue."
+echo ""
+curl -L https://get.rvm.io | bash -s stable
+source ~/.rvm/scripts/rvm
+rvm pkg install zlib
+rvm install 1.9.3
+rvm use 1.9.3
+
+#check rvm is configured correctly
+echo "Checking to make sure RVM is installed and configured correctly."
+
+RVMFILE=$(which rvm)
+
+echo ""
+
+if [ -z "$RVMFILE" ]; then
+  echo "ERROR: RVM is not configured correctly for your terminal."
+  echo "Please consult the RVM documentation for your terminal. http://rvm.io"
+  exit 1
+fi
+
+
 
 #ensure node is installed
 if [ "$NODEFILE" ]; then 
@@ -191,9 +198,9 @@ else
   echo "Installing Node.js"
   if [ "$MAC" -eq 1 ]; then 
     echo "Downloading Node.js for Mac."
-    curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.pkg
+    curl -O http://nodejs.org/dist/v0.8.7/node-v0.8.7.pkg
     echo "Node.js downloaded, starting installer."
-    sudo installer -pkg node-v0.8.4.pkg -target /
+    sudo installer -pkg node-v0.8.7.pkg -target /
   elif [ "$LINUX" -eq 1 ]; then 
     echo "Downloading Node.js for Linux."
     MACHINE_TYPE=`uname -m`
@@ -221,7 +228,7 @@ echo ""
 
 #install the rest of the dependencies (MAC)
 if [ "$MAC" -eq 1 ]; then 
-  echo "Installing dependencies for Mac."
+  echo "Installing dependencies for OS X."
   for package in $PACKAGESMAC
   do
     check_or_install_brew_pkg $package
@@ -248,7 +255,7 @@ if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 else
   echo "Install compass for CSS magic."
-  rvm 1.9.2 do gem install compass --pre
+  rvm 1.9.3 do gem install compass --pre
   # Fix an issue with installing --pre of compass.
   # https://github.com/chriseppstein/compass/pull/894
   rubygems-bundler-uninstaller
@@ -272,7 +279,11 @@ echo "We're going to move fast, but once we're done, "
 echo "you'll have the power of a thousand developers at your blinking cursor."
 echo "Okay here we go..."
 
-sudo npm install . -g
+if [ -z "$SUDOCHECK" ]; then
+  sudo npm install . -g
+else
+  npm install . -g
+fi
 
 echo ""
 echo "Yah Hoo! Yeoman global is in place."
