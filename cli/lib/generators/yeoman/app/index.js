@@ -25,7 +25,7 @@ function AppGenerator(args, options, config) {
   // this.hookFor('javascript-engine', { as: 'app' });
 
   // resolved to sass by default (could be switched to less for instance)
-  this.hookFor('stylesheet-engine', { as: 'app' });
+  // this.hookFor('stylesheet-engine', { as: 'app' });
 
   // resolved to mocha by default (could be switched to jasmine for instance)
   this.hookFor('test-framework', { as: 'app' });
@@ -43,6 +43,11 @@ AppGenerator.prototype.askFor = function askFor (argument) {
   // demonstration purpose. Also, probably better to have this in other generator, whose responsability is to ask
   // and fetch all realated bootstrap stuff, that we hook from this generator.
   var prompts = [{
+    name: 'compassBootstrap',
+    message: 'Would you like to include Twitter Bootstrap for Compass?',
+    default: 'Y/n',
+    warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+  },{
     name: 'bootstrap',
     message: 'Would you like to include the Twitter Bootstrap plugins?',
     default: 'Y/n',
@@ -72,6 +77,7 @@ AppGenerator.prototype.askFor = function askFor (argument) {
     // manually deal with the response, get back and store the results.
     // We change a bit this way of doing to automatically do this in the self.prompt() method.
     self.bootstrap = (/y/i).test(props.bootstrap);
+    self.compassBootstrap = (/y/i).test(props.compassBootstrap);
     self.bootstrapLocation = props.bootstrapDest;
     self.includeRequireJS = (/y/i).test(props.includeRequireJS);
     self.includeRequireHM = (/y/i).test(props.includeRequireHM);
@@ -140,6 +146,16 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
     cb();
   });
 };
+
+
+AppGenerator.prototype.compassBootstrapFiles = function compassBootstrapFiles() {
+  if(this.compassBootstrap){
+    this.directory('../../../sass/app/templates/compass_twitter_bootstrap', 'app/styles');
+    this.write('app/styles/main.css', "/* Will be compiled down to a single stylesheet with your sass files */");
+    this.write('app/styles/main.scss', '@import "compass_twitter_bootstrap";');
+  }
+};
+
 
 AppGenerator.prototype.writeIndex = function writeIndex() {
 
