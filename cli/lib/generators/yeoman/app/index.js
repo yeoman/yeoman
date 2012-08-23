@@ -332,11 +332,6 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app/templates');
 };
 
-AppGenerator.prototype.lib = function lib() {
-  this.mkdir('lib');
-  // init a generator ? a readme explaining the purpose of the lib/ folder?
-};
-
 AppGenerator.prototype.test = function test() {
   this.mkdir('test');
   this.mkdir('test/spec');
