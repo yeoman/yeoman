@@ -9,21 +9,22 @@
         <title></title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/main.css"/>
 
-        <!-- build:js scripts/utils.js -->
-        <script src="scripts/vendor/modernizr.min.js"></script>
-        <!-- endbuild -->
+        <link rel="stylesheet" href="styles/index.css"/>
     </head>
     <body>
-    <div class="container">
+
+    <!-- Main container. -->
+    <div role="main" id="main" class="container">
         <div class="hero-unit">
             <h1>Cheerio!</h1>
             <p>You now have</p>
             <ul>
                 <li>HTML5 Boilerplate</li>
                 <li>jQuery</li>
-                <li>Modernizr</li>
+                <li>Backbone.js</li>
+                <li>Backbone LayoutManager</li>
+                <li>Require.js</li>
                 <li>Mocha</li>
             </ul>
             <p>installed.</p>
@@ -37,10 +38,10 @@
 
         <!-- Add your site or application content here -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')</script>
-        
-        
+        <!-- build:js scripts/amd-app.js -->
+        <script data-main="config" src="scripts/libs/require.js"></script>
+        <!-- endbuild -->
+
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

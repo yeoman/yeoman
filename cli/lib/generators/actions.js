@@ -118,7 +118,7 @@ actions.directory = function directory(source, destination, noProcess) {
     self.log.write('Writing ' + dest + '...');
     grunt.file.copy(filepath, dest, {
       process: function(content) {
-          return noProcess ? content : grunt.template.process(content, data)
+          return noProcess ? content : grunt.template.process(content, self);
       }
     });
     self.log.ok();
