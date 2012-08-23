@@ -1,4 +1,3 @@
-
 ## Installation
 
 Installing Yeoman in an easy process that should take less than 10 minutes on OSX. We also provide notes on how to install on Linux or opt for a more custom installation, should you need to do this. At present, Yeoman is not supported on Windows (but we're working on it!).
@@ -17,12 +16,12 @@ This will immediately install Yeoman and any dependencies it may need such as No
 
 ###Step 2: Create a new project
 
-Next, enter in `yeoman init` followed by the name of the directory you would like to scaffold your application in.
+Next, create a new directory to contain your Yeoman project, then enter in `yeoman init`.
 
 ```sh
-$ yeoman init myapp
+$ mkdir myapp && cd myapp
+$ yeoman init
 ```
-If a directory isn't supplied, we'll infer a name based on the directory you're in at the moment.
 
 ###Step 3: Profit
 
