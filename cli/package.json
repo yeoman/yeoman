@@ -1,9 +1,15 @@
 {
-  "author": "Chrome Developer Relations",
   "name": "yeoman",
-  "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "version": "0.0.1",
+  "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
+  "keywords": [
+    "front-end",
+    "tool",
+    "cli"
+  ],
   "homepage": "http://yeoman.io",
+  "bugs": "https://github.com/yeoman/yeoman/issues",
+  "author": "Chrome Developer Relations",
   "main": "./yeoman",
   "bin": {
     "yeoman": "./bin/yeoman",
@@ -12,8 +18,13 @@
   "directories": {
     "man": "./man"
   },
-  "engines": {
-    "node": ">= 0.8.0"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yeoman/yeoman.git"
+  },
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha test/test-*.js test/generators/",
+    "manpages": "./scripts/docs-build"
   },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
@@ -42,8 +53,7 @@
     "mocha": "~1.4.0",
     "ronn": "~0.3.8"
   },
-  "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/test-*.js test/generators/",
-    "manpages": "./scripts/docs-build"
+  "engines": {
+    "node": ">=0.8.0"
   }
 }
