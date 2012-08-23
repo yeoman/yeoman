@@ -22,16 +22,29 @@ Generator.prototype.createDirLayout = function createDirLayout() {
   });
 };
 
-/*
-Generator.prototype.createAppFile = function createAppFile() {
-  this.template('app.js', 'app/scripts/' + this.appname + '.js');
+Generator.prototype.createJsFiles = function createJsFiles() {
+  this.template('scripts/app.js', 'app/scripts/app.js');
+
+  // AB : this would be more elegantly handled with 
+  // file globbing, but given the limited number
+  // of files, opting to hardcode instead of 
+  // introduce another dependency (node-glob?) 
+
+  this.libfiles = 'ember-1.0.pre.js ember-1.0.pre.min.js handlebars-1.0.0.beta.6.js jquery-1.7.2.min.js'.split(' ');
+  var self = this;
+  this.libfiles.forEach(function(file) {
+    self.template('scripts/libs/' + file, 'app/scripts/libs/' + file);
+  });
 };
 
-Generator.prototype.createRouterFile = function createRouterFile() {
-  this.template('router.js', 'app/scripts/routes/app-router.js');
+Generator.prototype.createIndexFile = function createIndexFile() {
+  this.template('index.html', 'app/index.html');
 };
 
-Generator.prototype.createStoreFile = function createStoreFile() {
-  this.template('store.js', 'app/scripts/store.js');
+Generator.prototype.createStyleFile = function createStyleFile() {
+  this.template('styles/style.css', 'app/styles/style.css');
 };
-*/
+
+Generator.prototype.createGruntFile = function createGruntFile() {
+  this.template('Gruntfile.js', 'Gruntfile.js');
+};
