@@ -1,0 +1,8 @@
+Description:
+    Creates a default Ember.js folder layout in app/scripts/
+
+Example:
+    yeoman init ember-starter 
+
+    This will create:
+        app/scripts/app.js
