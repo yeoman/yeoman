@@ -1,8 +1,8 @@
 
-# name:     Quick Start
-# author:   Addy Osmani
-# provides: HTML5 Boilerplate, jQuery, Modernizr, Mocha.
-# usage:    yeoman init quickstart
+name:     Quick Start
+author:   Addy Osmani
+provides: HTML5 Boilerplate, jQuery, Modernizr, Mocha.
+usage:    yeoman init quickstart
 
 'quickstart' represents the most basic type of application 
 scaffold that you could generate using our generator system.
