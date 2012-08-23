@@ -1,5 +1,5 @@
 /**
- * almond 0.1.1 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
+ * almond 0.1.3 Copyright (c) 2011, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
  * see: http://github.com/jrburke/almond for details
  */
@@ -10,12 +10,12 @@
 
 var requirejs, require, define;
 (function (undef) {
-    var defined = {},
+    var main, req,
+        defined = {},
         waiting = {},
         config = {},
         defining = {},
-        aps = [].slice,
-        main, req;
+        aps = [].slice;
 
     /**
      * Given a relative module name, like ./something, normalize it to
@@ -26,10 +26,11 @@ var requirejs, require, define;
      * @returns {String} normalized name
      */
     function normalize(name, baseName) {
-        var baseParts = baseName && baseName.split("/"),
+        var nameParts, nameSegment, mapValue, foundMap,
+            foundI, foundStarMap, starI, i, j, part,
+            baseParts = baseName && baseName.split("/"),
             map = config.map,
-            starMap = (map && map['*']) || {},
-            nameParts, nameSegment, mapValue, foundMap, i, j, part;
+            starMap = (map && map['*']) || {};
 
         //Adjust any relative paths.
         if (name && name.charAt(0) === ".") {
@@ -47,7 +48,8 @@ var requirejs, require, define;
                 name = baseParts.concat(name.split("/"));
 
                 //start trimDots
-                for (i = 0; (part = name[i]); i++) {
+                for (i = 0; i < name.length; i += 1) {
+                    part = name[i];
                     if (part === ".") {
                         name.splice(i, 1);
                         i -= 1;
@@ -92,19 +94,34 @@ var requirejs, require, define;
                             if (mapValue) {
                                 //Match, update name to the new value.
                                 foundMap = mapValue;
+                                foundI = i;
                                 break;
                             }
                         }
                     }
                 }
 
-                foundMap = foundMap || starMap[nameSegment];
-
                 if (foundMap) {
-                    nameParts.splice(0, i, foundMap);
-                    name = nameParts.join('/');
                     break;
                 }
+
+                //Check for a star map match, but just hold on to it,
+                //if there is a shorter segment match later in a matching
+                //config, then favor over this star map.
+                if (!foundStarMap && starMap && starMap[nameSegment]) {
+                    foundStarMap = starMap[nameSegment];
+                    starI = i;
+                }
+            }
+
+            if (!foundMap && foundStarMap) {
+                foundMap = foundStarMap;
+                foundI = starI;
+            }
+
+            if (foundMap) {
+                nameParts.splice(0, foundI, foundMap);
+                name = nameParts.join('/');
             }
         }
 
@@ -185,9 +202,9 @@ var requirejs, require, define;
     }
 
     main = function (name, deps, callback, relName) {
-        var args = [],
-            usingExports,
-            cjsModule, depName, ret, map, i;
+        var cjsModule, depName, ret, map, i,
+            args = [],
+            usingExports;
 
         //Use name if no relName
         relName = relName || name;
@@ -199,7 +216,7 @@ var requirejs, require, define;
             //values to the callback.
             //Default to [require, exports, module] if no deps
             deps = !deps.length && callback.length ? ['require', 'exports', 'module'] : deps;
-            for (i = 0; i < deps.length; i++) {
+            for (i = 0; i < deps.length; i += 1) {
                 map = makeMap(deps[i], relName);
                 depName = map.f;
 
@@ -235,7 +252,7 @@ var requirejs, require, define;
                 //favor that over return value and exports. After that,
                 //favor a non-undefined return value over exports use.
                 if (cjsModule && cjsModule.exports !== undef &&
-                    cjsModule.exports !== defined[name]) {
+                        cjsModule.exports !== defined[name]) {
                     defined[name] = cjsModule.exports;
                 } else if (ret !== undef || !usingExports) {
                     //Use the return value from the function.
@@ -249,7 +266,7 @@ var requirejs, require, define;
         }
     };
 
-    requirejs = require = req = function (deps, callback, relName, forceSync) {
+    requirejs = require = req = function (deps, callback, relName, forceSync, alt) {
         if (typeof deps === "string") {
             //Just return the module wanted. In this scenario, the
             //deps arg is the module name, and second arg (if passed)
@@ -272,6 +289,13 @@ var requirejs, require, define;
 
         //Support require(['a'])
         callback = callback || function () {};
+
+        //If relName is a function, it is an errback handler,
+        //so remove it.
+        if (typeof relName === 'function') {
+            relName = forceSync;
+            forceSync = alt;
+        }
 
         //Simulate async callback;
         if (forceSync) {
