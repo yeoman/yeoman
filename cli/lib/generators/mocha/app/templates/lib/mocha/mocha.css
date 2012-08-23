@@ -1,4 +1,4 @@
-
+@charset "UTF-8";
 body {
   font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 60px 50px;
@@ -143,6 +143,14 @@ body {
   -webkit-box-shadow: 0 1px 3px #eee;
 }
 
+#report.pass .test.fail {
+  display: none;
+}
+
+#report.fail .test.pass {
+  display: none;
+}
+
 #error {
   color: #c00;
   font-size: 1.5  em;
@@ -166,6 +174,15 @@ body {
 
 #stats em {
   color: black;
+}
+
+#stats a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#stats a:hover {
+  border-bottom: 1px solid #eee;
 }
 
 #stats li {
