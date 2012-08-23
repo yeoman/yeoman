@@ -2,7 +2,7 @@
 
 Usage: `yeoman search <keyword>`
 
-Searches the Bower registry for packages which include a specific keyword in their name. 
+Searches the Bower registry for packages which include a specific keyword in their name.
 
 Example:
 

@@ -119,8 +119,8 @@ var LayoutManager = Backbone.View.extend({
     // Custom template render function.
     view.render = function(done) {
       var viewDeferred = options.deferred();
-      
-      // Break this callback out so that its not duplicated inside the 
+
+      // Break this callback out so that its not duplicated inside the
       // following safety try/catch.
       function renderCallback() {
         // Only refresh the view if its not a list item, otherwise it would
@@ -171,7 +171,7 @@ var LayoutManager = Backbone.View.extend({
     if (append) {
       // Start with an array if none exists.
       partials = this.views[name] = this.views[name] || [];
-      
+
       if (!_.isArray(this.views[name])) {
         // Ensure this.views[name] is an array.
         partials = this.views[name] = [this.views[name]];
@@ -257,7 +257,7 @@ var LayoutManager = Backbone.View.extend({
 
       // Create a list of promises to wait on until rendering is done. Since
       // this method will run on all children as well, its sufficient for a
-      // full hierarchical. 
+      // full hierarchical.
       var promises = _.map(root.views, function(view) {
         // Hoist deferred var, used later on...
         var def;
@@ -512,7 +512,7 @@ var LayoutManager = Backbone.View.extend({
       view._remove = view.remove;
       view.remove = proto.remove;
     }
-    
+
     // Default the prefix to an empty string.
     view._prefix = "";
 

@@ -22,7 +22,7 @@ function(app, Router) {
   $(document).on("click", "a:not([data-bypass])", function(evt) {
     // Get the absolute anchor href.
     var href = $(this).attr("href");
-    
+
     // If the href exists and is a hash route, run it through Backbone.
     if (href && href.indexOf("#") === 0) {
       // Stop the default event to ensure the link will not cause a page

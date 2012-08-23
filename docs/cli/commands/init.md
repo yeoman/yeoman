@@ -3,7 +3,7 @@
 
 Usage: `yeoman init`, `yeoman init generatorName`, `yeoman init generatorName:subgenerator`
 
-Helps you kick-start a new web application by asking a number of questions about what you would like to include. 
+Helps you kick-start a new web application by asking a number of questions about what you would like to include.
 These answers are used to scaffold out a file structure for your project.
 
 The init template is based on:
@@ -14,7 +14,7 @@ The init template is based on:
 * RequireJS for AMD module and script loading support (optional)
 * RequrieHM for experimental EcmaScript 6 module syntax support on top of RequireJS (optional)
 
-By default we support Compass and CoffeeScript, so if your project includes any .coffee files, these will be 
+By default we support Compass and CoffeeScript, so if your project includes any .coffee files, these will be
 compiled when either `server` or `build` tasks are being run.
 
 If everything has been installed successfully, running `yeoman init` will present you with a welcome
@@ -26,9 +26,9 @@ screen to kick off your project that looks a little like this:
       _|o|_ |    Welcome to Yeoman,    |
        |_|  |   ladies and gentlemen!  |
      / \Y/ \ o_________________________|
-    ||  :  |//                          
-    o/ --- \                            
-      _\ /_                             
+    ||  :  |//
+    o/ --- \
+      _\ /_
 
 
 .. Invoke app ..
@@ -64,7 +64,7 @@ yeoman init angular:all
 ```
 
 The idea here is that the Generator would pull in AngularJS, its common dependencies and write out the
-boilerplate needed for a basic Controller and any other components the framework may require. 
+boilerplate needed for a basic Controller and any other components the framework may require.
 
 As we understand that it's unlikely a user will wish to manually type out the ":all" part of each generator, we support a catch-"all". If a generator has a sub-generator (grouper) called "all" we will attempt to call "all" when you try running the top-level generator. This allows a user to simply call:
 
@@ -73,7 +73,7 @@ yeoman init angular
 ```
 and has it defer to `angular:all` automatically.
 
-If one then wishes to create further AngularJS controllers, one can simply call the 'controller' sub-generator as 
+If one then wishes to create further AngularJS controllers, one can simply call the 'controller' sub-generator as
 follows:
 
 ```shell

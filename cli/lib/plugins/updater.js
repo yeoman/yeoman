@@ -26,19 +26,19 @@
 //      console.log('To get the latest version run:' + colors.green(' npm update yeoman -g'));
 //
 // });
-// 
-// Both will either return patch, minor, major or latest. These 
+//
+// Both will either return patch, minor, major or latest. These
 // correspond to:
 //
-// patch 0.0.x: Forced auto-update with opt-out 
-// ability. Since it should only contain backwards 
-// compatible bugfixes. 
+// patch 0.0.x: Forced auto-update with opt-out
+// ability. Since it should only contain backwards
+// compatible bugfixes.
 //
-// minor 0.x.0: Update prompts (with auto-update 
-// after a set time) with ability to opt out of 
+// minor 0.x.0: Update prompts (with auto-update
+// after a set time) with ability to opt out of
 // auto-update.
 //
-// major: x.0.0: Update prompts (no time-limit), 
+// major: x.0.0: Update prompts (no time-limit),
 // since this can contain backwards incompatible changes.
 //
 // latest: you are already up to date
@@ -90,7 +90,7 @@ updater.npmParseLatest = function npmParseLatest(npmObj) {
 // @options.localPackageUrl: the url to a local package to be
 // checked against if no package name or version are supplied
 //
-// @options.fetchLatest: a boolean to indicate whether you 
+// @options.fetchLatest: a boolean to indicate whether you
 // should also fetch the latest version at the same time
 //
 // cb: callback for successfully returning the
@@ -122,7 +122,7 @@ updater.getUpdate = function getUpdate(options, cb){
 
     // Step 2: Query the NPM registry for the latest package
     url = util.format(this.registryUrl, options.name);
-    
+
     request(url, function(err, response, body) {
 
         // Fetch issue incurred
@@ -209,7 +209,7 @@ updater.parseUpdateType = function parseUpdateType(currentVersion, remoteVersion
 // Run npm update against a specific package name
 updater.npmRunUpdate = function npmRunUpdate(packageName){
 
-  var child = exec('npm update ' + packageName, function() {  
+  var child = exec('npm update ' + packageName, function() {
     // complete
   });
 

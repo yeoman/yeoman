@@ -4,9 +4,9 @@ author:   Addy Osmani
 provides: HTML5 Boilerplate, jQuery, Modernizr, Mocha.
 usage:    yeoman init quickstart
 
-'quickstart' represents the most basic type of application 
+'quickstart' represents the most basic type of application
 scaffold that you could generate using our generator system.
-It basically provides a version of what is created when you 
+It basically provides a version of what is created when you
 `yeoman init`, but only contains HTML5 Boilerplate, jQuery,
 Modernizr and Mocha for testing.
 

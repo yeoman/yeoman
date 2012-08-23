@@ -16,7 +16,7 @@ bower uninstalling /project/browser_modules/backbone
 ```
 
 Note: If you attempt to uninstall a package that is a dependency of other packages, yeoman (via Bower)
-will throw an error. 
+will throw an error.
 
 Example:
 

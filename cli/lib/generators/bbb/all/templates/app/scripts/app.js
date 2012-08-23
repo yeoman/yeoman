@@ -34,8 +34,8 @@ function($, _, Backbone) {
         $.ajax({ url: app.root + path, async: false }).then(function(contents) {
           JST[path] = _.template(contents);
         });
-      } 
-      
+      }
+
       return JST[path];
     }
   });

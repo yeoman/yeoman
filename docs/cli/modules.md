@@ -16,7 +16,7 @@ In ES6, A module is a unit of code contained within a `module` declaration. It c
 ```
 module Car{
   // import …
-  // export … 
+  // export …
 }
 ```
 When we say *externally loaded modules*, we are referring to modules which are either loaded using `import` declarations or the Module Loader API. Both will be covered shortly.
@@ -43,17 +43,17 @@ module System = SolarSystem
 
 ###export:
 
-An export declaration declares that a local function or variable binding is visible externally to other modules. If familiar with the module pattern, think of this concept as being parallel to the idea of exposing functionality publicly. 
+An export declaration declares that a local function or variable binding is visible externally to other modules. If familiar with the module pattern, think of this concept as being parallel to the idea of exposing functionality publicly.
 
 ```
 module Car{
 
   // Internals
   var licensePlateNo = "556-343"
-  
+
   // Exports
   export function drive(speed, direction){
-    console.log('We are driving at a speed of ' + speed + ', ' + direction);    
+    console.log('We are driving at a speed of ' + speed + ', ' + direction);
   }
 
   export var miles = 5000;
@@ -62,7 +62,7 @@ module Car{
 
 ```
 
-Modules `import` what they wish to use from other modules. Other modules may read the module exports (e.g `drive()`, `miles` etc. above) but they cannot modify them. Exports can be renamed as well so their names are different from local names. 
+Modules `import` what they wish to use from other modules. Other modules may read the module exports (e.g `drive()`, `miles` etc. above) but they cannot modify them. Exports can be renamed as well so their names are different from local names.
 
 A module may also export other modules for consumption.
 
@@ -90,14 +90,14 @@ export { Mercury: SolarSystem.Mercury, Earth: SolarSystem.Earth }
 
 ###import:
 
-An import declaraction binds another modules exports as local variables. Variables that are imported can be locally renamed to avoid naming conflicts. 
+An import declaraction binds another modules exports as local variables. Variables that are imported can be locally renamed to avoid naming conflicts.
 
 ```
 module Car{
   export function drive(speed, direction){
-    console.log('details:', speed, direction);    
+    console.log('details:', speed, direction);
   }
-  
+
   export module engine{
     export function check(){ ... }
   }
@@ -163,11 +163,11 @@ module vehicle{
   export function drive(speed, direction){
     console.log('We are driving at a speed of ' + speed + ', ' + direction);
   };
-  
+
   export function stop(){
     console.log('We have stopped');
   };
-  
+
   export var miles = 0;
   export var color = "silver";
   export var wheels = 4;
@@ -200,7 +200,7 @@ module Car{
   import {specialRims, mp3Player} from basicExtras;
   import "engine.js" as engine;
   module navigationSystem from premiumExtras.GPS;
-  
+
   export drive;
   export stop;
 }
@@ -231,7 +231,7 @@ Loader.load("car.js", function(car) {
 * callback: A callback function which receives the output result of attempting to load, compile and then execute the module
 * errorCallback: A callback triggered if an error occurs during loading or compilation
 
-Whilst the above example seems fairly trivial to use, the Loader API is there to provide a way to load modules in controlled contexts and actually supports a number of different configuration options. `Loader` itself is a system provided instance of the API, but it's possible to create custom loaders using the `Loader` constructor. 
+Whilst the above example seems fairly trivial to use, the Loader API is there to provide a way to load modules in controlled contexts and actually supports a number of different configuration options. `Loader` itself is a system provided instance of the API, but it's possible to create custom loaders using the `Loader` constructor.
 
 
 ```
@@ -250,8 +250,8 @@ var customLoader = new Loader(
 
     // A flag indicating whether code should be evaluated
     // in strict mode
-    strict: false,         
-                     
+    strict: false,
+
     // Source of the loader intrinsics which can either
     // be an existing loader or just null
     linkedTo: Loader || null,
@@ -265,14 +265,14 @@ var customLoader = new Loader(
     // A hook for source translation
     translate: function( src, relativeURL, baseURL, resolved ){…}
 });
-```                     
- 
+```
+
 
 Let's review the final three hooks in more detail:
 
 **fetch: function( relativeURL, baseURL, request, resolved ):**
 
-Once a module is resolved, it must be fetched. The `fetch` hook allows us to fetch code from an external resource and returns its source via the first callback or rejecting the code via the second callback. 
+Once a module is resolved, it must be fetched. The `fetch` hook allows us to fetch code from an external resource and returns its source via the first callback or rejecting the code via the second callback.
 
 
 The `fetch` request object has three callbacks:
@@ -281,13 +281,13 @@ The `fetch` request object has three callbacks:
 request = {
 
   // callbacks for the loading hook
-  
+
   // callback to create the successfully loaded source
   fulfill: function( src ){..},
-  
+
   // callback to indicate the source should be loaded from a different URL
   redirect: function( url, baseURL ){..}
-  
+
   // callback to indicate am error occurred in the loading
   reject: function( msg )
 }
@@ -303,7 +303,7 @@ If we don't supply a `fetch` hook, the parent Loader's `fetch` is used instead.
 
 **translate: function( src, relativeURL, baseURL, resolved ):**
 
-When code is evaluated, we have the option of translating the source of that code using this hook. The hook can either produce the final source code or throw an exception if something goes wrong. 
+When code is evaluated, we have the option of translating the source of that code using this hook. The hook can either produce the final source code or throw an exception if something goes wrong.
 
 
 A complete custom loader example could thus be written as follows:
@@ -365,7 +365,7 @@ module Car {
         return n == 0 || odd(n - 1);
     }
 }
- 
+
 module Scooter {
     import * from Car;
     export function odd(n) {

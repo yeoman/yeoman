@@ -31,7 +31,7 @@ A package manager runs through a command-line interface and is a tool for automa
 
 ### What are the goals of the project?
 
-The short-term goals for Yeoman are to provide developers with an improved tooling workflow so that they can spend less time on process and more time focusing on building beautiful web applications. Initially, we hope to make it as easy as possible to work with existing frameworks and tools developers are used to using. 
+The short-term goals for Yeoman are to provide developers with an improved tooling workflow so that they can spend less time on process and more time focusing on building beautiful web applications. Initially, we hope to make it as easy as possible to work with existing frameworks and tools developers are used to using.
 
 Long-term, the project may also assist developers with creating applications using modern technologies such as Web Components.
 
@@ -41,4 +41,4 @@ Our goal is to facilitate both developers and the community with the tools neede
 
 ### What license is Yeoman released under?
 
-Yeoman is released under a [BSD](http://opensource.org/licenses/bsd-license.php/) license. 
+Yeoman is released under a [BSD](http://opensource.org/licenses/bsd-license.php/) license.

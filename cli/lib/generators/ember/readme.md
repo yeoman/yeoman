@@ -6,7 +6,7 @@ Most of the code here is borrowed to https://github.com/emberjs/ember-rails
 yeoman-ember allows you to include a set of [Ember.JS](http://emberjs.com/)
 generators into your yeoman application.
 
-Usage: 
+Usage:
 `yeoman init ember`
 
 

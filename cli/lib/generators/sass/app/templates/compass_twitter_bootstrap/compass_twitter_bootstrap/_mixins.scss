@@ -529,7 +529,7 @@
 @mixin bootstrap-grid-core-offset ($columns, $gridColumnWidth, $gridGutterWidth) {
   margin-left: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns + 1));
 }
-  
+
 @mixin bootstrap-grid-core-span ($columns, $gridColumnWidth, $gridGutterWidth) {
   width: ($gridColumnWidth * $columns) + ($gridGutterWidth * ($columns - 1));
 }
@@ -539,17 +539,17 @@
     margin-left: $gridGutterWidth * -1;
     @include bootstrap-clearfix();
   }
-  
+
   [class*="span"] {
     float: left;
     margin-left: $gridGutterWidth;
   }
-  
+
   // Set the container width, and override it for fixed navbars in media queries
   .container,
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container { @include bootstrap-grid-core-span($gridColumns, $gridColumnWidth, $gridGutterWidth); }
-  
+
   // generate .spanX and .offsetX
   @for $i from 1 through $gridColumns {
     .span#{$i} { @include bootstrap-grid-core-span($i, $gridColumnWidth, $gridGutterWidth); }
@@ -593,10 +593,10 @@
   .uneditable-input {
     margin-left: 0; // override margin-left from core grid system
   }
-  
+
   @for $i from 1 through $gridColumns {
     input.span#{$i}, textarea.span#{$i}, .uneditable-input.span#{$i} {
       @include bootstrap-grid-input-span($i, $gridColumnWidth, $gridGutterWidth);
     }
-  } 
+  }
 }

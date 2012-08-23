@@ -38,11 +38,11 @@ There are a many benefits to using Analytics instead of rolling our own collecti
 
     ├── bin
     │   └── yeomaninsight.py
-    │   └── … 
+    │   └── …
 
 > *Note: /metrics was originally setup as an App Engine Python app before Analytics was chosen as backend. At this time, we don't need a separate server but the code is intact if/when we decide to build a dashboard for Yeoman.*
 
-This script is installed globally as an alias `_yeomaninsight` to prevent users from a.) seeing the script via auto completing "yeoman*" and b.) mitigating running the script directly.  The script is responsible for collecting, stashing, and sending usage data to Google Analytics. 
+This script is installed globally as an alias `_yeomaninsight` to prevent users from a.) seeing the script via auto completing "yeoman*" and b.) mitigating running the script directly.  The script is responsible for collecting, stashing, and sending usage data to Google Analytics.
 
 `_yeomaninsight` is invoked by `/cli/lib/plugins/insight.py`, which creates a folder in the home directory (`~/.yeoman/insight/`) when the cli is run for the first time. and prompts the user to opt-in to sending anonymous metrics.
 
