@@ -1,7 +1,7 @@
 
 var util = require('util'),
-path = require('path'),
-  yeoman = require('../../../../');
+    path = require('path'),
+    yeoman = require('../../../../');
 
 module.exports = Generator;
 
@@ -15,12 +15,4 @@ Generator.prototype.setupEnv = function setupEnv() {
 	// Copies the contents of the generator `templates`
 	// directory into your users new application path
     this.directory('.','.', true);
-};
-
-Generator.prototype.gruntfile = function gruntfile() {
-  this.template('Gruntfile.js');
-};
-
-Generator.prototype.packageJSON = function packageJSON() {
-  this.template('package.json');
 };
