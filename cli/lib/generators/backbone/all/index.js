@@ -43,7 +43,7 @@ Generator.prototype.injectBackbone = function injectBackbone() {
     // Workaround until copying underscore/lodash-like scripts don't cause issues.
     indexData = this.appendScripts(indexData,
         'app/scripts/vendor.js',
-        ['http://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.4.1/lodash.min.js',
+        ['http://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.5.2/lodash.min.js',
         'http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js']);
 
     // Wire MVC components (usemin: app/scripts/myapp.js)
