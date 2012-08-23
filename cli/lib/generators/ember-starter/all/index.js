@@ -7,22 +7,22 @@ module.exports = Generator;
 function Generator() {
   yeoman.generators.Base.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, '../templates'));
-  this.dirs = 'templates'.split(' ');
+  this.dirs = 'scripts styles'.split(' ');
   this.appname = path.basename(process.cwd());
 }
 
 util.inherits(Generator, yeoman.generators.Base);
 
-/*
 Generator.prototype.createDirLayout = function createDirLayout() {
   var self = this;
   this.dirs.forEach(function(dir) {
-    self.log.write('Creating app/scripts/' + dir + ' directory...')
-    self.mkdir(path.join('app/scripts', dir));
+    self.log.write('Creating app/' + dir + ' directory...')
+    self.mkdir(path.join('app/', dir));
     self.log.ok();
   });
 };
 
+/*
 Generator.prototype.createAppFile = function createAppFile() {
   this.template('app.js', 'app/scripts/' + this.appname + '.js');
 };
