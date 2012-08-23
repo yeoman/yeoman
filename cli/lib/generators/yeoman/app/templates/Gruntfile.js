@@ -166,6 +166,16 @@ module.exports = function( grunt ) {
       baseUrl: './scripts',
       wrap: true
     },
+
+    // While Yeoman handles concat/min when using
+    // usemin blocks, you can still use them manually
+    concat: {
+      dist: ''
+    },
+
+    min: {
+      dist: ''
+    }
   });
 
   // Alias the `test` task to run the `mocha` task instead
