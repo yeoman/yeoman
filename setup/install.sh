@@ -76,8 +76,15 @@ echo "Stand by..."
 echo ""
 
 # Some utility parts:
+# 0. Sudo checks
 # 1. Grab a temporary folder for us to operate in
 # 2. Find a tar executable
+
+#sudo checks
+if [ -z "$SUDOCHECK" ]; then
+  echo "Please authorize the installer:"
+  sudo -v
+fi
 
 # set the temp dir
 TMP="${TMPDIR}"
