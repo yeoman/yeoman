@@ -84,12 +84,12 @@ describe('yeoman init && yeoman build', function() {
       fs.stat('app/', done);
     });
 
-    it('should generate a spec/ directory', function(done) {
-      fs.stat('spec/', done);
-    });
-
     it('should generate a test/ directory', function(done) {
       fs.stat('test/', done);
+    });
+
+    it('should generate a test/spec/ directory', function(done) {
+      fs.stat('test/spec/', done);
     });
 
     it('should generate a Gruntfile.js file', function(done) {

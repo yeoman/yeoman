@@ -339,5 +339,5 @@ AppGenerator.prototype.lib = function lib() {
 
 AppGenerator.prototype.test = function test() {
   this.mkdir('test');
-  this.mkdir('spec');
+  this.mkdir('test/spec');
 };
