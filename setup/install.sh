@@ -19,6 +19,12 @@ NODEFILE=$(which node)
 GEMFILE=$(which gem)
 COMPASSFILE=$(gem which compass)
 
+# version variables (for easy updates)
+RUBYVER=1.9.3
+NODEVER=0.8.8
+YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
+
+
 # checking if sudo will be needed for Yeoman install
 SUDOCHECK=$( ls -ld /usr/local/bin | grep $USER )
 
@@ -160,36 +166,44 @@ fi
 if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
   echo "Looks like you haven't got brew yet, I'll install that now."
   ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
-else
-  if [ "$MAC" -eq 1 ]; then
-    echo "An error occurred installing brew."
-    exit 1
-  fi
+elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
+  echo "You've got brew, nice work chap!"
 fi
 
-#Install RVM and use Ruby 1.9.3
-echo "I'll need to install ruby and rubygems before I can continue."
+#RVM pre-check
+RVMFILE=$(which rvm)
+
+#Install RVM and Ruby
+echo "I'll need to install RVM, Ruby and rubygems before I can continue."
 echo ""
-curl -L https://get.rvm.io | bash -s stable
-source ~/.rvm/scripts/rvm
-rvm pkg install zlib
-rvm install 1.9.3
-rvm use 1.9.3
+if [ -z "$RVMFILE" ]; then
+  curl -L https://get.rvm.io | bash -s stable
+  source ~/.rvm/scripts/rvm
+  rvm pkg install zlib
+  rvm install $RUBYVER
+  rvm use $RUBYVER
+elif [ "$RVMFILE" ]; then
+  source ~/.rvm/scripts/rvm
+  rvm pkg install zlib
+  rvm reinstall $RUBYVER
+  rvm use $RUBYVER
+fi
 
 #check rvm is configured correctly
+source ~/.profile
 echo "Checking to make sure RVM is installed and configured correctly."
 
 RVMFILE=$(which rvm)
-
-echo ""
 
 if [ -z "$RVMFILE" ]; then
   echo "ERROR: RVM is not configured correctly for your terminal."
   echo "Please consult the RVM documentation for your terminal. http://rvm.io"
   exit 1
+else
+  echo "RVM is correctly configured, chap!"
 fi
 
-
+echo ""
 
 #ensure node is installed
 if [ "$NODEFILE" ]; then 
@@ -198,24 +212,24 @@ else
   echo "Installing Node.js"
   if [ "$MAC" -eq 1 ]; then 
     echo "Downloading Node.js for Mac."
-    curl -O http://nodejs.org/dist/v0.8.7/node-v0.8.7.pkg
+    curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER.pkg
     echo "Node.js downloaded, starting installer."
-    sudo installer -pkg node-v0.8.7.pkg -target /
+    sudo installer -pkg node-v$NODEVER.pkg -target /
   elif [ "$LINUX" -eq 1 ]; then 
     echo "Downloading Node.js for Linux."
     MACHINE_TYPE=`uname -m`
       if [ ${MACHINE_TYPE} == 'x86_64' ]; then
-        curl -O http://nodejs.org/dist/v0.8.7/node-v0.8.7-linux-x64.tar.gz
+        curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER-linux-x64.tar.gz
         echo "installing Node.js for linux."
-        tar xvfz node-v0.8.7-linux-x64.tar.gz
-        cd node-v0.8.7-linux-x64
+        tar xvfz node-v$NODEVER-linux-x64.tar.gz
+        cd node-v$NODEVER-linux-x64
         sudo cp -r * /usr/local/
         cd ..
       else
-        curl -O http://nodejs.org/dist/v0.8.7/node-v0.8.7-linux-x86.tar.gz
+        curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER-linux-x86.tar.gz
         echo "installing Node.js for linux."
-        tar xvfz node-v0.8.7-linux-x86.tar.gz
-        cd node-v0.8.7-linux-x86
+        tar xvfz node-v$NODEVER-linux-x86.tar.gz
+        cd node-v$NODEVER-linux-x86
         sudo cp -r * /usr/local/
         cd ..
       fi
@@ -255,7 +269,7 @@ if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 else
   echo "Install compass for CSS magic."
-  rvm 1.9.3 do gem install compass --pre
+  rvm $RUBYVER do gem install compass --pre
   # Fix an issue with installing --pre of compass.
   # https://github.com/chriseppstein/compass/pull/894
   rubygems-bundler-uninstaller
@@ -266,9 +280,8 @@ echo ""
 echo "Now the dependencies are sorted let's grab the latest yeoman goodness"
 
 #grab the latest yeoman tarball
-tarball="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
-curl https://dl.dropbox.com/u/39519/"$tarball".tar.gz | "$tar" -xz
-cd "$tarball"
+curl https://dl.dropbox.com/u/39519/"$YEOMANVER".tar.gz | "$tar" -xz
+cd "$YEOMANVER"
 
 cd cli
 #install yeoman as a global npm package
@@ -280,6 +293,8 @@ echo "you'll have the power of a thousand developers at your blinking cursor."
 echo "Okay here we go..."
 
 if [ -z "$SUDOCHECK" ]; then
+  echo ""
+  echo "Looks like you need to sudo your npm install:"
   sudo npm install . -g
 else
   npm install . -g
