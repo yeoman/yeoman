@@ -1,6 +1,6 @@
 ## Generators
 
-Generator templates allow you to scaffold out a project using a custom setup of boilerplates, frameworks and dependencies. The basic  application generated when calling `yeoman init` actually uses a generator itself and they can be quite powerful. 
+Generator templates allow you to scaffold out a project using a custom setup of boilerplates, frameworks and dependencies. The basic  application generated when calling `yeoman init` actually uses a generator itself and they can be quite powerful.
 
 ### Getting Started
 

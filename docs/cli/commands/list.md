@@ -2,7 +2,7 @@
 
 Usage: `yeoman list`
 
-Lists all of the packages that have been installed using `yeoman install` (Bower) in your current project. 
+Lists all of the packages that have been installed using `yeoman install` (Bower) in your current project.
 
 Example:
 

@@ -16,7 +16,7 @@ yeoman uninstall # Uninstall the package
 yeoman update    # Update a package to the latest version
 yeoman list      # List the packages currently installed
 yeoman search    # Query the registry for matching package names
-yeoman lookup    # Look up info on a particular package 
+yeoman lookup    # Look up info on a particular package
 ```
 
 Note that commands may also support additional flags and so we recommend consulting the documentation for specific
