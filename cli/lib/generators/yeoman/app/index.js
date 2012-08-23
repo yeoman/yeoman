@@ -104,6 +104,10 @@ AppGenerator.prototype.favicon = function favicon(){
   this.copy('favicon.ico', 'app/favicon.ico');
 };
 
+AppGenerator.prototype.mainStylesheet = function mainStylesheet(){
+  this.write('app/styles/main.css', "/* Will be compiled down to a single stylesheet with your sass files */");
+};
+
 AppGenerator.prototype.fetchH5bp = function fetchH5bp() {
   var cb = this.async();
 
@@ -147,7 +151,6 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
 AppGenerator.prototype.compassBootstrapFiles = function compassBootstrapFiles() {
   if(this.compassBootstrap){
     this.directory('../../../sass/app/templates/compass_twitter_bootstrap', 'app/styles');
-    this.write('app/styles/main.css', "/* Will be compiled down to a single stylesheet with your sass files */");
     this.write('app/styles/main.scss', '@import "compass_twitter_bootstrap";');
   }
 };
