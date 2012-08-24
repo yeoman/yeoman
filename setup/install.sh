@@ -107,11 +107,9 @@ function check_or_install_brew_pkg() {
     echo "$1 is installed."
   else
     echo "Installing $1..."
-    brew install $1
+    sudo brew install $1
   fi
 }
-
-brew link jpeg-turbo
 
 # where will we return to?
 BACK="$PWD"
