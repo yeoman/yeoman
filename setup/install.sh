@@ -155,6 +155,7 @@ for package in $PACKAGES
 do
   check_or_install_brew_pkg $package
 done
+sudo brew link jpeg-turbo
 
 
 # Install of installing bundler we'll just go and grab the compass gem.
