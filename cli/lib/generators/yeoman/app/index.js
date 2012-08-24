@@ -100,6 +100,10 @@ AppGenerator.prototype.git = function git() {
   this.copy('gitattributes', '.gitattributes');
 };
 
+AppGenerator.prototype.editorConfig = function editorConfig() {
+  this.copy('editorconfig', '.editorconfig');
+};
+
 AppGenerator.prototype.favicon = function favicon(){
   this.copy('favicon.ico', 'app/favicon.ico');
 };
