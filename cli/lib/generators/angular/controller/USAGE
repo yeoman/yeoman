@@ -1,11 +1,8 @@
-Options:
-    --array       # Create an Angular controller to represent multiple objects
-
 Description:
     Creates a new Angular controller
 
 Example:
-    yeoman generate controller Thing
+    yeoman init angular:controller Thing
 
     This will create:
-        app/scripts/controllers/thing-controller.js
+        app/scripts/controllers/thing-ctrl.js

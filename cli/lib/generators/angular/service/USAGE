@@ -1,0 +1,9 @@
+Description:
+    Creates a new AngularJS service.
+    Docs: http://docs.angularjs.org/guide/dev_guide.services.creating_services
+
+Example:
+    yeoman init angular:service thing
+
+    This will create:
+        app/scripts/services/thing.js

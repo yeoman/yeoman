@@ -14,6 +14,6 @@ function Generator() {
 
 util.inherits(Generator, yeoman.generators.NamedBase);
 
-Generator.prototype.createControllerFiles = function createControllerFiles() {
-  this.template('controller.js', 'app/scripts/controllers/' + this.name + '-ctrl.js');
+Generator.prototype.createPartialFiles = function createPartialFiles() {
+  this.template('partial.html', 'app/partials/' + this.name + '.html');
 };

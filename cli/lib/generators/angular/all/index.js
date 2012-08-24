@@ -3,29 +3,52 @@ var path = require('path'),
   util = require('util'),
   yeoman = require('../../../../');
 
-module.exports = Generator;
-
-function Generator() {
+var Generator = module.exports = function Generator() {
   yeoman.generators.Base.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, '../templates'));
 
-  this.dirs = 'controllers helpers templates'.split(' ');
+  // source directories
+  this.dirs = [
+    'controllers'
+  ];
 
   // should we figure it out automatically? and made available through an
   // appname property, function of something.
   this.appname = path.basename(process.cwd());
 
   this.hookFor('angular:controller', {
-    args: [ 'application' ]
+    args: ['main']
   });
 
-}
+  this.hookFor('angular:partial', {
+    args: ['main']
+  });
+};
 
 util.inherits(Generator, yeoman.generators.Base);
 
 Generator.prototype.injectAngular = function injectAngular() {
-  // noop for now, but here we might add necessary content to necessary file to
-  // wire up the framework.
+
+  // Resolve path to index.html
+  var indexOut = path.resolve('app/index.html');
+
+  // Read in as string for further update
+  var indexData = this.readFileAsString(indexOut);
+
+  // Add CDN link to AngularJS
+  indexData = this.appendScripts(indexData,
+    'app/scripts/vendor.js',
+    ['https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js']);
+
+  // Wire MVC components (usemin: app/scripts/myapp.js)
+  indexData = this.appendScripts(indexData,
+    'app/scripts/' + this.appname + '.js',
+    [ 'app/scripts/' + this.appname + '.js',
+      'app/scripts/controllers/main-ctrl.js'
+    ]);
+
+  // Write out final file
+  this.writeFileFromString(indexData, indexOut);
 };
 
 Generator.prototype.createDirLayout = function createDirLayout() {
@@ -39,22 +62,4 @@ Generator.prototype.createDirLayout = function createDirLayout() {
 
 Generator.prototype.createAppFile = function createAppFile() {
   this.template('app.js', 'app/scripts/' + this.appname + '.js');
-};
-
-Generator.prototype.createFiltersFile = function createFiltersFile() {
-  this.template('filters.js', 'app/scripts/filters.js');
-};
-
-Generator.prototype.createServicesFile = function createServicesFile() {
-  this.template('services.js', 'app/scripts/services.js');
-};
-
-Generator.prototype.createDirectivesFile = function createDirectivesFile() {
-  this.template('directives.js', 'app/scripts/directives.js');
-};
-
-
-Generator.prototype.createPartialsFile = function createPartialsFile() {
-  this.template('partials1.html', 'app/partials/partials1.html');
-  this.template('partials2.html', 'app/partials/partials2.html');
 };

@@ -1,0 +1,8 @@
+Description:
+    Creates a new AngularJS filter
+
+Example:
+    yeoman init angular:filter thing
+
+    This will create:
+        app/scripts/filters/thing.js

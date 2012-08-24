@@ -1,0 +1,8 @@
+Description:
+    Creates a new Angular directive
+
+Example:
+    yeoman init angular:directive thing
+
+    This will create:
+        app/scripts/directives/thing.js

@@ -1,12 +1,9 @@
 Description:
-    Creates a default Angular folder layout in app/scripts/
+    Creates a default AngularJS folder layout in app/scripts/
 
 Example:
-    yeoman generate bootstrap Thing
+    yeoman init angular
 
     This will create:
         app/scripts/app.js
-        app/scripts/controllers/
-        app/scripts/helpers/
-        app/scripts/templates/
-
+        app/scripts/controllers/main-ctrl.js
