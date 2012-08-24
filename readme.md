@@ -87,7 +87,11 @@ cd yeoman/cli
 sudo -s 'npm install -g && npm link'
 ```
 
-Please also note that (pre-launch) commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. As this is also currently in private beta, please let us know if you need access and we'll sort that out.
+Please also note that (pre-launch) commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. 
+
+As the Bower registry is currently being populated, you may find that certain packages work and others do not. We are actively working with the Bower team to resolve this issue and hope to have fully functional packages in place upon launch.
+
+As Bower is also currently in private beta, please let us know if you need access and we'll sort that out.
 
 Should you run into any further problems beyond this, please open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
