@@ -62,6 +62,10 @@ module.exports = function(grunt) {
 
     // start a webserver at the specified location
     grunt.helper('server', options, function(err, port) {
+      if(err) {
+        return done( err );
+      }
+
       options.port = port;
       grunt.helper('manifest', options, done);
     });
@@ -106,7 +110,7 @@ module.exports = function(grunt) {
     var confess = grunt.util.spawn({
       cmd: 'phantomjs',
       args: args
-    }, function(err, res, code) {
+    }, function(err) {
       if( err ) {
         grunt.fail.fatal(err);
       }
