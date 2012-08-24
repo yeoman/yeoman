@@ -19,6 +19,7 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`.
 
 **Make sure to pull in the latest and test before filing an issue, it might be fixed already**
+**Please also be sure to double-check an issue hasn't already been reported before submitting a new one**
 
 
 ## Documentation
@@ -47,17 +48,20 @@ yeoman init      # Invoke the most basic application scaffold (Bootstrap, Boiler
 yeoman build     # Build your project, creating an optimized version in a new `dist` directory
 yeoman server    # Fire off a file watch/server process which also places an 
                  # intermediate build of your project in `temp`
-
 ```
 
 Some more examples of how to use our commands include:
 
 ```shell
 # Generators for MVC/MV* Frameworks
-yeoman init angular                        # Invoke the AngularJS generator scaffold
-yeoman init angular:controller             # Invoke the AngularJS Controller sub-generator
-yeoman init bbb                            # Invoke the Backbone Boilerplate generator scaffold
-yeoman init ember                          # Invoke the Ember generator scaffold
+yeoman init quickstart                   # Skip our questions and get a H5BP, jQuery and Modernizr base
+yeoman init bbb                          # Backbone Boilerplate generator scaffold
+yeoman init ember                        # Ember-Rails generator scaffold
+yeoman init backbone                     # Backbone-Rails generator scaffold
+
+# Coming soon
+yeoman init angular                      # Invoke the AngularJS generator scaffold
+yeoman init angular:controller           # Invoke the AngularJS Controller sub-generator
 
 # Generator for Chrome Apps
 yeoman init chromeapps
