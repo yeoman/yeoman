@@ -34,12 +34,12 @@ module.exports = function(grunt) {
   // - basics   - same as buildkit plus minor html optimizations
   // - minify   - same as build plus full html minification
   var targets = {
-    "default" : 'coffee compass                rjs concat css min img rev usemin manifest',
-    usemin    : 'coffee compass usemin-handler rjs concat css img rev usemin manifest',
-    text      : 'coffee compass usemin-handler rjs concat css min     rev usemin manifest',
-    buildkit  : 'coffee compass usemin-handler rjs concat css min img rev usemin manifest html:buildkit',
-    basics    : 'coffee compass usemin-handler rjs concat css min img rev usemin manifest html:basics',
-    minify    : 'coffee compass usemin-handler rjs concat css min img rev usemin manifest html:compress'
+    "default" : '                rjs concat css min img rev usemin manifest',
+    usemin    : 'usemin-handler rjs concat css img rev usemin manifest',
+    text      : 'usemin-handler rjs concat css min     rev usemin manifest',
+    buildkit  : 'usemin-handler rjs concat css min img rev usemin manifest html:buildkit',
+    basics    : 'usemin-handler rjs concat css min img rev usemin manifest html:basics',
+    minify    : 'usemin-handler rjs concat css min img rev usemin manifest html:compress'
   };
 
   var targetList = grunt.log.wordlist(Object.keys(targets));
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var tasks = ['intro clean mkdirs', targets[target], 'copy time'].join(' ');
+    var tasks = ['intro', 'coffee compass clean mkdirs', targets[target], 'copy time'].join(' ');
     grunt.log.subhead('Running ' + target + ' target')
       .writeln('  - ' + grunt.log.wordlist(tasks.split(' '), { separator: ' ' }));
 

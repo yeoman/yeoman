@@ -77,7 +77,7 @@ module.exports = function(grunt) {
     this.send(ws, data);
   };
 
-  Reactor.prototype.start = function start(options) {
+  Reactor.prototype.start = function start() {
     // setup socket connection
     this.server.on('upgrade', this.connection.bind(this));
   };
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
       }
     };
 
-    ws.onclose = function(event) {
+    ws.onclose = function() {
       ws = null;
       delete self.sockets[wsId];
     };
@@ -146,7 +146,7 @@ module.exports = function(grunt) {
   };
 
   // noop
-  Reactor.prototype.info = function info(data, ws) {};
+  Reactor.prototype.info = function info() {};
 
   Reactor.prototype.send = function send(ws, data) {
     ws.send(JSON.stringify(data));
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
 
   // triggered by a watch handler to emit a reload event on all livereload
   // established connection
-  grunt.registerTask('reload', '(internal) livereload interface', function(target) {
+  grunt.registerTask('reload', '(internal) livereload interface', function() {
     // get the reactor instance
     var reactor = grunt.helper('reload:reactor');
 
@@ -191,17 +191,46 @@ module.exports = function(grunt) {
 
   // Note: yeoman-server alone will exit prematurly unless `this.async()` is
   // called. The task is designed to work alongside the `watch` task.
-  grunt.registerTask('yeoman-server', 'Launch a preview, LiveReload compatible server', function() {
+  grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target) {
     // Get values from config, or use defaults.
-    var port = grunt.config('server.port') || 0xDAD,
-      base = path.resolve(grunt.config('server.base') || this.args[0] || '.');
+    var port = grunt.config('server.port') || 0xDAD;
+
+    // async task, call it (or not if you wish to use this task standalone)
+    var cb = this.async();
+
+    // valid target are app (default), prod and test
+    var targets = {
+      // these paths once config and paths resolved will need to pull in the
+      // correct paths from config
+      app: path.resolve('app'),
+      prod: path.resolve('dist'),
+      test: path.resolve('test')
+    };
+
+    target = target || 'app';
+
+    // yell on invalid target argument
+    if(!targets[target]) {
+      grunt.log.error('Not a valid target: ' + target);
+      grunt.log.writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
+      return false;
+    }
 
     grunt.helper('server', {
       open: true,
       port: port,
-      base: base,
+      base: path.resolve(targets[target]),
       inject: true
-    });
+    }, cb);
+
+    if(target === 'app') {
+      // when serving app, make sure to delete the temp/ dir from w/e was
+      // previously compiled here, and trigger compass / coffee mostly to make
+      // sure, those files are compiled and not revved.
+      grunt.task.run('clean coffee compass');
+    }
+
+    grunt.task.run('watch');
   });
 
   grunt.registerHelper('server', function(opts, cb) {
@@ -213,16 +242,19 @@ module.exports = function(grunt) {
 
     // add the special livereload snippet injection middleware
     if ( opts.inject ) {
-      middleware.push( grunt.helper('reload:inject') );
+      middleware.push( grunt.helper('reload:inject', opts) );
     }
 
     middleware = middleware.concat([
+      // also serve static files from the temp directory, and before the app
+      // one (compiled assets takes precedence over same pathname within app/)
+      connect.static(path.join(opts.base, '../temp')),
       // Serve static files.
       connect.static(opts.base),
-      // Serve the livereload.js script,
-      connect.static(path.join(__dirname, 'livereload')),
       // Make empty directories browsable.
-      connect.directory(opts.base)
+      connect.directory(opts.base),
+      // Serve the livereload.js script
+      connect.static(path.join(__dirname, 'livereload'))
     ]);
 
     // the connect logger format if --debug was specified. Get values from
@@ -241,10 +273,13 @@ module.exports = function(grunt) {
     return connect.apply(null, middleware)
       .on('error', function( err ) {
         if ( err.code === 'EADDRINUSE' ) {
-          this.listen(0); // 0 means random port
+          return this.listen(0); // 0 means random port
         }
+
+        // not an EADDRINUSE error, buble up the error
+        cb(err);
       })
-      .listen(opts.port, function() {
+      .listen(opts.port, function(err) {
         var port = this.address().port;
 
         // Start server.
@@ -274,7 +309,8 @@ module.exports = function(grunt) {
   // **inject.io** is a grunt helper returning a valid connect / express middleware.
   // Its job is to setup a middleware right before the usual static one, and to
   // bypass the response of `.html` file to render them with additional scripts.
-  grunt.registerHelper('reload:inject', function() {
+  grunt.registerHelper('reload:inject', function(opts) {
+    opts = opts || {};
 
     return function inject(req, res, next) {
       var port = res.socket.server.address().port;
@@ -293,7 +329,7 @@ module.exports = function(grunt) {
 
       // can't use the ideal stream / pipe case, we need to alter the html response
       // by injecting that little livereload snippet
-      filepath = path.resolve(filepath.replace(/^\//, ''));
+      filepath = path.join(opts.base, filepath.replace(/^\//, ''));
       fs.readFile(filepath, 'utf8', function(e, body) {
         if(e) {
           // go next and silently fail
