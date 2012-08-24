@@ -4,17 +4,33 @@
 
 # Note for maintenance: we have versions of Node, Compass, and the Yeoman zip hardcoded here.
 
+# checking OS
+
+LINUX=0
+MAC=0
+PKGMGR=0
 
 # checking baseline dependencies
 RUBYFILE=$(which ruby)
 GEMFILE=$(which ruby)
+BREWFILE=$(which brew)
 
 NODEFILE=$(which node)
 GEMFILE=$(which gem)
 COMPASSFILE=$(gem which compass)
 
+# version variables (for easy updates)
+RUBYVER=1.9.3
+NODEVER=0.8.8
+YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
+
+
+# checking if sudo will be needed for Yeoman install
+SUDOCHECK=$( ls -ld /usr/local/bin | grep $USER )
+
 # packages to automatically be installed
-PACKAGES='git optipng jpeg-turbo phantomjs'
+PACKAGESMAC='git optipng jpeg-turbo phantomjs'
+PACKAGESLINUX='git optipng libjpeg-turbo8 phantomjs'
 
 
 echo "                                                            "
@@ -60,9 +76,15 @@ echo "Stand by..."
 echo ""
 
 # Some utility parts:
+# 0. Sudo checks
 # 1. Grab a temporary folder for us to operate in
 # 2. Find a tar executable
-# 3. Safe method to check for installed homebrew packages
+
+#sudo checks
+if [ -z "$SUDOCHECK" ]; then
+  echo "Please authorize the installer:"
+  sudo -v
+fi
 
 # set the temp dir
 TMP="${TMPDIR}"
@@ -77,7 +99,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# tar so hard.
+# Check the user has tar installed.
 tar="${TAR}"
 if [ -z "$tar" ]; then
   tar="${npm_config_tar}"
@@ -88,7 +110,7 @@ if [ -z "$tar" ]; then
 fi
 if [ $ret -eq 0 ] && [ -x "$tar" ]; then
   echo "tar=$tar"
-  echo "Good gracious! You've got this version 'tar' installed:"
+  echo "Good gracious! You've got this version of 'tar' installed:"
   $tar --version
   ret=$?
 fi
@@ -99,11 +121,9 @@ else
   exit 1
 fi
 
-
 function check_or_install_brew_pkg() {
   FILELOCATION=$(which $1)
-  if [ "$FILELOCATION" ]
-  then
+  if [ "$FILELOCATION" ]; then
     echo "$1 is installed."
   else
     echo "Installing $1..."
@@ -111,92 +131,181 @@ function check_or_install_brew_pkg() {
   fi
 }
 
-brew link jpeg-turbo
+echo ""
 
 # where will we return to?
 BACK="$PWD"
 cd "$TMP"
 
+function haveProg() {
+    [ -x "$(which $1)" ]
+}
 
+if haveProg apt-get; then 
+  echo "You are using apt-get. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=1
+elif haveProg yum; then 
+  echo "You are using yum. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=2
+elif haveProg up2date; then 
+  echo "You are using up2date. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=3
+else 
+  MAC=1
+  PKGMGR=4
+fi
+echo ""
 
-
-if [ "$RUBYFILE" ] && [ "$GEMFILE" ]
-then
-    echo ""
+#check which OS
+if [ "$MAC" -eq 1 ]; then 
+  echo "Installing on OS X."
+elif [ "$LINUX" -eq 1 ]; then
+  echo "Installing on Linux."
 else
-    echo "You'll need Ruby and RubyGems installed before this installer can continue."
+  echo "Unable to determine install target OS! We currently support OS X and Linux."
+  exit 1  
+fi
+
+#if on mac, make sure brew is installed
+if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
+  echo "Looks like you haven't got brew yet, I'll install that now."
+  ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
+  echo "You've got brew, nice work chap!"
+fi
+
+#RVM pre-check
+RVMFILE=$(which rvm)
+
+#Install RVM and Ruby
+echo "I'll need to install RVM, Ruby and rubygems before I can continue."
+echo ""
+if [ -z "$RVMFILE" ]; then
+  curl -L https://get.rvm.io | bash -s stable
+  source ~/.rvm/scripts/rvm
+  rvm pkg install zlib
+  rvm install $RUBYVER
+  rvm use $RUBYVER
+elif [ "$RVMFILE" ]; then
+  source ~/.rvm/scripts/rvm
+  rvm pkg install zlib
+  rvm reinstall $RUBYVER
+  rvm use $RUBYVER
+fi
+
+#check rvm is configured correctly
+source ~/.profile
+echo "Checking to make sure RVM is installed and configured correctly."
+
+RVMFILE=$(which rvm)
+
+if [ -z "$RVMFILE" ]; then
+  echo "ERROR: RVM is not configured correctly for your terminal."
+  echo "Please consult the RVM documentation for your terminal. http://rvm.io"
+  exit 1
+else
+  echo "RVM is correctly configured, chap!"
 fi
 
 echo ""
-if [ "$NODEFILE" ]
-then
-    echo "Node.js is installed..."
-else
-    echo "Installing Node.js..."
 
-    curl -O http://nodejs.org/dist/v0.8.4/node-v0.8.4.pkg
-    echo "Node.js downloaded, running install script (requires authentication)"
-    sudo installer -pkg node-v0.8.4.pkg -target /
+#ensure node is installed
+if [ "$NODEFILE" ]; then 
+  echo "Node.js is installed." 
+else
+  echo "Installing Node.js"
+  if [ "$MAC" -eq 1 ]; then 
+    echo "Downloading Node.js for Mac."
+    curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER.pkg
+    echo "Node.js downloaded, starting installer."
+    sudo installer -pkg node-v$NODEVER.pkg -target /
+  elif [ "$LINUX" -eq 1 ]; then 
+    echo "Downloading Node.js for Linux."
+    MACHINE_TYPE=`uname -m`
+      if [ ${MACHINE_TYPE} == 'x86_64' ]; then
+        curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER-linux-x64.tar.gz
+        echo "installing Node.js for linux."
+        tar xvfz node-v$NODEVER-linux-x64.tar.gz
+        cd node-v$NODEVER-linux-x64
+        sudo cp -r * /usr/local/
+        cd ..
+      else
+        curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER-linux-x86.tar.gz
+        echo "installing Node.js for linux."
+        tar xvfz node-v$NODEVER-linux-x86.tar.gz
+        cd node-v$NODEVER-linux-x86
+        sudo cp -r * /usr/local/
+        cd ..
+      fi
+  else
+    echo "An error occurred installing Node.js"
+  fi
 fi
 
 echo ""
-if [ "$BREWFILE" ]
-then
-    echo "Homebrew is installed..."
-else
-    echo "Installing Homebrew..."
-    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+
+#install the rest of the dependencies (MAC)
+if [ "$MAC" -eq 1 ]; then 
+  echo "Installing dependencies for OS X."
+  for package in $PACKAGESMAC
+  do
+    check_or_install_brew_pkg $package
+  done
+  brew link jpeg-turbo
 fi
 
-echo ""
-echo "Installing required packages via Homebrew..."
-echo "First, we'll make sure homebrew is up to date. (Auth required)"
-sudo brew update
-echo "Now to install: $PACKAGES"
-for package in $PACKAGES
-do
-  check_or_install_brew_pkg $package
-done
-
-
-# Install of installing bundler we'll just go and grab the compass gem.
-# We would like to move to node-sass once libsass is stable
-echo ""
-if [ "$COMPASSFILE" ]
-then
-    echo "Compass already installed, you may want to 'gem install compass --pre' for Sass 3.2..."
-else
-    echo "Installing Compass for CSS preprocessing magic..."
-    sudo gem update --system
-    sudo gem install compass --pre
-    # Fix an issue with installing --pre of compass.
-    # Fixed in Compass master, but not released:
-    # https://github.com/chriseppstein/compass/pull/894
-    rubygems-bundler-uninstaller
+#install the rest of the dependencies (LINUX)
+if [ "$LINUX" -eq 1 ]; then 
+  echo "Installing dependencies for Linux."
+  echo "Installing $PACKAGESLINUX"
+  if [ "$PKGMGR" -eq 1 ]; then 
+    sudo apt-get install $PACKAGESLINUX
+  elif [ "$PKGMGR" -eq 2 ]; then 
+    sudo yum install $PACKAGESLINUX
+  elif [ "$PKGMGR" -eq 3 ]; then 
+    sudo up2date install $PACKAGESLINUX
+  fi
 fi
 
-# now that we have all our major dependencies in place,
-# lets grab the yeoman package and start initializing it.
-
+#check for compass
 echo ""
-echo "Phew. That was hard work!"
-echo "Now we've got those dependencies out of the way, let's grab Yeoman's latest!"
+if [ "$COMPASSFILE" ]; then 
+  echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
+else
+  echo "Install compass for CSS magic."
+  rvm $RUBYVER do gem install compass --pre
+  # Fix an issue with installing --pre of compass.
+  # https://github.com/chriseppstein/compass/pull/894
+  rubygems-bundler-uninstaller
+fi
 
+#dependencies done. woo!
+echo ""
+echo "Now the dependencies are sorted let's grab the latest yeoman goodness"
 
-# grab our latest and unpack the tarball
-tarball="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
-curl https://dl.dropbox.com/u/39519/"$tarball".tar.gz | "$tar" -xz
-cd "$tarball"
+#grab the latest yeoman tarball
+curl https://dl.dropbox.com/u/39519/"$YEOMANVER".tar.gz | "$tar" -xz
+cd "$YEOMANVER"
 
 cd cli
-# install yeoman as a global node package
+#install yeoman as a global npm package
 echo ""
 echo "Alright buckaroo, hold on to your hats.."
 echo "We're about to install the yeoman CLI, which will in turn install quite a few node modules"
 echo "We're going to move fast, but once we're done, "
 echo "you'll have the power of a thousand developers at your blinking cursor."
 echo "Okay here we go..."
-sudo npm install . -g
+
+if [ -z "$SUDOCHECK" ]; then
+  echo ""
+  echo "Looks like you need to sudo your npm install:"
+  sudo npm install . -g
+else
+  npm install . -g
+fi
 
 echo ""
 echo "Yah Hoo! Yeoman global is in place."
@@ -227,6 +336,3 @@ echo "       cd myYeomanApp   "
 echo "       yeoman init      "
 echo ""
 echo "See you on the other side!"
-
-
-
