@@ -221,7 +221,8 @@ module.exports = function(grunt) {
       open: true,
       port: port,
       base: path.resolve(targets[target]),
-      inject: true
+      inject: true,
+      target: target
     }, cb);
 
     if(target === 'app') {
@@ -255,7 +256,11 @@ module.exports = function(grunt) {
       // Make empty directories browsable.
       connect.directory(opts.base),
       // Serve the livereload.js script
-      connect.static(path.join(__dirname, 'livereload'))
+      connect.static(path.join(__dirname, 'livereload')),
+      // To deal with errors, 404 and alike.
+      grunt.helper('server:errorHandler', opts),
+      // Connect error handler (for better looking error pages)
+      connect.errorHandler()
     ]);
 
     // the connect logger format if --debug was specified. Get values from
@@ -307,9 +312,84 @@ module.exports = function(grunt) {
   });
 
 
-  // **inject.io** is a grunt helper returning a valid connect / express middleware.
-  // Its job is to setup a middleware right before the usual static one, and to
-  // bypass the response of `.html` file to render them with additional scripts.
+  // Error handlers
+  // --------------
+
+  // Grunt helper providing a connect middleware focused on dealing with
+  // errors. Assuming this middleware is at the bottom of your stack, deals
+  // with incoming request as 404 errors. It then tries to add a more
+  // meaningful message, based on provided `options`.
+  //
+  // - opts       - Hash of options where
+  //    - base    - is the base directory and helps to determine a more
+  //                specific message
+  //    - target  - The base target name (app, dist, test) to act upon
+  //
+  //
+  // If a grunt helper with a `server:error:<target>` name is registered,
+  // invoke it, passing in the original error and associated pathname.
+  //
+  // It changes the exports.title property used internally by
+  // connect.errorHandler (to update the Page title to be Yeoman instead of
+  // Connect).
+  //
+  // In a next step, we might want to craft our own custom errorHandler, based
+  // on http://www.senchalabs.org/connect/errorHandler.html to customize a bit
+  // more.
+  grunt.registerHelper('server:errorHandler', function(opts) {
+    opts = opts || {};
+    opts.target = opts.target || 'app';
+    connect.errorHandler.title = 'Yeoman';
+    return function errorHandler(req, res, next) {
+      // Figure out the requested path
+      var pathname = req.url;
+      // get back the connect server
+      var server = res.socket.server;
+      // asume 404 all the way.
+      var err = connect.utils.error(404);
+      err.message = pathname + ' ' + err.message;
+
+      // Using events would be better here, but the `res.socket.server`
+      // instance doesn't seem to be same than the one returned by connect()
+      if(grunt.task._helpers['server:error:' + opts.target]) {
+        grunt.helper('server:error:' + opts.target, err, pathname);
+      }
+
+      // go next, and pass in the crafted error object
+      next(err);
+    };
+  });
+
+  // Target specific error handlers. Alter the error object as you see fit.
+  grunt.registerHelper('server:error:dist', function(err, pathname) {
+    // handle specific pathname here, `/` on dist target as special meaning.
+    // Most likely missing a build run.
+    if(pathname === '/') {
+      err.message = 'Missing /dist folder.';
+      // connect middleware slice at position 1, append an Empty String (usually Error: err.message)
+      err.stack = [
+        '',
+        'You need to run yeoman build first.',
+        '',
+        '<code>yeoman build</code>'
+      ].join('\n');
+    }
+  });
+
+
+  // LiveReload
+  // ----------
+  //
+  // XXX Reactor and this inject middleware should be put in `livereload/*.js`.
+  // At some point, it might be reanmed from `livereload/` to `server/`, and
+  // put any non specific grunt piece of code (like the few connect middleware
+  // in there) in this folder, with multiple files. Then, the grunt.helper is
+  // registered using `grunt.registerHelper('reload:inject', require('./server/inject'))`
+
+
+  // Grunt helper returning a valid connect / express middleware.  Its job is
+  // to setup a middleware right before the usual static one, and to bypass the
+  // response of `.html` file to render them with additional scripts.
   grunt.registerHelper('reload:inject', function(opts) {
     opts = opts || {};
 
@@ -354,8 +434,4 @@ module.exports = function(grunt) {
     };
 
   });
-
-
-
-
 };
