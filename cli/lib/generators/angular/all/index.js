@@ -44,8 +44,10 @@ Generator.prototype.injectAngular = function injectAngular() {
   indexData = this.appendScripts(indexData,
     'app/scripts/' + this.appname + '.js',
     [ 'app/scripts/' + this.appname + '.js',
-      'app/scripts/controllers/main-ctrl.js'
+      'app/scripts/controllers/main.js'
     ]);
+
+  //TODO: add files to test/index.html
 
   // Write out final file
   this.writeFileFromString(indexData, indexOut);
