@@ -140,7 +140,7 @@ wiring.appendScripts = function appendScripts(html, optimizedPath, sourceFileLis
 
 // Simple script removal
 wiring.removeScript = function removeScript(html, scriptPath) {
-  return this.domUpdate(html, 'script[src^="' + scriptPath + '"]' , '', 'd');
+  return this.domUpdate(html, 'script[src$="' + scriptPath + '"]' , '', 'd');
 };
 
 wiring.appendStyles = function appendStyles(html, optimizedPath, sourceFileList, attrs) {
@@ -148,7 +148,7 @@ wiring.appendStyles = function appendStyles(html, optimizedPath, sourceFileList,
 };
 
 wiring.removeStyle = function removeStyle( html, path ) {
-  return this.domUpdate( html, 'link[href^="' + path + '"]' , '', 'd' );
+  return this.domUpdate( html, 'link[href$="' + path + '"]' , '', 'd' );
 };
 
 // Append a directory of scripts
