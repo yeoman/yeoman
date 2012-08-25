@@ -181,9 +181,9 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
   ];
 
   // Strip sections of H5BP we're going to overwrite
-  indexData = this.removeScript(indexData, 'js/plugins.js');
-  indexData = this.removeScript(indexData, 'js/main.js');
-  indexData = this.removeStyle(indexData, 'css/normalize.css');
+  indexData = this.removeScript(indexData, 'plugins.js');
+  indexData = this.removeScript(indexData, 'main.js');
+  indexData = this.removeStyle(indexData, 'normalize.css');
 
   indexData = indexData.replace(/js\/vendor\/jquery[^"]+/g, 'scripts/vendor/jquery.min.js');
 
