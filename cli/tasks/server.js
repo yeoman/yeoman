@@ -203,7 +203,7 @@ module.exports = function(grunt) {
       // these paths once config and paths resolved will need to pull in the
       // correct paths from config
       app: path.resolve('app'),
-      prod: path.resolve('dist'),
+      dist: path.resolve('dist'),
       test: path.resolve('test')
     };
 
@@ -211,8 +211,9 @@ module.exports = function(grunt) {
 
     // yell on invalid target argument
     if(!targets[target]) {
-      grunt.log.error('Not a valid target: ' + target);
-      grunt.log.writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
+      grunt
+        .log.error('Not a valid target: ' + target)
+        .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
       return false;
     }
 
