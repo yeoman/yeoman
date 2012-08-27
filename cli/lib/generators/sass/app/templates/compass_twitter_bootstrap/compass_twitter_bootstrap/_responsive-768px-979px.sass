@@ -1,0 +1,11 @@
+// PORTRAIT TABLET TO DEFAULT DESKTOP
+// ----------------------------------
+
+@media (min-width: 768px) and (max-width: 979px)
+  // Fixed grid
+  +bootstrap-grid-core(42px, 20px)
+  // Fluid grid
+  +bootstrap-grid-fluid(5.801%, 2.762%)
+  // Input grid
+  +bootstrap-grid-input(42px, 20px)
+  // No need to reset .thumbnails here since it's the same @gridGutterWidth
