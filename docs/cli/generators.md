@@ -99,7 +99,7 @@ The first step is to create a file at `lib/generators/initializer/index.js with
 the following content:
 
     var util = require('util'),
-      yeoman = require('yeoman');
+        yeoman = require('../../../');
 
     module.exports = Generator;
 
@@ -161,7 +161,7 @@ case. We can solve this problem in two ways. The first one is calling desc
 inside our generator:
 
     var util = require('util'),
-      yeoman = require('yeoman');
+        yeoman = require('../../../');
 
     module.exports = Generator;
 
@@ -192,7 +192,7 @@ Generators themselves have a generator:
 This is the generator just created:
 
     var util = require('util'),
-      yeoman = require('yeoman');
+        yeoman = require('../../../');
 
     module.exports = Generator;
 
@@ -235,7 +235,7 @@ lib/generators/initializer/templates/initializer.js with the following content:
 And now let’s change the generator to copy this template when invoked:
 
     var util = require('util'),
-      yeoman = require('yeoman');
+        yeoman = require('../../../');
 
     module.exports = Generator;
 
@@ -351,7 +351,7 @@ So we know that a typical generator looks like the following:
 
 ```js
 var util = require('util'),
-  yeoman = require('yeoman');
+    yeoman = require('../../../');
 
 module.exports = Generator;
 
