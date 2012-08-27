@@ -22,8 +22,7 @@ module.exports = function(grunt) {
   grunt.registerHelper('hash', function(files, opts) {
     opts = opts || {};
 
-    files = Array.isArray(files) ? files : [files];
-    grunt.file.expand(files).forEach(function(f) {
+    grunt.file.expandFiles(files).forEach(function(f) {
       var md5 = grunt.helper('md5', f),
         renamed = [md5.slice(0, 8), path.basename(f)].join('.');
 
