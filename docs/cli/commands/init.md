@@ -33,7 +33,7 @@ screen to kick off your project that looks a little like this:
 .. Invoke app ..
 
 Please answer the following:
-[?] Would you like to include the Twitter Bootstrap for Compass? (Y/n)
+[?] Would you like to include Twitter Bootstrap for Compass? (Y/n)
 ```
 
 ### custom generators
