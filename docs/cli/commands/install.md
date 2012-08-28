@@ -1,3 +1,5 @@
+
+
 ## install
 
 Usage: `yeoman install <packageName>`, `yeoman install <package1> <package2>`
@@ -25,7 +27,7 @@ will actually also install Underscore.js and jQuery.js as these are required for
 
 `yeoman install` also supports installing packages using more than just the package name. Namely:
 
-```
+```shell
 bower install jquery
 bower install git://github.com/maccman/package-jquery.git
 bower install http://code.jquery.com/jquery-1.7.2.js

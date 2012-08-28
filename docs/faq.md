@@ -1,4 +1,4 @@
-## Frequently Asked Questions
+# FREQUENTLY ASKED QUESTIONS
 
 ### What is Yeoman?
 

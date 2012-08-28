@@ -13,7 +13,7 @@ Also note that as Require HM is a RequireJS plugin, ES6 modules are only support
 
 In ES6, A module is a unit of code contained within a `module` declaration. It can either be defined inline or within an externally loaded module file. A skeleton inline module for a Car could be written:
 
-```
+```javascript
 module Car{
   // import …
   // export …
@@ -23,16 +23,14 @@ When we say *externally loaded modules*, we are referring to modules which are e
 
 A module *instance* is a module which has been evaluated, is linked to other modules or has lexically encapsulated data. Examples of modules instances are:
 
-```
+```javascript
 module myCar = Car;
 module myCar at "car.js";
-
 ```
 
 `module` declarations can be used in the following contexts:
 
-
-```
+```javascript
 module Universe {}
 module Universe { module MilkyWay {} }
 module MilkyWay = "Universe/MilkyWay"
@@ -45,7 +43,7 @@ module System = SolarSystem
 
 An export declaration declares that a local function or variable binding is visible externally to other modules. If familiar with the module pattern, think of this concept as being parallel to the idea of exposing functionality publicly.
 
-```
+```javascript
 module Car{
 
   // Internals
@@ -66,7 +64,7 @@ Modules `import` what they wish to use from other modules. Other modules may rea
 
 A module may also export other modules for consumption.
 
-```
+```javascript
 module Car{
   export module engine{}
   export module driver{}
@@ -76,7 +74,7 @@ module Car{
 
 `export` can be used in the following contexts:
 
-```
+```javascript
 export var document
 export var document = { }
 export function parse() { }
@@ -92,7 +90,7 @@ export { Mercury: SolarSystem.Mercury, Earth: SolarSystem.Earth }
 
 An import declaraction binds another modules exports as local variables. Variables that are imported can be locally renamed to avoid naming conflicts.
 
-```
+```javascript
 module Car{
   export function drive(speed, direction){
     console.log('details:', speed, direction);
@@ -112,43 +110,43 @@ Revisiting the export example above, we can now selectively choose what we wish 
 
 We can just import `drive()`:
 
-```
+```javascript
 import drive from Car;
 ```
 
 We can import `drive()` and `miles`:
 
-```
+```javascript
 import {drive, miles} from Car;
 ```
 
 We can import `check()` from our engine module:
 
-```
+```javascript
 import check from Car.engine;
 ```
 
 We can import all of the exports:
 
-```
+```javascript
 import * from Car;
 ```
 
 We can also import an entire file as a module:
 
-```
+```javascript
 import "car.js" as Car;
 ```
 
 Or import `drive()` without needing to bind the module to a local name:
 
-```
+```javascript
 import drive from "car.js";
 ```
 
 This similarly works with JavaScript libraries like Underscore.js:
 
-```
+```javascript
 import reduce from "Underscore.js"
 ```
 
@@ -158,7 +156,7 @@ import reduce from "Underscore.js"
 Bringing these three concepts together:
 
 
-```
+```javascript
 module vehicle{
   export function drive(speed, direction){
     console.log('We are driving at a speed of ' + speed + ', ' + direction);
@@ -187,14 +185,14 @@ module premiumExtras{
 
 ```
 
-```
+```javascript
 // Engine.js
 module engine{
 
 }
 ```
 
-```
+```javascript
 module Car{
   import * from vehicle;
   import {specialRims, mp3Player} from basicExtras;
@@ -214,7 +212,7 @@ module Car{
 
 Earlier, we mentioned the concept of a Module Loader API. The module loader allows us to dynamically load in scripts for consumption. Similar to `import`, we are able to consume anything defined as an `export` from such modules.
 
-```
+```javascript
 // Signature: load( moduleURL, callback, errorCallback )
 
 Loader.load("car.js", function(car) {
@@ -234,7 +232,7 @@ Loader.load("car.js", function(car) {
 Whilst the above example seems fairly trivial to use, the Loader API is there to provide a way to load modules in controlled contexts and actually supports a number of different configuration options. `Loader` itself is a system provided instance of the API, but it's possible to create custom loaders using the `Loader` constructor.
 
 
-```
+```javascript
 // The Loader constructor creates a new loader
 var customLoader = new Loader(
     // Define the parent of this loader
@@ -277,7 +275,7 @@ Once a module is resolved, it must be fetched. The `fetch` hook allows us to fet
 
 The `fetch` request object has three callbacks:
 
-```
+```javascript
 request = {
 
   // callbacks for the loading hook
@@ -308,7 +306,7 @@ When code is evaluated, we have the option of translating the source of that cod
 
 A complete custom loader example could thus be written as follows:
 
-```
+```javascript
 var customLoader = new Loader(Loader,{
     global: window,
     baseURL: document.URL.substring(0, document.URL.lastIndexOf('\/') + 1),
@@ -346,7 +344,7 @@ var customLoader = new Loader(Loader,{
 
 We can also define modules with a shared state:
 
-```
+```javascript
 module Car{
   export module milesCounter {
       var miles = 0;
@@ -358,7 +356,7 @@ module Car{
 
 or cyclic dependencies:
 
-```
+```javascript
 module Car {
     import * from Scooter;
     export function even(n) {

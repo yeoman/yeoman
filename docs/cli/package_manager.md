@@ -1,4 +1,4 @@
-#@ Package Manager
+# Package Manager
 
 Until now, client-side JavaScript has not benefited from a rich package management solution such as those found in other platforms (e.g NPM, RubyGems). By instead maintaining packages of packages in client-side JS, developers reduced the chances of using up-to-date versions of libraries.
 
@@ -14,7 +14,7 @@ In Bower, dependencies are listed in a ‘component.json’ file, similar to Nod
     "modernizr": "~2.6.1"
   }
 }
- ```
+```
 
 Dependencies are then installed locally via the `yeoman install’ command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir (browser_modules) to component.json, for example:
 
@@ -34,8 +34,8 @@ This approach has a number of benefits.
 
 The easiest approach is to use a Bower package statically is to then just reference the package manually from a script tag:
 
-```
-<script src="components/jquery/index.js"></script>
+```shell
+&lt;script src="components/jquery/index.js"&gt;&lt;/script&gt;
 ```
 
 Similar to NPM, our Bower integration also allows users to easily search for and update packages easily. e.g
