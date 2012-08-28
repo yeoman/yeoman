@@ -1,4 +1,6 @@
-## Search
+
+
+## search
 
 Usage: `yeoman search <keyword>`
 

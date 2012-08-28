@@ -1,3 +1,5 @@
+# GETTING STARTED
+
 ## Installation
 
 Installing Yeoman in an easy process that should take less than 10 minutes on OSX. We also provide notes on how to install on Linux or opt for a more custom installation, should you need to do this. At present, Yeoman is not supported on Windows (but we're working on it!).
