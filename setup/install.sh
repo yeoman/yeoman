@@ -12,15 +12,15 @@ PKGMGR=0
 
 # checking baseline dependencies
 RUBYFILE=$(which ruby)
-GEMFILE=$(which ruby)
+# GEMFILE=$(which ruby)
 BREWFILE=$(which brew)
 
 NODEFILE=$(which node)
 GEMFILE=$(which gem)
-COMPASSFILE=$(gem which compass)
+# COMPASSFILE=$(gem which compass)
 
 # version variables (for easy updates)
-RUBYVER=1.9.3
+# RUBYVER=1.9.3
 NODEVER=0.8.8
 YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
 
@@ -162,6 +162,8 @@ echo ""
 #check which OS
 if [ "$MAC" -eq 1 ]; then 
   echo "Installing on OS X."
+  # check pre-installed ruby
+  RUBYCHECK=$(ruby -e 'print RUBY_VERSION')
 elif [ "$LINUX" -eq 1 ]; then
   echo "Installing on Linux."
 else
@@ -177,37 +179,50 @@ elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
   echo "You've got brew, nice work chap!"
 fi
 
-#RVM pre-check
-RVMFILE=$(which rvm)
+# #RVM pre-check
+# RVMFILE=$(which rvm)
+#
+# #Install RVM and Ruby
+# echo "I'll need to install RVM, Ruby and rubygems before I can continue."
+# echo ""
+# if [ -z "$RVMFILE" ]; then
+#   curl -L https://get.rvm.io | bash -s stable
+#   source ~/.rvm/scripts/rvm
+#   rvm pkg install zlib
+#   rvm install $RUBYVER
+#   rvm use $RUBYVER
+# elif [ "$RVMFILE" ]; then
+#   source ~/.rvm/scripts/rvm
+#   rvm pkg install zlib
+#   rvm reinstall $RUBYVER
+#   rvm use $RUBYVER
+# fi
+#
+# #check rvm is configured correctly
+# source ~/.profile
+# echo "Checking to make sure RVM is installed and configured correctly."
+#
+# RVMFILE=$(which rvm)
+#
+# if [ -z "$RVMFILE" ]; then
+#   echo "ERROR: RVM is not configured correctly for your terminal."
+#   echo "Please consult the RVM documentation for your terminal. http://rvm.io"
+#   exit 1
+# else
+#   echo "RVM is correctly configured, chap!"
+# fi
 
-#Install RVM and Ruby
-echo "I'll need to install RVM, Ruby and rubygems before I can continue."
-echo ""
-if [ -z "$RVMFILE" ]; then
-  curl -L https://get.rvm.io | bash -s stable
-  source ~/.rvm/scripts/rvm
-  rvm pkg install zlib
-  rvm install $RUBYVER
-  rvm use $RUBYVER
-elif [ "$RVMFILE" ]; then
-  source ~/.rvm/scripts/rvm
-  rvm pkg install zlib
-  rvm reinstall $RUBYVER
-  rvm use $RUBYVER
-fi
-
-#check rvm is configured correctly
-source ~/.profile
-echo "Checking to make sure RVM is installed and configured correctly."
-
-RVMFILE=$(which rvm)
-
-if [ -z "$RVMFILE" ]; then
-  echo "ERROR: RVM is not configured correctly for your terminal."
-  echo "Please consult the RVM documentation for your terminal. http://rvm.io"
+if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
+  echo "Installing Ruby"
+  sudo apt-get install libruby1.9.1 ruby1.9.1
+elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" -le 1.8.6 ]; then
+  echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   exit 1
+elif [ "$RUBYFILE" ]; then
+  echo "Ruby is installed."
 else
-  echo "RVM is correctly configured, chap!"
+  echo "Unable to determine ruby configuration"
+  exit 1
 fi
 
 echo ""
@@ -276,10 +291,10 @@ if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 else
   echo "Install compass for CSS magic."
-  rvm $RUBYVER do gem install compass --pre
+  sudo gem install compass --pre
   # Fix an issue with installing --pre of compass.
   # https://github.com/chriseppstein/compass/pull/894
-  rubygems-bundler-uninstaller
+  # rubygems-bundler-uninstaller
 fi
 
 #dependencies done. woo!
