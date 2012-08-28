@@ -1,6 +1,5 @@
 ## Frequently Asked Questions
 
-
 ### What is Yeoman?
 
 Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. The project was initially announced at Google I/O and it's capabilities include:
@@ -42,3 +41,41 @@ Our goal is to facilitate both developers and the community with the tools neede
 ### What license is Yeoman released under?
 
 Yeoman is released under a [BSD](http://opensource.org/licenses/bsd-license.php/) license.
+
+
+### Bower
+
+####What distinguishes Bower from Jam, Volo or Ender? What does it do better?
+
+It's easiest to think of Bower as a lower level component then Jam, Volo, or Ender.
+
+All Bower really does is install git paths, resolves dependencies from a component.json, checks versions, and then provides api which tells you what it did.
+
+The major diversion from past attempts at package management in the front-end, is that Bower is working under the assumption that there is a single, common problem in frontend application development which needs to be solved: resolving dependencies and managing components. Unfortunately, most other attempts tried to tackle this problem in such a way that it ends up alienating communities which develop using different transports (sprockets, commonjs, requirejs, regular script tags).
+
+For example, someone developing with sprockets, can't use volo packages, can't use jam packages, and so forth.
+
+Bower is trying to solve the common problem, in an unopinionated way, and leave the opinions your build stack.
+
+What's more, things like Ender can and will consume bower as a dependency for simple git installation and use the package api to build a commonjs style require api include for the browser.
+
+Jam or Volo could do the same thing for amd if they were interested.
+
+####Volo is an arguably more established project and works with the GitHub search API. Will it take long for Bower to contain a decent number of packages?
+
+Of all the projects, Ender is objectively the most popular - with nearly 1000 more watchers than volo – and is used at major companies like twitter, disqus, etc.
+
+Bower by definition has every single package that volo does (git packages) and more - it actually works on internal networks and other git repositories not hosted on github.
+
+####We recently saw what happened when the NPM registry completely went down. Is a central point of failure possible for Bower and if so, do you have redundancy planned?
+
+There's no redundancy planned at the moment, as Bower just installs git urls. It's up to the url provider to establish redundancy.
+
+####Isn't having a package.json file going to conflict with my npm's package.json? Will this be a problem?
+
+Don't use a package.json – user component.json.
+
+####Bower is an open-source Twitter project. How well can we expect it to be maintained in the future?
+
+Twitter has a pretty good track record with there open source projects thus far, and has an entire engineer pool to work on it. Another good thing we can say is that Twitter.com is moving it's frontend architecture onto Bower, so it's fairly safe to say it will be maintained.
+
