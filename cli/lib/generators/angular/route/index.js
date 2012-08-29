@@ -10,10 +10,15 @@ function Generator() {
   this.sourceRoot(path.join(__dirname, '../templates'));
 
   this.appname = path.basename(process.cwd());
+
+  this.hookFor('angular:controller', {
+    args: [this.name]
+  });
+  this.hookFor('angular:partial', {
+    args: [this.name]
+  });
+
+  // TODO: hook up routing in appName.js
 }
 
 util.inherits(Generator, yeoman.generators.NamedBase);
-
-Generator.prototype.createPartialFiles = function createPartialFiles() {
-  this.template('partial.html', 'app/partials/' + this.name + '.html');
-};

@@ -1,0 +1,8 @@
+Description:
+    Creates a new AngularJS view
+
+Example:
+    yeoman init angular:view Thing
+
+    This will create:
+        app/scripts/views/thing.html

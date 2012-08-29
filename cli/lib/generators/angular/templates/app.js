@@ -15,7 +15,7 @@ var <%= grunt.util._.camelize(appname) %>App = angular.module('<%= grunt.util._.
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'partials/main.html',
+        templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({

@@ -1,8 +1,0 @@
-Description:
-    Creates a new AngularJS partial
-
-Example:
-    yeoman init angular:partial Thing
-
-    This will create:
-        app/scripts/partials/thing.html
