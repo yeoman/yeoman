@@ -6,6 +6,8 @@ var fs = require('fs'),
   events = require('events'),
   colors = require('colors'),
   connect = require('connect'),
+  gateway = require('gateway'),
+  tamper = require('tamper'),
   WebSocket = require('faye-websocket'),
   open = require('open');
 
@@ -217,6 +219,8 @@ module.exports = function(grunt) {
     }
 
     middleware = middleware.concat([
+      // Serve PHP files via php-cgi.
+      gateway(opts.base),
       // Serve static files.
       connect.static(opts.base),
       // Serve the livereload.js script,
@@ -276,45 +280,24 @@ module.exports = function(grunt) {
   // bypass the response of `.html` file to render them with additional scripts.
   grunt.registerHelper('reload:inject', function() {
 
-    return function inject(req, res, next) {
-      var port = res.socket.server.address().port;
-
-      // build filepath from req.url and deal with index files for trailing `/`
-      var filepath = req.url.slice(-1) === '/' ? req.url + 'index.html' : req.url;
-
-      // if ext is anything but .html, let it go through usual connect static
-      // middleware.
-      if ( path.extname( filepath ) !== '.html' ) {
-        return next();
+    return tamper(function(req, res) {
+      if (res.getHeader('Content-Type') === 'text/html') {
+        return function (body) {
+          var port = req.socket.server.address().port;
+          return body.replace(/<\/body>/, function(w) {
+            return [
+              "<!-- yeoman livereload snippet -->",
+              "<script>document.write('<script src=\"http://'",
+              " + (location.host || 'localhost').split(':')[0]",
+              " + ':" + port + "/livereload.js?snipver=1\"><\\/script>')",
+              "</script>",
+              "",
+              w
+            ].join('\n');
+          });
+        };
       }
-
-      // setup some basic headers, at this point it's always text/html anyway
-      res.setHeader('Content-Type', connect.static.mime.lookup(filepath));
-
-      // can't use the ideal stream / pipe case, we need to alter the html response
-      // by injecting that little livereload snippet
-      filepath = path.resolve(filepath.replace(/^\//, ''));
-      fs.readFile(filepath, 'utf8', function(e, body) {
-        if(e) {
-          // go next and silently fail
-          return next();
-        }
-
-        body = body.replace(/<\/body>/, function(w) {
-          return [
-            "<!-- yeoman livereload snippet -->",
-            "<script>document.write('<script src=\"http://'",
-            " + (location.host || 'localhost').split(':')[0]",
-            " + ':" + port + "/livereload.js?snipver=1\"><\\/script>')",
-            "</script>",
-            "",
-            w
-          ].join('\n');
-        });
-
-        res.end(body);
-      });
-    };
+    });
 
   });
 
