@@ -52,11 +52,6 @@ AppGenerator.prototype.askFor = function askFor (argument) {
     message: 'Would you like to include the Twitter Bootstrap plugins?',
     default: 'Y/n',
     warning: 'Yes: All Twitter Bootstrap plugins will be placed into the JavaScript vendor directory.'
-  }, {
-    name: 'bootstrapDest',
-    message: 'Where would you like it be downloaded ? (not used if previous answer is no)',
-    default: 'app/scripts/vendor/bootstrap',
-    warning: 'You can change the default download location'
   },
   {
     name: 'includeRequireJS',
@@ -78,7 +73,6 @@ AppGenerator.prototype.askFor = function askFor (argument) {
     // We change a bit this way of doing to automatically do this in the self.prompt() method.
     self.bootstrap = (/y/i).test(props.bootstrap);
     self.compassBootstrap = (/y/i).test(props.compassBootstrap);
-    self.bootstrapLocation = props.bootstrapDest;
     self.includeRequireJS = (/y/i).test(props.includeRequireJS);
     self.includeRequireHM = (/y/i).test(props.includeRequireHM);
 
@@ -134,8 +128,7 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   // prevent the bootstrap fetch is user said NO
   if(!this.bootstrap) { return; }
 
-  var cb = this.async(),
-    dest = this.bootstrapLocation;
+  var cb = this.async();
 
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
   this.remote('twitter', 'bootstrap', 'v2.0.4', function(err, remote, files) {
