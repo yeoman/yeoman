@@ -263,7 +263,7 @@ AppGenerator.prototype.requirejs = function requirejs(){
       // Wire RequireJS/AMD (usemin: js/amd-app.js)
       var body = self.read(path.resolve('app/index.html'));
       body = self.appendScripts(body, 'scripts/amd-app.js', ['scripts/vendor/require.js'], {
-        'data-main': 'main'
+        'data-main': 'scripts/main'
       });
       self.write('app/index.html', body);
 
@@ -315,6 +315,7 @@ AppGenerator.prototype.requirehm = function requirehm(){
       mainjs = mainjs.replace('require.config({', 'require.config({\n  hm: "app/hm",\n');
       mainjs = mainjs.replace('paths: {', 'paths: {\n    esprima: \'app/scripts/esprima\',');
       self.write('app/scripts/main.js', mainjs);
+
       cb();
     });
 
