@@ -144,11 +144,20 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   });
 };
 
-
+// Duplicated from the SASS generator, waiting a solution for #138
 AppGenerator.prototype.compassBootstrapFiles = function compassBootstrapFiles() {
-  if(this.compassBootstrap){
-    this.directory('../../../sass/app/templates/compass_twitter_bootstrap', 'app/styles');
+  if ( this.compassBootstrap ) {
+    var cb = this.async();
+
     this.write('app/styles/main.scss', '@import "compass_twitter_bootstrap";');
+
+    this.remote('kristianmandrup', 'compass-twitter-bootstrap', '19626592c8a2eafa8f52ee0344ef1ac30f74502f', function(err, remote) {
+      if(err) { return cb(err); }
+
+      remote.directory('stylesheets', 'app/styles');
+
+      cb();
+    });
   }
 };
 
