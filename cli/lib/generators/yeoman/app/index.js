@@ -205,6 +205,7 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
 
     // Wire Twitter Bootstrap plugins (usemin: scripts/plugins.js)
     indexData = this.appendScripts(indexData, 'scripts/plugins.js', [
+      'scripts/vendor/bootstrap/bootstrap-affix.js',
       'scripts/vendor/bootstrap/bootstrap-alert.js',
       'scripts/vendor/bootstrap/bootstrap-dropdown.js',
       'scripts/vendor/bootstrap/bootstrap-tooltip.js',

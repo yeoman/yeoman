@@ -66,6 +66,7 @@ describe('yeoman init && yeoman build', function() {
       assert.ok((/<!-- build:js scripts\/plugins.js -->/).test(index));
       assert.ok((/<!-- endbuild -->/).test(index));
 
+      assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-affix.js'));
       assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-alert.js'));
       assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-dropdown.js'));
       assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-tooltip.js'));
