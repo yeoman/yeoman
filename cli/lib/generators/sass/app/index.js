@@ -1,4 +1,3 @@
-
 var util = require('util'),
   yeoman = require('../../../../');
 
@@ -17,6 +16,14 @@ Generator.prototype.main = function main() {
   this.write('app/styles/main.scss', '@import "compass_twitter_bootstrap";');
 };
 
-Generator.prototype.compassBootstrap = function compassBootstrap() {
-  this.directory('compass_twitter_bootstrap', 'app/styles');
+Generator.prototype.fetchCompassBootstrap = function fetchCompassBootstrap() {
+  var cb = this.async();
+
+  this.remote('kristianmandrup', 'compass-twitter-bootstrap', '19626592c8a2eafa8f52ee0344ef1ac30f74502f', function(err, remote) {
+    if(err) { return cb(err); }
+
+    remote.directory('stylesheets', 'app/styles');
+
+    cb();
+  });
 };
