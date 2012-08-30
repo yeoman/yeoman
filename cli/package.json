@@ -36,7 +36,7 @@
     "clean-css": "~0.3.2",
     "connect": "~2.2.1",
     "tamper": "~0.1.0",
-    "gateway": "~0.0.1",
+    "gateway": "~0.1.0",
     "request": "~2.9.200",
     "html-minifier": "~0.4.5",
     "which": "~1.0.5",
