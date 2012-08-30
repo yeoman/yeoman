@@ -1,5 +1,4 @@
 // Testacular configuration
-// Generated on Sun Aug 26 2012 01:57:11 GMT-0400 (EDT)
 
 
 // base path, that will be used to resolve files and exclude
@@ -10,6 +9,11 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
+  'app/scripts/vendor/angular.js',
+  'test/lib/angular-mocks.js',
+  'app/scripts/*.js',
+  'app/scripts/**/*.js',
+  'test/mock/**/*.js',
   'test/spec/**/*.js'
 ];
 

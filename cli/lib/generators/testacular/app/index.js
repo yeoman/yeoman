@@ -28,11 +28,11 @@ Generator.prototype.setupEnv = function setupEnv() {
   if (this.interactive) {
     this.log.writeln("You may want to add the following to your Gruntfile.js:\n");
     [
-      "    grunt.registerTask('test', 'run testacular', function () {",
+      "    grunt.registerTask('test', 'run the testacular test driver', function () {",
       "      var done = this.async();",
       "      require('child_process').exec('testacular testacular.conf.js --single-run', function (err, stdout) {",
       "        grunt.log.write(stdout);",
-      "        done();",
+      "        done(err);",
       "      });",
       "    });",
       ""
