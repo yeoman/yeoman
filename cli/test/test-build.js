@@ -53,8 +53,8 @@ describe('yeoman init && yeoman build', function() {
         .expect(/Writing test\/index\.html/)
         .expect(/Writing test\/lib\/chai\.js/)
         .expect(/Writing test\/lib\/expect\.js/)
-        .expect(/Writing test\/lib\/mocha-1\.2\.2\/mocha\.css/)
-        .expect(/Writing test\/lib\/mocha-1\.2\.2\/mocha\.js/)
+        .expect(/Writing test\/lib\/mocha\/mocha\.css/)
+        .expect(/Writing test\/lib\/mocha\/mocha\.js/)
         .expect(/Writing test\/runner\/mocha\.js/)
 
         // run and done
