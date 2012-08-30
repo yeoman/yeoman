@@ -59,6 +59,7 @@ Some more examples of how to use our commands include:
 yeoman init quickstart                   # Skip our questions and get a H5BP, jQuery and Modernizr base
 yeoman init bbb                          # Backbone Boilerplate generator scaffold
 yeoman init ember                        # Ember-Rails generator scaffold
+yeoman init ember-starter                # Create a "Hello World" Yeoman project with the Ember Starter Kit 
 yeoman init backbone                     # Backbone-Rails generator scaffold
 
 # Coming soon
