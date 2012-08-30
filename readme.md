@@ -4,6 +4,8 @@
 
 Yeoman is a robust and opinionated client-side stack, comprised of tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup.
 
+![image](http://yeoman.io/media/yeoman-masthead.png)
+
 Yeoman is fast, performant and is optimized to work best in modern browsers.
 
 For more information about the project, see [yeoman.io](http://yeoman.io).
@@ -71,7 +73,7 @@ yeoman search jquery                       # Lookup jQuery in the Bower registry
 yeoman install jquery underscore [depName] # Install a dependency or dependencies
 yeoman update jquery                       # Update a specific dependency (e.g jquery)
 ```
-
+![image](http://yeoman.io/media/yeoman-packages.png)
 
 See the [complete documentation](https://github.com/yeoman/yeoman/tree/master/docs/cli) for more. We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
 
@@ -107,6 +109,7 @@ As Bower is also currently in private beta, please let us know if you need acces
 * Chrome on Android
 * Mobile Safari
 
+![image](http://yeoman.io/media/yeoman-browsers.png)
 
 ## Platform Support
 
