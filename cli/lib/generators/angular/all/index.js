@@ -7,11 +7,6 @@ var Generator = module.exports = function Generator() {
   yeoman.generators.Base.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, '../templates'));
 
-  // source directories
-  this.dirs = [
-    'controllers'
-  ];
-
   this.appname = path.basename(process.cwd());
   
   this.hookFor('angular:app', {
@@ -23,7 +18,3 @@ var Generator = module.exports = function Generator() {
 };
 
 util.inherits(Generator, yeoman.generators.Base);
-
-Generator.prototype.createAppFile = function createAppFile() {
-  this.template('app.js', 'app/scripts/' + this.appname + '.js');
-};

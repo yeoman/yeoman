@@ -20,6 +20,9 @@ Generator.prototype.setupEnv = function setupEnv() {
   this.directory('app','.', true);
 };
 
+Generator.prototype.createAppFile = function createAppFile() {
+  this.template('app.js', 'app/scripts/' + this.appname + '.js');
+};
 
 Generator.prototype.createMainFiles = function createMainFiles() {
 

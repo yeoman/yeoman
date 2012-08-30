@@ -164,11 +164,11 @@ module.exports = function( grunt ) {
   });
 
   // Alias the `test` task to run `testacular` instead
-  grunt.registerTask('test', 'run testacular test driver', function () {
+  grunt.registerTask('test', 'run the testacular test driver', function () {
     var done = this.async();
     require('child_process').exec('testacular testacular.conf.js --single-run', function (err, stdout) {
       grunt.log.write(stdout);
-      done();
+      done(err);
     });
   });
 
