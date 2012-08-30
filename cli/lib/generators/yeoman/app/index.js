@@ -158,6 +158,9 @@ AppGenerator.prototype.compassBootstrapFiles = function compassBootstrapFiles() 
 
       cb();
     });
+  } else {
+    this.log.writeln('Writing compiled Bootstrap');
+    this.copy( 'bootstrap.css', 'app/styles/bootstrap.css' );
   }
 };
 
@@ -325,11 +328,6 @@ AppGenerator.prototype.requirehm = function requirehm(){
   } else {
     cb();
   }
-};
-
-AppGenerator.prototype.writeVanillaBootstrap = function writeVanillaBootstrap() {
-  this.log.writeln('Writing compiled Bootstrap');
-  this.copy( 'bootstrap.css', 'app/styles/bootstrap.css' );
 };
 
 AppGenerator.prototype.app = function app() {
