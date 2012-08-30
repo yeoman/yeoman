@@ -326,9 +326,9 @@ AppGenerator.prototype.requirehm = function requirehm(){
   }
 };
 
-AppGenerator.prototype.writeMain = function writeMain(){
+AppGenerator.prototype.writeVanillaBootstrap = function writeVanillaBootstrap() {
   this.log.writeln('Writing compiled Bootstrap');
-  this.template('main.css', path.join('app/styles/bootstrap.css'));
+  this.copy( 'bootstrap.css', 'app/styles/bootstrap.css' );
 };
 
 AppGenerator.prototype.app = function app() {
