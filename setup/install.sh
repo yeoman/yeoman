@@ -182,6 +182,7 @@ if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
   sudo apt-get install libruby1.9.1 ruby1.9.1
 elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" <= 1.8.6 ]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
+  COMPASS=0
 elif [ "$RUBYFILE" ]; then
   echo "Ruby is installed."
 else
@@ -307,5 +308,7 @@ echo ""
 echo "See you on the other side!"
 
 if [ "$COMPASS" -eq 0 ]; then
-  echo "Sorry chap, compass wasn't setup correctly because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation for install requirements].
+  echo ""
+  echo "Install hiccup: no compass"
+  echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation for install requirements]."
 fi
