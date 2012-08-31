@@ -89,6 +89,10 @@ AppGenerator.prototype.packageJSON = function packageJSON() {
   this.template('package.json');
 };
 
+AppGenerator.prototype.jshintrc = function jshintrc() {
+  this.copy('jshintrc', '.jshintrc');
+};
+
 AppGenerator.prototype.git = function git() {
   this.copy('gitignore', '.gitignore');
   this.copy('gitattributes', '.gitattributes');
