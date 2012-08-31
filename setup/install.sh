@@ -12,18 +12,15 @@ PKGMGR=0
 
 # checking baseline dependencies
 RUBYFILE=$(which ruby)
-# GEMFILE=$(which ruby)
 BREWFILE=$(which brew)
-
 NODEFILE=$(which node)
 GEMFILE=$(which gem)
-# COMPASSFILE=$(gem which compass)
+COMPASSFILE=$(which compass)
+COMPASS=1
 
 # version variables (for easy updates)
-# RUBYVER=1.9.3
 NODEVER=0.8.8
 YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
-
 
 # checking if sudo will be needed for Yeoman install
 SUDOCHECK=$( ls -ld /usr/local/bin | grep $USER )
@@ -179,50 +176,17 @@ elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
   echo "You've got brew, nice work chap!"
 fi
 
-# #RVM pre-check
-# RVMFILE=$(which rvm)
-#
-# #Install RVM and Ruby
-# echo "I'll need to install RVM, Ruby and rubygems before I can continue."
-# echo ""
-# if [ -z "$RVMFILE" ]; then
-#   curl -L https://get.rvm.io | bash -s stable
-#   source ~/.rvm/scripts/rvm
-#   rvm pkg install zlib
-#   rvm install $RUBYVER
-#   rvm use $RUBYVER
-# elif [ "$RVMFILE" ]; then
-#   source ~/.rvm/scripts/rvm
-#   rvm pkg install zlib
-#   rvm reinstall $RUBYVER
-#   rvm use $RUBYVER
-# fi
-#
-# #check rvm is configured correctly
-# source ~/.profile
-# echo "Checking to make sure RVM is installed and configured correctly."
-#
-# RVMFILE=$(which rvm)
-#
-# if [ -z "$RVMFILE" ]; then
-#   echo "ERROR: RVM is not configured correctly for your terminal."
-#   echo "Please consult the RVM documentation for your terminal. http://rvm.io"
-#   exit 1
-# else
-#   echo "RVM is correctly configured, chap!"
-# fi
-
+#check for and install ruby if needed
 if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
   echo "Installing Ruby"
   sudo apt-get install libruby1.9.1 ruby1.9.1
-elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" -le 1.8.6 ]; then
+elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" <= 1.8.6 ]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
-  exit 1
 elif [ "$RUBYFILE" ]; then
   echo "Ruby is installed."
 else
-  echo "Unable to determine ruby configuration"
-  exit 1
+  echo "Unable to determine ruby configuration, skipping compass install."
+  COMPASS=0
 fi
 
 echo ""
@@ -289,12 +253,11 @@ fi
 echo ""
 if [ "$COMPASSFILE" ]; then 
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
-else
+elif [ "$COMPASS" -eq 0 ]; then
+  echo "Ruby was not detected or is not configured correctly, skipping compass."
+elif [ -z "$COMPASSFILE" ] && [ "COMPASS" -eq 1 ]; then
   echo "Install compass for CSS magic."
   sudo gem install compass --pre
-  # Fix an issue with installing --pre of compass.
-  # https://github.com/chriseppstein/compass/pull/894
-  # rubygems-bundler-uninstaller
 fi
 
 #dependencies done. woo!
@@ -326,15 +289,6 @@ echo ""
 echo "Yah Hoo! Yeoman global is in place."
 echo ""
 
-# # let's ask the user if she is okay with reporting anonymous stats so we can build a better tool
-# echo ""
-# cd ../metrics
-# # TODO: creating a path like this probably doesn't work on Windows.
-# python setup.py install --quiet --force --user --install-scripts=~/.yeoman/insight
-
-# echo "Alright now, that bit is done now, too."
-# echo ""
-
 # hop back to start and kill our temp folder off
 cd "$BACK" && rm -rf "$TMP"
 
@@ -351,3 +305,7 @@ echo "       cd myYeomanApp   "
 echo "       yeoman init      "
 echo ""
 echo "See you on the other side!"
+
+if [ "$COMPASS" -eq 0 ]; then
+  echo "Sorry chap, compass wasn't setup correctly because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation for install requirements].
+fi
