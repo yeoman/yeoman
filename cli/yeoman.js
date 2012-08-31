@@ -12,4 +12,4 @@ var yeoman = module.exports;
 yeoman.utils = require('./lib/utils');
 
 // Yeoman generators
-yeoman.generators = require('./lib/generators');
+yeoman.generators = require('yeoman-generators');
