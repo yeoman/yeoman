@@ -204,7 +204,12 @@ module.exports = function(grunt) {
       // correct paths from config
       app: path.resolve('app'),
       dist: path.resolve('dist'),
-      test: path.resolve('test')
+      test: path.resolve('test'),
+
+      // reload is a special one, acting like `app` but not opening the HTTP
+      // server in default browser and forcing the port to LiveReload standard
+      // port.
+      reload: path.resolve('app')
     };
 
     target = target || 'app';
@@ -218,9 +223,11 @@ module.exports = function(grunt) {
     }
 
     grunt.helper('server', {
-      open: true,
-      port: port,
-      base: path.resolve(targets[target]),
+      // prevent browser opening on `reload` target
+      open: target !== 'reload',
+      // and force 35729 port no matter what when on `reload` target
+      port: target === 'reload' ? 35729 : port,
+      base: targets[target],
       inject: true,
       target: target
     }, cb);
