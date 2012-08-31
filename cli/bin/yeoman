@@ -88,12 +88,12 @@ if ( /^upgrade/.test( route ) ) {
   // purposes only)
   updater.getUpdate({ name: 'grunt', version: pkg.version }, function( update ) {
     console.log( 'Update type available is:', colors.yellow( update.severity ) );
-    console.log( 'You have version', colors.blue( update.localVersion ) );
-    console.log( 'Latest version is', colors.red( update.latestVersion ) );
-    console.log( 'To get the latest version run: ' + colors.green('npm update yeoman -g') );
+    console.log( 'You have version', colors.blue( update.current ) );
+    console.log( 'Latest version is', colors.red( update.latest ) );
+    console.log('Update checks complete.');
   });
 
-  return console.log('Update checks complete.');
+  return;
 }
 
 /* Yeoman Insight =========================================================== */

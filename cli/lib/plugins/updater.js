@@ -1,5 +1,5 @@
 // Updater.js: npm version checker and updater for packages
-// @author: Addy Osmani
+// @author: Addy Osmani and Sindre Sorhus
 // @inspired by: npm, npm-latest
 //
 // Sample usage:
@@ -8,8 +8,8 @@
 // updater.getUpdate({ name: 'grunt', version: pkg.version }, function( update ) {
 //
 //      console.log( 'Update type available is:', colors.yellow( update.severity ) );
-//      console.log( 'You have version', colors.blue( update.localVersion ) );
-//      console.log( 'Latest version is', colors.red( update.latestVersion ) );
+//      console.log( 'You have version', colors.blue( update.current ) );
+//      console.log( 'Latest version is', colors.red( update.latest ) );
 //      console.log( 'To get the latest version run: ' + colors.green('npm update yeoman -g') );
 //
 // });
@@ -20,8 +20,8 @@
 // updater.getUpdate({ localPackageUrl: '../package.json' }, function( update ) {
 //
 //      console.log( 'Update type available is:', colors.yellow( update.severity ) );
-//      console.log( 'You have version', colors.blue( update.localVersion ) );
-//      console.log( 'Latest version is', colors.red( update.latestVersion ) );
+//      console.log( 'You have version', colors.blue( update.current ) );
+//      console.log( 'Latest version is', colors.red( update.latest ) );
 //      console.log( 'To get the latest version run:' + colors.green('npm update yeoman -g') );
 //
 // });
@@ -50,15 +50,121 @@ var exec = require('child_process').exec;
 var EventEmitter = require('events').EventEmitter;
 var request = require('request');
 var colors = require('colors');
+var prompt = require('prompt');
 
 
-updater = module.exports;
+var updater = module.exports;
+
+
+var config = (function() {
+  var mkdirp = require('mkdirp');
+  var homeDir = process.env[ ( process.platform == 'win32' ) ? 'USERPROFILE' : 'HOME' ];
+  var folderPath = path.join( homeDir, '.config', 'npm-updater' );
+  // Function, since _packageName is not available when this is init'd
+  var filename = function() {
+    return updater._packageName + '.json';
+  };
+
+  var loadConfig = function() {
+    try {
+      return JSON.parse( fs.readFileSync( path.join( folderPath, filename() ), 'utf-8' ) || {} );
+    } catch ( err ) {
+      if ( err.errno === 34 ) {
+        mkdirp.sync( folderPath );
+        return {};
+      }
+    }
+  };
+
+  return {
+    get: function( key ) {
+      return loadConfig()[ key ];
+    },
+    set: function( key, val ) {
+      var config = loadConfig();
+      config[ key ] = val;
+      fs.writeFileSync( path.join( folderPath, filename() ), JSON.stringify( config ) );
+    }
+  };
+})();
+
+
+
 
 // Registry end-point
 // Alternative registry mirrors
 // http://85.10.209.91/%s
 // http://165.225.128.50:8000/%s
 updater.registryUrl = 'http://registry.npmjs.org/%s';
+
+// How often the updater should check for updates
+updater.updateCheckInterval = 1000 * 60 * 60 * 24; // 1 day
+
+// How long it should wait until force auto-update
+updater.updatePromptTimeLimit = 1000 * 60 * 60 * 24 * 7; // 1 week
+
+// Last time the update check was run
+Object.defineProperty( updater, '_lastUpdateCheck', {
+  get: function() {
+    return config.get('lastUpdateCheck');
+  },
+  set: function( timestamp ) {
+    config.set( 'lastUpdateCheck', timestamp );
+  }
+});
+
+
+// Prompt for update
+updater.promptUpdate = function promptUpdate( cb ) {
+  prompt.start();
+  prompt.message = 'yeoman'.red;
+  prompt.get([{
+    name: 'shouldUpdate',
+    message: 'Do you want to upgrade Yeoman?'.yellow
+  }], function( err, result ) {
+    cb( !err && /^y/i.test( result.shouldUpdate ) );
+  });
+};
+
+
+// TODO(sindresorhus): Docs
+// Prefilter to be overriden if custom logic is needed
+updater.shouldUpdate = function shouldUpdate( update, cb ) {
+  var severity = update.severity;
+
+  console.log('Update available: ' + update.current +
+              '(current: ' + update.latest + ')');
+
+  if ( update.optOut === true ) {
+    console.log('You have opted out of automatic updates.');
+    console.log('Run `npm update -g yeoman` to update');
+    return cb( false );
+  }
+
+  if ( severity === 'patch' ) {
+    cb( true );
+  }
+
+  if ( severity === 'minor' ) {
+    // Force auto-update if it's past the set time limit
+    if ( +new Date() - +new Date( update.lastUpdate ) >= this.updatePromptTimeLimit ) {
+      return cb( true );
+    }
+
+    this.promptUpdate(function( shouldUpdate ) {
+      console.log( 'update:', shouldUpdate );
+      cb( shouldUpdate );
+    });
+  }
+
+  if ( severity === 'major' ) {
+    this.promptUpdate(function( shouldUpdate ) {
+      console.log( 'update:', shouldUpdate );
+      cb( shouldUpdate );
+    });
+  }
+};
+
 
 //
 // updater.getUpdate()
@@ -73,8 +179,7 @@ updater.registryUrl = 'http://registry.npmjs.org/%s';
 // @options.localPackageUrl: the url to a local package to be
 // checked against if no package name or version are supplied
 //
-// @options.fetchLatest: a boolean to indicate whether you
-// should also fetch the latest version at the same time
+// @options.optOut: Give the user ability to opt-out. This option is persisted.
 //
 // cb: callback for successfully returning the
 // update type
@@ -100,11 +205,28 @@ updater.getUpdate = function getUpdate( options, cb ) {
     }
   }
 
+  // Expose the packageName internally
+  this._packageName = options.name;
+
+  // Only check for updates on a set
+  console.log('now', new Date())
+  console.log('last', new Date(this._lastUpdateCheck), this._lastUpdateCheck)
+  console.log('since last update', (new Date() - this._lastUpdateCheck) / 1000)
+  console.log('this.updateCheckInterval', this.updateCheckInterval)
+  if ( new Date() - this._lastUpdateCheck < this.updateCheckInterval ) {
+    console.log('tmp - skip update');
+    return;
+  }
+
+  this._lastUpdateCheck = +new Date();
+  console.log( new Date( this._lastUpdateCheck) )
+  return;
+
   // Step 2: Query the NPM registry for the latest package
   url = util.format( this.registryUrl, options.name );
 
   request({ url: url, json: true }, function( error, response, body ) {
-    var latestVersion, update;
+    var latest, update;
 
     // Fetch issue incurred
     if ( error ) {
@@ -127,21 +249,31 @@ updater.getUpdate = function getUpdate( options, cb ) {
     }
 
     // Step 3: Package found, lets compare versions
-    latestVersion = Object.keys( body.time ).reverse()[0];
+    latest = Object.keys( body.time ).reverse()[0];
 
     // Details to expose about the update
     update = {
-      latestVersion: latestVersion,
-      localVersion: options.version,
-      severity: self.parseUpdateType( options.version, latestVersion )
+      latest: latest,
+      current: options.version,
+      severity: self.parseUpdateType( options.version, latest ),
+      optOut: options.optOut
     };
 
-    // Possibly deprecate: fetch latest
-    if ( update.severity !== 'latest' && options.fetchLatest === true ) {
-      self.updatePackage( options.name );
-    };
+    if ( update.severity !== 'latest' ) {
+      cb( update );
 
-    return cb( update );
+      self.shouldUpdate( update, function( shouldUpdate ) {
+        if ( shouldUpdate ) {
+          self.updatePackage( options.name, function( err, data ) {
+            if ( err ) {
+              return console.error( 'Update error', err );
+            }
+            controller.emit( 'packageUpdated', data );
+            console.log('tmp - updated', data);
+          });
+        }
+      });
+    }
   });
 };
 
@@ -150,14 +282,14 @@ updater.getUpdate = function getUpdate( options, cb ) {
 // Compare a local package version and remote package version
 // to discover what type of update (major, minor, patch) is
 // available.
-updater.parseUpdateType = function parseUpdateType( currentVersion, remoteVersion ) {
+updater.parseUpdateType = function parseUpdateType( current, remoteVersion ) {
   var current, remote;
 
-  if ( currentVersion  === remoteVersion ) {
+  if ( current  === remoteVersion ) {
     return 'latest';
   }
 
-  current = currentVersion.split('.');
+  current = current.split('.');
   remote  = remoteVersion.split('.');
 
   if ( remote[2] > current[2] ) {
@@ -173,11 +305,9 @@ updater.parseUpdateType = function parseUpdateType( currentVersion, remoteVersio
 
 
 // Run `npm update` against a specific package name
-updater.updatePackage = function updatePackage( packageName ) {
-  var child = exec('npm update ' + packageName, function() {
-    // complete
-  });
-
+updater.updatePackage = function updatePackage( packageName, cb ) {
+  var child = exec( 'npm update ' + packageName, cb );
   child.stdout.pipe( process.stdout );
   child.stderr.pipe( process.stderr );
+  console.log( 'Updating ' + packageName );
 };
