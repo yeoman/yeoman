@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
+    "yeoman-generators": "https://nodeload.github.com/yeoman/generators/tarball/381697e5b8",
     "bower": "~1.0.0",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
@@ -48,8 +49,7 @@
     "faye-websocket": "~0.4.2",
     "prompt": "~0.1.12",
     "colors": "~0.6.0",
-    "grunt-mocha": "~0.1.3",
-    "yeoman-generators": "https://nodeload.github.com/yeoman/generators/tarball/4a2eafdbae"
+    "grunt-mocha": "~0.1.3"
   },
   "devDependencies": {
     "mocha": "~1.4.0",
