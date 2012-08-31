@@ -342,9 +342,6 @@ layout by just creating edit.html.erb, index.html.erb and so on inside
 lib/templates/erb/scaffold.
 
 
-
-
-
 ### More On Generators
 
 So we know that a typical generator looks like the following:
@@ -740,6 +737,13 @@ directory.
 
 #### remote.template(source, destination, options)
 
-Same as `generator.directory()` but relative `source` is prefixed with the cache
-directory.
+Same as `generator.directory()` but relative `source` is prefixed with the cache directory.
 
+
+#### Prompt user before overwriting files with `--force`
+
+Generators also support a `warnOn` method, which allows developers to warn on global paths that are matching those paths or files which the generator is going to generate (e.g `self.warnOn('*')`. 
+
+Where used, Yeoman will warn the user they if they proceed that a file will be overwritten and they may need to call the generator with the `--force` flag to proceed.
+
+`warnOn` is most likely to be used in constructors.
