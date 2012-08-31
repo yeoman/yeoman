@@ -131,10 +131,10 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   var cb = this.async();
 
   // third optional argument is the branch / sha1. Defaults to master when ommitted.
-  this.remote('twitter', 'bootstrap', 'v2.0.4', function(err, remote, files) {
+  this.remote('twitter', 'bootstrap', 'v2.1.0', function(err, remote, files) {
     if(err) { return cb(err); }
 
-    'alert button carousel collapse dropdown modal popover scrollspy tab tooltip transition typeahead'.split(' ')
+    'affix alert button carousel collapse dropdown modal popover scrollspy tab tooltip transition typeahead'.split(' ')
     .forEach(function( el ) {
       var filename = 'bootstrap-' + el + '.js';
       remote.copy( 'js/' + filename, 'app/scripts/vendor/bootstrap/' + filename );
@@ -144,11 +144,23 @@ AppGenerator.prototype.fetchBootstrap = function fetchBootstrap() {
   });
 };
 
-
+// Duplicated from the SASS generator, waiting a solution for #138
 AppGenerator.prototype.compassBootstrapFiles = function compassBootstrapFiles() {
-  if(this.compassBootstrap){
-    this.directory('../../../sass/app/templates/compass_twitter_bootstrap', 'app/styles');
+  if ( this.compassBootstrap ) {
+    var cb = this.async();
+
     this.write('app/styles/main.scss', '@import "compass_twitter_bootstrap";');
+
+    this.remote('kristianmandrup', 'compass-twitter-bootstrap', '19626592c8a2eafa8f52ee0344ef1ac30f74502f', function(err, remote) {
+      if(err) { return cb(err); }
+
+      remote.directory('stylesheets', 'app/styles');
+
+      cb();
+    });
+  } else {
+    this.log.writeln('Writing compiled Bootstrap');
+    this.copy( 'bootstrap.css', 'app/styles/bootstrap.css' );
   }
 };
 
@@ -196,6 +208,7 @@ AppGenerator.prototype.writeIndex = function writeIndex() {
 
     // Wire Twitter Bootstrap plugins (usemin: scripts/plugins.js)
     indexData = this.appendScripts(indexData, 'scripts/plugins.js', [
+      'scripts/vendor/bootstrap/bootstrap-affix.js',
       'scripts/vendor/bootstrap/bootstrap-alert.js',
       'scripts/vendor/bootstrap/bootstrap-dropdown.js',
       'scripts/vendor/bootstrap/bootstrap-tooltip.js',
@@ -315,11 +328,6 @@ AppGenerator.prototype.requirehm = function requirehm(){
   } else {
     cb();
   }
-};
-
-AppGenerator.prototype.writeMain = function writeMain(){
-  this.log.writeln('Writing compiled Bootstrap');
-  this.template('main.css', path.join('app/styles/bootstrap.css'));
 };
 
 AppGenerator.prototype.app = function app() {
