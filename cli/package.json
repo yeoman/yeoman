@@ -24,7 +24,8 @@
   },
   "scripts": {
     "test": "node node_modules/mocha/bin/mocha test/test-*.js test/generators/",
-    "manpages": "./scripts/docs-build"
+    "manpages": "./scripts/docs-build",
+    "uninstall": "rm -r ~/.yeoman"
   },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
