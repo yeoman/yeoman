@@ -183,7 +183,7 @@ echo "Now we've got those dependencies out of the way, let's grab Yeoman's lates
 
 
 # grab our latest and unpack the tarball
-tarball="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
+tarball="yeoman-yeoman-eaae06e42dab2be992ef970c93299da7fefea580"
 curl https://dl.dropbox.com/u/39519/"$tarball".tar.gz | "$tar" -xz
 cd "$tarball"
 
