@@ -54,7 +54,7 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var tasks = ['intro', 'coffee compass clean mkdirs', targets[target], 'copy time'].join(' ');
+    var tasks = ['intro', 'clean coffee compass mkdirs', targets[target], 'copy time'].join(' ');
     grunt.log.subhead('Running ' + target + ' target')
       .writeln('  - ' + grunt.log.wordlist(tasks.split(' '), { separator: ' ' }));
 
