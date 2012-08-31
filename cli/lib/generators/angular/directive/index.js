@@ -16,4 +16,5 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createDirectiveFiles = function createDirectiveFiles() {
   this.template('directive.js', 'app/scripts/directives/' + this.name + '.js');
+  this.template('spec/directive.js', 'test/spec/directives/' + this.name + '.js');
 };
