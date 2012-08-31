@@ -13,10 +13,9 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 
 ## Installing (pre-launch)
 
-* Clone this repo and `cd` into it
-* Run this command: `./setup/install.sh`
-* `cd` into the `/cli` directory and run `sudo npm link`
-* Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
+* Run the following command to download, install and configure Yeoman 
+* `curl -L get.yeoman.io | sh`
+* Navigate to a new directory and run `yeoman init` to make sure everything works as expected.
 
 You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`.
 
