@@ -3,7 +3,8 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   _ = grunt.util._,
-  yeoman = require('../../../../');
+  yeoman = require('../../../../'),
+  angularUtils = require('../util.js');
 
 module.exports = Generator;
 
@@ -27,38 +28,16 @@ Generator.prototype.rewriteAppJs = function() {
   var file = 'app/scripts/' + this.appname + '.js';
   var body = grunt.file.read(file);
   
-  body = rewrite(body, this.name);
-
-  grunt.file.write(file, body);
-};
-
-var rewrite = function (body, name) {
-
-  var lines = body.split('\n');
-
-  var otherwiseLineIndex = 0;
-  lines.forEach(function (line, i) {
-    if (line.indexOf('.otherwise') !== -1) {
-      otherwiseLineIndex = i;
-    }
+  body = angularUtils.rewrite({
+    needle: '.otherwise',
+    haystack: body,
+    splicable: [
+      ".when('/" + this.name + "', {",
+      "  templateUrl: 'views/" + this.name + ".html',",
+      "  controller: '" + _.classify(this.name) + "Ctrl'",
+      "})"
+    ]
   });
 
-  var spaces = 0;
-  while (lines[otherwiseLineIndex].charAt(spaces) === ' ') {
-    spaces += 1;
-  }
-
-  var spaceStr = '';
-  while ((spaces -= 1) >= 0) {
-    spaceStr += ' ';
-  }
-
-  lines.splice(otherwiseLineIndex, 0, [
-    spaceStr + ".when('/" + name + "', {",
-    spaceStr + "  templateUrl: 'views/" + name + ".html',",
-    spaceStr + "  controller: '" + _.classify(name) + "Ctrl'",
-    spaceStr + "})"
-  ].join('\n'));
-
-  return lines.join('\n');
+  grunt.file.write(file, body);
 };

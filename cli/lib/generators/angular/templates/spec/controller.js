@@ -1,14 +1,17 @@
 'use strict';
 
-describe('Controller: <%= _.camelize(name) %>Ctrl', function() {
+describe('Controller: <%= _.classify(name) %>Ctrl', function() {
+
+  // load the controller's module
   beforeEach(module('<%= _.camelize(appname) %>App'));
 
-  var <%= _.camelize(name) %>Ctrl,
+  var <%= _.classify(name) %>Ctrl,
     scope;
 
+  // Initialize the controller and a mock scope
   beforeEach(inject(function($controller) {
     scope = {};
-    <%= _.camelize(name) %>Ctrl = $controller('<%= _.camelize(name) %>Ctrl', {
+    <%= _.classify(name) %>Ctrl = $controller('<%= _.classify(name) %>Ctrl', {
       $scope: scope
     });
   }));

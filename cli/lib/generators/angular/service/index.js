@@ -1,7 +1,9 @@
 
 var path = require('path'),
   util = require('util'),
-  yeoman = require('../../../../');
+  yeoman = require('../../../../'),
+  grunt = require('grunt'),
+  angularUtils = require('../util.js');
 
 module.exports = Generator;
 
@@ -24,7 +26,6 @@ function Generator() {
     required: false
   });
 
-  // TODO: log some warning?
   if (allowedTypes.indexOf(this.type) === -1) {
     this.type = 'factory';
   }
@@ -36,4 +37,20 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 
 Generator.prototype.createServiceFiles = function createServiceFiles() {
   this.template(path.join('service', this.type + '.js'), 'app/scripts/services/' + this.name + '.js');
+  this.template('spec/service.js', 'test/spec/services/' + this.name + '.js');
+};
+
+Generator.prototype.rewriteIndexHtml = function() {
+  var file = 'app/index.html';
+  var body = grunt.file.read(file);
+  
+  body = angularUtils.rewrite({
+    needle: '<!-- endbuild -->',
+    haystack: body,
+    splicable: [
+      '<script src="scripts/services/' + this.name + '.js"></script>'
+    ]
+  });
+
+  grunt.file.write(file, body);
 };
