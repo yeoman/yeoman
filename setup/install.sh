@@ -2,10 +2,9 @@
 
 # install.sh: Installation script
 
-# Note for maintenance: we have versions of Node, Compass, and the Yeoman zip hardcoded here.
+# Note for maintenance: edit the version variables below for easy updating :D
 
 # checking OS
-
 LINUX=0
 MAC=0
 PKGMGR=0
@@ -23,7 +22,10 @@ NODEVER=0.8.8
 YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
 
 # checking if sudo will be needed for Yeoman install
-SUDOCHECK=$( ls -ld /usr/local/bin | grep $USER )
+SUDOCHECK=$( ls -ld /usr/local/bin | grep "root" )
+if [ -z "$SUDOCHECK" ]; then
+  SUDOCHECK=$( ls -ld /usr/local/bin | grep "admin" )
+fi
 
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
@@ -159,8 +161,10 @@ echo ""
 #check which OS
 if [ "$MAC" -eq 1 ]; then 
   echo "Installing on OS X."
+
   # check pre-installed ruby
   RUBYCHECK=$(ruby -e 'print RUBY_VERSION')
+
 elif [ "$LINUX" -eq 1 ]; then
   echo "Installing on Linux."
 else
@@ -168,10 +172,14 @@ else
   exit 1  
 fi
 
-#if on mac, make sure brew is installed
+#if on mac, make sure brew is installed before continuing
 if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
-  echo "Looks like you haven't got brew yet, I'll install that now."
-  ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+  echo "Looks like you haven't got homebrew yet, the installer requires homebrew to be installed in order to install the dependencies."
+  echo "To install homebrew execute the follow command: "
+  echo ""
+  echo "ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+  echo ""
+  exit 1
 elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
   echo "You've got brew, nice work chap!"
 fi
@@ -222,6 +230,7 @@ else
       fi
   else
     echo "An error occurred installing Node.js"
+    exit 1
   fi
 fi
 
@@ -278,7 +287,7 @@ echo "We're going to move fast, but once we're done, "
 echo "you'll have the power of a thousand developers at your blinking cursor."
 echo "Okay here we go..."
 
-if [ -z "$SUDOCHECK" ]; then
+if [ "$SUDOCHECK" ]; then
   echo ""
   echo "Looks like you need to sudo your npm install:"
   sudo npm install . -g
@@ -310,5 +319,5 @@ echo "See you on the other side!"
 if [ "$COMPASS" -eq 0 ]; then
   echo ""
   echo "Install hiccup: no compass"
-  echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation for install requirements]."
+  echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation]."
 fi
