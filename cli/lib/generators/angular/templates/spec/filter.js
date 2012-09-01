@@ -1,6 +1,7 @@
 'use strict';
 
 describe('Filter: <%= _.camelize(name) %>', function() {
+  beforeEach(module('<%= _.camelize(appname) %>App'));
 
   // initialize a new instance of the filter before each test
   var <%= _.camelize(name) %>;

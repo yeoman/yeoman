@@ -1,4 +1,4 @@
-describe('<%= _.camelize(appname) %>App:<%= _.camelize(name) %>', function () {
+describe('Service: <%= _.camelize(name) %>', function () {
 
   // instantiate new parent module
   beforeEach(module('<%= _.camelize(appname) %>App'));

@@ -1,6 +1,8 @@
 'use strict';
 
 describe('Directive: <%= _.camelize(name) %>', function() {
+  beforeEach(module('<%= _.camelize(appname) %>App'));
+
   var element;
 
   /*
