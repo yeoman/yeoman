@@ -26,6 +26,8 @@ You can keep Yeoman up to date by using `git pull --rebase upstream master && cd
 
 ## Documentation
 
+For more information on Yeoman, please read our [complete documentation](https://github.com/yeoman/yeoman/tree/master/docs/cli).
+
 Yeoman supports a powerful set of high-level commands. These include:
 
 ```shell
@@ -59,6 +61,7 @@ Some more examples of how to use our commands include:
 yeoman init quickstart                   # Skip our questions and get a H5BP, jQuery and Modernizr base
 yeoman init bbb                          # Backbone Boilerplate generator scaffold
 yeoman init ember                        # Ember-Rails generator scaffold
+yeoman init ember-starter                # Create a "Hello World" Yeoman project with the Ember Starter Kit 
 yeoman init backbone                     # Backbone-Rails generator scaffold
 
 # Coming soon
@@ -75,8 +78,7 @@ yeoman update jquery                       # Update a specific dependency (e.g j
 ```
 ![image](http://yeoman.io/media/yeoman-packages.png)
 
-See the [complete documentation](https://github.com/yeoman/yeoman/tree/master/docs/cli) for more. We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
-
+We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
 
 
 ### Trouble-shooting
@@ -170,7 +172,7 @@ Yeoman is an open-source project by [Google](http://google.com) which builds on 
 * Mocha
 * Jasmine
 * PhantomJS
-* And [more...](https://github.com/yeoman/yeoman/wiki/Dependencies)
+* And [more...](https://github.com/yeoman/yeoman/wiki/Tools-Used)
 
 Version 1 of the project features the combined efforts of:
 
