@@ -7,6 +7,17 @@ module.exports = function(grunt) {
   grunt.task.registerTask('rjs', 'Optimizes javascript that actually is built with requirejs.', function () {
     var options = grunt.config(this.name) || {};
 
+    // Verify if the application contains a data-main attribute
+    var appIndexPath  = path.resolve('../app/index.html');
+    var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
+    var hasDataMain = (indexBuffer.match(/data-main=['"]([^'"]+)['"]/));
+
+    if(hasDataMain === null){
+      grunt.log.writeln('No data-main attribute found in application index, bypassing the task...');
+      return;
+    }
+
+    // Check for module/entry points in the rjs config
     if(!options.modules && !options.name) {
       grunt.log.writeln('No module or single entry point found in rjs configuration, bypassing the task...');
       return;
