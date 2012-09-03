@@ -69,6 +69,7 @@ var config = (function() {
     try {
       return JSON.parse( fs.readFileSync( path.join( folderPath, filename() ), 'utf-8' ) || {} );
     } catch ( err ) {
+      // Create dir if it doesn't exist
       if ( err.errno === 34 ) {
         mkdirp.sync( folderPath );
         return {};
@@ -83,7 +84,7 @@ var config = (function() {
     set: function( key, val ) {
       var config = loadConfig();
       config[ key ] = val;
-      fs.writeFileSync( path.join( folderPath, filename() ), JSON.stringify( config ) );
+      fs.writeFileSync( path.join( folderPath, filename() ), JSON.stringify( config, null, '\t' ) );
     }
   };
 })();
@@ -98,20 +99,14 @@ var config = (function() {
 updater.registryUrl = 'http://registry.npmjs.org/%s';
 
 // How often the updater should check for updates
-updater.updateCheckInterval = 1000 * 60 * 60 * 24; // 1 day
+//updater.updateCheckInterval = 1000 * 60 * 60 * 24; // 1 day
 
 // How long it should wait until force auto-update
-updater.updatePromptTimeLimit = 1000 * 60 * 60 * 24 * 7; // 1 week
+//updater.updatePromptTimeLimit = 1000 * 60 * 60 * 24 * 7; // 1 week
 
-// Last time the update check was run
-Object.defineProperty( updater, '_lastUpdateCheck', {
-  get: function() {
-    return config.get('lastUpdateCheck');
-  },
-  set: function( timestamp ) {
-    config.set( 'lastUpdateCheck', timestamp );
-  }
-});
+// TODO: Remove before release and uncomment aboves. Only for testing.
+updater.updateCheckInterval = 10000; // 10 sec
+updater.updatePromptTimeLimit = 20000; // 20 sec
 
 
 // Prompt for update
@@ -120,7 +115,7 @@ updater.promptUpdate = function promptUpdate( cb ) {
   prompt.message = 'yeoman'.red;
   prompt.get([{
     name: 'shouldUpdate',
-    message: 'Do you want to upgrade Yeoman?'.yellow
+    message: ( 'Do you want to upgrade ' + this._packageName + '?' ).yellow
   }], function( err, result ) {
     cb( !err && /^y/i.test( result.shouldUpdate ) );
   });
@@ -132,11 +127,11 @@ updater.promptUpdate = function promptUpdate( cb ) {
 updater.shouldUpdate = function shouldUpdate( update, cb ) {
   var severity = update.severity;
 
-  console.log('Update available: ' + update.current +
-              '(current: ' + update.latest + ')');
+  console.log('Update available: ' + update.current.green +
+              (' (current: ' + update.latest + ')').grey );
 
-  if ( update.optOut === true ) {
-    console.log('You have opted out of automatic updates.');
+  if ( config.get('optOut') === true ) {
+    console.log('You have opted out of automatic updates');
     console.log('Run `npm update -g yeoman` to update');
     return cb( false );
   }
@@ -147,19 +142,18 @@ updater.shouldUpdate = function shouldUpdate( update, cb ) {
 
   if ( severity === 'minor' ) {
     // Force auto-update if it's past the set time limit
-    if ( +new Date() - +new Date( update.lastUpdate ) >= this.updatePromptTimeLimit ) {
+    if ( new Date() - new Date( update.date ) > this.updatePromptTimeLimit ) {
+      console.log( 'Forcing update because it\'s been too long since last'.red );
       return cb( true );
     }
 
     this.promptUpdate(function( shouldUpdate ) {
-      console.log( 'update:', shouldUpdate );
       cb( shouldUpdate );
     });
   }
 
   if ( severity === 'major' ) {
     this.promptUpdate(function( shouldUpdate ) {
-      console.log( 'update:', shouldUpdate );
       cb( shouldUpdate );
     });
   }
@@ -178,8 +172,6 @@ updater.shouldUpdate = function shouldUpdate( update, cb ) {
 //
 // @options.localPackageUrl: the url to a local package to be
 // checked against if no package name or version are supplied
-//
-// @options.optOut: Give the user ability to opt-out. This option is persisted.
 //
 // cb: callback for successfully returning the
 // update type
@@ -205,22 +197,24 @@ updater.getUpdate = function getUpdate( options, cb ) {
     }
   }
 
-  // Expose the packageName internally
+  // Expose the packageName internally, but still
+  // make it accessible if somone would need it
   this._packageName = options.name;
 
-  // Only check for updates on a set
-  console.log('now', new Date())
-  console.log('last', new Date(this._lastUpdateCheck), this._lastUpdateCheck)
-  console.log('since last update', (new Date() - this._lastUpdateCheck) / 1000)
-  console.log('this.updateCheckInterval', this.updateCheckInterval)
-  if ( new Date() - this._lastUpdateCheck < this.updateCheckInterval ) {
-    console.log('tmp - skip update');
+  // Create the `optOut` option, so it's easy to switch the flag
+  if ( config.get('optOut') === undefined ) {
+    config.set( 'optOut', false );
+  }
+
+  // Only check for updates on a set interval
+  if ( new Date() - config.get('lastUpdateCheck') < this.updateCheckInterval ) {
     return;
   }
 
-  this._lastUpdateCheck = +new Date();
-  console.log( new Date( this._lastUpdateCheck) )
-  return;
+  console.log('Starting update check...');
+
+  // Update the last update check date
+  config.set( 'lastUpdateCheck', +new Date() );
 
   // Step 2: Query the NPM registry for the latest package
   url = util.format( this.registryUrl, options.name );
@@ -238,7 +232,7 @@ updater.getUpdate = function getUpdate( options, cb ) {
       return;
     }
 
-    // Whoops, package not found.
+    // Whoops, package not found
     if ( body.error ) {
       controller.emit('npmError', {
           errorType: body.error, // not_found etc
@@ -254,9 +248,9 @@ updater.getUpdate = function getUpdate( options, cb ) {
     // Details to expose about the update
     update = {
       latest: latest,
+      date: body.time[ latest ],
       current: options.version,
-      severity: self.parseUpdateType( options.version, latest ),
-      optOut: options.optOut
+      severity: self.parseUpdateType( options.version, latest )
     };
 
     if ( update.severity !== 'latest' ) {
@@ -266,10 +260,11 @@ updater.getUpdate = function getUpdate( options, cb ) {
         if ( shouldUpdate ) {
           self.updatePackage( options.name, function( err, data ) {
             if ( err ) {
-              return console.error( 'Update error', err );
+              return console.error( '\nUpdate error', err );
             }
+
             controller.emit( 'packageUpdated', data );
-            console.log('tmp - updated', data);
+            console.log( '\nUpdated successfully!'.green );
           });
         }
       });
@@ -299,7 +294,7 @@ updater.parseUpdateType = function parseUpdateType( current, remoteVersion ) {
   } else if ( remote[2] > current[2] ) {
     return 'patch';
   } else{
-    return 'Update comparison error.';
+    return 'Update comparison error';
   }
 };
 
@@ -307,7 +302,7 @@ updater.parseUpdateType = function parseUpdateType( current, remoteVersion ) {
 // Run `npm update` against a specific package name
 updater.updatePackage = function updatePackage( packageName, cb ) {
   var child = exec( 'npm update ' + packageName, { cwd: __dirname }, cb );
+  console.log( 'Updating ' + packageName + '\n' );
   child.stdout.pipe( process.stdout );
   child.stderr.pipe( process.stderr );
-  console.log( 'Updating ' + packageName );
 };
