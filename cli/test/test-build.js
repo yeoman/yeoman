@@ -53,8 +53,8 @@ describe('yeoman init && yeoman build', function() {
         .expect(/Writing test\/index\.html/)
         .expect(/Writing test\/lib\/chai\.js/)
         .expect(/Writing test\/lib\/expect\.js/)
-        .expect(/Writing test\/lib\/mocha-1\.2\.2\/mocha\.css/)
-        .expect(/Writing test\/lib\/mocha-1\.2\.2\/mocha\.js/)
+        .expect(/Writing test\/lib\/mocha\/mocha\.css/)
+        .expect(/Writing test\/lib\/mocha\/mocha\.js/)
         .expect(/Writing test\/runner\/mocha\.js/)
 
         // run and done
@@ -66,6 +66,7 @@ describe('yeoman init && yeoman build', function() {
       assert.ok((/<!-- build:js scripts\/plugins.js -->/).test(index));
       assert.ok((/<!-- endbuild -->/).test(index));
 
+      assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-affix.js'));
       assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-alert.js'));
       assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-dropdown.js'));
       assert.ok(index.match('scripts/vendor/bootstrap/bootstrap-tooltip.js'));
