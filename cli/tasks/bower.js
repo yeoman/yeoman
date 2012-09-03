@@ -81,30 +81,37 @@ module.exports = function(grunt) {
           // should probably emit on `end` in bower's internal
           if(typeof deps === 'string') { return; }
 
-
           // Handler for RequireJS app config.
-          //
           // Wires up the relevant RequireJS config when
           // running `yeoman install spine backbone` etc.
-          //
-          // XXX: We should be checking against data-main
-          // as users may change the file or path being
-          // used for their RequireJS runtime config.
-          var requireConfigPath = 'app/scripts/main.js', cf, html;
 
-          fs.exists(requireConfigPath, function (exists) {
+          // Read in application index
+          var basePath = 'app';
+          var appIndexPath  = path.resolve(basePath + '/index.html');
+          var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
+          // parse data-main for require config path
+          var hasDataMain = (indexBuffer.match(/data-main=['"]([^'"]+)['"]/));
+          // If data-main present..
+          if(hasDataMain !== null){
+            var requireConfigPath = basePath + '/' + hasDataMain[1];
+            // check path contains .js, append if not.
+            requireConfigPath.indexOf('.js') ? requireConfigPath += '.js' : null;
+            // check config file exists
+            if(grunt.file.exists(requireConfigPath)){
+                // if so..
+                // iterate over Bower deps, generating the path string fo config     
+                Object.keys(deps).forEach(function(dep){
+                  scripts+= "    " + dep + ": '../../" + deps[dep].replace('.js','') + "',\n";
+                });
 
-            if(exists){      
-              Object.keys(deps).forEach(function(dep){
-                scripts+= "    " + dep + ": '../../" + deps[dep].replace('.js','') + "',\n";
-              });
-
-              // Write the paths to config      
-              cf = fs.readFileSync(requireConfigPath, 'utf8');
-              html = cf.replace(' paths: {', 'paths: {\n' + scripts);
-              fs.writeFileSync(requireConfigPath, html, 'utf8');
+                // read in the existing data-main config   
+                var cf = fs.readFileSync(requireConfigPath, 'utf8');
+                // replace the existing paths with your new paths
+                var html = cf.replace(' paths: {', 'paths: {\n' + scripts);
+                // Write the paths to config
+                fs.writeFileSync(requireConfigPath, html, 'utf8');
             }
-          });
+          }
 
           // go through each installed package (via cli.tasks, nopt's remain
           // array), figure out the path from bower dependency tree, and copy
