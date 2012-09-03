@@ -292,11 +292,11 @@ updater.parseUpdateType = function parseUpdateType( current, remoteVersion ) {
   current = current.split('.');
   remote  = remoteVersion.split('.');
 
-  if ( remote[2] > current[2] ) {
+  if ( remote[0] > current[0] ) {
     return 'major';
   } else if ( remote[1] > current[1] ) {
     return 'minor';
-  } else if ( remote[0] > current[0] ) {
+  } else if ( remote[2] > current[2] ) {
     return 'patch';
   } else{
     return 'Update comparison error.';
