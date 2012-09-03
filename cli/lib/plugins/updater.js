@@ -306,7 +306,7 @@ updater.parseUpdateType = function parseUpdateType( current, remoteVersion ) {
 
 // Run `npm update` against a specific package name
 updater.updatePackage = function updatePackage( packageName, cb ) {
-  var child = exec( 'npm update ' + packageName, cb );
+  var child = exec( 'npm update ' + packageName, { cwd: __dirname }, cb );
   child.stdout.pipe( process.stdout );
   child.stderr.pipe( process.stderr );
   console.log( 'Updating ' + packageName );
