@@ -146,7 +146,7 @@ module.exports = function(grunt) {
   // - context    - A hash of data to pass through the given template
   //
   // Returns the template output
-  grunt.registerHelper('bower:template', function(name, context, cb) {
+  grunt.registerHelper('bower:template', function(name, context) {
     return template(name, context, true);
   });
 
