@@ -5,25 +5,15 @@
 // Sample usage:
 //
 // Query for the latest update type
-// updater.getUpdate({ name: 'grunt', version: pkg.version }, function( update ) {
-//
-//      console.log( 'Update type available is:', colors.yellow( update.severity ) );
-//      console.log( 'You have version', colors.blue( update.current ) );
-//      console.log( 'Latest version is', colors.red( update.latest ) );
-//      console.log( 'To get the latest version run: ' + colors.green('npm update yeoman -g') );
-//
+// updater.getUpdate({ name: 'grunt', version: pkg.version }, function( error, update ) {
+//   console.log('Update checking complete');
 // });
 //
 // Alternatively, if you just want to pass in a package.json
 // file directly, you can simply do:
 //
-// updater.getUpdate({ localPackageUrl: '../package.json' }, function( update ) {
-//
-//      console.log( 'Update type available is:', colors.yellow( update.severity ) );
-//      console.log( 'You have version', colors.blue( update.current ) );
-//      console.log( 'Latest version is', colors.red( update.latest ) );
-//      console.log( 'To get the latest version run:' + colors.green('npm update yeoman -g') );
-//
+// updater.getUpdate({ localPackageUrl: '../package.json' }, function( error, update ) {
+//   console.log('Update checking complete');
 // });
 //
 // Both will either return patch, minor, major or latest. These
@@ -173,8 +163,7 @@ updater.shouldUpdate = function shouldUpdate( update, cb ) {
 // @options.localPackageUrl: the url to a local package to be
 // checked against if no package name or version are supplied
 //
-// cb: callback for successfully returning the
-// update type
+// cb: callback for when the update checks and update is complete
 
 updater.getUpdate = function getUpdate( options, cb ) {
   var localPackage, url;
