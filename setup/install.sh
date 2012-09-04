@@ -3,6 +3,8 @@
 # install.sh: Installation script
 
 # Note for maintenance: edit the version variables below for easy updating :D
+NODEVER=0.8.8
+YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
 
 # checking OS
 LINUX=0
@@ -44,17 +46,23 @@ else
   exit 1  
 fi
 
+# brew installation
+BREWFILE=$(which brew)
+
+if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
+  echo "Installing Homebrew"
+  echo -ne '\n' | ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+  echo ""
+elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
+  echo "You've got brew, nice work chap!"
+fi
+
 # checking baseline dependencies
 RUBYFILE=$(which ruby)
-BREWFILE=$(which brew)
 NODEFILE=$(which node)
 GEMFILE=$(which gem)
 COMPASSFILE=$(which compass)
 COMPASS=1
-
-# version variables (for easy updates)
-NODEVER=0.8.8
-YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
 
 # sudo checks, don't try this at home, kids
 NEEDSUDO=0
@@ -185,20 +193,11 @@ echo ""
 BACK="$PWD"
 cd "$TMP"
 
-#if on mac, make sure brew is installed before continuing
-if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
-  echo "Installing Homebrew"
-  echo -ne '\n' | ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
-  echo ""
-elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
-  echo "You've got brew, nice work chap!"
-fi
-
 #check for and install ruby if needed
 if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
   echo "Installing Ruby"
   sudo apt-get install libruby1.9.1 ruby1.9.1
-elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" < 1.8.7 ]; then
+elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
 elif [ "$RUBYFILE" ]; then
