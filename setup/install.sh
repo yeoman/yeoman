@@ -9,6 +9,41 @@ LINUX=0
 MAC=0
 PKGMGR=0
 
+function haveProg() {
+    [ -x "$(which $1)" ]
+}
+
+if haveProg apt-get; then 
+  echo "You are using apt-get. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=1
+elif haveProg yum; then 
+  echo "You are using yum. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=2
+elif haveProg up2date; then 
+  echo "You are using up2date. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=3
+else 
+  MAC=1
+  PKGMGR=4
+fi
+echo ""
+
+if [ "$MAC" -eq 1 ]; then 
+  echo "Installing on OS X."
+
+  # check pre-installed ruby
+  RUBYCHECK=$(ruby -e 'print RUBY_VERSION')
+
+elif [ "$LINUX" -eq 1 ]; then
+  echo "Installing on Linux."
+else
+  echo "Unable to determine install target OS! We currently support OS X and Linux."
+  exit 1  
+fi
+
 # checking baseline dependencies
 RUBYFILE=$(which ruby)
 BREWFILE=$(which brew)
@@ -21,10 +56,24 @@ COMPASS=1
 NODEVER=0.8.8
 YEOMANVER="yeoman-yeoman-eec4e8932cbcb60cee5fbcafb13c7cae27ca250f"
 
-# checking if sudo will be needed for Yeoman install
-SUDOCHECK=$( ls -ld /usr/local/bin | grep "root" )
-if [ -z "$SUDOCHECK" ]; then
-  SUDOCHECK=$( ls -ld /usr/local/bin | grep "admin" )
+# sudo checks, don't try this at home, kids
+NEEDSUDO=0
+CHECKADMIN=$( ls -ld /usr/local/bin | grep "admin" )
+CHECKROOT=$( ls -ld /usr/local/bin | grep "root" )
+CHECKLINK=$( ls -ld /usr/local/ | grep "$USER" )
+
+if [ "$CHECKADMIN" ]; then
+  NEEDSUDO=1
+elif [ "$CHECKROOT" ]; then
+  NEEDSUDO=1
+elif [ -z "$CHECKLINK" ]; then
+  NEEDSUDO=1
+elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1]; then
+  NEEDSUDO=1
+elif [ -z "$NODEFILE" ]; then
+  NEEDSUDO=1
+elif [-z "$COMPASSFILE" ]; then
+  NEEDSUDO=1
 fi
 
 # packages to automatically be installed
@@ -80,7 +129,7 @@ echo ""
 # 2. Find a tar executable
 
 #sudo checks
-if [ -z "$SUDOCHECK" ]; then
+if [ "$NEEDSUDO" -eq 1 ]; then
   echo "Please authorize the installer:"
   sudo -v
 fi
@@ -136,50 +185,11 @@ echo ""
 BACK="$PWD"
 cd "$TMP"
 
-function haveProg() {
-    [ -x "$(which $1)" ]
-}
-
-if haveProg apt-get; then 
-  echo "You are using apt-get. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=1
-elif haveProg yum; then 
-  echo "You are using yum. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=2
-elif haveProg up2date; then 
-  echo "You are using up2date. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=3
-else 
-  MAC=1
-  PKGMGR=4
-fi
-echo ""
-
-#check which OS
-if [ "$MAC" -eq 1 ]; then 
-  echo "Installing on OS X."
-
-  # check pre-installed ruby
-  RUBYCHECK=$(ruby -e 'print RUBY_VERSION')
-
-elif [ "$LINUX" -eq 1 ]; then
-  echo "Installing on Linux."
-else
-  echo "Unable to determine install target OS! We currently support OS X and Linux."
-  exit 1  
-fi
-
 #if on mac, make sure brew is installed before continuing
 if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then 
-  echo "Looks like you haven't got homebrew yet, the installer requires homebrew to be installed in order to install the dependencies."
-  echo "To install homebrew execute the follow command: "
+  echo "Installing Homebrew"
+  echo -ne '\n' | ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
   echo ""
-  echo "ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-  echo ""
-  exit 1
 elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
   echo "You've got brew, nice work chap!"
 fi
@@ -188,7 +198,7 @@ fi
 if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
   echo "Installing Ruby"
   sudo apt-get install libruby1.9.1 ruby1.9.1
-elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" <= 1.8.6 ]; then
+elif [ "$MAC" -eq 1 ] && [ "$RUBYCHECK" < 1.8.7 ]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
 elif [ "$RUBYFILE" ]; then
@@ -243,6 +253,9 @@ if [ "$MAC" -eq 1 ]; then
   do
     check_or_install_brew_pkg $package
   done
+  if [ -z "$CHECKLINK" ]; then
+    sudo chown -R $USER /usr/local
+  fi
   brew link jpeg-turbo
 fi
 
@@ -265,7 +278,7 @@ if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
 elif [ "$COMPASS" -eq 0 ]; then
   echo "Ruby was not detected or is not configured correctly, skipping compass."
-elif [ -z "$COMPASSFILE" ] && [ "COMPASS" -eq 1 ]; then
+elif [ -z "$COMPASSFILE" ] && [ "$COMPASS" -eq 1 ]; then
   echo "Install compass for CSS magic."
   sudo gem install compass --pre
 fi
@@ -287,7 +300,7 @@ echo "We're going to move fast, but once we're done, "
 echo "you'll have the power of a thousand developers at your blinking cursor."
 echo "Okay here we go..."
 
-if [ "$SUDOCHECK" ]; then
+if [ "$NEEDSUDO" -eq 1 ]; then
   echo ""
   echo "Looks like you need to sudo your npm install:"
   sudo npm install . -g
