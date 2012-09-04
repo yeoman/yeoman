@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
-    "yeoman-generators": "https://nodeload.github.com/yeoman/generators/tarball/d2c4972a4b",
+    "yeoman-generators": "https://nodeload.github.com/yeoman/generators/tarball/f76139b8c6",
     "bower": "~1.0.0",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
