@@ -254,18 +254,19 @@ updater.getUpdate = function getUpdate( options, cb ) {
     };
 
     if ( update.severity !== 'latest' ) {
-      cb( update );
-
       self.shouldUpdate( update, function( shouldUpdate ) {
         if ( shouldUpdate ) {
           self.updatePackage( options.name, function( err, data ) {
             if ( err ) {
-              return console.error( '\nUpdate error', err );
+              console.error( '\nUpdate error', err );
+            } else {
+              console.log( '\nUpdated successfully!'.green );
             }
 
-            controller.emit( 'packageUpdated', data );
-            console.log( '\nUpdated successfully!'.green );
+            cb( update );
           });
+        } else {
+          cb( update );
         }
       });
     }
