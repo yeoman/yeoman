@@ -222,12 +222,16 @@ updater.getUpdate = function getUpdate( options, cb ) {
   request({ url: url, json: true }, function( error, response, body ) {
     var latest, update;
 
+    // TODO(sindresorhus): Look into the best way to output errors, only cb or cb + emit?
+
     // Fetch issue incurred
     if ( error ) {
       controller.emit('fetchError', {
         message: error.message,
-        httpCode: response.statusCode
+        httpCode: response && response.statusCode
       });
+
+      cb( error );
 
       return;
     }
@@ -238,6 +242,8 @@ updater.getUpdate = function getUpdate( options, cb ) {
           errorType: body.error, // not_found etc
           reason: body.reason // additional reason
       });
+
+      cb( error );
 
       return;
     }
@@ -263,10 +269,10 @@ updater.getUpdate = function getUpdate( options, cb ) {
               console.log( '\nUpdated successfully!'.green );
             }
 
-            cb( update );
+            cb( err, update );
           });
         } else {
-          cb( update );
+          cb( err, update );
         }
       });
     }
