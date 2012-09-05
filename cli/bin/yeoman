@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var fs = require('fs'),
+  exec = require('child_process').exec,
   join = require('path').join,
   grunt = require('grunt'),
   colors = require('colors'),
@@ -13,125 +14,127 @@ var fs = require('fs'),
   async = grunt.util.async,
   compiled = _.template( fs.readFileSync( join(__dirname, 'help.txt'), 'utf8' ));
 
+
 // Returns the user's home directory in a platform agnostic way.
 function getUserHome() {
   return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 }
 
-// grunt with the plugin registered
-grunt.npmTasks(join(__dirname, '../'));
+function init() {
+  // grunt with the plugin registered
+  grunt.npmTasks(join(__dirname, '../'));
 
-// Get back a reference to the internal grunt cli object so that we can read
-// command line parsed options from grunt, to run our internal additional
-// logic.
+  // Get back a reference to the internal grunt cli object so that we can read
+  // command line parsed options from grunt, to run our internal additional
+  // logic.
 
-var cli =  require('grunt/lib/grunt/cli');
+  var cli =  require('grunt/lib/grunt/cli');
 
-// avoid the deprecation notice: goo.gl/mk2De
-Object.defineProperty(grunt, 'utils', {
-  get: function() {
-    return grunt.util;
+  // avoid the deprecation notice: goo.gl/mk2De
+  Object.defineProperty(grunt, 'utils', {
+    get: function() {
+      return grunt.util;
+    }
+  });
+
+  // command line options and remaining args
+  var opts = cli.options,
+    cmds = cli.tasks,
+    route = cmds.join(' ').trim('');
+
+  // custom help, on `h5bp help`
+  if(/^help/.test(route)) {
+    if(/^help$/.test(route)) {
+      return console.log( compiled() );
+    }
+    cli.tasks = cmds.join(':');
   }
-});
 
-// command line options and remaining args
-var opts = cli.options,
-  cmds = cli.tasks,
-  route = cmds.join(' ').trim('');
-
-// custom help, on `h5bp help`
-if(/^help/.test(route)) {
-  if(/^help$/.test(route)) {
-    return console.log( compiled() );
+  // add the plugin version on `--version`
+  if(opts.version) {
+    return console.log('%s  v%s', pkg.name, pkg.version);
   }
-  cli.tasks = cmds.join(':');
-}
 
-// add the plugin version on `--version`
-if(opts.version) {
-  return console.log('%s  v%s', pkg.name, pkg.version);
-}
+  // Matches everything after init to prevent
+  // the user from seeing the default grunt init tasks
+  if(/^init/.test(route)) {
+    // required handling of options / arguments to workaround some internal check
+    // of Grunt, and let the generators go through (init and invoked in our front
+    // Grunt template)
+    yeoman.generators.prepare(grunt);
+  }
 
-// Matches everything after init to prevent
-// the user from seeing the default grunt init tasks
-if(/^init/.test(route)) {
-  // required handling of options / arguments to workaround some internal check
-  // of Grunt, and let the generators go through (init and invoked in our front
-  // Grunt template)
-  yeoman.generators.prepare(grunt);
-}
+  // Inform users to run `server` instead of `watch`
+  if ( /^watch/.test( route ) ) {
+    return console.log('\nYeoman`s watch task is integrated within `yeoman server` to combine\n\
+  the dev server, re-compilation and live reloading of changed assets.\n\n\
+  Feel free to run ' + 'yeoman'.bold.red + ' ' + 'server'.bold.yellow + ' instead!');
+  }
 
-// Inform users to run `server` instead of `watch`
-if ( /^watch/.test( route ) ) {
-  return console.log('\nYeoman`s watch task is integrated within `yeoman server` to combine\n\
-the dev server, re-compilation and live reloading of changed assets.\n\n\
-Feel free to run ' + 'yeoman'.bold.red + ' ' + 'server'.bold.yellow + ' instead!');
-}
+  // a bower command
+  // Examples:
+  // yeoman install jquery
+  // yeoman install spine
+  // yeoman install backbone (which does jquery etc too.)
+  // yeoman update spine
+  // yeoman lookup jquery
+  // yeoman search jquery
+  if(/^install|^uninstall|^search|^list|^ls|^lookup|^update/.test(route)) {
+    cli.tasks = 'bower' + ':' + cmds.join(':');
+  }
 
-// a bower command
-// Examples:
-// yeoman install jquery
-// yeoman install spine
-// yeoman install backbone (which does jquery etc too.)
-// yeoman update spine
-// yeoman lookup jquery
-// yeoman search jquery
-if(/^install|^uninstall|^search|^list|^ls|^lookup|^update/.test(route)) {
-  cli.tasks = 'bower' + ':' + cmds.join(':');
-}
 
+  /* Yeoman Insight =========================================================== */
+  async.series([function(cb) {
+
+    // Are we dealing with yeoman in a test environment? If so, skip the
+    // insight prompt. This is specifically put into the environment by
+    // our test spawn helper.
+    if(process.env.yeoman_test) {
+      return cb();
+    }
+
+    insight.init({
+      pkgname    : pkg.name,
+      getUserHome: getUserHome,
+      cmds       : cmds,
+      cb         : cb
+    });
+
+  }, function(cb) {
+
+    // if the route is empty
+    if(/^$/.test(route)) {
+      // this is specific to an empty route code
+      console.log(pkg.name + ' v%s', pkg.version);
+
+      // we return early to prevent grunt from actually running
+      // and instead just output help.txt
+      cb();
+      return console.log( compiled() );
+    }
+
+    // the grunt cli
+    grunt.cli();
+
+    cb();
+
+  }]);
+}
 
 
 /* Yeoman Upgrade =========================================================== */
-if ( /^upgrade/.test( route ) ) {
+if ( !process.env.yeoman_test ) {
+  // TODO: Change to this before the release:
+  // updater.getUpdate({ localPackageUrl: '../../package.json' }, function() {
+  //  init();
+  //});
 
-   // Query for the latest update (grunt is used as the pkg.name for debugging
-   // purposes only)
-   updater.getUpdate({ name: 'grunt', version: pkg.version }, function(update){
-      console.log('Update type available is:', colors.yellow(update.severity));
-      console.log('You have version', colors.blue(update.localVersion));
-      console.log('Latest version is', colors.red(update.latestVersion));
-      console.log('To get the latest version run:' + colors.green(' npm update yeoman -g'));
-   });
-
-   return console.log('Update checks complete.');
-}
-
-/* Yeoman Insight =========================================================== */
-async.series([function(cb) {
-
-  // Are we dealing with yeoman in a test environment? If so, skip the
-  // insight prompt. This is specifically put into the environment by
-  // our test spawn helper.
-  if(process.env.yeoman_test) {
-    return cb();
-  }
-
-  insight.init({
-    pkgname    : pkg.name,
-    getUserHome: getUserHome,
-    cmds       : cmds,
-    cb         : cb
+  // Query for the latest update (grunt is used as the pkg.name for debugging
+  // purposes only)
+  updater.getUpdate({ name: 'grunt', version: '0.1.13' }, function( update ) {
+    init();
   });
-
-}, function(cb) {
-
-  // if the route is empty
-  if(/^$/.test(route)) {
-    // this is specific to an empty route code
-    console.log(pkg.name + ' v%s', pkg.version);
-
-    // we return early to prevent grunt from actually running
-    // and instead just output help.txt
-    cb();
-    return console.log( compiled() );
-  }
-
-  // the grunt cli
-  grunt.cli();
-
-  cb();
-
-}]);
-
-
+} else {
+  init();
+}
