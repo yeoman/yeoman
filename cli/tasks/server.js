@@ -192,6 +192,7 @@ module.exports = function(grunt) {
   // Note: yeoman-server alone will exit prematurly unless `this.async()` is
   // called. The task is designed to work alongside the `watch` task.
   grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target) {
+    var opts;
     // Get values from config, or use defaults.
     var port = grunt.config('server.port') || 0xDAD;
 
@@ -222,21 +223,30 @@ module.exports = function(grunt) {
       return false;
     }
 
-    grunt.helper('server', {
+    opts = {
       // prevent browser opening on `reload` target
       open: target !== 'reload',
       // and force 35729 port no matter what when on `reload` target
       port: target === 'reload' ? 35729 : port,
       base: targets[target],
       inject: true,
-      target: target
-    }, cb);
+      target: target,
+      hostname: grunt.config('server.hostname') || 'localhost'
+    };
+
+    grunt.helper('server', opts, cb);
+
+    grunt.registerTask('open-browser', function() {
+        if ( opts.open ) {
+          open( 'http://' + opts.hostname + ':' + opts.port );
+        }
+    });
 
     if(target === 'app') {
       // when serving app, make sure to delete the temp/ dir from w/e was
       // previously compiled here, and trigger compass / coffee mostly to make
       // sure, those files are compiled and not revved.
-      grunt.task.run('clean coffee compass');
+      grunt.task.run('clean coffee compass open-browser');
     }
 
     grunt.task.run('watch');
@@ -244,8 +254,6 @@ module.exports = function(grunt) {
 
   grunt.registerHelper('server', function(opts, cb) {
     cb = cb || function() {};
-
-    opts.hostname = opts.hostname || 'localhost';
 
     var middleware = [];
 
@@ -309,10 +317,6 @@ module.exports = function(grunt) {
           host: opts.hostname,
           port: port
         });
-
-        if ( opts.open ) {
-          open( 'http://' + opts.hostname + ':' + port );
-        }
 
         cb(null, port);
       });
