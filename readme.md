@@ -11,7 +11,15 @@ Yeoman is fast, performant and is optimized to work best in modern browsers.
 For more information about the project, see [yeoman.io](http://yeoman.io).
 
 
-## Installing (pre-launch)
+## Installation
+
+Simple run:
+
+```shell
+curl -L get.yeoman.io | sh
+```
+
+Alternatively:
 
 * Clone this repo and `cd` into it
 * Run this command: `./setup/install.sh`
@@ -99,6 +107,17 @@ sudo -s 'npm install -g && npm link'
 Should you run into any further problems beyond this, please open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
 
+#### Issue submission guidelines
+
+In order for us to help you please check that you've completed the following steps:
+
+* Made sure you're on the latest version
+* Read our documentation and README to ensure the issue hasn't been noted or solved already
+* Used the search feature to ensure that the bug hasn't been reported before
+* Included as much information about the bug as possible, including any output you've received, what OS and version you're on. 
+* Shared the output from `echo $PATH $NODE_PATH` and `brew doctor` as this can also help track down the issue.
+
+
 #### Bower
 
 Please also note that (pre-launch) commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. 
@@ -128,9 +147,11 @@ We are more than happy to accept external contributions to the project in the fo
 
 ### Repos
 
-* [Yeoman (CLI, Insights)](http://github.com/yeoman/yeoman)
-* [Yeoman I/O Holding Page](http://github.com/yeoman/yeoman.io)
-* [Yeoman I/O Site](http://github.com/yeoman/yeoman.io) (site branch)
+Yeoman has three primary repos. These are:
+
+* [main project](http://github.com/yeoman/yeoman)
+* [generators](http://github.com/yeoman/generators)
+* [yeoman.io](http://github.com/yeoman/yeoman.io)
 
 ### Style Guide
 
@@ -138,8 +159,9 @@ This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core
 
 ### Pull Request Guidelines
 
-- Lint the code by running `grunt` in the `/cli` folder before submitting a pull request
-- Develop in a topic branch, not master
+* Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
+* Lint the code by running `grunt` in the `/cli` folder before submitting a pull request
+* Develop in a topic branch, not master
 
 ### Tests
 
