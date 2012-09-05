@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install.sh: Installation script
 
 # Note for maintenance: edit the version variables below for easy updating :D
