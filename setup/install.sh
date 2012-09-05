@@ -275,9 +275,9 @@ if [ "$LINUX" -eq 1 ]; then
   echo "Installing dependencies for Linux."
   echo "Installing $PACKAGESLINUX"
   if [ "$PKGMGR" -eq 1 ]; then
-    sudo apt-get install $PACKAGESLINUX $DEBGIT
+    sudo apt-get -y install $PACKAGESLINUX $DEBGIT
   elif [ "$PKGMGR" -eq 2 ]; then
-    sudo yum install $PACKAGESLINUX $OTHERGIT
+    sudo yum -y install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 3 ]; then
     sudo up2date install $PACKAGESLINUX $OTHERGIT
   fi
