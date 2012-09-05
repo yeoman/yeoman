@@ -11,7 +11,7 @@ LINUX=0
 MAC=0
 PKGMGR=0
 
-function haveProg() {
+haveProg() {
     [ -x "$(which $1)" ]
 }
 
@@ -177,7 +177,7 @@ else
   exit 1
 fi
 
-function check_or_install_brew_pkg() {
+check_or_install_brew_pkg() {
   FILELOCATION=$(which $1)
   if [ "$FILELOCATION" ]; then
     echo "$1 is installed."
