@@ -51,7 +51,7 @@ BREWFILE=$(which brew)
 
 if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then
   echo "Installing Homebrew"
-  echo -ne '\n' | ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+  echo -ne '\n' | curl -fsSkL raw.github.com/mxcl/homebrew/go | ruby
   echo ""
 elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
   echo "You've got brew, nice work chap!"
@@ -208,7 +208,7 @@ if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
   sudo apt-get -y install libruby1.9.1 ruby1.9.1 rubygems1.9.1
 elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 2 ]; then
   echo "Installing Ruby"
-  sudo yum -y install ruby rubygems 
+  sudo yum -y install ruby rubygems
 elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
