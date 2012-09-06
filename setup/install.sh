@@ -4,7 +4,7 @@
 
 # Note for maintenance: edit the version variables below for easy updating :D
 NODEVER=0.8.8
-YEOMANVER="yeoman-yeoman-d01726b891e0e503d17aa54fad7d46c06b470059"
+YEOMANVER="yeoman-yeoman-df0bc33fc4e1cf575f3e97ba28778a7838cfb7d1"
 
 # checking OS
 LINUX=0
