@@ -89,14 +89,10 @@ var config = (function() {
 updater.registryUrl = 'http://registry.npmjs.org/%s';
 
 // How often the updater should check for updates
-//updater.updateCheckInterval = 1000 * 60 * 60 * 24; // 1 day
+updater.updateCheckInterval = 1000 * 60 * 60 * 24; // 1 day
 
 // How long it should wait until force auto-update
-//updater.updatePromptTimeLimit = 1000 * 60 * 60 * 24 * 7; // 1 week
-
-// TODO: Remove before release and uncomment aboves. Only for testing.
-updater.updateCheckInterval = 10000; // 10 sec
-updater.updatePromptTimeLimit = 20000; // 20 sec
+updater.updatePromptTimeLimit = 1000 * 60 * 60 * 24 * 7; // 1 week
 
 
 // Prompt for update
@@ -182,6 +178,7 @@ updater.getUpdate = function getUpdate( options, cb ) {
       options.name = localPackage.name;
       options.version = localPackage.version;
     } else {
+      cb();
       return console.error('No package name/version or local package supplied');
     }
   }
@@ -197,6 +194,7 @@ updater.getUpdate = function getUpdate( options, cb ) {
 
   // Only check for updates on a set interval
   if ( new Date() - config.get('lastUpdateCheck') < this.updateCheckInterval ) {
+    cb();
     return;
   }
 
@@ -264,6 +262,8 @@ updater.getUpdate = function getUpdate( options, cb ) {
           cb( err, update );
         }
       });
+    } else {
+      cb();
     }
   });
 };
