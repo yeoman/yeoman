@@ -58,11 +58,18 @@ elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
 fi
 
 # checking baseline dependencies
+CURLFILE=$(which curl)
 RUBYFILE=$(which ruby)
 NODEFILE=$(which node)
 GEMFILE=$(which gem)
 COMPASSFILE=$(which compass)
 COMPASS=1
+
+# check for curl
+if [ -z "$CURLFILE" ]; then
+  echo "Woah! I need curl to carry on, chap!"
+  exit 1
+fi
 
 # sudo checks, don't try this at home, kids
 NEEDSUDO=0
@@ -86,7 +93,9 @@ fi
 
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
-PACKAGESLINUX='git optipng libjpeg-turbo8 phantomjs'
+PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
+DEBGIT='git-core'
+OTHERGIT='git'
 
 
 echo "                                                            "
@@ -196,7 +205,10 @@ cd "$TMP"
 #check for and install ruby if needed
 if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
   echo "Installing Ruby"
-  sudo apt-get install libruby1.9.1 ruby1.9.1
+  sudo apt-get -y install libruby1.9.1 ruby1.9.1 rubygems1.9.1
+elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 2 ]; then
+  echo "Installing Ruby"
+  sudo yum -y install ruby rubygems 
 elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
@@ -263,11 +275,11 @@ if [ "$LINUX" -eq 1 ]; then
   echo "Installing dependencies for Linux."
   echo "Installing $PACKAGESLINUX"
   if [ "$PKGMGR" -eq 1 ]; then
-    sudo apt-get install $PACKAGESLINUX
+    sudo apt-get -y install $PACKAGESLINUX $DEBGIT
   elif [ "$PKGMGR" -eq 2 ]; then
-    sudo yum install $PACKAGESLINUX
+    sudo yum -y install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 3 ]; then
-    sudo up2date install $PACKAGESLINUX
+    sudo up2date install $PACKAGESLINUX $OTHERGIT
   fi
 fi
 
