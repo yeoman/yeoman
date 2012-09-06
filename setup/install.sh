@@ -313,7 +313,7 @@ echo "Okay here we go..."
 
 if [ "$NEEDSUDO" -eq 1 ]; then
   echo ""
-  echo "Looks like you need to sudo your npm install:"
+  echo "You *may* be prompted now for your sudo password to kick off the npm install. Please hold."
   sudo npm install . -g
 else
   npm install . -g
