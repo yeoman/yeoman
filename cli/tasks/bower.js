@@ -99,12 +99,14 @@ module.exports = function(grunt) {
             // check config file exists
             if(grunt.file.exists(requireConfigPath)){
                 // if so..
-                // iterate over Bower deps, generating the path string fo config     
+                // iterate over Bower deps, generating the path string fo config
                 Object.keys(deps).forEach(function(dep){
-                  scripts+= "    " + dep + ": '../../" + deps[dep].replace('.js','') + "',\n";
+                  // Quote key if it contains non a-z chars
+                  var key = /[^\w]/.test( dep ) ? '\'' + dep + '\'' : dep;
+                  scripts+= "    " + key + ": '../../" + deps[dep].replace('.js','') + "',\n";
                 });
 
-                // read in the existing data-main config   
+                // read in the existing data-main config
                 var cf = fs.readFileSync(requireConfigPath, 'utf8');
                 // replace the existing paths with your new paths
                 var html = cf.replace(' paths: {', 'paths: {\n' + scripts);
