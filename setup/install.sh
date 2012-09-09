@@ -36,13 +36,13 @@ if [ "$MAC" -eq 1 ]; then
   if haveProg clang; then
     echo "CLI tools check 1/2 passed."
   else
-    echo "CLI tools not found."
+    echo "CLI tools not found. You can download them here: https://developer.apple.com/downloads"
     exit 1
   fi
   if haveProg lldb; then
     echo "CLI tools check 2/2 passed."
   else
-    echo "CLI tools not found."
+    echo "CLI tools not found. You can download them here: https://developer.apple.com/downloads"
     exit 1
   fi
 fi
