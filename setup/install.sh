@@ -36,13 +36,15 @@ if [ "$MAC" -eq 1 ]; then
   if haveProg clang; then
     echo "CLI tools check 1/2 passed."
   else
-    echo "CLI tools not found. You can download them here: https://developer.apple.com/downloads"
+    echo "Looks like you need the XCode CLI Tools for homebrew, chap. Learn about
+where to install them at the homebrew docs: https://github.com/mxcl/homebrew/wiki/Installation"
     exit 1
   fi
   if haveProg lldb; then
     echo "CLI tools check 2/2 passed."
   else
-    echo "CLI tools not found. You can download them here: https://developer.apple.com/downloads"
+    echo "Looks like you need the XCode CLI Tools for homebrew, chap. Learn about
+where to install them at the homebrew docs: https://github.com/mxcl/homebrew/wiki/Installation"
     exit 1
   fi
 fi
