@@ -13,7 +13,7 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 
 ## Installation
 
-Simple run:
+Simply run:
 
 ```shell
 curl -L get.yeoman.io | sh
@@ -120,13 +120,12 @@ In order for us to help you please check that you've completed the following ste
 
 #### Bower
 
-Please also note that (pre-launch) commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. 
+Please also note that commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. 
 
 Because for the moment Twitter are publishing Bower over itself (for 1.0.0 release) you may need to run `npm uninstall yeoman -g && npm install yeoman -g` to get the latest install of Bower installed as a Yeoman dependency. This would be done if you wish to double-check an issue has been resolved with a more recent version.
 
 As the Bower registry is currently being populated, you may find that certain packages work and others do not. We are actively working with the Bower team to resolve this issue and hope to have fully functional packages in place upon launch.
 
-As Bower is also currently in private beta, please let us know if you need access and we'll sort that out.
 
 
 ## Browser Support
@@ -139,7 +138,7 @@ As Bower is also currently in private beta, please let us know if you need acces
 
 ## Platform Support
 
-Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support for Windows in a future version of the project.
+Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support for Windows in a [future](https://github.com/yeoman/yeoman/issues/216) version of the project.
 
 ## Contribute
 
@@ -213,6 +212,7 @@ and other developers.
 
 We will be aiming to officially release the project in Q3, 2012.
 
-## Disclaimer
+## License
 
-If you've been invited to try out the project as a beta tester or contributor, all we ask is that you refrain from publicly publishing/sharing the project sources until we have launched. This is to ensure that the first public version of Yeoman is as stable as possible, but would also stop unicorns from crying. Thanks for understanding :)
+Yeoman is released under a [BSD](http://opensource.org/licenses/bsd-license.php) license.
+
