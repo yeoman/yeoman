@@ -1,6 +1,6 @@
 
 
-## search
+## <a href="#search" name="search">search</a>
 
 Usage: `yeoman search <keyword>`
 

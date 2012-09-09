@@ -1,6 +1,6 @@
 
 
-## build
+## <a href="#build" name="build">build</a>
 
 Usage: `yeoman build`, `yeoman build:<target>`
 

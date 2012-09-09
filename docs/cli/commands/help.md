@@ -1,5 +1,5 @@
 
-## Help
+## <a href="#help" name="help">help</a>
 
 * `yeoman --help` or `yeoman help`
 
@@ -19,5 +19,4 @@ yeoman search    # Query the registry for matching package names
 yeoman lookup    # Look up info on a particular package
 ```
 
-Note that commands may also support additional flags and so we recommend consulting the documentation for specific
-commands for the complete details.
+Note that commands may also support additional flags and so we recommend consulting the documentation for specific commands for the complete details.
