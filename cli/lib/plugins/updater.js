@@ -113,8 +113,8 @@ updater.promptUpdate = function promptUpdate( cb ) {
 updater.shouldUpdate = function shouldUpdate( update, cb ) {
   var severity = update.severity;
 
-  console.log('Update available: ' + update.current.green +
-              (' (current: ' + update.latest + ')').grey );
+  console.log('Update available: ' + update.latest.green +
+              (' (current: ' + update.current + ')').grey );
 
   if ( config.get('optOut') === true ) {
     console.log('You have opted out of automatic updates');
@@ -297,7 +297,9 @@ updater.parseUpdateType = function parseUpdateType( current, remoteVersion ) {
 
 // Run `npm update` against a specific package name
 updater.updatePackage = function updatePackage( packageName, cb ) {
-  var child = exec( 'npm update ' + packageName, { cwd: __dirname }, cb );
+  // TODO(sindresorhus): Find a better solution for local packages
+  // Something like going up filestructure until node_modules folder
+  var child = exec( 'npm update -g ' + packageName, cb );
   console.log( 'Updating ' + packageName + '\n' );
   child.stdout.pipe( process.stdout );
   child.stderr.pipe( process.stderr );
