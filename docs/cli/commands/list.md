@@ -1,6 +1,6 @@
 
 
-## list
+## <a href="#list" name="list">list</a>
 
 Usage: `yeoman list`
 

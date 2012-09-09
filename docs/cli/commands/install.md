@@ -1,12 +1,12 @@
 
 
-## install
+## <a href="#install" name="install">install</a>
 
 Usage: `yeoman install <packageName>`, `yeoman install <package1> <package2>`
 
-Installs a package <name> and any packages that this depends on using Twitter Bower. A package is a folder containing a resource described by a package.json file or a gzipped tarball containing this information.
+Installs a package and any packages that this depends on using Twitter Bower. A package is a folder containing a resource described by a package.json file or a gzipped tarball containing this information.
 
-Running yeoman install <name> will install the dependencies in your projects browser_modules folder.
+Running yeoman install packageName will install the dependencies in your projects browser_modules folder.
 
 Example:
 
@@ -34,16 +34,3 @@ bower install http://code.jquery.com/jquery-1.7.2.js
 bower install ./repos/jquery
 ```
 
-## Available Packages
-
-Currently available packages:
-
-* **backbone** *git://github.com/paulirish/package-backbone.git*
-* **jquery-ui** *git://github.com/maccman/package-jquery-ui.git*
-* **jquery** *git://github.com/maccman/package-jquery.git*
-* **knockout** *git://github.com/SteveSanderson/knockout.git*
-* **modernizr** *git://github.com/josh/package-modernizr.git*
-* **spine** *git://github.com/maccman/spine.git*
-* **underscore** *git://github.com/paulirish/package-underscore.git*
-
-For further information, see the section on the package manager.

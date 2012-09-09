@@ -1,22 +1,21 @@
-## Generators
+## <a href="#generators" name="generators">generators</a>
 
-Generator templates allow you to scaffold out a project using a custom setup of boilerplates, frameworks and dependencies. The basic  application generated when calling `yeoman init` actually uses a generator itself and they can be quite powerful.
+Generator templates allow you to scaffold out a project using a custom setup of boilerplates, frameworks and dependencies. The basic application generated when calling `yeoman init` actually uses a generator itself and they can be quite powerful. 
+
+Some of the generators Yeoman includes out of the box include implementations for Backbone.js, Ember.js and Angular.js. These allow you to not only use complete boilerplates for an application but also scaffold out smaller parts such as Models, Views, Controllers and so on. 
+
 
 ### Getting Started
 
-Note: The guide listed below relies on commands which we are currently still being reintegrated. Specifically, the `generate` command needs to be reinstated to work with our `init` rewrite.
-
-yeoman init generate
+yeoman init generator
 ----------------------
 
 The `yeoman init` command uses templates and prompts to create the files needed for a project.
 
-Running `yeoman init generate` by itself gives a list of available generators:
+Running `yeoman init --help` by itself gives a list of available generators:
 
-You can also use the alias `g` to invoke the generator command: `yeoman init g`
-
-    $ yeoman init generate
-    Usage: yeoman init generate GENERATOR [args] [options]
+    $ yeoman init generator
+    Usage: yeoman init generator GENERATOR [args] [options]
 
     ...
     ...
@@ -30,17 +29,18 @@ You can also use the alias `g` to invoke the generator command: `yeoman init g`
       ...
 
 **Note**: You can install more generators through npm package and you can even create your own.
+Yeoman's own generators are available in a dedicated [repository](https://github.com/yeoman/generators).
 
 Using generators will save you a large amount of time by writing boilerplate code, code that is necessary for the app to work.
 
 Let's make our own controller with the controller generator. But what command should we use?  Let's ask the generator:
 
-**Note**: All generators available have help text. You can try adding --help or
+**Note**: Generators available may have help text. You can try adding --help or
 -h to the end, for example `yeoman generate controller --help`
 
     .. Invoke controller ..
     Usage:
-      yeoman init generate controller NAME one two three [options]
+      yeoman init generator controller NAME one two three [options]
 
     Options:
       -h, --help          # Print generator's options and usage
@@ -52,16 +52,13 @@ The controller generator is expecting parameters in the form of `generate contro
 
 Let's make a `Greeting` controller with an action of `hello`.
 
-    $ yeoman init generate controller Greeting hello
+    $ yeoman init generator controller Greeting hello
 
-What all did this generate? If made sure a bunch of directories where in our application, and created a controller file, a view file and / or template file
-and a test file.
+What did this generate? It made sure a bunch of directories where in our application, and created a controller file, a view file and / or template file and a test file.
 
 Yeoman comes with a generator for data models too.
 
     $ yeoman init generator model
-
-> TODO help output
 
 
 Creating and Customizing Yeoman Generators & Templates
@@ -81,15 +78,15 @@ Creating and Customizing Yeoman Generators & Templates
 
 When you create an application using the `yeoman init` command, you are in fact
 using a Yeoman generator. After that, you can get a list of all available
-generators by just invoking `yeoman init generate`:
+generators by just invoking `yeoman init --help`:
 
     $ yeoman init
     $ cd app
-    $ yeoman init generate
+    $ yeoman init --help
 
 You will get a list of all generators that come with yeoman. If you need a detailed description for a given generator, you can simply do:
 
-    $ yeoman init generate [generator] --help
+    $ yeoman init generator [generator] --help
 
 ### Creating Your First Generator
 
@@ -113,13 +110,12 @@ the following content:
       this.write('app/js/initializer.js', "// Add initialization content here\n");
     };
 
-`write` is a method provided by `yeoman.generators.Base`, and is a basic facade to the `grunt.file` API. When we "write" things, this happen relative to the
-working directory (that is the Gruntfile location, the Gruntfile is resolved internally, walking up the FS until one is found. This is most likely the root
+`write` is a method provided by `yeoman.generators.Base`, and is a basic facade to the `grunt.file` API. When we "write" things, this happen relative to the working directory (that is the Gruntfile location, the Gruntfile is resolved internally, walking up the FS until one is found. This is most likely the root
 of the yeoman application).
 
-Our new generator is quite simple: it inherits from `yeoman.generators.Base` and has one method definition. Each "public" method in the generator is
-executed when a generator is invoked (first level method in the prototype chain, eg.  `Base` class method are not called). There are two exceptions,
-generators won't run:
+Our new generator is quite simple: it inherits from `yeoman.generators.Base` and has one method definition. Each "public" method in the generator is executed when a generator is invoked (first level method in the prototype chain, eg.  `Base` class method are not called). 
+
+There are two exceptions, generators won't run:
 
 - any method begining with the `_` prefix.
 - a `constructor` method, specifically used with generators written in
@@ -133,7 +129,7 @@ Finally, we invoke the `write` method that will create a file at the given desti
 Now, we can see that the initializer generator available to use if we output
 the list of available generators in this application:
 
-    $ yeoman init generate
+    $ yeoman init generator
 
     Usage: yeoman generate GENERATOR [args] [options]
     ...
@@ -156,9 +152,7 @@ Before we go on, let’s see our brand new generator description:
     Description:
         Create files for initializer generator.
 
-Yeoman is usually able to generate good descriptions, but not in this particular
-case. We can solve this problem in two ways. The first one is calling desc
-inside our generator:
+Yeoman is usually able to generate good descriptions, but not in this particular case. We can solve this problem in two ways. The first one is calling desc inside our generator:
 
     var util = require('util'),
         yeoman = require('../../../');
@@ -183,7 +177,7 @@ Now we can see the new description by invoking --help on the new generator. The 
 
 Generators themselves have a generator:
 
-    $ yeoman init generate generator initializer
+    $ yeoman init generator generator initializer
       create  lib/generators/initializer
       create  lib/generators/initializer/index.js
       create  lib/generators/initializer/USAGE
@@ -204,10 +198,7 @@ This is the generator just created:
 
     util.inherits(Generator, yeoman.generatos.NamedBase);
 
-First, notice that we are inheriting from `yeoman.Generators.NamedBase` instead
-of `yeoman.Generators.Base`. This means that our generator expects at least one
-argument, which will be the name of the initializer, and will be available in
-our code in the variable `name`.
+First, notice that we are inheriting from `yeoman.Generators.NamedBase` instead of `yeoman.Generators.Base`. This means that our generator expects at least one argument, which will be the name of the initializer, and will be available in our code in the variable `name`.
 
 We can see that by invoking the description of this new generator:
 
@@ -216,16 +207,11 @@ We can see that by invoking the description of this new generator:
     Usage:
       yeoman init initializer NAME [options]
 
-**Note**: The banner is not automatically generated yet for generators (the Usage: thing above). Same for options and arguments defined by the generator,
-they should show up during the help output. Right now, the USAGE file is dumped
-to the console as is.
+**Note**: The banner is not automatically generated yet for generators (the Usage: thing above). Same for options and arguments defined by the generator, they should show up during the help output. Right now, the USAGE file is dumped to the console as is.
 
 We can also see that our new generator has an instance method called `sourceRoot`.
 
-This method points to where our generator templates will be placed, if any, and
-by default it points to the created directory
-`lib/generators/initializer/templates` (so the `sourceRoot(__dirname,
-'templates')` can be removed, this is the default).
+This method points to where our generator templates will be placed, if any, and by default it points to the created directory `lib/generators/initializer/templates` (so the `sourceRoot(__dirname, 'templates')` can be removed, this is the default).
 
 In order to understand what a generator template means, let’s create the file
 lib/generators/initializer/templates/initializer.js with the following content:
@@ -308,14 +294,9 @@ can be configured in your application Gruntfile, these are some defaults:
 
 Looking at this output, it’s easy to understand how generators work in yeoman.
 
-Generator relies on hook and other generators, some don't actually generate
-anything, they just invokes others to do the work.
+Generator relies on hook and other generators, some don't actually generate anything, they just invokes others to do the work.
 
-This allows us to add/replace/remove any of those invocations. For instance,
-the `controller` generator invokes the `view` and `test-framework` hooks. These
-hooks tries to resolve their value from cli options first, then look at the
-Gruntfile for a generator property with the corresponding hook name, and
-finally defaults to the hook name if none were found.
+This allows us to add/replace/remove any of those invocations. For instance, the `controller` generator invokes the `view` and `test-framework` hooks. These hooks tries to resolve their value from cli options first, then look at the Gruntfile for a generator property with the corresponding hook name, and finally defaults to the hook name if none were found.
 
 Since each generator has a single responsibility, they are easy to reuse,
 avoiding code duplication.
@@ -325,21 +306,11 @@ the hooks. etc.
 
 ### Customizing Your Workflow by Changing Generators Templates
 
-In the step above we simply wanted to add a line to the generated helper,
-without adding any extra functionality. There is a simpler way to do that, and
-it’s by replacing the templates of already existing generators, in that case
-`yeoman.generators.HelperGenerator`.
+In the step above we simply wanted to add a line to the generated helper, without adding any extra functionality. There is a simpler way to do that, and it’s by replacing the templates of already existing generators, in that case `yeoman.generators.HelperGenerator`.
 
-Generators don’t just look in the source root for templates, they also search
-for templates in other paths. And one of them is lib/templates. Since we want
-to customize `yeoman.generators.HelperGenerator`, we can do that by simply
-making a template copy inside lib/templates/yeoman/helper with the name
-helper.js.
+Generators don’t just look in the source root for templates, they also search for templates in other paths. And one of them is lib/templates. Since we want to customize `yeoman.generators.HelperGenerator`, we can do that by simply making a template copy inside lib/templates/yeoman/helper with the name helper.js.
 
-If you generate another resource, you can see that we get exactly the same
-result! This is useful if you want to customize your scaffold templates and/or
-layout by just creating edit.html.erb, index.html.erb and so on inside
-lib/templates/erb/scaffold.
+If you generate another resource, you can see that we get exactly the same result! This is useful if you want to customize your scaffold templates and/or layout by just creating edit.html.erb, index.html.erb and so on inside lib/templates/erb/scaffold.
 
 
 ### More On Generators
@@ -365,8 +336,7 @@ Generator.prototype.createSomething = function() {
 // ... other methods ...
 ```
 
-Generators can also be written in CofeeScript, they just needs to be named with
-a `.coffee` extension (typically `lib/generators/generatorName/index.coffee`)
+Generators can also be written in CofeeScript, they just needs to be named with a `.coffee` extension (typically `lib/generators/generatorName/index.coffee`)
 
 ```coffee
 yeoman = require 'yeoman'
@@ -391,12 +361,9 @@ They're usually layout like so:
             ├── index.js
             └── templates
 
-Generators extends either `yeoman.generators.Base` or
-`yeoman.generators.NamedBase`. `NamedBase` is suitable to use for genetors that
-expects a "name" argument, such as `yeoman init model [NAME]`.
+Generators extends either `yeoman.generators.Base` or `yeoman.generators.NamedBase`. `NamedBase` is suitable to use for genetors that expects a "name" argument, such as `yeoman init model [NAME]`.
 
-Every public method in a generator are executed serially. Every first level
-method in the prototype chain, eg. inherited method in `Base` are not.
+Every public method in a generator are executed serially. Every first level method in the prototype chain, eg. inherited method in `Base` are not.
 
 Two exceptions:
 
@@ -404,29 +371,22 @@ Two exceptions:
   helper. They won't be called automatically on generator invokation.
 - a `constructor` method, most likely when using CoffeeScript to implement the generator
 
-Either `Name` or `BasedName` are EventEmitters, you may use the EventEmitter
-API if you wish to (emit / on / once / ...)
+Either `Name` or `BasedName` are EventEmitters, you may use the EventEmitter API if you wish to (emit / on / once / ...)
 
 grunt.file
 ----------
 
-Generators get mixed into their prototype the
-[grunt.file](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#the-file-api)
-API. You can use read, readJSON, write, copy, mkdir, expandFiles, etc.
+Generators get mixed into their prototype the [grunt.file](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#the-file-api) API. You can use read, readJSON, write, copy, mkdir, expandFiles, etc.
 
-Note that some of them have special additional logic attached, for `copy`,
-`read` and `write`.
+Note that some of them have special additional logic attached, for `copy`, `read` and `write`.
 
-`copy` and `read` make sure to prefix the source filename to be within the
-generator's source root (usually a `templates/` folder next to the generator
-implementation).
+`copy` and `read` make sure to prefix the source filename to be within the generator's source root (usually a `templates/` folder next to the generator implementation).
 
 grunt.log
 ---------
 
 In addition to the grunt.file API directly available into your generators, you
-can use the
-[grunt.log](https://github.com/cowboy/grunt/blob/master/docs/api_log.md#the-log-api) API as `this.log`
+can use the [grunt.log](https://github.com/cowboy/grunt/blob/master/docs/api_log.md#the-log-api) API as `this.log`
 
 
 ```js
@@ -439,19 +399,11 @@ Generator.prototype.doingSomething = function() {
 sync vs async
 -------------
 
-Methods are expected to run synchronously by default. This is fine for most
-cases, and will be just what you need for most common operations. Every file
-system method (copy, write, read, etc.) available are borrowed to grunt's,
-where most of them are implemented synchronously for conveniency.
+Methods are expected to run synchronously by default. This is fine for most cases, and will be just what you need for most common operations. Every file system method (copy, write, read, etc.) available are borrowed to grunt's, where most of them are implemented synchronously for conveniency.
 
-If you wish to run your method in an asynchronous way, you should tell the
-system to do so. Very similarly to how you would handle async stuff in grunt
-tasks.
+If you wish to run your method in an asynchronous way, you should tell the system to do so. Very similarly to how you would handle async stuff in grunt tasks.
 
-If a method is asynchronous, `this.async` must be invoked to tell the system to
-wait. It returns a handle to a "done" function that should be called when the
-method has completed. Every non-falsy value (most likely an Error object) can
-be passed to the done function as a first argument to indicate a failure.
+If a method is asynchronous, `this.async` must be invoked to tell the system to wait. It returns a handle to a "done" function that should be called when the method has completed. Every non-falsy value (most likely an Error object) can be passed to the done function as a first argument to indicate a failure.
 
 It this method isn't invoked, the method executes synchronously.
 
@@ -461,8 +413,7 @@ Generator methods
 The following are methods available for generators.
 
 NOTE: Methods provided by Grunt are not covered this guide and can be found in
-"Grunt's
-documentation":https://github.com/cowboy/grunt/blob/master/docs/api_file.md#the-file-api
+"Grunt's documentation":https://github.com/cowboy/grunt/blob/master/docs/api_file.md#the-file-api
 
 **TBD**
 
@@ -478,9 +429,7 @@ A hash object holding all cli parsed options by nopt.
 
 Adds an argument to the class and creates an instance property for it.
 
-Arguments are different from options in several aspects. The first one
-is how they are parsed from the command line, arguments are retrieved
-from position:
+Arguments are different from options in several aspects. The first one is how they are parsed from the command line, arguments are retrieved from position:
 
     yeoman init NAME
 
@@ -488,8 +437,7 @@ Instead of:
 
     yeoman init --name NAME
 
-Besides, arguments are used inside your code as a property (this.argument),
-while options are all kept in a hash (this.options).
+Besides, arguments are used inside your code as a property (this.argument), while options are all kept in a hash (this.options).
 
 Options:
 
@@ -510,16 +458,15 @@ parsed by nopt as a this.options Hash object.
 
 - name       - The name of the argument
 - options    - Hash of configuration values where:
-  - desc     - Description for the argument.
-  - type     - Type for this argument, either Boolean, String or Number.
-  - defaults - Default value for this argument.
-  - banner   - String to show on usage notes.
-  - hide     - If you want to hide this option from the help.
+- desc     - Description for the argument.
+- type     - Type for this argument, either Boolean, String or Number.
+- defaults - Default value for this argument.
+- banner   - String to show on usage notes.
+- hide     - If you want to hide this option from the help.
 
 ### generator.sourceRoot([path])
 
-Stores and return the source root for this class. This is used with `copy()`,
-`template()`, `read()`, etc. to prefix the relative path.
+Stores and return the source root for this class. This is used with `copy()`, `template()`, `read()`, etc. to prefix the relative path.
 
 By default, takes the value of `templates/` next to the generator file.
 
@@ -534,9 +481,7 @@ cd into it.
 
 Must be called within the constructor only.
 
-Register a hook to invoke a generator based on the value supplied by the user
-to the given option named "name". An option is created when this method is
-invoked and you can set a hash to customize it.
+Register a hook to invoke a generator based on the value supplied by the user to the given option named "name". An option is created when this method is invoked and you can set a hash to customize it.
 
 ```js
 function MyGenerator(args, options, config) {
@@ -546,9 +491,7 @@ function MyGenerator(args, options, config) {
 }
 ```
 
-Hooks work in a way that you can delegate the groundwork of scaffolding to
-other generators. They're totally inspired by Rails 3 generators [`hook_for`
-method](http://apidock.com/rails/Rails/Generators/Base/hook_for/class).
+Hooks work in a way that you can delegate the groundwork of scaffolding to other generators. They're totally inspired by Rails 3 generators [`hook_for` method](http://apidock.com/rails/Rails/Generators/Base/hook_for/class).
 
 The example above will create a js framework option and will invoke a
 generator based on the user supplied value.
@@ -571,22 +514,18 @@ generators: {
 // ... more grunt config ...
 ```
 
-This is what allows any js framework to hook into Yeoman as long as it provides
-any of the hooks above.
+This is what allows any js framework to hook into Yeoman as long as it provides any of the hooks above.
 
 #### Options
 
-The first and last part used to find the generator to be invoked are guessed
-based on constructor's `hookFor` invokes, as noticed in the example above. This
-can be customized with the following options:
+The first and last part used to find the generator to be invoked are guessed based on constructor's `hookFor` invokes, as noticed in the example above. This can be customized with the following options:
 
 - `as`      - the context to lookup, defaults to generator's name.
 - `args`    - arguments to pass through, defaults generator's arguments.
 - `options` - options to pass through, defaults to generator's options.
 - `config`  - Grunt config to pass through, defaults to generator's config.
 
-Let’s suppose you are creating a generator that needs to invoke the controller
-generator from a unit test. Your first attempt is:
+Let’s suppose you are creating a generator that needs to invoke the controller generator from a unit test. Your first attempt is:
 
 ```js
 // in lib/generators/awesome/index.js generator's constructor.
@@ -614,10 +553,7 @@ And now it will lookup at:
 
 > Copy a source file to a destination path, creating intermediate directories if necessary.
 
-Grunt's
-[`grunt.file.copy`](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#grunt-file-copy)
-is used, we simply make sure that relative path are prefixed by the generator's
-sourceRoot value.
+Grunt's[`grunt.file.copy`](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
 
 ```js
 // similar to
@@ -647,29 +583,22 @@ grunt.option('verbose', false);
 
 ### generator.template(source, [destination], [data])
 
-Gets an underscore template at the relative source, executes it and makes a
-copy at the relative destination. If the destination is not given it's assumed
-to be equal to the source relative to destination.
+Gets an underscore template at the relative source, executes it and makes a copy at the relative destination. If the destination is not given it's assumed to be equal to the source relative to destination.
 
 ```js
 this.template('Gruntfile.js');
 ```
 
-will copy and process the `templates/Gruntfile.js` file through
-`grunt.template.process`, and write the results to `./Gruntfile.js` relative
-the the application root.
+will copy and process the `templates/Gruntfile.js` file through `grunt.template.process`, and write the results to `./Gruntfile.js` relative the the application root.
 
-Another example is using a `templates/model.js` template to write at the
-`app/js/models/{name}-model.js` location in a `NamedBase` generator.
+Another example is using a `templates/model.js` template to write at the `app/js/models/{name}-model.js` location in a `NamedBase` generator.
 
 ```js
 this.template('model.js', path.join('app/js/models', this.name + '-model.js'));
 ```
 ### generator.directory(source, [destination])
 
-Copies recursively the files from source directory to destination root
-directory. If the destination is not given it's assumed
-to be equal to the source relative to destination.
+Copies recursively the files from source directory to destination root directory. If the destination is not given it's assumed to be equal to the source relative to destination.
 
 Each file is copied and processed through `grunt.template.process`.
 
