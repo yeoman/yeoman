@@ -16,7 +16,6 @@
 
 # Note for maintenance: edit the version variables below for easy updating :D
 NODEVER=0.8.8
-YEOMANVER="yeoman-yeoman-df0bc33fc4e1cf575f3e97ba28778a7838cfb7d1"
 
 # checking OS
 LINUX=0
@@ -323,11 +322,6 @@ fi
 echo ""
 echo "Now the dependencies are sorted let's grab the latest yeoman goodness"
 
-#grab the latest yeoman tarball
-curl https://dl.dropbox.com/u/39519/"$YEOMANVER".tar.gz | "$tar" -xz
-cd "$YEOMANVER"
-
-cd cli
 #install yeoman as a global npm package
 echo ""
 echo "Alright buckaroo, hold on to your hats.."
@@ -339,9 +333,9 @@ echo "Okay here we go..."
 if [ "$NEEDSUDO" -eq 1 ]; then
   echo ""
   echo "You *may* be prompted now for your sudo password to kick off the npm install. Please hold."
-  sudo npm install . -g
+  sudo npm install yeoman -g
 else
-  npm install . -g
+  npm install yeoman -g
 fi
 
 echo ""
