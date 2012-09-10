@@ -6,7 +6,7 @@ Usage: `yeoman build`, `yeoman build:<target>`
 
 Constructs an optimized version of your application that's ready to deploy.
 
-Yeoman makes use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist with compression, optimization and testing. 
+Yeoman makes use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist with compression, optimization and testing.
 
 These include:
 
@@ -61,9 +61,9 @@ You can either do this at a project level by editing your projects Gruntfile or 
 at a generator level if you would rather avoid editing the Gruntfile outside of the default
 setup each time.
 
-The following is the relevant block to edit within your Gruntfile: 
+The following is the relevant block to edit within your Gruntfile:
 
-```javascript
+{% highlight javascript %}
     // rjs configuration. You don't necessarily need to specify the typical
     // `path` configuration, the rjs task will parse these values from your
     // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
@@ -77,9 +77,9 @@ The following is the relevant block to edit within your Gruntfile:
       baseUrl: './scripts',
       wrap: true
    }
-```
+{% endhighlight %}
 
-See the official project [repo](https://github.com/jrburke/r.js) for more information on the 
+See the official project [repo](https://github.com/jrburke/r.js) for more information on the
 options supported by r.js.
 
 

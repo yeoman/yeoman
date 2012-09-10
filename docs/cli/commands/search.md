@@ -8,7 +8,7 @@ Searches the Bower registry for packages which include a specific keyword in the
 
 Example:
 
-```shell
+{% highlight shell %}
 yeoman search jquery
 
 # outputs
@@ -19,4 +19,4 @@ Search results:
   - jquery-ui git://github.com/maccman/package-jquery-ui.git
   - jquery-infinite-scroll git://github.com/paulirish/infinite-scroll.git
 
-```
+{% endhighlight %}

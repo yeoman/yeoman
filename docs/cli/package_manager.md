@@ -6,7 +6,8 @@ Yeoman's integration with [Twitter Bower](http://github.com/twitter/bower) chang
 
 In Bower, dependencies are listed in a ‘component.json’ file, similar to Node’s package.json or the Ruby Gemfile. This is useful for locking down the dependencies a project has.
 
-```json
+
+{% highlight json %}
 {
   "name": "myProject",
   "version": "1.0.0",
@@ -14,15 +15,15 @@ In Bower, dependencies are listed in a ‘component.json’ file, similar to Nod
     "modernizr": "~2.6.1"
   }
 }
-```
+{% endhighlight %}
 
 Dependencies are then installed locally via the `yeoman install’ command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir called components:
 
-```shell
+{% highlight shell %}
 /component.json
 /components/modernizr/index.js
 /components/modernizr/modernizr.js
-```
+{% endhighlight %}
 
 This approach has a number of benefits.
 
@@ -34,35 +35,35 @@ This approach has a number of benefits.
 
 The easiest approach is to use a Bower package statically is to then just reference the package manually from a script tag:
 
-```shell
+{% highlight shell %}
 &lt;script src="components/modernizr/modernizr.js"&gt;&lt;/script&gt;
-```
+{% endhighlight %}
 
 Similar to NPM, our Bower integration also allows users to easily search for and update packages easily. e.g
 
 To search for a package:
 
-```shell
+{% highlight shell %}
 yeoman search jquery
-```
+{% endhighlight %}
 
 To install a package:
 
-```shell
+{% highlight shell %}
 yeoman install jquery
-```
+{% endhighlight %}
 
 To update a package, you need to reference it by name:
 
-```shell
+{% highlight shell %}
 yeoman update jquery
-```
+{% endhighlight %}
 
 To list installed packages:
 
-```shell
+{% highlight shell %}
 yeoman list
-```
+{% endhighlight %}
 
 and so on.
 
