@@ -373,5 +373,5 @@ echo "See you on the other side!"
 if [ "$COMPASS" -eq 0 ]; then
   echo ""
   echo "Install hiccup: no compass"
-  echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation]."
+  echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: http://compass-style.org/install/ "
 fi
