@@ -16,21 +16,8 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 Simply run:
 
 ```shell
-curl -L get.yeoman.io | sh
+curl -L get.yeoman.io | bash
 ```
-
-Alternatively:
-
-* Clone this repo and `cd` into it
-* Run this command: `./setup/install.sh`
-* `cd` into the `/cli` directory and run `sudo npm link`
-* Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
-
-You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`.
-
-**Make sure to pull in the latest and test before filing an issue, it might be fixed already**
-**Please also be sure to double-check an issue hasn't already been reported before submitting a new one**
-
 
 ## Documentation
 
@@ -57,7 +44,7 @@ A common initial workflow with Yeoman might be:
 
 ```shell
 yeoman init        # Invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
-yeoman server      # Fire off a file watch/server process which also places an 
+yeoman server      # Fire off a file watch/server process which also places an
                    # intermediate build of your project in `temp`
 yeoman build       # Build your project, creating an optimized version in a new `dist` directory
 yeoman server:dist # Serve up the production-ready version of your application
@@ -71,7 +58,7 @@ Some more examples of how to use our commands include:
 yeoman init quickstart                   # Skip our questions and get a H5BP, jQuery and Modernizr base
 yeoman init bbb                          # Backbone Boilerplate generator scaffold
 yeoman init ember                        # Ember-Rails generator scaffold
-yeoman init ember-starter                # Create a "Hello World" Yeoman project with the Ember Starter Kit 
+yeoman init ember-starter                # Create a "Hello World" Yeoman project with the Ember Starter Kit
 yeoman init backbone                     # Backbone-Rails generator scaffold
 yeoman init angular                      # Invoke the AngularJS generator scaffold
 yeoman init angular:controller           # Invoke the AngularJS Controller sub-generator
@@ -94,38 +81,22 @@ yeoman update jquery                       # Update a specific dependency (e.g j
 We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
 
 
-### Trouble-shooting
-
-If for any reason you experience exceptions after the yeoman installation process above, you may find the
-following steps resolve these issues:
-
-```shell
-cd yeoman/cli
-sudo -s 'npm install -g && npm link'
-```
-
-Should you run into any further problems beyond this, please open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
-
-
-#### Issue submission guidelines
+#### Issue submission
 
 In order for us to help you please check that you've completed the following steps:
 
 * Made sure you're on the latest version
 * Read our documentation and README to ensure the issue hasn't been noted or solved already
 * Used the search feature to ensure that the bug hasn't been reported before
-* Included as much information about the bug as possible, including any output you've received, what OS and version you're on. 
+* Included as much information about the bug as possible, including any output you've received, what OS and version you're on.
 * Shared the output from `echo $PATH $NODE_PATH` and `brew doctor` as this can also help track down the issue.
+
+Then open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
 
 #### Bower
 
-Please also note that commands such as `yeoman install`, `yeoman update` and `yeoman search` etc (i.e package management commands) will only work if you have [Bower](http://github.com/twitter/bower) installed. 
-
-Because for the moment Twitter are publishing Bower over itself (for 1.0.0 release) you may need to run `npm uninstall yeoman -g && npm install yeoman -g` to get the latest install of Bower installed as a Yeoman dependency. This would be done if you wish to double-check an issue has been resolved with a more recent version.
-
-As the Bower registry is currently being populated, you may find that certain packages work and others do not. We are actively working with the Bower team to resolve this issue and hope to have fully functional packages in place upon launch.
-
+Yeoman uses [Bower](http://twitter.github.com/bower/) as its package manager. The Bower registry is currently being populated, you may find that certain packages work and others do not. We are actively working with the Bower team to resolve this issue and hope to have fully functional packages in place upon launch.
 
 
 ## Browser Support
@@ -146,11 +117,20 @@ We are more than happy to accept external contributions to the project in the fo
 
 ### Repos
 
-Yeoman has three primary repos. These are:
+Yeoman has three primary repos:
 
 * [main project](http://github.com/yeoman/yeoman)
 * [generators](http://github.com/yeoman/generators)
 * [yeoman.io](http://github.com/yeoman/yeoman.io)
+
+### Quick Start
+
+* Clone this repo and `cd` into it
+* Run this command: `./setup/install.sh`
+* `cd` into the `/cli` directory and run `sudo npm link` after the install is complete.
+* Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
+
+You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`, where `upstream` is a remote pointing to this repo.
 
 ### Style Guide
 
@@ -210,7 +190,6 @@ Version 1 of the project features the combined efforts of:
 
 and other developers.
 
-We will be aiming to officially release the project in Q3, 2012.
 
 ## License
 
