@@ -1,8 +1,8 @@
 ## <a href="#generators" name="generators">generators</a>
 
-Generator templates allow you to scaffold out a project using a custom setup of boilerplates, frameworks and dependencies. The basic application generated when calling `yeoman init` actually uses a generator itself and they can be quite powerful. 
+Generator templates allow you to scaffold out a project using a custom setup of boilerplates, frameworks and dependencies. The basic application generated when calling `yeoman init` actually uses a generator itself and they can be quite powerful.
 
-Some of the generators Yeoman includes out of the box include implementations for Backbone.js, Ember.js and Angular.js. These allow you to not only use complete boilerplates for an application but also scaffold out smaller parts such as Models, Views, Controllers and so on. 
+Some of the generators Yeoman includes out of the box include implementations for Backbone.js, Ember.js and Angular.js. These allow you to not only use complete boilerplates for an application but also scaffold out smaller parts such as Models, Views, Controllers and so on.
 
 
 ### Getting Started
@@ -113,7 +113,7 @@ the following content:
 `write` is a method provided by `yeoman.generators.Base`, and is a basic facade to the `grunt.file` API. When we "write" things, this happen relative to the working directory (that is the Gruntfile location, the Gruntfile is resolved internally, walking up the FS until one is found. This is most likely the root
 of the yeoman application).
 
-Our new generator is quite simple: it inherits from `yeoman.generators.Base` and has one method definition. Each "public" method in the generator is executed when a generator is invoked (first level method in the prototype chain, eg.  `Base` class method are not called). 
+Our new generator is quite simple: it inherits from `yeoman.generators.Base` and has one method definition. Each "public" method in the generator is executed when a generator is invoked (first level method in the prototype chain, eg.  `Base` class method are not called).
 
 There are two exceptions, generators won't run:
 
@@ -317,7 +317,7 @@ If you generate another resource, you can see that we get exactly the same resul
 
 So we know that a typical generator looks like the following:
 
-```js
+{% highlight js %}
 var util = require('util'),
     yeoman = require('../../../');
 
@@ -334,11 +334,11 @@ Generator.prototype.createSomething = function() {
 };
 
 // ... other methods ...
-```
+{% endhighlight %}
 
 Generators can also be written in CofeeScript, they just needs to be named with a `.coffee` extension (typically `lib/generators/generatorName/index.coffee`)
 
-```coffee
+{% highlight coffee %}
 yeoman = require 'yeoman'
 
 module.exports = class Generator extends yeoman.generators.NamedBase
@@ -350,7 +350,7 @@ module.exports = class Generator extends yeoman.generators.NamedBase
     # code
 
   # ... other method ...
-```
+{% endhighlight %}
 
 They're usually layout like so:
 
@@ -389,12 +389,12 @@ In addition to the grunt.file API directly available into your generators, you
 can use the [grunt.log](https://github.com/cowboy/grunt/blob/master/docs/api_log.md#the-log-api) API as `this.log`
 
 
-```js
+{% highlight js %}
 Generator.prototype.doingSomething = function() {
   this.log.writeln("I\m doing something");
   this.log.ok(".. And I think it's ok ..");
 };
-```
+{% endhighlight %}
 
 sync vs async
 -------------
@@ -483,13 +483,13 @@ Must be called within the constructor only.
 
 Register a hook to invoke a generator based on the value supplied by the user to the given option named "name". An option is created when this method is invoked and you can set a hash to customize it.
 
-```js
+{% highlight js %}
 function MyGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
   // init a framework specific controller
   this.hookFor('js-framework');
 }
-```
+{% endhighlight %}
 
 Hooks work in a way that you can delegate the groundwork of scaffolding to other generators. They're totally inspired by Rails 3 generators [`hook_for` method](http://apidock.com/rails/Rails/Generators/Base/hook_for/class).
 
@@ -506,13 +506,13 @@ The controller generator will then try to invoke the following generators:
 
 Notice that the value of a given hook can be defined in your application Gruntfile as well:
 
-```js
+{% highlight js %}
 // grunt config
 generators: {
   'js-framework': 'backbone'
 }
 // ... more grunt config ...
-```
+{% endhighlight %}
 
 This is what allows any js framework to hook into Yeoman as long as it provides any of the hooks above.
 
@@ -527,10 +527,10 @@ The first and last part used to find the generator to be invoked are guessed bas
 
 Let’s suppose you are creating a generator that needs to invoke the controller generator from a unit test. Your first attempt is:
 
-```js
+{% highlight js %}
 // in lib/generators/awesome/index.js generator's constructor.
 this.hookFor('test-framework');
-```
+{% endhighlight %}
 
 The lookup in this case for test_unit as input is:
 
@@ -541,10 +541,10 @@ for `test-framework` hook)
 
 Which is not the desired lookup. You can change it by providing the `as` option:
 
-```js
+{% highlight js %}
 // in lib/generators/awesome/index.js generator's constructor.
 this.hookFor('test-framework', { as: 'controller' });
-```
+{% endhighlight %}
 And now it will lookup at:
 
     "test_framework:controller", "test_framework"
@@ -555,11 +555,11 @@ And now it will lookup at:
 
 Grunt's[`grunt.file.copy`](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
 
-```js
+{% highlight js %}
 // similar to
 var source = path.join(this.sourceRoot(), 'path/to/file.js');
 grunt.file.copy(source, destination, options);
-```
+{% endhighlight %}
 
 ### generator.read(filepath, [encoding])
 
@@ -574,37 +574,37 @@ Just like
 [`grunt.file.write`](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#grunt-file-write),
 we simply ensure the log output of the files being written.
 
-```js
+{% highlight js %}
 // similar to
 grunt.option('verbose', true);
 grunt.file.write(filepath, encoding);
 grunt.option('verbose', false);
-```
+{% endhighlight %}
 
 ### generator.template(source, [destination], [data])
 
 Gets an underscore template at the relative source, executes it and makes a copy at the relative destination. If the destination is not given it's assumed to be equal to the source relative to destination.
 
-```js
+{% highlight js %}
 this.template('Gruntfile.js');
-```
+{% endhighlight %}
 
 will copy and process the `templates/Gruntfile.js` file through `grunt.template.process`, and write the results to `./Gruntfile.js` relative the the application root.
 
 Another example is using a `templates/model.js` template to write at the `app/js/models/{name}-model.js` location in a `NamedBase` generator.
 
-```js
+{% highlight js %}
 this.template('model.js', path.join('app/js/models', this.name + '-model.js'));
-```
+{% endhighlight %}
 ### generator.directory(source, [destination])
 
 Copies recursively the files from source directory to destination root directory. If the destination is not given it's assumed to be equal to the source relative to destination.
 
 Each file is copied and processed through `grunt.template.process`.
 
-```js
+{% highlight js %}
 this.directory('.', 'test');
-```
+{% endhighlight %}
 
 The example above copies and process any files within generators `templates/`
 directory, and write them at the `test/` location.
@@ -613,17 +613,17 @@ directory, and write them at the `test/` location.
 
 Fetch a remote tarball, and untar at the given destination.
 
-```js
+{% highlight js %}
 this.tarball('https://github.com/twitter/bootstrap/tarball/master', 'vendor/bootstrap', this.async());
-```
+{% endhighlight %}
 
 ### generator.fetch(url, destination, cb)
 
 Download a single file at the given destination.
 
-```js
+{% highlight js %}
 this.fetch('http://zeptojs.com/zepto.js', 'js/vendor/zepto.js', this.async());
-```
+{% endhighlight %}
 
 ### generator.remote(username, repository, [branch], cb)
 
@@ -639,7 +639,7 @@ the main API to interract with downloaded package.
 The example below downloads and cache the html5-boilerplate project, and use the `remote` object
 to copy the whole project into the `app/` folder.
 
-```js
+{% highlight js %}
 var cb = this.async();
 this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
   if(err) return cb(err);
@@ -648,7 +648,7 @@ this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
   remote.directory('.', 'app');
   cb();
 });
-```
+{% endhighlight %}
 
 `remote()` allows the download of full repositories and copying of single or
 multiple files. `remote` object is your API to access this fetched (anc cached)
@@ -671,7 +671,7 @@ Same as `generator.directory()` but relative `source` is prefixed with the cache
 
 #### Prompt user before overwriting files with `--force`
 
-Generators also support a `warnOn` method, which allows developers to warn on global paths that are matching those paths or files which the generator is going to generate (e.g `self.warnOn('*')`. 
+Generators also support a `warnOn` method, which allows developers to warn on global paths that are matching those paths or files which the generator is going to generate (e.g `self.warnOn('*')`.
 
 Where used, Yeoman will warn the user they if they proceed that a file will be overwritten and they may need to call the generator with the `--force` flag to proceed.
 

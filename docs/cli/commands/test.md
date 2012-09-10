@@ -14,7 +14,7 @@ gets called when running `yeoman build`.
 
 Example:
 
-```shell
+{% highlight shell %}
 yeoman test
 
 # outputs:
@@ -25,4 +25,4 @@ Running specs for index.html
 >> 82 assertions passed in 53 specs (562ms)
 
 Done, without errors.
-```
+{% endhighlight %}

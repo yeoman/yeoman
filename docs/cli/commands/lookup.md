@@ -8,10 +8,10 @@ Performs a lookup in the Bower registry for a package of a specific name. One wo
 
 Example:
 
-```shell
+{% highlight shell %}
 yeoman lookup jquery
 
 # outputs
 
 jquery git://github.com/maccman/package-jquery.git
-```
+{% endhighlight %}
