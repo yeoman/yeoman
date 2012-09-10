@@ -1,0 +1,16 @@
+{
+  "name": "spine",
+  "description": "MVC Framework.",
+  "version": "1.0.8",
+  "author": "maccman",
+  "licenses":
+    [{
+      "type": "MIT",
+      "url": "https://github.com/maccman/spine/blob/master/LICENSE"
+    }],
+  "repository": {
+    "type" : "git",
+    "url": "http://github.com/maccman/spine.git"
+  },
+  "main" : "./index.js"
+}
