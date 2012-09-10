@@ -4,8 +4,13 @@
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "keywords": [
     "front-end",
+    "development",
+    "dev",
+    "build",
+    "web",
     "tool",
-    "cli"
+    "cli",
+    "scaffold"
   ],
   "homepage": "http://yeoman.io",
   "bugs": "https://github.com/yeoman/yeoman/issues",
