@@ -310,7 +310,7 @@ fi
 #check for compass
 echo ""
 if [ "$COMPASSFILE" ]; then
-  echo "Compass is already installed, you may want to 'gem install compass -pre' for the latest goodness."
+  echo "Compass is already installed, you may want to 'gem install compass --pre' for the latest goodness."
 elif [ "$COMPASS" -eq 0 ]; then
   echo "Ruby was not detected or is not configured correctly, skipping compass."
 elif [ -z "$COMPASSFILE" ] && [ "$COMPASS" -eq 1 ]; then
