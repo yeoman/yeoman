@@ -53,7 +53,7 @@ template.notes = '\n'; //... More notes to come here ...'.yellow;
 //
 // yeoman init
 // yeoman init backbone
-// yeoman init backbone:model
+// yeoman init backbone:model modelName
 //
 // Handles the specific case of default generator on `init` (without generator
 // name).
