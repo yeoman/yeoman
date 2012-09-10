@@ -10,9 +10,9 @@ Installing Yeoman in an easy process that should take less than 10 minutes on OS
 
 Open up a terminal and enter in the following:
 
-```sh
+{% highlight sh %}
 $ curl -L get.yeoman.io | sh
-```
+{% endhighlight %}
 
 This will immediately install Yeoman and any dependencies it may need such as Node, NPM and Ruby.
 
@@ -20,10 +20,10 @@ This will immediately install Yeoman and any dependencies it may need such as No
 
 Next, create a new directory to contain your Yeoman project, then enter in `yeoman init`.
 
-```sh
+{% highlight sh %}
 $ mkdir myapp && cd myapp
 $ yeoman init
-```
+{% endhighlight %}
 
 ###Step 3: Profit
 
@@ -37,36 +37,36 @@ Yeoman requires a few specific dependencies to be present before it can be insta
 
 Use your relevant package manager to update or install Ruby with the following at a terminal window:
 
-```shell
+{% highlight shell %}
 $ sudo apt-get install ruby  # for Ubuntu / Debian users
 $ sudo yum install ruby      # for Red Hat / Fedora users
-```
+{% endhighlight %}
 
 #### Install RVM
 
 Install RVM with ruby:
 
-```shell
+{% highlight shell %}
 $ curl -L https://get.rvm.io | bash -s stable --ruby
-```
+{% endhighlight %}
 
 and with rails:
 
-```shell
+{% highlight shell %}
 $ curl -L https://get.rvm.io | bash -s stable --rails
-```
+{% endhighlight %}
 
 Finally, to install without the "rubygems-bundler" or "rvm" gems:
 
-```shell
+{% highlight shell %}
 $ curl -L https://get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"
-```
+{% endhighlight %}
 
 #### Install Compass using RVM
 
-```shell
+{% highlight shell %}
 $ rvm wrapper 1.9.3@compass --no-prefix compass
-```
+{% endhighlight %}
 
 #### Install PhantomJS
 
@@ -74,13 +74,13 @@ To install PhantomJS, we recommend following the [official guide](http://phantom
 
 Alternatively:
 
-```shell
+{% highlight shell %}
 $ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
 $ git clone git://github.com/ariya/phantomjs.git
 $ cd phantomjs
 $ git checkout 1.6
 ./build.sh
-```
+{% endhighlight %}
 
 #### Install Node
 
@@ -92,12 +92,12 @@ using a [package manager](https://github.com/joyent/node/wiki/Installing-Node.js
 
 You will also need to get the image optimization libraries we use, which can be installed using apt-get as follows:
 
-```shell
+{% highlight shell %}
 $ apt-get install optipng
-```
+{% endhighlight %}
 and
 
-```shell
+{% highlight shell %}
 $ wget 'http://sourceforge.net/projects/libjpeg-turbo/files/1.0.1/libjpeg-turbo_1.0.1_i386.deb/download' -O libjpeg-turbo_1.0.1_i386.deb
 $ dpkg -i libjpeg-turbo_1.0.1_i386.deb
 
@@ -105,7 +105,7 @@ $ dpkg -i libjpeg-turbo_1.0.1_i386.deb
 lrwxrwxrwx 1 root root 17 2010-11-12 12:35 /usr/lib/libjpeg.so.62 -> libjpeg.so.62.0.0
 # rm -rf /usr/lib/libjpeg.so.62
 # ln -s /opt/libjpeg-turbo/lib/libjpeg.so.62.0.0 /usr/lib/libjpeg.so.62
-```
+{% endhighlight %}
 
 
 #### Install Yeoman
@@ -138,9 +138,9 @@ on npm.
 
 ### global install
 
-```sh
+{% highlight sh %}
 npm install http://nodeload.github.com/yeoman/yeoman/tarball/master -g
-```
+{% endhighlight %}
 
 This installs Yeoman globally, which contains its own internal grunt and
 provides a `yeoman` binary.
@@ -150,9 +150,9 @@ provides a `yeoman` binary.
 
 This works for system where grunt have been already installed globally with
 
-```sh
+{% highlight sh %}
 npm install grunt -g
-```
+{% endhighlight %}
 
 1. Add yeoman as a project dependency. In your project's root,
 next to the `grunt.js` and `package.json` file, run `npm install
@@ -170,11 +170,11 @@ never forget to update your package.json file accordingly.
 **Note**: Once on npm, it'll be easier. The `npm install -S` step will add the
 following to your package.json file.
 
-```js
+{% highlight js %}
 "dependencies": {
   "yeoman": "0.1.1"
 }
-```
+{% endhighlight %}
 
 Change `0.1.1` to the tarball url: http://nodeload.github.com/yeoman/yeoman/tarball/master
 
@@ -183,7 +183,7 @@ Change `0.1.1` to the tarball url: http://nodeload.github.com/yeoman/yeoman/tarb
 Clone or download this repo. Then, `cd` into it and run the `npm
 install` command.
 
-```sh
+{% highlight sh %}
 # will most likely change to map the new location / repo / branch
 git clone git://github.com/yeoman/yeoman.git
 
@@ -193,7 +193,7 @@ npm install
 
 # or globally, to install the yeoman binary
 npm install -g
-```
+{% endhighlight %}
 
 For development, the `npm link` command might be handy (posix only, instead of
 `npm install -g`).
@@ -216,9 +216,9 @@ otherwise update to the latest version as follows:
 You may want to uninstall the globally installed package by running the
 following command:
 
-```sh
+{% highlight sh %}
 npm uninstall yeoman -g
-```
+{% endhighlight %}
 
 So sad to see you go ☹
 
