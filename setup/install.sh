@@ -42,9 +42,22 @@ elif haveProg zypper; then
   echo "You are using zypper. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=4
+elif haveProg pacman; then
+  echo "You are using pacman. I'll assume you have Linux with that."
+  if haveProg yaourt; then
+    echo "Cool you also have yaourt."
+  else
+    echo "Installing yaourt"
+    BACK="$PWD"
+    cd /tmp/
+    curl -L http://autoyaourt.googlecode.com/files/autoyaourt.sh | bash
+    cd $BACK
+  fi
+  LINUX=1
+  PKGMGR=5
 else
   MAC=1
-  PKGMGR=5
+  PKGMGR=6
 fi
 
 if [ "$MAC" -eq 1 ]; then
@@ -120,6 +133,9 @@ fi
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
 PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
+if [ "$PKGMGR" -eq 5 ]; then
+    PACKAGESLINUX='optipng libjpeg-turbo phantomjs'
+fi
 DEBGIT='git-core'
 OTHERGIT='git'
 
@@ -313,6 +329,8 @@ if [ "$LINUX" -eq 1 ]; then
     sudo up2date install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 4 ]; then
     sudo zypper install -y $PACKAGESLINUX $OTHERGIT
+  elif [ "$PKGMGR" -eq 5 ]; then
+    yaourt -S $PACKAGESLINUX $OTHERGIT
   fi
 fi
 
