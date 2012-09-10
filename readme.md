@@ -19,6 +19,8 @@ Simply run:
 curl -L get.yeoman.io | bash
 ```
 
+*Yeoman requires Node >=0.8*
+
 ## Documentation
 
 For more information on Yeoman, please read our [complete documentation](https://github.com/yeoman/yeoman/tree/master/docs/cli).
