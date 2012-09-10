@@ -34,14 +34,7 @@ fi
 
 if [ "$MAC" -eq 1 ]; then
   if haveProg clang; then
-    echo "CLI tools check 1/2 passed."
-  else
-    echo "Looks like you need the XCode CLI Tools for homebrew, chap. Learn about
-where to install them at the homebrew docs: https://github.com/mxcl/homebrew/wiki/Installation"
-    exit 1
-  fi
-  if haveProg lldb; then
-    echo "CLI tools check 2/2 passed."
+    echo "Looks like you have the XCode CLI tools. Passed!"
   else
     echo "Looks like you need the XCode CLI Tools for homebrew, chap. Learn about
 where to install them at the homebrew docs: https://github.com/mxcl/homebrew/wiki/Installation"
@@ -167,6 +160,7 @@ echo ""
 if [ "$NEEDSUDO" -eq 1 ]; then
   echo "Please authorize the installer:"
   sudo -v
+  # sudo keep-alive: gist.github.com/3118588
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
 
