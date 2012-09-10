@@ -310,12 +310,14 @@ fi
 #check for compass
 echo ""
 if [ "$COMPASSFILE" ]; then
-  echo "Compass is already installed, you may want to 'gem install compass --pre' for the latest goodness."
+  echo ""
+  echo "WARN: Compass is already installed, you may want to 'gem install compass' to confirm it has Sass 3.2"
+  echo ""
 elif [ "$COMPASS" -eq 0 ]; then
   echo "Ruby was not detected or is not configured correctly, skipping compass."
 elif [ -z "$COMPASSFILE" ] && [ "$COMPASS" -eq 1 ]; then
   echo "Install compass for CSS magic."
-  sudo gem install compass --pre
+  sudo gem install compass
 fi
 
 #dependencies done. woo!
