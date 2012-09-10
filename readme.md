@@ -134,7 +134,7 @@ You can keep Yeoman up to date by using `git pull --rebase upstream master && cd
 
 ### Style Guide
 
-This project follows the [jQuery Style Guide](http://docs.jquery.com/JQuery_Core_Style_Guidelines) with an exception of two space indentation and multiple var statements. Please ensure any pull requests follow this closely. If you notice existing code which doesn't follow these practices, feel free to shout and we will address this.
+This project uses single-quotes, two space indentation, multiple var statements and whitespace around arguments. Please ensure any pull requests follow this closely. If you notice existing code which doesn't follow these practices, feel free to shout and we will address this.
 
 ### Pull Request Guidelines
 
