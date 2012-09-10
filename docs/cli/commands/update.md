@@ -8,11 +8,11 @@ Updates an already installed package `packageName` to the latest version availab
 
 Example:
 
-```shell
+{% highlight shell %}
 yeoman update jquery
 
 # outputs
 bower checking out jquery#v1.7.2
-```
+{% endhighlight %}
 
 The `update` command will also update any other packages in your project relying on this dependency to use this most recent version if any update is applied.
