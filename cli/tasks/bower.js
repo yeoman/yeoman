@@ -8,18 +8,18 @@ module.exports = function(grunt) {
 
   // Task facade to Twitter Bower.
   //
-  // This task basically just pass current provess.argv to bower. Special tasks
+  // This task basically just pases our current provess.argv to bower. Special tasks
   // like install, list, search etc. are all configured to trigger this one.
   //
   // A yeoman-specific configuration can be defined in your Gruntfile:
   //
-  // - dir: Alternate directory location. (default: browser_modules)
+  // - dir: Alternate directory location. (defaults to: components)
   //
-  // If dir option is specified, bower is asked for the package dependency
+  // If the dir option is specified, bower is asked for the package dependency
   // model and each paths. Each package is then simply copied over the value of
   // the dir options.
   //
-  // `browser_modules/` next to your Gruntfile is bower's internal directory.
+  // `components/` next to your Gruntfile is bower's internal directory.
   // `app/js/vendor` is your working directory, files used in development and
   // concat / min by grunt script.
   grunt.registerTask('bower', 'This triggers the `bower` commands.', function() {
@@ -51,10 +51,10 @@ module.exports = function(grunt) {
   // likely on the end event of a bower command.
   //
   // Bower's list is used to get the paths of each dependency in
-  // browser_modules/, these deps are simply copied over the directory
+  // components/, these deps are simply copied over the directory
   // specified.
   //
-  // - dir: directory path to mirror bower's browser_module.
+  // - dir: directory path to mirror bower's components.
   // - cb: callback to call on completion.
   //
   // Examples:
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
           if(typeof deps === 'string') { return; }
 
           // Handler for RequireJS app config.
-          // Wires up the relevant RequireJS config when
+          // Wires up the relevant RequireJS paths config when
           // running `yeoman install spine backbone` etc.
 
           // Read in application index
