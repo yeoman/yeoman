@@ -5,14 +5,16 @@ require.config({
     'manager':{ deps: ['spine'] }
   },
   hm: 'hm',
-  paths: {
+paths: {
+    jquery: '../../components/jquery',
+
+    jquery: 'components/jquery/jquery',
+    spine: 'components/spine/lib/spine',
     cs: "vendor/cs",
-    spine: "browser_modules/spine/lib/spine",
-    jquery: "browser_modules/jquery/index",
     json2: "vendor/json2",
     tmpl: "vendor/jquery.tmpl",
-    local: "browser_modules/spine/lib/local",
-    manager: "browser_modules/spine/lib/manager"
+    local: "components/spine/lib/local",
+    manager: "components/spine/lib/manager"
   }
 });
 

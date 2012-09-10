@@ -1,5 +1,5 @@
-module.exports = function(grunt) {
-
+module.exports = function( grunt ) {
+  'use strict';
   //
   // Grunt configuration:
   //
@@ -10,33 +10,30 @@ module.exports = function(grunt) {
     // Project configuration
     // ---------------------
 
-    // pull in package.json data
-    pkg: '<json:package.json>',
-    // and build banner from these information
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+    // specify an alternate install location for Bower
+    bower: {
+      dir: 'app/scripts/vendor'
     },
 
-    // Dev utilities and configuration
-    // -------------------------------
-
-    // coffee to js compilation
+    // Coffee to JS compilation
     coffee: {
       dist: {
-        src: 'js/**/*.coffee',
-        dest: 'js'
+        src: 'app/scripts/**/*.coffee',
+        dest: 'app/scripts'
       }
     },
 
-    // compass compile
-    // https://github.com/sindresorhus/grunt-shell#grunt-shell
-    shell: {
-      compass: {
-        command: 'compass compile'
+    // compile .scss/.sass to .css using Compass
+    compass: {
+      dist: {
+        // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
+        options: {
+          css_dir: 'temp/styles',
+          sass_dir: 'app/styles',
+          images_dir: 'app/images',
+          javascripts_dir: 'temp/scripts',
+          force: true
+        }
       }
     },
 
@@ -45,9 +42,8 @@ module.exports = function(grunt) {
       dest: ''
     },
 
-    // Jasmine headless test through PhantomJS
-    // > https://github.com/creynders/grunt-jasmine-task
-    jasmine: {
+    // headless testing through PhantomJS
+    mocha: {
       all: ['test/**/*.html']
     },
 
@@ -55,24 +51,33 @@ module.exports = function(grunt) {
     watch: {
       coffee: {
         files: '<config:coffee.dist.src>',
-        tasks: 'coffee'
+        tasks: 'coffee reload'
       },
       compass: {
-        files: ['css/**/*.sass', 'css/**/*.scss'],
-        tasks: 'shell:compass'
+        files: [
+          'app/styles/**/*.{scss,sass}'
+        ],
+        tasks: 'compass reload'
       },
-      // only used with `yeoman server`
       reload: {
-        files: ['css/**/*.css', 'js/**/*.js', 'img/**/*'],
+        files: [
+          'app/*.html',
+          'app/styles/**/*.css',
+          'app/scripts/**/*.js',
+          'app/images/**/*'
+        ],
         tasks: 'reload'
       }
     },
 
-
     // default lint configuration, change this to match your setup:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
-      files: ['grunt.js', 'js/**/*.js', 'test/**/*.js']
+      files: [
+        'Gruntfile.js',
+        'app/scripts/**/*.js',
+        'spec/**/*.js'
+      ]
     },
 
     // specifying JSHint options and globals
@@ -99,38 +104,46 @@ module.exports = function(grunt) {
     // Build configuration
     // -------------------
 
-     // the staging directory used during the process
-    staging: 'intermediate',
+    // the staging directory used during the process
+    staging: 'temp',
     // final build output
-    output: 'publish',
+    output: 'dist',
 
-    // filter any files matching one of the below pattern during mkdirs task
-    // the pattern in the .gitignore file should work too.
-    exclude: '.git* build/** node_modules/** grunt.js package.json *.md css/sass/'.split(' '),
     mkdirs: {
-      staging: '<config:exclude>'
+      staging: 'app/'
     },
+
+    // Below, all paths are relative to the staging directory, which is a copy
+    // of the app/ directory. Any .gitignore, .ignore and .buildignore file
+    // that might appear in the app/ tree are used to ignore these values
+    // during the copy process.
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'css/style.css': ['css/**/*.css']
+      'styles/main.css': ['styles/**/*.css']
     },
 
-    // Renames JS/CSS to prepend a hash of their contents for easier
+    // renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'js/**/*.js',
-      css: 'css/**/*.css',
-      img: 'img/**'
+      js: 'scripts/**/*.js',
+      css: 'styles/**/*.css',
+      img: 'images/**'
     },
 
-    // update references in html to revved files
+    // usemin handler should point to the file containing
+    // the usemin blocks to be parsed
+    'usemin-handler': {
+      html: 'index.html'
+    },
+
+    // update references in HTML/CSS to revved files
     usemin: {
       html: ['**/*.html'],
       css: ['**/*.css']
     },
 
-    // html minification
+    // HTML minification
     html: {
       files: ['**/*.html']
     },
@@ -140,47 +153,33 @@ module.exports = function(grunt) {
       dist: '<config:rev.img>'
     },
 
-    // default concat configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_concat.md
-    concat: {
-      dist: {
-        src: ['js/plugins.js', 'js/vendor/bootstrap-*.js', 'js/main.js'],
-        dest: 'js/<%= pkg.name %>-<%= pkg.version %>.js'
-      }
-    },
-
-    // default min configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md
-    min: {
-      dist: {
-        src: 'js/<%= pkg.name %>-<%= pkg.version %>.js',
-        dest: 'js/main.js'
-      }
-    },
-
+    // rjs configuration. You don't necessarily need to specify the typical
+    // `path` configuration, the rjs task will parse these values from your
+    // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
+    //
+    // name / out / mainConfig file should be used. You can let it blank if
+    // you're using usemin-handler to parse rjs config from markup (default
+    // setup)
     rjs: {
-      modules: [{
-        name: 'main',
-      }],
-      dir: 'js',
-      appDir: 'js',
-      baseUrl: './',
-      pragmas: {
-        doExclude: true
-      },
-      skipModuleInsertion: false,
-      optimizeAllPluginResources: true,
-      findNestedDependencies: true
+      // no minification, is done by the min task
+      optimize: 'none',
+      baseUrl: './scripts',
+      dir: './scripts',
+      wrap: true
     },
 
-    // specifying UglifyJS options:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_min.md#specifying-uglifyjs-options
-    uglify: {}
+    // While Yeoman handles concat/min when using
+    // usemin blocks, you can still use them manually
+    concat: {
+      dist: ''
+    },
+
+    min: {
+      dist: ''
+    }
   });
 
-
-
-  // Alias the `test` task to run the `jasmine` task instead
+  // Alias the `test` task to run the `mocha` task instead
   grunt.registerTask('test', 'jasmine');
 
 };
