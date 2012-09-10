@@ -2,6 +2,18 @@
 
 # install.sh: Installation script
 
+# We're doing a few things here, we welcome your readthrough. As a summary:
+
+# * Detect Mac or Linux, pick which package manager to use
+# * On Mac, install homebrew if it's not present
+# * Then install these: git optipng jpeg-turbo phantomjs
+# * Make sure Ruby >= 1.8.7 is around, install if not (for Compass)
+# * Install the latest NodeJS package
+# * Install Compass
+# * Download Yeoman zip to a temporary folder
+# * Install it as a global node module
+
+
 # Note for maintenance: edit the version variables below for easy updating :D
 NODEVER=0.8.8
 YEOMANVER="yeoman-yeoman-df0bc33fc4e1cf575f3e97ba28778a7838cfb7d1"
