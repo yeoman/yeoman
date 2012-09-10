@@ -34,7 +34,7 @@ module.exports = function(grunt) {
   // - basics   - same as buildkit plus minor html optimizations
   // - minify   - same as build plus full html minification
   var targets = {
-    "default" : '                rjs concat css min img rev usemin manifest',
+    default   : '               rjs concat css min img rev usemin manifest',
     usemin    : 'usemin-handler rjs concat css img rev usemin manifest',
     text      : 'usemin-handler rjs concat css min     rev usemin manifest',
     buildkit  : 'usemin-handler rjs concat css min img rev usemin manifest html:buildkit',
