@@ -38,9 +38,13 @@ elif haveProg up2date; then
   echo "You are using up2date. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=3
+elif haveProg zypper; then
+  echo "You are using zypper. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=4
 else
   MAC=1
-  PKGMGR=4
+  PKGMGR=5
 fi
 
 if [ "$MAC" -eq 1 ]; then
@@ -233,6 +237,9 @@ if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
 elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 2 ]; then
   echo "Installing Ruby"
   sudo yum -y install ruby rubygems
+elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 4 ]; then
+  echo "Installing Ruby"
+  sudo zypper install -y ruby rubygems
 elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
@@ -304,6 +311,8 @@ if [ "$LINUX" -eq 1 ]; then
     sudo yum -y install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 3 ]; then
     sudo up2date install $PACKAGESLINUX $OTHERGIT
+  elif [ "$PKGMGR" -eq 4 ]; then
+    sudo zypper install -y $PACKAGESLINUX $OTHERGIT
   fi
 fi
 
