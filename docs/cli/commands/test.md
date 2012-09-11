@@ -4,7 +4,7 @@
 
 Usage: `yeoman test`
 
-Runs a Mocha test harness in a headless instance of Phantom.js.
+Runs a Mocha test harness in a headless instance of PhantomJS.
 
 When you generate a new project using `yeoman init`, we also scaffold out a basic set of
 Mocha unit tests that you can continue using to test your application.
