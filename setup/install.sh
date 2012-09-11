@@ -255,7 +255,7 @@ echo ""
 #ensure node is installed
 if [ "$NODEFILE" ]; then
   SYSNODE=$(node -e 'console.log(process.versions.node);')
-  if [ "$SYSNODE" < 0.8.0 ]; then
+  if [[ "$SYSNODE" < "0.8.0" ]]; then
     echo "your node version is outdated, please update to 0.8.0 or later."
     exit 1
   else
