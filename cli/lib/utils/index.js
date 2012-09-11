@@ -8,39 +8,44 @@ var utils = module.exports;
 //
 // Set of common utilities, mainly defining wrapper to various utility modules
 // (like mkdir, rimraf) as lazy-loaded getters.
-//
 
-//
-// Wrapper to `require('mkdirp')`
-//
-utils.__defineGetter__('mkdirp', function () {
-  return require('mkdirp');
-});
 
-//
-// Wrapper to `require('rimraf')`
-//
-utils.__defineGetter__('rimraf', function () {
-  return require('rimraf');
-});
+Object.defineProperties( util,
+  [
+    // Wrapper to `require('mkdirp')`
+    'mkdirp',
+    // Wrapper to `require('rimraf')`
+    'rimraf',
+    // Wrapper to `require('./fetch')`, internal tarball helper using
+    // mikeal/request, zlib and isaacs/tar.
+    './fetch'
+  ].reduce(function( descriptor, api ) {
+    return (
+      // Add the Identifier and define a get accessor that returns
+      // a fresh or cached copy of the API; remove any
+      // non-alphanumeric characters (in the case of "./fetch")
+      descriptor[ api.replace(/\W/g, '') ] = {
+        get: function() { return require(api); }
+      },
+      // Return the |descriptor| object at the end of the expression,
+      // continuing the the reduction.
+      descriptor
+    );
+    // Prime the "initialVal" with an empty object
+  }, {})
+);
 
-//
-// Wrapper to `require('./fetch')`, internal tarball helper using
-// mikeal/request, zlib and isaacs/tar.
-//
-utils.__defineGetter__('fetch', function () {
-  return require('./fetch');
-});
 
 // **extend** a given object with the util module definition, taking care
 // of not triggering the getters. Doing so with _.extend makes the module
 // to be required right away.
 utils.extend = function extend(o) {
-  var props = Object.keys(utils);
-  props.forEach(function(prop) {
-    o.__defineGetter__(prop, function() {
-      return utils[prop];
-    });
+  Object.keys(utils).forEach(function(prop) {
+    Object.defineProperty(o, prop, {
+      get: function() {
+        return utils[prop];
+      }
+    })
   });
   return o;
 };
