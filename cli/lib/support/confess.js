@@ -462,7 +462,8 @@ var confess = {
   },
 
   repeat: function (chr, length) {
-    return (new Array(length)).join(chr);
+    // Add +1 to ensure the _correct_ number of "chr" are repeated
+    return (new Array(length + 1)).join(chr);
   }
 
 };
