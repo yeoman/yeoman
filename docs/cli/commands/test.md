@@ -14,7 +14,7 @@ gets called when running `yeoman build`.
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman test
 
 # outputs:

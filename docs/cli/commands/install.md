@@ -10,7 +10,7 @@ Running yeoman install packageName will install the dependencies in your project
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman install jquery
 yeoman install jquery spine
 {% endhighlight %}
@@ -19,7 +19,7 @@ If installing a dependency which has its own dependencies described, these depen
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman install backbone
 {% endhighlight %}
 
@@ -27,7 +27,7 @@ will actually also install Underscore.js and jQuery.js as these are required for
 
 `yeoman install` also supports installing packages using more than just the package name. Namely:
 
-{% highlight shell %}
+{% highlight sh %}
 bower install jquery
 bower install git://github.com/maccman/package-jquery.git
 bower install http://code.jquery.com/jquery-1.7.2.js
