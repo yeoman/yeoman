@@ -113,7 +113,7 @@ elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1]; then
   NEEDSUDO=1
 elif [ -z "$NODEFILE" ]; then
   NEEDSUDO=1
-elif [-z "$COMPASSFILE" ]; then
+elif [ -z "$COMPASSFILE" ]; then
   NEEDSUDO=1
 fi
 
