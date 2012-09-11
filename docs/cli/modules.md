@@ -89,7 +89,7 @@ export { Mercury: SolarSystem.Mercury, Earth: SolarSystem.Earth }
 
 ###import:
 
-An import declaraction binds another modules exports as local variables. Variables that are imported can be locally renamed to avoid naming conflicts.
+An import declaration binds another modules exports as local variables. Variables that are imported can be locally renamed to avoid naming conflicts.
 
 {% highlight javascript %}
 module Car{
@@ -237,7 +237,7 @@ Whilst the above example seems fairly trivial to use, the Loader API is there to
 // The Loader constructor creates a new loader
 var customLoader = new Loader(
     // Define the parent of this loader
-    // if a custo one exists, otherwise
+    // if a custom one exists, otherwise
     // just use the default system Loader
     Loader, {
 
