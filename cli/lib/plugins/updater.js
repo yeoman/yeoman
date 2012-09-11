@@ -163,7 +163,6 @@ updater.shouldUpdate = function shouldUpdate( update, cb ) {
 
 updater.getUpdate = function getUpdate( options, cb ) {
   var localPackage, url;
-  var self = this;
   var controller = new EventEmitter();
 
   cb = cb || function() {};
@@ -243,13 +242,13 @@ updater.getUpdate = function getUpdate( options, cb ) {
       latest: latest,
       date: body.time[ latest ],
       current: options.version,
-      severity: self.parseUpdateType( options.version, latest )
+      severity: this.parseUpdateType( options.version, latest )
     };
 
     if ( update.severity !== 'latest' ) {
-      self.shouldUpdate( update, function( shouldUpdate ) {
+      this.shouldUpdate( update, function( shouldUpdate ) {
         if ( shouldUpdate ) {
-          self.updatePackage( options.name, function( err, data ) {
+          this.updatePackage( options.name, function( err, data ) {
             if ( err ) {
               console.error( '\nUpdate error', err );
             } else {
@@ -261,11 +260,11 @@ updater.getUpdate = function getUpdate( options, cb ) {
         } else {
           cb( err, update );
         }
-      });
+      }.bind(this));
     } else {
       cb();
     }
-  });
+  }.bind(this));
 };
 
 

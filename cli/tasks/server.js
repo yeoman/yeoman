@@ -44,8 +44,7 @@ module.exports = function(grunt) {
 
   // send a reload command on all stored web socket connection
   Reactor.prototype.reload = function reload(files) {
-    var self = this,
-      sockets = this.sockets,
+    var sockets = this.sockets,
       changed = files.changed;
 
     // go through all sockets, and emit a reload command
@@ -55,8 +54,8 @@ module.exports = function(grunt) {
 
       // go throuh all the files that has been marked as changed by grunt
       // and trigger a reload command on each one, for each connection.
-      changed.forEach(self.reloadFile.bind(self, version));
-    });
+      changed.forEach(this.reloadFile.bind(this, version));
+    }, this);
   };
 
   Reactor.prototype.reloadFile = function reloadFile(version, filepath) {
@@ -86,7 +85,6 @@ module.exports = function(grunt) {
 
   Reactor.prototype.connection = function connection(request, socket, head) {
     var ws = new WebSocket(request, socket, head),
-      self = this,
       wsId = this.uid = this.uid + 1;
 
     // store the new connection
@@ -99,7 +97,7 @@ module.exports = function(grunt) {
       }
 
       // parse the JSON data object
-      var data = self.parseData(event.data);
+      var data = this.parseData(event.data);
 
       // attach the guessed livereload protocol version to the sokect object
       ws.livereloadVersion = data.command ? '1.7' : '1.6';
@@ -113,23 +111,23 @@ module.exports = function(grunt) {
 
       // first handshake
       if ( data.command === 'hello' ) {
-        return self.hello( data );
+        return this.hello( data );
       }
 
       // livereload.js emits this
       if ( data.command === 'info' ) {
-        return self.info( data );
+        return this.info( data );
       }
-    };
+    }.bind(this);
 
     ws.onclose = function() {
       ws = null;
-      delete self.sockets[wsId];
+      delete this.sockets[wsId];
 
       priv.set(this, {
         ws: null
       });
-    };
+    }.bind(this);
 
     priv.set(this, {
       ws: ws
