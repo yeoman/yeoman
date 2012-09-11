@@ -7,9 +7,11 @@ var fs = require('fs'),
   colors = require('colors'),
   connect = require('connect'),
   WebSocket = require('faye-websocket'),
-  open = require('open');
+  open = require('open'),
+  WeakMap = require('es6-collections').WeakMap;
 
 module.exports = function(grunt) {
+  var priv = new WeakMap();
 
   // Reactor object
   // ==============
@@ -53,11 +55,11 @@ module.exports = function(grunt) {
 
       // go throuh all the files that has been marked as changed by grunt
       // and trigger a reload command on each one, for each connection.
-      changed.forEach(self.reloadFile.bind(self, ws, version));
+      changed.forEach(self.reloadFile.bind(self, version));
     });
   };
 
-  Reactor.prototype.reloadFile = function reloadFile(ws, version, filepath) {
+  Reactor.prototype.reloadFile = function reloadFile(version, filepath) {
     // > as full as possible/known, absolute path preferred, file name only is
     // > OK
     filepath = path.resolve(filepath);
@@ -74,7 +76,7 @@ module.exports = function(grunt) {
       liveJS: true
     };
 
-    this.send(ws, data);
+    this.send(data);
   };
 
   Reactor.prototype.start = function start() {
@@ -111,19 +113,27 @@ module.exports = function(grunt) {
 
       // first handshake
       if ( data.command === 'hello' ) {
-        return self.hello( data, ws );
+        return self.hello( data );
       }
 
       // livereload.js emits this
       if ( data.command === 'info' ) {
-        return self.info( data, ws );
+        return self.info( data );
       }
     };
 
     ws.onclose = function() {
       ws = null;
       delete self.sockets[wsId];
+
+      priv.set(this, {
+        ws: null
+      });
     };
+
+    priv.set(this, {
+      ws: ws
+    });
   };
 
   Reactor.prototype.parseData = function parseData(str) {
@@ -134,8 +144,8 @@ module.exports = function(grunt) {
     return data;
   };
 
-  Reactor.prototype.hello = function hello(data, ws) {
-    this.send(ws, {
+  Reactor.prototype.hello = function hello(data) {
+    this.send({
       command: 'hello',
       protocols: [
         'http://livereload.com/protocols/official-7'
@@ -148,7 +158,9 @@ module.exports = function(grunt) {
   // noop
   Reactor.prototype.info = function info() {};
 
-  Reactor.prototype.send = function send(ws, data) {
+  Reactor.prototype.send = function send(data) {
+    var ws = priv.get(this).ws;
+
     ws.send(JSON.stringify(data));
   };
 
