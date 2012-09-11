@@ -5,7 +5,7 @@
       <%= 'init'.yellow %>  <%= 'Initialize and scaffold a new project using generator templates'.grey %>
      <%= 'build'.yellow %>  <%= 'Build an optimized version of your app, ready to deploy'.grey %>
     <%= 'server'.yellow %>  <%= 'Launch a preview server which will begin watching for changes'.grey %>
-      <%= 'test'.yellow %>  <%= 'Run a Mocha test harness in a headless Phantom.js'.grey %>
+      <%= 'test'.yellow %>  <%= 'Run a Mocha test harness in a headless PhantomJS'.grey %>
 
    <%= 'install'.yellow %>  <%= 'Install a package from the clientside package registry'.grey %>
  <%= 'uninstall'.yellow %>  <%= 'Uninstall the package'.grey %>
