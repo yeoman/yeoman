@@ -99,8 +99,9 @@ fi
 
 # sudo checks, don't try this at home, kids
 NEEDSUDO=0
-CHECKADMIN=$( ls -ld /usr/local/bin | grep "admin" )
-CHECKROOT=$( ls -ld /usr/local/bin | grep "root" )
+# Needs a check on /usr/local/bin
+CHECKADMIN=[ -d /usr/local/bin ] && $( ls -ld /usr/local/bin | grep "admin" ) || ""
+CHECKROOT=[ -d /usr/local/bin ] && $( ls -ld /usr/local/bin | grep "root" ) || ""
 CHECKLINK=$( ls -ld /usr/local/ | grep "$USER" )
 
 if [ "$CHECKADMIN" ]; then
