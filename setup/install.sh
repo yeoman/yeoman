@@ -326,7 +326,7 @@ fi
 echo ""
 if [ "$COMPASSFILE" ]; then
   echo "Compass is already installed, ensuring you have the latest release, for good measure."
-  sudo gem install compass
+  sudo gem update compass
 elif [ "$COMPASS" -eq 0 ]; then
   echo "Ruby was not detected or is not configured correctly, skipping compass."
 elif [ -z "$COMPASSFILE" ] && [ "$COMPASS" -eq 1 ]; then
