@@ -8,7 +8,7 @@ Lists all of the packages that have been installed using `yeoman install` (Bower
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 # If you have previously called
 yeoman install backbone
 
