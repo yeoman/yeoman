@@ -462,11 +462,8 @@ var confess = {
   },
 
   repeat: function (chr, length) {
-    for (var str = '', l = 0; l < length; l++) {
-      str += chr;
-    }
-    return str;
-  },
+    return (new Array(length)).join(chr);
+  }
 
 }
 
