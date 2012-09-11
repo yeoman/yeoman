@@ -36,7 +36,7 @@ This approach has a number of benefits.
 The easiest approach is to use a Bower package statically is to then just reference the package manually from a script tag:
 
 {% highlight sh %}
-&lt;script src="components/modernizr/modernizr.js"&gt;&lt;/script&gt;
+<script src="components/modernizr/modernizr.js"></script>
 {% endhighlight %}
 
 Similar to NPM, our Bower integration also allows users to easily search for and update packages easily. e.g
