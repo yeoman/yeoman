@@ -44,15 +44,30 @@ elif haveProg zypper; then
   PKGMGR=4
 elif haveProg pacman; then
   echo "You are using pacman. I'll assume you have Linux with that."
-  if haveProg yaourt; then
-    echo "Cool you also have yaourt."
-  else
-    echo "Installing yaourt"
-    BACK="$PWD"
-    cd /tmp/
-    curl -L http://autoyaourt.googlecode.com/files/autoyaourt.sh | bash
-    cd $BACK
-  fi
+  echo "WARN: phantomjs is not currently available in the official archlinux repository."
+  echo "Install phantomjs from AUR? [Y/n]"
+  read FROMAUR
+  case "$FROMAUR" in
+    y|Y|YES|yes|Yes)
+      if haveProg yaourt; then
+        echo "Cool have yaourt already."
+      else
+        echo "Installing yaourt"
+        BACK="$PWD"
+        cd /tmp/
+        curl -L http://autoyaourt.googlecode.com/files/autoyaourt.sh | bash
+        cd $BACK
+      fi
+      PACKAGESARCHLINUX='optipng libjpeg-turbo phantomjs'
+      ARCHMGR=yaourt
+      ;;
+    n|N|NO|no|No)
+      echo "Continuing installation without installing phantomjs"
+      FROMAUR=""
+      PACKAGESARCHLINUX='optipng libjpeg-turbo'
+      ARCHMGR="sudo pacman"
+      ;;
+  esac
   LINUX=1
   PKGMGR=5
 else
@@ -134,7 +149,7 @@ fi
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
 PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
 if [ "$PKGMGR" -eq 5 ]; then
-    PACKAGESLINUX='optipng libjpeg-turbo phantomjs'
+  PACKAGESLINUX=$PACKAGESARCHLINUX
 fi
 DEBGIT='git-core'
 OTHERGIT='git'
@@ -330,7 +345,7 @@ if [ "$LINUX" -eq 1 ]; then
   elif [ "$PKGMGR" -eq 4 ]; then
     sudo zypper install -y $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 5 ]; then
-    yaourt -S $PACKAGESLINUX $OTHERGIT
+    $ARCHMGR -S $PACKAGESLINUX $OTHERGIT
   fi
 fi
 
@@ -392,4 +407,9 @@ if [ "$COMPASS" -eq 0 ]; then
   echo ""
   echo "Install hiccup: no compass"
   echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: [link to documentation]."
+fi
+
+if [ -z "$FROMAUR" ]; then
+  echo ""
+  echo "Dear Archer please install phantomjs before using Yeoman"
 fi
