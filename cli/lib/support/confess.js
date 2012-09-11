@@ -465,6 +465,6 @@ var confess = {
     return (new Array(length)).join(chr);
   }
 
-}
+};
 
 confess.run();
