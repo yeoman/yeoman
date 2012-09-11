@@ -19,7 +19,7 @@ In Bower, dependencies are listed in a ‘component.json’ file, similar to Nod
 
 Dependencies are then installed locally via the `yeoman install’ command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir called components:
 
-{% highlight shell %}
+{% highlight sh %}
 /component.json
 /components/modernizr/index.js
 /components/modernizr/modernizr.js
@@ -35,7 +35,7 @@ This approach has a number of benefits.
 
 The easiest approach is to use a Bower package statically is to then just reference the package manually from a script tag:
 
-{% highlight shell %}
+{% highlight sh %}
 &lt;script src="components/modernizr/modernizr.js"&gt;&lt;/script&gt;
 {% endhighlight %}
 
@@ -43,25 +43,25 @@ Similar to NPM, our Bower integration also allows users to easily search for and
 
 To search for a package:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman search jquery
 {% endhighlight %}
 
 To install a package:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman install jquery
 {% endhighlight %}
 
 To update a package, you need to reference it by name:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman update jquery
 {% endhighlight %}
 
 To list installed packages:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman list
 {% endhighlight %}
 

@@ -8,7 +8,7 @@ Searches the Bower registry for packages which include a specific keyword in the
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman search jquery
 
 # outputs

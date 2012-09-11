@@ -8,7 +8,7 @@ Performs a lookup in the Bower registry for a package of a specific name. One wo
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman lookup jquery
 
 # outputs
