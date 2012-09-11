@@ -66,7 +66,7 @@ yeoman init angular                      # Invoke the AngularJS generator scaffo
 yeoman init angular:controller           # Invoke the AngularJS Controller sub-generator
 
 # Generator for Chrome Apps
-yeoman init chromeapps
+yeoman init chromeapp
 
 # Additional server profiles
 yeoman server:app                        # Serves up an intermediate build of your application
