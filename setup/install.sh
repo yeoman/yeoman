@@ -254,7 +254,13 @@ echo ""
 
 #ensure node is installed
 if [ "$NODEFILE" ]; then
-  echo "Node.js is installed."
+  SYSNODE=$(node -e 'console.log(process.versions.node);')
+  if [ "$SYSNODE" < 0.8.0 ]; then
+    echo "your node version is outdated, please update to 0.8.0 or later."
+    exit 1
+  else
+    echo "Node.js is installed and up to date."
+  fi
 else
   echo "Installing Node.js"
   if [ "$MAC" -eq 1 ]; then
@@ -319,9 +325,8 @@ fi
 #check for compass
 echo ""
 if [ "$COMPASSFILE" ]; then
-  echo ""
-  echo "WARN: Compass is already installed, you may want to 'gem update compass' to confirm it has Sass 3.2"
-  echo ""
+  echo "Compass is already installed, ensuring you have the latest release, for good measure."
+  sudo gem install compass
 elif [ "$COMPASS" -eq 0 ]; then
   echo "Ruby was not detected or is not configured correctly, skipping compass."
 elif [ -z "$COMPASSFILE" ] && [ "$COMPASS" -eq 1 ]; then
