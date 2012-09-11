@@ -37,7 +37,7 @@ Yeoman requires a few specific dependencies to be present before it can be insta
 
 Use your relevant package manager to update or install Ruby with the following at a terminal window:
 
-{% highlight shell %}
+{% highlight sh %}
 $ sudo apt-get install ruby  # for Ubuntu / Debian users
 $ sudo yum install ruby      # for Red Hat / Fedora users
 {% endhighlight %}
@@ -46,25 +46,25 @@ $ sudo yum install ruby      # for Red Hat / Fedora users
 
 Install RVM with ruby:
 
-{% highlight shell %}
+{% highlight sh %}
 $ curl -L https://get.rvm.io | bash -s stable --ruby
 {% endhighlight %}
 
 and with rails:
 
-{% highlight shell %}
+{% highlight sh %}
 $ curl -L https://get.rvm.io | bash -s stable --rails
 {% endhighlight %}
 
 Finally, to install without the "rubygems-bundler" or "rvm" gems:
 
-{% highlight shell %}
+{% highlight sh %}
 $ curl -L https://get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"
 {% endhighlight %}
 
 #### Install Compass using RVM
 
-{% highlight shell %}
+{% highlight sh %}
 $ rvm wrapper 1.9.3@compass --no-prefix compass
 {% endhighlight %}
 
@@ -74,7 +74,7 @@ To install PhantomJS, we recommend following the [official guide](http://phantom
 
 Alternatively:
 
-{% highlight shell %}
+{% highlight sh %}
 $ sudo apt-get install build-essential chrpath git-core libssl-dev libfontconfig1-dev
 $ git clone git://github.com/ariya/phantomjs.git
 $ cd phantomjs
@@ -92,12 +92,12 @@ using a [package manager](https://github.com/joyent/node/wiki/Installing-Node.js
 
 You will also need to get the image optimization libraries we use, which can be installed using apt-get as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 $ apt-get install optipng
 {% endhighlight %}
 and
 
-{% highlight shell %}
+{% highlight sh %}
 $ wget 'http://sourceforge.net/projects/libjpeg-turbo/files/1.0.1/libjpeg-turbo_1.0.1_i386.deb/download' -O libjpeg-turbo_1.0.1_i386.deb
 $ dpkg -i libjpeg-turbo_1.0.1_i386.deb
 
