@@ -50,6 +50,12 @@ function init() {
     cli.tasks = cmds.join(':');
   }
 
+  // specific flag to ensure we bypass insight prompt when running the test task
+  if(/^test/.test(route)) {
+    var env = process.env;
+    env.yeoman_test = true;
+  }
+
   // add the plugin version on `--version`
   if(opts.version) {
     return console.log('%s  v%s', pkg.name, pkg.version);
