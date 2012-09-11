@@ -117,7 +117,7 @@ Our new generator is quite simple: it inherits from `yeoman.generators.Base` and
 
 There are two exceptions, generators won't run:
 
-- any method begining with the `_` prefix.
+- any method beginning with the `_` prefix.
 - a `constructor` method, specifically used with generators written in
   CoffeeScript
 
@@ -260,7 +260,7 @@ paths in turn until one is found:
 **Note**: `index.js` may be anything else, as long the module entry point is
 defined in a package.json.
 
-**Seconc Note**: While true, the help output might miss a generator. It looks
+**Second Note**: While true, the help output might miss a generator. It looks
 for file below lib/generators at few locations, searching for `index.js` files.
 
 yeoman will do this lookup at few different places, in this order:
@@ -336,7 +336,7 @@ Generator.prototype.createSomething = function() {
 // ... other methods ...
 {% endhighlight %}
 
-Generators can also be written in CofeeScript, they just needs to be named with a `.coffee` extension (typically `lib/generators/generatorName/index.coffee`)
+Generators can also be written in CoffeeScript, they just needs to be named with a `.coffee` extension (typically `lib/generators/generatorName/index.coffee`)
 
 {% highlight coffee %}
 yeoman = require 'yeoman'
@@ -361,14 +361,14 @@ They're usually layout like so:
             ├── index.js
             └── templates
 
-Generators extends either `yeoman.generators.Base` or `yeoman.generators.NamedBase`. `NamedBase` is suitable to use for genetors that expects a "name" argument, such as `yeoman init model [NAME]`.
+Generators extends either `yeoman.generators.Base` or `yeoman.generators.NamedBase`. `NamedBase` is suitable to use for generators that expects a "name" argument, such as `yeoman init model [NAME]`.
 
 Every public method in a generator are executed serially. Every first level method in the prototype chain, eg. inherited method in `Base` are not.
 
 Two exceptions:
 
-- any method beginning with `_` is not runned, you may use them as method
-  helper. They won't be called automatically on generator invokation.
+- any method beginning with `_` is not ran, you may use them as method
+  helper. They won't be called automatically on generator invocation.
 - a `constructor` method, most likely when using CoffeeScript to implement the generator
 
 Either `Name` or `BasedName` are EventEmitters, you may use the EventEmitter API if you wish to (emit / on / once / ...)
@@ -629,7 +629,7 @@ this.fetch('http://zeptojs.com/zepto.js', 'js/vendor/zepto.js', this.async());
 
 Remotely fetch a package on github, store this into an internal `_cache/`
 folder, and invokes provided callback on completion with a "remote" object as
-the main API to interract with downloaded package.
+the main API to interact with downloaded package.
 
 - username      - GitHub username
 - repository    - GitHub repository to fetch from
@@ -651,7 +651,7 @@ this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
 {% endhighlight %}
 
 `remote()` allows the download of full repositories and copying of single or
-multiple files. `remote` object is your API to access this fetched (anc cached)
+multiple files. `remote` object is your API to access this fetched (and cached)
 package and copy / process files.
 
 #### remote.copy(source, destination, options)
