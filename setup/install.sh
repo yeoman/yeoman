@@ -59,7 +59,7 @@ elif haveProg pacman; then
         cd $BACK
       fi
       PACKAGESARCHLINUX='optipng libjpeg-turbo phantomjs'
-      ARCHMGR="sudo yaourt"
+      ARCHMGR=yaourt
       ;;
     n|N|NO|no|No)
       echo "Continuing installation without installing phantomjs"
