@@ -78,7 +78,10 @@ var confess = {
                 slowest, fastest, totalDuration = 0,
                 largest, smallest, totalSize = 0,
                 missingSize = false,
-                elapsed = finish - start;
+                elapsed = finish - start,
+                length = 104,
+                ratio = length / elapsed,
+                bar;
 
             resources.forEach(function (resource) {
                 if (!resource.times.start) {
@@ -123,27 +126,23 @@ var confess = {
             console.log('  Total resources: ' + this.pad(totalSize, 7) + 'b' + (missingSize ? '; (at least)' : ''));
             if (config.verbose) {
                 console.log('');
-                var ths = this,
-                    length = 104,
-                    ratio = length / elapsed,
-                    bar;
                 resources.forEach(function (resource) {
-                    bar = ths.repeat(' ', (resource.times.request - start) * ratio) +
-                          ths.repeat('-', (resource.times.start - resource.times.request) * ratio) +
-                          ths.repeat('=', (resource.times.end - resource.times.start) * ratio)
+                    bar = this.repeat(' ', (resource.times.request - start) * ratio) +
+                          this.repeat('-', (resource.times.start - resource.times.request) * ratio) +
+                          this.repeat('=', (resource.times.end - resource.times.start) * ratio)
                     ;
-                    bar = bar.substr(0, length) + ths.repeat(' ', length - bar.length);
-                    console.log(ths.pad(resource.id, 3) + '|' + bar + '|');
-                });
+                    bar = bar.substr(0, length) + this.repeat(' ', length - bar.length);
+                    console.log(this.pad(resource.id, 3) + '|' + bar + '|');
+                }, this);
                 console.log('');
                 resources.forEach(function (resource) {
                     console.log(
-                        ths.pad(resource.id, 3) + ': ' +
-                        ths.pad(resource.duration, 6) + 'ms; ' +
-                        ths.pad(resource.size, 7) + 'b; ' +
-                        ths.truncate(resource.url, 84)
+                        this.pad(resource.id, 3) + ': ' +
+                        this.pad(resource.duration, 6) + 'ms; ' +
+                        this.pad(resource.size, 7) + 'b; ' +
+                        this.truncate(resource.url, 84)
                     );
-                });
+                }, this);
             }
         }
     },
