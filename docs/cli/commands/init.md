@@ -18,7 +18,7 @@ By default we support Compass and CoffeeScript, so if your project includes any 
 
 If everything has been installed successfully, running `yeoman init` will present you with a welcome screen to kick off your project that looks a little like this:
 
-{% highlight shell %}
+{% highlight sh %}
 
         _   .--------------------------.
       _|o|_ |    Welcome to Yeoman,    |
@@ -40,7 +40,7 @@ Please answer the following:
 
 Some of our supported custom generators include:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init bbb      #backbone boilerplate
 yeoman init angular  #angularjs seed
 yeoman init ember    #ember app based on ember-rails
@@ -48,13 +48,13 @@ yeoman init ember    #ember app based on ember-rails
 
 Yeoman comes with a powerful system of Generators for scaffolding out applications using any number of boilerplates, frameworks and dependencies. Generators can be called in a project which has already been initialized with a basic Yeoman application structure OR may contain all of the files needed for the application structure themselves. By default, one can call a generator as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init generatorName #e.g yeoman init angular
 {% endhighlight %}
 
 In the case of a Generator named "angular", a grouping sub-generator called `all` may exist for scaffolding out all of the files needed for a new AngularJS application. One would use this as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init angular:all
 {% endhighlight %}
 
@@ -62,14 +62,14 @@ The idea here is that the Generator would pull in AngularJS, its common dependen
 
 As we understand that it's unlikely a user will wish to manually type out the ":all" part of each generator, we support a catch-"all". If a generator has a sub-generator (grouper) called "all" we will attempt to call "all" when you try running the top-level generator. This allows a user to simply call:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init angular
 {% endhighlight %}
 and has it defer to `angular:all` automatically.
 
 If one then wishes to create further AngularJS controllers, one can simply call the 'controller' sub-generator as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init angularjs:controller controllerName
 {% endhighlight %}
 
@@ -77,13 +77,13 @@ where `controllerName` is the name of the Controller you wish to create.
 
 Similarly, a Backbone.js Generator may be used as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init backbone
 {% endhighlight %}
 
 where the above would result in boilerplate for models, views, collections and a router being written to the current application directory, as well as Backbone.js and its dependencies being pulled in. One could then call the different sub-generators for the Generator as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init backbone:model modelName
 yeoman init backbone:collection collectionName
 yeoman init backbone:view viewName
@@ -92,13 +92,13 @@ yeoman init backbone:router routerName
 
 To list out all of the generators currently available locally, you can use the `--help` flag as follows:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init --help
 {% endhighlight %}
 
 This will print out a list of existing generators, including some of the below:
 
-{% highlight shell %}
+{% highlight sh %}
 Please choose a generator below.
 
 Yeoman:
