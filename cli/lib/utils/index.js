@@ -10,7 +10,7 @@ var utils = module.exports;
 // (like mkdir, rimraf) as lazy-loaded getters.
 
 
-Object.defineProperties( util,
+Object.defineProperties( utils,
   [
     // Wrapper to `require('mkdirp')`
     'mkdirp',
