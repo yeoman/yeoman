@@ -59,7 +59,7 @@ elif haveProg pacman; then
         cd $BACK
       fi
       PACKAGESARCHLINUX='optipng libjpeg-turbo phantomjs'
-      ARCHMGR=yaourt
+      ARCHMGR="sudo yaourt"
       ;;
     n|N|NO|no|No)
       echo "Continuing installation without installing phantomjs"
@@ -345,7 +345,7 @@ if [ "$LINUX" -eq 1 ]; then
   elif [ "$PKGMGR" -eq 4 ]; then
     sudo zypper install -y $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 5 ]; then
-    $ARCHMGR -S $PACKAGESLINUX $OTHERGIT
+    $ARCHMGR -S --needed $PACKAGESLINUX $OTHERGIT
   fi
 fi
 
