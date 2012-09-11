@@ -1,5 +1,4 @@
 
-
 ## <a href="#init" name="init">init</a>
 
 Usage: `yeoman init`, `yeoman init generatorName`, `yeoman init generatorName:subgenerator`
@@ -70,7 +69,7 @@ and has it defer to `angular:all` automatically.
 If one then wishes to create further AngularJS controllers, one can simply call the 'controller' sub-generator as follows:
 
 {% highlight sh %}
-yeoman init angularjs:controller controllerName
+yeoman init angular:controller controllerName
 {% endhighlight %}
 
 where `controllerName` is the name of the Controller you wish to create.
