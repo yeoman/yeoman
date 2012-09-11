@@ -8,7 +8,7 @@ Updates an already installed package `packageName` to the latest version availab
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman update jquery
 
 # outputs

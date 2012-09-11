@@ -7,7 +7,7 @@ Removes the package `packageName` from the current project.
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman uninstall backbone
 
 # outputs:
@@ -20,7 +20,7 @@ will throw an error.
 
 Example:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman uninstall jquery
 
 # outputs:

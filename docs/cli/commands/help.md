@@ -5,7 +5,7 @@
 
 Lists out the commands and tasks supported by yeoman and should print out the following to the console:
 
-{% highlight shell %}
+{% highlight sh %}
 yeoman init      # Initialize and scaffold a new project using generator templates
 yeoman build     # Build an optimized version of your app, ready to deploy
 yeoman server    # Launch a preview server which will begin watching for changes
