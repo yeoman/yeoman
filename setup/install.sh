@@ -42,9 +42,37 @@ elif haveProg zypper; then
   echo "You are using zypper. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=4
+elif haveProg pacman; then
+  echo "You are using pacman. I'll assume you have Linux with that."
+  echo "WARN: phantomjs is not currently available in the official archlinux repository."
+  echo "Install phantomjs from AUR? [Y/n]"
+  read FROMAUR
+  case "$FROMAUR" in
+    y|Y|YES|yes|Yes)
+      if haveProg yaourt; then
+        echo "Cool have yaourt already."
+      else
+        echo "Installing yaourt"
+        BACK="$PWD"
+        cd /tmp/
+        curl -L http://autoyaourt.googlecode.com/files/autoyaourt.sh | bash
+        cd $BACK
+      fi
+      PACKAGESARCHLINUX='optipng libjpeg-turbo phantomjs'
+      ARCHMGR=yaourt
+      ;;
+    n|N|NO|no|No)
+      echo "Continuing installation without installing phantomjs"
+      FROMAUR=""
+      PACKAGESARCHLINUX='optipng libjpeg-turbo'
+      ARCHMGR="sudo pacman"
+      ;;
+  esac
+  LINUX=1
+  PKGMGR=5
 else
   MAC=1
-  PKGMGR=5
+  PKGMGR=6
 fi
 
 if [ "$MAC" -eq 1 ]; then
@@ -120,6 +148,9 @@ fi
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
 PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
+if [ "$PKGMGR" -eq 5 ]; then
+  PACKAGESLINUX=$PACKAGESARCHLINUX
+fi
 DEBGIT='git-core'
 OTHERGIT='git'
 
@@ -319,6 +350,8 @@ if [ "$LINUX" -eq 1 ]; then
     sudo up2date install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 4 ]; then
     sudo zypper install -y $PACKAGESLINUX $OTHERGIT
+  elif [ "$PKGMGR" -eq 5 ]; then
+    $ARCHMGR -S --needed $PACKAGESLINUX $OTHERGIT
   fi
 fi
 
@@ -379,4 +412,9 @@ if [ "$COMPASS" -eq 0 ]; then
   echo ""
   echo "Install hiccup: no compass"
   echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: http://compass-style.org/install/ "
+fi
+
+if [ -z "$FROMAUR" ]; then
+  echo ""
+  echo "Dear Archer please install phantomjs before using Yeoman"
 fi
