@@ -3,6 +3,7 @@ var path     = require('path');
 var fs       = require('fs');
 var bower    = require('bower');
 var template = require('bower/lib/util/template');
+var childprocess = require('child_process');
 
 module.exports = function(grunt) {
 
@@ -33,17 +34,22 @@ module.exports = function(grunt) {
     // figure out the alternate install location, if any
     var directory = grunt.config('bower.dir');
 
-    // should we run the yeoman post install step
-    var install = args[0] === 'install' && directory;
-
     // run
     var cb = this.async();
     command.line(process.argv)
       .on('error', grunt.fatal.bind(grunt.fail))
       .on('data', grunt.log.writeln.bind(grunt.log))
-      // should probably add other end hooks on commands like uninstall, to
-      // also remove from directory
-      .on('end', install ? grunt.helper('bower:copy', directory, cb) : cb);
+      .on('end', function(){
+        if(args[0] === 'install' && directory){
+          grunt.helper('bower:copy', directory, cb);
+        }else if(args[0] === 'uninstall' && directory){
+          grunt.helper('bower:sync', directory);
+        }else if(args[0] === 'update' && directory){
+          grunt.helper('bower:sync', directory);
+        }else{
+          cb();
+        }
+      });
   });
 
 
@@ -70,14 +76,24 @@ module.exports = function(grunt) {
       return grunt.fatal('bower:copy helper requires a directory path.');
     }
 
-    return function() {
-      grunt.helper('bower:log', 'copying to', dir);
+    // Resolve application index
+    var scripts = '';
+    var basePath = 'app';
+    var appIndexPath  = path.resolve(basePath + '/index.html');
+    var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
 
-      var scripts = '';
+    // parse data-main for require config path
+    var hasDataMain = (indexBuffer.match(/data-main=['"]([^'"]+)['"]/));
+
+    // If data-main is detected..
+    if(hasDataMain !== null){
+      
+      grunt.helper('bower:log', 'updating require.js config');
 
       bower.commands.list({ paths: true })
         .on('error', grunt.fatal.bind(grunt.fail))
         .on('data', function(deps) {
+
           // should probably emit on `end` in bower's internal
           if(typeof deps === 'string') { return; }
 
@@ -85,15 +101,8 @@ module.exports = function(grunt) {
           // Wires up the relevant RequireJS paths config when
           // running `yeoman install spine backbone` etc.
 
-          // Read in application index
-          var basePath = 'app';
-          var appIndexPath  = path.resolve(basePath + '/index.html');
-          var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
-          // parse data-main for require config path
-          var hasDataMain = (indexBuffer.match(/data-main=['"]([^'"]+)['"]/));
-          // If data-main present..
-          if(hasDataMain !== null){
             var requireConfigPath = basePath + '/' + hasDataMain[1];
+
             // check path contains .js, append if not
             if ( requireConfigPath.indexOf('.js') ) {
               requireConfigPath += '.js';
@@ -112,37 +121,26 @@ module.exports = function(grunt) {
                 var cf = fs.readFileSync(requireConfigPath, 'utf8');
                 // replace the existing paths with your new paths
                 var html = cf.replace(' paths: {', 'paths: {\n' + scripts);
+
                 // Write the paths to config
                 fs.writeFileSync(requireConfigPath, html, 'utf8');
             }
-          }
+      });
+    }
 
-          // go through each installed package (via cli.tasks, nopt's remain
-          // array), figure out the path from bower dependency tree, and copy
-          // to final location
-          grunt.cli.tasks.split(':').slice(2).forEach(function(dep) {
-            var file = deps[dep];
-            if(!file) { return; }
-            var ext  = path.extname(file);
-            var dest = path.join(dir, dep + ext);
-            grunt.helper('bower:log', 'copying ' + dep, dest);
-            if(!grunt.file.exists(file)) {
-              grunt.log.writeln(grunt.helper('bower:template', 'warning-missing', { name: dep }));
-              grunt.log.writeln(grunt.helper('bower:template', 'warn', {
-                name: file,
-                shizzle: 'seems missing. You should bug the author of ' + dep + ' package'
-              }));
-              return;
-            }
+    // Syncronize the components directory with the vendor directory
+    grunt.helper('bower:sync', dir);
+    cb();
 
-            grunt.file.copy(file, dest);
-          });
-
-          cb();
-        });
-    };
   });
 
+
+
+  // Helper to syncronize the Bower components directory with app/scripts/vendor
+  grunt.registerHelper('bower:sync', function(dir) {
+    // Clean the vendor directory then sync with the components directory
+    childprocess.exec('rm -rf ' + dir +' && cp -r components/ ' + dir);
+  });
 
   // Little grunt helper to access the bower template facility.
   //
