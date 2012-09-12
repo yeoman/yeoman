@@ -51,9 +51,14 @@ if [ "$MAC" -eq 1 ]; then
   if haveProg clang; then
     echo "Looks like you have the XCode CLI tools. Passed!"
   else
-    echo "Looks like you need the XCode CLI Tools for homebrew, chap. Learn about
-where to install them at the homebrew docs: https://github.com/mxcl/homebrew/wiki/Installation"
-    exit 1
+    # Grab the code from the repository:
+    svn co http://llvm.org/svn/llvm-project/llvm/tags/RELEASE_29/final llvm
+    cd llvm/tools
+    svn co http://llvm.org/svn/llvm-project/cfe/tags/RELEASE_29/final/ clang   
+    # Configure and build:
+    ./configure --enable-optimized # Removes debugging flags. Makes compiling much faster
+    gmake -j2                      # (64bit, 2 jobs at a time)  
+    sudo gmake install             # This puts llvm and clang into /usr/local
   fi
 fi
 
@@ -99,8 +104,9 @@ fi
 
 # sudo checks, don't try this at home, kids
 NEEDSUDO=0
-CHECKADMIN=$( ls -ld /usr/local/bin | grep "admin" )
-CHECKROOT=$( ls -ld /usr/local/bin | grep "root" )
+# Needs a check on /usr/local/bin
+CHECKADMIN=[ -d /usr/local/bin ] && $( ls -ld /usr/local/bin | grep "admin" ) || ""
+CHECKROOT=[ -d /usr/local/bin ] && $( ls -ld /usr/local/bin | grep "root" ) || ""
 CHECKLINK=$( ls -ld /usr/local/ | grep "$USER" )
 
 if [ "$CHECKADMIN" ]; then
