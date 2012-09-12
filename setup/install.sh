@@ -119,7 +119,7 @@ fi
 
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
-PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
+PACKAGESLINUX='optipng libjpeg-turbo-progs phantomjs'
 DEBGIT='git-core'
 OTHERGIT='git'
 
