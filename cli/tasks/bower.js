@@ -94,8 +94,10 @@ module.exports = function(grunt) {
           // If data-main present..
           if(hasDataMain !== null){
             var requireConfigPath = basePath + '/' + hasDataMain[1];
-            // check path contains .js, append if not.
-            requireConfigPath.indexOf('.js') ? requireConfigPath += '.js' : null;
+            // check path contains .js, append if not
+            if ( requireConfigPath.indexOf('.js') ) {
+              requireConfigPath += '.js';
+            }
             // check config file exists
             if(grunt.file.exists(requireConfigPath)){
                 // if so..

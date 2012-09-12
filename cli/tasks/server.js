@@ -142,7 +142,7 @@ module.exports = function(grunt) {
     return data;
   };
 
-  Reactor.prototype.hello = function hello(data) {
+  Reactor.prototype.hello = function hello() {
     this.send({
       command: 'hello',
       protocols: [
@@ -310,7 +310,7 @@ module.exports = function(grunt) {
         // not an EADDRINUSE error, buble up the error
         cb(err);
       })
-      .listen(opts.port, function(err) {
+      .listen(opts.port, function() {
         var port = this.address().port;
 
         // Start server.
@@ -364,8 +364,6 @@ module.exports = function(grunt) {
     return function errorHandler(req, res, next) {
       // Figure out the requested path
       var pathname = req.url;
-      // get back the connect server
-      var server = res.socket.server;
       // asume 404 all the way.
       var err = connect.utils.error(404);
       err.message = pathname + ' ' + err.message;
