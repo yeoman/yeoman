@@ -42,9 +42,13 @@ elif haveProg zypper; then
   echo "You are using zypper. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=4
+elif haveProg pacman; then
+  echo "You are using pacman. I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=5
 else
   MAC=1
-  PKGMGR=5
+  PKGMGR=6
 fi
 
 if [ "$MAC" -eq 1 ]; then
@@ -120,6 +124,7 @@ fi
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
 PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
+PACKAGESARCHLINUX='optipng libjpeg-turbo' #phantomjs
 DEBGIT='git-core'
 OTHERGIT='git'
 
@@ -240,6 +245,9 @@ elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 2 ]; then
 elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 4 ]; then
   echo "Installing Ruby"
   sudo zypper install -y ruby rubygems
+elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 5 ]; then
+  echo "Installing Ruby"
+  sudo pacman -S --needed ruby
 elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
@@ -319,6 +327,8 @@ if [ "$LINUX" -eq 1 ]; then
     sudo up2date install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 4 ]; then
     sudo zypper install -y $PACKAGESLINUX $OTHERGIT
+  elif [ "$PKGMGR" -eq 5 ]; then
+    sudo pacman -S --needed $PACKAGESARCHLINUX $OTHERGIT
   fi
 fi
 
@@ -379,4 +389,11 @@ if [ "$COMPASS" -eq 0 ]; then
   echo ""
   echo "Install hiccup: no compass"
   echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: http://compass-style.org/install/ "
+fi
+
+if [ "$PKGMGR" -eq 5 ]; then
+  echo ""
+  echo "WARN: phantomjs is not currently available in the official arch repository."
+  echo "Phantomjs will have to be installed manually from https://code.google.com/p/phantomjs/downloads/list"
+  echo "  or from a suitable arch repository such as AUR."
 fi
