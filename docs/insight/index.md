@@ -1,5 +1,4 @@
 #Yeoman Insight
-*Eric Bidelman - updated 8/23/2012*
 
 ##Overview
 
