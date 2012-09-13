@@ -46,6 +46,10 @@ elif haveProg pacman; then
   echo "You are using pacman I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=5
+elif haveProg uname && [ "$(uname -s)" == "Linux" ]; then
+  echo "You are running Linux but I don't know about your package manager."
+  echo "You'll have to install manually."
+  exit 1
 else
   MAC=1
   PKGMGR=5
