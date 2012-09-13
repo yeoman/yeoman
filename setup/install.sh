@@ -40,7 +40,9 @@ isMac(){ [[ $(uname -s) == "Darwin" ]]; }
 isLinux(){ [[ $(uname -s) == "Linux" ]]; }
 
 # Exit if not in the expected OS.
-!isMac || !isLinux && echo "Unkown OS type" && exit 1 
+if ! isMac && isLinux ; then
+   echo "Unkown OS type" && exit 1
+fi
 
 echo "                                                            "
 echo "             .-:/+ossyhhhddddddddhhhysso+/:-.               "
