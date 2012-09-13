@@ -355,25 +355,32 @@ else
 fi
 
 echo ""
-echo "Yah Hoo! Yeoman global is in place."
+if haveProg yeoman; then
+  echo "Yah Hoo! Yeoman global is in place."
+
+  # Welcome wagon
+  echo ""
+  echo "My my, I hope you enjoyed that as much as I did."
+  echo "Yeoman and all its dependencies are now installed!"
+  echo ""
+  echo "Now that we've got our ducks in a row..."
+  echo "You should try starting a new project with yeoman."
+  echo "... might I suggest: "
+  echo "       mkdir myYeomanApp"
+  echo "       cd myYeomanApp   "
+  echo "       yeoman init      "
+  echo ""
+  echo "See you on the other side!"
+
+else
+  echo "There looks to be a problem with the install. :("
+  echo "Please follow the instructions at https://github.com/yeoman/yeoman/wiki/Manual-Install "
+fi
 echo ""
 
 # hop back to start and kill our temp folder off
 cd "$BACK" && rm -rf "$TMP"
 
-# Welcome wagon
-echo ""
-echo "My my, I hope you enjoyed that as much as I did."
-echo "Yeoman and all its dependencies are now installed!"
-echo ""
-echo "Now that we've got our ducks in a row..."
-echo "You should try starting a new project with yeoman."
-echo "... might I suggest: "
-echo "       mkdir myYeomanApp"
-echo "       cd myYeomanApp   "
-echo "       yeoman init      "
-echo ""
-echo "See you on the other side!"
 
 if [ "$COMPASS" -eq 0 ]; then
   echo ""
