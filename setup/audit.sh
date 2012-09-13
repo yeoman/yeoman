@@ -2,6 +2,11 @@
 
 # Audit.sh: audit system and check dependencies
 
+# LOGIC
+# 0 = Installed, correct version.
+# 1 = Not installed.
+# 2 = Installed, wrong version.
+
 # TODO
 # Display results
 
@@ -13,7 +18,7 @@ REQCOMPASS=0.12.1
 # Check OS
 OS=$(uname)
 
-if [[ "$OS" -eq "Darwin" ]]; then
+if [[ "$OS" == "Darwin" ]]; then
 	MAC=1
 else
 	LINUX=1
@@ -47,7 +52,12 @@ if [[ "$MAC" = 1 ]]; then
 		NODE=1
 	else
 		NODE=0
+		NODEVER=$(node -e 'console.log(process.versions.node);')
 	fi
+		# Node version check
+		if [[ "$NODEVER" < "$REQNODE" ]]; then
+			NODE=2
+		fi	
 	# CLI test
 	if [ -z "$CLANGFILE" ]; then
 		CLI=1
@@ -67,7 +77,7 @@ if [[ "$MAC" = 1 ]]; then
 		RUBY=0
 	fi
 	# Gem test
-	if [ -z "$GEMFILE"]; then
+	if [ -z "$GEMFILE" ]; then
 		GEM=1
 	else
 		GEM=0
@@ -111,6 +121,10 @@ else
 	else
 		NODE=0
 	fi
+		# Node version check
+		if [[ "$NODEVER" < "$REQNODE" ]]; then
+			NODE=2
+		fi
 	# Ruby test
 	if [ -z "$RUBYFILE" ]; then
 		RUBY=1
