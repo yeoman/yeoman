@@ -53,11 +53,11 @@ if [[ "$MAC" = 1 ]]; then
 	else
 		NODE=0
 		NODEVER=$(node -e 'console.log(process.versions.node);')
-	fi
 		# Node version check
 		if [[ "$NODEVER" < "$REQNODE" ]]; then
 			NODE=2
-		fi	
+		fi
+	fi
 	# CLI test
 	if [ -z "$CLANGFILE" ]; then
 		CLI=1
@@ -75,6 +75,11 @@ if [[ "$MAC" = 1 ]]; then
 		RUBY=1
 	else
 		RUBY=0
+		RUBYVER=$(ruby -e 'print RUBY_VERSION')
+		# Ruby version check
+		if [[ "$RUBYVER" < "$REQRUBY" ]]; then
+			RUBY=2
+		fi
 	fi
 	# Gem test
 	if [ -z "$GEMFILE" ]; then
@@ -87,6 +92,11 @@ if [[ "$MAC" = 1 ]]; then
 		COMPASS=1
 	else
 		COMPASS=0
+		COMPASSVER=$(compass -qv)
+		# Compass version check
+		if [[ "$COMPASSVER" < "$REQCOMPASS" ]]; then
+			COMPASS=2
+		fi
 	fi
 	# Phantomjs test
 	if [ -z "$PHANTOMJSFILE" ]; then
@@ -120,16 +130,22 @@ else
 		NODE=1
 	else
 		NODE=0
-	fi
+		NODEVER=$(node -e 'console.log(process.versions.node);')
 		# Node version check
 		if [[ "$NODEVER" < "$REQNODE" ]]; then
 			NODE=2
 		fi
+	fi
 	# Ruby test
 	if [ -z "$RUBYFILE" ]; then
 		RUBY=1
 	else
 		RUBY=0
+		RUBYVER=$(ruby -e 'print RUBY_VERSION')
+		# Ruby version check
+		if [[ "$RUBYVER" < "$REQRUBY" ]]; then
+			RUBY=2
+		fi
 	fi
 	# Gem test
 	if [ -z "$GEMFILE" ]; then
@@ -142,6 +158,11 @@ else
 		COMPASS=1
 	else
 		COMPASS=0
+		COMPASSVER=$(compass -qv)
+		# Compass version check
+		if [[ "$COMPASSVER" < "$REQCOMPASS" ]]; then
+			COMPASS=2
+		fi
 	fi
 	# Phantomjs test
 	if [ -z "$PHANTOMJSFILE" ]; then
