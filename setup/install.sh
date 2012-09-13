@@ -42,6 +42,14 @@ elif haveProg zypper; then
   echo "You are using zypper. I'll assume you have Linux with that."
   LINUX=1
   PKGMGR=4
+elif haveProg pacman; then
+  echo "You are using pacman I'll assume you have Linux with that."
+  LINUX=1
+  PKGMGR=5
+elif haveProg uname && [ "$(uname -s)" == "Linux" ]; then
+  echo "You are running Linux but I don't know about your package manager."
+  echo "You'll have to install manually."
+  exit 1
 else
   MAC=1
   PKGMGR=5
@@ -120,6 +128,7 @@ fi
 # packages to automatically be installed
 PACKAGESMAC='git optipng jpeg-turbo phantomjs'
 PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
+PACKAGESARCHLINUX='optipng libjpeg-turbo'
 DEBGIT='git-core'
 OTHERGIT='git'
 
@@ -240,6 +249,9 @@ elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 2 ]; then
 elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 4 ]; then
   echo "Installing Ruby"
   sudo zypper install -y ruby rubygems
+elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 5 ]; then
+  echo "Installing Ruby"
+  sudo pacman -S ruby
 elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
   echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
   COMPASS=0
@@ -319,6 +331,8 @@ if [ "$LINUX" -eq 1 ]; then
     sudo up2date install $PACKAGESLINUX $OTHERGIT
   elif [ "$PKGMGR" -eq 4 ]; then
     sudo zypper install -y $PACKAGESLINUX $OTHERGIT
+  elif [ "$PKGMGR" -eq 5 ]; then
+    sudo pacman -S $PACKAGESARCHLINUX $OTHERGIT
   fi
 fi
 
