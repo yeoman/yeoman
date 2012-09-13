@@ -8,8 +8,8 @@ Yeoman Insight is the metrics reporting tool used by the Yeoman CLI to record an
 
 There are a number of useful questions we can answer with good metrics:
 
-1. # downloads
-  - Users install Yeoman from the command line (`$ curl -L get.yeoman.io | sh`). We record a "download" page view when the CLI is run for the first time. This is essentially equivalent to the # of installs. Users are unlikely to run the install command and never execute a yeoman task.
+- numer of downloads
+  - Users install Yeoman from the command line (`$ curl -L get.yeoman.io | bash`). We record a "download" page view when the CLI is run for the first time. This is essentially equivalent to the # of installs. Users are unlikely to run the install command and never execute a yeoman task.
   - *Note: Github does not provide a way to track # of .zip/.tar.gz downloads from the project page.*
 - 7, 14, 30-day actives
 - How many people created a project in the last 30 days?
