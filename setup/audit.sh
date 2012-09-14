@@ -60,8 +60,11 @@ happy_print(){
 
 # audit \o/
 
-echo "wotcha! well, hello! below is a quick audit i have run to see if everything is in place for yeoman......
-it will take some time, so please grab some coffee ;)"
+echo ""
+echo "Wotcha! Well hi there. "
+echo "Thanks for installing Yeoman."
+echo "Below is a quick audit I've run on your system to see if you have everything you need for Yeoman:
+"
 
 if [[ $mac = 1 ]]; then
   # xcode cli test.
@@ -164,4 +167,4 @@ fi
 || echo "✘ *jpeg-turbo* is not installed, please check the installation docs for assistance."
 
 echo ""
-echo "please ensure all of the above tests have passed before trying to install yeoman."
+echo "Please ensure all of the above tests have passed before trying to install yeoman."
