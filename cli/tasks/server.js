@@ -413,8 +413,7 @@ module.exports = function(grunt) {
     opts = opts || {};
 
     return function inject(req, res, next) {
-      var port = res.socket.server.address().port;
-
+      
       // build filepath from req.url and deal with index files for trailing `/`
       var filepath = req.url.slice(-1) === '/' ? req.url + 'index.html' : req.url;
 
@@ -423,6 +422,8 @@ module.exports = function(grunt) {
       if ( path.extname( filepath ) !== '.html' ) {
         return next();
       }
+
+      var port = res.socket.server.address().port;
 
       // setup some basic headers, at this point it's always text/html anyway
       res.setHeader('Content-Type', connect.static.mime.lookup(filepath));
