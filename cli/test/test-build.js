@@ -42,11 +42,14 @@ describe('yeoman init && yeoman build', function() {
         // same for bootstrap
         .expect(/Writing app\/scripts\/vendor\/bootstrap\/bootstrap-(.+)\.js/)
 
-        // stylesheet hook - sass:app
-        .expect(/Invoke sass:app/)
+        // stylesheet hook - sass:app - to be re-added if we decide to go back
+        // to use a hook for SASS part of the app generator, or simply delete
+        // this line
+        //
+        // .expect(/Invoke sass:app/)
         .expect(/Writing app\/styles\/main\.scss/)
         .expect(/Writing app\/styles\/_compass_twitter_bootstrap\.scss/)
-        .expect(/Writing app\/styles\/_compass_twitter_bootstrap\/(.+).scss/)
+        .expect(/Writing app\/styles\/compass_twitter_bootstrap\/(.+).scss/)
 
         // test hook - jasmine:app
         .expect(/Invoke mocha:app/)
@@ -134,7 +137,7 @@ describe('yeoman init && yeoman build', function() {
     describe('build', function() {
       it('should output the list of task at the beginning of the build', function() {
         this.yeoman
-          .expect(/intro clean mkdirs coffee compass usemin-handler rjs concat css img rev usemin manifest copy time/);
+          .expect(/intro clean coffee compass mkdirs usemin-handler rjs concat css img rev usemin manifest copy time/);
       });
     });
 
