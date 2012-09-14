@@ -8,10 +8,8 @@
 # * Check and list all the dependencies.
 
 
-# Version specific deps.
-# Fix : Use assosiative array?
-# Bash v4 only declare -A vdeps=( ["node"]="0.8.8" ["ruby"]="1.8.7" ["compass"]="0.12.2" ["phantomjs"]="1.6" ); 
-vdeps=( "node_0.8.8" "ruby_1.8.7" "compass_0.12.2" "phantomjs_1.6" )
+# Version specific deps. 
+vdeps=( 'node_0.8.8' 'ruby_1.8.7' 'compass_0.12.2' 'phantomjs_1.6' )
 
 # Common Dependencies OS independent.
 deps=('curl' 'git' 'jpeg-turbo' 'yeoman')
@@ -28,20 +26,20 @@ isInstalled() {
 }
 
 push() {
-   if [ $1 == "installed" ] ;then 
+   if [ $1 == 'installed' ] ;then 
     installed+=( "$2" ) ;
-   elif [ $1 == "not_installed" ]; then 
+   elif [ $1 == 'not_installed' ]; then 
     not_installed+=( "$2" ) ; 
    fi ; 
 }
 
 # OS detection.
-isMac(){ [[ $(uname -s) == "Darwin" ]]; }
-isLinux(){ [[ $(uname -s) == "Linux" ]]; }
+isMac(){ [[ $(uname -s) == 'Darwin' ]]; }
+isLinux(){ [[ $(uname -s) == 'Linux' ]]; }
 
 # Exit if not in the expected OS.
 if ! isMac &&  ! isLinux ; then
-   echo "Unkown OS type" && exit 1
+   echo 'Unkown OS type' && exit 1
 fi
 
 echo "                                                            "
@@ -88,15 +86,13 @@ echo ""
 
 
 # Check for the common dependencies.
-for dep in "${deps[@]}"
-do
+for dep in "${deps[@]}"; do
   isInstalled $dep && push "installed" $dep || push "not_installed" $dep
 done
 
 # Check for the common dependencies.
 # Can be  IFS=_ read -r dev ver <<< "$vdep"
-for vdep in "${vdeps[@]}"
-do
+for vdep in "${vdeps[@]}"; do
   dep=$(echo $vdep | cut -d "_" -f1)
   ver=$(echo $vdep | cut -d "_" -f2)
   isInstalled $dep && [[ $( echo "$( $dep -v )" | grep -cw '$ver') ]] && push "installed" $dep || push "not_installed" $dep
