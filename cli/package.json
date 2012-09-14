@@ -50,6 +50,7 @@
     "tar": "~0.1.13",
     "coffee-script": "~1.3.3",
     "grunt-jasmine-task": "~0.2.2",
+    "shelljs":"~0.0.6",
     "faye-websocket": "~0.4.2",
     "prompt": "~0.1.12",
     "colors": "~0.6.0",
