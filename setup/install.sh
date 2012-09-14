@@ -15,7 +15,7 @@ vdeps=( 'node_0.8.8' 'ruby_1.8.7' 'compass_0.12.2' 'phantomjs_1.6' )
 deps=('curl' 'git' 'jpeg-turbo' 'yeoman')
 
 # Mac sepcific dependencies.
-mac_deps=('brew' 'clang' 'k')
+mac_deps=('brew' 'clang')
 
 # These gets populated.
 installed=()
@@ -106,7 +106,7 @@ if isMac; then
 fi
 
 # Print all deps that meet.
-printf '✓ %s\n' ${installed[@]}
+printf '✓ \e[32m%s\e[0m\n' ${installed[@]}
 
-# Print all the unmeet deps.
+# Print all the unmeet deps and the required installation URLs
 printf '✘ %s\n' ${not_installed[@]}
