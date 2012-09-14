@@ -1,208 +1,152 @@
 #!/bin/bash
 
-# Audit.sh: audit system and check dependencies
+# audit.sh: audit system and check dependencies
 
-# LOGIC
-# 0 = Installed, correct version.
-# 1 = Not installed.
-# 2 = Installed, wrong version.
+# logic
+# 1 = installed, correct version.
+# 0 = not installed.
+# 2 = installed, wrong version.
 
-# TODO
-# Display results
+# todo
+# display results
 
-# Requirements (Versions required for Yeoman)
-REQNODE=0.8.0
-REQRUBY=1.8.7
-REQCOMPASS=0.12.1
+# requirements (versions required for yeoman)
+reqnode=0.8.0
+reqruby=1.8.7
+reqcompass=0.12.1
 
-# Check OS
-OS=$(uname)
+# check os
+os=$(uname -s)
 
-if [[ "$OS" == "Darwin" ]]; then
-	MAC=1
+if [[ "$os" == "darwin" ]]; then
+  mac=1
+elif [[ "$os" == "linux" ]]; then
+  linux=1
 else
-	LINUX=1
+  echo "os not supproted!"
+  exit 1
 fi
 
-# Dependency checks
-CURLFILE=$(which curl)
-GITFILE=$(which git)
-RUBYFILE=$(which ruby)
-NODEFILE=$(which node)
-GEMFILE=$(which gem)
-COMPASSFILE=$(which compass)
-BREWFILE=$(which brew)
-PHANTOMJSFILE=$(which phantomjs)
-JPEGTURBOFILE=$(which jpegtran)
-CLANGFILE=$(which clang)
+# dependency checks
+curlfile=$(command -v curl)
+gitfile=$(command -v git)
+rubyfile=$(command -v ruby)
+nodefile=$(command -v node)
+gemfile=$(command -v gem)
+compassfile=$(command -v compass)
+brewfile=$(command -v brew)
+phantomjsfile=$(command -v phantomjs)
+jpegturbofile=$(command -v jpegtran)
+clangfile=$(command -v clang)
 
-# Audit \o/
 
-echo "Wotcha! Well, hello! Below is a quick audit I have run to see if everything is in place for Yeoman......
-It will take some time, so please grab some coffee ;)"
+check_set(){
+  [ -z "$1" ] && echo 1 || echo 0
+}
+# audit \o/
 
-if [[ "$MAC" = 1 ]]; then
-  # CLI test
-  if [ -z "$CLANGFILE" ]; then
-    CLI=1
-  else
-    CLI=0
+echo "wotcha! well, hello! below is a quick audit i have run to see if everything is in place for yeoman......
+it will take some time, so please grab some coffee ;)"
+
+if [[ $mac = 1 ]]; then
+  # xcode cli test.
+  cli=$(check_set $clangfile)
+
+  # brew test.
+  brew=$(check_set $brewfile)
+fi
+
+if [[ $linux = 1 ]]; then
+  # curl test.
+  curl=$(check_set $curlfile)
+fi
+
+# git test
+git=$(check_set $gitfile)
+
+# node test
+node=$(check_set $nodefile)
+if [[ $node == 1 ]]; then
+  nodever=$(node -e 'console.log(process.versions.node);')
+  # node version check
+  if [[ "$nodever" < "$reqnode" ]]; then
+    node=2
   fi
-  # Brew test
-  if [ -z "$BREWFILE" ]; then
-    BREW=1
-  else
-    BREW=0
+fi
+
+# ruby test
+ruby=$(check_set $rubyfile)
+if [[ $ruby == 1 ]]; then
+  rubyver=$(ruby -e 'print ruby_version')
+  # ruby version check
+  if [[ "$rubyver" < "$reqruby" ]]; then
+    ruby=2
   fi
 fi
-if [[ "$LINUX" = 1 ]]; then
-  # Curl test
-  if [ -z "$CURLFILE" ]; then
-    CURL=1
-  else
-    CURL=0
+
+# gem test
+gem=$(check_set $gemfile)
+
+# compass test
+compass=$(check_set $compassfile)
+if [[ $compass == 1 ]];then
+  compassver=$(compass -qv)
+  # compass version check
+  if [[ "$compassver" < "$reqcompass" ]]; then
+    compass=2
   fi
 fi
-# Git test
-if [ -z "$GITFILE" ]; then
-	GIT=1
-else
-	GIT=0
-fi
-# Node test
-if [ -z "$NODEFILE" ]; then
-	NODE=1
-else
-	NODE=0
-	NODEVER=$(node -e 'console.log(process.versions.node);')
-	# Node version check
-	if [[ "$NODEVER" < "$REQNODE" ]]; then
-		NODE=2
-	fi
-fi
-# Ruby test
-if [ -z "$RUBYFILE" ]; then
-	RUBY=1
-else
-	RUBY=0
-	RUBYVER=$(ruby -e 'print RUBY_VERSION')
-	# Ruby version check
-	if [[ "$RUBYVER" < "$REQRUBY" ]]; then
-		RUBY=2
-	fi
-fi
-# Gem test
-if [ -z "$GEMFILE" ]; then
-	GEM=1
-else
-	GEM=0
-fi
-# Compass test
-if [ -z "$COMPASSFILE" ]; then
-	COMPASS=1
-else
-	COMPASS=0
-	COMPASSVER=$(compass -qv)
-	# Compass version check
-	if [[ "$COMPASSVER" < "$REQCOMPASS" ]]; then
-		COMPASS=2
-	fi
-fi
-# Phantomjs test
-if [ -z "$PHANTOMJSFILE" ]; then
-	PHANTOMJS=1
-else
-	PHANTOMJS=0
-fi
+
+# phantomjs test
+phantomjs=$(check_set $phantomjsfile)
+
 # jpeg-turbo test
-if [ -z "$JPEGTURBOFILE" ]; then
-	JPEGTURBO=1
-else
-	JPEGTURBO=0
-fi
+jpegturbo=$(check_set $jpegturbofile)
 
-
-
-# Display results
+# display results
 #
-# RESULTS LOGIC
-# Passes first
-# Fails second
+# results logic
+# passes first
+# fails second
 
 echo ""
 
-# Passes
-if [[ "$MAC" = 1 ]]; then
-  if [ "$CLI" -eq 0 ]; then
-    echo "✓ *Xcode CLI tools* are installed."
-  fi
-  if [ "$BREW" -eq 0 ]; then
-    echo "✓ *Homebrew* is installed."
-  fi
+# passes
+if [[ "$mac" = 1 ]]; then
+  [ "$cli" -eq 1 ] &&  echo "✓ *xcode cli tools* are installed." \
+  || echo "✘ *xcode cli tools* are not installed, please check the installation docs for assistance."
+
+  [ "$brew" -eq 1 ] && echo "✓ *homebrew* is installed." \
+  || echo "✘ *homebrew* is not installed, please check the installation docs for assistance."
 fi
-if [[ "$LINUX" = 1 ]]; then
-  if [ "$CURL" -eq 0 ]; then
-    echo "✓ *curl* is present, whew."
-  fi
+
+if [[ "$linux" = 1 ]]; then
+  [ "$curl" -eq 1 ] && echo "✓ *curl* is present, whew." \
+  || echo "✘ *curl* is not installed, please check the installation docs for assistance."
 fi
-if [ "$GIT" -eq 0 ]; then
-  echo "✓ *git* is installed, nice one."
-fi
-if [ "$NODE" -eq 0 ]; then
-  echo "✓ *NodeJS* is installed."
-fi
-if [ "$RUBY" -eq 0 ]; then
-  echo "✓ *Ruby* is installed."
-fi
-if [ "$GEM" -eq 0 ]; then
-  echo "✓ *RubyGems* is installed."
-fi
-if [ "$COMPASS" -eq 0 ]; then
-  echo "✓ *Compass* is installed."
-fi
-if [ "$PHANTOMJS" -eq 0 ]; then
-  echo "✓ *Phantomjs* is installed."
-fi
-if [ "$JPEGTURBO" -eq 0 ]; then
-  echo "✓ *jpeg-turbo* is installed."
-fi
+
+[ "$git" -eq 1 ] && echo "✓ *git* is installed, nice one." \
+|| echo "✘ *git* is not installed, please check the installation docs for assistance."
+
+[ "$node" -eq 1 ] && echo "✓ *nodejs* is installed." \
+|| echo "✘ *nodejs* is not installed, please check the installation docs for assistance."
+
+[ "$ruby" -eq 1 ] && echo "✓ *ruby* is installed." \
+|| echo "✘ *ruby* is not installed, please check the installation docs for assistance."
+
+[ "$gem" -eq 1 ] && echo "✓ *rubygems* is installed." \
+|| echo "✘ *rubygems* is not installed, please check the installation docs for assistance."
+
+[ "$compass" -eq 1 ] && echo "✓ *compass* is installed." \
+||  echo "✘ *compass* is not installed, please check the installation docs for assistance."
+
+
+[ "$phantomjs" -eq 1 ] && echo "✓ *phantomjs* is installed." \
+|| echo "✘ *phantomjs* is not installed, please check the installation docs for assistance."
+
+
+[ "$jpegturbo" -eq 1 ] && echo "✓ *jpeg-turbo* is installed." \
+|| echo "✘ *jpeg-turbo* is not installed, please check the installation docs for assistance."
 
 echo ""
-
-# Fails
-if [[ "$MAC" = 1 ]]; then
-  if [ "$CLI" -eq 1 ]; then
-    echo "✘ *Xcode CLI tools* are not installed, please check the installation docs for assistance."
-  fi
-  if [ "$BREW" -eq 1 ]; then
-    echo "✘ *Homebrew* is not installed, please check the installation docs for assistance."
-  fi
-fi
-if [[ "$LINUX" = 1 ]]; then
-  if [ "$CURL" -eq 1 ]; then
-    echo "✘ *curl* is not installed, please check the installation docs for assistance."
-  fi
-fi
-if [ "$GIT" -eq 1 ]; then
-  echo "✘ *git* is not installed, please check the installation docs for assistance."
-fi
-if [ "$NODE" -eq 1 ]; then
-  echo "✘ *NodeJS* is not installed, please check the installation docs for assistance."
-fi
-if [ "$RUBY" -eq 1 ]; then
-  echo "✘ *Ruby* is not installed, please check the installation docs for assistance."
-fi
-if [ "$GEM" -eq 1 ]; then
-  echo "✘ *RubyGems* is not installed, please check the installation docs for assistance."
-fi
-if [ "$COMPASS" -eq 1 ]; then
-  echo "✘ *Compass* is not installed, please check the installation docs for assistance."
-fi
-if [ "$PHANTOMJS" -eq 1 ]; then
-  echo "✘ *Phantomjs* is not installed, please check the installation docs for assistance."
-fi
-if [ "$JPEGTURBO" -eq 1 ]; then
-  echo "✘ *jpeg-turbo* is not installed, please check the installation docs for assistance."
-fi
-
-echo "Please ensure all of the above tests have passed before trying to install Yeoman."
+echo "please ensure all of the above tests have passed before trying to install yeoman."
