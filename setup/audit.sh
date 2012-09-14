@@ -18,9 +18,9 @@ reqcompass=0.12.1
 # check os
 os=$(uname -s)
 
-if [[ "$os" == "darwin" ]]; then
+if [[ "$os" == "Darwin" ]]; then
   mac=1
-elif [[ "$os" == "linux" ]]; then
+elif [[ "$os" == "Linux" ]]; then
   linux=1
 else
   echo "os not supproted!"
@@ -42,6 +42,18 @@ clangfile=$(command -v clang)
 
 check_set(){
   [ -z "$1" ] && echo 1 || echo 0
+}
+
+# This prints the ✘ in red,
+# rest in bold.
+sad_print(){
+  printf '\e[31m%s\e[0m \e[1m%s\e[0m %s\n' "✘" "$1" "$2"
+}
+
+# This prints ✓ in green,
+# rest in bold.
+happy_print(){
+  printf '\e[32m%s\e[0m \e[1m%s\e[0m %s\n' "✓" "$1" "$2"
 }
 # audit \o/
 
