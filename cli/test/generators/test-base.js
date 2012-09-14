@@ -60,10 +60,7 @@ describe('yeoman.generators.Base', function() {
     it('should go through all registered hooks, and invoke them in series', function(done) {
       this.generator.runHooks(function(err) {
         if(err) return err;
-        fs.stat('app/styles', function(err) {
-          if(err) return done(err);
-          fs.stat('test/index.html', done);
-        });
+        fs.stat('test/index.html', done);
       });
     });
   });
