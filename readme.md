@@ -19,6 +19,8 @@ Simply run:
 curl -L get.yeoman.io | bash
 ```
 
+If you would prefer to manually install Yeoman, instructions on this are also [available](https://github.com/yeoman/yeoman/wiki/Manual-Install).
+
 *Yeoman requires Node >=0.8*
 
 ## Documentation
