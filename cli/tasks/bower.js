@@ -3,7 +3,9 @@ var path     = require('path');
 var fs       = require('fs');
 var bower    = require('bower');
 var template = require('bower/lib/util/template');
-var childprocess = require('child_process');
+var shelljs  = require('shelljs');
+var rimraf   = require('rimraf');
+
 
 module.exports = function(grunt) {
 
@@ -42,10 +44,8 @@ module.exports = function(grunt) {
       .on('end', function(){
         if(args[0] === 'install' && directory){
           grunt.helper('bower:copy', directory, cb);
-        }else if(args[0] === 'uninstall' && directory){
-          grunt.helper('bower:sync', directory);
-        }else if(args[0] === 'update' && directory){
-          grunt.helper('bower:sync', directory);
+        }else if(args[0] === 'uninstall' || args[0] === 'update' && directory){
+          grunt.helper('bower:sync', directory, cb);
         }else{
           cb();
         }
@@ -79,16 +79,16 @@ module.exports = function(grunt) {
     // Resolve application index
     var scripts = '';
     var basePath = 'app';
-    var appIndexPath  = path.resolve(basePath + '/index.html');
+    var appIndexPath  = path.resolve(path.join(basePath + '/index.html'));
     var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
 
     // parse data-main for require config path
-    var hasDataMain = (indexBuffer.match(/data-main=['"]([^'"]+)['"]/));
+    var hasDataMain = /data-main=['"]([^'"]+)['"]/.test( indexBuffer );
 
     // If data-main is detected..
-    if(hasDataMain !== null){
+    if(hasDataMain){
       
-      grunt.helper('bower:log', 'updating require.js config');
+      grunt.helper('bower:log', 'updating RequireJS config');
 
       bower.commands.list({ paths: true })
         .on('error', grunt.fatal.bind(grunt.fail))
@@ -109,6 +109,8 @@ module.exports = function(grunt) {
             }
             // check config file exists
             if(grunt.file.exists(requireConfigPath)){
+
+              console.log('require config exists, doing stuff');
                 // if so..
                 // iterate over Bower deps, generating the path string fo config
                 Object.keys(deps).forEach(function(dep){
@@ -129,7 +131,7 @@ module.exports = function(grunt) {
     }
 
     // Syncronize the components directory with the vendor directory
-    grunt.helper('bower:sync', dir);
+    grunt.helper('bower:sync', dir, cb);
     cb();
 
   });
@@ -137,9 +139,22 @@ module.exports = function(grunt) {
 
 
   // Helper to syncronize the Bower components directory with app/scripts/vendor
-  grunt.registerHelper('bower:sync', function(dir) {
+  grunt.registerHelper('bower:sync', function(dir, cb) {
     // Clean the vendor directory then sync with the components directory
-    childprocess.exec('rm -rf ' + dir +' && cp -r components/ ' + dir);
+
+    if(typeof cb !== 'function') {
+      return grunt.fatal('bower:sync helper requires a callback.');
+    }
+
+    if(!dir) {
+      return grunt.fatal('bower:sync helper requires a directory path.');
+    }
+
+    shelljs.rm('-rf', dir);
+    shelljs.mkdir('-p', dir);
+    shelljs.cp('-R', 'components/*', dir);
+
+    cb();
   });
 
   // Little grunt helper to access the bower template facility.
