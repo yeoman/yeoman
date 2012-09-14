@@ -1,6 +1,6 @@
 language: node_js
 node_js:
   - 0.8
-script: sh -c 'cd cli && npm test'
+before_script: cd cli
 notifications:
   irc: irc.freenode.org#yeoman
