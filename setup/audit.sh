@@ -38,7 +38,7 @@ fi
 phantomjsfile=$(command -v phantomjs)
 jpegturbofile=$(command -v jpegtran)
     clangfile=$(command -v clang)
-
+   yeomanfile=$(command -v yeoman)
 
 # Check if installed.
 check_set(){
@@ -80,9 +80,6 @@ if [[ $linux = 1 ]]; then
   curl=$(check_set $curlfile)
 fi
 
-# git test
-git=$(check_set $gitfile)
-
 # node test
 node=$(check_set $nodefile)
 if [[ $node == 1 ]]; then
@@ -103,8 +100,6 @@ if [[ $ruby == 1 ]]; then
   fi
 fi
 
-# gem test
-gem=$(check_set $gemfile)
 
 # compass test
 compass=$(check_set $compassfile)
@@ -116,11 +111,12 @@ if [[ $compass == 1 ]];then
   fi
 fi
 
-# phantomjs test
-phantomjs=$(check_set $phantomjsfile)
 
-# jpeg-turbo test
+git=$(check_set $gitfile)
+gem=$(check_set $gemfile)
+phantomjs=$(check_set $phantomjsfile)
 jpegturbo=$(check_set $jpegturbofile)
+yeoman=$(check_set $yeomanfile)
 
 # display results
 #
@@ -146,16 +142,17 @@ fi
 [ "$gem" -eq 1 ] && happy_print "RubyGems" "is installed."
 [ "$compass" -eq 1 ] && happy_print "Compass" "is installed."
 [ "$phantomjs" -eq 1 ] && happy_print "PhamtomJS" "is installed."
-[ "$jpegturbo" -eq 1 ] && happy_print "jpeg-turbo" "is installed."
-
+[ "$jpegturbo" -eq 1 ] && happy_print "jpegtran" "is installed."
+[ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "is installed!"
 
 # failures
 if [[ "$mac" = 1 ]]; then
   [ "$cli" -eq 0 ]  && \
-    sad_print "Command Line Tools for Xcode" "is not installed." && \
+    sad_print "Command Line Tools for Xcode" "" && \
     printf "\tVisit http://stackoverflow.com/a/9329325/89484 for installation options.\n"
   [ "$brew" -eq 0 ] && \
-    sad_print "Homebrew" "Install Homebrew from the instructions at https://github.com/mxcl/homebrew/wiki/Installation" && \
+    sad_print "Homebrew" "" && \
+    printf "\tInstall Homebrew from the instructions at https://github.com/mxcl/homebrew/wiki/Installation \n" && \
     printf  "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "For best results, after install, be sure to run" "brew doctor" "and follow the recommendations."
 fi
 
@@ -164,23 +161,30 @@ if [[ "$linux" = 1 ]]; then
 fi
 
 [ "$git" -eq 0 ] && \
-  sad_print "git" "is not installed. Install through your package manager:" && \
-  printf "\t\e[47m\e[0;35m%s\e[0m %s\n" "brew install git"
+  sad_print "git" && \
+  printf "\tInstall through your package manager. \n" && \
+  printf "\tFor example, with homebrew: \e[47m\e[0;35m%s\e[0m %s\n" "brew install git"
 [ "$node" -eq 0 ] && \
-  sad_print "NodeJS" "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/"
+  sad_print "NodeJS" "" && \
+  printf "\tI recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ \n"
 [ "$ruby" -eq 0 ] && \
-  sad_print "ruby" "required >= 1.8.7." && \
-  printf "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "Check your ruby with " "ruby -v" "and install http://www.ruby-lang.org/en/downloads/"
+  sad_print "ruby"  "" && \
+  printf "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "Check your ruby with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
 [ "$gem" -eq 0 ] && \
-  sad_print "RubyGems" "You'll pick this up with your ruby installation."
+  sad_print "RubyGems" "" && \
+  printf "\tYou'll pick this up with your ruby installation. \n"
 [ "$compass" -eq 0 ] && \
-  sad_print "Compass" "is not installed: http://compass-style.org/install/"
+  sad_print "Compass"  "" && \
+  printf "\tis not installed: http://compass-style.org/install/ \n"
 [ "$phantomjs" -eq 0 ] && \
-  sad_print "PhamtomJS" "is not installed." && \
+  sad_print "PhamtomJS"  "" && \
   printf "\tFollow instructions at http://phantomjs.org/download.html - the binary installs are quick!\n"
 [ "$jpegturbo" -eq 0 ] && \
-  sad_print "jpeg-turbo" "not present" && \
-  printf "\t\e[47m\e[0;35m%s\e[0m %s" "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
+  sad_print "jpegtran"  "" && \
+  printf "\tOn Mac, \e[47m\e[0;35m%s\e[0m %s\n" "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
+[ "$yeoman" -eq 0 ] && \
+  sad_print "yeoman"  "" && \
+  printf "\tYou're missing yeoman! \e[47m\e[0;35m%s\e[0m %s" "npm install -g yeoman" "will sort you out. You may need sudo."
 
 
 
