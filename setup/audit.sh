@@ -131,38 +131,42 @@ echo ""
 
 # passes
 if [[ "$mac" = 1 ]]; then
-  [ "$cli" -eq 1 ] &&  happy_print "xcode cli tools" "are installed." \
-  || sad_print "xcode cli tools" "are not installed, please check the installation docs for assistance."
-
-  [ "$brew" -eq 1 ] && happy_print "homebrew" "is installed." \
-  || sad_print "homebrew" "is not installed, please check the installation docs for assistance."
+  [ "$cli" -eq 1 ] &&  happy_print "xcode cli tools" "are installed."
+  [ "$brew" -eq 1 ] && happy_print "homebrew" "is installed."
 fi
 
 if [[ "$linux" = 1 ]]; then
-  [ "$curl" -eq 1 ] && happy_print "curl" "is present, whew." \
-  || sad_print "curl" "is not installed, please check the installation docs for assistance."
+  [ "$curl" -eq 1 ] && happy_print "curl" "is present, whew."
 fi
 
-[ "$git" -eq 1 ] && happy_print "git" "is installed, nice one." \
-|| sad_print "git" "is not installed, please check the installation docs for assistance."
+[ "$git" -eq 1 ] && happy_print "git" "is installed, nice one."
+[ "$node" -eq 1 ] && happy_print "nodejs" "is installed."
+[ "$ruby" -eq 1 ] && happy_print "ruby" "is installed."
+[ "$gem" -eq 1 ] && happy_print "rubygems" "is installed."
+[ "$compass" -eq 1 ] && happy_print "compass" "is installed."
+[ "$phantomjs" -eq 1 ] && happy_print "phantomjs" "is installed."
+[ "$jpegturbo" -eq 1 ] && happy_print "jpeg-turbo" "is installed."
 
-[ "$node" -eq 1 ] && happy_print "nodejs" "is installed." \
-|| sad_print "nodejs" "is not installed, please check the installation docs for assistance."
 
-[ "$ruby" -eq 1 ] && happy_print "ruby" "is installed." \
-|| sad_print "ruby" "is not installed, please check the installation docs for assistance."
+# failures
+if [[ "$mac" = 1 ]]; then
+  [ "$cli" -eq 0 ]  && sad_print "XCode CLI Tools" "is not installed, please check the installation docs for assistance."
+  [ "$brew" -eq 0 ] && sad_print "homebrew" "is not installed, please check the installation docs for assistance."
+fi
 
-[ "$gem" -eq 1 ] && happy_print "rubygems" "is installed." \
-|| sad_print "rubygems" "is not installed, please check the installation docs for assistance."
+if [[ "$linux" = 1 ]]; then
+  [ "$curl" -eq 0 ] && sad_print "curl" "is not installed, please check the installation docs for assistance."
+fi
 
-[ "$compassz" -eq 1 ] && happy_print "compass" "is installed." \
-||  sad_print "compass" "is not installed, please check the installation docs for assistance."
+[ "$git" -eq 0 ] && sad_print "git" "is not installed, please check the installation docs for assistance."
+[ "$node" -eq 0 ] && sad_print "nodejs" "is not installed, please check the installation docs for assistance."
+[ "$ruby" -eq 0 ] && sad_print "ruby" "is not installed, please check the installation docs for assistance."
+[ "$gem" -eq 0 ] && sad_print "rubygems" "is not installed, please check the installation docs for assistance."
+[ "$compass" -eq 0 ] && sad_print "compass" "is not installed, please check the installation docs for assistance."
+[ "$phantomjs" -eq 0 ] && sad_print "phantomjs" "is not installed, please check the installation docs for assistance."
+[ "$jpegturbo" -eq 0 ] && sad_print "jpeg-turbo" "is not installed, please check the installation docs for assistance."
 
-[ "$phantomjsz" -eq 1 ] && happy_print "phantomjs" "is installed." \
-|| sad_print "phantomjs" "is not installed, please check the installation docs for assistance."
 
-[ "$jpegturbo" -eq 1 ] && happy_print "jpeg-turbo" "is installed." \
-|| sad_print "jpeg-turbo" "is not installed, please check the installation docs for assistance."
 
 echo ""
 echo "Please ensure all of the above tests have passed before trying to install yeoman."
