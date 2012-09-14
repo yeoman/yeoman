@@ -15,21 +15,21 @@
   "homepage": "http://yeoman.io",
   "bugs": "https://github.com/yeoman/yeoman/issues",
   "author": "Chrome Developer Relations",
-  "main": "./yeoman",
+  "main": "./cli/yeoman",
   "bin": {
-    "yeoman": "./bin/yeoman",
-    "_yeomaninsight": "./bin/yeomaninsight.py"
+    "yeoman": "./cli/bin/yeoman",
+    "_yeomaninsight": "./cli/bin/yeomaninsight.py"
   },
   "directories": {
-    "man": "./man"
+    "man": "./cli/man"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/yeoman/yeoman.git"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/test-*.js test/generators/",
-    "manpages": "./scripts/docs-build"
+    "test": "node node_modules/mocha/bin/mocha cli/test/test-*.js cli/test/generators/",
+    "manpages": "./cli/scripts/docs-build"
   },
   "dependencies": {
     "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
