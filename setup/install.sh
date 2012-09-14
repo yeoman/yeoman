@@ -1,389 +1,205 @@
 #!/bin/bash
 
-# install.sh: Installation script
+# audit system and check dependencies
+# We aren't installing anything in this script, we're only checking your system for you and reporting back.
 
-# We're doing a few things here, we welcome your readthrough. As a summary:
-
-# * Detect Mac or Linux, pick which package manager to use
-# * On Mac, install homebrew if it's not present
-# * Then install these: git optipng jpeg-turbo phantomjs
-# * Make sure Ruby >= 1.8.7 is around, install if not (for Compass)
-# * Install the latest NodeJS package
-# * Install Compass
-# * Download Yeoman zip to a temporary folder
-# * Install it as a global node module
+# logic
+# 1 = installed, correct version.
+# 0 = not installed.
+# 2 = installed, wrong version.
 
 
-# Note for maintenance: edit the version variables below for easy updating :D
-NODEVER=0.8.8
+# Requirements (versions required for yeoman)
+reqnode=0.8.0
+reqruby=1.8.7
+reqcompass=0.12.1
 
-# checking OS
-LINUX=0
-MAC=0
-PKGMGR=0
+# Check os
+os=$(uname -s)
 
-haveProg() {
-    [ -x "$(which $1)" ]
+if [[ "$os" == "Darwin" ]]; then
+  mac=1
+elif [[ "$os" == "Linux" ]]; then
+  linux=1
+else
+  echo "Windows is not officially supported, currently."
+  exit 1
+fi
+
+# Dependency checks
+     curlfile=$(command -v curl)
+      gitfile=$(command -v git)
+     rubyfile=$(command -v ruby)
+     nodefile=$(command -v node)
+      gemfile=$(command -v gem)
+  compassfile=$(command -v compass)
+     brewfile=$(command -v brew)
+phantomjsfile=$(command -v phantomjs)
+jpegturbofile=$(command -v jpegtran)
+  optipngfile=$(command -v optipng)
+    clangfile=$(command -v clang)
+   yeomanfile=$(command -v yeoman)
+
+# Check if installed.
+check_set(){
+  [[ -x "$1" ]]  && echo 1 || echo 0
 }
 
-if haveProg apt-get; then
-  echo "You are using apt-get. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=1
-elif haveProg yum; then
-  echo "You are using yum. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=2
-elif haveProg up2date; then
-  echo "You are using up2date. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=3
-elif haveProg zypper; then
-  echo "You are using zypper. I'll assume you have Linux with that."
-  LINUX=1
-  PKGMGR=4
-else
-  MAC=1
-  PKGMGR=5
-fi
 
-if [ "$MAC" -eq 1 ]; then
-  if haveProg clang; then
-    echo "Looks like you have the XCode CLI tools. Passed!"
-  else
-    echo "Looks like you need the XCode CLI Tools for homebrew, chap. Learn about
-where to install them at the homebrew docs: https://github.com/mxcl/homebrew/wiki/Installation"
-    exit 1
-  fi
-fi
-
-echo ""
-
-if [ "$MAC" -eq 1 ]; then
-  echo "Installing on OS X."
-
-  # check pre-installed ruby
-  RUBYCHECK=$(ruby -e 'print RUBY_VERSION')
-
-elif [ "$LINUX" -eq 1 ]; then
-  echo "Installing on Linux."
-else
-  echo "Unable to determine install target OS! We currently support OS X and Linux."
-  exit 1
-fi
-
-# brew installation
-BREWFILE=$(which brew)
-
-if [ "$MAC" -eq 1 ] && [ -z "$BREWFILE" ]; then
-  echo "Installing Homebrew"
-  echo -ne '\n' | curl -fsSkL raw.github.com/mxcl/homebrew/go | ruby
-  echo ""
-elif [ "$MAC" -eq 1 ] && [ "$BREWFILE" ]; then
-  echo "You've got brew, nice work chap!"
-fi
-
-# checking baseline dependencies
-CURLFILE=$(which curl)
-RUBYFILE=$(which ruby)
-NODEFILE=$(which node)
-GEMFILE=$(which gem)
-COMPASSFILE=$(which compass)
-COMPASS=1
-
-# check for curl
-if [ -z "$CURLFILE" ]; then
-  echo "Woah! I need curl to carry on, chap!"
-  exit 1
-fi
-
-# sudo checks, don't try this at home, kids
-NEEDSUDO=0
-CHECKADMIN=$( ls -ld /usr/local/bin | grep "admin" )
-CHECKROOT=$( ls -ld /usr/local/bin | grep "root" )
-CHECKLINK=$( ls -ld /usr/local/ | grep "$USER" )
-
-if [ "$CHECKADMIN" ]; then
-  NEEDSUDO=1
-elif [ "$CHECKROOT" ]; then
-  NEEDSUDO=1
-elif [ -z "$CHECKLINK" ]; then
-  NEEDSUDO=1
-elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1]; then
-  NEEDSUDO=1
-elif [ -z "$NODEFILE" ]; then
-  NEEDSUDO=1
-elif [ -z "$COMPASSFILE" ]; then
-  NEEDSUDO=1
-fi
-
-# packages to automatically be installed
-PACKAGESMAC='git optipng jpeg-turbo phantomjs'
-PACKAGESLINUX='optipng libjpeg-turbo8 phantomjs'
-DEBGIT='git-core'
-OTHERGIT='git'
-
-
-echo "                                                            "
-echo "             .-:/+ossyhhhddddddddhhhysso+/:-.               "
-echo "       ./oymNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmho/.         "
-echo "     .yNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNh'       "
-echo "     -NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN-       "
-echo "      dNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNd        "
-echo "      +NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN+        "
-echo "      .NNNNNNNNNNNNNNNNNNNdhyyyhmNNNNNNNNNNNNNNNNNN.        "
-echo "       hNNNNNNNNNNNNNNNmssyhshshyoyNNNNNNNNNNNNNNNh         "
-echo "       /NNNNNNNNNNNNNNd+ds++yhoooyy+NNNNNNNNNNNNNN/         "
-echo "       'NNNNNNNNNNNNNN/do+hsosoys/hssNNNNNNNNNNNNm'         "
-echo "        hNNNNNNNNNNNNN:N//d:hmooh+sh+NNNNNNNNNNNNy          "
-echo "        /No---------+Nosh+oyyssyo/d+hm:--------yN:          "
-echo "        'Ny          omssyy/ys/ssyohm:         dm           "
-echo "    -----dN-----------+mmyssyyssshmd/---------:Nh-----      "
-echo "   'dmmmmNNNNNNNNNNNNNNNNNNNmmmNNNNNNNNNNNNNNNNNNmmmmh      "
-echo "    /NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN:      "
-echo "    'yhhhhdNNdddddddddmNNNdhhhhhhhhhhhhhhhhhhhhhhhhhs       "
-echo "          :Nm'''.:oso+:/smd:      '-/oso:.'                 "
-echo "          'NN' /dNNNNNmo':Nm'    'smNNNNNd:                 "
-echo "           hN/ .+hdmmho-  hN:     -sdmmdy/'                 "
-echo "           /Nh    '.'     hN/        '.'                    "
-echo "            mN-           hN/.'                             "
-echo "            :Nd'          ymdddy'                           "
-echo "             sNy'        '-:::::.'                          "
-echo "              sNs'   ':ohdmNNyNNmdyo:'                      "
-echo "               oNh--smNNNNNNd'dNNNNNNms-                    "
-echo "                :mNNNNNNNNNh. .dNNNNNNNNy.                  "
-echo "                :mNNNNNNNd/'   '+dNNNNNNNm-                 "
-echo "               'ydmmmdmNms+:-..'  -+ydmmmds'                "
-echo "                       ./oyhmmms                            "
-echo "                                                            "
-echo ""
-echo ""
-echo "                   Welcome to Yeoman! "
-echo ""
-echo ""
-echo "We're going to check some dependencies and install them if they're not present"
-echo ""
-echo "Stand by..."
-echo ""
-
-# Some utility parts:
-# 0. Sudo checks
-# 1. Grab a temporary folder for us to operate in
-# 2. Find a tar executable
-
-#sudo checks
-if [ "$NEEDSUDO" -eq 1 ]; then
-  echo "Please authorize the installer:"
-  sudo -v
-  # sudo keep-alive: gist.github.com/3118588
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-fi
-
-# set the temp dir
-TMP="${TMPDIR}"
-if [ "x$TMP" = "x" ]; then
-  TMP="/tmp"
-fi
-TMP="${TMP}/yeoman.$$"
-rm -rf "$TMP" || true
-mkdir "$TMP"
-if [ $? -ne 0 ]; then
-  echo "Failed to mkdir $TMP" >&2
-  exit 1
-fi
-
-# Check the user has tar installed.
-tar="${TAR}"
-if [ -z "$tar" ]; then
-  tar="${npm_config_tar}"
-fi
-if [ -z "$tar" ]; then
-  tar=`which tar 2>&1`
-  ret=$?
-fi
-if [ $ret -eq 0 ] && [ -x "$tar" ]; then
-  echo "tar=$tar"
-  echo "Good gracious! You've got this version of 'tar' installed:"
-  $tar --version
-  ret=$?
-fi
-if [ $ret -eq 0 ]; then
-  (exit 0)
-else
-  echo "No suitable tar program found."
-  exit 1
-fi
-
-check_or_install_brew_pkg() {
-  FILELOCATION=$(which $1)
-  if [ "$FILELOCATION" ]; then
-    echo "$1 is installed."
-  else
-    echo "Installing $1..."
-    brew install $1
-  fi
+# This prints the ✘ in red,
+# rest in bold.
+sad_print(){
+  printf '\e[31m%s\e[0m \e[1m%s\e[0m %s\n' "✘" "$1" "$2"
 }
 
+# This prints ✓ in green,
+# rest in bold.
+happy_print(){
+  printf '\e[32m%s\e[0m \e[1m%s\e[0m %s\n' "✓" "$1" "$2"
+}
+
+# print extra descriptions for failure states
+desc_print(){
+  printf "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "$1" "$2" "$3"
+}
+
+
+# audit \o/
+
 echo ""
+echo "Wotcha! Well hi there. "
+echo "Thanks for your interest in Yeoman."
+echo ""
+echo "Below is a quick audit I've run on your system to see if you have everything you need for Yeoman:"
 
-# where will we return to?
-BACK="$PWD"
-cd "$TMP"
+if [[ $mac = 1 ]]; then
+  # xcode cli test.
+  cli=$(check_set $clangfile)
 
-#check for and install ruby if needed
-if [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 1 ]; then
-  echo "Installing Ruby"
-  sudo apt-get -y install libruby1.9.1 ruby1.9.1 rubygems1.9.1
-elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 2 ]; then
-  echo "Installing Ruby"
-  sudo yum -y install ruby rubygems
-elif [ -z "$RUBYFILE" ] && [ "$LINUX" -eq 1 ] && [ "$PKGMGR" -eq 4 ]; then
-  echo "Installing Ruby"
-  sudo zypper install -y ruby rubygems
-elif [ "$MAC" -eq 1 ] && [[ "$RUBYCHECK" < 1.8.7 ]]; then
-  echo "Error you need to update your ruby version. Yeoman requires 1.8.7 or newer for it's use of compass."
-  COMPASS=0
-elif [ "$RUBYFILE" ]; then
-  echo "Ruby is installed."
-else
-  echo "Unable to determine ruby configuration, skipping compass install."
-  COMPASS=0
+  # brew test.
+  brew=$(check_set $brewfile)
 fi
 
-echo ""
+if [[ $linux = 1 ]]; then
+  # curl test.
+  curl=$(check_set $curlfile)
+fi
 
-#ensure node is installed
-if [ "$NODEFILE" ]; then
-  SYSNODE=$(node -e 'console.log(process.versions.node);')
-  if [[ "$SYSNODE" < "0.8.0" ]]; then
-    echo "your node version is outdated, please update to 0.8.0 or later."
-    exit 1
-  else
-    echo "Node.js is installed and up to date."
-  fi
-else
-  echo "Installing Node.js"
-  if [ "$MAC" -eq 1 ]; then
-    echo "Downloading Node.js for Mac."
-    curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER.pkg
-    echo "Node.js downloaded, starting installer."
-    sudo installer -pkg node-v$NODEVER.pkg -target /
-  elif [ "$LINUX" -eq 1 ]; then
-    echo "Downloading Node.js for Linux."
-    MACHINE_TYPE=`uname -m`
-      if [ ${MACHINE_TYPE} == 'x86_64' ]; then
-        curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER-linux-x64.tar.gz
-        echo "installing Node.js for linux."
-        tar xvfz node-v$NODEVER-linux-x64.tar.gz
-        cd node-v$NODEVER-linux-x64
-        sudo cp -r * /usr/local/
-        cd ..
-      else
-        curl -O http://nodejs.org/dist/v$NODEVER/node-v$NODEVER-linux-x86.tar.gz
-        echo "installing Node.js for linux."
-        tar xvfz node-v$NODEVER-linux-x86.tar.gz
-        cd node-v$NODEVER-linux-x86
-        sudo cp -r * /usr/local/
-        cd ..
-      fi
-  else
-    echo "An error occurred installing Node.js"
-    exit 1
+# node test
+node=$(check_set $nodefile)
+if [[ $node == 1 ]]; then
+  nodever=$(node -e 'console.log(process.versions.node);')
+  # node version check
+  if [[ "$nodever" < "$reqnode" ]]; then
+    node=2
   fi
 fi
 
-echo ""
-
-#install the rest of the dependencies (MAC)
-if [ "$MAC" -eq 1 ]; then
-  echo "Installing dependencies for OS X."
-  for package in $PACKAGESMAC
-  do
-    check_or_install_brew_pkg $package
-  done
-  if [ -z "$CHECKLINK" ]; then
-    sudo chown -R $USER /usr/local
-  fi
-  brew link jpeg-turbo
-fi
-
-#install the rest of the dependencies (LINUX)
-if [ "$LINUX" -eq 1 ]; then
-  echo "Installing dependencies for Linux."
-  echo "Installing $PACKAGESLINUX"
-  if [ "$PKGMGR" -eq 1 ]; then
-    sudo apt-get -y install $PACKAGESLINUX $DEBGIT
-  elif [ "$PKGMGR" -eq 2 ]; then
-    sudo yum -y install $PACKAGESLINUX $OTHERGIT
-  elif [ "$PKGMGR" -eq 3 ]; then
-    sudo up2date install $PACKAGESLINUX $OTHERGIT
-  elif [ "$PKGMGR" -eq 4 ]; then
-    sudo zypper install -y $PACKAGESLINUX $OTHERGIT
+# ruby test
+ruby=$(check_set $rubyfile)
+if [[ $ruby == 1 ]]; then
+  rubyver=$(ruby -e 'print RUBY_VERSION')
+  # ruby version check
+  if [[ "$rubyver" < "$reqruby" ]]; then
+    ruby=2
   fi
 fi
 
-#check for compass
-echo ""
-if [ "$COMPASSFILE" ]; then
-  echo "Compass is already installed, ensuring you have the latest release, for good measure."
-  sudo gem update compass
-elif [ "$COMPASS" -eq 0 ]; then
-  echo "Ruby was not detected or is not configured correctly, skipping compass."
-elif [ -z "$COMPASSFILE" ] && [ "$COMPASS" -eq 1 ]; then
-  echo "Install compass for CSS magic."
-  sudo gem install compass
+
+# compass test
+compass=$(check_set $compassfile)
+if [[ $compass == 1 ]];then
+  compassver=$(compass -qv)
+  # compass version check
+  if [[ "$compassver" < "$reqcompass" ]]; then
+    compass=2
+  fi
 fi
 
-#dependencies done. woo!
-echo ""
-echo "Now the dependencies are sorted let's grab the latest yeoman goodness"
 
-#install yeoman as a global npm package
-echo ""
-echo "Alright buckaroo, hold on to your hats.."
-echo "We're about to install the yeoman CLI, which will in turn install quite a few node modules"
-echo "We're going to move fast, but once we're done, "
-echo "you'll have the power of a thousand developers at your blinking cursor."
-echo "Okay here we go..."
+git=$(check_set $gitfile)
+gem=$(check_set $gemfile)
+phantomjs=$(check_set $phantomjsfile)
+jpegturbo=$(check_set $jpegturbofile)
+optipng=$(check_set $optipngfile)
+yeoman=$(check_set $yeomanfile)
 
-if [ "$NEEDSUDO" -eq 1 ]; then
-  echo ""
-  echo "You *may* be prompted now for your sudo password to kick off the npm install. Please hold."
-  sudo npm install yeoman -g
-else
-  npm install yeoman -g
+# display results
+#
+# results logic
+# passes first
+# fails second
+
+echo ""
+
+# passes
+if [[ "$mac" = 1 ]]; then
+  [ "$cli" -eq 1 ] &&  happy_print "Command Line Tools for Xcode" "are installed! "
+  [ "$brew" -eq 1 ] && happy_print "Homebrew" "is installed."
 fi
 
-echo ""
-if haveProg yeoman; then
-  echo "Yah Hoo! Yeoman global is in place."
-
-  # Welcome wagon
-  echo ""
-  echo "My my, I hope you enjoyed that as much as I did."
-  echo "Yeoman and all its dependencies are now installed!"
-  echo ""
-  echo "Now that we've got our ducks in a row..."
-  echo "You should try starting a new project with yeoman."
-  echo "... might I suggest: "
-  echo "       mkdir myYeomanApp"
-  echo "       cd myYeomanApp   "
-  echo "       yeoman init      "
-  echo ""
-  echo "See you on the other side!"
-
-else
-  echo "There looks to be a problem with the install. :("
-  echo "Please follow the instructions at https://github.com/yeoman/yeoman/wiki/Manual-Install "
+if [[ "$linux" = 1 ]]; then
+  [ "$curl" -eq 1 ] && happy_print "curl" "is present, phew."
 fi
-echo ""
 
-# hop back to start and kill our temp folder off
-cd "$BACK" && rm -rf "$TMP"
+[ "$git" -eq 1 ] && happy_print "git" "is installed, nice one."
+[ "$node" -eq 1 ] && happy_print "NodeJS" "is installed."
+[ "$ruby" -eq 1 ] && happy_print "ruby" "is installed."
+[ "$gem" -eq 1 ] && happy_print "RubyGems" "is installed."
+[ "$compass" -eq 1 ] && happy_print "Compass" "is installed."
+[ "$phantomjs" -eq 1 ] && happy_print "PhantomJS" "is installed."
+[ "$jpegturbo" -eq 1 ] && happy_print "jpegtran" "is installed."
+[ "$optipng" -eq 1 ] && happy_print "optipng" "is installed."
+[ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "... installed!"
 
-
-if [ "$COMPASS" -eq 0 ]; then
-  echo ""
-  echo "Install hiccup: no compass"
-  echo "Sorry chap, compass wasn't setup because there was a problem with your ruby setup. You can check the documentation here for help: http://compass-style.org/install/ "
+# failures
+if [[ "$mac" = 1 ]]; then
+  [ "$cli" -eq 0 ]  && \
+    sad_print "Command Line Tools for Xcode" "" && \
+    desc_print "Visit http://stackoverflow.com/a/9329325/89484 for installation options."
+  [ "$brew" -eq 0 ] && \
+    sad_print "Homebrew" "" && \
+    desc_print "Install Homebrew from the instructions at https://github.com/mxcl/homebrew/wiki/Installation " && \
+    desc_print "For best results, after install, be sure to run" "brew doctor" "and follow the recommendations."
 fi
+
+if [[ "$linux" = 1 ]]; then
+  [ "$curl" -eq 0 ] && sad_print "curl"
+fi
+
+[ "$git" -eq 0 ] && \
+  sad_print "git" "" && \
+  desc_print "Install through your package manager. " && \
+  desc_print "For example, with homebrew:" "brew install git"
+[ "$node" -eq 0 ] && \
+  sad_print "NodeJS" "" && \
+  desc_print "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ "
+[ "$ruby" -eq 0 ] && \
+  sad_print "ruby"  "" && \
+  desc_print "Check your ruby with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
+[ "$gem" -eq 0 ] && \
+  sad_print "RubyGems" "" && \
+  desc_print "You'll pick this up with your ruby installation. "
+[ "$compass" -eq 0 ] && \
+  sad_print "Compass"  "" && \
+  desc_print "is not installed: http://compass-style.org/install/ "
+[ "$phantomjs" -eq 0 ] && \
+  sad_print "PhantomJS"  "" && \
+  desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick!"
+[ "$jpegturbo" -eq 0 ] && \
+  sad_print "jpegtran"  "" && \
+  desc_print "On Mac," "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
+[ "$optipng" -eq 0 ] && \
+  sad_print "optipng"  "" && \
+  desc_print "On Mac," "brew install optipng" "will sort you out."
+[ "$yeoman" -eq 0 ] && \
+  sad_print "yeoman"  "" && \
+  desc_print "You're missing yeoman!" "npm install -g yeoman" "will sort you out. You may need sudo."
+
+
+
+echo ""
+echo "Help me out and install anything that's missing above. Additional help at http://goo.gl/XoyWI "
+echo ""
+printf "%s \e[47m\e[0;35m%s\e[0m %s\n" "Once you've ensured all of the above dependencies are present, we can start up Yeoman. Type" "yeoman" "at your prompt to get started."
+echo ""
