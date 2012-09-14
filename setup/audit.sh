@@ -28,16 +28,16 @@ else
 fi
 
 # Dependency checks
-curlfile=$(command -v curl)
-gitfile=$(command -v git)
-rubyfile=$(command -v ruby)
-nodefile=$(command -v node)
-gemfile=$(command -v gem)
-compassfile=$(command -v compass)
-brewfile=$(command -v brew)
+     curlfile=$(command -v curl)
+      gitfile=$(command -v git)
+     rubyfile=$(command -v ruby)
+     nodefile=$(command -v node)
+      gemfile=$(command -v gem)
+  compassfile=$(command -v compass)
+     brewfile=$(command -v brew)
 phantomjsfile=$(command -v phantomjs)
 jpegturbofile=$(command -v jpegtran)
-clangfile=$(command -v clang)
+    clangfile=$(command -v clang)
 
 
 # Check if installed.
