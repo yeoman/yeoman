@@ -10,24 +10,24 @@
 # todo
 # display results
 
-# requirements (versions required for yeoman)
+# Requirements (versions required for yeoman)
 reqnode=0.8.0
 reqruby=1.8.7
 reqcompass=0.12.1
 
-# check os
+# Check os
 os=$(uname -s)
 
-if [[ "$os" == "darwin" ]]; then
+if [[ "$os" == "Darwin" ]]; then
   mac=1
-elif [[ "$os" == "linux" ]]; then
+elif [[ "$os" == "Linux" ]]; then
   linux=1
 else
   echo "os not supproted!"
   exit 1
 fi
 
-# dependency checks
+# Dependency checks
 curlfile=$(command -v curl)
 gitfile=$(command -v git)
 rubyfile=$(command -v ruby)
@@ -40,9 +40,11 @@ jpegturbofile=$(command -v jpegtran)
 clangfile=$(command -v clang)
 
 
+# Check if installed.
 check_set(){
-  [ -z "$1" ] && echo 1 || echo 0
+  [[ -x "$1" ]]  && echo 1 || echo 0
 }
+
 # audit \o/
 
 echo "wotcha! well, hello! below is a quick audit i have run to see if everything is in place for yeoman......
@@ -77,7 +79,7 @@ fi
 # ruby test
 ruby=$(check_set $rubyfile)
 if [[ $ruby == 1 ]]; then
-  rubyver=$(ruby -e 'print ruby_version')
+  rubyver=$(ruby -e 'print RUBY_VERSION')
   # ruby version check
   if [[ "$rubyver" < "$reqruby" ]]; then
     ruby=2
