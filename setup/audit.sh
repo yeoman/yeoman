@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# audit.sh: audit system and check dependencies
+# audit system and check dependencies
+# We aren't installing anything in this script, we're only checking your system for you and reporting back.
 
 # logic
 # 1 = installed, correct version.
 # 0 = not installed.
 # 2 = installed, wrong version.
 
-# todo
-# display results
 
 # Requirements (versions required for yeoman)
 reqnode=0.8.0
@@ -69,10 +68,9 @@ desc_print(){
 
 echo ""
 echo "Wotcha! Well hi there. "
-echo "Thanks for installing Yeoman."
+echo "Thanks for your interest in Yeoman."
 echo ""
-echo "Below is a quick audit I've run on your system to see if you have everything you need for Yeoman:
-"
+echo "Below is a quick audit I've run on your system to see if you have everything you need for Yeoman:"
 
 if [[ $mac = 1 ]]; then
   # xcode cli test.
@@ -149,10 +147,10 @@ fi
 [ "$ruby" -eq 1 ] && happy_print "ruby" "is installed."
 [ "$gem" -eq 1 ] && happy_print "RubyGems" "is installed."
 [ "$compass" -eq 1 ] && happy_print "Compass" "is installed."
-[ "$phantomjs" -eq 1 ] && happy_print "PhamtomJS" "is installed."
+[ "$phantomjs" -eq 1 ] && happy_print "PhantomJS" "is installed."
 [ "$jpegturbo" -eq 1 ] && happy_print "jpegtran" "is installed."
 [ "$optipng" -eq 1 ] && happy_print "optipng" "is installed."
-[ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "is installed!"
+[ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "... installed!"
 
 # failures
 if [[ "$mac" = 1 ]]; then
@@ -186,7 +184,7 @@ fi
   sad_print "Compass"  "" && \
   desc_print "is not installed: http://compass-style.org/install/ "
 [ "$phantomjs" -eq 0 ] && \
-  sad_print "PhamtomJS"  "" && \
+  sad_print "PhantomJS"  "" && \
   desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick!"
 [ "$jpegturbo" -eq 0 ] && \
   sad_print "jpegtran"  "" && \
@@ -201,5 +199,7 @@ fi
 
 
 echo ""
+echo "Help me out and install anything that's missing above. Additional help at http://goo.gl/XoyWI "
 echo ""
-echo "Please ensure all of the above tests have passed before running yeoman."
+printf "%s \e[47m\e[0;35m%s\e[0m %s\n" "Once you've ensured all of the above dependencies are present, we can start up Yeoman. Type" "yeoman" "at your prompt to get started."
+echo ""
