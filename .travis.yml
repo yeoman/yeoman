@@ -1,6 +1,6 @@
 language: node_js
 node_js:
   - 0.8
-before_script: cd cli
+before_install: cd cli
 notifications:
   irc: irc.freenode.org#yeoman
