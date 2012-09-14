@@ -1,4 +1,4 @@
-# Welcome, Friend!
+# Welcome, Friend! [![Build Status](https://secure.travis-ci.org/yeoman/yeoman.png)](http://travis-ci.org/yeoman/yeoman)
 
 ## What am I?
 
