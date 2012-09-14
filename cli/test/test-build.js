@@ -1,11 +1,13 @@
-
-var fs = require('fs'),
-  grunt = require('grunt'),
-  assert = require('assert'),
-  helpers = require('./helpers');
+/*global describe, before, after, beforeEach, afterEach, describe, it */
+var fs      = require('fs');
+var grunt   = require('grunt');
+var assert  = require('assert');
+var helpers = require('./helpers');
 
 var opts = grunt.cli.options;
 opts.redirect = !opts.silent;
+
+// XXX Conform to coding guidelines, mostly literral spacing stuff
 
 describe('yeoman init && yeoman build', function() {
 
@@ -17,7 +19,14 @@ describe('yeoman init && yeoman build', function() {
     }
   }));
 
-  describe('When I run init app with default prompts', function() {
+  // Handle missing dependencies during test run, we only run compass /
+  // manifest related test when necessary binaries are available. This helper
+  // defines the respective boolean flag on the mocha test context, and used
+  // within some of our tests to conditionnaly go through.
+  before(helpers.installed('compass'));
+  before(helpers.installed('phantomjs'));
+
+  describe('When I run init app with default prompts', function(done) {
     it('should output to stdout expected file writes', function(done) {
       var yeoman = helpers.run('init --force', opts);
       yeoman
@@ -106,7 +115,7 @@ describe('yeoman init && yeoman build', function() {
     before(function() {
       var self = this;
       // setup the runnable, the actual run happens on last step
-      this.yeoman = helpers.run('build --no-color', opts);
+      this.yeoman = helpers.run('build:test --no-color', opts);
     });
 
     afterEach(function(done) {
@@ -121,7 +130,6 @@ describe('yeoman init && yeoman build', function() {
         .expect(/Running "clean(:.+)?" (\(.+\) )?task/)
         .expect(/Running "mkdirs(:.+)?" (\(.+\) )?task/)
         .expect(/Running "coffee(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "compass(:.+)?" (\(.+\) )?task/)
         .expect(/Running "usemin-handler(:.+)?" (\(.+\) )?task/)
         .expect(/Running "rjs(:.+)?" (\(.+\) )?task/)
         .expect(/Running "concat(:.+)?" (\(.+\) )?task/)
@@ -129,15 +137,30 @@ describe('yeoman init && yeoman build', function() {
         .expect(/Running "img(:.+)?" (\(.+\) )?task/)
         .expect(/Running "rev(:.+)?" (\(.+\) )?task/)
         .expect(/Running "usemin(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "manifest(:.+)?" (\(.+\) )?task/)
         .expect(/Running "copy(:.+)?" (\(.+\) )?task/)
         .expect(/Running "time(:.+)?" (\(.+\) )?task/);
+
+      if( this.compass ) {
+        this.yeoman.expect(/Running "compass(:.+)?" (\(.+\) )?task/);
+      }
+
+      if( this.phantomjs ) {
+        this.yeoman.expect(/Running "manifest(:.+)?" (\(.+\) )?task/);
+      }
     });
 
     describe('build', function() {
       it('should output the list of task at the beginning of the build', function() {
-        this.yeoman
-          .expect(/intro clean coffee compass mkdirs usemin-handler rjs concat css img rev usemin manifest copy time/);
+        this.yeoman.expect(/intro clean/);
+        this.yeoman.expect(/mkdirs usemin-handler rjs concat css img rev usemin/);
+
+        if( this.compass ) {
+          this.yeoman.expect(/compass mkdirs/);
+        }
+
+        if( this.phantomjs) {
+          this.yeoman.expect(/usemin manifest copy/);
+        }
       });
     });
 
@@ -159,10 +182,12 @@ describe('yeoman init && yeoman build', function() {
 
     describe('compass', function() {
       it('should go through compass:dist', function() {
+        if( !this.compass ) { return; }
         this.yeoman.expect(/Running "compass:dist" \(compass\) task/);
       });
 
       it('should write to styles/main.css', function() {
+        if( !this.compass ) { return; }
         this.yeoman.expect(/(overwrite|identical|create)(.+)styles\/main.css/);
       });
     });
@@ -243,6 +268,7 @@ describe('yeoman init && yeoman build', function() {
         this.yeoman.expect('Starting static web server on port 3501');
       });
       it('should write to manifest.appcache', function() {
+        if( !this.phantomjs ) { return; }
         this.yeoman
           .expect('Writing to manifest.appcache')
           .expect('This manifest was created by confess.js, http://github.com/jamesgpearce/confess')
