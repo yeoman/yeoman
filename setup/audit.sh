@@ -37,6 +37,7 @@ fi
      brewfile=$(command -v brew)
 phantomjsfile=$(command -v phantomjs)
 jpegturbofile=$(command -v jpegtran)
+  optipngfile=$(command -v optipng)
     clangfile=$(command -v clang)
    yeomanfile=$(command -v yeoman)
 
@@ -122,6 +123,7 @@ git=$(check_set $gitfile)
 gem=$(check_set $gemfile)
 phantomjs=$(check_set $phantomjsfile)
 jpegturbo=$(check_set $jpegturbofile)
+optipng=$(check_set $optipngfile)
 yeoman=$(check_set $yeomanfile)
 
 # display results
@@ -149,6 +151,7 @@ fi
 [ "$compass" -eq 1 ] && happy_print "Compass" "is installed."
 [ "$phantomjs" -eq 1 ] && happy_print "PhamtomJS" "is installed."
 [ "$jpegturbo" -eq 1 ] && happy_print "jpegtran" "is installed."
+[ "$optipng" -eq 1 ] && happy_print "optipng" "is installed."
 [ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "is installed!"
 
 # failures
@@ -163,11 +166,11 @@ if [[ "$mac" = 1 ]]; then
 fi
 
 if [[ "$linux" = 1 ]]; then
-  [ "$curl" -eq 0 ] && sad_print "curl" "is not installed."
+  [ "$curl" -eq 0 ] && sad_print "curl"
 fi
 
 [ "$git" -eq 0 ] && \
-  sad_print "git" && \
+  sad_print "git" "" && \
   desc_print "Install through your package manager. " && \
   desc_print "For example, with homebrew:" "brew install git"
 [ "$node" -eq 0 ] && \
@@ -188,6 +191,9 @@ fi
 [ "$jpegturbo" -eq 0 ] && \
   sad_print "jpegtran"  "" && \
   desc_print "On Mac," "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
+[ "$optipng" -eq 0 ] && \
+  sad_print "optipng"  "" && \
+  desc_print "On Mac," "brew install optipng" "will sort you out."
 [ "$yeoman" -eq 0 ] && \
   sad_print "yeoman"  "" && \
   desc_print "You're missing yeoman!" "npm install -g yeoman" "will sort you out. You may need sudo."
