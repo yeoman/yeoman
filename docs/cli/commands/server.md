@@ -25,7 +25,7 @@ The built-in server also supports serving different profiles of your application
 
 * `yeoman server` and `server:app` compile to and serve `/temp`, an intermediate build of your application.
 * `yeoman server:dist` serves up the optimized final version of your application. This will just serve up the `/dist` directory if it exists and you will need to run `yeoman build` in order to generate the production build of your app.
-* `yeoman server:test` serves up the test suite
+* `yeoman server:test` serves up the test suite and your `app`. It also ensure any change to your code or tests will cause the browser to refresh.
 * `yeoman server:reload` forces the port to be LiveReload standard port: 35729 and prevents the automatic default browser opening. Handy for those wishing to use livereload extensions with other systems / HTTP servers than the one provided by Yeoman out of the box.
 
 ### further notes
