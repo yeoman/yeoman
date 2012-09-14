@@ -1,10 +1,11 @@
 
-var fs = require('fs'),
-  path = require('path'),
-  spawn = require('child_process').spawn,
-  rimraf = require('rimraf'),
-  mkdirp = require('mkdirp'),
-  Runnable = require('./runnable');
+var fs       = require('fs');
+var path     = require('path');
+var spawn    = require('child_process').spawn;
+var rimraf   = require('rimraf');
+var mkdirp   = require('mkdirp');
+var which    = require('which');
+var Runnable = require('./runnable');
 
 // top level exports
 var helpers = module.exports;
@@ -140,3 +141,19 @@ helpers.gruntfile = function(options) {
   };
 };
 
+
+// Mocha before helper. Takes a command String to be checked against `which`
+// package, and a callback to call on completion, most likely the mocha async
+// `done` callback.
+//
+// Setups the relevant Boolean flag on the test context.
+//
+helpers.installed = function installed(command, cb) {
+  var ctx = this;
+  return function installed(done) {
+    which(command, function(err) {
+      ctx[command] = !err;
+      done();
+    });
+  };
+};
