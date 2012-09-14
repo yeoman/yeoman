@@ -58,6 +58,12 @@ happy_print(){
   printf '\e[32m%s\e[0m \e[1m%s\e[0m %s\n' "✓" "$1" "$2"
 }
 
+# print extra descriptions for failure states
+desc_print(){
+  printf "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "$1" "$2" "$3"
+}
+
+
 # audit \o/
 
 echo ""
@@ -149,11 +155,11 @@ fi
 if [[ "$mac" = 1 ]]; then
   [ "$cli" -eq 0 ]  && \
     sad_print "Command Line Tools for Xcode" "" && \
-    printf "\tVisit http://stackoverflow.com/a/9329325/89484 for installation options.\n"
+    desc_print "Visit http://stackoverflow.com/a/9329325/89484 for installation options."
   [ "$brew" -eq 0 ] && \
     sad_print "Homebrew" "" && \
-    printf "\tInstall Homebrew from the instructions at https://github.com/mxcl/homebrew/wiki/Installation \n" && \
-    printf  "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "For best results, after install, be sure to run" "brew doctor" "and follow the recommendations."
+    desc_print "Install Homebrew from the instructions at https://github.com/mxcl/homebrew/wiki/Installation " && \
+    desc_print "For best results, after install, be sure to run" "brew doctor" "and follow the recommendations."
 fi
 
 if [[ "$linux" = 1 ]]; then
@@ -162,29 +168,29 @@ fi
 
 [ "$git" -eq 0 ] && \
   sad_print "git" && \
-  printf "\tInstall through your package manager. \n" && \
-  printf "\tFor example, with homebrew: \e[47m\e[0;35m%s\e[0m %s\n" "brew install git"
+  desc_print "Install through your package manager. " && \
+  desc_print "For example, with homebrew:" "brew install git"
 [ "$node" -eq 0 ] && \
   sad_print "NodeJS" "" && \
-  printf "\tI recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ \n"
+  desc_print "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ "
 [ "$ruby" -eq 0 ] && \
   sad_print "ruby"  "" && \
-  printf "\t%s \e[47m\e[0;35m%s\e[0m %s\n" "Check your ruby with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
+  desc_print "Check your ruby with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
 [ "$gem" -eq 0 ] && \
   sad_print "RubyGems" "" && \
-  printf "\tYou'll pick this up with your ruby installation. \n"
+  desc_print "You'll pick this up with your ruby installation. "
 [ "$compass" -eq 0 ] && \
   sad_print "Compass"  "" && \
-  printf "\tis not installed: http://compass-style.org/install/ \n"
+  desc_print "is not installed: http://compass-style.org/install/ "
 [ "$phantomjs" -eq 0 ] && \
   sad_print "PhamtomJS"  "" && \
-  printf "\tFollow instructions at http://phantomjs.org/download.html - the binary installs are quick!\n"
+  desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick!"
 [ "$jpegturbo" -eq 0 ] && \
   sad_print "jpegtran"  "" && \
-  printf "\tOn Mac, \e[47m\e[0;35m%s\e[0m %s\n" "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
+  desc_print "On Mac," "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
 [ "$yeoman" -eq 0 ] && \
   sad_print "yeoman"  "" && \
-  printf "\tYou're missing yeoman! \e[47m\e[0;35m%s\e[0m %s" "npm install -g yeoman" "will sort you out. You may need sudo."
+  desc_print "You're missing yeoman!" "npm install -g yeoman" "will sort you out. You may need sudo."
 
 
 
