@@ -4,7 +4,7 @@
 
 Usage: `yeoman server`
 
-Launches a preview server on port 3051 that allows you to access a running version of your application locally.
+Launches a preview server on port 3501 that allows you to access a running version of your application locally.
 
 It also automatically fires up the `yeoman watch` process, so changes to any of the applications
 files cause the browser to refresh via [LiveReload](http://livereload.com). Should you not have
