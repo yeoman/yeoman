@@ -122,7 +122,7 @@ module.exports = function(grunt) {
 
   var now = +new Date();
   grunt.registerTask('time', 'Print sucess status with elapsed time', function() {
-    grunt.log.ok('Build sucess. Done in ' + ((+new Date() - now) / 1000) + 's');
+    grunt.log.ok('Build success. Done in ' + ((+new Date() - now) / 1000) + 's');
   });
 
   // Output some size info about a file, from a stat object.
