@@ -17,8 +17,7 @@ There are a number of useful questions we can answer with good metrics:
 - What locales are using the tool?
 - How long does it take for developers to upgrade to a new version?
 - What JS frameworks are people using?
-  - *Note: the V1 scope does not include an app stack.*
-- We just launched Yeoman v2.0 @ AwesomeConf JS 2013. Of course it was picked up by Hacker News! Pssht. But...how many new installs did we drive?
+- Imagine: We just launched Yeoman v2.0 @ AwesomeConf JS 2013. Of course it was picked up by Hacker News! Pssht. But...how many new installs did we drive?
 
 Turns out, [Google Analytics](http://www.google.com/analytics/) is excellent at handling all of these cases.
 
