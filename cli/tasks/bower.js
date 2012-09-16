@@ -121,7 +121,7 @@ module.exports = function(grunt) {
           Object.keys(deps).forEach(function(dep){
             // Quote key if it contains non a-z chars
             var key = /[^\w]/.test( dep ) ? '\'' + dep + '\'' : dep;
-            scripts+= "    " + key + ": '../../" + deps[dep].replace('.js','') + "',\n";
+            scripts+= ("    " + key + ": '../../" + deps[dep]).replace('.js','') + "',\n";
           });
 
           // read in the existing data-main config
