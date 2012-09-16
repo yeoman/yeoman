@@ -124,7 +124,7 @@ echo('');
 echo('Wotcha! Well hi there. ');
 echo( 'Thanks for your interest in Yeoman.');
 echo('');
-echo('Below is a quick audit I\'ve run on your system to see if you have everything you need for Yeoman:');
+echo('Below is a quick audit I\'ve run on your system to see if you have everything you need for Yeoman:\n');
 
 
 if(osType === 'Linux') {
@@ -141,12 +141,10 @@ for(var dep in deps) {
       var version = exec(dep +' -v', {silent:true}).output;
       if(version < deps[dep].ver){
         notInstalled.push(dep); //  Installed, but version mismatch.
-      }else{
-        installed.push(dep);
+        continue;
       }
-    }else{
-      installed.push(dep);
     }
+    installed.push(dep);
   }
 }
 
