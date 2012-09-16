@@ -28,7 +28,7 @@
     "url": "git://github.com/yeoman/yeoman.git"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/test-*.js test/generators/",
+    "test": "node node_modules/mocha/bin/mocha test/test-*.js",
     "manpages": "./scripts/docs-build"
   },
   "dependencies": {

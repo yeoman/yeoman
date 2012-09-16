@@ -48,11 +48,7 @@ helpers.run = function run(cmds, opts) {
 // Returns a function suitable to use with mocha's before/after hooks.
 helpers.directory = function directory(dir) {
   return function directory(done) {
-    var cwd = process.cwd(),
-      dirname = path.basename(cwd);
-
-    if(dirname === dir) return done();
-
+    process.chdir(path.join(__dirname, '../..'));
     rimraf(dir, function(err) {
       if(err) return done(err);
       mkdirp(dir, function(err) {
@@ -149,8 +145,8 @@ helpers.gruntfile = function(options) {
 // Setups the relevant Boolean flag on the test context.
 //
 helpers.installed = function installed(command, cb) {
-  var ctx = this;
   return function installed(done) {
+    var ctx = this;
     which(command, function(err) {
       ctx[command] = !err;
       done();
