@@ -149,8 +149,8 @@ helpers.gruntfile = function(options) {
 // Setups the relevant Boolean flag on the test context.
 //
 helpers.installed = function installed(command, cb) {
-  var ctx = this;
   return function installed(done) {
+    var ctx = this;
     which(command, function(err) {
       ctx[command] = !err;
       done();

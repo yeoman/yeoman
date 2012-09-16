@@ -1,5 +1,6 @@
 /*global describe, before, after, beforeEach, afterEach, describe, it */
 var fs      = require('fs');
+var path    = require('path');
 var grunt   = require('grunt');
 var assert  = require('assert');
 var helpers = require('./helpers');
@@ -27,48 +28,14 @@ describe('yeoman init && yeoman build', function() {
   before(helpers.installed('phantomjs'));
 
   describe('When I run init app with default prompts', function(done) {
-    it('should output to stdout expected file writes', function(done) {
+    before(function(done) {
       var yeoman = helpers.run('init --force', opts);
       yeoman
         // enter '\n' for both prompts, and grunt confirm
         .prompt(/would you like/i)
         .prompt(/Do you need to make any changes to the above before continuing?/)
-
-      /*// check few pattern in the process stdout
-        // Check app generator invoke
-        .expect(/Invoke (.+)?app/)
-
-        // top level files
-        .expect(/Writing Gruntfile\.js/)
-        .expect(/Writing package.json/)
-
-        // some expected files from h5bp
-        .expect(/Writing app\/index\.html/)
-        .expect(/Writing app\/404\.html/)
-        .expect(/Writing app\/styles\/main\.css/)
-        .expect(/Writing app\/scripts\/main\.js/)
-
-        // same for bootstrap
-        .expect(/Writing app\/scripts\/vendor\/bootstrap\/bootstrap-(.+)\.js/)
-
-        // stylesheet hook - sass:app - to be re-added if we decide to go back
-        // to use a hook for SASS part of the app generator, or simply delete
-        // this line
-        //
-        // .expect(/Invoke sass:app/)
-        .expect(/Writing app\/styles\/main\.scss/)
-        .expect(/Writing app\/styles\/_compass_twitter_bootstrap\.scss/)
-        .expect(/Writing app\/styles\/compass_twitter_bootstrap\/(.+).scss/)
-
-        // test hook - jasmine:app
-        .expect(/Invoke mocha:app/)
-        .expect(/Writing test\/index\.html/)
-        .expect(/Writing test\/lib\/chai\.js/)
-        .expect(/Writing test\/lib\/expect\.js/)
-        .expect(/Writing test\/lib\/mocha\/mocha\.css/)
-        .expect(/Writing test\/lib\/mocha\/mocha\.js/)
-        .expect(/Writing test\/runner\/mocha\.js/)*/
-
+        // check exit code
+        .expect(0)
         // run and done
         .end(done);
     });
@@ -108,172 +75,140 @@ describe('yeoman init && yeoman build', function() {
     it('should generate a Gruntfile.js file', function(done) {
       fs.stat('Gruntfile.js', done);
     });
-  });
 
-
-  describe('And I run a build', function() {
-    before(function() {
-      var self = this;
-      // setup the runnable, the actual run happens on last step
-      this.yeoman = helpers.run('build:test --no-color', opts);
-    });
-
-    afterEach(function(done) {
-      this.yeoman.end(done);
-    });
-
-    it('should run the correct set of task', function() {
-      this.yeoman
-        .expect(0)
-        // intro clean mkdirs coffee compass usemin-handler rjs concat css img rev usemin manifest copy time
-        .expect(/Running "build(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "clean(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "mkdirs(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "coffee(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "usemin-handler(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "rjs(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "concat(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "css(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "img(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "rev(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "usemin(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "copy(:.+)?" (\(.+\) )?task/)
-        .expect(/Running "time(:.+)?" (\(.+\) )?task/);
-
-      if( this.compass ) {
-        this.yeoman.expect(/Running "compass(:.+)?" (\(.+\) )?task/);
-      }
-
-      if( this.phantomjs ) {
-        this.yeoman.expect(/Running "manifest(:.+)?" (\(.+\) )?task/);
-      }
-    });
-
-    describe('build', function() {
-      it('should output the list of task at the beginning of the build', function() {
-        this.yeoman.expect(/intro clean/);
-        this.yeoman.expect(/mkdirs usemin-handler rjs concat css img rev usemin/);
-
-        if( this.compass ) {
-          this.yeoman.expect(/compass mkdirs/);
-        }
-
-        if( this.phantomjs) {
-          this.yeoman.expect(/usemin manifest copy/);
-        }
-      });
-    });
-
-    describe('mkdirs', function() {
-      it('should copy to the staging directory', function() {
-        this.yeoman
-          .expect(/Copying into/)
-          .expect(/Ignoring .gitignore, .ignore, .buildignore/)
-          .expect(/(.+)app -> (.+)temp/);
-      });
-    });
-
-
-    describe('coffee', function() {
-      it('should go through coffee:dist', function() {
-        this.yeoman.expect(/Running "coffee:dist" \(coffee\) task/);
-      });
-    });
-
-    describe('compass', function() {
-      it('should go through compass:dist', function() {
-        if( !this.compass ) { return; }
-        this.yeoman.expect(/Running "compass:dist" \(compass\) task/);
+    describe('And I run a build', function() {
+      before(function() {
+        // setup some very basic coffee setup, to test out
+        // coffee output
+        grunt.file.write('app/scripts/foo.coffee', 'foo = "yeo"');
       });
 
-      it('should write to styles/main.css', function() {
-        if( !this.compass ) { return; }
-        this.yeoman.expect(/(overwrite|identical|create)(.+)styles\/main.css/);
-      });
-    });
-
-    describe('img', function() {
-      it('should go through img:dist', function() {
-        this.yeoman.expect(/Running "img:dist" \(img\) task/);
-      });
-    });
-
-    describe('rjs', function() {
-      it('should optimize scripts/main', function() {
-        this.yeoman.expect(/rjs optimized module: (.+)/);
-      });
-    });
-
-    describe('concat', function() {
-      it('should write plugins.js concat target', function() {
-        this.yeoman
-          .expect(/Running "concat:scripts\/plugins\.js" \(concat\) task/)
-          .expect(/File "scripts\/plugins\.js" created\./);
+      before(function(done) {
+        // setup the runnable
+        this.yeoman = helpers.run('build:test --no-color', opts)
+          .expect(0)
+          .end(done);
       });
 
-      it('should write amd-app.js concat target', function() {
-        this.yeoman
-          .expect(/Running "concat:scripts\/amd-app.js" \(concat\) task/)
-          .expect(/File "scripts\/amd-app\.js" created\./);
-      });
-    });
-
-    describe('css', function() {
-      it('should process styles/main.css', function() {
-        this.yeoman
-          .expect(/Running "css:styles\/main.css" \(css\) task/)
-          .expect(/Writing css files to styles\/main.css/);
-      });
-    });
-
-    describe('rev', function() {
-      describe('rev: should find and process the following files', function() {
-        it('scripts/main.js >> {rev}.main.js', function() {
-          this.yeoman.expect(/scripts\/main.js >> ([a-z0-9]+)\.main\.js/i);
-        });
-        it('scripts/vendor/bootstrap-alert.js >> {rev}.bootstrap-alert.js', function() {
-          this.yeoman.expect(/scripts\/vendor\/bootstrap\/bootstrap-alert\.js >> ([a-z0-9]+)\.bootstrap-alert\.js/i);
-        });
-        it('scripts/vendor/jquery.min.js >> {rev}.jquery.min.js', function() {
-          this.yeoman.expect(/scripts\/vendor\/jquery.min\.js >> ([a-z0-9]+)\.jquery.min\.js/i);
-        });
-        it('scripts/vendor/require.js >> {rev}.require.js', function() {
-          this.yeoman.expect(/scripts\/vendor\/require\.js >> ([a-z0-9]+)\.require\.js/i);
+      describe('mkdirs', function() {
+        var dirs = ['index.html', 'images/', 'styles/', 'scripts/', 'templates'];
+        dirs.forEach(function(filepath) {
+          it('should copy ' + filepath + ' to the staging directory', function(done) {
+            fs.stat(path.join('temp', filepath), done);
+          });
         });
       });
-    });
 
-    describe('usemin', function() {
-      describe('usemin: should find and replace the following files', function() {
-        it('scripts/vendor/modernizr.min.js', function() {
-          this.yeoman
-            .expect('was <script src="scripts/vendor/modernizr.min.js')
-            .expect(/now <script src="scripts\/vendor\/([a-z0-9]+)\.modernizr.min\.js/i);
-        });
-        it('scripts/amp-app.js', function() {
-          this.yeoman
-            .expect('was <script src="scripts/amd-app.js')
-            .expect(/now <script src="scripts\/([a-z0-9]+)\.amd-app\.js/i);
-        });
-        it('styles/main.css', function() {
-          this.yeoman
-            .expect('was <link rel="stylesheet" href="styles/main.css')
-            .expect(/now <link rel="stylesheet" href="styles\/([a-z0-9]+)\.main\.css/i);
-        });
-      });
-    });
 
-    describe('manifest', function() {
-      it('should start a webserver automatically', function() {
-        this.yeoman.expect('Starting static web server on port 3501');
+      describe('coffee', function() {
+        it('should go through coffee:dist', function() {
+          // handled version file, get back filename via grunt globbing
+          var foo = grunt.file.expandFiles('temp/scripts/*.foo.js')[0];
+          assert.equal(grunt.file.read(foo), 'var foo;\n\nfoo = "yeo";\n');
+          assert.equal(grunt.file.read(foo), 'var foo;\n\nfoo = "yeo";\n');
+        });
       });
-      it('should write to manifest.appcache', function() {
-        if( !this.phantomjs ) { return; }
-        this.yeoman
-          .expect('Writing to manifest.appcache')
-          .expect('This manifest was created by confess.js, http://github.com/jamesgpearce/confess')
-          .expect(/styles\/([1-9a-z]+)\.main\.css/);
+
+      describe('compass', function() {
+        it('should go through compass:dist', function() {
+          if( !this.compass ) { return; }
+          var main = grunt.file.expandFiles('temp/styles/*.main.css')[0];
+          var body = grunt.file.read(main);
+          assert.ok(/article,aside,details/.test(body));
+        });
       });
+
+      describe('img', function() {
+        // TBD: setup some fixture, check that files in temp/images are smaller
+        // than the one in app/images
+        it('should go through img:dist');
+      });
+
+      describe('rjs', function() {
+        it('should optimize scripts/main', function() {
+          var file = grunt.file.expandFiles('temp/scripts/*.amd-app.js')[0];
+          var body = grunt.file.read(file);
+          assert.ok(/Hello from Yeoman!/, body);
+        });
+      });
+
+      describe('concat', function() {
+        it('should write plugins.js concat target', function() {
+          var file = grunt.file.expandFiles('temp/scripts/*.plugins.js')[0];
+          var body = grunt.file.read(file);
+
+          // some of the expected bootstrap plugins
+          ['affix', 'alert', 'dropdown', 'tooltip', 'modal', 'button'].forEach(function(str) {
+            assert.ok(body.indexOf(str) !== -1);
+          });
+        });
+
+        it('should write amd-app.js concat target', function() {
+          var file = grunt.file.expandFiles('temp/scripts/*.amd-app.js')[0];
+          var body = grunt.file.read(file);
+
+          // some of the expected pattern in this optimized minified file
+          ['Hello from Yeoman!', 'requirejs'].forEach(function(str) {
+            assert.ok(body.indexOf(str) !== -1);
+          });
+        });
+      });
+
+      describe('rev', function() {
+        describe('rev: should find and process the following files', function() {
+          it('scripts/main.js >> {rev}.main.js', function() {
+            var file = grunt.file.expandFiles('temp/scripts/*.main.js')[0];
+            assert.ok(/[a-z0-9]+\.main\.js/.test(file));
+          });
+          it('scripts/vendor/bootstrap-alert.js >> {rev}.bootstrap-alert.js', function() {
+            var file = grunt.file.expandFiles('temp/scripts/vendor/bootstrap/*.bootstrap-alert.js')[0];
+            assert.ok(/[a-z0-9]+\.bootstrap-alert\.js/.test(file));
+          });
+          it('scripts/vendor/jquery.min.js >> {rev}.jquery.min.js', function() {
+            var file = grunt.file.expandFiles('temp/scripts/vendor/*.jquery.min.js')[0];
+            assert.ok(/[a-z0-9]+\.jquery\.min\.js/.test(file));
+          });
+          it('scripts/vendor/require.js >> {rev}.require.js', function() {
+            var file = grunt.file.expandFiles('temp/scripts/vendor/*.require.js')[0];
+            assert.ok(/[a-z0-9]+\.require\.js/.test(file));
+          });
+        });
+      });
+
+      describe('usemin', function() {
+        before(function() {
+          this.body = grunt.file.read('temp/index.html');
+        });
+
+        describe('usemin: should find and replace the following files', function() {
+          it('scripts/vendor/modernizr.min.js', function() {
+            var file = path.basename(grunt.file.expandFiles('temp/scripts/vendor/*.modernizr.min.js')[0]);
+            assert.ok(this.body.indexOf(file) !== -1);
+          });
+          it('scripts/amp-app.js', function() {
+            var file = path.basename(grunt.file.expandFiles('temp/scripts/*.amd-app.js')[0]);
+            assert.ok(this.body.indexOf(file) !== -1);
+          });
+          it('styles/main.css', function() {
+            var file = path.basename(grunt.file.expandFiles('temp/styles/*.main.css')[0]);
+            assert.ok(this.body.indexOf(file) !== -1);
+          });
+        });
+      });
+
+      describe('manifest', function() {
+        it('should write to manifest.appcache', function() {
+          if( !this.phantomjs ) { return; }
+
+          var manifest = grunt.file.read('temp/manifest.appcache');
+          assert.ok(/CACHE:/.test(manifest));
+          assert.ok(/scripts\/[a-z0-9]+\.amd-app\.js/.test(manifest));
+          assert.ok(/scripts\/[a-z0-9]+\.plugins\.js/.test(manifest));
+          assert.ok(/scripts\/vendor\/[a-z0-9]+\.modernizr\.min\.js/.test(manifest));
+          assert.ok(/styles\/[a-z0-9]+\.main\.css/.test(manifest));
+        });
+      });
+
     });
 
   });
