@@ -262,6 +262,48 @@ module.exports = function(grunt) {
     grunt.task.run('watch');
   });
 
+
+  // This adds mod rewrite functionality to the server by
+  // setting an array of mod rewrite like strings in Gruntfile.js, e.g.:
+  //
+  // server: {
+  //   rewrite: [
+  //     '^posts/(.*)$ / [L]',
+  //     '^users/(.*)$ / [L]'
+  //   ]
+  // }
+  //
+  // This is typically useful for serving single page apps which use
+  // push-state, so that requests for application urls get redirected
+  // to the index.html or equivalent file.
+  //
+  // Currently supports the [L] terminating flag
+  
+  var rewriteMiddleware = function(rules) {
+    rules = (rules || []).map(function(rule) {
+      var parts = rule.split(' '),
+          regex = parts[0],
+          replace = parts[1],
+          last = !!parts[2];
+      
+      return {
+        regex: new RegExp(regex),
+        replace: replace,
+        last: last
+      };
+    });
+    
+    return function(req, res, next) {
+      rules.some(function(rewrite) {
+        req.url = req.url.replace(rewrite.regex, rewrite.replace);
+        return rewrite.last;
+      });
+      next();
+    };
+
+  };
+
+
   grunt.registerHelper('server', function(opts, cb) {
     cb = cb || function() {};
 
@@ -273,6 +315,8 @@ module.exports = function(grunt) {
     }
 
     middleware = middleware.concat([
+      // ModRewrite functionality
+      rewriteMiddleware(grunt.config('server.rewrite')),
       // also serve static files from the temp directory, and before the app
       // one (compiled assets takes precedence over same pathname within app/)
       connect.static(path.join(opts.base, '../temp')),
