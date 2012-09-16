@@ -190,6 +190,7 @@ describe('yeoman init && yeoman build', function() {
             assert.ok(this.body.indexOf(file) !== -1);
           });
           it('styles/main.css', function() {
+            if( !this.compass ) { return; }
             var file = path.basename(grunt.file.expandFiles('temp/styles/*.main.css')[0]);
             assert.ok(this.body.indexOf(file) !== -1);
           });
@@ -205,6 +206,8 @@ describe('yeoman init && yeoman build', function() {
           assert.ok(/scripts\/[a-z0-9]+\.amd-app\.js/.test(manifest));
           assert.ok(/scripts\/[a-z0-9]+\.plugins\.js/.test(manifest));
           assert.ok(/scripts\/vendor\/[a-z0-9]+\.modernizr\.min\.js/.test(manifest));
+
+          if( !this.compass ) { return; }
           assert.ok(/styles\/[a-z0-9]+\.main\.css/.test(manifest));
         });
       });
