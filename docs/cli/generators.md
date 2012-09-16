@@ -221,7 +221,7 @@ lib/generators/initializer/templates/initializer.js with the following content:
 And now let’s change the generator to copy this template when invoked:
 
     var util = require('util'),
-        yeoman = require('../../../');
+        yeoman = require('yeoman');
 
     module.exports = Generator;
 
@@ -233,12 +233,12 @@ And now let’s change the generator to copy this template when invoked:
     util.inherits(Generator, yeoman.generatos.NamedBase);
 
     Generator.prototype.copyInitializerFile = function() {
-      this.copy('initializer.js', 'config/initializers/' + name + '.js');
+      this.copy('initializer.js', 'config/initializers/' + this.name + '.js');
     };
 
 And let’s execute our generator:
 
-    $ yeoman generate initializer core_extensions
+    $ yeoman init initializer core_extensions
 
 We can see that now an initializer named `core_extensions` was created at
 `config/initializers/core_extensions.js` with the contents of our template. That
@@ -249,7 +249,7 @@ we gave. The property `name` is automatically created when we inherit from
 
 ### Generators Lookup
 
-When you run `yeoman generate initializer core_extensions` yeoman requires these
+When you run `yeoman init initializer core_extensions` yeoman requires these
 paths in turn until one is found:
 
     lib/generators/initializer/index.js
