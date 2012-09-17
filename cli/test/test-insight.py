@@ -13,7 +13,7 @@ class YeomanInsightTest(unittest.TestCase):
   def test_init_should_error_when_no_tracking_code_is_passed(self):
     self.assertRaises(Exception, Analytics, tracking_code='')
 
-  def test_main_should_error_when_arguments_are_less_than_2(self):
+  def test_main_should_error_when_arguments_are_less_than_two(self):
     # temporally disables print function, because it's used on main.
     # just to keep the tests output clean.
     sys.stdout = open(os.devnull, 'w')
