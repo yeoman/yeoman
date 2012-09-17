@@ -10,8 +10,6 @@ from yeomaninsight import main, Analytics
 
 class YeomanInsightTest(unittest.TestCase):
 
-    TRACKING_CODE = 'UA-31537568-1'
-
     def test_init_should_error_when_no_tracking_code_is_passed(self):
       self.assertRaises(Exception, Analytics, tracking_code='')
 
