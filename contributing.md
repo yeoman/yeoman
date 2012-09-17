@@ -3,6 +3,17 @@
 We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) At this time we are primarily focusing on improving the user-experience and stability of Yeoman for our first release. Please keep this in mind if submitting feature requests, which we're happy to consider for future versions.
 
 
+## Issue submission
+
+In order for us to help you please check that you've completed the following steps:
+
+* Made sure you're on the latest version `npm update -g yeoman`
+* Looked through the list of [known bugs](https://github.com/yeoman/yeoman/wiki/Additional-FAQ) to ensure the issue hasn't been noted or solved already
+* Used the search feature to ensure that the bug hasn't been reported before
+* Included as much information about the bug as possible, including any output you've received, what OS and version you're on, etc.
+* Shared the output from `echo $PATH $NODE_PATH` and `brew doctor` as this can also help track down the issue.
+
+
 ## Repos
 
 Yeoman has three primary repos:

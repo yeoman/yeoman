@@ -23,6 +23,12 @@ You can follow its guidance or simply want through the [Yeoman installation proc
 
 *Yeoman requires Node >=0.8*
 
+
+## Issue submission
+
+Make sure you've read the [issue submission guidelines](yeoman/blob/master/contributing.md) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
+
+
 ## Documentation
 
 For more information on Yeoman, please read our [complete documentation](https://github.com/yeoman/yeoman/tree/master/docs/cli).
@@ -83,19 +89,6 @@ yeoman update jquery                       # Update a specific dependency (e.g j
 ![image](http://yeoman.io/media/yeoman-packages.png)
 
 We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
-
-
-#### Issue submission
-
-In order for us to help you please check that you've completed the following steps:
-
-* Made sure you're on the latest version
-* Read our documentation and README to ensure the issue hasn't been noted or solved already
-* Used the search feature to ensure that the bug hasn't been reported before
-* Included as much information about the bug as possible, including any output you've received, what OS and version you're on.
-* Shared the output from `echo $PATH $NODE_PATH` and `brew doctor` as this can also help track down the issue.
-
-Then open a [new issue](https://github.com/yeoman/yeoman/issues/new) and one of the team will be happy to follow up with you.
 
 
 #### Bower
