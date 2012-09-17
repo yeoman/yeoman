@@ -13,13 +13,13 @@ For more information about the project, see [yeoman.io](http://yeoman.io).
 
 ## Installation
 
-Simply run:
+Try the audit script to see what you need in place:
 
 ```shell
 curl -L get.yeoman.io | bash
 ```
 
-If you would prefer to manually install Yeoman, instructions on this are also [available](https://github.com/yeoman/yeoman/wiki/Manual-Install).
+You can follow its guidance or simply want through the [Yeoman installation procedure](https://github.com/yeoman/yeoman/wiki/Manual-Install).
 
 *Yeoman requires Node >=0.8*
 
