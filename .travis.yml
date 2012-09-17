@@ -7,4 +7,4 @@ notifications:
     channels:
       - "irc.freenode.org#yeoman"
     template:
-      - "%{repository} (%{commit}): %{message} -- %{build_url}"
+      - "%{repository}: %{message} -- %{build_url}"
