@@ -3,4 +3,8 @@ node_js:
   - 0.8
 before_install: cd cli
 notifications:
-  irc: irc.freenode.org#yeoman
+  irc:
+    channels:
+      - "irc.freenode.org#yeoman"
+    template:
+      - "%{repository} (%{commit}) : %{build_number}: %{message} -- %{build_url}"
