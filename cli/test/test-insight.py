@@ -10,16 +10,16 @@ from yeomaninsight import main, Analytics
 
 class YeomanInsightTest(unittest.TestCase):
 
-    def test_init_should_error_when_no_tracking_code_is_passed(self):
-      self.assertRaises(Exception, Analytics, tracking_code='')
+  def test_init_should_error_when_no_tracking_code_is_passed(self):
+    self.assertRaises(Exception, Analytics, tracking_code='')
 
-    def test_main_should_error_when_arguments_are_less_than_2(self):
-      # temporally disables print function, because it's used on main
-      # just to keep the tests output clean
-      sys.stdout = open(os.devnull, 'w')
-      self.assertRaises(SystemExit, main, args='')
-      # restores print function
-      sys.stdout = sys.__stdout__
+  def test_main_should_error_when_arguments_are_less_than_2(self):
+    # temporally disables print function, because it's used on main.
+    # just to keep the tests output clean.
+    sys.stdout = open(os.devnull, 'w')
+    self.assertRaises(SystemExit, main, args='')
+    # restores print function.
+    sys.stdout = sys.__stdout__
 
 if __name__ == '__main__':
-    unittest.main()
+  unittest.main()
