@@ -18,6 +18,12 @@ module.exports = function( grunt ) {
       if ( _.isString( val ) ) {
         args.push( '--' + el, val );
       }
+
+      if( _.isArray( val ) ) {
+        val.forEach(function( subval ) {
+          args.push( '--' + el, subval );
+        });
+      }
     });
 
     return args;
