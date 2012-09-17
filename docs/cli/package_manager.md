@@ -98,7 +98,7 @@ There's no redundancy planned at the moment, as Bower just installs git urls. It
 
 ##Isn't having a package.json file going to conflict with my npm's package.json? Will this be a problem?
 
-Don't use a package.json – user component.json.
+Don't use a package.json – use a component.json.
 
 ##Bower is an open-source Twitter project. How well can we expect it to be maintained in the future?
 
