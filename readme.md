@@ -117,7 +117,7 @@ Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support fo
 
 ## Contribute
 
-See the [contributing docs](blob/master/contributing.md)
+See the [contributing docs](yeoman/blob/master/contributing.md)
 
 
 ## About
