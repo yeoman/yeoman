@@ -3,6 +3,7 @@
 
 *.min.css
 #*.min.js
+*.pyc
 .sass-cache/*
 node_modules
 cli/_cache/
