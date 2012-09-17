@@ -19,14 +19,14 @@ Try the audit script to see what you need in place:
 curl -L get.yeoman.io | bash
 ```
 
-You can follow its guidance or simply want through the [Yeoman installation procedure](https://github.com/yeoman/yeoman/wiki/Manual-Install).
+You can follow its guidance or simply walk through the [installation procedure](https://github.com/yeoman/yeoman/wiki/Manual-Install).
 
-*Yeoman requires Node >=0.8*
+*Yeoman requires Node 0.8.x*
 
 
 ## Issue submission
 
-Make sure you've read the [issue submission guidelines](yeoman/blob/master/contributing.md) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
+Make sure you've read the [issue submission guidelines](yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
 
 
 ## Documentation
@@ -86,6 +86,7 @@ yeoman search jquery                       # Lookup jQuery in the Bower registry
 yeoman install jquery underscore [depName] # Install a dependency or dependencies
 yeoman update jquery                       # Update a specific dependency (e.g jquery)
 ```
+
 ![image](http://yeoman.io/media/yeoman-packages.png)
 
 We also have [extended documentation](https://github.com/mklabs/yeoman/wiki/_pages) available for those more interested in the Yeoman internals.
@@ -102,11 +103,11 @@ Yeoman uses [Bower](http://twitter.github.com/bower/) as its package manager. Th
 * Chrome on Android
 * Mobile Safari
 
-![image](http://yeoman.io/media/yeoman-browsers.png)
 
 ## Platform Support
 
 Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support for Windows in a [future](https://github.com/yeoman/yeoman/issues/216) version of the project.
+
 
 ## Contribute
 
@@ -145,4 +146,3 @@ and other developers.
 ## License
 
 Yeoman is released under a [BSD](http://opensource.org/licenses/bsd-license.php) license.
-
