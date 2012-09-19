@@ -198,7 +198,7 @@ audit() {
 
 
   echo ""
-  echo "Area's i've not scored with a tick indicate I could not find this item. You will need to correct these before I can be of service to you."
+  echo "Areas I have not scored with a tick indicate I did not find your system satisfactory. You will need to correct these before I can be of service to you. Troubled? Consider reading http://goo.gl/XoyWI "
   echo ""
   printf "%s \e[47m\e[0;35m%s\e[0m %s\n" "Once all of my audit items are confirmed, we can begin. Type" "yeoman" "at your prompt to summon me."
   echo ""
