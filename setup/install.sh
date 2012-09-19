@@ -67,10 +67,9 @@ desc_print(){
 
 audit() {
   echo ""
-  echo "Wotcha! Well hi there. "
-  echo "Thanks for your interest in Yeoman."
+  echo "Before I can assist you I will need to confirm you have the necessary requirements. "
   echo ""
-  echo "Below is a quick audit I've run on your system to see if you have everything you need for Yeoman:"
+  echo "Below you will find the results of my short system audit:"
 
   if [[ $mac = 1 ]]; then
     # xcode cli test.
@@ -134,23 +133,23 @@ audit() {
 
   # passes
   if [[ "$mac" = 1 ]]; then
-    [ "$cli" -eq 1 ] &&  happy_print "Command Line Tools for Xcode" "are installed! "
-    [ "$brew" -eq 1 ] && happy_print "Homebrew" "is installed."
+    [ "$cli" -eq 1 ] &&  happy_print "Command Line Tools for Xcode" "check."
+    [ "$brew" -eq 1 ] && happy_print "Homebrew" "check."
   fi
 
   if [[ "$linux" = 1 ]]; then
     [ "$curl" -eq 1 ] && happy_print "curl" "is present, phew."
   fi
 
-  [ "$git" -eq 1 ] && happy_print "git" "is installed, nice one."
-  [ "$node" -eq 1 ] && happy_print "NodeJS" "is installed."
-  [ "$ruby" -eq 1 ] && happy_print "ruby" "is installed."
-  [ "$gem" -eq 1 ] && happy_print "RubyGems" "is installed."
-  [ "$compass" -eq 1 ] && happy_print "Compass" "is installed."
-  [ "$phantomjs" -eq 1 ] && happy_print "PhantomJS" "is installed."
-  [ "$jpegturbo" -eq 1 ] && happy_print "jpegtran" "is installed."
-  [ "$optipng" -eq 1 ] && happy_print "optipng" "is installed."
-  [ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "... installed!"
+  [ "$git" -eq 1 ] && happy_print "git" "smashing!"
+  [ "$node" -eq 1 ] && happy_print "NodeJS" "check."
+  [ "$ruby" -eq 1 ] && happy_print "ruby" "check."
+  [ "$gem" -eq 1 ] && happy_print "RubyGems" "check."
+  [ "$compass" -eq 1 ] && happy_print "Compass" "check."
+  [ "$phantomjs" -eq 1 ] && happy_print "PhantomJS" "check."
+  [ "$jpegturbo" -eq 1 ] && happy_print "jpegtran" "check."
+  [ "$optipng" -eq 1 ] && happy_print "optipng" "check."
+  [ "$yeoman" -eq 1 ] && happy_print "yeoman global npm module" "extraordinary!"
 
   # failures
   if [[ "$mac" = 1 ]]; then
@@ -176,10 +175,10 @@ audit() {
     desc_print "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ "
   [ "$ruby" -eq 0 ] && \
     sad_print "ruby"  "" && \
-    desc_print "Check your ruby with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
+    desc_print "Check your ruby version is adequate with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
   [ "$gem" -eq 0 ] && \
     sad_print "RubyGems" "" && \
-    desc_print "You'll pick this up with your ruby installation. "
+    desc_print "You'll acquire this with your ruby installation. "
   [ "$compass" -eq 0 ] && \
     sad_print "Compass"  "" && \
     desc_print "is not installed: http://compass-style.org/install/ "
@@ -194,14 +193,14 @@ audit() {
     desc_print "On Mac," "brew install optipng" "will sort you out."
   [ "$yeoman" -eq 0 ] && \
     sad_print "yeoman"  "" && \
-    desc_print "You're missing yeoman!" "npm install -g yeoman" "will sort you out. You may need sudo."
+    desc_print "You're missing yeoman!" "npm install -g yeoman" "will correct this atrocity. You may need sudo."
 
 
 
   echo ""
-  echo "Help me out and install anything that's missing above. Additional help at http://goo.gl/XoyWI "
+  echo "Areas I have not scored with a tick indicate I did not find your system satisfactory. You will need to correct these before I can be of service to you. Troubled? Consider reading http://goo.gl/XoyWI "
   echo ""
-  printf "%s \e[47m\e[0;35m%s\e[0m %s\n" "Once you've ensured all of the above dependencies are present, we can start up Yeoman. Type" "yeoman" "at your prompt to get started."
+  printf "%s \e[47m\e[0;35m%s\e[0m %s\n" "Once all of my audit items are confirmed, we can begin. Type" "yeoman" "at your prompt to summon me."
   echo ""
 }
 
