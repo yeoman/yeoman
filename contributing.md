@@ -23,6 +23,16 @@ Yeoman has three primary repos:
 * [yeoman.io](http://github.com/yeoman/yeoman.io)
 
 
+
+## Contributor License Agreement
+
+We'd love to accept your code patches! However, before we can take them, we have to jump a couple of legal hurdles.
+
+**Please fill out an [individual CLA](http://code.google.com/legal/individual-cla-v1.0.html).** There is a web form at the bottom; shouldn't take too long.
+
+(If you work for a company that wants to allow you to contribute, you'll need to complete a [corporate CLA](http://code.google.com/legal/corporate-cla-v1.0.html).)
+
+
 ## Quick Start
 
 * Clone this repo and `cd` into it
@@ -40,6 +50,7 @@ This project uses single-quotes, two space indentation, multiple var statements 
 
 ## Pull Request Guidelines
 
+* Submit your CLA, if you haven't.
 * Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
 * Lint the code by running `grunt` in the `/cli` folder before submitting a pull request
 * Develop in a topic branch, not master
