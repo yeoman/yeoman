@@ -37,7 +37,7 @@ module.exports = function( grunt ) {
       cmd: 'compass',
       args: ['compile'].concat( args )
     }, function( err, result, code ) {
-      if ( /not found/.test( err ) ) {
+      if ( code === 127 ) {
         grunt.fail.fatal('You need to have Compass installed.');
       }
       // Since `compass compile` exits with 1 when it has nothing to compile,
