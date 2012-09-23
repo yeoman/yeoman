@@ -216,4 +216,15 @@ describe('yeoman init && yeoman build', function() {
 
   });
 
+  describe('And when I launch a test server ', function() {
+    it('should export the needed directories');
+//    it('should export the needed directories', function(done) {
+//      // setup the runnable, the actual run happens on last step
+//      this.yeoman = helpers.run('server:test', opts);
+//      this.yeoman
+//        .expect(/\/test/)
+//        .expect(/\/app/)
+//        .end(done);
+//      });
+  });
 });
