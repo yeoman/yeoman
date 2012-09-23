@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     var options = grunt.config(this.name) || {};
 
     // Verify if the application contains a data-main attribute
-    var appIndexPath  = path.resolve('../app/index.html');
+    var appIndexPath  = path.resolve('mainFile' in options ? '../app/' + options.mainFile : '../app/index.html');
     var indexBuffer = fs.readFileSync(appIndexPath, 'utf8');
     var hasDataMain = (indexBuffer.match(/data-main=['"]([^'"]+)['"]/));
 
