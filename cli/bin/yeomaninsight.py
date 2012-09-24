@@ -31,6 +31,9 @@ class Analytics(object):
   BASE_URL = 'http://www.google-analytics.com/collect/__utm.gif'
 
   def __init__(self, tracking_code):
+    if not tracking_code:
+      raise Exception('No tracking code is given')
+
     self.tracking_code = tracking_code
     self.do_stats = True
 

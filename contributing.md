@@ -28,10 +28,18 @@ Yeoman has three primary repos:
 
 We'd love to accept your code patches! However, before we can take them, we have to jump a couple of legal hurdles.
 
+We need you to sign a CLA. In summary, the CLA asserts that when you donate fixes or documentation, you both own the code that you're submitting and that Google can in turn license that code to other people. (In this case, making it available under the BSD license)
+
+Just FWIW, here are some other projects that require a similar agreement: jQuery, Firefox, Sizzle, Dojo, Plone, Fedora, Cordova/Phonegap, Apache, Flex.
+
 **Please fill out an [individual CLA](http://code.google.com/legal/individual-cla-v1.0.html).** There is a web form at the bottom; shouldn't take too long.
 
 (If you work for a company that wants to allow you to contribute, you'll need to complete a [corporate CLA](http://code.google.com/legal/corporate-cla-v1.0.html).)
 
+More about CLAs:
+* http://wiki.civiccommons.org/Contributor_Agreements
+* http://incubator.apache.org/ip-clearance/index.html
+* http://dojofoundation.org/about/cla
 
 ## Quick Start
 
@@ -41,6 +49,15 @@ We'd love to accept your code patches! However, before we can take them, we have
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
 
 You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`, where `upstream` is a remote pointing to this repo.
+
+### Generators
+
+When developing in the generators repo you probably want to be able to test out your changes. The recommended workflow is to link the generators module into the yeoman project, which means changes you do in the generators repo will be reflected in the yeoman repo.
+
+- `cd` into the generators repo
+- Run `npm link` to link it globally
+- `cd` into the `cli` folder in the yeoman repo
+- Run `npm link yeoman-generators` to link it into this folder
 
 
 ## Style Guide

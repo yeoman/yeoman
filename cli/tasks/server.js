@@ -217,6 +217,12 @@ module.exports = function(grunt) {
       dist: path.resolve('dist'),
       test: path.resolve('test'),
 
+      // phantom target is a special one: it is triggered
+      // before launching the headless tests, and gives
+      // to phantomjs visibility on the same paths a 
+      // server:test have.
+      phantom: path.resolve('test'),
+
       // reload is a special one, acting like `app` but not opening the HTTP
       // server in default browser and forcing the port to LiveReload standard
       // port.
@@ -232,6 +238,19 @@ module.exports = function(grunt) {
         .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
       return false;
     }
+
+    var tasks = {
+      // We do want our coffee, and compass recompiled on change
+      // and our browser opened and refreshed both when developping
+      // (app) and when writing tests (test)
+      app: 'clean coffee compass open-browser watch',
+      test: 'clean coffee compass open-browser watch',
+      // Before our headless tests are run, ensure our coffee
+      // and compass are recompiled
+      phantom: 'clean coffee compass',
+      dist: 'watch',
+      reload: 'watch'
+    };
 
     opts = {
       // prevent browser opening on `reload` target
@@ -252,14 +271,7 @@ module.exports = function(grunt) {
         }
     });
 
-    if(target === 'app') {
-      // when serving app, make sure to delete the temp/ dir from w/e was
-      // previously compiled here, and trigger compass / coffee mostly to make
-      // sure, those files are compiled and not revved.
-      grunt.task.run('clean coffee compass open-browser');
-    }
-
-    grunt.task.run('watch');
+    grunt.task.run( tasks[target] );
   });
 
   grunt.registerHelper('server', function(opts, cb) {
@@ -272,14 +284,22 @@ module.exports = function(grunt) {
       middleware.push( grunt.helper('reload:inject', opts) );
     }
 
-    middleware = middleware.concat([
-      // also serve static files from the temp directory, and before the app
-      // one (compiled assets takes precedence over same pathname within app/)
-      connect.static(path.join(opts.base, '../temp')),
-      // Serve static files.
-      connect.static(opts.base),
+    // also serve static files from the temp directory, and before the app
+    // one (compiled assets takes precedence over same pathname within app/)
+    middleware.push(connect.static(path.join(opts.base, '../temp')));
+    // Serve static files.
+    middleware.push(connect.static(opts.base))
+   // Make empty directories browsable.
+    middleware.push(connect.directory(opts.base))
+
+    if ( (opts.target === 'test') || ( opts.target == 'phantom')) {
+      // We need to expose our code as well
+      middleware.push(connect.static(path.resolve('app')));
       // Make empty directories browsable.
-      connect.directory(opts.base),
+      middleware.push(connect.directory(path.resolve('app')));
+    }
+
+    middleware = middleware.concat([
       // Serve the livereload.js script
       connect.static(path.join(__dirname, 'livereload')),
       // To deal with errors, 404 and alike.
