@@ -49,7 +49,7 @@ describe('Bower install packages', function() {
           ctx.results = results;
           var pkg = results[name];
           var source = ctx[name] = pkg.source.main;
-          var vendor = source.replace(/^components/, 'app/scripts/vendor');
+          var vendor = source.replace(/^components/, 'app/components');
           fs.stat(vendor, done);
         });
     });
