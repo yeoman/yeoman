@@ -104,8 +104,7 @@ describe('yeoman init && yeoman build', function() {
         it('should go through coffee:dist', function() {
           // handled version file, get back filename via grunt globbing
           var foo = grunt.file.expandFiles('temp/scripts/*.foo.js')[0];
-          assert.equal(grunt.file.read(foo), 'var foo;\n\nfoo = "yeo";\n');
-          assert.equal(grunt.file.read(foo), 'var foo;\n\nfoo = "yeo";\n');
+          assert.equal(grunt.file.read(foo), '(function() {\n  var foo;\n\n  foo = "yeo";\n\n}).call(this);\n');
         });
       });
 
