@@ -50,6 +50,15 @@ More about CLAs:
 
 You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`, where `upstream` is a remote pointing to this repo.
 
+### Generators
+
+When developing in the generators repo you probably want to be able to test out your changes. The recommended workflow is to link the generators module into the yeoman project, which means changes you do in the generators repo will be reflected in the yeoman repo.
+
+- `cd` into the generators repo
+- Run `npm link` to link it globally
+- `cd` into the `cli` folder in the yeoman repo
+- Run `npm link yeoman-generators` to link it into this folder
+
 
 ## Style Guide
 
