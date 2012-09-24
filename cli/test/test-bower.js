@@ -41,7 +41,7 @@ describe('Bower install packages', function() {
     });
 
 
-    it('should have copied resolved components to app/scripts/vendor', function(done) {
+    it('should have copied resolved components to app/components', function(done) {
       var ctx = this;
       bower.list({ map: true })
         .on('error', done)
