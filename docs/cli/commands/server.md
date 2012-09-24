@@ -16,8 +16,7 @@ comfortable with.
 
 `yeoman server` generates an intermediate build directory in your project root which (called `temp`) contains the compiled files mentioned above as well as the basic blocks needed to preview your application. A complete build can be generated using `yeoman build`.
 
-To quit the server, simply run `yeoman quit server` and this will kill the Python server
-process.
+To quit the server, simply use `ctrl+c` and this will kill the Yeoman server process.
 
 ### profiles
 
