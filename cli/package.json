@@ -10,7 +10,8 @@
     "web",
     "tool",
     "cli",
-    "scaffold"
+    "scaffold",
+    "stack"
   ],
   "homepage": "http://yeoman.io",
   "bugs": "https://github.com/yeoman/yeoman/issues",
