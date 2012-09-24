@@ -58,7 +58,7 @@ function init() {
 
   // add the plugin version on `--version`
   if(opts.version) {
-    return console.log('%s  v%s', pkg.name, pkg.version);
+    return console.log( pkg.version );
   }
 
   // Matches everything after init to prevent
