@@ -24,7 +24,7 @@ var win32 = process.platform === 'win32';
 
 module.exports = function(grunt) {
 
-  var png = ['.png', '.bmp', '.gif', '.pnm', '.tiff'],
+  var png = ['.png'],
     jpegs = ['.jpg', 'jpeg'];
 
   // rev task - reving is done in the `output/` directory
