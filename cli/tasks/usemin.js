@@ -231,7 +231,7 @@ module.exports = function(grunt) {
 
           return asset;
         }).reduce(function(a, b) {
-          b = b.split(',');
+          b = ( b ? b.split(',') : '');
           return a.concat(b);
         }, []);
 
@@ -364,8 +364,10 @@ module.exports = function(grunt) {
       var dirname = path.dirname(src);
 
       // XXX files won't change, the filepath should filter the original list
-      // of cached files.
-      var filepath = grunt.file.expand(path.join('**/*') + basename)[0];
+      // of cached files (we need to treat the filename collision -- i.e. 2 files with same names
+      // in different subdirectories)
+      var filepaths = grunt.file.expand(path.join('**/*') + basename);
+      var filepath = filepaths.filter(function(f) { return dirname === path.dirname(f);})[0];
 
       // not a file in temp, skip it
       if ( !filepath ) {
