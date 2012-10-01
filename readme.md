@@ -26,7 +26,7 @@ You can follow its guidance or simply walk through the [installation procedure](
 
 ## Issue submission
 
-Make sure you've read the [issue submission guidelines](yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
+Make sure you've read the [issue submission guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
 
 
 ## Documentation
@@ -111,7 +111,7 @@ Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support fo
 
 ## Contribute
 
-See the [contributing docs](yeoman/blob/master/contributing.md)
+See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)
 
 
 ## About
