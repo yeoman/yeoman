@@ -1,3 +1,12 @@
+
+### 0.9.3 (3 October, 2012)
+
+* Temporary fix to allow Bower dependencies to be correctly copied to app/components. As a result of this patch RequireJS wiring of Bower deps is currently disabled
+
+### 0.9.2 
+
+TBU
+
 ### 0.9.1 (15 September, 2012)
 
 * Removal of stdout checks, test against fs (Pull [#473](https://github.com/yeoman/yeoman/pull/473)).

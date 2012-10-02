@@ -7,7 +7,7 @@ var fs = require('fs'),
   bower = require('bower').commands;
 
 // bower components to test out
-var components = ['jquery', 'backbone'];
+var components = ['jquery', 'backbone', 'spine'];
 // var components = ['jquery', 'backbone', 'ember', 'angular', 'canjs'];
 
 describe('Bower install packages', function() {
@@ -43,15 +43,25 @@ describe('Bower install packages', function() {
 
     it('should have copied resolved components to app/components', function(done) {
       var ctx = this;
+
+      fs.stat(path.join('app/components', name), done);
+
+      /*
       bower.list({ map: true })
         .on('error', done)
         .on('data', function(results) {
+          
           ctx.results = results;
           var pkg = results[name];
+          
           var source = ctx[name] = pkg.source.main;
           var vendor = source.replace(/^components/, 'app/components');
           fs.stat(vendor, done);
+          
+        
         });
+
+        */
     });
   });
 
