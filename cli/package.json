@@ -1,6 +1,6 @@
 {
   "name": "yeoman",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "keywords": [
     "front-end",
