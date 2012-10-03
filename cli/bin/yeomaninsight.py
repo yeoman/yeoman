@@ -114,7 +114,7 @@ class Analytics(object):
       'qt': int((time.time() - recorded_at) * 1e3), # Queue Time. Delta (milliseconds) between now and when hit was recorded.
       'dp': path,
       'an': 'Yeoman Insight', #settings.APP['title'], # Application Name.
-      'av': '0.0.1', #settings.APP['version'], # Application Version.
+      'av': '0.9.3', #settings.APP['version'], # Application Version.
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
     }
 
