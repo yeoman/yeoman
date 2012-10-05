@@ -308,7 +308,7 @@ module.exports = function(grunt) {
 
   grunt.registerHelper('usemin:css', function(content, block, target) {
     var indent = (block.split(linefeed)[0].match(/^\s*/) || [])[0];
-    return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '"\/?>');
+    return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '"\/>');
   });
 
   grunt.registerHelper('usemin:js', function(content, block, target) {

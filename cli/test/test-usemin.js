@@ -37,5 +37,15 @@ describe('usemin', function() {
       assert.ok( changed.match(/img[^\>]+src=['"]images\/misc\/2a436\.test\.png["']/) );
     });
   });
+  describe('usemin:css', function() {
+    it("should replace a block with link on furnished target", function() {
+      grunt.log.muted = true;
+      var block = "   foo\nbar\nbaz";
+      var content = "before block\n" + block + "\nafter block";
+      var awaited = "before block\n   <link rel=\"stylesheet\" href=\"foo\"/>\nafter block";
+      var changed = grunt.helper('usemin:css', content, block, 'foo');
+      assert.ok( changed == awaited );
+    });
+  });
 });
 
