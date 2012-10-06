@@ -14,12 +14,14 @@ module.exports = {
     // This should correspond to whatever name is used in package.json.
     var INSIGHT_SCRIPT = '_' + opts.pkgname + 'insight'
 
+    // e.g. /Users/username/.yeoman/insight
     var insightFolder = join(YEOMAN_DIR, 'insight');
 
-    // Assume yeomaninsight.py is installed globally (/usr/local/bin/)
-    var insightRecordCmd = ['record'];
+    var insightRecordCmd = ['-n', opts.pkgname, '-v', opts.pkgversion, 'record'];
 
-    // Record this action in Insight (e.g. python yeomaninsight.py record cmd cmd2).
+    // Record this action in Insight.
+    // Assume yeomaninsight.py is installed globally (/usr/local/bin/) as _yeomaninsight.
+    // _yeomaninsight -n yeoman -v 0.0.1 record cmd cmd2).
     spawn(INSIGHT_SCRIPT, insightRecordCmd.concat(opts.cmds));
     //insight.stdout.pipe(process.stdout);
 
