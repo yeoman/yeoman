@@ -55,7 +55,7 @@ var options = {
   buildkit: {
     collapseWhitespace            : false,
     removeComments                : false,
-    removeCommentsFromCDATA       : false,
+    removeCommentsFromCDATA       : false
   },
 
   compress: {
