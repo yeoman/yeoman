@@ -102,6 +102,7 @@ function init() {
 
     insight.init({
       pkgname    : pkg.name,
+      pkgversion : pkg.version,
       getUserHome: getUserHome,
       cmds       : cmds,
       cb         : cb
