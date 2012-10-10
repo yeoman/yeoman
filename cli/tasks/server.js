@@ -13,6 +13,8 @@ var fs = require('fs'),
 module.exports = function(grunt) {
   var priv = new WeakMap();
 
+  var config = grunt.config();
+
   // Reactor object
   // ==============
 
@@ -202,6 +204,8 @@ module.exports = function(grunt) {
   // Note: yeoman-server alone will exit prematurly unless `this.async()` is
   // called. The task is designed to work alongside the `watch` task.
   grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target) {
+    this.requiresConfig('staging', 'output');
+
     var opts;
     // Get values from config, or use defaults.
     var port = grunt.config('server.port') || 0xDAD;
@@ -214,7 +218,7 @@ module.exports = function(grunt) {
       // these paths once config and paths resolved will need to pull in the
       // correct paths from config
       app: path.resolve('app'),
-      dist: path.resolve('dist'),
+      dist: path.resolve(config.output),
       test: path.resolve('test'),
 
       // reload is a special one, acting like `app` but not opening the HTTP
@@ -275,7 +279,7 @@ module.exports = function(grunt) {
     middleware = middleware.concat([
       // also serve static files from the temp directory, and before the app
       // one (compiled assets takes precedence over same pathname within app/)
-      connect.static(path.join(opts.base, '../temp')),
+      connect.static(path.join(opts.base, '../' + config.staging)),
       // Serve static files.
       connect.static(opts.base),
       // Make empty directories browsable.
