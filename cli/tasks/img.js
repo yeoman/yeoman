@@ -145,17 +145,11 @@ module.exports = function(grunt) {
     }
   });
 
-  // **which** helper, wrapper to isaacs/which package plus some fallback logic
-  // specifically for the win32 binaries in vendor/ (optipng.exe, jpegtran.exe)
+  // **which** helper, wrapper to isaacs/which package
   grunt.registerHelper('which', function(cmd, cb) {
-    if ( !win32 || !/optipng|jpegtran/.test( cmd ) ) {
+    if ( win32 || !/optipng|jpegtran/.test( cmd ) ) {
       return which( cmd, cb );
     }
-
-    var cmdpath = cmd === 'optipng' ? '../vendor/optipng-0.7.1-win32/optipng.exe' :
-      '../vendor/jpegtran-8d/jpegtran.exe';
-
-    cb(null, path.join(__dirname, cmdpath));
   });
 };
 
