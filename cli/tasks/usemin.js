@@ -30,16 +30,17 @@ var fs = require('fs'),
 // Custom HTML "block" comments are provided as an API for interacting with the
 // build script. These comments adhere to the following pattern:
 //
-//     <!-- build:<type> <path> -->
+//     <!-- build:<type> base:<url|path> <path> -->
 //       ... HTML Markup, list of script / link tags.
 //     <!-- endbuild -->
 //
 // - type: is either js or css.
+// - base (optional): is the base path or url for the optimized file.
 // - path: is the file path of the optimized file, the target output.
 //
 // An example of this in completed form can be seen below:
 //
-//    <!-- build:js js/app.js -->
+//    <!-- build:js base:/ js/app.js -->
 //      <script src="js/app.js"></script>
 //      <script src="js/controllers/thing-controller.js"></script>
 //      <script src="js/models/thing-model.js"></script>
@@ -55,7 +56,7 @@ var fs = require('fs'),
 // the main entry point for your application using the "data-main" attribute
 // as follows:
 //
-//     <!-- build:js js/app.min.js -->
+//     <!-- build:js base:/ js/app.min.js -->
 //     <script data-main="js/main" src="js/vendor/require.js"></script>
 //     <!-- -->
 //
@@ -71,7 +72,7 @@ var fs = require('fs'),
 //
 
 // start build pattern --> <!-- build:[target] output -->
-var regbuild = /<!--\s*build:(\w+)\s*(.+)\s*-->/;
+var regbuild = /<!--\s*build:(\w+)\s*(?:base:([\w:;\$\*\(\)&,%+~!=@\/\.\-\#\?]+)\s*)?(.+)\s*-->/;
 
 // end build pattern -- <!-- endbuild -->
 var regend = /<!--\s*endbuild\s*-->/;
@@ -112,7 +113,7 @@ function getBlocks(body) {
 
     if(build) {
       block = true;
-      sections[[build[1], build[2].trim()].join(':')] = last = [];
+      sections[[build[1], build[3].trim(), ((build[2]) ? build[2] : '')].join('|')] = last = [];
     }
 
     // switch back block flag when endbuild
@@ -207,7 +208,7 @@ module.exports = function(grunt) {
       var blocks = getBlocks(file.body);
       Object.keys(blocks).forEach(function(dest) {
         var lines = blocks[dest].slice(1, -1),
-          parts = dest.split(':'),
+          parts = dest.split('|'),
           type = parts[0],
           output = parts[1];
 
@@ -290,19 +291,20 @@ module.exports = function(grunt) {
     // handle blocks
     Object.keys(blocks).forEach(function(key) {
       var block = blocks[key].join(linefeed),
-        parts = key.split(':'),
+        parts = key.split('|'),
         type = parts[0],
-        target = parts[1];
+        target = parts[1],
+        base = parts[2];
 
-      content = grunt.helper('usemin', content, block, target, type);
+      content = grunt.helper('usemin', content, block, target, base, type);
     });
 
     return content;
   });
 
   // usemin and usemin:* are used with the blocks parsed from directives
-  grunt.registerHelper('usemin', function(content, block, target, type) {
-    target = target || 'replace';
+  grunt.registerHelper('usemin', function(content, block, target, base, type) {
+    target = base + target || 'replace';
     return grunt.helper('usemin:' + type, content, block, target);
   });
 
