@@ -24,7 +24,7 @@ var win32 = process.platform === 'win32';
 
 module.exports = function(grunt) {
 
-  var png = ['.png', '.bmp', '.gif', '.pnm', '.tiff'],
+  var png = ['.png'],
     jpegs = ['.jpg', 'jpeg'];
 
   // rev task - reving is done in the `output/` directory
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
     opts = opts || {};
     cb = cb || function() {};
 
-    grunt.helper('which', 'optipng', function(err, cmdpath) {
+    which('optipng', function(err, cmdpath) {
       if ( err ) {
         return grunt.helper( 'not installed', 'optipng', cb );
       }
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
     cb = cb || function() {};
     opts.args = opts.args ? opts.args : ['-copy', 'none', '-optimize', '-outfile', 'jpgtmp.jpg'];
 
-    grunt.helper('which', 'jpegtran', function(err, cmdpath) {
+    which('jpegtran', function(err, cmdpath) {
       if ( err ) {
         return grunt.helper( 'not installed', 'jpegtran', cb );
       }
@@ -143,19 +143,6 @@ module.exports = function(grunt) {
     if ( cb ) {
       cb();
     }
-  });
-
-  // **which** helper, wrapper to isaacs/which package plus some fallback logic
-  // specifically for the win32 binaries in vendor/ (optipng.exe, jpegtran.exe)
-  grunt.registerHelper('which', function(cmd, cb) {
-    if ( !win32 || !/optipng|jpegtran/.test( cmd ) ) {
-      return which( cmd, cb );
-    }
-
-    var cmdpath = cmd === 'optipng' ? '../vendor/optipng-0.7.1-win32/optipng.exe' :
-      '../vendor/jpegtran-8d/jpegtran.exe';
-
-    cb(null, path.join(__dirname, cmdpath));
   });
 };
 

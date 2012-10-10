@@ -1,6 +1,6 @@
 {
   "name": "yeoman",
-  "version": "0.9.1",
+  "version": "0.9.3",
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "keywords": [
     "front-end",
@@ -10,7 +10,8 @@
     "web",
     "tool",
     "cli",
-    "scaffold"
+    "scaffold",
+    "stack"
   ],
   "homepage": "http://yeoman.io",
   "bugs": "https://github.com/yeoman/yeoman/issues",
@@ -28,12 +29,12 @@
     "url": "git://github.com/yeoman/yeoman.git"
   },
   "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/test-*.js test/generators/",
+    "test": "node node_modules/mocha/bin/mocha test/test-*.js",
     "manpages": "./scripts/docs-build"
   },
   "dependencies": {
-    "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
-    "yeoman-generators": "https://nodeload.github.com/yeoman/generators/tarball/e6215f53f6",
+    "grunt": "http://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
+    "yeoman-generators": "http://nodeload.github.com/yeoman/generators/tarball/282b0b4c51",
     "bower": "~0.1.0",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
@@ -55,7 +56,8 @@
     "prompt": "~0.1.12",
     "colors": "~0.6.0",
     "grunt-mocha": "~0.1.3",
-    "es6-collections": ">=0.2.0"
+    "es6-collections": ">=0.2.0",
+    "grunt-contrib-coffee": "~0.3.1"
   },
   "devDependencies": {
     "mocha": "~1.4.0",

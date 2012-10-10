@@ -21,6 +21,7 @@ module.exports = function(grunt) {
   //
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-jasmine-task/tasks'));
   grunt.loadTasks(join(__dirname, '../node_modules/grunt-mocha/tasks'));
+  grunt.loadTasks(join(__dirname, '../node_modules/grunt-contrib-coffee/tasks'));
 
   // build targets: these are equivalent to grunt alias except that we defined
   // a single task and use arguments to trigger the appropriate target
@@ -40,12 +41,12 @@ module.exports = function(grunt) {
   //              task internally does this check)
   var targets = {
     default   : '               rjs concat css min img rev usemin manifest',
-    usemin    : 'usemin-handler rjs concat css img rev usemin manifest',
+    usemin    : 'usemin-handler rjs concat css min img rev usemin manifest',
     text      : 'usemin-handler rjs concat css min     rev usemin manifest',
     buildkit  : 'usemin-handler rjs concat css min img rev usemin manifest html:buildkit',
     basics    : 'usemin-handler rjs concat css min img rev usemin manifest html:basics',
     minify    : 'usemin-handler rjs concat css min img rev usemin manifest html:compress',
-    test      : 'usemin-handler rjs concat css img rev usemin manifest'
+    test      : 'usemin-handler rjs concat css min img rev usemin manifest'
   };
 
   var targetList = grunt.log.wordlist(Object.keys(targets));

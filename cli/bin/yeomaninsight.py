@@ -5,6 +5,7 @@
 __author__ = 'ebidel@gmail.com (Eric Bidelman)'
 
 
+import getopt
 import os
 import random
 import shutil
@@ -14,12 +15,7 @@ import urllib
 import urllib2
 
 NO_STATS = 'NO_STATS'
-CLI_NAME = 'yeoman'
-
-# TODO(ericbidelman): Verify expanduser('~') works on other platforms.
-# ~/.yeoman/insight
-INSIGHT_DIR = os.path.join(os.path.expanduser('~'), '.' + CLI_NAME, 'insight')
-LOG_FILE = os.path.join(INSIGHT_DIR, '.log') # ~/.yeoman/insight/.log
+DEFAULT_CLI_NAME = 'yeoman'
 
 NUM_SUB_CMDS = 2 # Subcommand depth. TODO: This assumes only "cmd subcmd" format.
 NUM_SECONDS_TO_STASH_DATA = 0 # Send data as it happens.
@@ -30,8 +26,14 @@ class Analytics(object):
   TRACKING_CODE = 'UA-31537568-1'
   BASE_URL = 'http://www.google-analytics.com/collect/__utm.gif'
 
-  def __init__(self, tracking_code):
+  def __init__(self, tracking_code, av):
+    if not tracking_code:
+      raise Exception('No tracking code was given')
+    if not av:
+      raise Exception('No application version was given')
+
     self.tracking_code = tracking_code
+    self.av = av
     self.do_stats = True
 
     # Create ~/.yeoman/insight if it doesn't exist.
@@ -110,8 +112,8 @@ class Analytics(object):
       'aip': '1', # Anonymize IP
       'qt': int((time.time() - recorded_at) * 1e3), # Queue Time. Delta (milliseconds) between now and when hit was recorded.
       'dp': path,
-      'an': 'Yeoman Insight', #settings.APP['title'], # Application Name.
-      'av': '0.0.1', #settings.APP['version'], # Application Version.
+      'an': 'Yeoman Insight', # Application Name.
+      'av': self.av, # Application Version.
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
     }
 
@@ -171,15 +173,37 @@ class Analytics(object):
 
 
 def main(args):
+  global INSIGHT_DIR
+  global LOG_FILE
+  global CLI_NAME
 
   if len(sys.argv) < 2:
-    print 'Yo! invalid number of arguments.'
+    print 'Invalid number of arguments.'
     sys.exit(1)
 
-  method = sys.argv[1]
-  args = ' '.join(sys.argv[2:])
+  try:
+    opts, args = getopt.getopt(sys.argv[1:], 'v:n:', ['version=', 'name='])
+  except getopt.GetoptError, err:
+    print str(err)
+    sys.exit(1)
 
-  ga = Analytics(Analytics.TRACKING_CODE)
+  av = 'x.x.x'
+  CLI_NAME = DEFAULT_CLI_NAME
+  for opt, val in opts:
+    if opt in ('-v', '--version'):
+      av = val
+    elif opt in ('-n', '--name'):
+      CLI_NAME = val
+
+  method = args[0]
+  args = ' '.join(args[1:])
+
+  # TODO(ericbidelman): Verify expanduser('~') works on other platforms.
+  # ~/.yeoman/insight
+  INSIGHT_DIR = os.path.join(os.path.expanduser('~'), '.' + CLI_NAME, 'insight')
+  LOG_FILE = os.path.join(INSIGHT_DIR, '.log') # ~/.yeoman/insight/.log
+
+  ga = Analytics(Analytics.TRACKING_CODE, av)
 
   #if callable(getattr(ga, method)):
   #  getattr(ga, method)()

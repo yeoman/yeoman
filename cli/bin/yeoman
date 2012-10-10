@@ -58,7 +58,7 @@ function init() {
 
   // add the plugin version on `--version`
   if(opts.version) {
-    return console.log('%s  v%s', pkg.name, pkg.version);
+    return console.log( pkg.version );
   }
 
   // Matches everything after init to prevent
@@ -70,11 +70,11 @@ function init() {
     yeoman.generators.prepare(grunt);
   }
 
-  // Inform users to run `server` instead of `watch`
+  // Advice users to run `server` instead of `watch`
   if ( /^watch/.test( route ) ) {
-    return console.log('\nYeoman`s watch task is integrated within `yeoman server` to combine\n\
-  the dev server, re-compilation and live reloading of changed assets.\n\n\
-  Feel free to run ' + 'yeoman'.bold.red + ' ' + 'server'.bold.yellow + ' instead!');
+    console.log(('\nFYI: Yeoman`s watch task is integrated within ' +
+      'yeoman server'.bold + ' to combine the dev server, re-compilation and ' +
+      'live reloading of changed assets.\n\nContinuing anyway...\n').yellow);
   }
 
   // a bower command
@@ -102,6 +102,7 @@ function init() {
 
     insight.init({
       pkgname    : pkg.name,
+      pkgversion : pkg.version,
       getUserHome: getUserHome,
       cmds       : cmds,
       cb         : cb

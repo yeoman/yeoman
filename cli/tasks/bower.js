@@ -41,13 +41,16 @@ module.exports = function(grunt) {
       .on('error', grunt.fatal.bind(grunt.fail))
       .on('data', grunt.log.writeln.bind(grunt.log))
       .on('end', function(){
+
+        grunt.helper('bower:sync', directory, cb);
+        /*
         if(args[0] === 'install' && directory) {
-          grunt.helper('bower:copy', directory, cb);
+          grunt.helper('bower:sync', directory, cb);
         } else if(args[0] === 'uninstall' || args[0] === 'update' && directory) {
           grunt.helper('bower:sync', directory, cb);
         } else {
           cb();
-        }
+        }*/
       });
   });
 

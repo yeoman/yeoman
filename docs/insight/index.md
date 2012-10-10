@@ -17,8 +17,7 @@ There are a number of useful questions we can answer with good metrics:
 - What locales are using the tool?
 - How long does it take for developers to upgrade to a new version?
 - What JS frameworks are people using?
-  - *Note: the V1 scope does not include an app stack.*
-- We just launched Yeoman v2.0 @ AwesomeConf JS 2013. Of course it was picked up by Hacker News! Pssht. But...how many new installs did we drive?
+- Imagine: We just launched Yeoman v2.0 @ AwesomeConf JS 2013. Of course it was picked up by Hacker News! Pssht. But...how many new installs did we drive?
 
 Turns out, [Google Analytics](http://www.google.com/analytics/) is excellent at handling all of these cases.
 
@@ -42,11 +41,11 @@ There are a many benefits to using Analytics instead of rolling our own collecti
 
 This script is installed globally as an alias `_yeomaninsight` to prevent users from a.) seeing the script via auto completing "yeoman*" and b.) mitigating running the script directly.  The script is responsible for collecting, stashing, and sending usage data to Google Analytics.
 
-`_yeomaninsight` is invoked by `/cli/lib/plugins/insight.py`, which creates a folder in the home directory (`~/.yeoman/insight/`) when the cli is run for the first time. and prompts the user to opt-in to sending anonymous metrics.
+`_yeomaninsight` is invoked by `/cli/lib/plugins/insight.py`, which creates a folder in the home directory (`~/.yeoman/insight/`) when the cli is run for the first time and prompts the user to opt-in to sending anonymous metrics.
 
 ###Recording actions
 
-When users run Yeoman CLI commands, the CLI captures the [sub]commands that were issued by calling `yeomaninsight.py`'s record API. yeomaninsight.py then writes the task to an offline logfile named .log (created on first-run of `yeomaninsight.py`).  The format of the file is:
+When users run Yeoman CLI commands, the CLI captures the [sub]commands that were issued by calling `yeomaninsight.py`'s record API. The installed package version and name are also passed as flags. yeomaninsight.py then writes the task to an offline logfile named .log (created on first-run of `yeomaninsight.py`).  The format of the file is:
 
     CLIENTID
     TIMESTAMP command
@@ -58,7 +57,7 @@ This file is created and saved to the user's home directory (`~/.yeoman/insight/
 ####Example run:
 
     $ yeoman init
-        -> calls "_yeomaninsight record init"
+        -> calls "_yeomaninsight -n yeoman -v 0.9.3 record init"
 
 This creates .log, logs the download on first run, and appends the command:
 
@@ -79,7 +78,7 @@ This creates .log, logs the download on first run, and appends the command:
 Running a more complicated command also works:
 
     $ yeoman add model MyModel
-        -> calls "_yeomaninsight.py record add model myModel"
+        -> calls "_yeomaninsight.py -n yeoman -v 0.9.3 record add model myModel"
 
     .log contains:
     1336617026.860.421519437366
@@ -111,9 +110,9 @@ A command is recorded as a "pageview" in Analytics. yeomaninsight.py makes GET r
 Eric fires up Yeoman for the first time in 4hrs and runs a few commands:
 
     $ yeoman install jquery
-        -> calls "_yeomaninsight.py record install jquery"
+        -> calls "_yeomaninsight.py -n yeoman -v 0.9.3 record install jquery"
     $ yeoman install angular
-        -> calls "_yeomaninsight.py record install angular"
+        -> calls "_yeomaninsight.py -n yeoman -v 0.9.3 record install angular"
 
 The CLI logs each of these entries and sends them to Analytics. This kicks off a call to `_send_all()`, which uploads everything in the log file. If the user is offline ((the first request to Analytics fails) when the upload is triggered, existing log data is kept intact until the next run of the CLI when they're online.
 

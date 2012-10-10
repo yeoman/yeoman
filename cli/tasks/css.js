@@ -26,7 +26,15 @@ module.exports = function(grunt) {
 
     // concat prior to rjs optimize css, and before min max info
     grunt.log.write('Writing css files to ' + target + '...');
-    grunt.file.write(target, grunt.helper('mincss', files));
+    var out = grunt.helper('mincss', files);
+    // only go through if their's file to process
+    if(!out) {
+      return cb();
+    }
+
+    // write minified file before going through rjs:optimize to possibly inline
+    // @imports (that are not handled by compass within .scss or .sass files)
+    grunt.file.write(target, out);
 
     // replace @import statements
     //
@@ -72,7 +80,6 @@ module.exports = function(grunt) {
       cb();
     });
   });
-
 
 };
 
