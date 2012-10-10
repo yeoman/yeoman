@@ -35,18 +35,6 @@ if(!opts.help) {
   template.warnOn = yeoman.generators.warnOn(grunt);
 }
 
-// Welcome message
-template.welcome =
-'\n     _-----_' +
-'\n    |       |' +
-'\n    |'+'--(o)--'.red+'|   .--------------------------.' +
-'\n   `---------´  |    '+'Welcome to Yeoman,'.yellow.bold+'    |' +
-'\n    '+'( '.yellow+'_'+'´U`'.yellow+'_'+' )'.yellow+'   |   '+'ladies and gentlemen!'.yellow.bold+'  |' +
-'\n    /___A___\\   \'__________________________\'' +
-'\n     |  ~  |'.yellow +
-'\n   __'+'\'.___.\''.yellow+'__' +
-'\n ´   '+'`  |'.red+'° '+'´ Y'.red+' `\n';
-
 // Template-specific notes to be displayed before question prompts.
 template.notes = '\n'; //... More notes to come here ...'.yellow;
 
@@ -59,8 +47,6 @@ template.notes = '\n'; //... More notes to come here ...'.yellow;
 // Handles the specific case of default generator on `init` (without generator
 // name).
 template.template = function _template(grunt, init, cb) {
-  console.log(template.welcome);
-  console.log('Out of the box I include HTML5 Boilerplate, jQuery and Modernizr.');
 
   // delegate the groundwork of scaffolding to the generator layer
   return yeoman.generators.init(grunt);
