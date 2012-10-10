@@ -30,12 +30,12 @@ var fs = require('fs'),
 // Custom HTML "block" comments are provided as an API for interacting with the
 // build script. These comments adhere to the following pattern:
 //
-//     <!-- build:<type> base:<url|path> <path> -->
+//     <!-- build:<type> base:<path> <path> -->
 //       ... HTML Markup, list of script / link tags.
 //     <!-- endbuild -->
 //
 // - type: is either js or css.
-// - base (optional): is the base path or url for the optimized file.
+// - base (optional): is the base path for the optimized file.
 // - path: is the file path of the optimized file, the target output.
 //
 // An example of this in completed form can be seen below:
@@ -56,7 +56,7 @@ var fs = require('fs'),
 // the main entry point for your application using the "data-main" attribute
 // as follows:
 //
-//     <!-- build:js base:/ js/app.min.js -->
+//     <!-- build:js js/app.min.js -->
 //     <script data-main="js/main" src="js/vendor/require.js"></script>
 //     <!-- -->
 //
@@ -113,7 +113,7 @@ function getBlocks(body) {
 
     if(build) {
       block = true;
-      sections[[build[1], build[3].trim(), ((build[2]) ? build[2] : '')].join('|')] = last = [];
+      sections[[build[1], ((build[2]) ? build[2] : ''), build[3].trim()].join('|')] = last = [];
     }
 
     // switch back block flag when endbuild
@@ -210,7 +210,8 @@ module.exports = function(grunt) {
         var lines = blocks[dest].slice(1, -1),
           parts = dest.split('|'),
           type = parts[0],
-          output = parts[1];
+          base = parts[1];
+          output = parts[2];
 
         // parse out the list of assets to handle, and update the grunt config accordingly
         var assets = lines.map(function(tag) {
@@ -232,7 +233,7 @@ module.exports = function(grunt) {
 
           return asset;
         }).reduce(function(a, b) {
-          b = ( b ? b.split(',') : '');
+          b = b.split(',');
           return a.concat(b);
         }, []);
 
@@ -293,24 +294,24 @@ module.exports = function(grunt) {
       var block = blocks[key].join(linefeed),
         parts = key.split('|'),
         type = parts[0],
-        target = parts[1],
-        base = parts[2];
+        base = parts[1],
+        target = parts[2];
 
-      content = grunt.helper('usemin', content, block, target, base, type);
+      content = grunt.helper('usemin', content, block, base, target, type);
     });
 
     return content;
   });
 
   // usemin and usemin:* are used with the blocks parsed from directives
-  grunt.registerHelper('usemin', function(content, block, target, base, type) {
+  grunt.registerHelper('usemin', function(content, block, base, target, type) {
     target = base + target || 'replace';
     return grunt.helper('usemin:' + type, content, block, target);
   });
 
   grunt.registerHelper('usemin:css', function(content, block, target) {
     var indent = (block.split(linefeed)[0].match(/^\s*/) || [])[0];
-    return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '"\/>');
+    return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '"\/?>');
   });
 
   grunt.registerHelper('usemin:js', function(content, block, target) {
@@ -366,10 +367,8 @@ module.exports = function(grunt) {
       var dirname = path.dirname(src);
 
       // XXX files won't change, the filepath should filter the original list
-      // of cached files (we need to treat the filename collision -- i.e. 2 files with same names
-      // in different subdirectories)
-      var filepaths = grunt.file.expand(path.join('**/*') + basename);
-      var filepath = filepaths.filter(function(f) { return dirname === path.dirname(f);})[0];
+      // of cached files.
+      var filepath = grunt.file.expand(path.join('**/*') + basename)[0];
 
       // not a file in temp, skip it
       if ( !filepath ) {
