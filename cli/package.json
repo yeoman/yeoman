@@ -33,8 +33,8 @@
     "manpages": "./scripts/docs-build"
   },
   "dependencies": {
-    "grunt": "https://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
-    "yeoman-generators": "https://nodeload.github.com/yeoman/generators/tarball/282b0b4c51",
+    "grunt": "http://nodeload.github.com/cowboy/grunt/tarball/0ba6d4b529",
+    "yeoman-generators": "http://nodeload.github.com/yeoman/generators/tarball/282b0b4c51",
     "bower": "~0.1.0",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
