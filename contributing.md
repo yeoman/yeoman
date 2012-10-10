@@ -23,7 +23,6 @@ Yeoman has three primary repos:
 * [yeoman.io](http://github.com/yeoman/yeoman.io)
 
 
-
 ## Contributor License Agreement
 
 We'd love to accept your code patches! However, before we can take them, we have to jump a couple of legal hurdles.
@@ -47,17 +46,13 @@ More about CLAs:
 * Run this command: `./setup/install.sh`
 * `cd` into the `/cli` directory and run `sudo npm link` after the install is complete.
 * Navigate to a new directory and run `yeoman init` to make sure everything is working as expected.
+* Add `yeoman_test` with any value to your environment variables to disable the updater and Insight.
 
 You can keep Yeoman up to date by using `git pull --rebase upstream master && cd cli && npm link`, where `upstream` is a remote pointing to this repo.
 
 ### Generators
 
-When developing in the generators repo you probably want to be able to test out your changes. The recommended workflow is to link the generators module into the yeoman project, which means changes you do in the generators repo will be reflected in the yeoman repo.
-
-- `cd` into the generators repo
-- Run `npm link` to link it globally
-- `cd` into the `cli` folder in the yeoman repo
-- Run `npm link yeoman-generators` to link it into this folder
+When developing in the generators repo you probably want to be able to test out your changes. The recommended workflow is to link the generators module into the yeoman project by running `npm link path/to/generator/folder` in `yeoman/cli/`. This means changes you do in the generators repo will be reflected in the yeoman repo.
 
 
 ## Style Guide
@@ -69,8 +64,13 @@ This project uses single-quotes, two space indentation, multiple var statements 
 
 * Submit your CLA, if you haven't.
 * Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
-* Lint the code by running `grunt` in the `/cli` folder before submitting a pull request
+* Non-trivial changes should be discussed in an issue first
 * Develop in a topic branch, not master
+* Lint the code by running `grunt` in the `/cli` folder
+* Add relevant tests to cover the change
+* Make sure test-suite passes
+* Squash your commits
+* Write a convincing description of your PR and why we should land it
 
 
 ## Tests
@@ -79,7 +79,7 @@ Yeoman has a test suite to ensure it's reliably and accurately working as a deve
 
 To run our test suite:
 
-```sh
+```
 npm test
 ```
 
