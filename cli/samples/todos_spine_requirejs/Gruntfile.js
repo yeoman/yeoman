@@ -3,7 +3,7 @@ module.exports = function( grunt ) {
   //
   // Grunt configuration:
   //
-  // https://github.com/cowboy/grunt/blob/master/docs/getting_started.md
+  // https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md
   //
   grunt.initConfig({
 
@@ -71,7 +71,7 @@ module.exports = function( grunt ) {
     },
 
     // default lint configuration, change this to match your setup:
-    // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#lint-built-in-task
+    // https://github.com/gruntjs/grunt/blob/master/docs/task_lint.md#lint-built-in-task
     lint: {
       files: [
         'Gruntfile.js',
@@ -81,7 +81,7 @@ module.exports = function( grunt ) {
     },
 
     // specifying JSHint options and globals
-    // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#specifying-jshint-options-and-globals
+    // https://github.com/gruntjs/grunt/blob/master/docs/task_lint.md#specifying-jshint-options-and-globals
     jshint: {
       options: {
         curly: true,

@@ -6,7 +6,7 @@ Usage: `yeoman build`, `yeoman build:<target>`
 
 Constructs an optimized version of your application that's ready to deploy.
 
-Yeoman makes use of [Grunt](https://github.com/cowboy/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist with compression, optimization and testing.
+Yeoman makes use of [Grunt](https://github.com/gruntjs/grunt) behind the scenes to tackle much of the hard work for this, with some useful additions that assist with compression, optimization and testing.
 
 These include:
 
