@@ -177,7 +177,7 @@ Now we can see the new description by invoking --help on the new generator. The 
 
 Generators themselves have a generator:
 
-    $ yeoman init generator generator initializer
+    $ yeoman init generator initializer
       create  lib/generators/initializer
       create  lib/generators/initializer/index.js
       create  lib/generators/initializer/USAGE
