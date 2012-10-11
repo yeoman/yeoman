@@ -116,7 +116,7 @@ See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contrib
 
 ## About
 
-Yeoman is an open-source project by [Google](http://google.com) which builds on top of [Grunt](https://github.com/cowboy/grunt) and [node-build-script](http://github.com/h5bp/node-build-script). We utilize a number of useful open-source solutions including:
+Yeoman is an open-source project by [Google](http://google.com) which builds on top of [Grunt](https://github.com/gruntjs/grunt) and [node-build-script](http://github.com/h5bp/node-build-script). We utilize a number of useful open-source solutions including:
 
 * Twitter Bootstrap
 * HTML5 Boilerplate

@@ -376,7 +376,7 @@ Either `Name` or `BasedName` are EventEmitters, you may use the EventEmitter API
 grunt.file
 ----------
 
-Generators get mixed into their prototype the [grunt.file](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#the-file-api) API. You can use read, readJSON, write, copy, mkdir, expandFiles, etc.
+Generators get mixed into their prototype the [grunt.file](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#the-file-api) API. You can use read, readJSON, write, copy, mkdir, expandFiles, etc.
 
 Note that some of them have special additional logic attached, for `copy`, `read` and `write`.
 
@@ -386,7 +386,7 @@ grunt.log
 ---------
 
 In addition to the grunt.file API directly available into your generators, you
-can use the [grunt.log](https://github.com/cowboy/grunt/blob/master/docs/api_log.md#the-log-api) API as `this.log`
+can use the [grunt.log](https://github.com/gruntjs/grunt/blob/master/docs/api_log.md#the-log-api) API as `this.log`
 
 
 {% highlight js %}
@@ -413,7 +413,7 @@ Generator methods
 The following are methods available for generators.
 
 NOTE: Methods provided by Grunt are not covered this guide and can be found in
-"Grunt's documentation":https://github.com/cowboy/grunt/blob/master/docs/api_file.md#the-file-api
+"Grunt's documentation":https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#the-file-api
 
 **TBD**
 
@@ -553,7 +553,7 @@ And now it will lookup at:
 
 > Copy a source file to a destination path, creating intermediate directories if necessary.
 
-Grunt's[`grunt.file.copy`](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
+Grunt's[`grunt.file.copy`](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
 
 {% highlight js %}
 // similar to
@@ -571,7 +571,7 @@ value.
 > Write the specified contents to a file, creating intermediate directories if necessary.
 
 Just like
-[`grunt.file.write`](https://github.com/cowboy/grunt/blob/master/docs/api_file.md#grunt-file-write),
+[`grunt.file.write`](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#grunt-file-write),
 we simply ensure the log output of the files being written.
 
 {% highlight js %}
