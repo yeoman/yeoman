@@ -47,5 +47,19 @@ describe('usemin', function() {
       assert.ok( changed == awaited );
     });
   });
+
+  describe('usemin:post:html', function() {
+    it('do not depend on tag position', function() {
+      usemin.call(grunt,grunt);
+      grunt.log.muted = true;
+      grunt.file.mkdir('css');
+      grunt.file.write('css/23012.main.css', "foo");
+      var content = '<link href="css/main.css" rel="stylesheet"/><link rel="stylesheet" href="css/main.css"/>';
+      var awaited = '<link href="css/23012.main.css" rel="stylesheet"/><link rel="stylesheet" href="css/23012.main.css"/>';
+      var changed = grunt.helper('usemin:post:html', content);
+      grunt.log.writeln("FRED: ["+content+"]["+changed+"]");
+      assert.ok( changed == awaited );
+    });
+  });
 });
 
