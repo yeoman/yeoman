@@ -337,6 +337,9 @@ module.exports = function(grunt) {
     grunt.log.verbose.writeln('Update the HTML with background imgs, case there is some inline style');
     content = grunt.helper('replace', content, /url\(\s*['"]([^"']+)["']\s*\)/gm);
 
+    grunt.log.verbose.writeln('Update the HTML with anchors images');
+    content = grunt.helper('replace', content, /<a[^\>]+href=['"]([^"']+)["']/gm);
+
     return content;
   });
 
@@ -359,6 +362,12 @@ module.exports = function(grunt) {
       if ( src.match(/\/\//) ) {
         return match;
       }
+
+      // Consider reference from site root
+      if ( src.match(/^\//) ) {
+        src = src.substr(1);
+      }
+
       var basename = path.basename(src);
       var dirname = path.dirname(src);
 
