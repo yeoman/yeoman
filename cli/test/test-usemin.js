@@ -49,15 +49,34 @@ describe('usemin', function() {
   });
 
   describe('usemin:post:html', function() {
-    it('do not depend on tag position', function() {
+    before(function() {
       usemin.call(grunt,grunt);
       grunt.log.muted = true;
+      grunt.file.mkdir('images');
       grunt.file.mkdir('css');
+    });
+
+    it('do not depend on tag position', function() {
       grunt.file.write('css/23012.main.css', "foo");
       var content = '<link href="css/main.css" rel="stylesheet"/><link rel="stylesheet" href="css/main.css"/>';
       var awaited = '<link href="css/23012.main.css" rel="stylesheet"/><link rel="stylesheet" href="css/23012.main.css"/>';
       var changed = grunt.helper('usemin:post:html', content);
-      grunt.log.writeln("FRED: ["+content+"]["+changed+"]");
+      assert.ok( changed == awaited );
+    });
+
+    it('should treat files referenced from site root', function() {
+      grunt.file.write('images/23012.foo.png', "foo");
+      var content = '<img src="/images/foo.png">';
+      var awaited = '<img src="/images/23012.foo.png">';
+      var changed = grunt.helper('usemin:post:html', content);
+      assert.ok( changed == awaited );
+    });
+
+    it('should also replace local reference in anchors', function() {
+      grunt.file.write('images/23012.foo.png', "foo");
+      var content = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/foo.png"></a><a href="/images/foo.png"></a><a href="#local"></a>';
+      var awaited = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/23012.foo.png"></a><a href="/images/23012.foo.png"></a><a href="#local"></a>';
+      var changed = grunt.helper('usemin:post:html', content);
       assert.ok( changed == awaited );
     });
   });
