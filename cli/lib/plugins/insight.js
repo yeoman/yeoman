@@ -1,35 +1,50 @@
 var fs = require('fs'),
     join = require('path').join,
-    spawn = require('child_process').spawn,
+    exec = require('child_process').exec,
     colors = require('colors'),
     prompt = require('prompt');
+
+/**
+ * Records the give cmd to Insight.
+ * 
+ * It's assumed yeomaninsight.py is installed globally as
+ * /usr/local/bin/_yeomaninsight (or platform equivalent). A full cmd would
+ * might look like: _yeomaninsight -n yeoman -v 0.0.1 record cmd cmd2
+ * 
+ * @param {string} cmd The full command line that was run.
+ * @param {Function} callback Callback to call when Insight is done.
+ */
+function invokeInsight(cmd, callback) {
+  var insightProcess = exec(cmd, function(err, stdout, stderr) {
+    if (err) {
+      console.log(stderr);
+      return callback(err);
+    }
+    callback();
+  });
+  //insightProcess.stdout.pipe(process.stdout);
+}
 
 module.exports = {
   init: function(opts) {
 
-    // Store global state used throughout the project in the user's home dir.
-    // e.g. /Users/username/.yeoman
-    var YEOMAN_DIR = join(opts.getUserHome(), '.' + opts.pkgname);
+    var insight = {
+      // Store records in user's home dir (e.g. /Users/username/.yeoman/insight)
+      logFile: join(opts.getUserHome(), '.' + opts.pkgname, 'insight', '.log'),
+      script: '_' + opts.pkgname + 'insight',
+      recordArgs: ['-n', opts.pkgname, '-v', opts.pkgversion, 'record'],
+      record: invokeInsight
+    };
 
-    // This should correspond to whatever name is used in package.json.
-    var INSIGHT_SCRIPT = '_' + opts.pkgname + 'insight'
+    // Example: _yeomaninsight -n yeoman -v 0.9.4 record cmd cmd2.
+    var cmdStr = insight.script + ' ' +
+                 insight.recordArgs.concat(opts.cmds).join(' ');
 
-    // e.g. /Users/username/.yeoman/insight
-    var insightFolder = join(YEOMAN_DIR, 'insight');
-
-    var insightRecordCmd = ['-n', opts.pkgname, '-v', opts.pkgversion, 'record'];
-
-    // Record this action in Insight.
-    // Assume yeomaninsight.py is installed globally (/usr/local/bin/) as _yeomaninsight.
-    // _yeomaninsight -n yeoman -v 0.0.1 record cmd cmd2).
-    spawn(INSIGHT_SCRIPT, insightRecordCmd.concat(opts.cmds));
-    //insight.stdout.pipe(process.stdout);
-
-    fs.stat(join(insightFolder, '.log'), function(err, stats) {
+    fs.stat(insight.logFile, function(err, stats) {
       // Error means file doesn't exist and this is the first run.
       // Go through stat opt-in flow.
-      if ( !err )  {
-        return opts.cb();
+      if (!err)  {
+        return insight.record(cmdStr, opts.cb);
       }
 
 /*jshint multistr:true */
@@ -59,12 +74,15 @@ More info: yeoman.io/insight.html & http://yeoman.io".yellow + "\n\
         }
 
         if (/n/i.test(result.optin)) {
-          spawn(INSIGHT_SCRIPT, insightRecordCmd.concat(['NO_STATS']));
+          cmdStr = insight.script + ' ' +
+                   insight.recordArgs.concat(['NO_STATS']).join(' ');
+          return insight.record(cmdStr, opts.cb);
         }
-        opts.cb();
+
+        insight.record(cmdStr, opts.cb);
       });
 
-
     });
+
   }
 };
