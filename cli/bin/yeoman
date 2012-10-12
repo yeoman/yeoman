@@ -42,18 +42,26 @@ function init() {
     cmds = cli.tasks,
     route = cmds.join(' ').trim('');
 
+  // Flag to disable Insight. Intended for devs to use while testing the cli
+  // so inflated stats are no recorded.
+  if (/--disable-insight/.test(process.argv)) {
+    process.env.no_stats = true;
+  }
+
   // custom help, on `h5bp help`
   if(/^help/.test(route)) {
     if(/^help$/.test(route)) {
 
-      // Tell Insight "help" was run.
-      insight.init({
-        pkgname    : pkg.name,
-        pkgversion : pkg.version,
-        getUserHome: getUserHome,
-        cmds       : cmds,
-        cb         : function() {}
-      });
+      if (!process.env.no_stats) {
+        // Tell Insight "help" was run.
+        insight.init({
+          pkgname    : pkg.name,
+          pkgversion : pkg.version,
+          getUserHome: getUserHome,
+          cmds       : cmds,
+          cb         : function() {}
+        });
+      }
 
       return console.log( compiled() );
     }
@@ -106,7 +114,7 @@ function init() {
     // Are we dealing with yeoman in a test environment? If so, skip the
     // insight prompt. This is specifically put into the environment by
     // our test spawn helper.
-    if(process.env.yeoman_test) {
+    if(process.env.yeoman_test || process.env.no_stats) {
       return cb();
     }
 
