@@ -26,14 +26,14 @@ class Analytics(object):
   TRACKING_CODE = 'UA-31537568-1'
   BASE_URL = 'http://www.google-analytics.com/collect/__utm.gif'
 
-  def __init__(self, tracking_code, av):
+  def __init__(self, tracking_code, application_version):
     if not tracking_code:
       raise Exception('No tracking code was given')
-    if not av:
+    if not application_version:
       raise Exception('No application version was given')
 
     self.tracking_code = tracking_code
-    self.av = av
+    self.application_version = application_version
     self.do_stats = True
 
     # Create ~/.yeoman/insight if it doesn't exist.
@@ -47,7 +47,8 @@ class Analytics(object):
     # record the download action. Otherwise, read the existing client ID saved
     # on the first line of the file.
     if os.path.getsize(LOG_FILE) == 0:
-      # Record the initial "download/install". Then have users opt-in.
+      # Record the initial "download/install". Send it right way.
+      # Then have users opt-in.
       self.client_id = '%s%s' % (time.time(), random.random())
       self.__reset_file(f, self.client_id)
       self.record('downloaded')
@@ -113,7 +114,7 @@ class Analytics(object):
       'qt': int((time.time() - recorded_at) * 1e3), # Queue Time. Delta (milliseconds) between now and when hit was recorded.
       'dp': path,
       'an': 'Yeoman Insight', # Application Name.
-      'av': self.av, # Application Version.
+      'av': self.application_version, # Application Version.
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
     }
 
@@ -138,7 +139,7 @@ class Analytics(object):
     with open(LOG_FILE) as f:
       # This assumes every line in the log file ends with "\n".
       lines = [line[:-1] for line in f.readlines()]
-      for l in lines[1:]: # ClientID is always on the first line, so start on 2nd.
+      for l in lines[1:]: # ClientID is always on the first line. Start on 2nd.
         parts = l.split(' ')
 
         # If one message fails to send, assume we're offline and bomb out.
@@ -161,10 +162,13 @@ class Analytics(object):
           For example, when running "yeoman add model MyModel", this method
           would save "add model" with a timestamp attached.
     """
-    cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
+    try:
+      cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
+    except IndexError: # yeoman cli cmd was run with no arguments.
+      cmd_str = ''
     path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
 
-    # yeomaninsight.py record NO_STATS is sent from bin/yeoman on first run.
+    # yeomaninsight.py ... record NO_STATS was sent from cli on first run.
     if self.do_stats and cmd_str != NO_STATS:
       f = open(LOG_FILE, 'a')
       s = '%s /%s' % (time.time(), path)
@@ -187,23 +191,22 @@ def main(args):
     print str(err)
     sys.exit(1)
 
-  av = 'x.x.x'
+  application_version = 'x.x.x'
   CLI_NAME = DEFAULT_CLI_NAME
   for opt, val in opts:
     if opt in ('-v', '--version'):
-      av = val
+      application_version = val
     elif opt in ('-n', '--name'):
       CLI_NAME = val
 
   method = args[0]
   args = ' '.join(args[1:])
 
-  # TODO(ericbidelman): Verify expanduser('~') works on other platforms.
   # ~/.yeoman/insight
   INSIGHT_DIR = os.path.join(os.path.expanduser('~'), '.' + CLI_NAME, 'insight')
   LOG_FILE = os.path.join(INSIGHT_DIR, '.log') # ~/.yeoman/insight/.log
 
-  ga = Analytics(Analytics.TRACKING_CODE, av)
+  ga = Analytics(Analytics.TRACKING_CODE, application_version)
 
   #if callable(getattr(ga, method)):
   #  getattr(ga, method)()

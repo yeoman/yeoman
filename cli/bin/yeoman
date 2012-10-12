@@ -45,6 +45,16 @@ function init() {
   // custom help, on `h5bp help`
   if(/^help/.test(route)) {
     if(/^help$/.test(route)) {
+
+      // Tell Insight "help" was run.
+      insight.init({
+        pkgname    : pkg.name,
+        pkgversion : pkg.version,
+        getUserHome: getUserHome,
+        cmds       : cmds,
+        cb         : function() {}
+      });
+
       return console.log( compiled() );
     }
     cli.tasks = cmds.join(':');
