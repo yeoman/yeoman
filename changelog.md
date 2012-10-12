@@ -1,4 +1,22 @@
 
+
+### 0.9.4 (12 October, 2012)
+
+* Updated to Bower 0.2.0 (Issue [#551](https://github.com/yeoman/yeoman/issues/551))
+* Less verbose `yeoman init` (Issue [#605](https://github.com/yeoman/yeoman/issues/605))
+* Ability to disable Insight (Issue [#305](https://github.com/yeoman/yeoman/issues/385))
+* Corrections to generator docs (Issue [#608](https://github.com/yeoman/yeoman/issues/608))
+* Fixes to usemin:html skipping anchor tags with images as href (Issue [#615](https://github.com/yeoman/yeoman/issues/615))
+* Fixes to main.css not being replaced with compiled version unless tag structure is exactly as yeoman expects it (Issue [#502](https://github.com/yeoman/yeoman/issues/502))
+* Stops yeoman from looking for win32 binaries in ../vendor/ (Pull [#519](https://github.com/yeoman/yeoman/pull/519))
+* Support for installing Yeoman behind a corporate proxy server (Pull [#587](https://github.com/yeoman/yeoman/pull/587))
+* Remove a trailing comma in the options of the HTML task and add missing semicolons in the server task
+(Issue [#589](https://github.com/yeoman/yeoman/pull/589))
+* Fix to enable blank lines in usemin blocks (Issue [#560](https://github.com/yeoman/yeoman/issues/560))
+* Updates to Insight documentation
+* Fixes usemin:css inserting invalid <link> element (Issue [#586](https://github.com/yeoman/yeoman/issues/586))
+* Fix for usemin replace task incorrectly matcheing filename when files in subfolders have the same name (Issue [#565](https://github.com/yeoman/yeoman/issues/565))
+
 ### 0.9.3 (3 October, 2012)
 
 * Temporary fix to allow Bower dependencies to be correctly copied to app/components. As a result of this patch RequireJS wiring of Bower deps is currently disabled
