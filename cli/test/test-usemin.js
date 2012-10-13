@@ -55,6 +55,15 @@ describe('usemin', function() {
       grunt.file.mkdir('images');
       grunt.file.mkdir('css');
     });
+  
+    it('should skip external filei', function() {
+      grunt.file.write('images/23012.foo.png', "foo");
+      var content = '<img src="//css/main.css">';
+      var awaited = '<img src="//css/main.css">';
+      var changed = grunt.helper('usemin:post:html', content);
+      assert.ok( changed == awaited );
+
+    });
 
     it('do not depend on tag position', function() {
       grunt.file.write('css/23012.main.css', "foo");
@@ -76,6 +85,13 @@ describe('usemin', function() {
       grunt.file.write('images/23012.foo.png', "foo");
       var content = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/foo.png"></a><a href="/images/foo.png"></a><a href="#local"></a>';
       var awaited = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/23012.foo.png"></a><a href="/images/23012.foo.png"></a><a href="#local"></a>';
+      var changed = grunt.helper('usemin:post:html', content);
+      assert.ok( changed == awaited );
+    });
+
+    it('should handle properly the case of the root path (/)', function() {
+      var content = '<a href="/">'
+      var awaited = '<a href="/">';
       var changed = grunt.helper('usemin:post:html', content);
       assert.ok( changed == awaited );
     });
