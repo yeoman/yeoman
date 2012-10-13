@@ -358,8 +358,8 @@ module.exports = function(grunt) {
   //
   grunt.registerHelper('replace', function(content, regexp) {
     return content.replace(regexp, function(match, src) {
-      //do not touch external files
-      if ( src.match(/\/\//) ) {
+      //do not touch external files or the root
+      if ( src.match(/\/\//) || src.match(/^\/$/)) {
         return match;
       }
 
