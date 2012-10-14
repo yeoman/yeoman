@@ -16,6 +16,7 @@
 * Updates to Insight documentation
 * Fixes usemin:css inserting invalid <link> element (Issue [#586](https://github.com/yeoman/yeoman/issues/586))
 * Fix for usemin replace task incorrectly matcheing filename when files in subfolders have the same name (Issue [#565](https://github.com/yeoman/yeoman/issues/565))
+* New Windows [installation](https://github.com/yeoman/yeoman/wiki/Manual-Install) instructions 
 
 ### 0.9.3 (3 October, 2012)
 
