@@ -54,6 +54,9 @@ You can keep Yeoman up to date by using `git pull --rebase upstream master && cd
 
 When developing in the generators repo you probably want to be able to test out your changes. The recommended workflow is to link the generators module into the yeoman project by running `npm link path/to/generator/folder` in `yeoman/cli/`. This means changes you do in the generators repo will be reflected in the yeoman repo.
 
+### Insight
+
+When developing for Yeoman, you will most likely be running and debugging commands within the CLI. If you have opted into Insight, these commands will be logged. A special `--disable-insight` flag is available for developers wishing to opt out of Insight tracking so inflated stats are not recorded.
 
 ## Style Guide
 
