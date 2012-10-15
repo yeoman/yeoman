@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+
 """This module defines the Yeoman Insight metrics reporter tool."""
 
 __author__ = 'ebidel@gmail.com (Eric Bidelman)'
@@ -11,8 +13,17 @@ import random
 import shutil
 import sys
 import time
-import urllib
-import urllib2
+
+PYTHON_VERSION_3 = sys.version_info[0] == 3
+
+if PYTHON_VERSION_3:
+  import urllib.request, urllib.parse, urllib.error
+  import urllib.request, urllib.error, urllib.parse
+  URLError = urllib.error.URLError
+else:
+  import urllib
+  import urllib2
+  URLError = urllib2.URLError
 
 NO_STATS = 'NO_STATS'
 DEFAULT_CLI_NAME = 'yeoman'
@@ -118,18 +129,25 @@ class Analytics(object):
       'z': time.time() # Cache bust. Probably don't need, but be safe. Should be last param.
     }
 
-    encoded_params = urllib.urlencode(params)
+    if PYTHON_VERSION_3:
+      encoded_params = urllib.parse.urlencode(params)
+    else:
+      encoded_params = urllib.urlencode(params)
 
     url = '%s?%s' % (self.BASE_URL, encoded_params)
 
     # Noop if we're offline. Just keep stashing entries.
     try:
-      response = urllib2.urlopen(url)
-      #print url
+      if PYTHON_VERSION_3:
+        response = urllib.request.urlopen(url)
+      else:
+        response = urllib2.urlopen(url)
+      #print(url)
       #if response.code == 200:
       #  return True
       return True
-    except urllib2.URLError:
+    except URLError as e:
+      print(e)
       return False
 
   def _send_all(self):
@@ -163,7 +181,8 @@ class Analytics(object):
           would save "add model" with a timestamp attached.
     """
     try:
-      cmd_str = filter(lambda x: x, cmd_str.split(CLI_NAME))[0].strip()
+      # Strip cli name off and any whitespace around args.
+      cmd_str = ' '.join([x for x in [y.strip() for y in cmd_str.split(CLI_NAME) if y][0].split(' ') if x])
     except IndexError: # yeoman cli cmd was run with no arguments.
       cmd_str = ''
     path = '/'.join(cmd_str.split(' ')[:NUM_SUB_CMDS])
@@ -182,13 +201,13 @@ def main(args):
   global CLI_NAME
 
   if len(sys.argv) < 2:
-    print 'Invalid number of arguments.'
+    print('Invalid number of arguments.')
     sys.exit(1)
 
   try:
     opts, args = getopt.getopt(sys.argv[1:], 'v:n:', ['version=', 'name='])
-  except getopt.GetoptError, err:
-    print str(err)
+  except getopt.GetoptError as err:
+    print(str(err))
     sys.exit(1)
 
   application_version = 'x.x.x'
