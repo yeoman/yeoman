@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
   path = require('path'),
   util = require('util'),
@@ -284,6 +283,9 @@ module.exports = function(grunt) {
       middleware.push( grunt.helper('reload:inject', opts) );
     }
 
+    // also serve static files from the test directory, and before the temp
+    // one (compiled assets takes precedence over same pathname within temp/)
+    middleware.push(connect.static(path.join(opts.base, '../test')));
     // also serve static files from the temp directory, and before the app
     // one (compiled assets takes precedence over same pathname within app/)
     middleware.push(connect.static(path.join(opts.base, '../temp')));
