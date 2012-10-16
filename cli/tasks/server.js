@@ -1,14 +1,14 @@
 
 var fs = require('fs'),
-  path = require('path'),
-  util = require('util'),
-  http = require('http'),
-  events = require('events'),
-  colors = require('colors'),
-  connect = require('connect'),
-  WebSocket = require('faye-websocket'),
-  open = require('open'),
-  WeakMap = require('es6-collections').WeakMap;
+    path = require('path'),
+    util = require('util'),
+    http = require('http'),
+    events = require('events'),
+    colors = require('colors'),
+    connect = require('connect'),
+    WebSocket = require('faye-websocket'),
+    open = require('open'),
+    WeakMap = require('es6-collections').WeakMap;
 
 module.exports = function(grunt) {
   var priv = new WeakMap();
@@ -45,12 +45,12 @@ module.exports = function(grunt) {
   // send a reload command on all stored web socket connection
   Reactor.prototype.reload = function reload(files) {
     var sockets = this.sockets,
-      changed = files.changed;
+        changed = files.changed;
 
     // go through all sockets, and emit a reload command
     Object.keys(sockets).forEach(function(id) {
       var ws = sockets[id],
-        version = ws.livereloadVersion;
+          version = ws.livereloadVersion;
 
       // go throuh all the files that has been marked as changed by grunt
       // and trigger a reload command on each one, for each connection.
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 
   Reactor.prototype.connection = function connection(request, socket, head) {
     var ws = new WebSocket(request, socket, head),
-      wsId = this.uid = this.uid + 1;
+        wsId = this.uid = this.uid + 1;
 
     // store the new connection
     this.sockets[wsId] = ws;
@@ -201,7 +201,7 @@ module.exports = function(grunt) {
 
   // Note: yeoman-server alone will exit prematurly unless `this.async()` is
   // called. The task is designed to work alongside the `watch` task.
-  grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target) {
+  grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target, main) {
     var opts;
     // Get values from config, or use defaults.
     var port = grunt.config('server.port') || 0xDAD;
@@ -217,12 +217,6 @@ module.exports = function(grunt) {
       dist: path.resolve('dist'),
       test: path.resolve('test'),
 
-      // phantom target is a special one: it is triggered
-      // before launching the headless tests, and gives
-      // to phantomjs visibility on the same paths a
-      // server:test have.
-      phantom: path.resolve('test'),
-
       // reload is a special one, acting like `app` but not opening the HTTP
       // server in default browser and forcing the port to LiveReload standard
       // port.
@@ -234,23 +228,10 @@ module.exports = function(grunt) {
     // yell on invalid target argument
     if(!targets[target]) {
       grunt
-        .log.error('Not a valid target: ' + target)
-        .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
+          .log.error('Not a valid target: ' + target)
+          .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
       return false;
     }
-
-    var tasks = {
-      // We do want our coffee, and compass recompiled on change
-      // and our browser opened and refreshed both when developping
-      // (app) and when writing tests (test)
-      app: 'clean coffee compass open-browser watch',
-      test: 'clean coffee compass open-browser watch',
-      // Before our headless tests are run, ensure our coffee
-      // and compass are recompiled
-      phantom: 'clean coffee compass',
-      dist: 'watch',
-      reload: 'watch'
-    };
 
     opts = {
       // prevent browser opening on `reload` target
@@ -260,22 +241,38 @@ module.exports = function(grunt) {
       base: targets[target],
       inject: true,
       target: target,
-      hostname: grunt.config('server.hostname') || 'localhost'
+      hostname: grunt.config('server.hostname') || 'localhost',
+      // command line takes priority
+      main: main || grunt.config('server.' + target + '.main')
     };
 
     grunt.helper('server', opts, cb);
 
     grunt.registerTask('open-browser', function() {
-        if ( opts.open ) {
-          open( 'http://' + opts.hostname + ':' + opts.port );
-        }
+      if ( opts.open ) {
+        open( 'http://' + opts.hostname + ':' + opts.port );
+      }
     });
 
-    grunt.task.run( tasks[target] );
+    if(target === 'app') {
+      // when serving app, make sure to delete the temp/ dir from w/e was
+      // previously compiled here, and trigger compass / coffee mostly to make
+      // sure, those files are compiled and not revved.
+      grunt.task.run('clean coffee compass open-browser');
+    }
+
+    grunt.task.run('watch');
   });
 
   grunt.registerHelper('server', function(opts, cb) {
     cb = cb || function() {};
+
+    var app;
+    if (opts.main) {
+      app = require(path.resolve(opts.main));
+    } else {
+      app = connect();
+    }
 
     var middleware = [];
 
@@ -284,22 +281,14 @@ module.exports = function(grunt) {
       middleware.push( grunt.helper('reload:inject', opts) );
     }
 
-    // also serve static files from the temp directory, and before the app
-    // one (compiled assets takes precedence over same pathname within app/)
-    middleware.push(connect.static(path.join(opts.base, '../temp')));
-    // Serve static files.
-    middleware.push(connect.static(opts.base));
-   // Make empty directories browsable.
-    middleware.push(connect.directory(opts.base));
-
-    if ( (opts.target === 'test') || ( opts.target == 'phantom')) {
-      // We need to expose our code as well
-      middleware.push(connect.static(path.resolve('app')));
-      // Make empty directories browsable.
-      middleware.push(connect.directory(path.resolve('app')));
-    }
-
     middleware = middleware.concat([
+      // also serve static files from the temp directory, and before the app
+      // one (compiled assets takes precedence over same pathname within app/)
+      connect.static(path.join(opts.base, '../temp')),
+      // Serve static files.
+      connect.static(opts.base),
+      // Make empty directories browsable.
+      connect.directory(opts.base),
       // Serve the livereload.js script
       connect.static(path.join(__dirname, 'livereload')),
       // To deal with errors, 404 and alike.
@@ -311,9 +300,9 @@ module.exports = function(grunt) {
     // the connect logger format if --debug was specified. Get values from
     // config or use defaults.
     var format = grunt.config('server.logformat') || (
-      '[D] server :method :url :status ' +
-      ':res[content-length] - :response-time ms'
-    );
+        '[D] server :method :url :status ' +
+            ':res[content-length] - :response-time ms'
+        );
 
     // If --debug was specified, enable logging.
     if (grunt.option('debug')) {
@@ -321,35 +310,39 @@ module.exports = function(grunt) {
       middleware.unshift(connect.logger('yeoman'));
     }
 
-    return connect.apply(null, middleware)
-      .on('error', function( err ) {
-        if ( err.code === 'EADDRINUSE' ) {
-          return this.listen(0); // 0 means random port
-        }
+    for (var i = 0; i < middleware.length; ++i) {
+      app.use(middleware[i]);
+    }
 
-        // not an EADDRINUSE error, buble up the error
-        cb(err);
-      })
-      .listen(opts.port, function() {
-        var port = this.address().port;
+    return app
+        .on('error', function( err ) {
+          if ( err.code === 'EADDRINUSE' ) {
+            return this.listen(0); // 0 means random port
+          }
 
-        // Start server.
-        grunt.log
-          .subhead( 'Starting static web server on port '.yellow + String( port ).red )
-          .writeln( '  - ' + path.resolve(opts.base) )
-          .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
-          .writeln('Hit Ctrl+C to quit.');
+          // not an EADDRINUSE error, buble up the error
+          cb(err);
+        })
+        .listen(opts.port, function() {
+          var port = this.address().port;
 
-        // create the reactor object
-        grunt.helper('reload:reactor', {
-          server: this,
-          apiVersion: '1.7',
-          host: opts.hostname,
-          port: port
+          // Start server.
+          grunt.log
+              .subhead( 'Starting static web server on port '.yellow + String( port ).red )
+              .writeln( '  - ' + path.resolve(opts.base) )
+              .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
+              .writeln('Hit Ctrl+C to quit.');
+
+          // create the reactor object
+          grunt.helper('reload:reactor', {
+            server: this,
+            apiVersion: '1.7',
+            host: opts.hostname,
+            port: port
+          });
+
+          cb(null, port);
         });
-
-        cb(null, port);
-      });
   });
 
 
