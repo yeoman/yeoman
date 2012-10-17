@@ -48,7 +48,7 @@ var updater = module.exports;
 
 var config = (function() {
   var mkdirp = require('mkdirp');
-  var homeDir = process.env[ ( process.platform == 'win32' ) ? 'USERPROFILE' : 'HOME' ];
+  var homeDir = process.env[ process.platform === 'win32' ? 'USERPROFILE' : 'HOME' ];
   var folderPath = path.join( homeDir, '.config', 'npm-updater' );
   // Function, since _packageName is not available when this is init'd
   var filename = function() {

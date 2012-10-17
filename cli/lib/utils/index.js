@@ -45,7 +45,7 @@ utils.extend = function extend(o) {
       get: function() {
         return utils[prop];
       }
-    })
+    });
   });
   return o;
 };

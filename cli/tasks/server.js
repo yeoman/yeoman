@@ -292,7 +292,7 @@ module.exports = function(grunt) {
    // Make empty directories browsable.
     middleware.push(connect.directory(opts.base));
 
-    if ( (opts.target === 'test') || ( opts.target == 'phantom')) {
+    if ( (opts.target === 'test') || ( opts.target === 'phantom')) {
       // We need to expose our code as well
       middleware.push(connect.static(path.resolve('app')));
       // Make empty directories browsable.
