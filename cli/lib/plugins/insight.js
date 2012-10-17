@@ -6,23 +6,22 @@ var fs = require('fs'),
 
 /**
  * Records the give cmd to Insight.
- * 
+ *
  * It's assumed yeomaninsight.py is installed globally as
  * /usr/local/bin/_yeomaninsight (or platform equivalent). A full cmd would
  * might look like: _yeomaninsight -n yeoman -v 0.0.1 record cmd cmd2
- * 
+ *
  * @param {string} cmd The full command line that was run.
  * @param {Function} callback Callback to call when Insight is done.
  */
 function invokeInsight(cmd, callback) {
-  var insightProcess = exec(cmd, function(err, stdout, stderr) {
+  exec(cmd, function(err, stdout, stderr) {
     if (err) {
       console.log(stderr);
       return callback(err);
     }
     callback();
   });
-  //insightProcess.stdout.pipe(process.stdout);
 }
 
 module.exports = {
