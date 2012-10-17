@@ -210,6 +210,10 @@ module.exports = function(grunt) {
           parts = dest.split(':'),
           type = parts[0],
           output = parts[1];
+        // Handle absolute path (i.e. with respect to th eserver root)
+        if (output[0] === '/') {
+          output = output.substr(1);
+        }
 
         // parse out the list of assets to handle, and update the grunt config accordingly
         var assets = lines.map(function(tag) {
