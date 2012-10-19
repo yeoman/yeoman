@@ -14,11 +14,11 @@ module.exports = function( grunt ) {
       },
       grunt: [
         'Gruntfile.js',
-        'tasks/*.js'
+        //'tasks/*.js',
       ],
       lib: [
-        'lib/{plugins,utils}/*.js',
-        'lib/generators/*.js'
+        //'lib/{plugins,utils}/*.js',
+        //'lib/generators/*.js'
       ],
       test: [
         //'test/**/*.js'
@@ -30,6 +30,7 @@ module.exports = function( grunt ) {
     }
   });
 
+  // Disable lint for now until we upgrade to latest grunt with latest jshint
   grunt.registerTask( 'default', 'lint' );
 
   // Debugging helpers

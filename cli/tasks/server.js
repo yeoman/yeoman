@@ -281,6 +281,21 @@ module.exports = function(grunt) {
       middleware.push( grunt.helper('reload:inject', opts) );
     }
 
+    // also serve static files from the temp directory, and before the app
+    // one (compiled assets takes precedence over same pathname within app/)
+    middleware.push(connect.static(path.join(opts.base, '../temp')));
+    // Serve static files.
+    middleware.push(connect.static(opts.base));
+   // Make empty directories browsable.
+    middleware.push(connect.directory(opts.base));
+
+    if ( (opts.target === 'test') || ( opts.target === 'phantom')) {
+      // We need to expose our code as well
+      middleware.push(connect.static(path.resolve('app')));
+      // Make empty directories browsable.
+      middleware.push(connect.directory(path.resolve('app')));
+    }
+
     middleware = middleware.concat([
       // also serve static files from the temp directory, and before the app
       // one (compiled assets takes precedence over same pathname within app/)
