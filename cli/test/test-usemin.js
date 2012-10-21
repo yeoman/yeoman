@@ -56,7 +56,7 @@ describe('usemin', function() {
       grunt.file.mkdir('css');
     });
   
-    it('should skip external filei', function() {
+    it('should skip external file', function() {
       grunt.file.write('images/23012.foo.png', "foo");
       var content = '<img src="//css/main.css">';
       var awaited = '<img src="//css/main.css">';
@@ -95,6 +95,26 @@ describe('usemin', function() {
       var changed = grunt.helper('usemin:post:html', content);
       assert.ok( changed == awaited );
     });
+  });
+  describe('usemin-handler', function() {
+    it("should treat local references", function() {
+      grunt.log.muted = true;
+      usemin.call(grunt, grunt);
+      helpers.gruntfile({'usemin-handler': {
+        html: 'index.html'}
+      });
+      grunt.config.init();
+      grunt.config('usemin-handler', {html: "index.html"});
+      grunt.file.copy(path.join(__dirname,"fixtures/usemin.html"), "index.html");
+      grunt.task.run('usemin-handler:html');
+      grunt.task.start();
+      // Grunt config related to concat should have been changed
+      var concat_config = grunt.config('concat');
+      // Actually the fixture index.html requires to concat stuff in '/scripts/plugins.js' ...
+      // As this references a local file, the concat config should have a key named
+      // 'scripts/plugins.js' (i.e. *without* the leading /)
+      assert.ok('scripts/plugins.js' in concat_config);
+    })
   });
 });
 
