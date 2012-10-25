@@ -224,21 +224,45 @@ module.exports = function(grunt) {
     };
 
     target = target || 'app';
+    var base = targets[target];
+
+    if (/phantom-.*/.test(target)) {
+      var phantomParts = target.split('-');
+      target = phantomParts[0];
+      // phantom target is a special one: it is triggered
+      // before launching the headless tests, and gives
+      // to phantomjs visibility on the same paths a
+      // server:test have.
+      base = targets[phantomParts[1]] || targets['test'];
+    }
 
     // yell on invalid target argument
-    if(!targets[target]) {
+    if( !base ) {
       grunt
-          .log.error('Not a valid target: ' + target)
-          .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
+        .log.error('Not a valid target: ' + target)
+        .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
       return false;
     }
+
+    var tasks = {
+      // We do want our coffee, and compass recompiled on change
+      // and our browser opened and refreshed both when developping
+      // (app) and when writing tests (test)
+      app: 'clean coffee compass open-browser watch',
+      test: 'clean coffee compass open-browser watch',
+      // Before our headless tests are run, ensure our coffee
+      // and compass are recompiled
+      phantom: 'clean coffee compass',
+      dist: 'watch',
+      reload: 'watch'
+    };
 
     opts = {
       // prevent browser opening on `reload` target
       open: target !== 'reload',
       // and force 35729 port no matter what when on `reload` target
       port: target === 'reload' ? 35729 : port,
-      base: targets[target],
+      base: base,
       inject: true,
       target: target,
       hostname: grunt.config('server.hostname') || 'localhost',
@@ -254,14 +278,7 @@ module.exports = function(grunt) {
       }
     });
 
-    if(target === 'app') {
-      // when serving app, make sure to delete the temp/ dir from w/e was
-      // previously compiled here, and trigger compass / coffee mostly to make
-      // sure, those files are compiled and not revved.
-      grunt.task.run('clean coffee compass open-browser');
-    }
-
-    grunt.task.run('watch');
+    grunt.task.run( tasks[target] );
   });
 
   grunt.registerHelper('server', function(opts, cb) {

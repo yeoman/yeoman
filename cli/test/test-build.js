@@ -222,7 +222,7 @@ describe('yeoman init && yeoman build', function() {
       });
 
       before(function(done) {
-        helpers.yeoman('server --no-color').call(this, function() {});
+        helpers.yeoman('server:phantom-app --no-color').call(this, function() {});
         this.child.stdout.setEncoding('utf8');
         this.child.stdout.on('data', function(chunk) {
           if (/Starting static web server on port \d+/.test(chunk)) {
@@ -268,7 +268,7 @@ describe('yeoman init && yeoman build', function() {
       });
 
       before(function(done) {
-        helpers.yeoman('server:reload:./sample-app --no-color').call(this, function() {});
+        helpers.yeoman('server:phantom-app:./sample-app --no-color').call(this, function() {});
         this.child.stdout.setEncoding('utf8');
         this.child.stdout.on('data', function(chunk) {
           console.log(chunk);
