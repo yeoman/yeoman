@@ -267,11 +267,13 @@ module.exports = function(grunt) {
   grunt.registerHelper('server', function(opts, cb) {
     cb = cb || function() {};
 
-    var app;
+    var app, serverName;
     if (opts.main) {
       app = require(path.resolve(opts.main));
+      serverName = 'server script: ' + opts.main;
     } else {
       app = connect();
+      serverName = 'static web server';
     }
 
     var middleware = [];
@@ -297,13 +299,6 @@ module.exports = function(grunt) {
     }
 
     middleware = middleware.concat([
-      // also serve static files from the temp directory, and before the app
-      // one (compiled assets takes precedence over same pathname within app/)
-      connect.static(path.join(opts.base, '../temp')),
-      // Serve static files.
-      connect.static(opts.base),
-      // Make empty directories browsable.
-      connect.directory(opts.base),
       // Serve the livereload.js script
       connect.static(path.join(__dirname, 'livereload')),
       // To deal with errors, 404 and alike.
@@ -329,35 +324,49 @@ module.exports = function(grunt) {
       app.use(middleware[i]);
     }
 
+    var urlLog = path.resolve(module.main, '.server');
+
+    function onServerStart() {
+      var port = this.address().port;
+
+      grunt.file.write(urlLog, opts.hostname + ':' + port);
+
+      // Start server.
+      grunt.log
+          .subhead( 'Starting ' + serverName + ' on port '.yellow + String( port ).red )
+          .writeln( '  - ' + path.resolve(opts.base) )
+          .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
+          .writeln('Hit Ctrl+C to quit.');
+
+      // create the reactor object
+      grunt.helper('reload:reactor', {
+        server: this,
+        apiVersion: '1.7',
+        host: opts.hostname,
+        port: port
+      });
+
+      cb(null, port);
+    }
+
     return app
         .on('error', function( err ) {
+            grunt.log.writeln('got here');
           if ( err.code === 'EADDRINUSE' ) {
-            return this.listen(0); // 0 means random port
+            return this.listen(0, onServerStart); // 0 means random port
           }
 
           // not an EADDRINUSE error, buble up the error
           cb(err);
         })
-        .listen(opts.port, function() {
-          var port = this.address().port;
-
-          // Start server.
-          grunt.log
-              .subhead( 'Starting static web server on port '.yellow + String( port ).red )
-              .writeln( '  - ' + path.resolve(opts.base) )
-              .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
-              .writeln('Hit Ctrl+C to quit.');
-
-          // create the reactor object
-          grunt.helper('reload:reactor', {
-            server: this,
-            apiVersion: '1.7',
-            host: opts.hostname,
-            port: port
+        .on('close', function() {
+          fs.rmdir(urlLog, function(err) {
+            if (!err) {
+              grunt.log.writeln('Removed old .server file');
+            }
           });
-
-          cb(null, port);
-        });
+        })
+        .listen(opts.port, onServerStart);
   });
 
 
