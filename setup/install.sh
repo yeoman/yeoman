@@ -192,6 +192,7 @@ audit() {
   [ "$optipng" -eq 0 ] && \
     sad_print "optipng"  "" && \
     desc_print "On Mac," "brew install optipng" "will sort you out."
+    desc_print "On Ubuntu," "sudo apt-get install optipng" "should do the trick."
   [ "$yeoman" -eq 0 ] && \
     sad_print "yeoman"  "" && \
     desc_print "You're missing yeoman!" "npm install -g yeoman" "will correct this atrocity. You may need sudo."
