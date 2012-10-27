@@ -148,8 +148,6 @@ function getBlocks(body) {
 
 module.exports = function(grunt) {
 
-  var linefeed = grunt.util.linefeed;
-
   grunt.registerMultiTask('usemin', 'Replaces references to non-minified scripts / stylesheets', function() {
 
     var name = this.target,
@@ -210,6 +208,10 @@ module.exports = function(grunt) {
           parts = dest.split(':'),
           type = parts[0],
           output = parts[1];
+        // Handle absolute path (i.e. with respect to th eserver root)
+        if (output[0] === '/') {
+          output = output.substr(1);
+        }
 
         // parse out the list of assets to handle, and update the grunt config accordingly
         var assets = lines.map(function(tag) {
@@ -287,6 +289,9 @@ module.exports = function(grunt) {
     // directive --> for html, /** directive **/ for css
     var blocks = getBlocks(content);
 
+    // Determine the linefeed from the content
+    var linefeed = /\r\n/g.test(content) ? '\r\n' : '\n';
+
     // handle blocks
     Object.keys(blocks).forEach(function(key) {
       var block = blocks[key].join(linefeed),
@@ -307,11 +312,13 @@ module.exports = function(grunt) {
   });
 
   grunt.registerHelper('usemin:css', function(content, block, target) {
+    var linefeed = /\r\n/g.test(content) ? '\r\n' : '\n';
     var indent = (block.split(linefeed)[0].match(/^\s*/) || [])[0];
     return content.replace(block, indent + '<link rel="stylesheet" href="' + target + '"\/>');
   });
 
   grunt.registerHelper('usemin:js', function(content, block, target) {
+    var linefeed = /\r\n/g.test(content) ? '\r\n' : '\n';
     var indent = (block.split(linefeed)[0].match(/^\s*/) || [])[0];
     return content.replace(block, indent + '<script src="' + target + '"></script>');
   });
