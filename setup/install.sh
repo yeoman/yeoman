@@ -185,6 +185,7 @@ audit() {
   [ "$phantomjs" -eq 0 ] && \
     sad_print "PhantomJS"  "" && \
     desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick!"
+    desc_print "On Mac," "brew install phantomjs" "should do the trick."
   [ "$jpegturbo" -eq 0 ] && \
     sad_print "jpegtran"  "" && \
     desc_print "On Mac," "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
