@@ -184,14 +184,15 @@ audit() {
     desc_print "is not installed: http://compass-style.org/install/ "
   [ "$phantomjs" -eq 0 ] && \
     sad_print "PhantomJS"  "" && \
-    desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick!"
+    desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick! " && \
+    desc_print "On Mac," "brew install phantomjs" "should do the trick."
   [ "$jpegturbo" -eq 0 ] && \
     sad_print "jpegtran"  "" && \
-    desc_print "On Mac," "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick."
+    desc_print "On Mac," "brew install jpeg-turbo && brew link jpeg-turbo" "should do the trick. " && \
     desc_print "On Ubuntu," "sudo apt-get install libjpeg-turbo-progs" "should do the trick."
   [ "$optipng" -eq 0 ] && \
     sad_print "optipng"  "" && \
-    desc_print "On Mac," "brew install optipng" "will sort you out."
+    desc_print "On Mac," "brew install optipng" "will sort you out. " && \
     desc_print "On Ubuntu," "sudo apt-get install optipng" "should do the trick."
   [ "$yeoman" -eq 0 ] && \
     sad_print "yeoman"  "" && \
