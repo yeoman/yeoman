@@ -173,6 +173,7 @@ audit() {
   [ "$node" -eq 0 ] && \
     sad_print "NodeJS" "" && \
     desc_print "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ "
+    desc_print "On Ubuntu," "sudo apt-get install nodejs" "should do the trick, but if the version is too old, better install it manual instead."
   [ "$ruby" -eq 0 ] && \
     sad_print "ruby"  "" && \
     desc_print "Check your ruby version is adequate with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
@@ -182,6 +183,7 @@ audit() {
   [ "$compass" -eq 0 ] && \
     sad_print "Compass"  "" && \
     desc_print "is not installed: http://compass-style.org/install/ "
+    desc_print "On Ubuntu," "sudo apt-get install ruby-compass" "should do the trick."
   [ "$phantomjs" -eq 0 ] && \
     sad_print "PhantomJS"  "" && \
     desc_print "Follow instructions at http://phantomjs.org/download.html - the binary installs are quick! " && \
