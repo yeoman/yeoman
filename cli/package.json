@@ -1,6 +1,6 @@
 {
   "name": "yeoman",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project.",
   "keywords": [
     "front-end",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "grunt": "http://github.com/cowboy/grunt/archive/0ba6d4b529.tar.gz",
-    "yeoman-generators": "http://github.com/yeoman/generators/archive/1b7b1508ce.tar.gz",
+    "yeoman-generators": "http://github.com/yeoman/generators/archive/0.9.5.tar.gz",
     "bower": "~0.3.0",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
