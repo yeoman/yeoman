@@ -1,3 +1,18 @@
+### 0.9.5 - 2012-11-05
+
+- [#627](https://github.com/yeoman/yeoman/issues/627)
+Fix: Usemin:html adds image file before a 'a' anchor
+
+- [#636](https://github.com/yeoman/yeoman/issues/636)
+Python3 support for Insight
+
+- [#603](https://github.com/yeoman/yeoman/issues/603)
+Add ability to specify a base path in the usemin block comment
+
+- [#660](https://github.com/yeoman/yeoman/issues/660)
+Determine linefeed from the content not the platform
+
+- Upgrade to latest Bower
 
 
 ### 0.9.4 (12 October, 2012)
