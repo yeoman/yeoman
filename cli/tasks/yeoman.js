@@ -67,7 +67,7 @@ module.exports = function(grunt) {
     // phantomjs binary is missing. Done only for `test` target (specifically
     // used for our `npm test`). For each, output warning infos.
     if( target === 'test' ) {
-      tasks = grunt.helper( 'build:skip', tasks, 'css:compile' );
+      //tasks = grunt.helper( 'build:skip', tasks, 'css:compile' );
       tasks = grunt.helper( 'build:skip', tasks, 'phantomjs', 'manifest' );
     }
 
