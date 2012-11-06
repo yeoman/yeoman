@@ -33,7 +33,7 @@ module.exports = function(grunt) {
     }
 
     // write minified file before going through rjs:optimize to possibly inline
-    // @imports (that are not handled by compass within .scss or .sass files)
+    // @imports (that are not handled by css:compile)
     grunt.file.write(target, out);
 
     // replace @import statements
@@ -48,6 +48,7 @@ module.exports = function(grunt) {
     });
   });
 
+  grunt.task.registerTask('css:compile', ['compass']);
   //
   // **mincss** basic utility to concat CSS files and run them through
   // [cleanCSS](https://github.com/GoalSmashers/clean-css), might opt to use

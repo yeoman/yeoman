@@ -34,8 +34,8 @@ module.exports = function(grunt) {
   // - basics   - same as buildkit plus minor html optimizations
   // - minify   - same as build plus full html minification
   //
-  // - test     - same as default build plus but conditionally runs compass /
-  //              manifest task depending on whether or not compass / phantomjs binaries are
+  // - test     - same as default build plus but conditionally runs css:compile /
+  //              manifest task depending on whether or not css:compile / phantomjs binaries are
   //              available within the path.  During the checking process, we output warning
   //              infos about missing deps. It might make sense to make it the default (img
   //              task internally does this check)
@@ -61,13 +61,13 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var tasks = ['intro', 'clean coffee compass mkdirs', targets[target], 'copy time'].join(' ');
+    var tasks = ['intro', 'clean coffee css:compile mkdirs', targets[target], 'copy time'].join(' ');
 
-    // Conditionally remove compass / manifest task if either compass or
+    // Conditionally remove css:compile / manifest task if either css:compile or
     // phantomjs binary is missing. Done only for `test` target (specifically
     // used for our `npm test`). For each, output warning infos.
     if( target === 'test' ) {
-      tasks = grunt.helper( 'build:skip', tasks, 'compass' );
+      tasks = grunt.helper( 'build:skip', tasks, 'css:compile' );
       tasks = grunt.helper( 'build:skip', tasks, 'phantomjs', 'manifest' );
     }
 
