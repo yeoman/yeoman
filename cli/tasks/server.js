@@ -1,14 +1,14 @@
 
 var fs = require('fs'),
-  path = require('path'),
-  util = require('util'),
-  http = require('http'),
-  events = require('events'),
-  colors = require('colors'),
-  connect = require('connect'),
-  WebSocket = require('faye-websocket'),
-  open = require('open'),
-  WeakMap = require('es6-collections').WeakMap;
+    path = require('path'),
+    util = require('util'),
+    http = require('http'),
+    events = require('events'),
+    colors = require('colors'),
+    connect = require('connect'),
+    WebSocket = require('faye-websocket'),
+    open = require('open'),
+    WeakMap = require('es6-collections').WeakMap;
 
 module.exports = function(grunt) {
   var priv = new WeakMap();
@@ -45,12 +45,12 @@ module.exports = function(grunt) {
   // send a reload command on all stored web socket connection
   Reactor.prototype.reload = function reload(files) {
     var sockets = this.sockets,
-      changed = files.changed;
+        changed = files.changed;
 
     // go through all sockets, and emit a reload command
     Object.keys(sockets).forEach(function(id) {
       var ws = sockets[id],
-        version = ws.livereloadVersion;
+          version = ws.livereloadVersion;
 
       // go throuh all the files that has been marked as changed by grunt
       // and trigger a reload command on each one, for each connection.
@@ -85,7 +85,7 @@ module.exports = function(grunt) {
 
   Reactor.prototype.connection = function connection(request, socket, head) {
     var ws = new WebSocket(request, socket, head),
-      wsId = this.uid = this.uid + 1;
+        wsId = this.uid = this.uid + 1;
 
     // store the new connection
     this.sockets[wsId] = ws;
@@ -201,7 +201,7 @@ module.exports = function(grunt) {
 
   // Note: yeoman-server alone will exit prematurly unless `this.async()` is
   // called. The task is designed to work alongside the `watch` task.
-  grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target) {
+  grunt.registerTask('server', 'Launch a preview, LiveReload compatible server', function(target, main) {
     var opts;
     // Get values from config, or use defaults.
     var port = grunt.config('server.port') || 0xDAD;
@@ -217,12 +217,6 @@ module.exports = function(grunt) {
       dist: path.resolve('dist'),
       test: path.resolve('test'),
 
-      // phantom target is a special one: it is triggered
-      // before launching the headless tests, and gives
-      // to phantomjs visibility on the same paths a
-      // server:test have.
-      phantom: path.resolve('test'),
-
       // reload is a special one, acting like `app` but not opening the HTTP
       // server in default browser and forcing the port to LiveReload standard
       // port.
@@ -230,9 +224,20 @@ module.exports = function(grunt) {
     };
 
     target = target || 'app';
+    var base = targets[target];
+
+    if (/phantom-.*/.test(target)) {
+      var phantomParts = target.split('-');
+      target = phantomParts[0];
+      // phantom target is a special one: it is triggered
+      // before launching the headless tests, and gives
+      // to phantomjs visibility on the same paths a
+      // server:test have.
+      base = targets[phantomParts[1]] || targets['test'];
+    }
 
     // yell on invalid target argument
-    if(!targets[target]) {
+    if( !base ) {
       grunt
         .log.error('Not a valid target: ' + target)
         .writeln('Valid ones are: ' + grunt.log.wordlist(Object.keys(targets)));
@@ -257,24 +262,35 @@ module.exports = function(grunt) {
       open: target !== 'reload',
       // and force 35729 port no matter what when on `reload` target
       port: target === 'reload' ? 35729 : port,
-      base: targets[target],
+      base: base,
       inject: true,
       target: target,
-      hostname: grunt.config('server.hostname') || 'localhost'
+      hostname: grunt.config('server.hostname') || 'localhost',
+      // command line takes priority
+      main: main || grunt.config('server.' + target + '.main')
     };
 
     grunt.helper('server', opts, cb);
 
     grunt.registerTask('open-browser', function() {
-        if ( opts.open ) {
-          open( 'http://' + opts.hostname + ':' + opts.port );
-        }
+      if ( opts.open ) {
+        open( 'http://' + opts.hostname + ':' + opts.port );
+      }
     });
     grunt.task.run(grunt.config('server.' + target) || tasks[target]);
   });
 
   grunt.registerHelper('server', function(opts, cb) {
     cb = cb || function() {};
+
+    var app, serverName;
+    if (opts.main) {
+      app = require(path.resolve(opts.main));
+      serverName = 'server script: ' + opts.main;
+    } else {
+      app = connect();
+      serverName = 'static web server';
+    }
 
     var middleware = [];
 
@@ -310,9 +326,9 @@ module.exports = function(grunt) {
     // the connect logger format if --debug was specified. Get values from
     // config or use defaults.
     var format = grunt.config('server.logformat') || (
-      '[D] server :method :url :status ' +
-      ':res[content-length] - :response-time ms'
-    );
+        '[D] server :method :url :status ' +
+            ':res[content-length] - :response-time ms'
+        );
 
     // If --debug was specified, enable logging.
     if (grunt.option('debug')) {
@@ -320,35 +336,53 @@ module.exports = function(grunt) {
       middleware.unshift(connect.logger('yeoman'));
     }
 
-    return connect.apply(null, middleware)
-      .on('error', function( err ) {
-        if ( err.code === 'EADDRINUSE' ) {
-          return this.listen(0); // 0 means random port
-        }
+    for (var i = 0; i < middleware.length; ++i) {
+      app.use(middleware[i]);
+    }
 
-        // not an EADDRINUSE error, buble up the error
-        cb(err);
-      })
-      .listen(opts.port, function() {
-        var port = this.address().port;
+    var urlLog = path.resolve(module.main, '.server');
 
-        // Start server.
-        grunt.log
-          .subhead( 'Starting static web server on port '.yellow + String( port ).red )
+    function onServerStart() {
+      var port = this.address().port;
+
+      grunt.file.write(urlLog, opts.hostname + ':' + port);
+
+      // Start server.
+      grunt.log
+          .subhead( 'Starting ' + serverName + ' on port '.yellow + String( port ).red )
           .writeln( '  - ' + path.resolve(opts.base) )
           .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
           .writeln('Hit Ctrl+C to quit.');
 
-        // create the reactor object
-        grunt.helper('reload:reactor', {
-          server: this,
-          apiVersion: '1.7',
-          host: opts.hostname,
-          port: port
-        });
-
-        cb(null, port);
+      // create the reactor object
+      grunt.helper('reload:reactor', {
+        server: this,
+        apiVersion: '1.7',
+        host: opts.hostname,
+        port: port
       });
+
+      cb(null, port);
+    }
+
+    return app
+        .on('error', function( err ) {
+            grunt.log.writeln('got here');
+          if ( err.code === 'EADDRINUSE' ) {
+            return this.listen(0, onServerStart); // 0 means random port
+          }
+
+          // not an EADDRINUSE error, buble up the error
+          cb(err);
+        })
+        .on('close', function() {
+          fs.rmdir(urlLog, function(err) {
+            if (!err) {
+              grunt.log.writeln('Removed old .server file');
+            }
+          });
+        })
+        .listen(opts.port, onServerStart);
   });
 
 

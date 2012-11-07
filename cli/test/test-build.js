@@ -4,6 +4,7 @@ var path    = require('path');
 var grunt   = require('grunt');
 var assert  = require('assert');
 var helpers = require('./helpers');
+var phantom = require('phantom');
 
 var opts = grunt.cli.options;
 opts.redirect = !opts.silent;
@@ -27,7 +28,7 @@ describe('yeoman init && yeoman build', function() {
   before(helpers.installed('compass'));
   before(helpers.installed('phantomjs'));
 
-  describe('When I run init app with default prompts', function(done) {
+  describe('When I run init app with default prompts', function() {
     before(function(done) {
       var yeoman = helpers.run('init --force', opts);
       yeoman
@@ -196,34 +197,116 @@ describe('yeoman init && yeoman build', function() {
         });
       });
 
-      describe('manifest', function() {
-        it('should write to manifest.appcache', function() {
-          if( !this.phantomjs ) { return; }
+      // describe('manifest', function() {
+      //   it('should write to manifest.appcache', function() {
+      //     if( !this.phantomjs ) { return; }
 
-          var manifest = grunt.file.read('temp/manifest.appcache');
-          assert.ok(/CACHE:/.test(manifest));
-          assert.ok(/scripts\/[a-z0-9]+\.amd-app\.js/.test(manifest));
-          assert.ok(/scripts\/[a-z0-9]+\.plugins\.js/.test(manifest));
-          assert.ok(/scripts\/vendor\/[a-z0-9]+\.modernizr\.min\.js/.test(manifest));
+      //     var manifest = grunt.file.read('temp/manifest.appcache');
+      //     assert.ok(/CACHE:/.test(manifest));
+      //     assert.ok(/scripts\/[a-z0-9]+\.amd-app\.js/.test(manifest));
+      //     assert.ok(/scripts\/[a-z0-9]+\.plugins\.js/.test(manifest));
+      //     assert.ok(/scripts\/vendor\/[a-z0-9]+\.modernizr\.min\.js/.test(manifest));
 
-          if( !this.compass ) { return; }
-          assert.ok(/styles\/[a-z0-9]+\.main\.css/.test(manifest));
+      //     if( !this.compass ) { return; }
+      //     assert.ok(/styles\/[a-z0-9]+\.main\.css/.test(manifest));
+      //   });
+      // });
+
+    });
+  });
+
+  describe('And I test my server', function() {
+    describe('default server', function(done) {
+      before(function() {
+        grunt.file.write('app/static/foo.html', 'server.app.foo');
+      });
+
+      before(function(done) {
+        helpers.yeoman('server:phantom-app --no-color').call(this, function() {});
+        this.child.stdout.setEncoding('utf8');
+        this.child.stdout.on('data', function(chunk) {
+          if (/Starting static web server on port \d+/.test(chunk)) {
+            done();
+          }
         });
       });
 
+      it('should start', function(done) {
+        var self = this;
+        var urlLog = path.resolve('.server');
+        fs.readFile(urlLog, function (err, data) {
+          // assert.isNull(err, '.server file should exist.');
+          self.urlRoot = 'http://' + data;
+          console.log('server url: ' + self.urlRoot);
+          done();
+        });
+      });
+
+      it('should server static file from \'app\' folder', function(done) {
+        var self = this;
+        phantom.create(function(ph) {
+          ph.createPage(function(page) {
+            var staticFile = self.urlRoot + '/satic/server.txt';
+            console.info('trying to load: ' + staticFile);
+            page.open(staticFile, function(status) {
+              assert.equal('success', status);
+              ph.exit();
+              done();
+            });
+          });
+        });
+      });
+
+      after(function() {
+        this.child.kill(0);
+      });
     });
 
-  });
+    describe('express server', function(done) {
+      before(function() {
+        grunt.file.write('sample-app.js', 'var express = require(\'express\');var app = express();app.get(\'/hello/:name\', function(req, res) {res.send(\'hello \' + req.params.name);});module.exports = app;');
+      });
 
-  describe('And when I launch a test server ', function() {
-    it('should export the needed directories');
-//    it('should export the needed directories', function(done) {
-//      // setup the runnable, the actual run happens on last step
-//      this.yeoman = helpers.run('server:test', opts);
-//      this.yeoman
-//        .expect(/\/test/)
-//        .expect(/\/app/)
-//        .end(done);
-//      });
+      before(function(done) {
+        helpers.yeoman('server:phantom-app:./sample-app --no-color').call(this, function() {});
+        this.child.stdout.setEncoding('utf8');
+        this.child.stdout.on('data', function(chunk) {
+          console.log(chunk);
+          if (/Starting server script\: \.\/sample-app on port \d+/.test(chunk)) {
+            done();
+          }
+        });
+      });
+
+      it('should start', function(done) {
+        var self = this;
+        var urlLog = path.resolve('.server');
+        fs.readFile(urlLog, function (err, data) {
+          // assert.isNull(err, '.server file should exist.');
+          self.urlRoot = 'http://' + data;
+          console.log('server url: ' + self.urlRoot);
+          done();
+        });
+      });
+
+      it('should server \'GET\' hello/:name', function(done) {
+        var self = this;
+        phantom.create(function(ph) {
+          ph.createPage(function(page) {
+            var service = self.urlRoot + '/hello/world';
+            console.info('trying to load: ' + service);
+            page.open(service, function(status) {
+              assert.equal('success', status);
+              ph.exit();
+              done();
+            });
+          });
+        });
+      });
+
+      after(function() {
+        this.child.kill(0);
+      });
+    });
   });
 });
