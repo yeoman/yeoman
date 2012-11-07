@@ -240,14 +240,14 @@ module.exports = function(grunt) {
     }
 
     var tasks = {
-      // We do want our coffee, and compass recompiled on change
+      // We do want our coffee, and css:compile recompiled on change
       // and our browser opened and refreshed both when developping
       // (app) and when writing tests (test)
-      app: 'clean coffee compass open-browser watch',
-      test: 'clean coffee compass open-browser watch',
+      app: 'clean coffee css:compile open-browser watch',
+      test: 'clean coffee css:compile open-browser watch',
       // Before our headless tests are run, ensure our coffee
-      // and compass are recompiled
-      phantom: 'clean coffee compass',
+      // and css:compile are recompiled
+      phantom: 'clean coffee css:compile',
       dist: 'watch',
       reload: 'watch'
     };
