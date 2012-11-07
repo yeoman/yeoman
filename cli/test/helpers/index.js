@@ -120,16 +120,21 @@ helpers.yeoman = function (cmds, takeOver) {
 //    }));
 //
 // Returns a function suitable to use with mocha hooks.
-helpers.gruntfile = function(options) {
+helpers.gruntfile = function(options, taskMap) {
   return function gruntfile(done) {
     var config = 'grunt.initConfig(' + JSON.stringify(options, null, 2) + ');';
     config = config.split('\n').map(function(line) {
       return '  ' + line;
     }).join('\n');
 
+    var tasks = Object.keys(taskMap || {}).map(function(key) {
+      return '\ngrunt.registerTask(\'' + key + '\', ' + taskMap[key] + ');';
+    }).join('\n');
+
     var out = [
       'module.exports = function(grunt) {',
       config,
+      tasks,
       '};'
     ];
 
