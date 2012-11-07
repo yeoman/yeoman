@@ -271,7 +271,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.task.run( tasks[target] );
+    grunt.task.run(grunt.config('server.initTasks') || tasks[target]);
   });
 
   grunt.registerHelper('server', function(opts, cb) {
