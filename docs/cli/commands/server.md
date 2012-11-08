@@ -27,6 +27,16 @@ The built-in server also supports serving different profiles of your application
 * `yeoman server:test` serves up the test suite and your `app`. It also ensure any change to your code or tests will cause the browser to refresh.
 * `yeoman server:reload` forces the port to be LiveReload standard port: 35729 and prevents the automatic default browser opening. Handy for those wishing to use livereload extensions with other systems / HTTP servers than the one provided by Yeoman out of the box.
 
+### disabling watch on server tasks
+
+To disable watching of files and livereloading, add following section to your Gruntfile.
+
+{% highlight javascript %}
+    server: {
+        watch: false
+    }
+{% endhighlight %}
+
 ### further notes
 
 At present, when initially running `yeoman server` or `yeoman server:app`, some users may find that their browser is opened before intermediate files such as Compass and CoffeeScript have completed compiling. Whilst we intend on fixing this issue very soon, in the mean time we recommend refreshing the browser shortly after you first fire up the server (e.g 10 seconds after). You can then easily make any changes you wish to your application and the browser will be automatically reloaded via LiveReload.

@@ -171,7 +171,11 @@ module.exports = function(grunt) {
 
   // The server task always run with the watch task, this is done by
   // aliasing the server task to the relevant set of task to run.
-  grunt.registerTask('server', 'yeoman-server watch');
+  if ( grunt.config('server.watch') !== false ) {
+    grunt.registerTask('server', 'yeoman-server watch');
+  } else {
+    grunt.registerTask('server', 'yeoman-server');
+  }
 
   // Reload handlers
   // ---------------
@@ -263,6 +267,14 @@ module.exports = function(grunt) {
       hostname: grunt.config('server.hostname') || 'localhost'
     };
 
+    if ( grunt.config('server.watch') === false ) {
+      opts.inject = false;
+      tasks[target] = tasks[target].replace(/watch$/, '');
+
+      // disable async
+      cb = undefined;
+    }
+
     grunt.helper('server', opts, cb);
 
     grunt.registerTask('open-browser', function() {
@@ -270,7 +282,9 @@ module.exports = function(grunt) {
           open( 'http://' + opts.hostname + ':' + opts.port );
         }
     });
-    grunt.task.run(grunt.config('server.' + target) || tasks[target]);
+    if ( tasks[target] !== "" ) {
+      grunt.task.run(grunt.config('server.' + target) || tasks[target]);
+    }
   });
 
   grunt.registerHelper('server', function(opts, cb) {
@@ -339,14 +353,15 @@ module.exports = function(grunt) {
           .writeln('I\'ll also watch your files for changes, recompile if neccessary and live reload the page.')
           .writeln('Hit Ctrl+C to quit.');
 
-        // create the reactor object
-        grunt.helper('reload:reactor', {
-          server: this,
-          apiVersion: '1.7',
-          host: opts.hostname,
-          port: port
-        });
-
+        if ( opts.inject ) {
+          // create the reactor object
+          grunt.helper('reload:reactor', {
+            server: this,
+            apiVersion: '1.7',
+            host: opts.hostname,
+            port: port
+          });
+        }
         cb(null, port);
       });
   });
