@@ -61,7 +61,13 @@ module.exports = function(grunt) {
       return false;
     }
 
-    var tasks = ['intro', 'clean coffee compass mkdirs', targets[target], 'copy time'].join(' ');
+    var tasks = [
+      'intro',
+      grunt.config('build.tasks._beforeAll') || 'clean coffee compass mkdirs',
+      grunt.config('build.tasks.' + target) || targets[target],
+      grunt.config('build.tasks._afterAll') || ''
+      'copy time'
+    ].join(' ');
 
     // Conditionally remove compass / manifest task if either compass or
     // phantomjs binary is missing. Done only for `test` target (specifically

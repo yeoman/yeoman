@@ -270,7 +270,14 @@ module.exports = function(grunt) {
           open( 'http://' + opts.hostname + ':' + opts.port );
         }
     });
-    grunt.task.run(grunt.config('server.' + target) || tasks[target]);
+
+    grunt.task.run(
+      [
+        grunt.config('server.tasks._beforeAll') || '',
+        grunt.config('server.tasks.' + target) || tasks[target],
+        grunt.config('server.tasks._afterAll') || ''
+      ].join(' ')
+    );
   });
 
   grunt.registerHelper('server', function(opts, cb) {
