@@ -273,9 +273,9 @@ module.exports = function(grunt) {
 
     grunt.task.run(
       [
-        grunt.config('server.tasks._beforeAll') || '',
+        grunt.config('server.tasks._beforeAll'),
         grunt.config('server.tasks.' + target) || tasks[target],
-        grunt.config('server.tasks._afterAll') || ''
+        grunt.config('server.tasks._afterAll')
       ].join(' ')
     );
   });

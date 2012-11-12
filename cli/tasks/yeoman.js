@@ -65,7 +65,7 @@ module.exports = function(grunt) {
       'intro',
       grunt.config('build.tasks._beforeAll') || 'clean coffee compass mkdirs',
       grunt.config('build.tasks.' + target) || targets[target],
-      grunt.config('build.tasks._afterAll') || '',
+      grunt.config('build.tasks._afterAll'),
       'copy time'
     ].join(' ');
 
