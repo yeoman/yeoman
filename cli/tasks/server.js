@@ -270,8 +270,7 @@ module.exports = function(grunt) {
           open( 'http://' + opts.hostname + ':' + opts.port );
         }
     });
-
-    grunt.task.run( tasks[target] );
+    grunt.task.run(grunt.config('server.' + target) || tasks[target]);
   });
 
   grunt.registerHelper('server', function(opts, cb) {
