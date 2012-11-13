@@ -283,6 +283,11 @@ module.exports = function(grunt) {
       middleware.push( grunt.helper('reload:inject', opts) );
     }
 
+    // add the proxy middleware to redirect matching requests.
+    if( grunt.config('proxies') ) {
+      middleware.push(grunt.helper('server:proxy', opts));
+    }
+
     // also serve static files from the temp directory, and before the app
     // one (compiled assets takes precedence over same pathname within app/)
     middleware.push(connect.static(path.join(opts.base, '../temp')));
@@ -472,5 +477,38 @@ module.exports = function(grunt) {
       });
     };
 
+  });
+
+  // Grunt helper to proxy matching requests to a handler in the Gruntfile.
+  // Use Like This:
+  //
+  // proxies: {
+  //   '^/api/v2/(.+)': function (req, res, next, match) {}
+  // }
+  //
+  // Make sure you call next within the function if you want processing to continue.
+  grunt.registerHelper('server:proxy', function(opts) {
+    var proxies = grunt.config('proxies');
+
+    return function proxy(req, res, next) {
+      var url = req.url;
+
+      // Find a matching path and proxy to it.
+      var matched = Object.keys(proxies).some(function (value) {
+        var match = url.match(new RegExp(value));
+
+        if (match !== null) {
+          proxies[value](req, res, next, match);
+          return true;
+        }
+
+        return false;
+      });
+
+      // Continue if no paths matched.
+      if (matched === false) {
+        next();
+      }
+    };
   });
 };
