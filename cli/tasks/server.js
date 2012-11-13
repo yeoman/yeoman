@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
   path = require('path'),
   util = require('util'),
@@ -171,7 +170,7 @@ module.exports = function(grunt) {
 
   // The server task always run with the watch task, this is done by
   // aliasing the server task to the relevant set of task to run.
-  grunt.registerTask('server', 'yeoman-server watch');
+  //grunt.registerTask('server', 'yeoman-server watch');
 
   // Reload handlers
   // ---------------
