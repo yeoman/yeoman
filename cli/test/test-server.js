@@ -10,7 +10,9 @@ describe('yeoman server', function() {
   describe('When I run the app server with a customized task', function () {
     var options = {
       server: {
-        app: 'testTask'
+        tasks: {
+          app: 'testTask'
+        }
       }
     };
     var tasks = {
