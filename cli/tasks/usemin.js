@@ -226,9 +226,13 @@ module.exports = function(grunt) {
           // original Gruntfile is used if any.
           var main = tag.match(/data-main=['"]([^'"]+)['"]/);
           if(main) {
-            rjs.out = rjs.out || output;
-            rjs.name = rjs.name || main[1];
-            asset += ',' + output;
+            if(!rjs.dir) {
+              rjs.out = rjs.out || output;
+              rjs.name = rjs.name || main[1];
+              asset += ',' + output;
+            } else {	
+              asset += ',' + main[1] + ".js";
+            }
           }
 
           return asset;
