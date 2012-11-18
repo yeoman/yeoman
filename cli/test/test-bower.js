@@ -50,15 +50,15 @@ describe('Bower install packages', function() {
       bower.list({ map: true })
         .on('error', done)
         .on('data', function(results) {
-          
+
           ctx.results = results;
           var pkg = results[name];
-          
+
           var source = ctx[name] = pkg.source.main;
           var vendor = source.replace(/^components/, 'app/components');
           fs.stat(vendor, done);
-          
-        
+
+
         });
 
         */
