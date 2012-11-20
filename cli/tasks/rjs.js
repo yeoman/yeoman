@@ -49,7 +49,8 @@ module.exports = function(grunt) {
     rjs.optimize(options, function(out) {
       grunt.log.writeln(out);
       originals.forEach(function(m) {
-        var filepath = path.join(options.dir, options.baseUrl, m.name + '.js');
+	var basePath = options.dir || options.baseUrl;
+        var filepath = path.join(basePath, m.name + '.js');
         grunt.log
           .writeln('rjs optimized module: ' + m.name)
           .writeln('>> ' + filepath);
