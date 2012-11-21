@@ -19,7 +19,7 @@ os=$(uname -s)
 
 if [[ "$os" == "Darwin" ]]; then
   mac=1
-elif [[ "$os" == "Linux" ]]; then
+elif [[ "$os" == "Linux" || "$os" == "FreeBSD" ]]; then
   linux=1
 else
   echo "Windows is not officially supported, currently."
