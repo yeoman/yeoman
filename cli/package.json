@@ -35,7 +35,7 @@
   "dependencies": {
     "grunt": "http://github.com/cowboy/grunt/archive/0ba6d4b529.tar.gz",
     "yeoman-generators": "http://github.com/yeoman/generators/archive/e47bf1d6c8.tar.gz",
-    "bower": "~0.3.0",
+    "bower": "~0.6.2",
     "open": "0.0.2",
     "rimraf": "~2.0.1",
     "mkdirp": "~0.3.1",
@@ -52,7 +52,7 @@
     "coffee-script": "~1.3.3",
     "grunt-jasmine-task": "~0.2.2",
     "faye-websocket": "~0.4.2",
-    "shelljs":"~0.0.6",
+    "shelljs": "~0.0.6",
     "prompt": "~0.1.12",
     "colors": "~0.6.0",
     "grunt-mocha": "~0.1.7",
