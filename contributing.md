@@ -25,20 +25,15 @@ Yeoman has three primary repos:
 
 ## Contributor License Agreement
 
-We'd love to accept your code patches! However, before we can take them, we have to jump a couple of legal hurdles.
+Before we can accept patches, there's a quick web form we need you to fill our [here](http://code.google.com/legal/individual-cla-v1.0.html) (<strong>\*scroll to the bottom!\*</strong>).
 
-We need you to sign a CLA. In summary, the CLA asserts that when you donate fixes or documentation, you both own the code that you're submitting and that Google can in turn license that code to other people. (In this case, making it available under the BSD license)
+If you're contributing under a company, you need to fill out [this form instead](http://code.google.com/legal/corporate-cla-v1.0.html).
 
-Just FWIW, here are some other projects that require a similar agreement: jQuery, Firefox, Sizzle, Dojo, Plone, Fedora, Cordova/Phonegap, Apache, Flex.
+This CLA asserts that fixes and documentation are owned by you and that Google can license all work under BSD.
 
-**Please fill out an [individual CLA](http://code.google.com/legal/individual-cla-v1.0.html).** There is a web form at the bottom; shouldn't take too long.
+Other projects require a similar agreement: jQuery, Firefox, Apache, and many more.
 
-(If you work for a company that wants to allow you to contribute, you'll need to complete a [corporate CLA](http://code.google.com/legal/corporate-cla-v1.0.html).)
-
-More about CLAs:
-* http://wiki.civiccommons.org/Contributor_Agreements
-* http://incubator.apache.org/ip-clearance/index.html
-* http://dojofoundation.org/about/cla
+[More about CLAs](https://www.google.com/search?q=Contributor%20License%20Agreement)
 
 ## Quick Start
 
