@@ -88,6 +88,14 @@ describe('usemin', function() {
       var changed = grunt.helper('usemin:post:html', content);
       assert.ok( changed == awaited );
     });
+	
+    it('should also replace data-* links', function() {
+      grunt.file.write('images/23012.foo.png', "foo");
+      var content = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/foo.png"></a><a href="/images/foo.png"></a><a href="#local"></a><img data-thumb="/images/foo.png" /><img data-text="foo-bar" />';
+      var awaited = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/23012.foo.png"></a><a href="/images/23012.foo.png"></a><a href="#local"></a><img data-thumb="/images/23012.foo.png" /><img data-text="foo-bar" />';
+      var changed = grunt.helper('usemin:post:html', content);
+      assert.ok( changed == awaited );
+    });
 
     it('should handle properly the case of the root path (/)', function() {
       var content = '<a href="/">'
