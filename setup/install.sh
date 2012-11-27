@@ -39,6 +39,7 @@ jpegturbofile=$(command -v jpegtran)
   optipngfile=$(command -v optipng)
     clangfile=$(command -v clang)
    yeomanfile=$(command -v yeoman)
+      npmfile=$(command -v npm)
 
 # Check if installed.
 check_set(){
@@ -122,6 +123,9 @@ audit() {
   jpegturbo=$(check_set $jpegturbofile)
   optipng=$(check_set $optipngfile)
   yeoman=$(check_set $yeomanfile)
+  
+  # node npm test
+  npm=$(check_set $npmfile)
 
   # display results
   #
@@ -143,6 +147,7 @@ audit() {
 
   [ "$git" -eq 1 ] && happy_print "git" "smashing!"
   [ "$node" -eq 1 ] && happy_print "NodeJS" "check."
+  [ "$npm" -eq 1 ] && happy_print "NodeJS NPM" "check."
   [ "$ruby" -eq 1 ] && happy_print "ruby" "check."
   [ "$gem" -eq 1 ] && happy_print "RubyGems" "check."
   [ "$compass" -eq 1 ] && happy_print "Compass" "check."
@@ -173,6 +178,9 @@ audit() {
   [ "$node" -eq 0 ] && \
     sad_print "NodeJS" "" && \
     desc_print "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ "
+  [ "$npm" -eq 0 ] && \
+    sad_print "NPM" "" && \
+    desc_print "I recommend you grab a fresh NodeJS install (>= 0.8.x) from http://nodejs.org/download/ as NPM Package manager is missing "
   [ "$ruby" -eq 0 ] && \
     sad_print "ruby"  "" && \
     desc_print "Check your ruby version is adequate with" "ruby -v" "(>= 1.8.7 required) and install http://www.ruby-lang.org/en/downloads/"
