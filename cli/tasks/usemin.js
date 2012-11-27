@@ -340,6 +340,9 @@ module.exports = function(grunt) {
 
     grunt.log.verbose.writeln('Update the HTML with the new img filenames');
     content = grunt.helper('replace', content, /<img[^\>]+src=['"]([^"']+)["']/gm);
+	
+    grunt.log.verbose.writeln('Update the HTML with the data tags');
+    content = grunt.helper('replace', content, /data-[A-Za-z0-9]*=['"]([^"']+)["']/gm);
 
     grunt.log.verbose.writeln('Update the HTML with background imgs, case there is some inline style');
     content = grunt.helper('replace', content, /url\(\s*['"]([^"']+)["']\s*\)/gm);
