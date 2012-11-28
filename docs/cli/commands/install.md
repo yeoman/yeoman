@@ -17,12 +17,12 @@ yeoman install backbone
 yeoman install jquery spine
 {% endhighlight %}
 
-As mentioned, the files for these dependencies will be added to `app/components`. If you wish to use any of them you will need to manually include a script/file reference to the relevant source files. 
+As mentioned, the files for these dependencies will be added to `app/components`. If you wish to use any of them you will need to manually include a script/file reference to the relevant source files.
 
 Example:
 
-{% highlight sh %}
-&lt;script src="components/spine/lib/spine.js" &gt;&lt;/script&gt;
+{% highlight html %}
+<script src="components/spine/lib/spine.js"></script>
 {% endhighlight %}
 
 If installing a dependency which has its own dependencies described, these dependencies will also be pulled in.
