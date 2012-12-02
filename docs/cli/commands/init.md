@@ -1,4 +1,3 @@
-
 ## <a href="#init" name="init">init</a>
 
 Usage: `yeoman init`, `yeoman init generatorName`, `yeoman init generatorName:subgenerator`
@@ -11,7 +10,7 @@ The default `init` template is based on:
 * Compass Twitter Bootstrap for the SASS files as the CSS files are authored in SASS
 * Twitter Bootstrap for the optional list of JavaScript plugins (optional)
 * RequireJS for AMD module and script loading support (optional)
-* RequrieHM for experimental EcmaScript 6 module syntax support on top of RequireJS (optional)
+* RequireHM for experimental EcmaScript 6 module syntax support on top of RequireJS (optional)
 
 By default we support Compass and CoffeeScript, so if your project includes any .coffee files, these will be compiled when either `server` or `build` tasks are being run.
 
