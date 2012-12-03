@@ -16,7 +16,6 @@
   "homepage": "http://yeoman.io",
   "bugs": "https://github.com/yeoman/yeoman/issues",
   "author": "Chrome Developer Relations",
-  "main": "yeoman",
   "bin": {
     "yeoman": "bin/yeoman"
   },
