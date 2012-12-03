@@ -106,7 +106,7 @@ Yeoman uses [Bower](http://twitter.github.com/bower/) as its package manager. Th
 
 ## Platform Support
 
-Yeoman 1.0 will support OS X and Linux. We will be aiming to bring in support for Windows in a [future](https://github.com/yeoman/yeoman/issues/216) version of the project.
+Yeoman 1.0 will support OS X, Linux and FreeBSD. We will be aiming to bring in support for Windows in a [future](https://github.com/yeoman/yeoman/issues/216) version of the project.
 
 
 ## Contribute
