@@ -16,7 +16,7 @@ describe('usemin', function() {
     it("should take into account path", function() {
       usemin.call(grunt,grunt);
 
-      // Let's prepare our context: in index.html we do have references 
+      // Let's prepare our context: in index.html we do have references
       // to images/test.png and images/misc/test.png.
       // Usemin's replace is supposed to change this by files
       // found on the filesystem matching the same path, but
@@ -48,6 +48,15 @@ describe('usemin', function() {
     });
   });
 
+  describe('usemin:post:css', function() {
+    it("should replace img urls in css file", function() {
+      var content = 'url(../images/test.png)';
+      var awaited = 'url(../images/23012.test.png)';
+      var changed = grunt.helper('usemin:post:css', content, 'css/23012.main.css');
+      assert.ok( changed == awaited );
+    });
+  });
+
   describe('usemin:post:html', function() {
     before(function() {
       usemin.call(grunt,grunt);
@@ -55,7 +64,7 @@ describe('usemin', function() {
       grunt.file.mkdir('images');
       grunt.file.mkdir('css');
     });
-  
+
     it('should skip external file', function() {
       grunt.file.write('images/23012.foo.png', "foo");
       var content = '<img src="//css/main.css">';
