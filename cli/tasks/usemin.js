@@ -171,7 +171,7 @@ module.exports = function(grunt) {
 
       // actual replacement of revved assets
       if(!!grunt.task._helpers['usemin:post:' + name]) {
-        content = grunt.helper('usemin:post:' + name, content);
+        content = grunt.helper('usemin:post:' + name, content, p);
       }
 
       // write the new content to disk
@@ -353,10 +353,10 @@ module.exports = function(grunt) {
     return content;
   });
 
-  grunt.registerHelper('usemin:post:css', function(content) {
+  grunt.registerHelper('usemin:post:css', function(content, srcPath) {
 
     grunt.log.verbose.writeln('Update the CSS with background imgs, case there is some inline style');
-    content = grunt.helper('replace', content, /url\(\s*['"]?([^'"\)]+)['"]?\s*\)/gm);
+    content = grunt.helper('replace', content, /url\(\s*['"]?([^'"\)]+)['"]?\s*\)/gm, srcPath);
 
     return content;
   });
@@ -366,7 +366,7 @@ module.exports = function(grunt) {
   // regexp should capture the assets relative filepath, it is then compared to
   // the list of files on the filesystem to guess the actual revision of a file
   //
-  grunt.registerHelper('replace', function(content, regexp) {
+  grunt.registerHelper('replace', function(content, regexp, srcPath) {
     return content.replace(regexp, function(match, src) {
       //do not touch external files or the root
       if ( src.match(/\/\//) || src.match(/^\/$/)) {
@@ -380,12 +380,13 @@ module.exports = function(grunt) {
 
       var basename = path.basename(src);
       var dirname = path.dirname(src);
+      var normalizedDirname = path.normalize([path.dirname(srcPath), dirname].join('/'));
 
       // XXX files won't change, the filepath should filter the original list
       // of cached files (we need to treat the filename collision -- i.e. 2 files with same names
       // in different subdirectories)
       var filepaths = grunt.file.expand(path.join('**/*') + basename);
-      var filepath = filepaths.filter(function(f) { return dirname === path.dirname(f);})[0];
+      var filepath = filepaths.filter(function(f) { return normalizedDirname === path.dirname(f); })[0];
 
       // not a file in temp, skip it
       if ( !filepath ) {
