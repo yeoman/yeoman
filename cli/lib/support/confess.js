@@ -167,14 +167,12 @@ var confess = {
 
       console.log('CACHE MANIFEST');
       console.log('');
-      console.log('# Time: ' + new Date());
       if (config.verbose) {
-        console.log('# This manifest was created by confess.js, http://github.com/jamesgpearce/confess');
+        console.log('# This manifest was created by a slightly modified version of confess.js');
+        console.log('#   http://github.com/jamesgpearce/confess');
         console.log('#');
-        console.log('# Retrieved URL: ' + this.getFinalUrl(page));
-        console.log('# User-agent: ' + page.settings.userAgent);
-        console.log('#');
-        this.emitConfig(config, '# ');
+        console.log('# Offline cache busting is handled by the file hashes below.');
+        console.log('# In the future, we hope browsers will update only resource file names that change, instead of every resource.');
       }
       console.log('');
       console.log('CACHE:');
