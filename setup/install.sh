@@ -643,7 +643,7 @@ get_os_info() {
                $(check_linux_release "gentoo-release" "gentoo") ||
                $(check_linux_release "fedora-release" "fedora")
 
-    elif [ "$os" == "FreeBSD" ]; then
+    elif [ "$osname" == "FreeBSD" ]; then
         os="freebsd"
     else
         # TODO: better detect Windows as other OSes can get this message
