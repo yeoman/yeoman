@@ -11,17 +11,19 @@ module.exports = function( grunt ) {
 
       el = el.replace( /_/g, '-' );
 
+      var prefix = el.length == 1 ? '-' : '--';
+
       if ( val === true ) {
-        args.push( '--' + el );
+        args.push( prefix + el );
       }
 
       if ( _.isString( val ) ) {
-        args.push( '--' + el, val );
+        args.push( prefix + el, val );
       }
 
       if( _.isArray( val ) ) {
         val.forEach(function( subval ) {
-          args.push( '--' + el, subval );
+          args.push( prefix + el, subval );
         });
       }
     });
