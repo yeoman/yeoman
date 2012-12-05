@@ -1,7 +1,0 @@
-
-
-export function animator(items){
-	if(items instanceof jQuery){
-		items.find('.special').html('<img src="img/nyan.gif"/>');
-	}
-}
