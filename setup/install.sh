@@ -54,7 +54,7 @@ audit() {
     fi
 
     if (( ( "$os" == "linux" || "$os" == "freebsd" ) && $curl != 1 )) ||
-       (( "$mac" == "mac" && $brew != 1 && $clang != 1 )) &&
+       (( "$os" == "mac" && $brew != 1 && $clang != 1 )) &&
        (( $compass != 1 && $git != 1 && $jpegtran != 1 && $node != 1 &&
           $npm != 1 && $optipng != 1 && $phantomjs != 1 && $ruby != 1 &&
           $gem != 1 && $yeoman != 1 )); then
@@ -643,7 +643,7 @@ get_os_info() {
                $(check_linux_release "gentoo-release" "gentoo") ||
                $(check_linux_release "fedora-release" "fedora")
 
-    elif [ "$os" == "FreeBSD" ]; then
+    elif [ "$osname" == "FreeBSD" ]; then
         os="freebsd"
     else
         # TODO: better detect Windows as other OSes can get this message
