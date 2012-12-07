@@ -20,7 +20,7 @@ As mentioned, the files for these dependencies will be added to `app/components`
 Example:
 
 {% highlight html %}
-<script src="components/spine/lib/spine.js"></script>
+&lt;script src="components/spine/lib/spine.js"&gt;&lt;/script&gt;
 {% endhighlight %}
 
 If installing a dependency which has its own dependencies described, these dependencies will also be pulled in.
