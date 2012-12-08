@@ -519,7 +519,7 @@ msgs_phantomjs() {
 
                 mac )
                     if [ $brew -eq 1 ]; then
-                        esc_print "To install $outputName use:" \
+                        desc_print "To install $outputName use:" \
                                   "brew install phantomjs"
                     else
                         desc_print "Download the $outputName binary package from:" \
