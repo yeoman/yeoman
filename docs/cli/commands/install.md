@@ -37,8 +37,18 @@ will actually also install Underscore.js and jQuery.js as these are required for
 
 {% highlight sh %}
 yeoman install jquery
-yeoman install git://github.com/maccman/package-jquery.git
-yeoman install maccman/package-jquery (same as above)
-yeoman install http://code.jquery.com/jquery-1.7.2.js
+yeoman install git://github.com/components/jquery.git
+yeoman install components/jquery (same as above)
+yeoman install http://foo.com/jquery.awesome-plugin.js
 yeoman install ./repos/jquery
 {% endhighlight %}
+
+As you can see, packages can be installed by name, Git endpoint, GitHub shorthand, URL or local path. If you install and URL that is a zip or tar file, yeoman will automatically extract the contents of it. When tags are available in the endpoint, you can specify a semver tag to fetch concrete versions:
+
+{% highlight sh %}
+yeoman install jquery#1.8.1
+yeoman install git://github.com/components/jquery.git#~1.8.1
+yeoman install components/jquery#1.8.x
+{% endhighlight %}
+
+More in the [Bower docs](https://github.com/twitter/bower/blob/master/README.md#usage)
