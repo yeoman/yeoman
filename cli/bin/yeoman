@@ -8,12 +8,17 @@ var colors = require('colors');
 var _ = require('lodash');
 var pkg = require('../package.json');
 var findup = require('findup-sync');
+var updateNotifier = require('update-notifier');
 
 var args = process.argv.slice(2);
 var flags = nopt({}, {}, process.argv, 2);
 var cmd = args[0];
 var helpScreen = _.template(fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8'));
 
+
+function runInit() {
+ // TODO: Init the specified generator
+}
 
 function runGrunt() {
   var gruntfile = findup('Gruntfile.{js,coffee}', {nocase: true});
@@ -27,21 +32,27 @@ function runBower() {
   // Should Bower be local dep?
   // + users can decide to upgrade whenever
   // - one more local dep we have to add to each generator
-  var bower = require('bower');
-  bower.commands[cmd].line(process.argv)
+  require('bower').commands[cmd].line(process.argv)
     .on('error', console.error)
     .on('data', console.log);
-}
-
-
-// TODO: Update docs to flag `--no-updater`
-if (!process.env.yeoman_test || flags.updater !== false) {
-  // updater
 }
 
 // TODO: Update docs to flag `--no-insight`
 if (!process.env.yeoman_test || flags.insight !== false) {
 
+}
+
+// TODO: Update docs to flag `--no-update-notifier`
+if (!process.env.yeoman_test || flags['update-notifier'] !== false) {
+  var notifier = updateNotifier({
+    packagePath: '../package',
+    packageName: 'yeoman',
+    packageVersion: '0.9.3'
+  });
+
+  if (notifier.update) {
+    notifier.notify(true);
+  }
 }
 
 if (flags.version) {
@@ -58,7 +69,7 @@ switch (cmd) {
     break;
   case 'init':
   case 'i':
-    // init
+    runInit();
     break;
   case 'build':
   case 'b':
