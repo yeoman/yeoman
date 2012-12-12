@@ -1,6 +1,6 @@
 {
   "name": "yeoman",
-  "version": "0.10.0",
+  "version": "0.10.0pre",
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project",
   "keywords": [
     "front-end",
@@ -38,7 +38,8 @@
     "optimist": "~0.3.5",
     "lodash": "~0.10.0",
     "findup-sync": "~0.1.1",
-    "update-notifier": "~0.1.0"
+    "update-notifier": "~0.1.0",
+    "insight": "git://github.com/yeoman/insight.git#224a86af93bb654d70f4e2bac498c27feb3dd8cd"
   },
   "devDependencies": {
     "mocha": "~1.7.3",

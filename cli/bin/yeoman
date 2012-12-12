@@ -9,20 +9,45 @@ var _ = require('lodash');
 var pkg = require('../package.json');
 var findup = require('findup-sync');
 var updateNotifier = require('update-notifier');
+var Insight = require('insight');
 
+var helpScreen = _.template(fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8'));
 var args = process.argv.slice(2);
 var flags = nopt({}, {}, process.argv, 2);
 var cmd = args[0];
-var helpScreen = _.template(fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8'));
 
+var insight = new Insight({
+  trackingCode: 'UA-31537568-1',
+  packageName: pkg.name,
+  packageVersion: pkg.version
+});
+
+/*jshint multistr:true */
+var insightMsg = '\
+=========================================================================='.grey + '\n\
+We\'re constantly looking for ways to make '.yellow + pkg.name.bold.red + ' better! \n\
+May we anonymously report usage statistics to improve the tool over time? \n\
+More info: yeoman.io/insight.html & http://yeoman.io'.yellow + '\n\
+=========================================================================='.grey;
+
+// selective tracking since we don't want to track all the bad grammar
+function track() {
+  if (!process.env.yeoman_test && flags.insight !== false) {
+    // only track the two first subcommands
+    // TODO: Enable this before release
+    // insight.track.apply(insight, args.slice(0, 2));
+  }
+}
 
 function runInit() {
  // TODO: Init the specified generator
+  track();
 }
 
 function runGrunt() {
   var gruntfile = findup('Gruntfile.{js,coffee}', {nocase: true});
   var dir = path.resolve(gruntfile, '../node_modules/grunt');
+  track();
   require(dir).cli();
 }
 
@@ -32,20 +57,25 @@ function runBower() {
   // Should Bower be local dep?
   // + users can decide to upgrade whenever
   // - one more local dep we have to add to each generator
+  track();
   require('bower').commands[cmd].line(process.argv)
     .on('error', console.error)
     .on('data', console.log);
 }
 
 // TODO: Update docs to flag `--no-insight`
-if (!process.env.yeoman_test || flags.insight !== false) {
-
+if (!process.env.yeoman_test && flags.insight !== false && insight.optOut === undefined) {
+    insight.optOut = false;
+    insight.track('downloaded');
+    insight.askPermission(insightMsg);
+    return;
 }
 
 // TODO: Update docs to flag `--no-update-notifier`
-if (!process.env.yeoman_test || flags['update-notifier'] !== false) {
+if (!process.env.yeoman_test && flags['update-notifier'] !== false) {
   var notifier = updateNotifier({
     packagePath: '../package',
+    // TODO: remove before release:
     packageName: 'yeoman',
     packageVersion: '0.9.3'
   });
@@ -65,6 +95,7 @@ if (cmd === '--help') {
 
 switch (cmd) {
   case 'help':
+    track();
     console.log(helpScreen());
     break;
   case 'init':
