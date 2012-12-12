@@ -1,10 +1,3 @@
-# Ignore hidden folders
+# ignore hidden folders
 .*/
-
-*.min.css
-#*.min.js
-.sass-cache/*
 node_modules
-cli/_cache/
-cli/tasks/init/remotes/_cache/
-cli/tasks/init/yeoman/root/

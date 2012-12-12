@@ -1,0 +1,10 @@
+.npmignore
+.editorconfig
+.jshintrc
+.gitattributes
+docs
+setup
+spec
+sublime
+test
+Gruntfile.js
