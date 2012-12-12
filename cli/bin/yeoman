@@ -40,8 +40,10 @@ function track() {
 }
 
 function runInit() {
- // TODO: Init the specified generator
   track();
+
+  // TODO: Init the specified generator
+  console.log('init is not yet integrated');
 }
 
 function runGrunt() {
@@ -98,12 +100,14 @@ if (flags.version) {
   return console.log(pkg.version);
 }
 
-if (cmd === '--help') {
-  return console.log(helpScreen());
-}
-
 switch (cmd) {
+  case undefined:
+    track();
+    console.log(helpScreen());
+    break;
   case 'help':
+  case '--help':
+    process.argv[2] = 'help';
     track();
     console.log(helpScreen());
     break;
