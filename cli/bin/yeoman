@@ -52,15 +52,24 @@ function runGrunt() {
 }
 
 function runBower() {
-  /*var gruntfile = findup('Gruntfile.{js,coffee}', {nocase: true});
-  var dir = path.resolve(gruntfile, '../node_modules/bower');*/
-  // Should Bower be local dep?
-  // + users can decide to upgrade whenever
-  // - one more local dep we have to add to each generator
   track();
   require('bower').commands[cmd].line(process.argv)
-    .on('error', console.error)
-    .on('data', console.log);
+    .on('data', function (data) {
+      if (data) {
+        console.log(data);
+      }
+    })
+    .on('end', function (data) {
+      if (data) {
+        console.log(data);
+      }
+      // run Bower grunt task
+      process.argv = ['', '', 'bower'];
+      runGrunt();
+    })
+    .on('error', function (err) {
+      console.error(err.message);
+    });
 }
 
 // TODO: Update docs to flag `--no-insight`
