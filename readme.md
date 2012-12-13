@@ -47,7 +47,6 @@ yeoman update    # Update a package to the latest version
 yeoman list      # List the packages currently installed
 yeoman search    # Query the registry for matching package names
 yeoman lookup    # Look up info on a particular package
-
 ```
 
 A common initial workflow with Yeoman might be:
@@ -58,17 +57,14 @@ yeoman server      # Fire off a file watch/server process which also places an
                    # intermediate build of your project in `temp`
 yeoman build       # Build your project, creating an optimized version in a new `dist` directory
 yeoman server:dist # Serve up the production-ready version of your application
-
 ```
 
 Some more examples of how to use our commands include:
 
 ```shell
 # Generators for MVC/MV* Frameworks
-yeoman init quickstart                   # Skip our questions and get a H5BP, jQuery and Modernizr base
 yeoman init bbb                          # Backbone Boilerplate generator scaffold
-yeoman init ember                        # Ember-Rails generator scaffold
-yeoman init ember-starter                # Create a "Hello World" Yeoman project with the Ember Starter Kit
+yeoman init ember                        # Create a "Hello World" Yeoman project with the Ember Starter Kit
 yeoman init backbone                     # Backbone-Rails generator scaffold
 yeoman init angular                      # Invoke the AngularJS generator scaffold
 yeoman init angular:controller           # Invoke the AngularJS Controller sub-generator
