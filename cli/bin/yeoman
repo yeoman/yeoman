@@ -147,12 +147,4 @@ function init() {
   }]);
 }
 
-
-/* Yeoman Upgrade =========================================================== */
-if ( process.env.yeoman_test || /--skip-updater/.test( process.argv ) ) {
-  init();
-} else {
-  updater.getUpdate({ localPackageUrl: '../../package.json' }, function() {
-   init();
-  });
-}
+init();
