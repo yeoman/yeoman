@@ -1,17 +1,18 @@
-<%= 'Usage:'.grey %> <%= 'yeoman'.bold.red %> <%= '[command]'.yellow %> <%= '[task [task ...]]'.grey %>
 
-<%= 'Available commands supported by yeoman:'.grey %>
+Usage: <%= 'yeoman'.bold.red %> <%= 'command'.yellow %> [task]
 
-      <%= 'init'.yellow %>  <%= 'Initialize and scaffold a new project using generator templates'.grey %>
-     <%= 'build'.yellow %>  <%= 'Build an optimized version of your app, ready to deploy'.grey %>
-    <%= 'server'.yellow %>  <%= 'Launch a preview server which will begin watching for changes'.grey %>
-      <%= 'test'.yellow %>  <%= 'Run a Mocha test harness in a headless PhantomJS'.grey %>
+Available commands supported by yeoman
 
-   <%= 'install'.yellow %>  <%= 'Install a package from the clientside package registry'.grey %>
- <%= 'uninstall'.yellow %>  <%= 'Uninstall the package'.grey %>
-    <%= 'update'.yellow %>  <%= 'Update a package to the latest version'.grey %>
-      <%= 'list'.yellow %>  <%= 'List the packages currently installed'.grey %>
-    <%= 'search'.yellow %>  <%= 'Query the registry for matching package names'.grey %>
-    <%= 'lookup'.yellow %>  <%= 'Look up info on a particular package'.grey %>
+      <%= 'init'.yellow %>  Initialize and scaffold a new project using generator templates
+     <%= 'build'.yellow %>  Build an optimized version of your app, ready to deploy
+    <%= 'server'.yellow %>  Launch a preview server which will begin watching for changes
+      <%= 'test'.yellow %>  Run a Mocha test harness in a headless PhantomJS
 
-<%= 'Certain commands such as '.grey %><%= 'init'.yellow %><%= ' also provide further help via a --help flag'.grey %>
+   <%= 'install'.yellow %>  Install a package from the clientside package registry
+ <%= 'uninstall'.yellow %>  Uninstall the package
+    <%= 'update'.yellow %>  Update a package to the latest version
+      <%= 'list'.yellow %>  List the packages currently installed
+    <%= 'search'.yellow %>  Query the registry for matching package names
+    <%= 'lookup'.yellow %>  Look up info on a particular package
+
+Certain commands such as <%= 'init'.yellow %> also provide further help via a --help flag
