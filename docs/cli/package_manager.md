@@ -72,7 +72,7 @@ For more information on how to use Yeoman's Bower integration, please see our re
 
 ##What distinguishes Bower from Jam, Volo or Ender? What does it do better?
 
-It's easiest to think of Bower as a lower level component then Jam, Volo, or Ender.
+It's easiest to think of Bower as a lower level component than Jam, Volo, or Ender.
 
 All Bower really does is install git paths, resolves dependencies from a component.json, checks versions, and then provides api which tells you what it did.
 
