@@ -553,7 +553,7 @@ And now it will lookup at:
 
 > Copy a source file to a destination path, creating intermediate directories if necessary.
 
-Grunt's[`grunt.file.copy`](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
+Grunt's [`grunt.file.copy`](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
 
 {% highlight js %}
 // similar to
