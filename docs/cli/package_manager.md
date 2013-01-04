@@ -7,7 +7,7 @@ Yeoman's integration with [Twitter Bower](http://github.com/twitter/bower) chang
 In Bower, dependencies are listed in a ‘component.json’ file, similar to Node’s package.json or the Ruby Gemfile. This is useful for locking down the dependencies a project has.
 
 
-{% highlight json %}
+```json
 {
   "name": "myProject",
   "version": "1.0.0",
@@ -15,15 +15,13 @@ In Bower, dependencies are listed in a ‘component.json’ file, similar to Nod
     "modernizr": "~2.6.1"
   }
 }
-{% endhighlight %}
+```
 
-Dependencies are then installed locally via the `yeoman install’ command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir called components:
+Dependencies are then installed locally via the `yeoman install` command. First they're resolved to find conflicts, then downloaded and unpacked in a local sub dir called components:
 
-{% highlight sh %}
-/component.json
-/components/modernizr/index.js
-/components/modernizr/modernizr.js
-{% endhighlight %}
+    /component.json
+    /components/modernizr/index.js
+    /components/modernizr/modernizr.js
 
 This approach has a number of benefits.
 
@@ -35,42 +33,34 @@ This approach has a number of benefits.
 
 The easiest approach is to use a Bower package statically is to then just reference the package manually from a script tag:
 
-{% highlight sh %}
+```html
 <script src="components/modernizr/modernizr.js"></script>
-{% endhighlight %}
+```
 
 Similar to NPM, our Bower integration also allows users to easily search for and update packages easily. e.g
 
 To search for a package:
 
-{% highlight sh %}
-yeoman search jquery
-{% endhighlight %}
+    yeoman search jquery
 
 To install a package:
 
-{% highlight sh %}
-yeoman install jquery
-{% endhighlight %}
+    yeoman install jquery
 
 To update a package, you need to reference it by name:
 
-{% highlight sh %}
-yeoman update jquery
-{% endhighlight %}
+    yeoman update jquery
 
 To list installed packages:
 
-{% highlight sh %}
-yeoman list
-{% endhighlight %}
+    yeoman list
 
 and so on.
 
 For more information on how to use Yeoman's Bower integration, please see our relevant command-line docs.
 
 
-##What distinguishes Bower from Jam, Volo or Ender? What does it do better?
+## What distinguishes Bower from Jam, Volo or Ender? What does it do better?
 
 It's easiest to think of Bower as a lower level component than Jam, Volo, or Ender.
 
@@ -86,21 +76,20 @@ What's more, things like Ender can and will consume bower as a dependency for si
 
 Jam or Volo could do the same thing for amd if they were interested.
 
-##Volo is an arguably more established project and works with the GitHub search API. Will it take long for Bower to contain a decent number of packages?
+## Volo is an arguably more established project and works with the GitHub search API. Will it take long for Bower to contain a decent number of packages?
 
 Of all the projects, Ender is objectively the most popular - with nearly 1000 more watchers than volo – and is used at major companies like twitter, disqus, etc.
 
 Bower by definition has every single package that volo does (git packages) and more - it actually works on internal networks and other git repositories not hosted on github.
 
-##We recently saw what happened when the NPM registry completely went down. Is a central point of failure possible for Bower and if so, do you have redundancy planned?
+## We recently saw what happened when the NPM registry completely went down. Is a central point of failure possible for Bower and if so, do you have redundancy planned?
 
 There's no redundancy planned at the moment, as Bower just installs git urls. It's up to the url provider to establish redundancy.
 
-##Isn't having a package.json file going to conflict with my npm's package.json? Will this be a problem?
+## Isn't having a package.json file going to conflict with my npm's package.json? Will this be a problem?
 
 Don't use a package.json – use a component.json.
 
-##Bower is an open-source Twitter project. How well can we expect it to be maintained in the future?
+## Bower is an open-source Twitter project. How well can we expect it to be maintained in the future?
 
 Twitter has a pretty good track record with their open source projects thus far, and has an entire engineer pool to work on it. Another good thing we can say is that Twitter.com is moving its frontend architecture onto Bower, so it's fairly safe to say it will be maintained.
-

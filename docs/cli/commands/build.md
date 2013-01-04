@@ -1,5 +1,3 @@
-
-
 ## <a href="#build" name="build">build</a>
 
 Usage: `yeoman build`, `yeoman build:<target>`
@@ -63,24 +61,21 @@ setup each time.
 
 The following is the relevant block to edit within your Gruntfile:
 
-{% highlight javascript %}
-    // rjs configuration. You don't necessarily need to specify the typical
-    // `path` configuration, the rjs task will parse these values from your
-    // main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
-    //
-    // name / out / mainConfig file should be used. You can let it blank if
-    // you're using usemin-handler to parse rjs config from markup (default
-    // setup)
-    rjs: {
-      // no minification, is done by the min task
-      optimize: 'none',
-      baseUrl: './scripts',
-      wrap: true
-   }
-{% endhighlight %}
+```js
+// rjs configuration. You don't necessarily need to specify the typical
+// `path` configuration, the rjs task will parse these values from your
+// main module, using http://requirejs.org/docs/optimization.html#mainConfigFile
+//
+// name / out / mainConfig file should be used. You can let it blank if
+// you're using usemin-handler to parse rjs config from markup (default
+// setup)
+rjs: {
+  // no minification, is done by the min task
+  optimize: 'none',
+  baseUrl: './scripts',
+  wrap: true
+}
+```
 
 See the official project [repo](https://github.com/jrburke/r.js) for more information on the
 options supported by r.js.
-
-
-

@@ -1,5 +1,3 @@
-
-
 ## <a href="#list" name="list">list</a>
 
 Usage: `yeoman list`
@@ -8,7 +6,7 @@ Lists all of the packages that have been installed using `yeoman install` (Bower
 
 Example:
 
-{% highlight sh %}
+```sh
 # If you have previously called
 yeoman install backbone
 
@@ -23,6 +21,6 @@ yeoman list
 │ └── underscore#1.3.3
 ├── jquery#1.7.2
 └── underscore#1.3.3
-{% endhighlight %}
+```
 
 As you can see, this also includes the version information for each package and its dependencies.

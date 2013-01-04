@@ -1,5 +1,3 @@
-
-
 ## <a href="#server" name="server">server</a>
 
 Usage: `yeoman server`

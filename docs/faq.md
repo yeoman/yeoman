@@ -19,7 +19,7 @@ A package manager runs through a command-line interface and is a tool for automa
 
 ### How does Yeoman differ from Grunt?
 
-Yeoman builds upon a number of open-source tools to offer an opinionated workflow that helps developers achieve common tasks more easily.[Grunt.js](http://gruntjs.com) is one of these tools and powers our underlying build process and task plugin architecture. 
+Yeoman builds upon a number of open-source tools to offer an opinionated workflow that helps developers achieve common tasks more easily.[Grunt.js](http://gruntjs.com) is one of these tools and powers our underlying build process and task plugin architecture.
 
 On top of this architecture, we've highly customized tasks, profiles and systems which work well together and also provide developers with features like our generator system and Twitter Bower integration. Yeoman takes care of configuring your Gruntfile and setup to support Sass, CoffeeScript and Require.js/r.js out of the box. With additional features like wiring, an improved `server` and `init`, we like to think of ourselves as a helper project on top of Grunt.
 
@@ -27,7 +27,7 @@ Developers are free to continue using any Grunt tasks with Yeoman and there shou
 
 ### How does Yeoman differ from tools like Brunch or BBB?
 
-We love tools like Brunch and Grunt-BBB and feel that they offer a great solution for developers wishing to scaffold with frameworks like Backbone.js and Ember. With the Yeoman generator system, as we've ported over the Rails Generator system to work with Node, we feel we have an interesting opportunity to take application scaffolding in a new direction - one where it's easier for any developer to write scaffolds, support multiple testing frameworks, capture their own boilerplates and easily re-use them and so on. 
+We love tools like Brunch and Grunt-BBB and feel that they offer a great solution for developers wishing to scaffold with frameworks like Backbone.js and Ember. With the Yeoman generator system, as we've ported over the Rails Generator system to work with Node, we feel we have an interesting opportunity to take application scaffolding in a new direction - one where it's easier for any developer to write scaffolds, support multiple testing frameworks, capture their own boilerplates and easily re-use them and so on.
 
 ### How do I register or unregister a package on Bower?
 
@@ -51,7 +51,7 @@ Thanks for your interest in submitting an issue. In order for us to help you ple
 * Made sure you're on the latest version
 * Read our documentation and [README](https://github.com/yeoman/yeoman/blob/master/readme.md) to ensure the issue hasn't been noted or solved already
 * Used the search feature to ensure that the bug hasn't been reported before
-* Included as much information about the bug as possible, including any output you've received, what OS and version you're on. 
+* Included as much information about the bug as possible, including any output you've received, what OS and version you're on.
 * Shared the output from `echo $PATH $NODE_PATH` and `brew doctor` as this can also help track down the issue.
 
 Issues can be submitted via the [issues tab](https://github.com/yeoman/yeoman/issues) on our GitHub repo.
