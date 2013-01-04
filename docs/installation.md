@@ -7,9 +7,9 @@ Installing Yeoman in an easy process that should take less than 10 minutes on OS
 
 Open up a terminal and enter in the following:
 
-{% highlight sh %}
+```
 $ curl -L get.yeoman.io | bash
-{% endhighlight %}
+```
 
 This will audit your system and see what of Yeoman's dependencies are currently installed, such as Node, NPM and Ruby.
 
@@ -22,10 +22,10 @@ There are some [extra troubleshooting guides](https://github.com/yeoman/yeoman/w
 
 Next, create a new directory to contain your Yeoman project, then enter in `yeoman init`.
 
-{% highlight sh %}
+```
 $ mkdir myapp && cd myapp
 $ yeoman init
-{% endhighlight %}
+```
 
 ## Step 3: Profit
 
@@ -43,9 +43,9 @@ on your part. We have included an automatic updater in Yeoman to bump you when a
 You may want to uninstall the globally installed package by running the
 following command:
 
-{% highlight sh %}
+```
 npm uninstall yeoman -g
-{% endhighlight %}
+```
 
 So sad to see you go ☹
 

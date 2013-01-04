@@ -95,20 +95,22 @@ Generators are built on top of Grunt. Grunt provides powerful options parsing an
 The first step is to create a file at `lib/generators/initializer/index.js with
 the following content:
 
-    var util = require('util'),
-        yeoman = require('../../../');
+```js
+var util = require('util'),
+    yeoman = require('../../../');
 
-    module.exports = Generator;
+module.exports = Generator;
 
-    function Generator() {
-      yeoman.generators.Base.apply(this, arguments);
-    }
+function Generator() {
+  yeoman.generators.Base.apply(this, arguments);
+}
 
-    util.inherits(Generator, yeoman.generators.Base);
+util.inherits(Generator, yeoman.generators.Base);
 
-    Generator.prototype.createInitializerFile = function() {
-      this.write('app/js/initializer.js', "// Add initialization content here\n");
-    };
+Generator.prototype.createInitializerFile = function() {
+  this.write('app/js/initializer.js', "// Add initialization content here\n");
+};
+```
 
 `write` is a method provided by `yeoman.generators.Base`, and is a basic facade to the `grunt.file` API. When we "write" things, this happen relative to the working directory (that is the Gruntfile location, the Gruntfile is resolved internally, walking up the FS until one is found. This is most likely the root
 of the yeoman application).
@@ -154,22 +156,24 @@ Before we go on, let’s see our brand new generator description:
 
 Yeoman is usually able to generate good descriptions, but not in this particular case. We can solve this problem in two ways. The first one is calling desc inside our generator:
 
-    var util = require('util'),
-        yeoman = require('../../../');
+```js
+var util = require('util'),
+    yeoman = require('../../../');
 
-    module.exports = Generator;
+module.exports = Generator;
 
-    function Generator() {
-      yeoman.generators.Base.apply(this, arguments);
+function Generator() {
+  yeoman.generators.Base.apply(this, arguments);
 
-      this.desc('This generator creates an initializer file at app/js/');
-    }
+  this.desc('This generator creates an initializer file at app/js/');
+}
 
-    util.inherits(Generator, yeoman.generators.Base);
+util.inherits(Generator, yeoman.generators.Base);
 
-    Generator.prototype.createInitializerFile = function() {
-      this.write('app/js/initializer.js', "// Add initialization content here");
-    };
+Generator.prototype.createInitializerFile = function() {
+  this.write('app/js/initializer.js', "// Add initialization content here");
+};
+```
 
 Now we can see the new description by invoking --help on the new generator. The second way to add a description is by creating a file named `USAGE` in the same directory as our generator. We are going to do that in the next step.
 
@@ -185,18 +189,20 @@ Generators themselves have a generator:
 
 This is the generator just created:
 
-    var util = require('util'),
-        yeoman = require('../../../');
+```js
+var util = require('util'),
+    yeoman = require('../../../');
 
-    module.exports = Generator;
+module.exports = Generator;
 
-    function Generator() {
-      yeoman.generators.NamedBase.apply(this, arguments);
+function Generator() {
+  yeoman.generators.NamedBase.apply(this, arguments);
 
-      this.sourceRoot(__dirname, 'templates');
-    }
+  this.sourceRoot(__dirname, 'templates');
+}
 
-    util.inherits(Generator, yeoman.generatos.NamedBase);
+util.inherits(Generator, yeoman.generatos.NamedBase);
+```
 
 First, notice that we are inheriting from `yeoman.Generators.NamedBase` instead of `yeoman.Generators.Base`. This means that our generator expects at least one argument, which will be the name of the initializer, and will be available in our code in the variable `name`.
 
@@ -220,21 +226,23 @@ lib/generators/initializer/templates/initializer.js with the following content:
 
 And now let’s change the generator to copy this template when invoked:
 
-    var util = require('util'),
-        yeoman = require('yeoman');
+```js
+var util = require('util'),
+    yeoman = require('yeoman');
 
-    module.exports = Generator;
+module.exports = Generator;
 
-    function Generator() {
-      yeoman.generators.NamedBase.apply(this, arguments);
-      // if your templates/ location differ, feel free to set it with sourceRoot()
-    }
+function Generator() {
+  yeoman.generators.NamedBase.apply(this, arguments);
+  // if your templates/ location differ, feel free to set it with sourceRoot()
+}
 
-    util.inherits(Generator, yeoman.generatos.NamedBase);
+util.inherits(Generator, yeoman.generatos.NamedBase);
 
-    Generator.prototype.copyInitializerFile = function() {
-      this.copy('initializer.js', 'config/initializers/' + this.name + '.js');
-    };
+Generator.prototype.copyInitializerFile = function() {
+  this.copy('initializer.js', 'config/initializers/' + this.name + '.js');
+};
+```
 
 And let’s execute our generator:
 
@@ -282,15 +290,17 @@ If none is found you get an error message.
 Yeoman own generators are flexible enough to let you customize scaffolding. They
 can be configured in your application Gruntfile, these are some defaults:
 
-      generators: {
-        'template-engine': 'handlebars',
-        'test-framework': {
-          name: 'mocha',
-          options: {
-            ui: 'bdd'
-          }
-        }
-      }
+```js
+generators: {
+  'template-engine': 'handlebars',
+  'test-framework': {
+    name: 'mocha',
+    options: {
+      ui: 'bdd'
+    }
+  }
+}
+```
 
 Looking at this output, it’s easy to understand how generators work in yeoman.
 
@@ -317,7 +327,7 @@ If you generate another resource, you can see that we get exactly the same resul
 
 So we know that a typical generator looks like the following:
 
-{% highlight js %}
+```js
 var util = require('util'),
     yeoman = require('../../../');
 
@@ -334,11 +344,11 @@ Generator.prototype.createSomething = function() {
 };
 
 // ... other methods ...
-{% endhighlight %}
+```
 
 Generators can also be written in CoffeeScript, they just needs to be named with a `.coffee` extension (typically `lib/generators/generatorName/index.coffee`)
 
-{% highlight coffee %}
+```coffee
 yeoman = require 'yeoman'
 
 module.exports = class Generator extends yeoman.generators.NamedBase
@@ -350,7 +360,7 @@ module.exports = class Generator extends yeoman.generators.NamedBase
     # code
 
   # ... other method ...
-{% endhighlight %}
+```
 
 They're usually layout like so:
 
@@ -389,12 +399,12 @@ In addition to the grunt.file API directly available into your generators, you
 can use the [grunt.log](https://github.com/gruntjs/grunt/blob/master/docs/api_log.md#the-log-api) API as `this.log`
 
 
-{% highlight js %}
+```js
 Generator.prototype.doingSomething = function() {
-  this.log.writeln("I\m doing something");
-  this.log.ok(".. And I think it's ok ..");
+  this.log.writeln('I\'m doing something');
+  this.log.ok('.. And I think it's ok ..'');
 };
-{% endhighlight %}
+```
 
 sync vs async
 -------------
@@ -483,13 +493,13 @@ Must be called within the constructor only.
 
 Register a hook to invoke a generator based on the value supplied by the user to the given option named "name". An option is created when this method is invoked and you can set a hash to customize it.
 
-{% highlight js %}
+```js
 function MyGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
   // init a framework specific controller
   this.hookFor('js-framework');
 }
-{% endhighlight %}
+```
 
 Hooks work in a way that you can delegate the groundwork of scaffolding to other generators. They're totally inspired by Rails 3 generators [`hook_for` method](http://apidock.com/rails/Rails/Generators/Base/hook_for/class).
 
@@ -506,13 +516,13 @@ The controller generator will then try to invoke the following generators:
 
 Notice that the value of a given hook can be defined in your application Gruntfile as well:
 
-{% highlight js %}
+```js
 // grunt config
 generators: {
   'js-framework': 'backbone'
 }
 // ... more grunt config ...
-{% endhighlight %}
+```
 
 This is what allows any js framework to hook into Yeoman as long as it provides any of the hooks above.
 
@@ -527,10 +537,10 @@ The first and last part used to find the generator to be invoked are guessed bas
 
 Let’s suppose you are creating a generator that needs to invoke the controller generator from a unit test. Your first attempt is:
 
-{% highlight js %}
+```js
 // in lib/generators/awesome/index.js generator's constructor.
 this.hookFor('test-framework');
-{% endhighlight %}
+```
 
 The lookup in this case for test_unit as input is:
 
@@ -541,10 +551,11 @@ for `test-framework` hook)
 
 Which is not the desired lookup. You can change it by providing the `as` option:
 
-{% highlight js %}
+```js
 // in lib/generators/awesome/index.js generator's constructor.
 this.hookFor('test-framework', { as: 'controller' });
-{% endhighlight %}
+```
+
 And now it will lookup at:
 
     "test_framework:controller", "test_framework"
@@ -555,11 +566,11 @@ And now it will lookup at:
 
 Grunt's [`grunt.file.copy`](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#grunt-file-copy) is used, we simply make sure that relative path are prefixed by the generator's `sourceRoot` value.
 
-{% highlight js %}
+```js
 // similar to
 var source = path.join(this.sourceRoot(), 'path/to/file.js');
 grunt.file.copy(source, destination, options);
-{% endhighlight %}
+```
 
 ### generator.read(filepath, [encoding])
 
@@ -574,37 +585,38 @@ Just like
 [`grunt.file.write`](https://github.com/gruntjs/grunt/blob/master/docs/api_file.md#grunt-file-write),
 we simply ensure the log output of the files being written.
 
-{% highlight js %}
+```js
 // similar to
 grunt.option('verbose', true);
 grunt.file.write(filepath, encoding);
 grunt.option('verbose', false);
-{% endhighlight %}
+```
 
 ### generator.template(source, [destination], [data])
 
 Gets an underscore template at the relative source, executes it and makes a copy at the relative destination. If the destination is not given it's assumed to be equal to the source relative to destination.
 
-{% highlight js %}
+```js
 this.template('Gruntfile.js');
-{% endhighlight %}
+```
 
 will copy and process the `templates/Gruntfile.js` file through `grunt.template.process`, and write the results to `./Gruntfile.js` relative the the application root.
 
 Another example is using a `templates/model.js` template to write at the `app/js/models/{name}-model.js` location in a `NamedBase` generator.
 
-{% highlight js %}
+```js
 this.template('model.js', path.join('app/js/models', this.name + '-model.js'));
-{% endhighlight %}
+```
+
 ### generator.directory(source, [destination])
 
 Copies recursively the files from source directory to destination root directory. If the destination is not given it's assumed to be equal to the source relative to destination.
 
 Each file is copied and processed through `grunt.template.process`.
 
-{% highlight js %}
+```js
 this.directory('.', 'test');
-{% endhighlight %}
+```
 
 The example above copies and process any files within generators `templates/`
 directory, and write them at the `test/` location.
@@ -613,17 +625,17 @@ directory, and write them at the `test/` location.
 
 Fetch a remote tarball, and untar at the given destination.
 
-{% highlight js %}
+```js
 this.tarball('https://github.com/twitter/bootstrap/tarball/master', 'vendor/bootstrap', this.async());
-{% endhighlight %}
+```
 
 ### generator.fetch(url, destination, cb)
 
 Download a single file at the given destination.
 
-{% highlight js %}
+```js
 this.fetch('http://zeptojs.com/zepto.js', 'js/vendor/zepto.js', this.async());
-{% endhighlight %}
+```
 
 ### generator.remote(username, repository, [branch], cb)
 
@@ -639,7 +651,7 @@ the main API to interact with downloaded package.
 The example below downloads and cache the html5-boilerplate project, and use the `remote` object
 to copy the whole project into the `app/` folder.
 
-{% highlight js %}
+```js
 var cb = this.async();
 this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
   if(err) return cb(err);
@@ -648,7 +660,7 @@ this.remote('h5bp', 'html5-boilerplate', 'master', function(err, remote) {
   remote.directory('.', 'app');
   cb();
 });
-{% endhighlight %}
+```
 
 `remote()` allows the download of full repositories and copying of single or
 multiple files. `remote` object is your API to access this fetched (and cached)

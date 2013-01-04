@@ -1,5 +1,3 @@
-
-
 ## <a href="#test" name="test">test</a>
 
 Usage: `yeoman test`
@@ -18,7 +16,7 @@ launched to serve file for PhantomJS.
 
 Example:
 
-{% highlight sh %}
+```sh
 yeoman test
 
 # outputs:
@@ -29,4 +27,4 @@ Running specs for index.html
 >> 82 assertions passed in 53 specs (562ms)
 
 Done, without errors.
-{% endhighlight %}
+```
