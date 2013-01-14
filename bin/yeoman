@@ -13,7 +13,7 @@ var Insight = require('insight');
 
 var helpScreen = _.template(fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8'));
 var args = process.argv.slice(2);
-var flags = nopt({}, {}, process.argv, 2);
+var opts = nopt({}, {}, process.argv, 2);
 var cmd = args[0];
 
 var insight = new Insight({
@@ -32,18 +32,46 @@ More info: yeoman.io/insight.html & http://yeoman.io'.yellow + '\n\
 
 // selective tracking since we don't want to track all the bad grammar
 function track() {
-  if (!process.env.yeoman_test && flags.insight !== false) {
+  if (!process.env.yeoman_test && opts.insight !== false) {
     // only track the two first subcommands
     // TODO: Enable this before release
-    // insight.track.apply(insight, args.slice(0, 2));
+    //insight.track.apply(insight, args.slice(0, 2));
   }
 }
 
 function runInit() {
+  var env = require('yeoman-generator')();
+
   track();
 
-  // TODO: Init the specified generator
-  console.log('init is not yet integrated');
+  // default to generator-webapp
+  if (opts.argv.remain.length === 1) {
+    args[1] = 'webapp';
+  }
+
+  // alias any single namespace to *:all and *:app, all taking precedence over
+  // app.
+  env.alias(/^([^:]+)$/, '$1:app');
+  env.alias(/^([^:]+)$/, '$1:all');
+
+  // adds yeoman- prefix in addition to the built-in `generator-` one
+  env.prefix('yeoman-');
+
+  // lookup for npm packages
+  env.lookup('*:*');
+
+  env.on('end', function() {
+    console.log('done running sir');
+  });
+
+  env.on('error', function(err) {
+    console.error('Error executing yeoman-init', process.argv.slice(2).join(' '));
+    console.error();
+    console.error(opts.debug ? err.stack : err.message);
+    process.exit(err.code || 1);
+  });
+
+  env.run(args.slice(1), opts);
 }
 
 function runGrunt() {
@@ -75,7 +103,7 @@ function runBower() {
 }
 
 // TODO: Update docs to flag `--no-insight`
-if (!process.env.yeoman_test && flags.insight !== false && insight.optOut === undefined) {
+if (!process.env.yeoman_test && opts.insight !== false && insight.optOut === undefined) {
     insight.optOut = false;
     insight.track('downloaded');
     insight.askPermission(insightMsg);
@@ -83,7 +111,7 @@ if (!process.env.yeoman_test && flags.insight !== false && insight.optOut === un
 }
 
 // TODO: Update docs to flag `--no-update-notifier`
-if (!process.env.yeoman_test && flags['update-notifier'] !== false) {
+if (!process.env.yeoman_test && opts['update-notifier'] !== false) {
   var notifier = updateNotifier({
     packagePath: '../package',
     // TODO: remove before release:
@@ -96,7 +124,7 @@ if (!process.env.yeoman_test && flags['update-notifier'] !== false) {
   }
 }
 
-if (flags.version) {
+if (opts.version) {
   return console.log(pkg.version);
 }
 
