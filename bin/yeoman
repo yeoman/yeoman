@@ -3,11 +3,11 @@
 
 var fs = require('fs');
 var path = require('path');
+var execFile = require('child_process').execFile;
 var nopt = require('nopt');
 var colors = require('colors');
 var _ = require('lodash');
 var pkg = require('../package.json');
-var findup = require('findup-sync');
 var updateNotifier = require('update-notifier');
 var Insight = require('insight');
 
@@ -75,10 +75,21 @@ function runInit() {
 }
 
 function runGrunt() {
-  var gruntfile = findup('Gruntfile.{js,coffee}', {nocase: true});
-  var dir = path.resolve(gruntfile, '../node_modules/grunt');
+  // search for installed grunt by using node's built-in require() logic
+  var args = ['-p', '-e', 'require.resolve("grunt")'];
+  execFile(process.execPath, args, function(err, stdout, stderr) {
+    var gruntPath = stdout.trim();
+
+    if (err) {
+      console.error(stderr);
+      console.error('Unable to find local grunt'.red);
+      process.exit(99);
+    }
+
+    require(gruntPath).cli();
+  });
+
   track();
-  require(dir).cli();
 }
 
 function runBower() {

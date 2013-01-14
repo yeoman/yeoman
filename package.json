@@ -36,7 +36,6 @@
     "colors": "~0.6.0",
     "nopt": "~2.0.0",
     "lodash": "~1.0.0-rc.3",
-    "findup-sync": "~0.1.1",
     "update-notifier": "~0.1.1",
     "insight": "~0.1.0"
   },
