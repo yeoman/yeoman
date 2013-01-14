@@ -1,6 +1,6 @@
 {
   "name": "yeoman",
-  "version": "0.10.0pre",
+  "version": "0.10.0-alpha",
   "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project",
   "keywords": [
     "front-end",
@@ -32,19 +32,18 @@
   },
   "dependencies": {
     "yeoman-generators": "http://github.com/yeoman/generators/archive/e47bf1d6c8.tar.gz",
-    "bower": "~0.6.6",
+    "bower": "~0.6.8",
     "colors": "~0.6.0",
     "nopt": "~2.0.0",
-    "optimist": "~0.3.5",
-    "lodash": "~0.10.0",
+    "lodash": "~1.0.0-rc.3",
     "findup-sync": "~0.1.1",
-    "update-notifier": "~0.1.0",
-    "insight": "git://github.com/yeoman/insight.git#224a86af93bb654d70f4e2bac498c27feb3dd8cd"
+    "update-notifier": "~0.1.1",
+    "insight": "~0.1.0"
   },
   "devDependencies": {
-    "mocha": "~1.7.3",
+    "mocha": "~1.8.1",
     "ronn": "~0.3.8",
-    "grunt": "~0.4.0rc1"
+    "grunt": "~0.4.0rc5"
   },
   "engines": {
     "node": ">=0.8.0"
