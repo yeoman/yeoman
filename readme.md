@@ -1,6 +1,6 @@
-express-stack
-=============
-A proof of concept stack for development using Yeoman 0.9.6, Express and AngularJS
+Yeoman Express Stack
+====================
+A proof of concept end-to-end stack for development using Yeoman 0.9.6, Express and AngularJS. Note: This experimental branch is providing for testing purposes only (at present) and does not provide any guarantees.
 
 * Custom version of Yeoman's server.js with support for Express middleware
 * LiveReload supported out of the box
