@@ -17,6 +17,7 @@ This stack assumes that you wish to develop both the server and client portions 
 
 ### Installation (assume you have already installed Yeoman@0.9.6)
 From `express-stack` root:
+
 1. `npm install`
 2. `grunt install`
 3. cd `yeoman-custom/cli/bin` and run `pwd` then add the output to your system path
