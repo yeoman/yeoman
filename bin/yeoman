@@ -54,9 +54,6 @@ function runInit() {
   env.alias(/^([^:]+)$/, '$1:app');
   env.alias(/^([^:]+)$/, '$1:all');
 
-  // adds yeoman- prefix in addition to the built-in `generator-` one
-  env.prefix('yeoman-');
-
   // lookup for npm packages
   env.lookup('*:*');
 
