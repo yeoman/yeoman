@@ -1,0 +1,333 @@
+// translation rules for Macedonian
+// This file is UTF-8 encoded
+
+.replace
+ a	а
+ b	б
+ c	ц
+ ć	ћ
+ č	ч
+ dž	џ
+ dz	ѕ
+ d	д
+ đ	ђ
+ e	е
+ f	ф
+ g	г
+ h	х
+ i	и
+ j	ј
+ k	к
+ lj	љ
+ l	л
+ m	м
+ nj	њ
+ n	н
+ o	о
+ p	п
+ r	р
+ s	с
+ š	ш
+ t	т
+ u	у
+ v	в
+ z	з
+ ž	ж
+ đ	ѓ
+ ć	ќ
+
+
+.group а
+          а        a
+
+.group б
+          б        b
+
+.group в
+          в        v
+          в (_     f
+
+
+.group г
+          г       g
+
+.group д
+          д       d
+
+.group ѓ
+          ѓ       dZ;
+
+.group е
+          е       e
+
+.group ж
+          ж       Z
+
+.group з
+          з       z
+
+.group ѕ
+          ѕ       dz
+
+.group и
+          и       i
+       _) и       i_
+
+.group ј
+          ј       j
+
+.group к
+          к       k
+
+.group л
+          л       l
+
+.group љ
+          љ       l^
+
+.group м
+          м       m
+
+.group н
+          н       n
+
+.group њ
+          њ       n^
+
+.group о
+          о       o
+
+.group п
+          п       p
+
+.group р
+          р       R
+       A) р (A    R
+       K) р (A    @-*
+          рр      R
+          р (_    R
+       C) р (C    'r
+
+       K) р (K    'r-
+
+
+.group с
+          с       s
+ 
+.group т
+          т       t
+
+.group ќ
+          ќ       k^
+
+.group у
+          у       u
+
+.group ф
+          ф       f
+
+.group х
+          х       h
+
+.group ц
+          ц       ts
+
+.group ч
+          ч       tS;
+
+.group џ
+          џ       dZ
+
+.group ш
+          ш       S
+
+.group a
+        a        a
+        a (j     A
+        a (r     A        // don't reduce to [&]
+
+.group b
+        b        b
+
+.group c
+        c        ts
+
+.group č
+        č        tS
+
+.group ć
+        ć        tS;
+
+.group d
+        d        d
+        dz       dz
+        dž       dZ
+
+.group đ
+        đ        dZ;
+
+.group e
+        e        E
+     j) e        e
+        e (j     e
+    ._) exe      %ekse        // filetype
+
+.group f
+        f        f
+
+.group g
+        g        g
+
+.group h
+        h        h
+     _) h        x
+
+.group i
+        i        i
+    ._) ini      %ini         // filetype
+
+.group j
+        j        j
+    XA) j (_     j_      // short pause after final [j] in one-syllable words
+
+.group k
+        k        k
+
+.group l
+        l        l
+     K) l (K     l-
+        lj (+    l^
+
+.group m
+        m        m
+
+.group n
+        n        n
+        n (g     N
+        n (k     N
+
+        nj       n^
+
+.group o
+        o        o
+        ou       oU
+
+.group p
+        p        p
+
+.group q
+        q        k
+        qu       kv
+
+.group r
+        r        R
+     A) r (A     R
+     K) r (A     @-*
+        rr       R
+        r (_     R
+
+     K) r (K     'r-
+
+
+.group s
+        s        s
+
+.group š
+        š        S
+
+.group t
+        t        t
+
+.group u
+        u        u
+
+.group v
+        v        v
+
+.group w
+        w        v
+
+.group x
+        x        ks
+
+.group y
+        y        j
+     K) y (K     i
+
+
+.group z
+        z        z
+
+.group ž
+        ž        Z
+                  
+.group
+        á        a:
+        é        e:
+        í        i:
+        ó        o:
+        ú        u:
+
+        ä        _^_DE   // use German voice
+        ö        _^_DE
+        ü        _^_DE
+        ß        _^_DE
+
+        $        d'ol&R
+
+        .        totSk&
+        . (.     _:
+   \.)  .
+
+   __)  - (_D    minus
+   A_)  - (_D    _
+   C_)  - (_D    _
+    --) -
+
+        *        dzv'ezditSk&
+    *)  * (*
+        **
+   **)  * (_     _::
+
+        =            'edn&kvo
+        = (==
+    =)  = (=
+   ==)  = (_         _::
+
+.group 0xce   // Greek letters
+
+	α	'alf&
+	ά	'alf&||t'onos
+	β	b'et&
+	γ	g'am&
+	δ	d'elt&
+	ε	'epsIlon
+	έ	'epsIlon||t'onos
+	ζ	z'et&
+	η	'et&
+	ή	'et&||t'onos
+	θ	tx'et&
+	ι	j'ot&
+	ί	j'ot&||t'onos
+	κ	k'ap&
+	λ	l'amd&
+	μ	m'i
+	ν	n'i
+	ξ	ks'i
+	ο	'omIk@-*on_
+
+.group 0xcf   // Greek letters
+
+	π	p'i
+	ρ	R'o
+	σ	s'igm&
+	ς	gr-tSko_||z'avr-Sno_||s'igm&
+	τ	t'au
+	υ	gr-tSki_||'ipsIlon
+	ύ	gr-tSki||'ipsIlon||t'onos
+	φ	f'i
+	χ	x'i
+	ψ	ps'i
+	ω	'omeg&
+	ώ	'omeg&||t'onos
+	ό	'omIk@-*on||t'onos

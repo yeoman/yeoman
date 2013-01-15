@@ -1,0 +1,148 @@
+//vi_list
+// chữ cái - ABC
+b	be
+c	se
+d	de
+đ	d@:
+f	E3p
+g	D'e7
+h	ha3t
+j	gi
+k	ka:
+l	El@:2
+m	Em@:2
+n	En@:2
+p	pe
+q	kwi
+r	Ez.@:2
+s	E3s
+t	te
+v	ve
+w	v'ek,E3p
+x	i3c
+z	zE3t
+
+// số - numbers
+_0	x,o1N	// không
+_1	m'o6t[		// một
+_2	h'a:I		// hai
+_3	_b'a:		// ba
+_4	_b'o3n		// bốn
+_5	n'am		// năm
+_6	s.'aU3		// sáu
+_7	_b'aI4		// bảy
+_8	t['a:3m		// tám
+_9	c'i3n		// chín
+_1X	m'y@2j		// mười
+_2X	h'a:I||m'y@7j	// hai mươi
+_3X	_b'a:||m'y@7j	// ba mươi
+_4X	_b'o3n||m'y@7j	// bốn mươi
+_5X	n'am||m'y@7j	// năm mươi
+_6X	s.'aU3||m'y@7j	// sáu mươi
+_7X	_b'aI4||m'y@7j	// bảy mươi
+_8X	t['a:3m||m'y@7j	// tám mươi
+_9X	c'i3n||m'y@7j	// chín mươi
+
+_21	h'a:I||m'y@7j||m'o3t[
+_31	_b'a:||m'y@7j||m'o3t[
+_41	_b'o3n||m'y@7j||m'o3t[
+_51	n'am||m'y@7j||m'o3t[
+_61	s.'aU3||m'y@7j||m'o3t[
+_71	_b'aI4||m'y@7j||m'o3t[
+_81	t['a:3m||m'y@7j||m'o3t[
+_91	c'i3n||m'y@7j||m'o3t[
+
+_25	h'a:I||m'y@7j||l'a7m
+_35	_b'a:||m'y@7j||l'a7m
+_45	_b'o3n||m'y@7j||l'a7m
+_55	n'am||m'y@7j||l'a7m
+_65	s.'aU3||m'y@7j||l'a7m
+_75	_b'aI4||m'y@7j||l'a7m
+_85	t['a:3m||m'y@7j||l'a7m
+_95	c'i3n||m'y@7j||l'a7m
+
+_0C	cr'am		// trăm
+_0M1	N'a:2n		// ngàn
+_0M2	cr'i@6w		// triệu
+_0M3	t['i4		// tỷ
+_0and	l,in^		// linh
+_dpt	_f,@I4_
+
+// kí hiệu - symbols
+~	J'@U3N'a:5
+`	J'@U3hw'i@2n
+_!	J'@U3c'@3mt'a:7n
+@	a:1k'O2N
+#	J'@U3t'a7N	$max3
+$	J'@U3_d'o1l'a:7
+%	f'@2ncr'a7m
+^	J'@U3m'u5
+&	J'@U3v,a:2
+*	J'@U3s.'a:U7	$max3
+_(	m'@:4Nw'a6kh
+_)	_d'O3NNw'a6kh
+_-	Q'a:6cN'a:7N
+__	Q'a:6cJ'y@3j
+=	J'@U3_b'a2N	$max3
++	J'@U3k'o6N	$max3
+_{	m'@:4Nw'a6khn^'O6n
+_}	_d'O3NNw'a6khn^'O6n
+_[	m'@:4Nw'a6khv'u@7N
+_]	_d'O3NNw'a6khv'u@7N
+_|	s'o4t'a4N
+_\	s'o4f,a:I4
+_:	h'a:I1c'@3m
+_;	c'@3mf'@I4
+_'	Nw'a6kh_d'@:7n
+_“	Nw'a6khk'E3p
+_,	f'@I4
+_.	c'@3m
+_/	s'o4cr'a:I3
+_<	n^'O4h'@:7n
+_>	l'@:3nh'@:7n
+_?	h'OI4c'@3m
+
+// ?? found in festival wow_vi_ptn_phrasing.scm
+bị	$u
+bởi	$u
+các	$u
+cái	$u
+chẳng	$u
+cho	$u
+chưa	$u
+con	$u
+còn	$u
+của	$u
+dẫu	$u
+dù	$u
+đang	$u
+đã	$u
+đến	$u
+để	$u
+được	$u
+hoặc	$u
+khi	$u
+khoảng	$u
+không	$u
+là	$u
+lúc	$u
+mà	$u
+mọi	$u
+mỗi	$u
+nên	$u
+nếu	$u
+như	$u
+nhưng	$u
+những	$u
+phải	$u
+sẽ	$u
+thì	$u
+tới	$u
+từ	$u
+và	$u
+vẫn	$u
+vì	$u
+với	$u
+
+// từ gốc nước ngoài -common foreign language words
+internet       int@:n'E3t 

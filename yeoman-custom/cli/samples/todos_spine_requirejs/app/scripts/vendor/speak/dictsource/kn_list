@@ -1,0 +1,301 @@
+ 
+// This file is UTF8 encoded 
+// Spelling to phoneme words and exceptions for Kannada
+
+
+// letter names (consonants)
+
+
+// speak Latin letters as English
+a	e:j
+b	bi:
+c	si:
+d	di:
+e	i:
+f	Ef
+g	dZi:
+h	e:tS
+i	a:j
+j	dZe:j
+k	ke:j
+l	El
+m	Em
+n	En
+o	o:
+p	pi:
+q	kju:
+r	a:r
+s	Es
+t	thi:
+u	ju:
+v	vi:
+w	dabalju:
+x	Eks
+y	wa:j
+z	zEd
+
+_??	aks.ara   // 'unknown character'
+
+// letter names
+
+ಕ್	ik
+ಖ್	ikh
+ಗ್	ig
+ಘ್	igh
+ಙ್	iN
+ಚ್	ic
+ಛ್	ich
+ಜ್	iJ
+ಝ್	iJh
+ಞ್	in^
+ಟ್	it.
+ಠ್	ith.
+ಡ್	id.
+ಢ್	idh.
+ಣ್	in.
+ತ್	it
+ಥ್	ith
+ದ್	id
+ಧ್	id.
+ನ್	in
+ಪ್	ip
+ಫ್	iph
+ಬ್	ib
+ಭ್	ibh
+ಮ್	im
+ಯ್	ij
+ರ್	ir
+ಱ್	ir
+ಲ್	il
+ಳ್	il.
+ವ್	iv
+ಶ್	iS;
+ಷ್	is.
+ಸ್	is
+ಹ್	ih
+ೞ್	if
+U+c82	am
+U+c83	ah
+U+cbc	nukta
+U+cbd	avagraha
+U+ccd	vattu
+
+// combining vowels, precede by a click so they can be distinguished from stand-alone vowels
+ಾ	#X2a::
+ಿ	#X1i
+ೀ	#X2i::
+ು	#X1u
+ೂ	#X2u::
+ೃ	#X1ru
+ೄ	#X2r-:
+ೆ	#X1e
+ೇ	#X2e::
+ೈ	#X2aI
+ೊ	#X1o
+ೋ	#X2o::
+ೌ	#X2aU
+
+
+// symbols
+%	pratis.ata
+!	a:scharjachinhe
+_?	aks.ara
+.	pu:rn.avira:ma
+,	alpavira:ma
+¼	ka:lu
+½	ardha
+¾	mukka:lu
+(1 / 2)	ardha
+(1 / 4)	ka:lu
+(3 / 4)	mukka:lu
+÷	bha:ga:ka:ra
+&	mattu
+
+
+// numbers
+_0	s'onne
+_1	'ondu
+_2	'erad.u
+_3	m'u:ru
+_4	n'a:lku
+_5	'aIdu
+_6	'a:ru
+_7	'e:l.u
+_8	'ent.u
+_9	'ombath:u
+_1X	h'ath:u
+_11	hann'ondu
+_12	han:erad.u
+_13	hadim'u:ru
+_14	hadin'a:lku
+_15	hadinaIdu
+_16	hadina:ru
+_17	hadin'e:l.u
+_18	hadin'ent.u
+_19	ha'th:'ombath:u
+
+_2X	Ip:ath:u
+_21	'Ip:a'th:ondu
+_22	Ip:a'th:erad.u
+_23	Ip:a'th:m'u:ru
+_24	Ip:a'th:n'a:lku
+_25	Ip:a'th:'aIdu
+_26	Ip:a'th:a:ru
+_27	Ip:a'th:e:l.u
+_28	Ip:a'th:ent.u
+_29	Ip:a'th:ombath:u
+
+_3X	m'ovath:u
+_31	m'ovath:ondu
+_32	m'ovatherad.u
+_33	m'ovathm'u:ru
+_34	m'ovathn'a:lku
+_35	m'ovath'aIdu
+_36	m'ovatha:ru
+_37	m'ovathe:l.u
+_38	m'ovathent.u
+_39	m'ovathombath:u
+
+_4X	n'alavath:u
+_41	n'alavath:ondu
+_42	n'alavatherad.u
+_43	n'alavathm'u:ru
+_44	n'alavathn'a:lku
+_45	n'alavathaIdu
+_46	n'alavatha:ru
+_47	n'alavathe:l.u
+_48	n'alavathent.u
+_49	n'alavathombath:u
+
+_5X	'aIvath:u
+_51	aIvath:ondu
+_52	aIvatherad.u
+_53	aIvathm'u:ru
+_54	aIvathn'a:lku
+_55	aIvath'aIdu
+_56	aIvatha:ru
+_57	aIvathe:l.u
+_58	aIvathent.u
+_59	aIvathombath:u
+_6X	'aravath:u
+_61	aravath:ondu
+_62	aravatherad.u
+_63	aravathm'u:ru
+_64	aravathn'a:lku
+_65	aravathaIdu
+_66	aravatha:ru
+_67	aravathe:l.u
+_68	aravathent.u
+_69	aravathombath:u
+
+_7X	'Ep:ath:u
+_71	Ep:ath:ondu
+_72	Ep:atherad.u
+_73	Ep:athm'u:ru
+_74	Ep:athn'a:lku
+_75	Ep:athaIdu
+_76	Ep:atha:ru
+_77	Ep:athe:l.u
+_78	Ep:athent.u
+_79	Ep:athombath:u
+_8X	'Embath:u
+_81	Embath:ondu
+_82	Embatherad.u
+_83	Embathm'u:ru
+_84	Embathn'a:lku
+_85	EmbathaIdu
+_86	Embatha:ru
+_87	Embathe:l.u
+_88	Embathent.u
+_89	Embathombath:u
+
+_9X	th'ombath:u
+_91	th'ombath:ondu
+_92	th'ombath:erad.u
+_93	th'ombathm'u:ru
+_94	th'ombathn'a:lku
+_95	th'ombathaIdu
+_96	th'ombatha:ru
+_97	th'ombathe:l.u
+_98	th'ombathent.u
+_99	th'ombathombath:u
+
+_0C0	n'u:ru
+_1C0	nu:ru
+_2C0	'innu:ru
+_3C0	m'unnu:ru
+_5C0	'aInu:ru
+_9C0	ombainu:ru
+
+_0C	n'u:ra:
+_1C	nu:ra:
+_2C	'innu:ra:
+_3C	m'unnu:ra:
+_5C	'aInu:ra:
+_9C	ombainu:ra:
+
+_0M1	s'a:virada
+_0M1x	s'a:vira
+_0M2x	l'akSa    // 100,000
+_0M2	l'akSada
+_0M3	k'ot.i     // 100,00,000
+_0M4	b'ilion   // ?? English
+_dpt	_d'as.a:ms.a
+
+// abbreviations
+
+(http ://)   e:tSti:ti:'pi:_
+
+
+// English words
+Kannada	kannad.a
+
+
+// unstressed words
+ಅದು	$u	// that
+ಅದರ	$u	// that, possessive
+ಅವು	$u	// those
+ಅವುಗಳ	$u	// those, possessive
+ಇದು	$u	// it/this
+ಇದರ	$u	// it/this, possessive
+ಇವು	$u	// these
+ಇವುಗಳ	$u	// these, possessive
+ನಾನು	$u	// I
+ನನ್ನ	$u	// my
+ನಾವು	$u	// we
+ನಮ್ಮ	$u	// our
+ನೀನು	$u	// you
+ನಿನ್ನ	$u	// your
+ನೀವು	$u	// you (formal)
+ನಿಮ್ಮ	$u	// your (formal)
+ಅವರು	$u	// they
+ಅವರ	$u	// their
+ಇವರು	$u	// they
+ಇವರ	$u	// their
+ಅವನು	$u	// he
+ಅವನ	$u	// his
+ಇವನು	$u	// he
+ಇವನ	$u	// his
+ತಾವು	$u	// you (more formal), (also used to indicate self)
+ತಮ್ಮ	$u	// (possessive form of the above) also means (his/her own)
+ಅವಳು	$u	// she
+ಅವಳ	$u	// her
+ಇವಳು	$u	// she
+ಇವಳ	$u	// her
+ಕೆಲವು	$u	// few
+ಹಲವು	$u	// many
+ಅನೇಕ	$u	// several
+ಇತರ	$u	// other
+ಮತ್ತು	$u $pause	// and
+ಆದರೆ	$u $pause	// but
+ಆದ್ದರಿಂದ	$u $pause	// so, therefore.
+ಆದಾಗ್ಯೂ	$u $pause	// though
+ಈ	$u+	// [i:] (this)  $u+ so it's stressed if it's by itself, as a letter name
+ಆ	$u+	// [a:] (that)
+ಇಂದ	$u	// from
+ಯಾವುದು	$u	// which
+ಯಾವುದೇ	$u	// whichever (adding the "ಏ" in the end of the word, indicates ever)
+ಈಗ	$u	// now.
+
+// ಕ್ಕೆ, ಗೆ, ಗ್ಗೆ	 to (note: these do not come independently, means they come as a part of the word in the end)
+// ದ (adds the possession to words [postfix])

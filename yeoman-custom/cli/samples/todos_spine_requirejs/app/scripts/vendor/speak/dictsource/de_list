@@ -1,0 +1,764 @@
+// This file is UTF-8 encoded
+// all words lower case
+
+// Uses of $alt:
+// 1.  Change ['i:] to [=I@] at end of word 
+// 2.  age_  is French [A:Z@]
+
+
+// Characters
+//===========
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+// Include a _ before a character if it's name should only be
+// spoken when "speak punctuation" option is on.
+
+_.	pUnkt
+*	StErn	$max3
+%	pro:ts'Ent	$max3
++	plUs	$max3
+=	glaIC	$max3
+#	nUm3	$max3
+€	OYro:
+£	paUnd
+&	Unt
+@	kl'am3_,af@
+~	tIld@
+\ 	bakslaS
+°	grA:t
+±	pl'Us||m'i:nUs
+
+_,	kOma
+_|	paIp
+_:	d'Op@lp,UNkt
+_;	Str'ICpUNkt
+__	,Unt3Str'IC
+_-	b'Ind@str,IC
+_!	'aUs_|r,u:f@ts,aIC@n
+_?	fr'Ag@ts,aIC@n
+_'	,apo:str'Of
+_"	tsi:t'A:t
+_/	Sr'e:gStrIC
+_(	kl'am3||_|'aUf
+_)	kl'am3||ts'u:
+_{	g@Sv'aIft@kl'am3||_|'aUf
+_}	g@Sv'aIft@kl'am3||ts'u:
+_[	'EkIg@kl'am3||_|'aUf
+_]	'EkIg@kl'am3||ts'u:
+_<	klaIn3
+_>	grY:s3
+_`	grA:v
+_^	tsIrkUmflEks
+_—	g@d'aNk@nStr,IC
+
+
+_#9	t,abu:l'A:to:3
+_#32	l'e:rts'aIC@n
+_??	zymb'o:l
+_?A	b'u:xstA:b@
+_cap	gr'o:s
+
+
+// accent names
+_lig	l'i:gat,u:3
+_acu	ak'u:t
+_ac2	d'Op@lak,u:t
+_brv	b@-*'E:v@
+_ced	se:d'i:j
+_cir	ts'IrkUmflEks
+_dia	'UmlaUt
+_dot	p'Unkt
+_grv	gr'A:vIs
+_hac	h'atSEk
+_mcn	m'A:krOn
+_ogo	'o:gOn,Ek
+_rng	kr'o:wZEk
+_stk	Sr'e:gstrIC
+_tld	t'Ild@
+
+æ	$accent
+é	$accent
+ç	$accent
+č	$accent
+š	$accent
+ž	$accent
+
+// Not Roman numbers
+v	faU
+x	Iks
+
+// Numbers
+//========
+_0	'nUl
+_1	_'aIns
+_1a	_'aIn
+_2	'tsvaI
+_3	'draI
+_4	'fi:r
+_5	'fynf
+_6	'zEks
+_7	'zi:b@n
+_8	'_axt
+_9 	'nOYn
+_10	'tse:n
+_11	'_Elf
+_12	'tsvWlf
+_13	'draItse:n
+_14	'fIrtse:n
+_15	'fynftse:n
+_16	'zECtse:n
+_17	'zi:ptse:n
+_18	'_axtse:n
+_19	'nOYntse:n
+_2X	'tsvantsIC
+_3X	'draIsIC
+_4X	'fIrtsIC
+_5X	'fynftsIC
+_6X	'zECtsIC
+_7X	'zi:ptsIC
+_8X	'_axtsIC
+_9X	'nOYntsIC
+_0C	'hUnd3t
+_0M1	'taUz@nt
+_0M2	||mIlI'o:n@n
+_1M2	_'aIn@||mIlI'o:n
+_0M3    ||mIlI'ard@n
+_1M3    _'aIn@||mIlI'ard@
+_0M4    bIlI'o:n
+_0and	||_|Unt
+_dpt	_kOma
+
+// ordinal numbers
+_ord	t@	// default ending
+_ord20	st@	// 20,30,etc
+_1o	_'e:rst@
+_3o	dr'It@
+_7o	z'i:bt@
+_8o	_'axt@
+_0Co	'hUnd3tst@
+
+// Abbreviations
+//==============
+(a . a . o .)	 A:||A:||_o:
+allg     'alg@maIn
+abb      'abb,IldUN
+anm      'anm,ErkUN
+bd       band
+bde      bEnd@
+bzw      b@tsi:UNsvaIz@
+chr      k@rIstUs
+dr       dOkt'o:r
+evtl     e:vEntu:'El
+od       o:d3  $only
+fr       fraU
+frl      frOYlaIn
+hr       hEr
+hrsg     hEr'aUsge:b3
+inkl     Inklu:z'i:v@
+km       ki:lo:me:t3
+nr       nUm3
+st       'Este:
+usf      %Untzo:f'Ort
+usw      %Untzo:v'aIt3   $pause
+vgl      fErgl'aIC@
+(z . b .)     tsUmb'aISpi:l
+
+
+// definite article
+der             %dEr
+die             %di:
+das             %das
+den             %de:n
+dem             %de:m
+des             %dEs
+
+derselb          $2
+desselb         dEsz'Elb
+dieselb          $2
+dasselb         dasz'Elb
+demselb          $2
+denselb          $2
+
+// conjunctions
+und		Unt	$u+ $pause
+aber		A:b3	$u+ $pause
+oder		o:d3	$u+ $pause
+sondern			$pause
+denn		dEn	$u+ $pause
+weil			$pause
+als			$u+ $brk
+bevor		b@fo:r	$2 $pause
+also			$pause
+wenn		,vEn	$pause $strend
+sowie			$2 $pause
+obgleich		$2 $pause
+obwohl			$2 $pause
+deren		de:r@n	$u+ $brk
+ebenfalls		$pause
+
+// prepositions
+ab		ap	$u+ $brk
+an		an	$u+ $brk
+am		am	$u+ $brk
+auf		aUf	$u+ $brk
+aus		,aUs	$brk $strend
+bei		baI	$u+ $brk $only
+beim		baIm	$u+ $brk
+bis		bIs	$u+ $pause
+da			$u+
+durch			$u+ $pause
+für		fy:r	$u+ $pause $only
+gegen		ge:g@n	$u+ $pause
+hin		hIn
+in		In        $u+ $brk
+//(in die)        %Ind%i:
+//(in den)        %Ind%e:n
+//(in der)        %Ind%Er
+im		Im	$u+ $brk
+ins		Ins	$u+ $brk
+mit		mIt	$u+ $pause
+nach		nA:x	$u+ $brk
+neben			$u+ $brk
+ob		,Ob	$pause $strend $only
+per		pEr	$u+ $brk
+pro		,pro:	$pause
+von		fOn	$u+ $brk
+//(von dem)	%fOn%de:m	$brk
+vom		fOm	$u+ $brk
+vor		,fOr	$strend
+zu		tsu:	$u+ $brk
+zum		tsUm	$u+ $pause
+zur		tsu:r	$u+ $pause
+über		,yb3	$pause $strend
+unter		,Unt3	$pause $strend $only
+um		Um	$u+ $brk
+//(um die)	%Umd%i:	$brk
+//(um den)	%Umd%e:n	$brk
+während		$pause
+
+// misc
+so		zo:	$u+
+doch		dOx	$u+
+noch			$pause
+(noch nicht)	n'Ox||n'ICt	$brk
+(nicht mehr)	n'ICt||,me:r
+(nicht mehr)	n,ICt||m'e:r	$atend
+(nicht nur)	n'ICt||n'u:r	$pause
+(gar nicht)	g,A:rn'ICt
+
+// should these be in the Rules because they can be a prefix in a
+// compound verb ?
+daran		dA:r'an
+darauf		$2
+daraus		$2
+dabei		$2
+dadurch		dA:d'UrC
+dafür		$2
+dagegen		$2
+daher		dA:h'Er
+dahin		dA:h'In
+damit		dA:m'It
+danach		$2
+daneben		$2
+darein		$2
+darin		dA:r'In
+darüber		$2
+darum		$2
+darunter	$2
+davon		dA:f'On
+dazu		dA:ts'u:
+umher		Umh'Er
+umhin		Umh'In
+woran		vo:r'an
+worauf		$2
+woraus		$2
+worin		vo:r'In
+
+// pronouns
+ich		$u  $only
+mich		$u  $only
+mir		$u+ $only
+du		$u  $only
+dich		$u+ $only
+dir		$u+ $only
+er		Er	$u $brk $only
+es		Es	$u $only
+ihn		$u+ $only
+ihm		$u+ $only
+sie		zi:	$u $only
+ihnen		$u+ $only
+wir		vi:r	$u $only
+uns		$u+ $only
+ihr		i:r	$u
+euch		$u+ $only
+man		man	$u $only
+sich		zIC	$u $only
+(es ist)	%Es%Ist
+
+
+daß		das	$u+
+dass		das	$u+
+
+ein		aIn	$u+
+eine		aIn@	$u
+einem		aIn@m	$u
+einen		aIn@n	$u
+einer		aIn3	$u
+eines		aIn@s	$u
+
+//kein            $u+
+//keine           $u+
+
+mein		$u+
+meine		$u+
+
+dein		$u+
+deine		$u+
+
+sein		$u            // can also be verb "to be"
+seine		$u+
+
+unsre		Unzr@	$u
+unsere		Unzr@	$u
+unser		Unz3	$u
+unserm		Uns3m	$u
+unserem		Uns@r@m	$u
+
+
+ihre		i:r@	$u
+ihrem		i:r@m	$u
+ihrer		i:r3	$u
+
+dies		di:z	$u
+diese		di:z@	$u
+
+//
+was		vas
+wie		$u $pause
+
+// abverbs
+auch		,aUx
+dann			$u
+etwa			$u
+ganz		g,ants	$only
+je			$u
+nur			$brk
+jetzt		j,Etst	$strend2
+schon		S,o:n	$strend2
+einst		'aInst	// not 'ein' + st
+zwar		tsv,a:r
+wo		v,o:
+während		$u
+
+
+// verbs
+
+bin		bIn	$u
+bist		bIst	$u
+ist		Ist	$u
+sind		zInt	$u
+seit		zaIt	$u $only
+
+habe		%hA:b@  $only
+habest		hA:bEst  $only $u
+hast		%hast   $only
+hat		%hat    $only
+haben		h,A:b@n $only $strend2
+hatte		h,at@   $only
+hatten		h,at@n  $only
+hätte		h,Et@   $only
+hättest		h,EtEst $only
+hättet		h,Et@t  $only
+hätten		h,Et@n  $only
+
+war		%vA:r   $only
+warst		%vA:rst $only
+wart		%vA:rt  $only
+waren		'vA:r@n
+
+will		%vIl   $only
+willst		%vIlst $only
+wollen		%vOl@n $only
+wollt		%vOlt
+
+werden		v,Erd@n $strend2
+werde		v,Erd@
+wirst		v,Irst
+wird		v,Ird
+werdet		v,Erd@t
+wurden		v,Urd@n
+wurde		v,Urd@
+wurdest		v,UrdEst
+wurdet		v,Urd@t
+
+können		,kWn@n  $only $strend2
+kann		,kan    $only
+kannst		,kanst  $only
+könnt		,kWnt   $only
+konnt		,kOnt   $only
+
+sollen		,zOl@n
+soll		,zOl
+sollst		,zOlst
+sollte		,zOlt@
+sollten		,zOlt@n
+
+kam		,kA:m
+
+
+
+// English words 
+//==============
+// de_rules includes the words ending in "-ing"
+access		_^_EN
+account		_^_EN
+aid		_^_EN  // aids
+appeal		_^_EN
+apple		_^_EN
+association	_^_EN
+baseball	_^_EN
+bbc		_^_EN
+beat		_^_EN
+browser         _^_EN
+byte		_^_EN
+camcorder	_^_EN
+change		_^_EN
+chart		_^_EN
+chat		_^_EN
+coach		_^_EN
+coke		_^_EN
+computer	_^_EN
+cool		_^_EN
+couch		_^_EN
+cursor		_^_EN
+debugger	_^_EN
+dj		_^_EN
+email		_^_EN
+enterprise	_^_EN
+event		_^_EN
+firewall	_^_EN
+foul		_^_EN
+foyer		_^_EN
+frame		_^_EN
+freak		_^_EN
+gin		_^_EN
+groupie		_^_EN
+hip		_^_EN
+homepage	_^_EN
+hooligan	_^_EN
+interface	_^_EN
+jean		_^_EN
+jet		_^_EN
+job		_^_EN
+joint		_^_EN
+joke		_^_EN
+joystick	_^_EN
+junkie		_^_EN
+laptop		_^_EN
+laser		_^_EN
+level		_^_EN
+login		_^_EN
+look		_^_EN
+macho		_^_EN
+mail		_^_EN
+message		_^_EN
+my		_^_EN
+mysql		_^_EN
+offline		_^_EN
+online		_^_EN
+out		_^_EN
+pair		_^_EN
+penthouse	_^_EN
+pidgin		_^_EN
+plot		_^_EN
+poster		_^_EN
+receiver	_^_EN
+research	_^_EN
+remake		_^_EN
+roadie		_^_EN
+roastbeef	_^_EN
+quiz		_^_EN
+run             _^_EN
+scanner		_^_EN
+science		_^_EN
+server		_^_EN
+sex		_^_EN
+sexy		_^_EN
+shirt		_^_EN
+show		_^_EN
+single          _^_EN
+slip		_^_EN
+slum		_^_EN
+small		_^_EN
+snob		_^_EN
+song		_^_EN
+source		_^_EN
+spam		_^_EN
+spirit          _^_EN
+squaw		_^_EN
+suite		_^_EN
+sweatshirt	_^_EN
+talk		_^_EN
+teaser		_^_EN
+tech		_^_EN
+terminal	_^_EN
+trip		_^_EN
+tuner		_^_EN
+unix		_^_EN
+venture		_^_EN
+window		_^_EN
+word		_^_EN
+
+
+// Main exceptions list
+//=====================
+abort           ab'Ort
+absentier       apzEnt'i:r
+abstinent        $3
+achso           axz'o:
+akazie           $alt
+allein           $2
+andre           andr@        // andere
+anomalie         $2
+antik           ant'i:k
+archaik         arC'A:Ik
+arie             $alt
+arpeggier       arpEdZ'i:r
+arrangier       araNZ'i:@
+Art		A:rt		// capital
+arterie          $alt
+asphalt          $2
+atommüll         $1
+ausgeschamt     aUsg@SA:mt
+außerdem        'aUs3d,e:m
+aventurin       avEntu:r'i:n
+ave             A:vE
+
+balkan           $1
+balkon           $2
+bandagier       bandaZ'i:@
+beben           be:b@n
+beere           be:r@
+bestie          bEstI@
+best            bEst
+beten           be:t@n
+bizarr           $2
+blamage		$alt
+bronchie         $alt
+
+changier        SaNZ'i:r
+ciao            tSaU
+coup            ku:
+
+dahlie           $alt
+debatte          $2
+deshalb          $2
+detail		de:t'aI
+dezember         $2
+diadem          di:ad'e:m
+dient           di:nt
+dividend        di:vi:d'Ent
+dragier         draZ'i:r
+dritte          drIt@
+duett           du:'Et
+
+ebendaher       e:b@ndah'e:r
+ebendahin       e:b@ndah'In
+ebenso          $1
+einander        aIn'and3
+einerlei        aIn@rlaI
+einher          aInh'e:r
+einig           aInIC  $only
+einige          aInIg@ $u+
+einiges         aInIg@s $u+
+engagier        aNgaZ'i:r
+endivie          $alt
+endlich         EntlIC
+ensemble        Ons'Omb@l
+episkopal       e:pIsko:p'A:l
+erde            e:rd@
+erst            e:rst
+ersten          e:rst@n
+erstmal         e:rstma:l
+extravagant      $1
+extrem          Ekstr'e:m
+
+feuerrot         $3
+friedvoll       fr'i:tf,Ol
+furchen         fUrC@n
+furie            $alt
+
+geben           ge:b@n
+gebt            ge:bt
+gegenüber       ge:g@n'y:b3
+geglichen       g@glIC@n
+gemein          g@maIn
+genial          ge:nI'al
+geranie         ge:r'A:nI@
+gessen          gEs@n
+geste           ge:st@
+gestern         gEst3n
+glorie           $alt
+grazie           $alt
+
+handy           hEndi:
+häuschen        hOYsC@n
+hausier         haUz'i:r
+heimat           $1
+herberg         hErbErg
+historie         $alt
+hm              h@m
+horsam          hO3zA:m
+hostie           $alt
+hrhr            harhar
+
+illegitim	Ile:gi:t'i:m
+illiberal	Ili:b@r'A:l
+illoyal		IlOajA:l
+immobilie	$alt
+indem		Ind'e:m
+inden		Ind'e:n
+inder		Ind3
+indes		Ind'Es
+indessen	Ind'Es@n
+injurie		$alt
+inka		INkA:
+inkaisch	INkA:IS
+inkonstant	$1
+insbesondere	$3
+interess	Int@r'Es
+intern		Int'Ern
+internet	Int@rnEt
+
+januar		janu:A:r
+
+kamelie		$alt
+kanoe		kan'u:
+kartonage	$alt
+kastanie	$alt
+kid		kId
+komödie		$alt
+konservativ	$1
+konsul		$1
+kurie		$alt
+kwaß		kvas
+
+lappalie         $alt
+lilie            $alt
+logier          lo:Z'i:r
+lucent          lu:sEnt
+luetisch        lu:'e:tIS
+
+machen          max@n
+marginalie       $alt
+materie          $alt
+menuette        mEnu:'Et
+minut            $2
+mikrofiche	mi:kro:fi:S
+miteinander      $1
+modell          mo:d'El
+monoton          $3
+monsun           $2
+montag          mo:ntA:k
+mors            mOrs
+mumie            $alt
+
+nachdem         naxd'e:m
+nage		$alt
+nebulos          $3
+negligent       ne:gli:dZ'Ent
+nisch		ni:S
+numero           $1
+
+oboe            o:b'o:@
+orgie            $alt
+ok              o:k'e:
+
+paradies         $3
+passage         pas'aZ@
+perplex          $2
+petersilie       $alt
+pinie            $alt
+planet          plan'e:t
+pochier         pOS'i:r
+pochs           pOxs
+präsident        $3
+prämie           $alt
+privatisier     pri:vati:z'i:r
+problematisier  pro:ble:m'a:tIzi:r
+
+reliquie         $alt
+risik           $1
+rupie            $alt
+
+sabbat          zabat
+sagt            zA:gt
+salopp           $2
+schult          Su:lt
+selbst          zElpst
+serie           se:rI;@
+service         sErvIs
+soeben          zo:_'e:b@n
+sofort           $2
+sogar            $2
+soweit           $2
+sowohl           $2
+sparsam         SpA:rzA:m
+spinozaisch     spi:n'o:tsaIS
+spionage        $alt
+stalagmit       stalagm'It
+subjekt		$1
+
+tag             tA:g
+telegen         te:le:g'e:n
+the             D@         // English
+theater         te:'A:t3
+tja		tjA:
+tonnage		$alt
+tragödie	$alt
+train           tre:n
+tsunami		tsu:n'a:mi:
+turin            $2
+
+umweg            $1
+unten           Unt@n
+
+verein          fEr'aIn
+vielbesprochen   $3
+vielleicht       $2
+vorherig        fo:rh'e:rIg#
+vorig           fo:rIg#
+
+//wahrscheinlich   $2
+warum		vA:r'Um
+wasserung	vas@rUN    // because -ung isn't marked as a suffix
+weiterung	vaIt@rUN
+weither		vaIth'Er
+weitum		vaIt_|'Um
+woher		vo:h'e:r
+
+zloty		slOti:
+zoom		zu:m
+zugegen		tsu:g'e:g@n
+zudem		tsu:'de:m
+zugegen		tsu:g'e:g@n
+zurück		$2
+zymbal		$1
+
+
+// Names
+Djakarta	dZak'artA:
+Djibouti	dZib'u:ti:
+Georg		ge:Ork	$only
+George		dZO:rdZ
+Khmer		kme:r
+Mc		m@-k
+Neumexiko       $2
+Neuseeland	$2
+Rwanda		rU'andA:
+Sri		sr,i:
+Tom		tOm
+Tim		tIm
+

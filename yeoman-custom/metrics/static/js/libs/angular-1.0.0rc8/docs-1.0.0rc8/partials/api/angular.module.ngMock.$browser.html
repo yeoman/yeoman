@@ -1,0 +1,35 @@
+<h1><code ng:non-bindable="">$browser</code>
+<span class="hint">(service in module <code ng:non-bindable="">ngMock</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>This service is a mock implementation of <a href="api/angular.module.ng.$browser"><code>angular.module.ng.$browser</code></a>. It provides fake
+implementation for commonly used browser apis that are hard to test, e.g. setTimeout, xhr,
+cookies, etc...</p>
+
+<p>The api of this service is the same as that of the real <a href="api/angular.module.ng.$browser"><code>$browser</code></a>, except
+that there are several helper methods available which can be used in tests.</p>
+
+<p>The following apis can be used in tests:</p>
+
+<ul>
+<li>$browser.defer — enables testing of code that uses
+<a href="api/angular.module.ng.$defer"><code>$defer</code></a> for executing functions via the <code>setTimeout</code> api.</li>
+</ul></div>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="defer.flush">defer.flush(number)</h3>
+<div class="defer-flush"><p>Flushes all pending requests and executes the defer callbacks.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">number<i>(optional)</i> – {number=} – </code>
+<p>of milliseconds to flush. See <a href="#defer.now">defer.now</a></p></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="Properties">Properties</h2>
+<ul class="properties"><li><h3 id="defer.now">defer.now</h3>
+<div class="defer-now"><p>Current milliseconds mock time.</p></div>
+</li>
+</ul>
+</div>
+</div>

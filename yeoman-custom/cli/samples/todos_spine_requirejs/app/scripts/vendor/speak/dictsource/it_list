@@ -1,0 +1,508 @@
+// This file is UTF-8 encoded
+
+
+//  $alt   change [e] or [o] in the stressed syllable to [E] or [O]
+//  $alt2  change [E] or [O] in the stressed syllable to [e] or [o]
+//  Any [E] or [O] phonemes in unstressed words must be listed explicitly
+
+
+// character names
+_cap	maj'uskola
+
+_??	s'imbolo
+_?A	let:'e:Ra
+
+_a	a:
+b	bi
+c	tSi
+d	di
+_e	e:
+f	effe
+g	dZi
+h	ak:a
+_i	i:
+j	dZe:j
+k	kap:a
+l	Elle
+m	Emme
+n	Enne
+_o	O:
+p	pi
+q	ku
+r	ER*e
+s	esse
+t	ti
+_u	u:
+v	vu
+w	d'op:jav'u
+x	'iks
+y	'ipsilon
+z	dze:ta
+
+_à	$accent
+_é	$accent
+_è	$accent
+_ì	$accent
+_ó	$accent
+_ò	$accent
+_ù	$accent
+
+
+
+// accent names
+_lig	l,egat'u:Ra
+_acu	ak'u:to
+_ac2	d'op:i;o_|ak'u:to	
+_brv	b@-*'e:ve
+_ced	tSed'il^a
+_cir	tSi;@-*konfl'esso
+_dia	djeR'e:zI
+_dot	p'unto||s,ov@-*ask@-*'it:o
+_grv	g@-*'a:ve
+_hac	h'atSek
+_mcn	m'ak@-*on
+_ogo	og'o:nek
+_rng	an'ello
+_stk	b'aR*a
+_tld	t'ilde
+
+
+*	asteRisko $max3
+%	pe@-*tS'ento $max3
+.	punto	$max3
+=	ugwale	$max3
++	pju	$max3
+/	slaS	$max3
+\	bakslaS	$max3
+₤       lira
+£       sterl'ina
+&	_e
+@       ki'otS:ola
+©       k'opiraIt
+#	kantSellet:o
+@	ki'otS:ola
+~	tilde
+:	d,uep'unti
+
+_!	p,untoesklamat'ivo
+_"	viRgolet:e
+_'	ap'OstRofo
+_(	ap,eRtapaR'entezi
+_)	kj,uzapaR'entezi
+_,	v'iRgola
+_-	t@-*at:ino
+_;	p,untoev'iRgola
+_<	ap,eRta'angolo
+_>	kj,uza'angolo
+_?	p,untointeRogat'ivo
+_[	ap'eRtakw2'ad@-*a
+_]	kj,uzakw2'ad@-*a
+_^	kap:utS:o
+__	'undeRskoRe
+_`	bakp@-*aIm
+_{	ap,eRtag@-*'af:a
+_}	kj,uzag@-*'af:a
+
+
+
+// numbers
+_0	dz'eRo
+_1	'uno
+_2	d'ue
+_3	tR'e
+_4	kw2'at:Ro
+_5	tS'inkw2e
+_6	s'Ej
+_7	s'Et:e
+_8	'Ot:o
+_9	n'Ove
+_10     di'etSi
+_11     'unditSi
+_12     d'oditSi
+_13     t@-*'editSi
+_14     kw2at:'ORditSi
+_15     kw2'imditSi
+_16     s'editSi
+_17     ditSas:'Et:e
+_18     ditS'Ot:o
+_19     ditSann'ove
+_2X     v'entj
+_21     v'ent'uno
+_28     v'ent'Ot:o
+_3X     t@-*'enta
+_4X     kw2aR'anta
+_5X     tSinkw2'anta
+_6X     sess'anta
+_7X     set:'anta
+_8X     ot:'anta
+_9X     nov'anta
+_0C     tS'ento
+_0M1    m'ila
+_1M1	m'ille
+_0M2    mili'oni
+_1M2	unmili'one
+_0M3	mili'aRdi
+_1M3	unmili'aRdo
+_0M4    bili'oni
+_1M4	unbili'one
+_dpt    _v'iRgola
+_0Z2	tSent'ezimi     // 100ths
+_0Z3	mill'ezimi      // 1000ths
+
+// abbreviations
+(http ://)       'ak:at,i:t,i:p'i:_
+www	'vu'vu'vu
+avv	avvocato $text $hasdot
+
+// articles
+i	$u $only
+il	$u $only
+la	$u $only
+le	$u $only
+lo	$u $only
+un	$u $only
+una	$u $only
+
+gli	l^i  $only $u
+
+
+// pronouns
+io	$u+ $only
+tu	$u+ $only
+lui	$u+ $only
+lei	$u+ $only
+noi	$u+ $only
+voi	$u+ $only
+loro	$u+ $only
+
+egli	el^i $u+
+ella	ella $u+
+essa	essa $u+
+esse	esse $u+
+essi	essi $u+
+
+mi	$u+ $only
+ti	$u+ $only
+si      $u+ $only
+ci	$u+ $only
+vi	vi $u+ $only
+li	li $u+ $only
+
+
+// words that double the following consonant
+qualche  // $double
+come     // $double
+
+// possessive adjectives
+mio	$u
+tuo	$u
+suo	$u
+nostro	$u
+vostro	$u
+loro	$u
+mia	$u
+tua	$u
+sua	$u
+nostra	$u
+vostra	$u
+miei	$u
+tuoi	$u
+suoi	$u
+nostri	$u
+vostri	$u
+mie	$u
+tue	$u
+sue	$u
+nostre	$u
+vostre	$u
+
+questo	$u	// this
+questa	$u	// this
+questi  $u      // these
+queste  $u      // these
+
+quel	$u	// that
+quella	$u	// that
+quei    kw2ej      // those
+quegli  $u      // those
+quelle  $u      // those
+
+
+
+// conjunctions
+e		$u $pause // $double  // and
+ed		$u $pause
+o		$u $pause // $double  // or
+se		$pause      // if
+ma		$pause      // but
+perché		$pause      // because
+benchè		$pause      // though
+anche		$pause      // although
+tuttavia	$pause      // however
+invece		$pause      // instead
+malevolenza	$pause      // despite
+pertanto        $pause      // therefore
+né              $pause  $only     // neither-nor
+
+(in cui)        in||kw2,i  $pause   // in which
+che             $u $pause   // which
+
+
+// prepositions
+a       $u // $double
+al      $u $only
+allo    $u
+alla    $u
+ai      $u
+agli    $u $only
+alle    $u
+
+ad      $u $brk
+
+da	$u $only $brk      // by
+dal	$u
+dallo   $u
+dalla	$u	// by the
+dai     $u
+dagli   $u
+dalle   $u
+
+di	$u $only $brk	// of
+del	$u $only
+dello   $u
+della	$u	// of the
+dei     $u
+degli   $u
+delle   $u
+de      $u $only
+
+in	$u $brk	$only // in
+nel	$u $brk $only
+nello   $u $brk
+nella	$u $brk	// in the
+nei     $u $brk
+negli   $u $brk
+nelle   $u $brk
+ne      $u $brk  $only
+
+su	$u $only //$double	// on
+sul	$u
+sullo   $u
+sulla	$u	// on the
+sui     $u
+sugli   $u
+sulle   $u
+
+con	$u $pause $only	// with
+col     $u $only
+coi     $u $only
+
+attraverso $brk	$3 // across, through
+contro     $u+ $brk     // against
+accanto    $u+ $brk     // beside
+verso      $u+ $brk     // toward
+sopra	   $u+ $brk	// above
+sotto	   $u+ $brk $alt2	// below
+per        $u $pause $only   // for
+eccetto    $pause       // except
+senza      $pause       // without
+durante    $pause       // during
+
+
+// aux verb, to be
+sono	$u
+sei	$u
+è	E  $u //$double
+siamo	$u
+siete	$u
+sono	$u
+fui	$u
+fosti	$u
+fu	$u //$double
+fummo	$u
+foste	$u
+furono	$u
+ero	$u $only
+eri	$u $only
+era	$u $only
+eravamo	$u
+eravate	$u
+erano	$u
+sarò	sa/r'O $u
+sarai	$u
+sarà	$u
+saremo	$u
+srete	$u
+saranno	$u
+
+sia	$u
+siate	$u
+siano	$u
+fossi	$u
+fosse	$u
+fossimo	$u
+fossero	$u
+sarei	$u
+saresti	$u
+sarebbe	$u
+saremmo	$u
+sareste	$u
+sarebbero	$u
+
+// aux verb, to have
+ho	$u //$double
+hai	aj $u //$double
+ha	a  $u //$double
+abbiamo	$u
+avete	$u
+hanno	anno $u
+
+ebbi	$u
+avesti	$u
+ebbe	$u
+avemmo	$u
+aveste	$u
+ebbero	$u
+
+avevo	$u
+avevi	$u
+aveva	$u
+avevamo	$u
+avevate	$u
+avevano	$u
+
+avrò	a/vr'O $u
+avrai	$u
+avrà	$u
+avremo	$u
+avrete	$u
+avranno	$u
+
+abbia	$u+
+abbiamo	$u+
+abbiate	$u+
+abbiano	$u+
+avessi	$u
+avesse	$u
+avessimo	$u
+aveste	$u
+avessero	$u
+
+avrei	$u
+avresti	$u
+avrebbe	$u
+avremmo	$u
+avreste	$u
+avrebbero	$u
+
+// to do/make
+fare	$u+
+faccio	$u+
+facciamo	$u+
+fai	$u+
+fate	$u+
+fa	$u+
+fanno	$u+
+
+facevo	$u+
+facevi	$u+
+faceva	$u+
+facevamo	$u+
+facevate	$u+
+facevano	$u+
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here
+a	a:  $atend
+e       e:  $atend
+i       i:  $atend
+o       O:  $atend
+
+
+// foreign words
+chat		_^_EN
+cliché		kli:Se
+internet	_^_EN
+jeans		dZi:nz
+web		wEb
+accelerator	_^_EN
+ace		_^_EN
+aces		_^_EN
+
+
+// exceptions
+aereo		a'EReo
+celsius		tsElsj'us
+conoscerla	$2
+no		nO
+posta		pOsta
+principi	$1
+tesser		tess'ER
+uomini		$1
+
+quia		kw'ia
+
+
+// If the final vowel is omitted, then the rule applies to 'a' 'e' 'i' 'o'
+
+
+// fix errors in it_listx
+accetto		$alt
+agosta		$1
+allora		$alt2
+anomalo		$2 $alt
+antera		$2
+aton		$1
+bagli		$2 $only
+barbera		$2
+bocca		$alt2
+borro		$alt2
+capello		$alt2
+ceca		$alt
+collodi		$2 $alt $only
+corsa		$alt2
+doma		$alt
+ei		eI
+epa		$alt
+esper		$1 $alt
+est		$only
+fieri		f'ieRi
+forca		$alt2
+fori		$alt $only
+gener		$1
+genes		$1
+gorga		$alt2
+gotta		$alt2
+ias		iaz $1
+indolo		$2
+leggi		ledZ'i
+lena		$alt2
+nocciola	$2
+olimpiade	olimp'iade
+orca		$alt2
+ossa		$alt2
+pena		$alt2
+peoni		$1 $only
+pesce		$alt2
+peste		$alt
+ponto		$alt
+protas		$1
+
+rene		$alt
+scopa		$alt2
+sera		$alt2
+teco		$alt2
+vicari		$1 $only
+vicaria		$3
+volto		$alt2
+zone		$alt2
+
+
+
+
+
+
+
+
+

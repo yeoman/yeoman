@@ -1,56 +1,11 @@
 {
-  "name": "yeoman",
-  "version": "0.10.0-alpha",
-  "description": "The Yeoman CLI presents a command line interface for creating, building, maintaining, and shipping a project",
-  "keywords": [
-    "front-end",
-    "development",
-    "dev",
-    "build",
-    "web",
-    "tool",
-    "cli",
-    "scaffold",
-    "stack"
-  ],
-  "homepage": "http://yeoman.io",
-  "bugs": "https://github.com/yeoman/yeoman/issues",
-  "author": "Chrome Developer Relations",
-  "bin": {
-    "yeoman": "bin/yeoman"
-  },
-  "directories": {
-    "man": "man"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/yeoman/yeoman.git"
-  },
-  "scripts": {
-    "test": "node node_modules/mocha/bin/mocha test/test-*.js",
-    "manpages": "./scripts/docs-build"
-  },
+  "name": "express-stack",
+  "version": "0.0.1",
   "dependencies": {
-    "yeoman-generators": "http://github.com/yeoman/generators/archive/e47bf1d6c8.tar.gz",
-    "bower": "~0.6.8",
-    "colors": "~0.6.0",
-    "nopt": "~2.0.0",
-    "lodash": "~1.0.0-rc.3",
-    "update-notifier": "~0.1.1",
-    "insight": "~0.1.0"
+    "grunt-shell": "~0.1.3",
+    "yeoman": "0.9.6"
   },
   "devDependencies": {
-    "mocha": "~1.8.1",
-    "ronn": "~0.3.8",
-    "grunt": "~0.4.0rc5"
-  },
-  "engines": {
-    "node": ">=0.8.0"
-  },
-  "preferGlobal": true,
-  "licenses": [
-    {
-      "type": "BSD"
-    }
-  ]
+    "grunt": "~0.3.12"
+  }
 }

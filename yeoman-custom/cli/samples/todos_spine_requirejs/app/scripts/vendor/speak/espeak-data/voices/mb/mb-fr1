@@ -1,0 +1,9 @@
+language fr 7
+name french-mbrola-1
+gender male
+
+dictrules 1
+stressLength 180 180 180 180 0 0 220 220
+pitch 82 117
+mbrola fr1 fr1_phtrans
+

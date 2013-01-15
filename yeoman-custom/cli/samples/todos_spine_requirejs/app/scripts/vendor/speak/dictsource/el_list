@@ -1,0 +1,296 @@
+ 
+// This file is UTF-8 encoded
+// all words lower case
+
+// Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ,
+// Ο ο, Π π, Ρ ρ, Σ σ ς (word-final form), Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω.
+// ά έ ή ί ΰ ϊ ϋ ό ύ ώ
+
+
+// numbers
+_0	miD'en
+_1	'ena
+_2	D'io
+_3	tr'ia
+_3f	tr'is
+_4	t'esera
+_4f	t'eseris
+_5	p'ente
+_6	'eksi
+_7	ept'a
+_8	okt'o
+_9	en'ea
+_1X	D'eka
+_11	'enDeka
+_12	D'oDeka
+_2X	'ikosi
+_3X	tri'anda
+_4X	sar'anda
+_5X	pen'inda
+_6X	eks'inda
+_7X	ebdom'inda
+_8X	ogd'onda
+_9X	enen'inda
+_0C	ekat'on_
+_1C0	ekat'o
+_1C	ekat'on_
+_2C	D;ak'os;a_
+_3C	triak'os;a_
+_4C	tetrak'os;a_
+_5C	pendak'os;a_
+_6C	eksak'os;a_
+_7C	eptak'os;a_
+_8C	oktak'os;a_
+_9C	en^ak'os;a_
+_0M1	Cil^'aDes
+_1M1	C'il^a        // no '1' before thousand
+_1M2	'ena|ekatom'irio
+_0M2	ekatom'iria
+_1M3	'ena|Disekatom'irio
+_0M3	Disekatom'iria
+_dpt	_k'oma
+_.	tel'ia
+
+_#ος	os	// ordinal suffix
+_#η	i
+_#ο	o
+_ord    os     // default ordinal suffix
+
+// ordinal numbers
+_0o	miDenik'
+_1o	pr'ot
+_2o	D'efter
+_3o	tr'it
+_4o	t'etart
+_5o	p'empt
+_6o	'ekt
+_7o	'evDom
+_8o	'oQDo
+_9o	'enat
+_10o	D'ekat
+_11o	enD'ekat
+_12o	DoD'ekat
+_1Xo	D'ekat
+_2Xo	ikost'
+_3Xo	triakost'
+_4Xo	tessarakost'
+_5Xo	pedikost'
+_6Xo	eksikost'
+_7Xo	evDomikost'
+_8Xo	oQDoIkost'
+_9Xo	enenikost'
+_1Co	ekatost'
+_2Co	D;akos;ost'
+_3Co	tr;akos;ost'
+_4Co	tetrakos;ost'
+_5Co	pedakos;ost'
+_6Co	eksakos;ost'
+_7Co	eptakos;ost'
+_8Co	oktakos;ost'
+_9Co	eneakos;ost'
+_0M1o	Cil^ost'
+_1M1o	Cil^ost'
+_2M1o	DisCil^ost'
+_3M1o	trisCil^ost'
+
+
+// symbols
+%	t'is||ekat'o
+
+// articles
+ο	o $u   // definate article
+η	i $u
+το	$u
+του	$u
+της	$u
+τον	$u
+την	$u
+οι	$u
+τα	$u
+των	$u
+τους	$u
+τις	$u
+
+ένας	$u    // indefinate article
+μία	$u
+μια	mn^a $u
+ένα	$u
+ενός	$u
+μίας	$u
+μιας	$u
+έναν	$u
+
+
+
+
+// pronouns
+τη	$u	// her
+
+που	$u	// that,which
+
+
+// verbs
+θα	$u	// future
+
+είμαι	$u         // to be
+είσαι	$u
+είναι	$u
+είμαστε	$u
+είστε	$u
+
+ήμουν	$u
+ήσουν	$u
+ήταν	$u
+ήμασταν	$u
+ήσασταν	$u
+
+θαείμαι	$u
+θαείσαι	$u
+θαείναι	$u
+θαείμαστε	$u
+θαείστε	$u
+
+ναείμαι	$u
+ναείσαι	$u
+ναείναι	$u
+ναείμαστε	$u
+ναείστε	$u
+
+
+έχω	$u         // to have
+έχεις	$u
+έχει	$u
+έχουμε	$u
+έχετε	$u
+έχουν	$u
+
+είχα	$u
+είχες	$u
+είχε	$u
+είχαμε	$u
+είχατε	$u
+είχαν	$u
+
+θαέχω	$u
+θαέχεις	$u
+θαέχει	$u
+θαέχουμε	$u
+θαέχετε	$u
+θαέχουν	$u
+
+ναέχω	$u
+ναέχεις	$u
+ναέχει	$u
+ναέχουμε	$u
+ναέχετε	$u
+ναέχουν	$u
+
+
+// prepositions
+
+σε	$u	// in,at,to
+στου	$u	// + the
+στον	$u
+στων	$u
+στους	$u
+στης	$u
+στην	$u
+στις	$u
+στο	$u
+στα	$u
+
+εκ	$u	// of
+να	$u $brk	// to
+από	$u	// from, by, of
+με	$u $brk	// with
+μασί	$u $brk	// with,together
+παρά	$u $brk	// by, of, than
+μέσα	$u $brk	// in, inside, within
+εις	$u $brk	// on, to
+διά	$u $brk	// by
+περί	$brk	// towards
+προς	$brk	// towards
+μέχρι	$brk	// until
+κοντά	$brk	// beside
+επί	$u
+
+
+// conjunctions
+
+αλλά	$u $pause	// but
+και	ke   $u $pause	// and (don't change to [ge] after n)
+ή	$u $pause	// or
+ότι	$u $pause	// that
+αν	$u $pause	// if, whether
+εάν	$u $pause	// if, whether
+(εκτός εάν)	ekt'ose,an  $pause  // unless
+παρόλο	$pause		// despite
+
+επειδή	$pause		// because
+γιατί	$pause		// because, why
+διότι	$pause		// because, for
+για	$pause
+ότι	$pause
+
+
+// Pronunciation exceptions
+
+
+
+(για να)	jan'a
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+α       alfa
+β       vita
+γ       Qama
+δ       Delta
+ε       'epsilon
+ζ       zita
+
+_η	'ita
+η	'ita  $atend
+θ       Tita
+ι       i'ota
+κ       kapa
+λ       lamDa
+μ       mi
+ν       ni
+ξ       ksi
+_ο	'omikron
+ο	'omikron  $atend
+π       pi
+ρ       Ro
+σ       s'iQma
+ς       s'iQma
+τ       taf
+υ       'ipsilon
+φ       fi
+χ       Ci
+ψ       psi
+ω       om'eQa
+
+ά       ,alfa|t'onos
+έ       ,epsilon|t'onos
+_ή	,ita|t'onos
+ή	,ita|t'onos $atend
+ί       i,ota|t'onos
+ΰ       ,ipsilon|t'onos
+ϊ       i'ota
+ϋ       'ipsilon
+ό	,omikron|t'onos
+ύ       ,ipsilon|t'onos
+ώ       om,eQa|t'onos
+
+_.      tel'ia
+_,      k'oma
+
+
+
+// miscellaneous exceptions
+μιερός     mier'os
+ρια        rQ;a
+

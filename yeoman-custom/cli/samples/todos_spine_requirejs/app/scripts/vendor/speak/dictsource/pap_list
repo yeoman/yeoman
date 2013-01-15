@@ -1,0 +1,120 @@
+// This file is UTF8 encoded 		
+// Spelling to phoneme words and exceptions for Papiamento
+
+//http://papiamentu.pbworks.com/Pronouns
+//http://www.papiamentu.com/vocab.html
+
+
+
+// characters
+b	be
+c	se
+d	de
+f	Ef
+g	ge
+h	ha
+j	je
+k	ka
+l	El
+m	Em
+n	En
+p	pe
+q	ky
+r	ER
+s	Es
+t	te
+v	ve
+w	we
+x	Eks
+z	zEt
+ñ	en^e
+
+_a	a
+_e	e
+_i	i
+_o	o
+_y	igR'Ek	$atend
+
+// these letters are in pap_rules, but the letter names include the accent name
+á	$accent
+é	$accent
+í	$accent
+ó	$accent
+ú	$accent
+// è	$accent
+// ò	$accent
+// ù	$accrnt
+
+// accent names
+_acu	skERpi
+_grv	gRave
+
+
+// numbers
+_0	z'eRo
+_1	'unu
+_2	d'os
+_3	tR'es
+_4	kwat'eR
+_5	s'inku
+_6	s'Ejs
+_7	S'ete
+_8	'otSo
+_9	nw'ebe
+_1X	dj'es
+_11	djes'un
+_2X	b'inti
+_3X	tR'inta
+_4X	kwaR'enta
+_5X	sinkw'enta
+_6X	ses'enta
+_7X	set'enta
+_8X	otS'enta
+_9X	nob'enta
+_0C	sj'en
+_0M1	m'il
+_0M2	mi'on
+_dpt	_kOma/
+
+
+// common function words
+
+un	$u+	// a
+algun	$u+	// some
+to
+
+i	$u+ $pause	// and
+y	$u  $pause	// and ??
+y	igR'Ek	$atend
+
+o	$u+ $pause	// or
+òf	$u+ $pause	// or
+ma	$pause	// but
+ku	$u+ $brk	// which, that
+(ken su) $u $brk
+
+
+mi	$u+	// I,me
+bo	$u+	// you
+e	$u+	// the. it, he, she
+el	$u+	// it, he, she (before 'a')
+nos	$u+	// we
+boso	$u+	// you
+nan	$u+	// they
+
+ami	$u+	// I
+abo	$u+	// you
+su	$u+	// his, her, its
+
+
+ta	$u+	// to be
+tabata	$u+	// was
+lo	$u+	// (future)
+a	$u+	// (past)
+// tin	$u+	// have
+por	$u+	// can
+
+di	$u+	// of
+den	$u+	// in
+na	$u+	// at
+

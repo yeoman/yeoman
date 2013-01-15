@@ -1,0 +1,265 @@
+
+// This file is UTF8 encoded 
+// Spelling to phoneme rules for Kannada
+
+// A means vowel letters (not vowel signs)
+// B means a combining vowel sign or a virama
+
+
+.replace
+೦	0	// Convert Kannada numbers
+೧	1
+೨	2
+೩	3
+೪	4
+೫	5
+೬	6
+೭	7
+೮	8
+೯	9
+
+
+.group ಕ
+	ಕ	ka
+	ಕ (B	k
+
+.group ಖ
+	ಖ	kha
+	ಖ (B	kh
+
+.group ಗ
+	ಗ	ga
+	ಗ (B	g
+
+.group ಘ
+	ಘ	gha
+	ಘ (B	gh
+
+.group ಙ
+	ಙ	Na
+	ಙ (B	N
+
+.group ಚ
+	ಚ	ca
+	ಚ (B	c
+
+.group ಛ
+	ಛ	cha
+	ಛ (B	ch
+
+.group ಜ
+	ಜ	Ja
+	ಜ (B	J
+
+.group ಝ
+	ಝ	Jha
+	ಝ (B	Jh
+
+.group ಞ
+	ಞ	n^a
+	ಞ (B	n^
+
+.group ಟ
+	ಟ	t.a
+	ಟ (B	t.
+
+.group ಠ
+	ಠ	th.a
+	ಠ (B	th.
+
+.group ಡ
+	ಡ	d.a
+	ಡ (B	d.
+
+.group ಢ
+	ಢ	dh.a
+	ಢ (B	dh.
+
+.group ಣ
+	ಣ	n.a
+	ಣ (B	n.
+
+.group ತ
+	ತ	ta
+	ತ (B	t
+
+.group ಥ
+	ಥ	tha
+	ಥ (B	th
+
+.group ದ
+	ದ	da
+	ದ (B	d
+
+.group ಧ
+	ಧ	dha
+	ಧ (B	dh
+
+.group ನ
+	ನ	na
+	ನ (B	n
+
+.group ಪ
+	ಪ	pa
+	ಪ (B	p
+
+.group ಫ
+	ಫ	pha
+	ಫ (B	ph
+
+.group ಬ
+	ಬ	ba
+	ಬ (B	b
+
+.group ಭ
+	ಭ	bha
+	ಭ (B	bh
+
+.group ಮ
+	ಮ	ma
+	ಮ (B	m
+
+.group ಯ
+	ಯ	ja
+	ಯ (B	j
+
+.group ರ
+	ರ	ra
+	ರ (B	r
+
+.group ಱ
+	ಱ	ra
+	ಱ (B	r
+
+.group ಲ
+	ಲ	la
+	ಲ (B	l
+
+.group ಳ
+	ಳ	l.a
+	ಳ (B	l.
+
+.group ವ
+	ವ	va
+	ವ (B	v
+
+.group ಶ
+	ಶ	S;a
+	ಶ (B	S;
+
+.group ಷ
+	ಷ	s.a
+	ಷ (B	s.
+
+.group ಸ
+	ಸ	sa
+	ಸ (B	s
+
+.group ಹ
+	ಹ	ha
+	ಹ (B	h
+
+.group ೞ
+	ೞ	fa
+	ೞ (B	f
+
+.group ೠ
+	ೠ	r-
+
+
+// Stand-alone vowels
+.group ಅ
+	ಅ	a
+
+.group ಆ
+	ಆ	a:
+
+.group ಇ
+	ಇ	i
+
+.group ಈ
+	ಈ	i:
+
+.group ಉ
+	ಉ	u
+
+.group ಊ
+	ಊ	u:
+
+.group ಋ
+	ಋ	ru
+
+.group ಎ
+	ಎ	e
+
+.group ಏ
+	ಏ	e:
+
+.group ಐ
+	ಐ	aI
+
+.group ಒ
+	ಒ	o
+
+.group ಓ
+	ಓ	o:
+
+.group ಔ
+	ಔ	aU
+
+
+
+.group 0xe0b2   // characters which start with UTF-8 bytes: [e0 b2]
+
+	ಂ	m	// anusvara (this should nasalize the vowel)
+
+	ಃ	h	// visarga
+
+// combining vowel signs
+
+	ಾ	a:
+
+	ಿ	i
+
+
+.group 0xe0b3   // characters which start with UTF-8 bytes: [e0 b3]
+
+	ೀ	i:
+
+	ು	u
+
+	ೂ	u:
+
+	ೃ	ru
+
+	ೄ	r-:
+
+	ೆ	e
+
+	ೇ	e:
+
+	ೈ	aI
+
+	ೊ	o
+
+	ೋ	o:
+
+	ೌ	aU
+
+	್	// virama
+//	್ (C	y   // virama+consonant, insert epenthetic vowel
+
+	ೕ	:   // length mark ??
+	ೖ	:   // ai length mark ??
+
+
+.group 0xe0a4  // devanagari
+	\340\244  _^_HI  // switch to hindi voice for devanagari characters
+.group 0xe0a5  // devanagari
+	\340\245  _^_HI
+
+
+.group
+	$	do:l.ar
+
+

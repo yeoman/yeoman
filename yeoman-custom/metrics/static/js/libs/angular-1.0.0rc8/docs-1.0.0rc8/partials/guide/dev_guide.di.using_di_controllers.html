@@ -1,0 +1,50 @@
+<h1 id="Developer.Guide..DI..Using.DI.in.Controllers">Developer Guide: DI: Using DI in Controllers</h1>
+<div class="developer-guide--di--using-di-in-controllers"><p>The most common place to use dependency injection in angular applications is in <a href="guide/dev_guide.mvc.understanding_controller">controllers</a>. Here is a simple example:</p>
+
+<pre class="prettyprint linenums">
+function MyController($location){
+ // do stuff with the $location service
+}
+MyController.$inject = ['$location'];
+</pre>
+
+<p>In this example, the <code>MyController</code> constructor function takes one argument, the <a href="api/angular.module.ng.$location"><code>$location</code></a> service. Angular is then responsible for supplying the
+instance of <code>$location</code> to the controller when the constructor is instantiated. There are two ways
+to cause controller instantiation – by configuring routes with the <code>$location</code> service, or by
+referencing the controller from the HTML template, as follows:</p>
+
+<pre class="prettyprint linenums">
+&lt;!doctype html&gt;
+&lt;html ng-controller="MyController" ng-app&gt;
+&lt;script src="http://code.angularjs.org/angular.min.js"&gt;&lt;/script&gt;
+&lt;body&gt;
+ ...
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>When angular is instantiating your controller, it needs to know what services, if any, should be
+injected (passed in as arguments) into the controller. Since there is no reflection in JavaScript,
+we have to supply this information to angular in the form of an additional property on the
+controller constructor function called <code>$inject</code>. Think of it as annotations for JavaScript.</p>
+
+<pre class="prettyprint linenums">
+MyController.$inject = ['$location'];
+</pre>
+
+<p>The information in <code>$inject</code> is then used by the <a href="api/angular.injector"><code>injector</code></a> to call the
+function with the correct arguments.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.di">About Dependency Injection</a></li>
+<li><a href="guide/dev_guide.di.understanding_di">Understanding Dependency Injection in Angular</a></li>
+<li><a href="guide/dev_guide.services">Angular Services</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.injector"><code>Angular Injector API</code></a></li>
+</ul></div>

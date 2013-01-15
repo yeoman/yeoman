@@ -1,0 +1,2329 @@
+
+
+// This file in UTF8 encoded
+
+// Letters
+//========
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+// Use ş ţ (with cedilla) not ș ț (with comma) in these translation files
+
+// character names
+_a	a
+_ă	'@
+_â	,ydin'a
+b	be
+c	tSe
+d	de
+_e	e
+f	fe
+g	dZe
+h	haS
+_i	i
+_î	,ydin'i
+j	Ze
+k	ka
+_l	le
+_m	me
+_n	ne
+_o	o
+p	pe
+q	kju
+r	re
+_s	se
+ş	Se
+t	te
+ţ	tse
+_u	u
+v	ve
+w	dublu've
+x	iks
+y	'igrek
+z	zet
+
+â	,ydin'a $atend
+ă	'@ $atend
+î	,ydin'i $atend
+ö	$accent
+
+_??	ka*akt'er
+_cap	maZusk'ul@
+
+// accent names
+_lig	ligat'ur@
+_acu	askuts'it
+_ac2	 d'ubluasku'tsit	
+_brv	k@tS'ul@
+_ced	sed'il@
+_cir	tSirkumfl'eks
+_dia	t@-*'em@
+_dot	punkt
+_grv	g@-*'av
+_hac	h'atSek
+_mcn	mak@-*'on
+_ogo	ogon'ek
+//_rng	
+_stk	sl'eS	
+_tld	t'ild@
+
+
+// punctuation and symbols
+
+_,	v'irgul@
+_:	do'u@p'unkte
+_;	p'unkt||Siv'irgul@
+_!	eksklam'a*e
+_?	ynt@-*eb'a*e
+_-	k@-*'atim@
+__	sublinj'at
+_'	apost@-*'of
+_"	ghilim'ele
+_(	pa*ant,ez@desk'is@
+_)	pa*ant,ez@ynk'is@
+_[	pa*ant,ez@p@t@-*'at@
+_]	pa*ant,ez@p@t@-*'at@ynk'is@
+_{	pa*ant,ez@akol'ad@
+_}	pa*ant,ez@akol'ad@ynk'is@
+_<	maI||m'ik
+_>	maI||m'a*e
+_~	t'ild@
+_\	b,eksl'eS
+_|	b'ar@vertik'al@
+_#9	t'ab
+_#32	sp'atsiU
+
+.	punkt		$max3
+*	aste*isk	$max3
+=	eg'al		$max3
+#	dj'ez		$max3
++	plus		$max3
+&	ampersand
+©	k'apiraIt 
+@	a*'ond
+/	sleS
+€	'eU*o
+°	g@-*ade
+
+
+// numeric
+//********
+_0	z'e*o
+_1	'unu
+_2	d'oI
+_2f	d'ou@
+_3	t@-*'eI
+_4	p'at@-*u
+_5	tS'intSI^
+_6	S'ase
+_7	S'apte
+_8	'opt
+_9	n'oU@
+_10	z'etSe
+
+_11	'unsp@-*ez,etSe
+_12	d'oIsp@-*ez,etSe
+_13	t@-*'eIsp@-*ez,etSe
+_14	p'aIsp@-*ez,etSe
+_15	tS'insp@-*ez,etSe
+_16	S'aIsp@-*ez,etSe
+_17	S'aptesp@-*ez,etSe
+_18	'optsp@-*ez,etSe
+_19	n'oU@sp@-*ez,etSe
+
+//_11	'unSpe
+//_12	d'oISpe
+//_13	t@-*'eISpe
+//_14	p'aISpe
+//_15	tS'inSpe
+//_16	S'aISpe
+//_17	S'apteSpe
+//_18	'optiSpe
+//_19	n'oU@Spe
+
+_20	dou@z'etSI^
+_30	t@-*eIz'etSI^
+_40	pat@-*uz'etSI^
+_50	tSinz'etSI^
+_60	SaIz'etSI^
+_70	Saptez'etSI^
+_80	optz'etSI^
+_90	noU@z'etSI^
+
+_2X	d'ou@zetSI^
+_3X	t@-*'eIzetSI^
+_4X	p'at@-*uzetSI^
+_5X	tS'inzetSI^
+_6X	S'aIzetSI^
+_7X	S'aptezetSI^
+_8X	'optzetSI^
+_9X	n'oU@zetSI^
+
+_0C	s'ute
+_1C	,os'ut@
+_2C	d'ou@s'ute
+
+_0M1	m'iI
+_1M1	,om'ie
+_ofM1	m'iI
+_0M2	mil'jOane
+_1M2	'unmil'jon
+_0M3	mil'jarde
+_1M3	'unmil'jard
+_0M4	bil'jOane
+_1M4	'unbil'jon
+_0M5	bil'jarde
+_1M5	'unbil'jard
+
+_0of	de
+_0and	_Si
+_dpt	_v'irgul@
+_0Z2	s'utimi
+_0Z3	m'iImi
+
+// not Roman numbers
+vi	vi
+vii	viI
+
+// Abbreviations
+//**************
+
+$textmode
+etc	etcetera
+(b-dul) bulevardul 
+udmr udemer'e
+cf. conform
+mm milimetri
+cm centimetri 
+km kilometri
+ml mililitri
+mg miligrame
+kg kilograme
+$phonememode
+
+ş.a		Si_!aS,a||maI||dep'arte
+ş.a.m.d		Si_!aS,a||maI||dep'arte
+s.a.m.d		Se|aSamaIdeparte
+(km / h)	kilom'et@-*i_!pe||'or@
+
+// articles
+un	$u
+o	$u
+nişte	$u1
+una	$u1+
+unul	$u1+
+unuia	$u1+
+uneia	$u1+
+unui	$u1
+unei	$u1
+unor	$u1
+unora	$u1+
+unele	$u1	// some
+nicio $u1+
+niciun $u1+
+niciunul $u1+
+niciuna $u1+
+niciunul $u1+
+niciunele $u1+
+niciunii $u1+
+
+anumite $u3
+anumitor $u3
+
+ăsta	$u1+    // this
+asta	$u+
+ăsteia	$u1+
+acest	$u+     // this
+aceşti	$u
+aceştia	$u
+acestor	$u2+
+acestora $u2+
+
+acestuia $u2+
+acesteia $u2+
+aceasta	$u+
+această	$u+
+
+acel	$u+     // that
+acea	$u2+	// that
+acei	$u+     // those
+acele	$u2+     // those
+acelor	$u2 
+acelora $u2+
+cei	$u+	// the, those
+cel	$u+	// that, he who
+cea	$u+	// that, she who
+cele	$u1+	// those
+aceleaşi $2 
+ăia	$u1+
+ălora	$u1+
+
+
+// pronouns
+eu	jeU $u+
+tu	$u+
+el	jel $u+
+ea	ja $u+
+noi	$u+
+voi	$u+
+ele	jele $u+
+
+
+
+dumneavoastră $u3+
+voastră $u1+
+dumneata $u3+
+matale $u2+
+
+mă	$u
+te	$u
+ţie ts'ie $u+
+îl	$u
+o	$u
+ne	$u
+vă	$u
+îi	$u
+le	$u
+se	$u
+îmi	$u
+îţi	$u
+ţi	$u
+ţie	ts'je $u
+mi	$u
+şi	$u
+
+însuşi	$u1+
+însăşi	$u1+
+însumi	$u1+
+însuţi	$u1+
+nimeni	$u1+
+nimănui nim@n'uI 
+
+care	$u1 $brk
+// who that which what
+
+căror	$u1
+cărora	$u1
+ceea	$u $brk // that   
+
+aceeaşi $2
+aceiaşi $2
+căruia	$u1  
+căreia	$u1
+cărora	$u1
+altora	$u1+
+alteia $u1+
+ăstora	$u1+
+
+// possessive adjectives
+meu	$u+
+mei	$u+
+mea	$u+
+mele	$u1+
+tău	$u+
+tăi	$u+
+ta	$u+
+tale	$u1+
+său	$u+
+săi	$u+
+sa	$u+
+sale	$u1+
+lui	$u+
+ei	jeI $u+
+nostru	$u1+
+noştri	noSt*i $u1+
+noastră	$u1+
+noastre	$u1+
+vostru	$u+
+voştri	voSt*i $u1+
+voastră	$u+
+voastre	$u+
+lor	$u+
+
+
+
+// prepositions
+al	$u $brk	// of, genative article
+a	$u $brk $verbf
+ai	$u $brk
+ale	$u $brk
+
+in	$u $brk
+în	$u $brk
+pe	$u $brk
+că	$u+
+ca $u
+ce	$u+ 
+la      $u $brk
+de	$u
+(de la)	dela $u
+din	$u $brk
+pentru	$u $brk
+cu	$u		// with
+fără	f,@r@ $pause		// without
+fara	f,@r@ $pause	// (fără)
+lângă	$brk		// beside
+prin	$u $brk 		// through
+alături $2 $brk // beside
+după	$brk		// after, behind
+dupa	dup@ $brk	// (după)	
+dintre	$brk		// between
+intre	$brk		// between
+asupra	$brk		// about, on, with
+sub	$brk		// below
+până	$pause		// from, until
+despre	$brk		// about, on
+spre	$brk		// towards
+către	k'@t@-*e $brk	// towards
+
+
+// conjunctions
+// şi	$u $pause	// and
+iar	$pause		// and, again
+iarăşi $1 $pause 
+sau	$u $pause	// or
+ori	$u $pause	// or
+dar	$u $pause	// but
+deoarece deOaretS'e $pause		// because
+dacă	$u $pause	// if
+daca	dak@ $u $pause	// (dacă)
+când	$u $pause	// when
+cum	$pause		// how, as, since
+astfel	$1 $pause		// thus
+deşi	$2 $pause	// although
+fie	f'ie $u		// either
+însă	$pause		// but, yet, however
+atunci	$pause		// therefore
+(de atunci) d%e||at'untSI^ $pause   // since then
+nici	$pause		// neither
+deci	$pause		// therefore, so that
+fiindcă	$pause		// because, since, as
+fiind	fi'ind $pause
+
+
+// negative
+nu	$u+
+
+// questions
+
+
+// some common adjectives and adverbs
+adică	$2 $brk
+aşa	$2 $brk		// so, thus
+altfel	$1 $brk //otherwise
+atâţia	at'ytsja
+abia	abj'a
+cam $u 
+celelalte $u3+
+celălalt $u3+
+fiecărui fjek'@ruI $u
+fiekăruia fjec'@ruIa $u+
+încotro	$3
+mai	$u
+orice	o*I^tS,e $u3 	// any
+oricine	o*I^tS,ine $u3+
+oricare	o*I^k,a*e $u+ 
+oricărui o*I^k@rui $u3+
+oricăruia o*I^k@ruia $u3+
+oricărei o*I^k@rei $u3+
+oricăreia o*I^k@reia $u3+
+oricui	o*I^kuI $u3+
+câţiva	kytsI^v'a $u2+
+cîţiva	kytsI^v'a $u2+
+oricând	o*I^k,ynd $u+
+oricât	o*I^k,yt $u+
+oricum	o*I^k,um $u+ 
+rareori	ra*e'o*;I^
+totuşi	$1 $brk	// never, though, nevertheless
+multor	$u1
+multora	$u1+
+tocmai	$u1 // just
+totusi	$1 $brk	// (totuşi)
+unde	$brk	// where
+
+
+// auxillary verbs  (be, have, can, etc)
+să	$u
+
+
+sunt	$u+            // to be
+eşti	jeStI^ $u+
+este	jeste $u+
+suntem	$u1+
+sunteţi	$u1+
+sunt	$u+
+e	je $u
+e       e  $atend
+fost	$u+            // been
+eram	je*am $u2+     // was
+erai	je*aI $u2+
+era	je*a $u2+
+eraţi	je*ats;I^ $u2+
+erau	je*aU $u2+
+
+avea	 $u2+    // to have
+as	$u+ $verbf
+ai	$u+ $verbf
+ar	$u+ $verbf
+am	$u+ $verbf
+aţi	$u+ $verbf
+au	$u+
+are	$u+	// ??
+avem	$u+
+aveţi	$u+
+
+voi	$u+ $verbf    // will
+vei	$u+ $verbf
+va	$u+ $verbf
+vom	$u+ $verbf
+veţi	$u+ $verbf
+vor	$u+ $verbf
+
+există	$u	// there is
+
+face	$u+	// to do
+
+putea	$u2+	// may
+pot	$u+ $verbf
+poţi    $u+ $verbf
+poate   $u+ $verbf
+putem   $u+ $verbf
+puteţi  $u+ $verbf
+
+trebui	t@-*ebw'i        // to have to
+
+
+//ordinal numerals 
+doilea d'oIlea
+treilea t@-*'eIlea
+patrulea $1
+cincilea $1
+şăselea $1
+şaptelea $1
+optulea $1
+nouălea n'ou@lea
+zecelea $1
+
+
+// Final "i" is stressed
+absolvi	$4
+adăposti $4
+adormi $3
+afurisi	$4
+agonisi	$4
+amăgi	$3
+ameţi	$3
+aminti $3
+amuţi	$3
+
+arcui arku'i
+aţinti	$3
+
+blagoslovi	$4
+boţi	$2
+buşi	$2
+
+călăuzi	$4
+căptuşi	$3
+
+căsăpi	$3
+cârmi	$2
+
+căzni	$2
+catadicsi	$4
+cerea $2
+cerşi	$2
+citi	$2
+cloci	$2
+cuceri	$3
+cutremura $4
+cuveni	$3
+dărui	d@*w'i
+defini $3
+deosebi	$3
+depăşi	$3
+descoperi	$4
+deservi $3
+desluşi	$3
+despărţi $3
+deveni	$3
+dovedi	$3
+domoli	$3
+duhni	$2
+făgăduui f@g@du'i
+feri	$2
+gândi	$2
+găsi	$2
+goni	$2
+grăbi	$4
+greşi	$2
+hăcui	$3
+
+hohoti	$3
+îmbâcsi	$3
+îmbunătăţi $5
+împărţi	$3
+împături $5
+împlini $3
+încălzi	$3
+încreţi	$3
+îndeplini $4
+îndrăzni $3
+înflori $3
+înghionti $3
+înghiţi	$3
+îngriji	$3
+înlocui ynloku'i
+împleti $3 
+înşela	$3
+însemna $3
+înregistra $4
+înroşi	$3
+întâlni	$3
+înteţi	$3
+învârti	$3
+înveli $3
+învrednici $4
+istovi $3
+ivi	$2
+izbuti	$3
+izbi	$2
+izgoni	$3
+linguşi	$3
+lipi	$2
+lovi	$2
+mânji	$2
+miji $2
+mirosi	$3
+moleşi	$3
+mulţumi $3
+muri mur'i  
+năpusti $3
+necăji	$3
+numi $2
+ocoli $3
+ocroti	$3
+odihni	$3
+oferi	$3
+opri	$2
+ostoi osto'i
+pândi	$2
+păşi	$2
+părăsi	$3
+păzi	$2
+păţi	$2
+plăti	$2
+povesti	$3 $only
+potrivi $3
+prăbuşi	$3
+prăji	$2
+pregăti $3
+preveni $3
+proveni $3
+primi	$2
+porni	$2
+răci	$2
+râfni	$2
+rânji	$2
+răguşi	$3
+răscoli	$3
+răspândi	$3
+răsuci	$3
+rătăci	$3
+regăsi	$3
+reîntâlni $4
+reuşi	$3
+revi $2
+reveni	$3
+risipi	$3
+rosti	$2
+rostogoli $4
+rotunji	$3
+
+săvârşi $3
+sclifosi	$3
+scotoci $3
+scuti	$2
+servi	$2
+sfârşi	$2
+sfriji	$2
+slobozi	$3
+sluji	$2
+sosi	$2
+supravieţui supravjetsu'i
+stârni	$3
+strivi	$2
+stropşi	$2
+suci	$2
+
+şopti $2
+
+ticsi	$2
+trezi	$2
+
+urni	$2
+ursi	$2
+urzi	$2
+
+veni	$2
+veşteji	$3
+vrăji	$2
+vieţui	vjetsu'i
+vorbi	$2
+zugrăvi $3
+zădărnii $4
+zâmbi $2
+
+
+// final "a" or "ea" is stressed(verbs)
+
+
+îneca $3
+înroşi $3
+împrăştia $3
+învărtejea $4
+învărtea $3
+învolbura $4
+aburea $2
+aduna $3
+afla afl'a
+accelera $4
+accentua $3
+abona $3
+acumula $4
+adera $3
+administra $4
+afirma $3
+agăţa $3
+agita $3
+aglomera $4
+alimenta $4
+apărea $3
+aprecia ap@-*etSj'a
+apropia ap@-*opi'a
+arăta $3
+amuţea $3
+ardea $2
+apleca $3
+apuca $3
+asculta $3
+ascundea $3
+asigura $4
+aşeza $3
+aştepta $3
+aşternea $3
+agonisea	$4
+agrea	ag@-*e'a
+ajuta	$3
+ajungea $3
+alătura $4
+alerga	$3
+ameninţa $4
+angaja $3
+anunţa $3
+apăra	$3
+apăsa $3
+apela $3
+ataca	$3
+atârna $3
+atribuia $4
+auzea $2
+balansa $3
+băga	$2
+binecuvânta $5
+blestema $3
+bloca $3
+bucura $3
+calcula $3
+cădea $2
+călăuzea	$4
+călca	$2
+cânta	$2
+câştiga $3
+căsca	$2
+căpăta $3
+căşuna $3
+căsători $4
+căuta	k@ut'a
+ceda $2
+cerea $2
+cerceta $3
+cerşea	$2
+chema $2
+clătina $3
+clasifica $4
+claxona $3
+clinti $2
+clipi $2
+cobora $3
+colecta $3
+comenta $3
+comunica $4
+concentra $3
+concretiza $4
+concura $3
+conducea $3
+conecta $3
+confunda $3
+consta $2
+constata $3
+conta $2 
+continua	kontinw'a
+controla $3
+conţinea $3
+coordona $4
+costa kost'a
+crea	k@-*e'a
+credea	$3
+creştea	$2 
+croi kro'i
+cumpăra $3
+cunoştea $3
+cutreiera $4
+cuvânta $3
+dansa $2
+dădea	$2
+dăuna $3
+debuta $3
+demonstra $3
+depăşea $3
+desemna $3
+deţinea $3
+derula $3
+decelera $4
+decidea $3
+decola $3
+deconecta $4
+dedica $3
+degenera $4
+degera $3
+delecta $3
+delibera $4
+depista	$3
+desconsidera $5
+descurca $3
+desfunda	$3
+desprindea $3
+devenea $3
+devia devi'a
+determina $4
+digera $3
+discuta $3
+diseca $3
+dispărea $3
+dispera $3
+dispreţuia $4
+distra	$2
+domina $3
+dorea	$2
+dormea	$2
+dovedea $3
+ducea $2
+duhnea $2
+dura $2
+durea $2
+echilibra $4
+reechilibra $5 
+efectua efektw'a
+eficientiza $5
+elibera $4
+elimina $4
+enumera $4
+estima $3
+evita $3
+evoca $3
+evolua evolw'a
+etala $3
+exagera $4
+examina $4
+exaspera $4
+executa $4
+experimenta $5
+explica $3 
+explora $3
+facilita $4
+făcea	$2
+ferea	$2
+fluiera $3
+furniza $3
+folosea $3
+fredona $3
+fremăta $3
+fugea	$2
+fulgera $3
+furişa	$3
+gândea	$2
+gâdila $3
+găsea $2
+genera $3
+germina $3
+gonea $2
+holba $2
+îmbâcsea	$3
+îngreuna $4 
+împărţea	$3
+încarcera $4
+încarna $3
+încăiera $4
+îndurera $4
+înfiera $3
+//imagina $3
+însera $3
+intersecta $4
+înţelegea $4
+îmbrăca $3
+încălzea	$3
+încărca	$3
+încerca	$3
+închega	$3
+încreţea	$3
+îndrepta $3
+înfăşura	$4
+înfunda	$3
+înghiontea	$3
+încuraja $4
+întâmpina $4
+ieşea $2
+insera $3
+interesa	$4
+interfera $4
+interzicea $4
+iubea $2
+îmbulzea $3
+împuşca $3
+încheia ynke'ja
+încurca $3
+	îndesea $3
+	identifica $5
+îngrozi $3
+întâmpla $3
+înteţea	$3
+incinera $4
+îndoia $3
+instala $3
+înainta $3
+înălţa $3
+înfigea $3
+irita $3
+întreba	$3
+învârtea	$3
+învingea	$3
+invita	$3
+juca	$2
+lăsa	$2
+lărgea $2
+lansa $2
+legifera $4 
+lingea	$2
+localiza $4
+lucea $2
+mânca	$2
+mângâia	$3
+mărturisea $4
+memora	$3
+mergea	$2
+merita	$3
+mira $2
+mişca $2
+mişuna $3
+modela $3
+modera $3
+modifica $4
+
+mulţumea $3
+murea $2
+murmura $3
+năştea $2
+năpustea $3
+numea $2
+negocia	negotSi'a
+nimerea $3
+nimicea $3
+obiecta $3
+obliga $3
+observa $3
+ocupa $3
+oferea $3
+ofta $2
+ordona $3
+
+paraliza	$4
+participa $4
+părea	$2
+păstra $2
+păcăli $3
+pălea	pale'a
+păsa $2
+păzea	$2
+permitea $3
+persevera $4
+plăcea $2
+plângea $2
+pleca	$2
+plimba $2
+ploua $2
+pornea $2
+potrivea $3
+preda $2
+predea $2
+prefăcea $3
+prefera $3
+pregătea $3
+prepara	$3
+preocupa $3
+prelungea $3
+presupunea $4
+prezenta $3
+prezicea $3
+privea $2
+producea $3
+promova $3
+pronunţa $3
+prospera $3
+protesta $3
+proteja $3
+provoca $3
+purta $2
+răbda	$2
+răcea	$2
+rămânea	$3
+răscolea	$3
+răsfoi r@sfo'i
+răsturna $3
+răsucea	$3
+rătăci $3
+râdea $2
+reacţiona $3
+realiza $4
+recupera $4
+referea $3
+refuza $3
+regenera $4
+regiza $3
+relaxa $3
+releva $3
+renunţa $3
+repara	$3
+repera	$3
+repeta $3
+replica $3
+reprezenta $4
+respecta $3
+respira	$3
+reuşea	$3
+revenea	$3
+reverbera $4
+rezema $3
+rezista $3
+ridica $3
+risca $2
+rostea $2
+rula $2
+salva $2
+săpa	$2
+sărea $2
+sângera $3
+scăpa $2
+schimba $2
+scutura $3
+semăna $3
+semna $2
+scotea	$2
+sfărâma	$3
+sfârteca $3
+simţea  $2
+sista $2
+specializa $4
+speria spe*'ja
+spulbera $3
+sosea $2
+spăla	$2
+spera	$2
+spumega $4
+stagna stagn'a
+stăpânea	$3
+stârnea $2
+stătea	$2
+ştia St'ja
+stoca $2
+străfulgera $4
+strica	$2
+subestima $4
+sucea	$2
+suspecta $3
+susţinea $3
+strălucea $3
+strecura $3
+sugea $2
+sugera $3
+suda	$2
+suferea $3
+supăra	$3
+supraestima $5
+şuiera $3
+suna $2
+superviza $4
+supunea $3
+surprindea $3
+tampona $3
+temea $2
+tempera $3
+termina $3
+testa $2
+tolera $3
+topi $2
+transfera $4
+trăgea	$2
+trezea	$2
+triumfa $3
+târa $2
+ţinea $2
+uita $2
+umplea $2
+urca $2
+urla $2
+utiliza $4
+valora	$3
+vâna	$2
+vântura $3
+vâslea $2
+vedea	$2
+venea $2
+venera $3
+vibra $2
+visa $2
+vira	$2
+voia $2
+vroia $2
+vizualiza $4
+vocifera $4
+vorbea	$2
+vota $2
+trecea $2
+zăcea $2
+zugrăvea $3
+zbiera $2
+zbura	$2
+zgâria $3
+zicea $2
+
+
+// hyphenated contractions
+(să l)	s@l     $u
+(să i)	s@I     $u
+(să şi)	s@S;I^  $u
+(s ar) sar $u
+(s or) sor $u
+(care l) karel $u
+(să mi)	s@m;I^  $u
+(te am)	team    $u
+(te ai) teaj    $u
+(ţi am) tsjam $u
+(ţi ar) tsjar $u
+(ţi au) tsjaU $u
+(ţi ai) tsjaI $u
+(ţi e) ts'je $u 
+(ţi am) tsjam $u
+(ţi ar) tsjar $u
+(ţi oi) tsjoj $u
+(ne am) neam    $u
+(n o) no $u
+(n aş) naS $u
+(n a) na $u
+(c o) ko $u
+
+(c ar) kar $u
+(l a)	la      $u
+(l au)	laU     $u
+(l am)	lam     $u
+(l aţi)	lats;I^ $u
+(l ai) laI $u
+(l or) lor $u
+(le a) lea $u
+(le am) leam $u
+(le ai) leaj $u
+(le aţi) leatsI^ $u
+(le ar) lear $u
+(n or) nor $u
+(m or) mor $u
+(l ar) lar $u
+(v aţi)	vats;I^ $u
+
+(v au) vaU $u
+(v am) vam $u
+(v o) $u
+
+(m ar) mar $u
+(te ar) tear $u
+(v ar) var $u
+(ne ar) near $u
+(i ar) jar $u
+(m aS) maS $u
+(te aş) teaS $u
+(l aş) laS $u
+(v aş) vaS $u
+(ne aş) neas $u
+(i aş) iaS $u
+(şi a) SI^a $u
+(s o) so $u
+(mi e) mi,e $u
+(mi am) $u
+(mi ai) $u
+(mi ar) $u
+
+ni $u
+(nu i) nui $u
+(i am)	jam     $u
+(i ai) jaI $u
+(a şi)  aS;I^   $u
+(a ţi) atsI^ $u
+(într o) ynt@-*o
+(dintr o) dint@-ro
+(de a) dea $u
+(le a) lea $u
+(n or) nor $u
+
+// MAIN WORD DICTIONARY
+//*********************
+// Use of $alt:
+// replaces final [j] by ['i]  (i.e. "i" is stressed if followed by a vowel)
+
+abil		$2
+abzice		$2
+acelaş		$2
+aci atS'i
+acopăr $2
+acritu $3
+acupunctu $4
+adâncătu $4
+adâncitu $4
+adevărul $3
+admirăm $3
+adu		ad'u
+aducem $2
+aduceţi $2
+adunătu $4
+adus ad'us
+adventice	$3
+aer		'aIer
+afli afli
+africa $1
+africii $1
+afumatu $4
+agentu $3
+agricultu $4
+ahaa ah'a
+aha ah'a
+ahile $2
+aici		a'itSI^
+ajungem $2
+ajungeţi $2
+alaltăieri $2
+alăturăm $4
+albăstruie $3
+albert $1
+albitu $3
+alegem $2
+alegeţi $2
+alergă $2
+alergătu $4
+aleşi $2
+alex $1
+alintătu $4
+altceva         $3
+altcineva $4
+altcuiva $3
+altcumva $3
+altundeva $4
+alunecătu $4
+amăruie $3
+ameninţă $2
+america $2
+americii	$2
+americile	$2
+amestec $2
+amestecătu $5
+amic $2
+amice $2
+amici $2
+amicii $2
+amicilor $2
+amsterdam $1
+andrei $2
+apărării $3
+aplecă $3
+apoi		$2
+aprig $1
+aprige $1
+aprigi $1
+apropo $3
+apropos ap@-*op'o
+apucătu $4
+apus ap'us
+arăt ar'@t
+arăţi ar'@tsI^
+arătă $3
+ardem $1
+ardeţi $1
+arhitectu $4
+arip $1
+aripi $1
+armu $2
+arsu $2
+artefice	$3
+artera $2
+arteră $2
+aruncătu $4
+asemenea	$2
+asigur $2
+astăzi $1
+aşeză $3
+ating $2
+aur $1
+auriu au*'iU
+aventu $3
+avicultu $4
+avocatu $4
+avu $2
+
+banner b'en@r
+bannere b'en@*e
+bacterie $2
+bacteriei $2
+bacterii $2
+badjocu $3
+balint $1
+băgă $2
+backup b'ekap
+barman $1
+bătătu $3
+batem $1
+bateţi $1
+bătăi $2
+bău b@'u
+băutu $3
+belgia $1
+biseric		$2
+bivol $1
+bivoli $1
+blitzkrieg bl'itskrig
+blogger bl'og@r
+bombăne $1
+borătu $3
+bordei $2
+broker b@-*'ok@r
+brio b@-*'io
+broşu $2
+bubuitu $4
+bucur $1
+bucurăm $3
+bufnitu $3
+
+cădere $2
+căderea $2
+căderii $2
+căderile $2
+căderilor $2
+cafea $2
+călcâie $2
+călcătu $3
+căldu $2
+cămăruie $3 
+canapea $3
+cancer $1
+candidatu $4
+cândva		$2
+cânepă $1
+cântec $1
+cântece $1
+cale $1
+căută $3
+capăt $1
+capete		$1
+capeţi $1
+capitol		$2
+captu $2
+caractere $3
+caracterele $3
+caracterelelor $3
+caracal $2
+cărăruie $4
+căzu $2
+careva          $3
+caricatu $4
+cârpitu $3
+caută kaUt@	
+cartele $2
+câteva		$3
+câtorva		$3
+câtuşi $1
+căzătu $3
+ceainic  tS'eajnik
+ceai tS'eaj
+ceauşescu tSeauS'esku
+ceauşu tSea'uSu
+centu $2
+cenzu $2
+cerbice		$2
+$1
+cercetă $3
+cetăţuie $3
+ceru $2
+ceva            $2
+chelălăitu $5
+chelner $1
+cherestea $3
+chestor $1
+chimi		$alt
+chimic		$1
+cicatrice	$3
+cinema $1	
+cineva          $3
+civile $2
+clănţăne $1
+clatin $1
+clătină $3
+claudiu kla'udju
+claudia kla'udja
+claviatu $3
+clocot $1
+clocote $1
+cocin $1
+cocine $1
+confişte $2
+controlă $3
+cocos $1
+colaborăm $4
+color kol'o*
+comparăm $3
+complice	$2
+compus	komp'us
+computer komp'jut@r
+concurăm $3
+condei $2
+conducem $2
+conduceţi $2
+conductor $2
+condus kond'us
+consider $2
+consum $2
+continuă $2
+contrazice	$3 
+conving $2
+corectu $3
+cosmos $1
+costum $2
+crâncen $1
+crâncene $1
+crânceni $1
+crăpătu $3
+crater $1
+cratere $1
+cratim $1
+cratime $1
+creatu $3
+credem $1
+credeţi $1
+crezu $2
+credit $1
+credite $1
+creier		$1	
+crescu $2
+creştem $1
+creşteţi $1
+cristi k@-*'isti
+crivăţ $1
+cuget $1
+cugeţi $1
+cuib k'uIb
+cuiva $2
+cultu $2
+cusu $2
+cuvântă $3
+cumpărăm $3
+cumpărătu $3 $stem
+cumva $2
+cunoaştem $2
+cunoaşteţi $2
+cutii $2
+cutie kut'ie
+cutia kut'ia
+cutremură $2
+
+dambla $2
+dantu $2
+dădu $2
+dărâmătu $4
+dărăt $2
+dăună $3
+david $1
+datorie dato@-*'ie
+decolă $3
+deducem $2
+deduceţi $2
+dedus ded'us
+degeratu $4
+deget $1
+degete $1
+deja		$2
+demon $1
+denzic		$2
+denzice		$2
+depozit $2
+depozite $2
+deschidem $2
+deschideţi $2
+deschizătu $4
+descompus deskomp'us
+descopăr $2
+desfăcu $3
+desfacem $2
+desfaceţi $2
+desigur $2
+desktop $1
+despărţitu $4 $stem
+determin $2
+deţii $2
+deunăzi $4
+dezordine	$2
+diavol $1
+diavoli $1
+dinăuntru din@'unt@-*u
+dincolo		$1
+dinînăuntrul dinyn@'unt@-*ul
+director	$2
+display displ'ej
+dispus disp'us
+distingem $2
+distingeţi $2
+distrăm $2
+distrus dist@-*'us
+doctor		$1
+doctore $1
+doina doIna
+domină $1
+domine $1
+domniţă $2
+dori		$2
+două d'ou@
+dradus t@-*ad'us
+dragoş $1
+dragoste $1
+dragostea $1
+drum dr'um
+ducem $1
+duceţi $1
+duium $2 
+duminica $2
+durere $2
+durerea $2
+dureri $2
+durerii $2
+durerilor $2
+echilibrăm $4
+edit		$1
+efeme $3
+einstein 'aInStaIn
+egale		$2
+eliberă $4
+elice		$2
+elimină $2
+energii		$alt
+enter ent@r $1
+episcop $2
+epoc $1
+epoci $1
+eroilor err'oilor
+examen $2
+exclus exkl'us
+exerciţiu egzertS'itsju
+exista		$3
+exotic egz'otik
+ex'otice egzotitSe
+expedia $3
+explică $2
+explice $2
+explorăm $3
+expus eksp'us
+
+facem $1
+faceţi $1
+factice		$2
+factor $1
+factori $1
+factu $2
+fanatici $2
+farfurie farfu*'ie
+farmacie fa@-*matS'ie
+fasole $2
+făcu $2
+febrile $2
+felix $1
+femei $2
+fenicşi		$1
+fenix		$1
+ferestruie $3
+ferice		$1
+fiertu $2
+figu $2
+fili $2
+filozofi	$alt
+filozofii	$4
+fizic		$1
+flăcăra $1
+flăcări $1
+flăcării $1
+flăcăruie $3
+flamură $1
+fluier $1
+fluiere $1
+fonetică $2 
+folosi		$3
+folder f'old@r
+forfotă $1
+fotbal $1
+fractu $2
+fraged $1
+fragede $1
+frankenstein fr'ankenStaIn 
+frântu $2
+frigăruie $3
+friptu $2
+frizu $2
+fulger $1
+fulgere $1
+fumeg $1
+furniză $3
+
+gâdilă $1
+gâgâlice	$3
+găgăuţă g@g@'uts@
+galben $1
+galbene $1
+galbeni $1
+galbenii $1
+gălbui $2
+gale $2
+garnitu $3
+gastronomi	$alt
+găurice		$2
+geamăn $1
+geamandu $3
+geamăt $1
+gemu $2
+gemeni $1
+gemete $1
+gerard $1
+gerald $1
+ghilimele	$3
+gimnastic	$2
+gimnaziu	dZimn'azju
+gizor $1
+gizori $1
+glazu $2
+google g'ug@l
+gravu $2
+guler $1
+gulere $1
+gutuie $2
+gratis $1
+greoi g@-*e'oj
+hahale $3
+haidem $1
+haideţi $1
+hamster $1
+hârtie hyrt'ie
+hârtii $2
+hărnicie h@rnitS'ie
+hime $2
+hindus ind'us
+hohot $1
+hohote $1
+hoit h'oIt 
+holbă $2
+hunor $1
+hurducătu $4
+
+idile $2
+ieftin $1
+ieftine $1
+iisus $2
+imagin		$2
+imagini $2
+îmbucătu $4
+împuşcătu $4
+înaintea		yna'intea
+înainte		yna'inte
+inamic $3
+inamice $3
+inamicilor $3
+înăuntrul yn@'unt@-*ul
+înăuntru yn@'unt@-*u
+îmbrăcă $3
+încăperea $3
+încăpere $3
+încăperii $3
+încăperile $3
+încăperilor $3
+încărcătu $4
+începu $3
+începem $2
+începeţi $2
+încheietu $4
+închidem $2
+închideţi $2
+încingem $2
+încingeţi $2
+înfăşurăm $4
+inclus inkl'us
+ilfov $1
+ipsos $1
+încercă $3
+încrengătu $4
+încruntătu $4
+încuie $2
+incultu $3
+încurcătu $4
+îndărăt $3
+îndepărtă $4
+indic $2
+iei 'jeI
+îndoitu $4
+înfăşurătu $5
+înfloritu $4
+infrastructu $4
+isterie $3
+înfundătu $4
+înghiţitu $4
+ingine $3
+îngrăditu $4
+ilie il'ie
+inima $1
+inimă $1
+inimi $1
+inimii $1
+înjurătu	$4
+înpunsătu $4
+indigo $3
+inspector $2
+instructor $2
+insul $1 $stem
+implică $2
+imagină $3
+întâi $2
+întâmpină $2
+întăritu $4
+înţelegem $3
+înţelegeţi $3
+înţepătu $4
+întindem $2
+întindeţi $2
+interpus inte@-*p'us
+interzice	$3
+intersectă $3
+intim $1
+intime $1
+întrebă $3
+îndreptă $3
+întoarcem $2
+întoarceţi $2
+întorsătu $4
+întotdeauna yntotdea'una
+dintotdeauna dintotdea'una
+învăţă $3
+intrăm $2
+întredeschizătu $6
+intriga $1
+intrigă $1
+intrigi $1
+introdus introd'us
+învătătu $4
+invers $1
+iPhone aif'@Un
+ipocrizii $4
+istambul $3
+izbitu $3
+
+kelemen $1
+kovesi k'oveSi
+
+japonia $2
+japoniei $2
+
+lacom $1
+lacomi $1
+lacrim $1
+lacrimi $1
+lagăr $1
+lagăre $1
+laser $1
+latice		$2
+latură $1
+latex $1
+lauzi l'auzI^
+lazăr $1
+lăsă $2
+lefter $1
+legătu	$3
+lg eldZ'i
+liber $1
+lider $1
+lideri $1
+lili l'ili
+limit		$1
+limite $1
+limpede $1
+lingură $1
+lipsi		$2 
+linux $1
+literatu $4
+liviu l'ivju
+logic           $1
+lovitu $3
+lucrăm $2
+lucrătu $3
+ludovic $1
+maculatu $4
+magistratu $4
+mami m'ami
+manager m'enedZ@r 
+manole $2
+mânec $1
+mânecă $1
+mânecii $2
+manta $2
+margini $1
+marginii $1
+mării		$1
+maritim $2
+marius $1
+marker m'ark@r
+maro $2
+martor $1
+martore $1
+martori $1
+măsu $2
+matei $2
+matrice		$2
+mătură $1
+măturătu $4
+maxim		$1
+mediu m'edju
+menaje $3
+menţinem $2
+menţineţi $2
+mergem $1
+mergeţi $1
+merit		$1
+mesageră$2
+mesagera $3
+mestece $1
+metafor $2
+metafore $2
+metaforic $3
+mia		m'ia
+micul $1
+microsoft m'aIc@-*osoft
+mie		m'ie
+mijloace $1
+mijloc $1
+mimi m'imi
+minim		$1
+mişto $2
+mişună $1
+modele $2
+modifică $2
+moisei mois'eI
+molim $1
+monica $2
+molime $1
+moscova $1
+muget $1
+mugete $1
+mugur $1
+muia m'uja
+muie m'uje
+murdărie	murd@*'ie
+murmură $1
+muzica $1 
+muzik		$1 
+naturii $3
+năvăli $3
+neregulă $2
+nereguli $2
+neted $1
+netede $1
+netezi $1
+nevăstuie $3  
+nevoi nev'oI
+nicicum nitSI^k'um
+nicidecum nitSI^dek'um
+nimic		$2
+nimica $2
+nistor $1
+nivele $2
+nouă n'ou@
+nostim $1
+nostime $1
+nostimilor $1
+nostimelor $1
+novice		$2
+numai		$1	// only
+număr		$1
+numărătu $4
+oameni		$1
+oamenii $1
+oareşice	oa*eStSe $4
+oaspete $1
+oaspeţi $1
+obicei $3 
+obiceiu $3
+obţii $2
+obţinu $3
+ocol		$2
+oferă $2
+ofere $2
+oftă $2
+ok ok'eI
+omăt om'@t
+onofrei $3
+operăm $3
+optim $1
+opus op'us
+orange 'o@-*indZI^
+oră 'or@
+orban $1
+ordin		$1
+ordine $1
+oscar $1
+ovidiu		ov'idju
+
+pacoste $1
+păcur $1
+pădu $2
+pădurice $3
+pagin		$1
+pagub $1
+pagube $1
+palid $1
+palide $1
+palizi $1
+pântec $1
+pântece $1
+pantera $2
+panteră $2
+părere $2
+părerea $2
+păreri $2
+părerii $2
+păstră $2
+parfum $2
+parodii		$3
+parodi		pa*od'i
+parole $2
+partene $3
+partener $3
+partenere $3
+partenerei $3
+partenerele $3
+partenerelor $3
+parteneri $3
+partenerii $3
+partenerilor $3
+partenerul $3
+partenerului $3
+părticică $3 
+pasageri $3
+pasagerii $3
+pasagerilor $3
+pasăre $1
+păsări $1
+păsăruie $3
+păstrăm $2
+păstrăv $1
+patim $1
+patimi $1
+păianjen $2
+păianjeni $2
+păru $2
+pătu $1
+pătură $1
+pepene $1
+pepeni $1
+perdea $2
+permitem $2
+permiteţi $2
+petrecem $2
+petreceţi $2
+philips $1
+picătu $3
+pictor $1
+pictori $1
+pictorii $1
+pieptănătu $4 
+pierdem $1
+pierdeţi $1
+piuie p'iuie
+pişcătu $3
+pisic $1
+pisica $2
+pisică $2
+pisici $2
+pistoale $2
+pitic $2
+pitici $2
+plecă $2
+plăcere		$2
+plăceri		$2
+plânger		$1
+pocnitu $3
+podea $2
+politic		$2
+polonic		$3
+popice $2
+pote $2
+portocaliu $4
+prăjitu $3
+predispus p@-*edisp'us
+prefacem $2
+prefaceţi $2
+preling $2
+pretutindeni $3
+preşedinţie p@-*eSedints'ie
+pricepem $2
+pricepeţi $2
+pricin		$1
+prietenie	p@-*jeten'ie
+prieten         p@-*j'eten
+prietenului p@-*j'etenuluI
+preocupă $4
+prezentă $3
+privi		$3
+proaspăt $1
+proaspeţi $1
+proaspete $1
+procedu $3
+produs p*od'us
+profesor $2
+profesori $2
+profesorii $2
+promitem	$2
+promiteţi $2
+propice		$2
+propui $2
+propus prop'us
+prostie p@-*ost'ie
+
+protocol	$3
+protocoale $3
+protejă $3
+punem $1
+puneţi $1
+putere $2
+puterea $2
+puteri $2
+puterii $2
+puternici $2
+putu $2
+
+răcnet $1
+răcnete $1 
+radar $1
+rahova $1
+rds 'erde'es
+real re'al
+răget $1
+răgete $1
+rămâi $2
+rămânem $2
+rămâneţi $2
+rânjet $1
+rânjete $1
+răpus r@p'us
+râset $1
+râsete $1
+răsputeri $3
+recepţione $4
+reci $1
+recunoscu $3
+recuperăm $4
+regelui $1
+regizor 	$2
+regul $1
+reguli		$1
+reparăm $3
+repede		$1
+repezi		$1
+replică $1
+rest $1
+restu $1
+reţinem $2
+reţineţi $2
+rezemă $3
+ridic $2
+ridică $2
+ridice $2
+robert $1
+roberta $2
+romînia $3
+rotocol		$3
+ronald $1
+rulă $2
+sadea $2
+sadic		$1
+saltea $2
+samsung $1
+sâmbăta $1
+sarcin $1
+sarcini $1
+scădere $2
+scăderea $2
+scăderii $2
+scăderile $2
+scăderilor $2
+scanner sk'en@r
+scoatem $1
+scoateţi $1
+scrâşnet $1
+scrâşnete $1
+scutură $1
+secol		$1
+secole	$1
+secu $2
+securice	$3
+sedus sed'us
+semene $1
+semiprodus semip*od'us
+şenile $2
+senzor $1
+sergiu		s'erdZju
+servicii $2
+serviciul serv'itSjul
+//serviciului $2
+serviciu serv'itS'ju
+server $1
+sigur		$1
+simbolic	$2
+sincer $1
+singur $1
+singure $1
+şefia Sef'ia	
+şmecher $1
+şniţel $1
+şoarece $1
+şoareci $1
+şoferi $2
+şoferilor $2
+şosea $2
+spaniole spani'ole
+spaţiu		spatsju
+sperăm $2
+spirit $1 
+spirite $1
+sprijin $1
+splendid $1
+spunea $2
+spunem $1
+spuneţi		sp'unetsI^
+standard $1
+standarde $1
+staroste $1
+statuie $2
+stătu $2
+ştergem $1
+ştergeţi $1
+ştie St'ie
+strângem $1
+strângeţi $1
+strecurăm $3
+strigăt $1
+strigăte $1
+structu $2
+studie $2
+subordine $2
+şubred $1
+şubrede $1
+sufăr $1
+suflet $1
+suflete $1
+şuier $1
+suit su'it
+sunet $1
+sunete $1
+super $1
+suprapus sup@-*ap'us
+supremaţie sup@-*emats'ie
+supus sup'us
+nesupus nesup'us
+surplus su*pl'us
+suspus susp'us
+susţinem $2
+susţineţi $2
+şedere $2
+stocă $2
+
+tabache $3
+tăcere $2
+tăcerea $2
+tăceri $2
+tăcerii $2
+tăcu $2
+tânăr $1
+tabăra $1
+ţandăra $1
+ţăndări $1
+tango $2
+tanti tanti 
+tăie $2
+tăviţă $2
+ţanţoş $1
+târcol		$2
+tării $1
+tăviţe $2
+târziu		tyrz'iu
+tastatu $3
+tati t'ati ]
+tatăl $1
+taxi t'aksi
+ţeapăn $1
+tejghea $2
+ţelină $1
+temem $1
+temeţi $1
+tenis $1
+terapi          $alt
+terapii		$3
+termen $1
+termeni $1
+termin $1
+termine $1
+ţinem $1
+ţineţi $1
+ţinu $2
+ţipete $1
+totdeauna totdea'una
+tovarăş $2
+tovarăşi $2
+tradus t@-*ad'us
+tragem $1
+trageţi $1
+trăi t@-*@'i
+trăsătu $3
+treacăt $1
+trecem $1
+treceţi $1
+trecu $2
+tremură $1
+trio t@-*'io
+trimitem $2 
+trimiteţi $2
+trosnet $1
+trosnete $1
+tudor $1
+tunet $1
+tunete $1
+turele $2
+turnă $2
+
+ţării $1
+
+ucidem $2
+ucideţi $2
+uitătu $3
+ulei $2
+ultim		$1
+ultime $1
+umbli 'umbli
+umpli 'umpli
+umplem $1
+umpleţi $1
+umăr $1
+umed $1
+umede $1
+umezi $1
+umflătu $3
+undeva          $3
+upc upetS'e
+urăm $2
+urătu $3
+urlet $1
+urlete $1
+urzicătu $4
+uscătu $3
+usturătu $4
+utile $2
+unghiul 'ungjul
+tri'unghiul t*iungjul
+
+weber $1
+windows 'wind@Us
+
+văduvă $1
+văduve $1
+văietătu $4
+vâlvătăi $3
+vânătăi $3
+vântură $3
+vărsătu $3
+vărul $1
+văzu $2
+valencia val'ensja
+vasile $2
+vătămătu $4
+veder		$2
+vedere $2
+vederi $2
+vehicul $2
+vehicule $2
+vesel $1
+verzuie verz'uje
+veşnicie veSnitS'ie
+victim $1
+victime $1
+victor $1
+victorii $2
+vie v'ie
+view v'ju
+viitu $2
+vindem $1
+vindeţi $1
+vinovăţi        $alt
+vinovăţii       $4
+virgulă		$1
+vis-a-vis vizav'i
+viscol $1
+vitreg $1
+vitrege $1
+vitregi $1
+vizavi $3
+vizită $1
+vodafone v'odafon
+voila vual'a
+volum vol'um
+vopsea $2
+voucher v'aUtS@r
+vuiet $1
+vuiete $1
+vultur $1
+vulturi $1
+vulturii $1
+
+yahoo jah'u
+zâmbet $1
+zâmbete $1
+zahăr $1
+zarzări		$1
+zburăm $2
+zdravăn $1
+zdrelitu $3
+zdruncinătu $4
+zgârietu $4
+zgomot $1
+zgomote $1
+ziua z'iw2a
+zombi zombi
+
+
+
+

@@ -1,0 +1,156 @@
+ 
+// translation rules for Georgian
+// This file is UTF-8 encoded
+
+_0	n'uli
+_1	'ert#i
+_2	'ori
+_3	s'ami
+_4	'ot#xi
+_5	x'ut#i
+_6	'ek#vsi
+_7	Sv'idi
+_8	rv'a
+_9	ts#xr'a
+
+_0a	n'ul
+_1a	'ert#
+_2a	'or
+_3a	s'am
+_4a	'ot#x
+_5a	x'ut#
+_6a	'ek#vs
+_7a	Sv'id
+
+_10	'at#i
+_11	t#'ert#meti
+_12	t#'ormeti
+_13	ts#'ameti
+_14	t#'ot#xmeti
+_15	t#x'ut#meti
+_16	t#'ek#vsmeti
+_17	tSv'idmeti
+_18	t#vr'ameti
+_19	ts#xr'ameti
+
+_10a	'at#
+_11a	t#'ert#met
+_12a	t#'ormet
+_13a	ts#'amet
+_14a	t#'ot#xmet
+_15a	t#x'ut#met
+_16a	t#'ek#vsmet
+_17a	tSv'idmet
+_18a	t#vr'amet
+_19a	ts#xr'amet
+
+_20	'ots#i
+_20a	'ots#
+_2X	'ots#
+_40	'ormotsi
+_40a	'ormots
+_4X	'ormots
+_60	s'amotsi
+_60a	s'amots
+_6X	s'amots
+_80	'ot#xotsi
+_80a	'ot#xots
+_8X	'ot#xots
+_0C0	asi
+_0C	as
+_0M1	'at#as
+_0M1x	'at#asi
+_0M2	m'ilion
+_0M2x	m'ilioni
+
+_0and	d%a
+_dpt	mt#eli_
+
+_0Z1	me'at#edi
+_0Z2	me'asedi
+_0Z3	me'at#asedi
+_0Z4	me'at#iat#asedi
+_0Z5	me'asiat#asedi
+_0Z6	mem'ilionedi
+
+// letter and symbol names
+
+ა	a
+_ე	e
+ი	i
+ო	o
+უ	u
+
+ბ	b'@
+გ	g'@
+დ	d'@
+ვ	v'@
+ზ	z'@
+თ	t#'@
+კ	k'@
+ლ	l'@
+მ	m'@
+ნ	n'@
+პ	p'@
+ჟ	Z'@
+რ	r'@
+ს	s'@
+ტ	t'@
+ფ	p#'@
+ქ	k#'@
+ღ	Q'@
+ყ	q'@
+შ	S'@
+ჩ	tS'@
+ც	ts#'@
+ძ	dz'@
+წ	ts'@
+ჭ	c'@
+ხ	x'@
+ჯ	dZ'@
+ჰ	h'@
+
+ჱ	he
+ჲ	hie
+ჳ	vie
+ჴ	har
+ჵ	hoe
+ჶ	fi
+ჷ	shva
+ჸ	elifi
+უ	unbrigu
+
+
+%	prots#enti  $max3
++	pliusi  $max3
+=	toloba  $max3
+*	varvskvlavi  $max3
+@	dzaQluka
+&	da
+#	n'omeri   $max3
+!	dz'axilis||n,iSani
+_?	k'it#xvis||n,iSani
+.	tsertili
+_-	tire
+_:	ortsertili
+_;	tsertilmdzime
+_,	mdzime
+_"	br@-cqali
+_>	metoba
+_<	nakleboba
+_'	apostrofi
+_`	ukuQma||apostrofi
+_(	m'arts#xena||p#'igur,uli||p#r@-tSx'ili
+_)	m'ardZvena||p#'igur,uli||p#r@-tSx'ili
+_[	m'arts#xena||kv'adrat,uli||p#r@-tSx'ili
+_]	m'ardZvena||p#'igur,uli||p#r@-tSx'ili
+_(	m'arts#xena||mr@-gv'ali||p#r@-tSx'ili
+_)	m'ardZvena||mr@-gv'ali||p#r@-tSx'ili
+/	m'arts#xniv||d'axrili||x'azi	$max3
+\	m'ardZvniv||d'axrili||x'azi	$max3
+
+// abbreviations
+(http ://)	'ejtStitiphi_
+
+// common function words
+და	$u $brk

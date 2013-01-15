@@ -1,0 +1,9 @@
+name croatian-mbrola-1
+language hr 7
+gender male
+
+dictionary hbs
+dictrules 1
+
+pitch 82 117
+mbrola cr1 cr1_phtrans

@@ -1,0 +1,417 @@
+
+// Exceptions dictionary for: Icelandic
+// This file in UTF8 encoded
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+// numeric
+//********
+_0   n'utl#
+_1   'eIdn
+_2   dv'eI:rr#
+_3   Tr#'i:rr#
+_4   fj'oU:*RIrr#
+_1f  'eIhd
+_2f  tv'W:
+_3f  Tr#j'u:
+_4f  fj'W:Qyrr#
+_5   f'Im
+_6   s'E:xs
+_7   sj'W:
+_8   'aUhda
+_9   n'i:;y
+_10  t'i:;y
+_11  'EdlEv,y
+_12  t'oUl#f
+_13  Tr#'EhdaUn
+_14  fj'oUrr#taUn
+_15  f'ImtaUn
+_16  s'ExsdaUn
+_17  s'Yy:djaUn
+_18  'aU:djaUn
+_19  n'i:djaUn
+_2X  t'yhdyQ,y
+_3X  Tr#j'aU:ti;,y
+_4X  fj'W:*Ryt,i;y
+_5X  f'Imti;,y
+_6X  s'Exsdi;,y
+_7X  sj'W:ti;,y
+_8X  'aUhdat,i;y
+_9X  n'i:;yt,i;y
+_0C  h'ynd@-*yD
+_1C  'eIhd||h'ynd@-RaD
+_2C  tv'W:||h'ynd@-RyD
+_3C  Tr#j'u:||h'ynd@-RyD
+_4C  fj'W:Qyrr#||h'ynd@-RyD
+_0M1  T'u:synd
+_0M2  m'IdljoUn
+_1M2  eI:n||m'IdljoUn
+_2M2  tv'aI:rr#||m'IdljoUn
+_3M2  Tr#j'aU:rr#||m'IdljoUn
+_4M2  fj'oU:*arr#||m'IdljoUn
+_dpt	_k,Omma_
+_0and  O:Q
+
+_cap	sd'oUrr#d
+_??	t'aUghn#
+
+// Characters
+_!	'yhbr#oUpynaRm,Err#kI
+_"	JaI:salWhb
+#	mIlla
+_$	d'Odlarr#
+_&	O:QmErr#kI
+/	skaUsdr#Ig
+_(	svI:jI
+_)	sv'I:jIl'O:kasd
+_{	slYy:vysvIjI
+_}	sl'Yy:vysv,IjIl'O:kasd
+_[	hOrdn#glOvI
+_]	h'Ordn#glOvIl'O:kasd
+=	s'a:masEmm,Err#kI
+_\	'W:vyxdsk,aUsdr#Ig
+_-	bandsdrr#Ig
+__	yndIRsdrr#Ig
+_?	sb'yrdn#iNg,amErr#kI
++	bl'u:s
+_<	OdglOvI
+_>	'OdglOvIl,O:kasd
+_.	p'uN#hgdyrr#
+_,	k'Omma
+_;	s'E:mik,Omma
+_:	dv'i:puN#hgdyrr#
+
+// abbreviations
+
+
+// Function words
+hinn	$u+
+hin	$u+
+hið	$u+
+hitt	$u+   // this
+hina	$u+
+hinir	$u+
+hinar	$u+
+hinum	$u+
+hinni	$u+
+hinu	$u+
+hins	$u+
+hinnar	$u+
+hinna	$u+
+
+// articles
+
+
+// pronouns
+ég       $u     // nominative
+þú       $u
+hann     $u
+hún      $u
+það      $u
+við      $u
+þið      $u
+þeir     $u
+þær      $u
+þau      $u
+
+mig      $u+
+þig      $u+
+hana     $u+
+okkur    $u+
+ykkur    $u+
+þá       $u+
+
+þessi    $u+    // this
+þetta	$u+
+þessir	$u+
+þessar	$u+
+þessi	$u+
+þennan	$u+
+þessa	$u+
+þessum	$u+
+þessari	$u+
+þessu	$u+
+þessarar	$u+
+
+
+sá       $u+    // that
+sú	$u+
+það	$u+
+þann	$u+
+þá	$u+
+þeim	$u+
+þeirri	$u+
+því	$u+
+þess	$u+
+þeirrar	$u+
+þeir	$u+
+þær	$u+
+þau	$u+
+þeim	$u+
+þeirra	$u+
+
+
+hver     $u+ $pause  // who
+
+
+
+// possessive adjectives
+minn	$u+
+mín	$u+
+mitt	$u+
+mína	$u+
+mínum	$u+
+mínar	$u+
+minni	$u+
+mínu	$u+
+míns	$u+
+minnar	$u+
+mínir	$u+
+minna	$u+
+
+þinn	$u+
+þín	$u+
+þitt	$u+
+þína	$u+
+þínum	$u+
+þínar	$u+
+// etc
+
+sinn	$u+
+sín	$u+
+sitt	$u+
+sína	$u+
+sínum	$u+
+sínar	$u+
+
+vor	$u+
+vort	$u+
+vorn	$u+
+vora	$u+
+vorar	$u+
+// etc...
+
+
+// prepositions
+á          $u+ $brk
+að         $u+ $brk    // towards
+af         $u+ $brk    // from,off of
+eftir      $u+ $pause  // after,by
+frá        $u+ $brk    // off
+fyrir      $u+ $pause  // for,by
+í          $u+ $brk
+með        $u+ $brk    // with
+til        $u+ $brk    // to
+um         $u+ $brk    // about
+við        $u+ $brk    // with,at,against
+
+úr         $u+ $brk    // out of
+án         $u+ $pause  // without
+hjá        $u+ $brk    // by, with
+milli      $pause      // between
+mót        $u+ $brk    // against
+auk        $brk        // in addition to, besides
+gegnum     $brk        // through
+gegn       $brk        // against
+undir      $u $brk     // under
+yfir       $brk        // over
+framhjá    $brk        // by, past
+handa      $brk        // for
+áður       $pause      // before
+vegna      $pause      // because of
+síðan      $pause      // since
+líka       $pause      // also, as well
+
+
+
+// conjunctions
+en         $u+ $pause   // but
+eða        $u+ $pause   // or
+né         $pause       // nor
+og         $u+ $pause   // and
+þegar      $pause       // when, as soon as
+ef         $u+ $pause   // if
+enda       $pause       // but, however
+þó         $pause       // although
+vegna      $pause       // because of
+nema       $pause       // unless, except
+hvort      $pause       // whether
+þannig     $pause       // thus, so
+meðan      $pause       // while, as long as
+annars     $pause       // else, otherwise
+svo        $pause       // so (that)
+sem        $u+ $brk     // as
+því        $u+ $pause   // the..the..
+
+
+// negative
+ekki       $u+
+nei        $u+
+
+
+// questions
+
+
+// auxillary verbs  (be, have, can, etc)
+//****************
+
+vera       $u     // to be
+er         $u     // is, present
+ert        $u
+erum       $u
+eruð       $u
+eru        $u
+
+ertu       $u     // are you?
+
+var        $u     // was, past
+varst      $u
+vorum      $u
+voruð      $u
+voru       $u
+verið      $u
+
+á          $u+    // to have (own)
+átt        $u+
+eigum      $u+
+eigið      $u+
+eiga       $u+
+
+átti       $u+    // to have (own) past
+áttir      $u+
+áttum      $u+
+áttuð      $u+
+áttu       $u+
+
+hafa       $u     // to have
+hef        $u
+hefur      $u
+höfum      $u
+hafið      $u
+
+hafði      $u     // had, past
+hafðir     $u
+höfðum     $u
+höfðuð     $u
+höfðu      $u
+
+verð       $u     // to become
+verður     $u
+verðum     $u
+verðið     $u
+verða      $u
+
+varð       $u     // became, past
+varðst     $u
+urðum      $u
+urðuð      $u
+urðu       $u
+
+get        $u+    // can
+getur      $u+
+getum      $u+
+getið      $u+
+geta       $u+
+
+gat        $u+    // could, past
+gast       $u+
+gátum      $u+
+gátuð      $u+
+gátu       $u+
+
+mun        $u+    // will
+munt       $u+
+munum      $u+
+munuð      $u+
+munu       $u+
+
+muni       $u+    // will, subj
+munir      $u+
+munum      $u+
+munið      $u+
+
+mundi      $u+    // would, past
+mundir     $u+
+mundum     $u+
+munduð     $u+
+mundu      $u+
+
+myndi      $u+    // would, past subj
+myndir     $u+
+myndum     $u+
+mynduð     $u+
+myndu      $u+
+
+fæ         $u+    // get
+færð       $u+
+fær        $u+
+fáum       $u+
+fáið       $u+
+fæ         $u+
+
+fékk       $u+    // got, past
+fékkst     $u+
+fengum     $u+
+fenguð     $u+
+fengu      $u+
+
+
+// some common adjectives and adverbs
+nokkur     $u+     // any, some, a few
+nokkurt    $u+
+nokkuð     $u+
+nokkurn    $u+
+nokkra     $u+
+nokkrir    $u+
+nokkrar    $u+
+
+sumur      $u+     // some
+
+
+// common adverbs etc.
+fram       $u+      // forward
+
+
+// character names
+//****************
+_á   aU:
+á    aU:  $atend
+b    bjE:
+c    sjE:
+d    djE:
+ð    E:D
+f    Ef
+g    gjE:
+h    haU:
+_í   i:
+í    i:   $atend
+j    j'O:D
+k    k'aU:
+l    Etl#
+m    Em
+n    En
+p    pjE:
+q    ku:
+r    Err#
+s    Es
+t    tjE:
+v    vaf
+w    tv'W:valdv,af
+x    E:xs
+_y    'yfsilOn||,I:
+_ý    'yfsilOn||,i:
+y    'yfsilOn||,I:  $atend
+ý    'yfsilOn||,i:  $atend
+z    sE:ta
+þ    T'Ordn#
+
+
+// MAIN WORD DICTIONARY
+//*********************
+
+bolla    bOlla
+halló    halloU
+mylla    mIlla

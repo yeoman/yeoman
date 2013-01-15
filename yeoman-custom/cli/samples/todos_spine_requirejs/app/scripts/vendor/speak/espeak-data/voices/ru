@@ -1,0 +1,6 @@
+name russian_test
+language ru
+gender male
+
+replace 03 a a#
+

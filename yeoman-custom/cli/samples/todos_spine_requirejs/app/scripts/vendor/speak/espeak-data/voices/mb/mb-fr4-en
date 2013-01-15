@@ -1,0 +1,8 @@
+language en 10
+name en-french
+gender female
+
+dictrules 1
+pitch 140 220
+mbrola fr1 fr1_phtrans
+

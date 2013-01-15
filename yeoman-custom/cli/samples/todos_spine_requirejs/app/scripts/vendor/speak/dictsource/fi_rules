@@ -1,0 +1,216 @@
+// Finnish translation rules
+// This file is UTF-8 encoded
+
+
+.group a
+          a          a
+          aa         a:
+          ai         ai
+          au         au
+
+       &) a (lla_    %a
+
+  _austr) a (l       a:        // double the middle a in australia and its inflections. 
+
+
+.group ä
+          ä          &
+          ää         &:
+          äi         &i
+          äy         &y
+
+       &) ä (lla_    %&
+
+
+.group b
+          b          b
+          bb         b:
+
+
+.group c
+          c          k
+          c (i       s
+          c (e       s         // Pronounce c as s. Mostly foreign words such as celcius, center, cervantes, cezanne.
+          cc         k:        // Utter cc as k. This includes rebecca, accord, puccini etc.
+
+       K) ch (r      k
+          city       siti      // Pronounce foreign word city as siti. Include all inflections and compound words.
+                               // eg. city, citystä, intercity.
+
+
+.group d
+          d          d
+          dd         d:
+
+
+.group e
+          e          e
+          ee         e:
+          ei         ei
+          eu         eu
+          ey         ey
+
+       &) e(lla_     %e
+       &) e(llä_     %e
+
+.group f
+          f          f
+
+
+.group g
+          g          g
+          gg         g:
+
+
+.group h
+          h          h
+
+
+.group i
+          i          i
+          ii         i:
+          iu         iu
+          ie         ie
+          iy         iy
+
+          // iä         ii&      // Improve the i in iä words. Eg. ryhmiä (ryhmä), äitiä.
+          // ia         iia      // Improve the i in ia words. Eg. mattia, lattia.
+
+       &) i (lla_    %i
+
+
+.group j
+          j          j
+
+
+.group k
+          k          k
+          kk         k:
+
+
+.group l
+          l          l
+
+       @) lle (_     lle_X1    // double the initial consonant of the next word
+
+
+.group m
+          m          m
+
+   _sydä) m (A       m:        // double the m in sydämelinnen 
+
+
+.group n
+          n          n
+          ng         N:
+          ng (_      N
+          n (p       m
+          n (_p      m
+          n (k       N
+          n (_k      N
+
+       @) nne (_     nne_X1    // double the initial consonant of the next word
+
+
+
+.group o
+          o          o
+          oo         o:
+          oi         oi
+          ou         ou
+
+     symb) o (l      oo         // double the o in symboli. Include inflections and compound words.
+
+
+
+.group ö
+          ö          Y
+          öö         Y:
+          öi         Yi
+          öy         Yy
+
+
+
+.group p
+          p          p
+          pp         p:
+
+    _ole) p (a       p:      // double the p in olepa, olepahan.
+    _ota) p (a       p:      // double the p in otapa, otapahan.
+
+     kam) p (anj     p:      // double the p in kampanja. Include inflections and compound words.
+
+     sam) p (oo      p:      // double the p in sampoo. Include inflections and compound words.
+    sham) p (o       p:      // double the p in shampo. Include inflections and compound words.
+
+
+.group q
+          q          k
+          qq         k:
+
+
+.group r
+          r          r
+
+
+.group s
+          s          s
+          ss         ss2      // [s2] is a continuation for [s]
+       K) sh         S
+       K) sch        S        // Schmitt
+
+       @) sti (_     sti_X1    // double the initial consonant of the next word
+
+
+.group t
+          t          t
+          tt         t:
+
+       @) tse (_     tse_X1    // double the initial consonant of the next word
+
+
+.group u
+          u          u
+          uu         u:
+          ui         wi
+          uo         uo
+
+
+.group v
+          v          v
+
+
+.group w
+          w          v
+
+
+.group x
+          x          ks
+          xx         k:s
+
+
+.group y
+          y          y
+          yy         y:
+          yi         yi
+          yö         yY
+
+
+.group z
+          z          ts
+          zz         t:s
+       K) zh         Z
+
+       pi) zza       tsa       // Pronounce pizza as pitsa. Include inflections and compound words.
+
+
+.group
+          å          o
+          åå         o:
+          š          S
+          ž          Z
+
+          $	dollarin
+      __) - (_D        mi:nus
+      A_) - (_D        _
+      C_) - (_D        _

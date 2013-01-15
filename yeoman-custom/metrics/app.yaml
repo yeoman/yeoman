@@ -1,0 +1,48 @@
+application: yeomanstats
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+libraries:
+- name: webapp2
+  version: "latest"
+- name: django
+  version: "latest" #version: "1.3"
+
+handlers:
+- url: /(.+\.(appcache|manifest))
+  expiration: "0s"
+  mime_type: text/cache-manifest
+  static_files: \1
+  upload: (.*\.(appcache|manifest))
+
+- url: /favicon\.ico
+  static_files: static/img/favicon.ico
+  upload: static/img/favicon\.ico
+
+- url: /static
+  static_dir: static
+
+- url: /admin/.*
+  script: google.appengine.ext.admin.application
+  login: admin
+
+- url: /api.*
+  script: api.app
+
+- url: .*
+  script: main.app
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.scss$
+- ^(.*/)?.*\.psd$

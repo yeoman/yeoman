@@ -1,0 +1,227 @@
+
+// This file is UTF8 encoded
+// Spelling-to-phoneme rules for Norwegian
+
+// First version by Jonathan Duddington
+// October 2010 improvements by Eirini Florou <eirini.florou@gmail.com>
+
+
+.group a
+        a          A:
+        a (CC      A
+        a (C       a
+        a (_       A
+//     X) a (CCK   A  // single syllable with >= 2 final consonants
+//                    // or initial syllable with 3 consonants
+        ai         AI
+        au         aU
+
+        aa         o:        // å
+        aa (CC     O
+        ae         a:        // æ
+        ae (CC     a
+
+
+.group b
+        b          b
+        bb         b:
+
+     _) be (@      b@
+
+
+.group c
+        c          k
+        cc         k:
+     _) c (e       s
+        c (i       s
+        c (y       s
+        c (ei      s
+        c (øy      s
+        ch         S
+
+.group d
+        d          d
+        dd         d:
+     r) d (_ 
+     &) det (_     da#
+
+.group e
+        e          e:
+        e (CC      E
+        ei         aI
+        e (rC      a         //  ??
+     &) e (_       a#
+     &) e (C_      @
+     X) e (m_      E
+     &) en (_      @n
+     &) ene (_     Ena#      // @na# ??
+     &) ens (_     @ns
+     &) es (_      @s
+     &) et (_      @t
+
+.group f
+        f          f
+
+.group g
+        g          g
+        gg         g:
+        g (n       N
+        gj         j
+        g (i       j
+        g (y       j
+        g (ei      j
+        g (øy      j
+
+.group h
+        h          h
+        hj         j
+        hv         v
+
+.group i
+        i          i:
+        i (CC      I
+     &) ig (_      I
+
+.group j
+        j          j
+
+.group k
+        k          k
+        kk         k:
+        kj         x
+        k (i       x
+        k (y       x
+        k (ei      x
+        k (øy      x
+
+.group l
+        l          l
+        ll (K      l
+        lj         j
+        ld         ll
+
+.group m
+        m          m
+        mm (K      m
+
+.group n
+        n          n
+        nn (K      n
+        ng         N
+        n (k       N
+        nd         nn
+
+.group o
+        o          u:
+        o (CC      O
+        oi         OI
+
+        oe         Oa#
+    @b) oe (_      u:
+
+        o (nd      U
+        o (rt      U
+     b) o (rd      u:
+        o (st      U
+
+.group p
+        p          p
+        pp         p:
+
+.group q
+        q          k
+        qq         k:
+        qu         kw
+
+.group r
+        r          R
+        rs (_      S
+
+.group s
+        s          s
+        ss         ss
+        ss (_      s
+        sch        S
+        sj         S
+        skj        S
+        sk (i      S
+        sk (y      S
+        sk (ei     S
+        sk (øy     S
+     r) s          S
+        s (l       S
+     A) s (lA      s
+
+.group t
+        t          t
+        tt         t:
+        ti (on     S
+        tj         s;
+
+
+
+.group u
+        u          u-:
+        u (CC      u-
+        ui         u-I
+
+.group v
+        v          v
+        vv (_      v
+
+.group w
+        w          v
+
+.group x
+        x          ks
+        x (x 
+     _) x          s
+
+.group y
+        y          y:
+        y (CC      y
+
+.group z
+        z          s
+        zz         z
+        zz (_      z
+
+.group å
+        å          o:
+        åe         o:a#
+        å (CC      O
+
+.group æ
+        æ          E:
+        æ (r       a:
+        æ (CC      a
+
+.group ø
+        ø          Y:
+        ø (CC      W
+        øy         Yy
+
+.group ä
+        ä          E:
+        ä (CC      E
+
+.group ö
+        ö          Y:
+        ö (CC      W
+
+.group
+        é          'e:
+        ü          y:
+
+        $          dOllA:R
+        !          _:'u-:tRu:pstENn_:
+     !) ! 
+
+        .          pu-Nktu-:m
+        . (.       _:
+    \.) . 
+
+    __) - (_D      mi:nu-:s
+    A_) - (_D      _
+    C_) - (_D      _
+

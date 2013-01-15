@@ -1,0 +1,74 @@
+<h1 id="Developer.Guide..Scopes..Understanding.Scopes">Developer Guide: Scopes: Understanding Scopes</h1>
+<div class="developer-guide--scopes--understanding-scopes"><p>Angular automatically creates a root scope during initialization, and attaches it to the page's
+root DOM element (usually <code>&lt;html&gt;</code>). The root scope object, along with any of its child scope
+objects, serves as the infrastructure on which your data model is built. The data model (JavaScript
+objects, arrays, or primitives) is attached to angular scope properties. Angular binds the property
+values to the DOM where bindings are specified in the template. Angular attaches any controller
+functions you have created to their respective scope objects.</p>
+
+<p><img src="img/guide/simple_scope_final.png"></p>
+
+<p>Angular scopes can be nested, so a child scope has a parent scope upstream in the DOM.  When you
+display an angular expression in the view, angular walks the DOM tree looking in the closest
+attached scope object for the specified data. If it doesn't find the data in the closest attached
+scope, it looks further up the scope hierarchy until it finds the data.</p>
+
+<p>A child scope object inherits properties from its parents. For example, in the following snippet of
+code, observe how the value of <code>name</code> changes, based on the HTML element it is displayed in:</p>
+
+<h2>Demo Source Code</h2>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-38" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-39"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-38" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-38">
+ <ul ng-init="name='Hank'; names=['Igor', 'Misko', 'Gail', 'Kai']">
+   <li ng-repeat="name in names">
+           Name = {{name}}!
+   </li>
+ </ul>
+ <pre>Name={{name}}</pre>
+</script>
+</div>
+<div class="tab-pane" title="End to end test">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-39"></pre>
+<script type="text/ng-template" id="scenario.js-39">
+   it('should override the name property', function() {
+     expect(using('.doc-example-live').repeater('li').row(0)).
+       toEqual(['Igor']);
+     expect(using('.doc-example-live').repeater('li').row(1)).
+       toEqual(['Misko']);
+
+     expect(using('.doc-example-live').repeater('li').row(2)).
+       toEqual(['Gail']);
+     expect(using('.doc-example-live').repeater('li').row(3)).
+       toEqual(['Kai']);
+     expect(using('.doc-example-live').element('pre').text()).
+       toBe('Name=Hank');
+   });
+</script>
+</div>
+</div><h2>Demo Source Code</h2>
+<div class="well  doc-example-live" ng-embed-app="" ng-set-html="index.html-38" ng-eval-javascript=""></div>
+
+<p>The angular <a href="api/angular.module.ng.$compileProvider.directive.ngRepeat"><code>ngRepeat</code></a> directive creates a new scope for each
+element that it repeats (in this example the elements are list items). In the <code>&lt;ul&gt;</code> element, we
+initialized <code>name</code> to "Hank", and we created an array called <code>names</code> to use as the data source for
+the list items. In each <code>&lt;li&gt;</code> element, <code>name</code> is overridden. Outside of the <code>&lt;li&gt;</code> repeater, the
+original value of <code>name</code> is displayed.</p>
+
+<p>The following illustration shows the DOM and angular scopes for the example above:</p>
+
+<p><img src="img/guide/dom_scope_final.png"></p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.scopes">Angular Scope Objects</a></li>
+<li><a href="guide/dev_guide.scopes.internals">Scopes Internals</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$rootScope.Scope"><code>Angular Scope API</code></a></li>
+</ul></div>

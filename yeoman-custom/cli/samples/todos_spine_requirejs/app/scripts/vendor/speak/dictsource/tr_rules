@@ -1,0 +1,336 @@
+
+// Turkish translation rules
+// This file is UTF-8 encoded
+
+// Stress rule: Right-most vowel, but stop before the vowel which is
+// marked as unstressed [%].
+
+// Conditional rules:
+// ?1  mbrola voices
+
+
+// unvoiced consonants
+.L01 ç f h k p q s ş t 
+
+.replace
+`	'
+
+.group a
+        a        a
+
+     @) a (_S1   a
+
+     @) acak (_S4  adZak
+     @) acakmış (_S7   adZakm%@S
+     @) ayım (_S4  aj@m
+     @) alım (_S4  al@m
+     @) asın (_S4  as@n
+
+     @) avru (pa avr'u
+
+.group b
+        b        b
+
+.group c
+        c        dZ
+
+.group ç
+        ç        tS
+
+.group d
+        d        d
+
+	da (_S2  da
+	de (_S2  de
+	dan (_S3  dan
+	den (_S3  den
+
+        // declare these suffices so that preceding "ma/me" is unstressed
+	dim (_S3   dim
+	dik (_S3   dik
+	din (_S3   din
+	diniz (_S5 diniz
+	di (_S2    di
+	diler (_S5 dileR
+	dım (_S3   d@m
+	dık (_S3   d@k
+	dın (_S3   d@n
+	dınız (_S5 d@n@z
+	dı (_S2    d@
+	dılar (_S5 d@laR
+	dum (_S3   dum
+	duk (_S3   duk
+	dun (_S3   dun
+	dunuz (_S5 dunuz
+	du (_S2    du
+	dular (_S5 dular
+	düm (_S3   dym
+	dük (_S3   dyk
+	dün (_S3   dyn
+	dünüz (_S5 dynyz
+	dü (_S2    dy
+	düler (_S5 dyler
+
+	dir (_S3  %diR
+	dır (_S3  %d@R
+	dur (_S3  %duR
+	dür (_S3  %dyR
+
+     _) d (eğil  'd
+
+
+.group e
+        e        e
+
+     @) e (_S1   e
+
+     @) ecek (_S4  edZek
+     @) ecekmiş (_S7   edZekm%iS
+     @) eyim (_S4  ejim
+     @) elim (_S4  elim
+     @) esin (_S4  esin
+
+
+.group f
+        f        f
+
+.group g
+        g        g
+        g (i     J
+        g (e     J
+        g (ü     J
+        g (ö     J
+
+.group ğ
+        ğ        Q
+     A) ğ        :||
+?1   A) ğ        G     // mbrola
+     i) ğ        j
+     e) ğ        j
+
+.group h
+        h        h
+
+
+.group i
+        i        i
+
+     @) i (_S1	i
+
+     @) im (_S2  %im
+     @) iniz (_S4  %iniz
+     @) iz (_S2  %iz
+     @) iyor (_S4  ij%oR
+     @) in (_S2  in
+
+
+.group ı
+        ı        @
+
+     @) ı (_S1   @
+
+     @) ım (_S2  %@m
+     @) ınız (_S4  %@n@z
+     @) ız (_S2  %@z
+     @) ıyor (_S4  @j%oR
+     @) ın (_S2  @n
+
+
+.group j
+        j        Z
+
+.group k
+        k        k
+        k (i     c
+        k (e     c
+        k (ü     c
+        k (ö     c
+
+	ken (_S3  %cen
+
+
+.group l
+        l        l
+
+	la (_S2  %la
+	le (_S2  %le
+
+	lar (_S3  laR
+	ler (_S3  leR
+
+	li (_S2  li
+	lı (_S2  l@
+	lu (_S2  lu
+	lü (_S2  ly
+
+	lik (_S3  lik
+	lık (_S3  l@k
+	luk (_S3  luk
+	lük (_S3  lyk
+
+
+.group m
+        m        m
+
+	ma (_S2  %ma
+	me (_S2  %me
+
+
+.group n
+        n        n
+
+     _) nda (_    nda   // 'nda
+     _) nde (_    nde   // 'nde
+     _) ndan (_   ndan  // 'ndan
+     _) nden (_   nden  // 'nden
+
+	nin (_S3  nin
+	nın (_S3  n@n
+	nun (_S3  nun
+	nün (_S3  nyn
+
+.group o
+        o        o
+
+.group ö
+        ö        W
+
+.group p
+        p        p
+
+.group q
+        q        k
+
+.group r
+        r        R
+     A) r (A     *
+
+	ra (_S2  %Ra
+	re (_S2  %Re
+	ra (_N   Ra    // only an unstressed suffix if another suffix follows
+	re (_N   Re
+
+
+.group s
+        s        s
+
+	sınız (_S5  %s@n@z
+	siniz (_S5  %siniz
+	sunuz (_S5  %sunuz
+	sünüz (_S5  %synyz
+
+	sam (_S3   %sam   // if
+	sak (_S3   %sak
+	san (_S3   %san
+	sanız (_S5 %san@z
+	sa (_S2    %sa
+	sem (_S3   %sem
+	sek (_S3   %sek
+	sen (_S3   %sen
+	seniz (_S5 %seniz
+	se (_S2    %se
+
+
+.group ş
+        ş        S
+
+.group t
+        t        t
+
+	ta (_S2  ta
+	te (_S2  te
+	tan (_S3  tan
+	ten (_S3  ten
+
+   L01) tir (_S3  %tiR
+   L01) tır (_S3  %t@R
+   L01) tur (_S3  %tuR
+   L01) tür (_S3  %tyR
+
+
+.group u
+        u        u
+
+     @) u (_S1   u
+
+     @) um (_S2  %um
+     @) unuz (_S4  %unuz
+     @) uz (_S2  %uz
+     @) uyor (_S4  uj%oR
+     @) un (_S2  un
+
+
+.group ü
+        ü        y
+
+     @) ü (_S1   y
+
+     @) üm (_S2  %ym
+     @) ünüz (_S4  %ynyz
+     @) üz (_S2  %yz
+     @) üyor (_S4  yj%oR
+     @) ün (_S2  yn
+
+
+.group v
+        v        v
+
+.group w
+        w        w
+
+.group x
+        x        ks
+     K) x        z
+
+
+.group y
+        y        j
+
+	ya (_S2   ja
+	ye (_S2   je
+	yi (_S2   ji
+	yı (_S2   j@
+	yu (_S2   ju
+	yü (_S2   jy
+
+	yim (_S3  %jim
+	yım (_S3  %j@m
+	yum (_S3  %jum
+	yüm (_S3  %jym
+
+	yiz (_S3  %jiz
+	yız (_S3  %j@z
+	yuz (_S3  %juz
+	yüz (_S3  %jyz
+
+	yiniz (_S5  %jiniz
+	yınız (_S5  %j@n@z
+	yunuz (_S5  %junuz
+	yünüz (_S5  %jynyz
+
+	yla (_S3  %jla
+	yle (_S3  %jle
+
+	yacak (_S5  jadZak
+	yecek (_S5  jedZek
+	yacakmış (_S8   jadZakm%@S
+	yecekmiş (_S8   jedZekm%iS
+
+	yayım (_S5  jaj@m
+	yalım (_S5  jal@m
+	yasın (_S5  jas@n
+	yeyim (_S5  jejim
+	yelim (_S5  jelim
+	yesin (_S5  jesin
+
+	yken (_S4  jc%en
+
+
+.group z
+        z        z
+
+.group
+        $        dolar
+        ' (Pb     // split a word at ' and translate the first part separately.
+	ə        E    // used in Aberbaijan
+	ä        E

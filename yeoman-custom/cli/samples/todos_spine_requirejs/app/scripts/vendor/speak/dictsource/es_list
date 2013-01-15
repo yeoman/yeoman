@@ -1,0 +1,441 @@
+
+// This file in UTF8 encoded
+
+// letters
+
+_cap	m'aJ^us   // should be "mayúscula" after the letter?
+_??	s'imbOlo
+_#32	Esp'aTjo
+
+
+// accent names
+_lig	liQaD'u**a
+_acu	aQ'uDo
+_ac2	d'Oble||aQ'uDo	
+_brv	b**'eBe
+_ced	TeD'iJ^a
+_cir	TiRkumfl'exo
+_dia	dj'E**esis
+_dac	d'Oble||aQ'uDo	
+_dot	p'unto  // ??
+_grv	g**'aBe
+_hac	ka**'On
+_mcn	mak**'On
+_ogo	kol'ita
+_rng	an'iJ^o
+_stk	b'a*Ra	 // ??
+_tld	t'ilde
+
+
+// names of symbols
+_.	punto
+_,	koma
+_;	p,untoik'oma
+_:	d,Osp'untOs
+_!	TE*R'aRaDmi**aTj'On
+_?	TE*R'aRintE*R,oQaTj'On
+_¡	aB**'iRaDmi**aTj'On
+_¿	aB**'iRintE*R,oQaTj'On
+_<	men'ORke
+_>	maJ^'ORke
+_'	apOst**'ofo
+_"	kom'iJ^as
+_+	s'iQnOdesum'aR
+_-	gJ^On
+__	suB**aJ^'aDo
+_/	ba*Ra
+_\	b'a*RaimbERt'iDa
+_`	aT'EntOg**'aBe
+_(	,aB**epa**'Entesis
+_)	Tj,E*Rapa**'Entesis
+_[	,aB**ekORtS'ete
+_]	Tj,E*RakORtS'ete
+_{	,aB**eJ^'aBe
+_}	Tj,E*RaJ^'aBe
+_«	kom'iJ^as||iTkJ^'ERDas
+_»	kom'iJ^as||dE**'EtSas
+
+=	iQw'al $max3
++	m'as  $max3
+#	almOaD'iJ^a  $max3
+*	astE*'isko  $max3
+.	punto  $max3
+
+^	TiRkumfl'exo
+€	eU**o
+%	pO**Tj'Ento  $max3
+&	ampERs'ant
+@	a*R'oBa
+/	ba*Ra
+©	kopi*R'aIt
+£	liB**as
+¶	p'a*Rafo
+§	sEkTj'On
+
+
+// numbers
+_0	Te*o
+_1	'uno
+_2	d'Os
+_3	t**'es
+_4	kw'at**o
+_5	T'inko
+_6	s'eIs
+_7	sj'ete
+_8	'OtSo
+_9	nw'eBe
+_1X	dj'ET
+_11	'OnTe
+_12	d'oTe
+_13	t**'eTe
+_14	kat'ORTe
+_15	k'inTe
+_20	b'eInte
+_2X	b'eInt
+_3X	t**'eInta
+_4X	kwa*'Enta
+_5X	Tinkw'Enta
+_6X	sEs'Enta
+_7X	sEt'Enta
+_8X	OtS'Enta
+_9X	nOB'Enta
+_0C	Tj'EntOs
+_1C0	T'ien         // exactly one hundred
+_1C	T'iento
+_5C	kinj'EntOs
+_7C	s,eteTj'EntOs
+_9C	n,OBeTj'EntOs
+_0M1	m'il
+_0M2	miJ^'ones
+_1M2	'unmiJ^'On
+_0M4	_biJ^'onEs
+_1M4	'unbiJ^'On
+?2 _0M2	mij:'ones
+?2 _1M2	'unmij:'On
+?2 _0M4	_bij:'onEs
+?2 _1M4	'unbij:'On
+_0and	i
+_dpt	koma
+//_roman	Rom'ano
+
+// ordinal numbers
+_#º	o
+_#ª	a
+_ord	o
+
+_1o	p**im'E**
+_2o	seQ'und
+_3o	tERT'E**
+_4o	kw'a**t
+_5o	kint
+_6o	s'Ekst
+_7o	s'Etim
+_8o	Okt'aB
+_9o	noB'en
+_10o	D'ETim
+_11o	und'ETim
+_12o	DwoD'ETim
+_13o	DeTimotERT'E**
+_14o	DeTimokw'a**t
+_15o	DeTimok'int
+_16o	DeTimos'Ekst
+_17o	DeTimos'Eptim
+_18o	DeTimOkt'aB
+_19o	DeTimonoB'en
+_2Xo	Bix'Esim
+_3Xo	t**ix'Esim	
+_4Xo	kwaD**ax'Esim
+_5Xo	kinkwax'Esim
+_6Xo	seQsax'Esim
+_7Xo	sEptwax'Esim
+_8Xo	Oktox'Esim
+_9Xo	nonax'Esim
+_0Co	TEnt'Esim
+_1Co	TEnt'Esim
+_0M1o	mil'Esim
+
+
+vi	bi	// not a Roman number
+
+
+// articles
+el           $u
+los          $u
+la           $u
+las          $u
+lo           $u
+les          $u
+
+un           $u
+una          $u
+unos         $u
+unas         $u
+
+este         $u+   // this
+esta         $u+
+estos        $u+
+estas        $u+
+esto         $u+
+
+ese          $u+   // that
+esa          $u+
+esos         $u+
+esas         $u+
+eso          $u+
+
+aquel        $u+   // that
+aquella      $u+
+aquellos     $u+
+aquellas     $u+
+
+
+
+// pronouns
+yo	$u+
+tu	$u+
+tú	$u+
+usted	$u+
+él	$u+
+ella	$u+
+nosotros	$u+
+nosotras	$u+
+vosotros	$u+
+vosotras	$u+
+as	$u+
+ustedes	$u+
+ellos	$u+
+ellas	$u+
+ud      $u+
+uds     $u+
+
+me      $u+  // reflexive pronouns
+te      $u+
+se	$u+
+nos     $u+
+os      $u+
+
+
+// possessives
+mi	mi $u+
+mis	$u+
+tu      $u+
+tus     $u+
+su	$u+
+sus	$u+
+nuestro   $u+
+nuestros  $u+
+nuestra   $u+
+nuestras  $u+
+vuestro   $u+
+vuestros  $u+
+vuestra   $u+
+vuestras  $u+
+
+// prepositions
+a            $u $brk    // at
+al           $u $brk
+de           $u           // of,from
+del          $u
+(de la)      d,ela
+en           $u $brk
+con          $u $pause    // with
+por          $u $pause    // for,through,along,via
+para         $u $pause    // for,in order,by
+entre        $u $pause
+desde        $pause       // from,since
+después      $pause       // after
+
+// conjunctions
+y            %i $pause    // and
+o            $u $pause    // or
+
+así          $pause
+aunque       $u $pause    // although
+siquiera     $pause
+porque       $pause       // because
+
+// questions
+que          $u $pause   // what
+cuál         $pause       // which
+cuáles       $pause
+cómo         $pause       // how
+
+// negative
+no           $u
+
+// auxillary verbs
+ser	$u
+soy	$u
+eras	$u
+es	$u
+somos	$u
+sois    $u
+son	$u
+
+fui	$u
+fuiste	$u
+fue	$u
+fuimos	$u
+fuisteis	$u
+fueron	$u
+
+era	$u
+eras	$u
+éramos	$u
+erais	$u
+eran	$u
+
+seré	$u
+serás	$u
+será	$u
+seremos	$u
+seréis	$u
+serán	$u
+
+sería	$u
+serías	$u
+seríamos	$u
+seríais	$u
+serían	$u
+
+
+estar	$u
+estoy	$u
+estás	$u
+está	$u
+estamos	$u
+estáis	$u
+están	$u
+
+estuve	$u
+estuviste	$u
+estuvo	$u
+estuvimos	$u
+estuvisteis	$u
+estuvieron	$u
+
+estaba	$u
+estabas	$u
+estaba	$u
+estábamos	$u
+estabais	$u
+estaban	$u
+
+estaré	$u
+estarás	$u
+estará	$u
+estaremos	$u
+estaréis	$u
+estarán	$u
+
+estaría	$u
+estarías	$u
+estaríamos	$u
+estaríais	$u
+estarían	$u
+
+haber	$u
+he	$u
+has	$u
+hay	$u
+hemos	$u
+habéis	$u
+han	$u
+ha	$u      // ??
+
+hube	$u
+hubiste	$u
+hubo	$u
+hubimos	$u
+hubisteis	$u
+hubieron	$u
+
+había	$u
+habías	$u
+habíamos	$u
+habíais	$u
+habían	$u
+
+habré	$u
+habrás	$u
+habrá	$u
+habremos	$u
+habréis	$u
+habrán	$u
+
+tener   $u   // to have
+tengo   $u
+tienes  $u
+tiene   $u
+tenemos $u
+tenéis  $u
+tienen  $u
+
+hacer    $u+  // to do/make
+hago     $u+
+haces    $u+
+hace     $u+
+hacemos  $u+
+hacéis   $u+
+hacen    $u+
+
+
+// some common adjectives and adverbs
+algún    $u        // some
+algunos  $u
+alguna   $u
+
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+b	be
+c	Te
+d	de
+f	_|Efe
+g	xe
+h	atSe
+j	xOta
+k	ka
+l	_|Ele
+m	_|Eme
+n	_|Ene
+ñ	_|En^e
+p	pe
+q	ku
+r	_|E**e
+s	_|Ese
+t	te
+v	_|uBe
+w	,uBe||d'OBle
+x	_|Ekis
+z	TEta
+
+_a	a
+a       a  $atend
+_o	o
+o       o  $atend
+_y	,ig**'iEQa
+y	,ig**'iEQa  $atend
+ch	tSe
+ll	EJ^e
+?2 ll	Ej:e
+á	'a||aTEntw'aDa
+é	'e||aTEntw'aDa
+í	'i||aTEntw'aDa
+_ó	'o||aTEntw'aDa
+ó	'o||aTEntw'aDa $atend
+ú	'u||aTEntw'aDa
+ü	,uDjE**'Esis
+
+
+
+
+// pronunciation exceptions
+
+linux        $1
+méxico       mExiko
+mexicano     mExikano
+

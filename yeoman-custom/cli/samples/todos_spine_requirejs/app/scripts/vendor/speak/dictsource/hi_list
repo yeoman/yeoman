@@ -1,0 +1,301 @@
+// This file is UTF8 encoded
+
+// Numbers
+// devanagari numbers are changed to latin characters before translation
+_0        S'u:n.j@3
+_1        'e:k
+_2        d'o:
+_3        t'i:n
+_4        c'a:r:
+_5        p'a:nc
+_6        ch'@2
+_7        s'a:t
+_8        'a:th.
+_9        n'O:
+?3  _9    n'aU
+
+_10       d'Vs
+_11       gj'a:r@2
+_12       b'a:r@2
+_13       t'E:r@2
+_14       ch'O:d@2
+_15       p'Vndr@2
+_16       s'o:l@2
+_17       s'Vt:r@2
+_18       Vth.:'a:r@2
+_19       Unn'Is
+
+_20       b'i:s
+_21       Ik:'Is
+_22       b'a:Is
+_23       t'e:Is
+_24       c'O:bIs
+_25       p@c:'Is
+_26       ch@bb'i:rs
+_27       s@t:'a:Is
+_28       ath:'a:Is
+_29       Unt'Is
+_30       t'i:s
+
+_31       Ik@t:'Is
+_32       bat:'Is
+_33       tE~t'Is      // E~ ?
+_34       cO~t'Is
+_35       pE~t'Is
+_36       chaT'tIs
+_37       sE~t'Is
+_38       art'Is
+_39       Unta:l'Is
+
+_40       ca:l'Is
+_41       Ikta:l'Is
+_42       baIa:l'Is
+_43       tE~ta:l'Is
+_44       cO:wa:l'Is
+_45       paI'nta:l'Is
+_46       chhIja:l'Is
+_47       sE~ta:l'Is
+_48       arta:l'Is
+_49       'Un^ca:s
+
+_50       p@c'a:s
+_51       Ikj'a:wVn
+_52       b'a:wVn
+_53       t'IrpVn
+_54       c'Ou:wVn
+_55       p'achpVn
+_56       chh@p:'Vn
+_57       sVt:'a:w@n
+_58       ath:'a:w@n
+_59       Uns'Vth
+
+_60       s'a:th.
+_61       'Iks@th.
+_62       b'a:s@th.
+_63       t'Irs@th.
+_64       c'O~s@th.
+_65       paIns@th.
+_66       ch'Ija:s@th.
+_67       s'Vrs@th.
+_68       ars@th.
+_69       Un@h,at:'Vr:
+
+_70       sat:'Vr:
+_71       Ikhat:'Vr:
+_72       b@hat:'Vr:
+_73       tIhat:'Vr:
+_74       cO:hat:'Vr:
+_75       pach,at:'Vr:
+_76       chIhat:'Vr:
+_77       s@t@hat:'Vr:
+_78       athhat:'Vr:
+_79       ,Un^Ia:s'i:
+
+_80       ,Vss'i:
+_81       Ikja:s'i:
+_82       baIa:s'i:
+_83       tIra:s'i:
+_84       cO:ra:s'i:
+_85       pI'ca:s'i:
+_86       chIja:s'i:
+_87       sVt:a:s'i:
+_88       ath:a:s'i:
+_89       nVwa:s'i:
+
+_90       nVb:'e:
+_91       Ikj'a:n@we:
+_92       b'a:n@we:
+_93       tIr'a:n@we:
+_94       cO:r'a:m@we:
+_95       p@c'a:n@we:
+_96       chIj'a:n@we:
+_97       s@t:'a:n@we:
+_98       ath:'a:n@we:
+_99       nIn^j'a:n@we:
+
+_0C	s'O:
+_0M1	h@z'a:r
+_0M2	l'a:kh
+_0M3	cr'ore
+_0M4	'Vr@b
+_0M5	kh'Vr@b
+_dpt      _d@s@ml'o:_        // ?? what is Hi for "." ?
+
+// Single consonants
+क      k@
+क़      q@
+ख      kh@
+ख़      x@
+ग      g@
+ग़      Q@
+घ      gh@
+ङ      N@
+च      c@
+छ      ch@
+ज      J@
+ज़      z@
+झ      Jh@
+ञ      n^@
+ट      t.@
+ठ      th.@
+ड      d.@
+ड़      r.@
+ढ      dh.@
+ण      n.@   // retroflex n.@
+त      t@
+थ      th@
+द      d@
+ध      dh@
+न      n@
+प      p@
+फ      ph@
+फ़      f@
+ब      b@
+भ      bh@
+म      m@
+य      j@
+र      r@
+ऱ      r@
+ल      l@
+ळ      l.@
+व      v@
+श      S@
+ष      s.@   //  retroflex [S]
+स      s@
+ह      H@
+क़      q@
+ख़      x@
+ग़      Q@
+ज़      z@
+ड़      r-@
+ढ़      hr@
+फ़      f@
+य़      j@
+
+// combining vowel signs
+ा	#X2a:
+ि	#X1I
+ी	#X2i:
+ु	#X1U
+ू	#X2u:
+ृ	#X1rI
+ॄ	#X1rI
+ॅ	#X1E
+ॆ	#X1e
+े	#X2e:
+ै	#X2E:
+?2 ै	#X2aI
+ॉ	#X1O
+ॊ	#X1o
+ो	#X2o:
+ौ	#X2O:
+?3 ौ 	#X2aU
+ॢ 	#X1l-
+ॣ	#X2l-:
+ॐ	#X1o~m
+
+
+// Punctuation
+।	dVn.d.V
+
+// Pronouns
+मैं 	$u	// main: I
+मुझे 	$u
+मेरा 	$u
+मेरी 	$u
+मेरे 	$u
+
+हम 	$u	// we
+हमें 	$u
+हमारा 	$u
+हमारी 	$u
+हमारे 	$u
+
+
+आप 	$u	// you(formal)
+आपको 	$u
+आपका 	$u
+आपकी 	$u
+आपके 	$u
+
+तुम 	$u	// you (informal)
+तुम्हें 	$u
+तुम्हारा 	$u
+तुम्हारी 	$u
+तुम्हारे 	$u
+
+तू 	$u	// you (informal)
+तुझे 	$u
+तेरा 	$u
+
+यह	$u	// he/she/it
+ये 	$u
+इस्से 	$u
+इसका 	$u
+
+ये 	$u	// they
+इन्हें 	$u
+इनका 	$u
+
+वह	$u	// he/she/it
+वो 	$u
+उस्से 	$u
+उसका 	$u
+उसकी 	$u
+उसके 	$u
+
+वे	$u	// they
+वो 	$u
+उन्हें	$u	// unheṃ: them 
+उनका	$u
+उनकी	$u
+उनके	$u
+
+
+// Prepositions/Postpositions
+का	$u	// kā:  of, possessive particle
+की	$u	// kī
+के	$u	// ke
+
+को 	$u	// ko: to
+तक 	$u	// tak: until, for(time)
+बिना	$u $pause	// without (preposition)
+में 	$u	// me: in
+से 	$u	// se: from, with, by
+
+
+// Questions
+क्या	$u $pause	// interrogative particle
+
+
+// Conjunctions
+
+और	$u $pause	// aur: and
+य	j@ $u $pause	// ja: or
+अगर	$u $pause	// agar: if
+यदि	$u $pause	// yadi: if, whether
+अगरचे	$pause	// agarce: although, even
+पर	$pause	// par: but, still, yet
+मगर	$pause	// magar: however, unless
+
+
+
+// Verbs
+हूँ 	$u	// to be
+हो 	$u
+है 	$u
+हैं 	$u
+
+था 	$u	// thā: past aux
+थे 	$u	// the
+थी 	$u	// thī
+थीं 	$u	// thīh
+
+रहा 	$u	// rahā: continuous
+रहे 	$u	// rahe
+रही 	$u	// rahī
+
+
+// Exceptions
+क्रिकेट        krIk'Et
+सायबर        s'aIb@r

@@ -1,0 +1,2031 @@
+// Translations for Hungarian words
+// This file is UTF-8 encoded.
+
+// Numbers
+
+_0        nullA
+_1        EJ
+_2        kEt:Y:
+_2a       ke:t       // for 200, 2000
+_3        ha:R2om
+_4        ne:J
+_5        Yt2      // [t2] changes a following [t] to [t:]
+_6        hAt2       // [t2] changes a following [t] to [t:]
+_7        he:t2      // [t2] changes a following [t] to [t:]
+_8        n^olts
+_9        kilEnts
+_10       ti:z
+_1X       tizEn
+_20       hu:s
+_2X       huson
+_3X       hAR2mints
+_4X       nEJvEn
+_5X       YtvEn
+_6X       hAtvAn
+_7X       hEtvEn
+_8X       n^oltsvAn
+_9X       kilEntsvEn
+_0C       sa:z
+
+_0M1      EzER2
+_2M1      ke:tEzER2
+_0M2      millio:
+_1M2      EJmillio:
+_2M2      ke:tmillio:
+_0M3      millia:R2d
+_1M3      EJmillia:R2d
+_2M3    ke:tmillia:R2d
+
+_0M4      billio:
+_1M4      billio:
+_2M4      ke:tbillio:
+_dpt      ||Ege:s //Not need the pause before this word
+
+
+// variants used when followed by hyphen and suffix starting with 'e' or 'a'
+_1e       EJ:
+_2e       kEt:
+_3e       ha:R2m
+_7e       hEt
+_0M1e     EzR2
+_1M1e     EzR2
+_2M1e     ke:tEzR2
+// used after decimal point
+_0Z1	tizEd      // tenths
+_0Z2	sa:zAd     // hundredths
+_0Z3	EzR2Ed
+_0Z4	ti:zEzR2Ed
+_0Z5	sa:zEzR2Ed
+_0Z6	miliomod
+_0Z7	ti:zmiliomod
+_0Z8	sa:zmiliomod
+
+// ordinal numbers
+
+_ord	Edik
+_0o	n'ullAdik
+_1ox	ElSY:     // number = '1' only
+_2ox	ma:Sodik // number = '2' only
+_1o	EJ:Edik
+_2o	kEt:Edik
+_3o	hAR2_mAdik
+_4o	nEJEdik
+_5o	YtYdik
+_6o	hAtodik
+_7o	hEtEdik
+_8o	n^oltsAdik
+_9o	kilEntsEdik
+_10o	tizEdik
+_20o	husAdik
+_30o	hAR2_mintsAdik
+_60o	hAtvAnAdik
+_80o	n^oltsvAnAdik
+_0Co	sa:zAdik
+_2Co	ke:t|sa:zAdik
+_0M1o	EzR2Edik
+_1M1o	EzR2Edik
+_2M1o	ke:tEzR2Edik
+
+// ordinal numbers with -a or -e suffix, which is spoken but not written (eg. "december 2. óta")
+// Use this pronunciation when a number (with a dot) is between a $alt word and a $alt3 word.
+// Set $alt3 flag for: óta, és. közt, között
+
+_1qx	ElSEjE
+_2qx	ma:SodikA
+_1q	EJ:EdikE
+_2q	kEt:EdikE
+_3q	hAR2_mAdikA
+_4q	nEJEdikE
+_5q	YtYdikE
+_6q	hAtodikA
+_7q	hEtEdikE
+_8q	n^oltsAdikA
+_9q	kilEntsEdikE
+_10q	tizEdikE
+_20q	husAdikA
+_30q	hAR2_mintsAdikA
+
+
+// $alt2 means these rules only apply if the previous word
+//  has $alt1 (language specific).  $text implies $only (for this group only)
+
+_#-a	A	$alt2
+_#-i	Ei	$alt2
+_#-e	E
+_#-án	a:n	//Need remove the $alt2 tag with this line, because some 
+//time with the book the sentences beginning with this form, and need
+//spokening ordinal number alwais. For example: In 20th, the rain is raining.
+_#-ára	a:R2A //need remove the $alt2 tag, because with a books lot of
+//string using following form: január 19-ről 20-ára. With this situation,
+//need spokening huszadikára, not húsz-ára string.
+_#-ére	e:R2E //Same as prewious doed fix.
+_#-ra	a:R2A	$alt2 //But this line for example need the $alt2 tag.
+_#-re	e:R2E	$alt2
+_#-én	e:n	//need remove the $alt2 attribute with this line
+_#-ai	Ai	$alt2
+_#-ei	Ei	$alt2
+_#-től	e:tY:l	$alt2
+_#-tól	a:to:l	$alt2
+_#-ig	e:ig	$alt2 //special date ordinal numbers for example elsejéig, negyedikéig etc.
+_#-éről	e:R2Y:l	
+_#-áról	a:R2o:l
+
+_#-ától	a:to:l
+_#-ről	e:R2Y:l	$alt2
+_#-ról	a:R2o:l	$alt2
+_#-ével	e:vEl
+_#-ával	a:vAl
+_#-éig	e:ig
+_#-áig	a:ig
+_#-étől	e:tY:l	$alt2
+_#-ét	e:t	$alt2
+_#-át	a:t	$alt2
+_#-ének	e:nEk
+_#-ának	a:nAk
+_#-vel	e:vEl	$alt2
+_#-val	a:vAl	$alt2
+_#-ánál	a:na:l	$alt2
+_#-énél	e:ne:l	$alt2
+_#-ik || //This is not a mistake. This is a special ordinal number suffix, with not need insert replace word suffix. For example:
+//If a string containing the 17-ik string, need spokening tizenhetedik phoneme. If the suffix rule not containing the || rule but containing another
+//replace word, the spokened suffix is mistaked, for example tizenhetedikedik if this rule containing the Edik phoneme, not || phoneme.
+_#-iki	i
+_#-ike	E
+_#-ikei	Ei
+_#-ika	A
+_#-ikai	Ai
+_#-éhez	e:hEz
+_#-ához	a:hoz
+_#-ikének	e:nEk
+_#-ikának	a:nAk
+(1-e)	elseje		$text $alt2
+(1-én)	elsején 	$text $alt2
+(1-jén)	elsején 	$text $alt2
+(1-i)	elsejei		$text $alt2
+(1-ei)	elsejei		$text $alt2
+(1-ére)	elsejére	$text $alt2
+(1-re)	elsejére	$text $alt2
+(1-től)	elsejétől	$text $alt2
+(1-ig)	elsejéig	$text $alt2
+(1-éről) elsejéről	$text $alt2
+(1-ről) elsejéről	$text $alt2
+(1-ével)	elsejével	$text
+(1-éig) elsejéig	$text
+(1-étől) elsejétől	$text $alt2
+(1-ét) elsejét	$text $alt2
+(1-je)	elseje	$text $alt2
+(1-jei)	elsejei	$text $alt2
+(1-jével)	elsejével	$text $alt2
+(1-jére)	elsejére	$text $alt2
+(1-jétől)	elsejétől	$text $alt2
+(1-jéig)	elsejéig	$text $alt2
+(1-ének)	elsejének	$text $alt2
+(1-vel) elsejével	$text $alt2
+(1-jénél) elsejénél	$text $alt2
+(1-énél) elsejénél	$text $alt2
+(1-iki)	elsejei	$text $alt2
+(1-ike)	elseje	$text $alt2
+(1-ikei) elsejei	$text $alt2
+(1-éhez)	elsejéhez	$text $alt2
+(1-jét)	elsejét	$text $alt2
+(2-i)	másodikai	$text $alt2
+(2-ig)	másodikáig	$text $alt2
+(2-étől)	másodikától	$text $alt2 //this is not mistake, don't change!
+(2-től)	másodikától	$text $alt2 //this is not a mistake, don't change!
+(3-i)	hAR2_mAdikAi	$alt2
+(3-ig)	harmadikáig	$text $alt2
+(6-i)	hAtodikAi	$alt2
+(6-ig)	hatodikáig	$text $alt2
+(8-i)	n^oltsAdikAi	$alt2
+(8-ig)	nyolcadikáig	$text $alt2
+(13-ig)	tizenharmadikáig	$text $alt2
+(16-ig)	tizenhatodikáig	$text $alt2
+(18-ig)	tizennyolcadikáig	$text $alt2
+(20-i)	huszadikai	$text $alt2
+(20-ig)	huszadikáig	$text $alt2
+(23-ig)	huszonharmadikáig	$text $alt2
+(26-ig)	huszonhatodikáig	$text $alt2
+(28-ig)	huszonnyolcadikáig	$text $alt2
+(30-ig)	harmincadikáig	$text $alt2
+(30-i)	harmincadikai	$text $alt2
+
+// these exceptions only for 0, not for other numbers ending in '0'
+(0-ás) nul:a:S
+(0-t) nul:a:t
+(0-val) nul:a:vAl
+(0-ra) nul:a:R2A
+(0-nál) nul:a:na:l
+(0-hoz) nul:a:hoz
+(0-s) nul:a:S
+(0-ára) nul:a:R2A //But if the 0-ára string have the text (only 0 number before the suffix, need spokening this exception.
+(0-án)	nul:a:n	//same as prewious exception.
+(0-ig) nul:a:ig
+(00-ig) nul:Anul:a:ig //special exception
+(0-ban) nul:a:bAn
+(0-ba) nul:a:bA
+(00-s) nul:Anul:a:S
+(0-át) nul:a:t
+(0-ától) nul:a:to:l
+(0-at) nul:a:t
+(0-an) nul:a:n
+(0-ában) nul:a:bAn
+(0-ába) nul:a:bA
+(0-áson) nul:a:Son
+(0-tól)	nul:a:to:l
+(00-tól)	nul:Anul:a:to:l
+(0-n) nul:a:n
+(00-n) nul:Anul:a:n
+(0-ról)	nul:a:R2o:l
+(0-st) nul:a:St
+(1-gyet) EJ:Et
+(1-gyes) EJ:ES
+(1-gyel) EJ:El
+(2-szer) ke:ts:ER2
+(2-őt) kEt:Y:t
+(2-őn) kEt:Y:n
+(2-n) kEt:Y:n
+(2-m) kEt:Y:m
+(2-el)	kEt:Y:vEl
+// entries with a single digit such as (2-i) also apply to 22, 32, etc, unless $only
+(30-cal) hAR2mints:Al
+(3-al) ha:R2om:Al
+(3-on)	ha:R2mon
+(3-adik) hAR2mAdik //special exception
+(3-adikat) hAR2mAdikAt	//special exception
+(3-adikon)	hAR2mAdikon	//special exception
+(3-adikkal)	hAR2mAdik:Al	//special exception
+(3-t) ha:R2mAt
+(3-mas) ha:R2mAS
+//4 number suffixes
+(4-el) ne:J:El //Nneed J: phoneme, not J phoneme contains one suffix) 
+(4-gyel) ne:J:El //Need J: phoneme, not J phoneme
+(4-t) ne:JEt //special number suffix exception
+(4-edik)	nEJEdik	//special exception
+(4-ediket)	nEJEdikEt	//special exception
+(4-ediken)	nEJEdikEn	//special exception
+(4-edikkel)	nEJEdik:El	//special exception
+(5-tel) Yt:El
+(5-el) Yt:El
+(5-től) YtYdike:tY:l	$alt2
+(5-t) YtYt
+(5-ször)	Yts:YR2
+(6-al) hAt:Al
+(6-tal) hAt:Al
+(6-tól) hAt:o:l
+(6-tól) hAtodika:to:l	$alt2
+(6-szor) hAts:oR2
+(7-től) he:t:Y:l
+(7-től)	hEtEdike:tY:l	$alt2
+(7-tel) he:t:El
+(7-el) he:t:El
+(7-sekre) hEtESEkR2E
+(7-sel) hEtES:El
+(7-szer) he:ts:ER2
+(8-cal) n^olts:Al
+(8-al) n^olts:Al
+(9-el) kilEnts:El
+(9-cel) kilEnts:El
+(9-cet) kilEntsEt
+_10e	tiz
+_20e	hus
+(10-szer) ti:s:ER2
+(10-szeres) ti:s:ER2ES
+(10-t) tizEt
+
+
+
+//special number exceptions
+(10-el) ti:zzEl
+(20-al) hu:s:Al
+(30-al) hAR2mints:Al
+(40-el) nEJvEn:El
+(50-el) YtvEn:El
+(60-al) hAtvAn:Al
+(70-el) hEtvEn:El
+(80-al) n^oltsvAn:Al
+(90-el) kilEntsvEn:El
+
+//Special roman number suffixes and exceptions
+(XVI-ig)	tizEnhAtodikig //Special roman number suffix exception
+//following roman number examples need defining, but this examples are not working for example bigger than 20.
+//Very interesting, if I using normal numbers (for example 12-el, Espeak general sending tizEnkEt:Y:vEl phoneme right.
+(II-el) kEt:Y:vEl
+(III-al) ha:R2om:Al
+(IV-el)	ne:J:El
+(5-el)	Yt:El	//this exception not working, Espeak always spokening YtEl phoneme, but Yt:El phoneme is right
+(VI-al)	hAt:Al
+(VII-el)	he:t:El
+(VIII-al)	n^olts:Al
+(IX-el)	kilEnts:El
+(X-el)	ti:zzEl //I don't no why, but this exception is not working.
+(XII-el)	tizEnkEt:Y:vEl
+(XIII-al) tizEnha:R2om:Al
+(XIV-el) tizEnne:J:El //this is the right phoneme, not tizEnE:JEl
+(XV-el) tizEnYt:El //this is the right phoneme, not tizEnYtEl
+(XVI-al)	tizEnhAt:Al //this is the right phoneme, not tizEnhAtAl
+(XVII-el)	tizEnhe:t:El
+(XVIII-al) tizEnn^olts:Al
+(XIX-el) tizEnkilEnts:El
+(XX-al)	hu:s:Al
+XXX-al)	hAR2mints:al
+//etc, need do general rule similar with normal number exceptions, please test for example 22-el, 32-el, 42-el, 52-el, 40-el, 50-el, 60-al, 70-el etc
+//phonemes if this is possible.
+(CD-ellenőrzést)	tse:de:El:EnY:R2ze:St //this is not a mistake, default Espeak spokening roman number before the ellenőrzés word
+
+// These words mean that a dot after number, immediately preceding, does not mean an ordinal number
+január		$alt
+február		$alt
+március		$alt
+április		$alt
+május		$alt
+június		$alt
+július		$alt
+augusztus	$alt
+szeptember	$alt
+október		$alt
+november	$alt
+december	$alt
+
+
+//The following 12 row contains shorter hungarian month names
+jan	$alt
+feb $alt
+febr	$alt
+márc	$alt
+ápr	$alt
+máj	$alt
+jún	$alt
+júl	$alt
+aug	$alt
+szept	$alt
+okt	$alt
+nov	$alt
+dec	$alt
+
+//this following 7 lines means the 7 hungarian day name
+hétfő	$alt
+kedd	$alt
+szerda	$alt
+csütörtök	$alt
+péntek	$alt
+szombat	$alt
+vasárnap	$alt
+
+//Following four seasons and suffixes not need spokening ordinal number
+tavasz	$alt
+nyár	$alt
+ősz	$alt
+tél	$alt
+tavaszán	$alt
+nyarán	$alt
+őszén	$alt
+telén	$alt
+tavaszi	$alt
+nyári	$alt
+őszi	$alt
+téli	$alt
+végén	$alt
+elején	$alt
+folyamán	$alt
+úton	$alt
+
+// accent names
+_lig	ligAtu:R2A
+_acu	e:lES
+_ac2	kEt:Y:S
+_brv	fe:lkYR2
+_ced	tse:dillE
+_cir	tsiR2kumflEks
+_dia	tR2e:mA
+//_dot          // dot above	
+_grv	tompA
+_hac	pipA
+_mcn	mAkR2on    // ?? macron
+_ogo	hoR2gok
+_rng	kYR2
+_stk	a:thu:za:S
+_tld	tildE
+
+// characters
+_#9	tAb
+_#32 	so:kYz
+_cap	n'AJ_|
+_??	kAR2AktEr||ko:d      // unknown characters (change this)
+
+
+// Abbreviations
+ADSL	a:de:ESEl	$allcaps //Internet connection type, we pronouns this with ádéesel
+ÁFAa:fA	$allcaps
+ÁSZ	a:s	$allcaps
+ÁNTSZ a:Ente:Es $allcaps
+ATM	a:te:Em	$allcaps	//The ATM stands. We pronouns this abbreviation with átéem word. Default, Espeak pronouns this abbreviation with atéem word.
+cm	tsEntime:tER2
+km	kilo:me:tER2
+DNS	de:EnES	$allcaps
+GYSEV	JESEv	$allcaps
+GYESEV	JESEv	$allcaps
+HÉV	he:v	$allcaps
+IPTV	$abbrev $allcaps
+GDP	dZi:di:pi:	$allcaps
+?2 GDP $abbrev $allcaps
+GSM	ge:ESEm	$allcaps
+HSDPA	$abbrev $allcaps
+kb	kYR2ylbElyl $hasdot
+MLSZ EmElEs $allcaps
+ORTT	$abbrev $allcaps
+ORFK	oEREfka:	$abbrev $allcaps
+MÁV	ma:v	$allcaps
+LMP ElEmpe:	$allcaps
+MTI	$abbrev $allcaps
+mm      milime:tER2
+RAM	R2Am	$allcaps //Espeak normaly spokening this abbreviation with erraem, but this is not good
+Psszt ps:t $capital // similar word with quiet word. Espeak default spokening this abbrew quiet word with letter by letter by default.
+Pszt ps:t $capital //same as prewious abbrewiation
+TAJ	tAj	$allcaps
+VDSZSZ	ve:de:EsEs	$allcaps
+WC	ve:tse:	$allcaps
+LST	ElESte:	$allcaps
+BAR	bAR2	$allcaps
+//SS	EsEs	$allcaps
+
+(a . m .)	An^n^i||m'int	$hasdot
+ún	u:JnEvEzEt:	$hasdot
+dr	doktoR2  $hasdot
+mr	mistER2 $hasdot //in hungarian we not use, but lot of books contains this word.
+mrs	misis	$hasdot //In hungarian we not use, but lot of book contains this word.
+miss	mis: $hasdot
+gpu	$abbrev
+GB	gigAba:jt	$allcaps
+MB	mEgAba:jt	$allcaps
+OK	ok	$allcaps
+mvgyosz Emve:Je:oEs
+OTP o:te:pe:	$allcaps
+id	idY:SEb:  $hasdot $only
+ill	illEtvE  $hasdot
+ifj	ifjAb:  $hasdot
+mta	$abbrev
+pl	pe:lda:ul	 $hasdot
+özv	YzvEJ	$hasdot $only
+stb	SAtYb:i  $hasdot
+u.n	u:JnEvEzEt:   $hasdot
+ú.n	u:JnEvEzEt:   $hasdot
+vö	v'EZd||_'Yss2E	$hasdot
+(u . i .) $abbrew
+NVDA Enve:de:A $allcaps
+
+
+// Articles
+a         $u $strend2   // the
+az       $u $strend2 //Need remove the $alt3 attribute this article, because
+//following context result bad spokening output if $alt3 attribute is used:
+//az 5. és 6. hadsereg.
+//This text means in english: the 1th and 2th solders
+//Espeak spokening following phoneme if $alt3 attribute is used:
+//Az YtYdikE és hAtodik hAdSER2Eg
+//This is wrong this context, the right phoneme is:
+//Az YtYdik és hAtodik hAdSER2Eg
+//But for example the following sentence part need the $alt3 attribute with
+//az article word, but now impossible doing this right:
+//Június 6. az a nap
+//If I removed the $alt3 attribute with az word, Espeak sending this phoneme:
+//ju:niuS hAtodik Az A nAp
+//The right phoneme is:
+//ju:niuS hAtodikA Az A nAp
+
+//aki       $u+   // that
+
+ez        $unstressend   // this
+
+
+// Pronouns
+
+// If these are only used for emphasis then then don't need $u
+én        $unstressend
+te        $unstressend
+
+ők	$unstressend $pause
+mi        $unstressend
+ti        $unstressend
+ők        $unstressend
+maga     $unstressend
+maguk     $unstressend
+
+
+// Conjunctions
+és        $u  $strend2 $alt3 // and
+de        $u+ $pause  // but
+vagy      $u+ $pause  // or
+
+mert      $u $pause    // because
+miatt     $unstressend           // because
+bár       $u $pause     // although
+habár     $u $pause     // although
+ha        $u $pause  // if
+noha      $u $pause  // even thought
+
+
+// Prepositions etc.
+
+
+// Negative
+nem       $strend2 $combine
+?2 nem	$strend2
+ne        $unstressend
+
+e         $u          // "-e" question
+e         $atend      // stressed at end of sentence
+
+// Unstressed adverbs prepositions etc.
+néhány    $unstressend
+is        $u         // also
+
+elöl	$unstressend      // in front of
+elől	$unstressend
+elé	$unstressend
+előtt	$alt $alt3 $unstressend
+este	$alt3
+estéjén	$alt3
+éjszakára	$alt3
+mögül	$unstressend      // behind
+mögött	$unstressend
+mögé	$unstressend
+
+kívül	$unstressend
+után	$unstressend $alt3    // after
+
+alól	$unstressend
+alá	$unstressend
+alatt	$unstressend    // below
+
+felől	$unstressend    // above
+felé	$unstressend
+fölé	$unstressend
+felett	$unstressend    // above
+fölött	$unstressend
+
+mellől	$unstressend    // besides
+mellé	$unstressend
+mellett	$unstressend
+lett	$unstressend
+ott	$unstressend
+itt	$unstressend
+neked	$unstressend
+nektek	$unstressend
+nekik	$unstressend
+neki	$unstressend
+nekem	$unstressend
+közül	$unstressend
+közé	$unstressend
+között	$u $alt3
+délelőtt	$alt3
+idén	$alt3
+környékén	$alt3
+an	$u	// so many persons
+as	$u
+ba	$unstressend	// into
+ban	$u	// in
+be	$unstressend
+ben	$u
+ból	$u	// from inside
+ből	$u
+e       $u      // in query, his/her
+ei      $u      // his her multiole
+en	$u
+es	$u
+hez	$unstressend
+hoz	$unstressend      // to
+höz	$unstressend
+ig	$unstressend	// up to
+ik	$unstressend      // -th
+nak     $unstressend    // of, him/her
+nek     $unstressend
+nál	$unstressend	// by
+nél	$unstressend
+on	$unstressend	// on
+en	$unstressend	// on
+os	$u
+ra	$unstressend	// onto
+re	$unstressend
+ról	$unstressend      // from top of, about
+röl	$unstressend
+ről	$unstressend
+szer	$u
+szor	$u	// times
+szó	$unstressend
+szót	$unstressend
+szór	$u
+ször	$u
+tól	$unstressend    // from
+töl	$unstressend
+től	$unstressend
+val     $unstressend    // with
+vel     $unstressend
+án	$u    // on that day
+é	$u    // his, her
+éi	$u    // his, her multiple
+én	$unstressend
+ón	$u
+ós	$u
+ön	$unstressend
+ös	$u
+
+ellen	$unstressend	// against
+//elé	$u	// before
+óta	$unstressend $alt $alt3	// since. Not a bug both $alt $alt3 attribute,
+//because if only a year is present, need spokening normal number, not
+//ordinal number. For example:
+//2004. óta meaning since 2004 and need spokening normal number.
+//But június 26. óta need spokening $alt3 style date ordinal number. This
+//attribute combine fix this problem.
+
+hétfőig	$alt3
+keddig	$alt3
+szerdáig	$alt3
+csütörtökig	$alt3
+péntekig	$alt3
+szombatig	$alt3
+vasárnapig	$alt3
+hétfőn	$alt $alt3
+kedden	$alt3
+szerdán	$alt3
+csütörtökön	$alt3
+pénteken	$alt3
+szombaton	$alt3
+vasárnapon	$alt3
+sok	$unstressend	// many
+kevés	$unstressend	// few
+se	$unstressend       // neither
+sem	$unstressend       // nor
+
+
+be	$unstressend	//into
+ki	$unstressend	// out of
+le	$unstressend	// down
+fel	$unstressend	// up
+föl	$unstressend	// up
+meg	$unstressend	// finish an action
+el	$unstressend	// away
+át	$unstressend	//through
+rá	$unstressend	//onto
+
+ide	$unstressend	// here
+oda	$unstressend	// there
+szét	$unstressend	//apart
+össze	$unstressend	//connect with
+vissza	$unstressend	//back
+volna	$unstressend	// would
+
+
+nélkül	$unstressend	// without
+//folytán	$u	// because of
+úgy	$unstressend 	// like that
+így	$unstressend	// like this
+egyaránt $unstressend	// alike
+//minden	$strend	// all
+mindent	$strend
+//részben	$u	// partly
+
+egyik	$unstressend	// one of
+//másik	$u	// the other
+lehet	$unstressend
+rossz	$unstressend
+jó	$unstressend
+jót	$unstressend
+kér	$unstressend
+tartják	$unstressend
+erős	$unstressend
+lenni	$unstressend
+lennie	$unstressend
+levegőjére	$unstressend
+ad	$unstressend
+kapják	$unstressend
+kap	$unstressend
+már	$unstressend
+maradt	$unstressend
+jobb	$unstressend
+most	$unstressend
+még	$unstressend
+gép	$unstressend
+részt	$unstressend
+lenne	$unstressend
+őt	$unstressend
+helyes	$u+
+fák	$unstressend
+fát	$unstressend
+et	$unstressend
+megvédeni	$unstressend
+sztrájk	$unstressend
+hír	$unstressend
+magukat	$unstressend
+majd	$unstressend
+áll	$unstressend
+állt	$unstressend
+arról	$unstressend
+innen	$unstressend
+érjen	$unstressend
+nap	$unstressend
+név	$unstressend
+lány	$unstressend
+lányt	$unstressend
+vár	$unstressend
+várt	$unstressend
+ért	$unstressend
+ér	$unstressend
+tag	$unstressend
+tesz	$unstressend
+tett	$unstressend
+tette	$unstressend
+baj	$unstressend
+csak	$unstressend
+vált	$unstressend
+jut	$unstressend
+legyen	$unstressend
+azt	$unstressend
+ezt	$unstressend
+út	$alt $unstressend
+tiszt	$unstressend
+vesz	$unstressend
+cég	$unstressend
+járt	$unstressend
+jár	$unstressend
+él	$unstressend
+élsz	$unstressend
+élt	$unstressend
+hát	$unstressend
+fiú	$unstressend
+srác	$unstressend
+ült	$unstressend
+ám	$unstressend
+rám	$unstressend
+tűnik	$unstressend
+nyújt	$unstressend
+nincs	$unstressend
+nincsen	$unstressend
+mégy	$unstressend
+nő	$unstressend
+nőt	$unstressend
+sas	$unstressend
+sast	$unstressend
+fél	$unstressend
+félt	$unstressend
+félsz	$unstressend
+düh	$unstressend
+más	$unstressend
+mást	$unstressend
+rúd	$unstressend
+mint	$unstressend $combine
+?2 mint	$unstressend
+iránt	$unstressend
+légy	$unstressend
+tűnt	$unstressend
+ösét	$unstressend
+új	$unstressend
+nyúlt	$unstressend
+magát	$unstressend
+engem	$unstressend
+téged	$unstressend
+minket	$unstressend
+titeket	$unstressend
+őket	$unstressend
+cikk	$unstressend
+vont	$unstressend
+mond	$unstressend
+jutni	$unstressend
+jött	$unstressend
+szólsz	$unstressend
+lőtt	$unstressend
+sor	$unstressend
+sort	$unstressend
+árt	$unstressend
+fest	$unstressend
+fújt	$unstressend
+kért	$unstressend
+tét	$unstressend
+kém	$unstressend
+jön	$unstressend
+bent	$unstressend
+kezd	$unstressend
+ránk	$unstressend
+gondolt	$unstressend
+dönt	$unstressend
+véli	$unstressend
+folyt	$unstressend
+döntött	$unstressend
+fájt	$unstressend
+hozni	$unstressend
+lát	$unstressend
+kép	$unstressend
+nyert	$unstressend
+függ	$unstressend
+hidd	$unstressend
+megy	$unstressend
+hírt	$unstressend
+hely	$unstressend
+jutott	$unstressend
+mit	$unstressend
+forrás	$unstressend
+terv	$unstressend
+mind	$unstressend
+ment	$unstressend
+jól	$unstressend
+napját	$unstressend
+több	$unstressend
+tart	$unstressend
+hág	$unstressend
+sors	$unstressend
+küzd	$unstressend
+vert	$unstressend
+csaj	$unstressend
+tárgy	$unstressend
+lágy	$unstressend
+pont	$unstressend //This is mean pont word, not dot character.
+pontok	$unstressend
+bújt	$unstressend
+mély	$unstressend
+úr	$unstressend
+szép	$unstressend
+szék	$unstressend
+nagy	$unstressend
+kár	$unstressend
+hó	$unstressend
+tánc	$unstressend
+füst	$unstressend
+két	$unstressend
+őr	$unstressend
+őrt	$unstressend
+nyílt	$unstressend
+fényt	$unstressend 
+éjt	$unstressend
+ég	$unstressend
+lépett	$unstressend
+perc	$unstressend
+halk	$unstressend
+busz	$unstressend
+gyors	$unstressend
+vett	$unstressend
+kést	$unstressend
+fess	$unstressend
+szín	$unstressend
+szög	$unstressend
+sincs	$unstressend
+tér	$unstressend
+sztár	$unstressend
+vers	$unstressend
+mondja	$unstressend
+mondják	$unstressend
+mondta	$unstressend
+mondták	$unstressend
+szert	$unstressend
+látja	$unstressend
+szél	$unstressend
+óra	$unstressend
+hegy	$unstressend
+colt	$unstressend
+róla	$unstressend
+rólunk	$unstressend
+rólatok	$unstressend
+róluk	$unstressend
+szád	$unstressend
+nos	$u
+no	$u
+na	$u
+vall	$unstressend
+magam	$unstressend
+magad	$unstressend
+tűz	$unstressend
+egy	$unstressend
+lehetett	$unstressend
+arra	$unstressend
+erre	$unstressend
+arról	$unstressend
+erről	$unstressend
+ölt	$unstressend
+rosszak	$unstressend
+helyt	$unstressend
+bort	$unstressend
+látszik	$unstressend
+látszott	$unstressend
+látszanak	$unstressend
+látszotok	$unstressend
+körül	$unstressend $alt $alt3
+dőlt	$unstressend
+vér	$unstressend
+sót	$unstressend
+múlt	$unstressend
+ügy	$unstressend
+cél	$unstressend
+célt	$unstressend
+láb	$unstressend
+bőr	$unstressend
+víz	$unstressend
+fagy	$unstressend
+nyelt	$unstressend
+sokk	$unstressend
+hét	$unstressend
+zajt	$unstressend
+pest	$unstressend
+stáb	$unstressend
+súlyt	$unstressend
+szólt	$unstressend
+vidd	$unstressend
+fönn	$unstressend
+szűk	$unstressend
+fordul	$unstressend
+fordult	$unstressend
+hús	$unstressend
+bor	$unstressend
+húsz	$unstressend
+tőle	$unstressend
+tőled	$unstressend
+tőlük	$unstressend
+tőletek	$unstressend
+tőlünk	$unstressend
+mászni	$unstressend
+jel	$unstressend
+szállt	$unstressend
+száll	$unstressend
+sínt	$unstressend
+kút	$unstressend
+bőrt	$unstressend
+vért	$unstressend
+lóg	$unstressend
+vette	$unstressend
+lenn	$unstressend
+indult	$unstressend
+völgy	$unstressend
+frászt	$unstressend
+hang	$unstressend
+fény	$unstressend
+kösz	$unstressend
+gramm	$unstressend
+húst	$unstressend
+telt	$unstressend
+zár	$unstressend
+rész	$unstressend
+nyom	$unstressend
+hiszem	$unstressend
+hiszed	$unstressend
+hiszi	$unstressend
+telik	$unstressend
+adott	$unstressend
+gázt	$unstressend
+csap	$unstressend
+falán	$unstressend
+hitte	$unstressend
+nyár	$unstressend
+túl	$unstressend
+fáj	$unstressend
+tudni	$unstressend
+hinni	$unstressend
+hopp	$unstressend
+vinni	$unstressend
+hozni	$unstressend
+hittem	$unstressend
+hitted	$unstressend
+hittük	$unstressend
+hittétek	$unstressend
+hitték	$unstressend
+folt	$unstressend
+írva	$unstressend
+vele	$unstressend
+veled	$unstressend
+velem	$unstressend
+velünk	$unstressend
+veletek	$unstressend
+velük	$unstressend
+közt	$unstressend $alt3
+hiszik	$unstressend
+hiszitek	$unstressend
+önt	$unstressend
+benn	$unstressend
+kinn	$unstressend
+kés	$unstressend
+néz	$unstressend
+vont	$unstressend
+fiút	$unstressend
+von	$unstressend
+nézett	$unstressend
+rám	$unstressend
+rád	$unstressend
+mód	$unstressend
+győz	$unstressend
+repült	$unstressend
+ül	$unstressend
+gyújt	$unstressend
+hajt	$unstressend
+köp	$unstressend
+látni	$unstressend
+sült	$unstressend
+roncs	$unstressend
+is	$unstressend
+fut	$unstressend
+ló	$unstressend
+véljük	$unstressend
+vélik	$unstressend
+vélem	$unstressend
+véled	$unstressend
+véli	$unstressend
+vélitek	$unstressend
+szól	$unstressend
+tank	$unstressend
+adta	$unstressend
+kellett	$unstressend
+főt	$unstressend
+nőtt	$unstressend
+vitt	$unstressend
+rést	$unstressend
+brit	$unstressend
+természetes	$u $1
+front	$unstressend
+szerezni	$unstressend
+képekben	$alt3
+vélte	$unstressend
+vélték	$unstressend
+lép	$unstressend
+pénzt	$unstressend
+pénz	$unstressend
+nép	$unstressend
+lennék	$unstressend
+lennél	$unstressend
+lennénk	$unstressend
+lennétek	$unstressend
+hitt	$unstressend
+fő	$unstressend
+dúl	$unstressend
+dúlt	$unstressend
+kapott	$unstressend
+nyakú	$unstressend
+rúgást	$unstressend
+kapni	$unstressend
+kulcs	$unstressend
+nyit	$unstressend
+lő	$unstressend
+támad	$unstressend
+halt	$unstressend
+ész	$unstressend
+kapta	$unstressend
+kaptak	$unstressend
+kék	$unstressend
+kelt	$unstressend
+kárt	$unstressend
+gróf	$unstressend
+grófot	$unstressend
+lakik	$unstressend
+laknak	$unstressend
+laktak	$unstressend
+kapsz	$unstressend
+tudta	$unstressend
+kapnak	$unstressend
+tért	$unstressend
+törtek	$unstressend
+tört	$unstressend
+vész	$unstressend
+park	$unstressend
+tartja	$unstressend
+válik	$unstressend
+rajta	$unstressend
+merült	$unstressend
+zuhant	$unstressend
+jöttek	$unstressend
+leltem	$unstressend
+múlva	$unstressend
+várta	$unstressend
+ház	$unstressend
+állnak	$unstressend
+idején	$unstressend
+néznek	$unstressend
+sért	$unstressend
+adózású	$unstressend
+kötelezni	$unstressend
+lehetőség	$unstressend
+mondtuk	$unstressend
+kellene	$unstressend
+szerte	$unstressend
+hozta	$unstressend
+kezdte	$unstressend
+lökte	$unstressend
+benne	$unstressend
+fenn	$unstressend
+elő	$unstressend
+javasolták	$unstressend
+kezdjen	$unstressend
+látta	$unstressend
+látták	$unstressend
+nyomát	$unstressend
+került	$unstressend
+várták	$unstressend
+közbe	$unstressend
+látott	$unstressend
+tartanak	$unstressend
+ejt	$unstressend
+önnek	$unstressend
+álljon	$unstressend
+szálljon	$unstressend
+üljön	$unstressend
+jónak	$unstressend
+hisz	$unstressend
+elől	$unstressend
+vágy	$unstressend
+vitték	$unstressend
+küldött	$unstressend
+mentén	$unstressend
+venni	$unstressend
+múlik	$unstressend
+indít	$unstressend
+nála	$unstressend
+vizsgálata	$unstressend
+vizsgálatot	$unstressend
+indítottak	$unstressend
+vizsgált	$unstressend
+javult	$unstressend
+része	$unstressend
+írni	$unstressend
+téren	$unstressend
+terén	$unstressend
+menni	$unstressend
+fogja	$unstressend
+teszik	$unstressend
+tömni	$unstressend
+nyel	$unstressend
+érzi	$unstressend
+annak	$unstressend
+dolog	$unstressend
+számít	$unstressend
+aránya	$unstressend
+helyzetük	$unstressend
+kifogásolták	$unstressend
+kifogásolta	$unstressend
+fogalmaz	$unstressend
+szóló	$unstressend
+gyártott	$unstressend
+írta	$unstressend
+rúgták	$unstressend
+esett	$unstressend
+marad	$unstressend
+tulajdonú	$unstressend
+KFT	$unstressend
+folytatja	$unstressend
+államokban	$unstressend
+című	$unstressend
+senkit	$unstressend
+abban	$unstressend
+tegyük	$unstressend
+szar	$unstressend
+gond	$unstressend
+megy	$unstressend
+ebből	$unstressend
+abból	$unstressend
+ebben	$unstressend
+mondom	$unstressend
+akar	$unstressend
+akarsz	$unstressend
+távra	$unstressend
+jog	$unstressend
+járunk	$unstressend
+szólni	$unstressend
+ró	$unstressend
+kérni	$unstressend
+építést	$unstressend
+adni	$unstressend
+részén	$unstressend
+érni	$unstressend
+lap	$unstressend
+írja	$unstressend
+írtak	$unstressend
+stressz	$unstressend
+nyújtózni	$unstressend
+éve	$unstressend
+tartott	$unstressend
+attól	$unstressend
+utast	$unstressend
+szint	$unstressend
+minőségű	$unstressend
+beszélt	$unstressend
+kerületben	$unstressend
+gáz	$unstressend
+épült	$unstressend
+építésű	$unstressend
+együttes	$unstressend
+távon	$unstressend
+híg	$unstressend
+szőr	$unstressend
+diagnosztizálható 	$unstressend
+működik	$unstressend
+hat	$unstressend
+mutatnak	$unstressend
+rés	$unstressend
+szélén	$unstressend
+lógott	$unstressend
+tűnő	$unstressend
+kötni	$unstressend
+lopni	$unstressend
+döntöttem	$unstressend
+szerzett	$unstressend
+érted	$unstressend
+járni	$unstressend
+döntöttek	$unstressend
+írt	$unstressend
+méltó	$unstressend
+dől	$unstressend
+nyomsz	$unstressend
+elnök	$unstressend
+itthon	$unstressend
+otthon	$unstressend
+köszönhető	$unstressend
+tudják	$unstressend
+magunkat	$unstressend
+állítják	$unstressend
+utasítás	$unstressend
+cikknek	$unstressend
+jelenti	$unstressend
+év	$unstressend
+állja	$unstressend
+elő	$unstressend
+szerint	$unstressend
+képest	$unstressend
+számát	$unstressend
+kezdődött	$unstressend
+ígért	$unstressend
+közölte	$unstressend
+közölték	$unstressend
+adása	$unstressend
+nyújtani	$unstressend
+során	$unstressend
+bír	$unstressend
+szolgálja	$unstressend
+jelent	$unstressend
+rémlik	$unstressend
+rendszert	$unstressend
+oldalra	$unstressend
+szóval	$unstressend
+helyezhető	$unstressend
+csere	$unstressend
+információ	$unstressend
+terve	$unstressend
+tudhatják	$unstressend
+mondanunk	$unstressend
+találunk	$unstressend
+teljesítményű	$unstressend
+mobilok	$unstressend
+látjuk	$unstressend
+kerül	$unstressend
+platform	$unstressend
+fok	$unstressend
+szánt	$unstressend
+központ	$unstressend
+udvaros	$unstressend
+rendelkező	$unstressend
+árú	$unstressend
+bajt	$unstressend
+helyiség	$unstressend
+úton	$unstressend
+való	$unstressend
+fakad	$unstressend
+gondolja	$unstressend
+indokolta	$unstressend
+szakértő	$unstressend
+kapcsolt	$unstressend
+négy	$unstressend
+valakit	$unstressend
+védekeztek	$unstressend
+helyéről	$unstressend
+küldeni	$unstressend
+határozni	$unstressend
+követően	$unstressend
+változó	$unstressend
+nyilatkozott	$unstressend
+alkalmazott	$unstressend
+helyen	$unstressend
+olcsóbb	$unstressend
+bizottságtól	$unstressend
+bizottságot	$unstressend
+értesült	$unstressend
+dobni	$unstressend
+védelem	$unstressend
+kalózkodástól	$unstressend
+lementeni	$unstressend
+részlegével	$unstressend
+lefedettség	$unstressend
+képzése	$unstressend
+várhatók	$unstressend
+kártya	$unstressend
+kérhető	$unstressend
+civil	$unstressend
+célok	$unstressend
+növelése	$unstressend
+oldal	$unstressend
+cégek	$unstressend
+fontos	$unstressend
+halasztott	$unstressend
+érdekében	$unstressend
+érdek	$unstressend
+felelősége	$unstressend
+tartom	$unstressend
+iparba	$unstressend
+jelzi	$unstressend
+terület	$unstressend
+tanácsát	$unstressend
+tervből	$unstressend
+helyről	$unstressend
+kezdve	$unstressend
+mondani	$unstressend
+képzésekkel	$unstressend
+prioritással	$unstressend
+indulni	$unstressend
+akarjuk	$unstressend
+célkitűzés	$unstressend
+törekszünk	$unstressend
+szükség	$unstressend
+tételéről	$unstressend
+állapot	$unstressend
+kérdés	$unstressend
+ügynökséget	$unstressend
+fontosabb	$unstressend
+hiba	$unstressend
+forráskódnak	$unstressend
+forráskódot	$unstressend
+okoz	$unstressend
+szám	$unstressend
+hálózatokba	$unstressend
+szerepe	$unstressend
+embereknek	$unstressend
+ember	$unstressend
+világnak	$unstressend
+világba	$unstressend
+tervünk	$unstressend
+feltétel	$unstressend
+tartalmak	$unstressend
+hozadékot	$unstressend
+megoldanunk	$unstressend
+fejlesztésen	$unstressend
+lépésekkel	$unstressend
+gyarapodó	$unstressend
+ígéretet	$unstressend
+határidő	$unstressend
+igen	$unstressend
+teljesítéséhez	$unstressend
+stratégiájával	$unstressend
+rendszerekre	$unstressend
+vicc	$unstressend
+szakemberei	$unstressend
+változatból	$unstressendváltozatából	$unstressend
+bizottságnak	$unstressend
+nyilatkozta	$unstressend
+rendelkezések	$unstressend
+pontja	$unstressend
+szemben	$unstressend
+fordítását	$unstressend
+összevetni	$unstressend
+átállást	$unstressend
+várni	$unstressend
+órás	$unstressend
+kerülő	$unstressend
+könyvek	$unstressend
+tartalom	$unstressend
+szoftverei	$unstressend
+rendszerre	$unstressend
+trágár	$unstressend
+módon	$unstressend
+következnek	$unstressend
+alapján	$unstressend
+kíváncsi	$unstressend
+kérdései	$unstressend
+ejteni	$unstressend
+javasolta	$unstressend
+partíció	$unstressend
+mappára	$unstressend
+mappa	$unstressend
+kiírni	$unstressend
+írsz	$unstressend
+járvány	$unstressend
+helyezni	$unstressend
+felhős	$unstressend
+ég	$unstressend
+eső	$unstressend
+fogva	$unstressend
+centrikus	$unstressend
+tehetek	$unstressend
+tenni	$unstressend
+segély	$unstressend
+járadék	$unstressend
+származó	$unstressend
+kérte	$unstressend
+mutatkozik	$unstressend
+esetén	$unstressend
+növelt	$unstressend
+kedvezmény	$unstressend
+kérdéssel	$unstressend
+telefonok	$unstressend
+nyújtó	$unstressend
+elterjedt	$unstressend
+hallgatni	$unstressend
+nézni	$unstressend
+magas	$unstressend
+rendszer	$unstressend
+azonban	$unstressend
+miniszternek	$unstressend
+jogot	$unstressend
+eljárást	$unstressend
+benyújtása	$unstressend
+bizonyítania	$unstressend
+ejtették	$unstressend
+egymással	$unstressend
+harc	$unstressend
+éjjel	$unstressend
+kész	$unstressend
+látom	$unstressend
+siettünk	$unstressend
+megtelt	$unstressend
+hely	$unstressend
+kijönni	$unstressend
+láttunk	$unstressend
+mentünk	$unstressend
+kezdett	$unstressend
+tolakodtak	$unstressend
+ordibálta	$unstressend
+kiabálta	$unstressend
+káosz	$unstressend
+hibáztak	$unstressend
+esik	$unstressend
+valahova	$unstressend
+mondott	$unstressend
+azzal	$unstressend
+tartották	$unstressend
+rendőrt	$unstressend
+tömegről	$unstressend
+szemtanúk	$unstressend
+szemtanúval	$unstressend
+tudott	$unstressend
+mondtak	$unstressend
+történt	$unstressend
+mentem	$unstressend
+szemmel	$unstressend
+jártam	$unstressend
+nyitottunk	$unstressend
+hónapot	$unstressend
+ellátást	$unstressend
+munkám	$unstressend
+unni	$unstressend
+oldani	$unstressend
+munka	$unstressend
+használom	$unstressend
+használok	$unstressend
+kódú	$unstressend
+környezethez	$unstressend
+szabbványt	$unstressend
+tervezve	$unstressend
+jelölni	$unstressend
+jelölésnél	$unstressend
+üzenet	$unstressend
+üzeneteket	$unstressend
+használnak	$unstressend
+tartás	$unstressend
+maradjanak	$unstressend
+helységeket	$unstressend
+tartásáról	$unstressend
+hónapig	$unstressend
+válna	$unstressend
+vágyók	$unstressend
+vállal	$unstressend
+létezik	$unstressend
+fogalmazott	$unstressend
+címen	$unstressend
+nevű	$unstressend
+föld	$unstressend
+csomaggal	$unstressend
+származik	$unstressend
+változik	$unstressend
+nyúl	$unstressend
+piacán	$unstressend
+azok	$unstressend
+felnövő	$unstressend
+szolgálna	$unstressend
+védekezett	$unstressend
+testvér	$unstressend
+tud	$unstressend
+posztját	$unstressend
+néven	$unstressend
+arany	$unstressend
+részesült	$unstressend
+piacon	$unstressend
+botránya	$unstressend
+emlegetni	$unstressend
+irányával	$unstressend
+elvet	$unstressend
+ahhoz	$unstressend
+élén	$unstressend
+eladni	$unstressend
+ismert	$unstressend
+felel	$unstressend
+végzik	$unstressend
+végződtek	$unstressend
+szólva	$unstressend
+tény	$unstressend
+testületnek	$unstressend
+végzés	$unstressend
+tették	$unstressend
+környékén	$unstressend
+valószínű	$unstressend
+várható	$unstressend
+hagyva	$unstressend
+okot	$unstressend
+tudom	$unstressend
+készült	$unstressend
+érvelt	$unstressend
+tudnia	$unstressend
+tudatta	$unstressend
+vezetőknek	$unstressend
+helyzetben	$unstressend
+vége	$unstressend
+végén	$unstressend
+írják	$unstressend
+utal	$unstressend
+készül	$unstressend
+köd	$unstressend
+ködös	$unstressend
+idő	$unstressend
+részek	$unstressend
+alakul	$unstressend
+véget	$unstressend
+helyett	$unstressend
+körét	$unstressend
+vonatkozik	$unstressend
+javaslat	$unstressend
+tagjai	$unstressend
+döntés	$unstressend
+dolgot	$unstressend
+tudjuk	$unstressend
+tudják	$unstressend
+tudjátok	$unstressend
+jársz	$unstressend
+könyvtár	$unstressend
+fájlt	$unstressend
+fájlját	$unstressend
+törvény	$unstressend
+jövőt	$unstressend
+viszont	$unstressend
+járna	$unstressend
+állnia	$unstressend
+írnánk	$unstressend
+írnák	$unstressend
+dolgoznak	$unstressend
+hozzá	$unstressend
+valók	$unstressend
+tartozik	$unstressend
+képlet	$unstressend
+leírva	$unstressend
+dolgozik	$unstressend
+ragad	$unstressend
+mutatja	$unstressend
+olyan	$unstressend
+dolgozni	$unstressend
+hal	$unstressend
+blikkre	$unstressend
+markom	$unstressend
+törekszik	$unstressend
+szánni	$unstressend
+motor	$unstressend
+tortát	$unstressend
+torta	$unstressend
+részéről	$unstressend
+elképzelés	$unstressend
+épít	$unstressend
+magyarázzák	$unstressend
+mondhatjuk	$unstressend
+igaz	$unstressend
+tekintünk	$unstressend
+adódik	$unstressend
+díjakat	$unstressend
+tehát	$unstressend
+hatóanyagú	$unstressend
+járhat	$unstressend
+látható	$unstressend
+megoldást	$unstressend
+hatna	$unstressend
+épülő	$unstressend
+gyorsítást	$unstressend
+felületről	$unstressend
+hónap	$unstressend
+található	$unstressend
+kapcsán	$unstressend
+rendszerbe	$unstressend
+járadékot	$unstressend
+ezren	$unstressend
+megnézni	$unstressend
+járadékát	$unstressend
+nyugdíjat	$unstressend
+bírna	$unstressend
+értjük	$unstressend
+válnak	$unstressend
+mértékében	$unstressend
+nyilvánítást	$unstressend
+lyukat	$unstressend
+tudja	$unstressend
+szélen	$unstressend
+hozták	$unstressend
+számlák	$unstressend
+törlesztés	$unstressend
+nézik	$unstressend
+fokú	$unstressend
+lehetséges	$unstressend
+korúakkal	$unstressend
+látják	$unstressend
+őrnek	$unstressend
+érzik	$unstressend
+rájuk	$unstressend
+lépjen	$unstressend
+joga	$unstressend
+működött	$unstressend
+iskolákat	$unstressend
+írtam	$unstressend
+miniszter	$unstressend
+álltunk	$unstressend
+járnak	$unstressend
+köthetők	$unstressend
+drágult	$unstressend
+határozott	$unstressend
+helyezi	$unstressend
+részleteiről	$unstressend
+foglaltakról	$unstressend
+rendjéről	$unstressend
+jelentést	$unstressend
+jelentések	$unstressend
+tagjait	$unstressend
+kerülnek	$unstressend
+javasolja	$unstressend
+hivatal	$unstressend
+támogatásból	$unstressend
+segélyt	$unstressend
+biztosítani	$unstressend
+adható	$unstressend
+gondolattal	$unstressend
+keres	$unstressend
+futnak	$unstressend
+íródott	$unstressend
+érintő	$unstressend
+azért	$unstressend
+nyilatkozatok	$unstressend
+zajlott	$unstressend
+fordultak	$unstressend
+vették	$unstressend
+épül	$unstressend
+bizonyítékok	$unstressend
+nyilvánításra	$unstressend
+állók	$unstressend
+közöltek	$unstressend
+fájlba	$unstressend
+neve	$unstressend
+csinál	$unstressend
+különbséggel	$unstressend
+újítás	$unstressend
+példa	$unstressend
+veszik	$unstressend
+használni	$unstressend
+használó	$unstressend
+ötletek	$unstressend
+visz	$unstressend
+ugorni	$unstressend
+nekünk	$unstressend
+fejlődött	$unstressend
+részemről	$unstressend
+értettem	$unstressend
+hívott	$unstressend
+fellépések	$unstressend
+tavaly	$unstressend
+bizonyítani	$unstressend
+ricsaj	$unstressend
+tartani	$unstressend
+pontján	$unstressend
+létre	$unstressend
+szervezetként	$unstressend
+végez	$unstressend
+munkáját	$unstressend
+titkot	$unstressend
+remélik	$unstressend
+állítja	$unstressend
+maradni	$unstressend
+sorba	$unstressend
+köthető	$unstressend
+tekintik	$unstressend
+vezetője	$unstressend
+talált	$unstressend
+kerülni	$unstressend
+csomagokhoz	$unstressend
+lépésként	$unstressend
+vigyázni	$unstressend
+válhat	$unstressend
+fordulni	$unstressend
+hozniuk	$unstressend
+indítványt	$unstressend
+alkotmánynak	$unstressend
+csomagról	$unstressend
+okozott	$unstressend
+szerepelt	$unstressend
+testület	$unstressend
+kérhet	$unstressend
+vezethet	$unstressend
+tartaná	$unstressend
+hangzik	$unstressend
+kalkulál	$unstressend
+szolgál	$unstressend
+szánják	$unstressend
+gondoltam	$unstressend
+érzem	$unstressend
+érzed	$unstressend
+jellemző	$unstressend
+tartalmával	$unstressend
+fekszik	$unstressend
+keltett	$unstressend
+figyelmébe	$unstressend
+nevezte	$unstressend
+vetni	$unstressend
+bújnak	$unstressend
+jogról	$unstressend
+szeretnék	$unstressend
+számított	$unstressend
+vállalnak	$unstressend
+javítják	$unstressend
+javítják	$unstressend
+alkalmazottak	$unstressend
+dolgozók	$unstressend
+alkalmazottaknak	$unstressend
+szabály	$unstressend
+bérért	$unstressend
+jogait	$unstressend
+értékeket	$unstressend
+mutat	$unstressend
+támogatottságot	$unstressend
+kritizálta	$unstressend
+kitételt	$unstressend
+figyelmeztetett	$unstressend
+jogot	$unstressend
+aggódott	$unstressend
+hangoztatta	$unstressend
+jogok	$unstressend
+felelt	$unstressend
+állította	$unstressend
+
+// word pairs
+
+(hogy a)   h,oJ,A
+(hogy az)  h,oJ,Az
+(hogy aki) h,oJ,Aki
+
+
+// Verbs
+
+vagyok    $u  // to be, present
+vagy      $u
+van       $unstressend $alt3
+percről	$alt3
+percre	$alt3
+vagyunk   $unstressend
+vagytok   $unstressend
+vannak    $unstressend
+
+voltam    $u  // to be, past
+voltál    $u
+volt      $unstressend $alt3
+voltunk   $u
+voltatok  $u
+voltak    $unstressend
+
+leszek    $u  // to be, future
+leszel    $u
+lesz      $u $alt3
+leszünk   $u
+lesztek   $u
+lesznek   $u
+
+
+kell      $unstressend  // should
+
+szabad    $u+  // can (allowed)
+
+fog       $unstressend  // going to
+fogok     $u+
+fogsz     $u+
+fogunk    $u+
+fogtok    $u+
+fognak    $u+
+
+tud       $unstressend  // can
+tudok     $u+
+tudsz     $u+
+tudunk    $u+
+tudtok    $u+
+tudnak    $u+
+
+// Letters
+_a	A:
+a	A: $atend     // letter "a"
+b	be:
+c	tse:
+d	de:
+_e	E
+f	Eff
+g	ge:
+h	ha:
+j	je:
+k	ka:
+l	Ell
+m	Emm
+n	Enn
+p	pe:
+q	ku
+r	ERR
+s	S_
+s	ES  $atend
+_s	ES
+v	ve:
+w	duplAve:
+x	iks
+y	ipsilon
+z	ze:
+_é	e:
+é	$atend
+
+V		// this means that "v  ve:" is only used for lower-case
+X
+
+cs	tSe:
+dz	dze:
+
+dzs	dZe:
+sz	Es
+zs	Ze:
+gy	Je:
+ty	ce:
+ly	Ellipsilon
+ny	En^
+
+ä	$accent
+æ	$accent
+ç	$accent
+ñ	$accent
+ø	$accent
+ß	_^_DE
+
+…	_p%ontp%ontp%ont   // 3 or more dots are changed to elipsis
+.	p%ont		$max3
+_.	pont
+*	tSillAg		$max3
+%	sa:zAle:k	$max3
++	plus		$max3
+/	pER2		$max3
+=	EJEnlY:		$max3
+#	kEt:Y:SkER2Est		$max3
+@	kukAts	$max3
+&	e:S	$max3
+€	EuR2o
+¶	bEkEzde:S
+§	s'AkAs
+~	tildE
+°	fokjEl
+Ft	foR2int
+(Ft-tal)	foR2int:Al
+\	bEks2lES	$max3
+^	fYlfEle:n^i:l
+
+_,	vEss2Y:
+_;	pontoSvEss2Y:
+_:	kEt:Y:Spont
+_!	fElkia:lto:jEl
+_?	ke:R2dY:jEl
+_-	m'inus	$max3
+__	Ala:hu:za:S	$max3
+_'	ApostR2o:f
+_–	gondolAtjEl
+_—	kviR2tmi:nus
+_"	ide:zY:jEl	
+_(	b'Alza:R2o:jEl	$max3
+_)	j'obza:R2o:jEl	$max3
+_[	n^'ito:sYglEtES	$max3
+_]	z'a:R2o:sYglEtES	$max3
+_{	k'EzdY:kAptSoS	$max3
+_}	v'e:gkAptSoS	$max3
+_…	pontpontpont
+
+_•	liStAjEl
+_|	fyg:Y:lEgESvonAl
+_>	nAJob
+_<	kiSSEb
+_¤	pe:nznEmjEl
+®	bEjEJzEt:
+™	ve:djEJ
+_`	tompA
+_ 	so:kYz
+_«	bElSY:|bAl|ide:zY:jEl
+_»	bElSY:|jobb|ide:zY:jEl
+_­	la:JkYtY:jEl
+_²	ma:Sodik|hAtva:n^
+_³	hArmAdik|hAtva:n^
+_·	kYze:pSY:pont
+_¹	ElsY:hAtva:n^
+_º	Sorsa:m
+_‘	bAloldAli|ide:zY:jEl
+_’	job:oldAli|ide:zY:jEl
+_‚	ide:zY:jEl
+_‛	ide:zY:jEl
+_“	ide:zY:jEl
+_”	ide:zY:jEl
+_„	ide:zY:jEl
+_‟	ide:zY:jEl
+_‣	ha:R2omsYgAlAku:|fElSoR2ola:SjEl
+_‰	EzR2Ele:k
+_′	ApostR2o:f
+_″	duplA|ApostR2o:f
+©	tsopiR2ight-jEl
+°	fok
+−	minus
+±	plusminus
+µ	my:
+¼	nEJEd
+½	fe:l
+¾	ha:R2omnEJEd
+×	tAlpAS
+÷	osta:S
+¬	logikAinEm
+√	JYkjEl
+∞	vEgtElEn
+≠	nEmEJEnlY:
+_ˇ	lEfEle:n^i:l
+_¡	AlSo:indEks
+
+
+// Main Exceptions List
+//=====================
+
+nato	na:to:
+(end-of line) u:jS,oR2
+
+
+$textmode
+MSZP emeszpé
+MSZMP emeszempé
+SZDSZ eszdéesz
+
+
+egyezség	eggyesség
+
+
+
+(Szvsz) eszvéesz
+(CD-k) cédék
+(cd-k) cédék
+(CD-n) cédén
+(cd-n) cédén
+(cd-d) cédéd
+(CD-d) cédéd
+CD-m) cédém
+(cd-m) cédém
+(db-os) darabos
+(db-ot) darabot
+(LST-k) elesték
+(LST-n) elestén
+(PC-k) pécék
+(://) (kettőspontperper) $pause //Hungarian Nwda users ask me put this entry
+//again, because Nwda unfortunately does'nt spokening colondashdash
+//characters for example with a http or an ftp url.
+//The parenthese with second part is required, because if I using this form,
+//Orca speech driver does'nt pronouns wrong the url's if I navigating word
+//after word and don't disturb Orca working.
+(PC-n) pécén
+(USB-n) úesbén
+(usb-n) úesbén
+(usb-t) úesbét
+(USA-ból) usából
+(USA-nak) usának
+(DVD-k) dévédék
+(dvd-k) dévédék
+(DVD-n) dévédén
+(dvd-n) dévédén
+(dvd-d) dévédéd
+(DVD-d) dévédéd
+(DVD-m) dévédét
+(dvd-m) dévédém
+(USA-éval) usáéval
+(ubuntu-n) ubuntun
+(hu-n) hun
+(USA-ban) usában
+(USA-ba) usába
+(pc-n) pécén
+(PC-s) pécés
+//following entries are NVDA screen reader suffixes in hungarian
+//normal NVDA abbreviation is defined $allcaps attribute, but if this abbrewiation is containing a suffix, need pronounce another hungarian word.
+(NVDA-ba) envédéába
+(NVDA-ban) envédéában
+(NVDA-ból) envédéából
+(NVDA-hoz) envédéához
+(NVDA-nak) envédéának
+(NVDA-s) envédéás
+(NVDA-t) envédéát
+(NVDA-tól) envédéától
+(NVDA-val) envédéával
+(%-kal) százalékkal
+(ÁFÁ-t) áfát
+(MB-al) megabájttal
+(EU-n) eun
+(MHZ-en) megahercen
+(Mhz-en) megahercen
+(ORTT-től) oerrtététől //special exception

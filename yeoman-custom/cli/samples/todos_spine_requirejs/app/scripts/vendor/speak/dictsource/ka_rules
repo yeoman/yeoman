@@ -1,0 +1,152 @@
+
+// translation rules for Georgian
+// This file is UTF-8 encoded
+// all words lower case
+
+.group ა
+        ა        a
+     -) ა (_     %a
+
+.group ბ
+        ბ        b
+
+.group გ
+        გ        g
+
+.group დ
+        დ        d
+
+.group ე
+        ე        e
+     -) ე (_     %e
+
+.group ვ
+        ვ        v
+
+.group ზ
+        ზ        z
+
+.group თ
+        თ        t#
+
+.group ი
+        ი        i
+     -) ი (_     %i
+
+.group კ
+        კ        k
+
+.group ლ
+        ლ        l
+
+.group მ
+        მ        m
+
+.group ნ
+        ნ        n
+
+.group ო
+        ო        o
+     -) ო (_     %o
+
+.group პ
+        პ        p
+
+.group ჟ
+        ჟ        Z
+
+.group რ
+        რ        r
+     K) რ (CC    r@-
+
+.group ს
+        ს        s
+
+.group ტ
+        ტ        t
+
+.group უ
+        უ        u
+     -) უ (_     %u
+
+.group ფ
+        ფ        p#
+
+.group ქ
+        ქ        k#
+
+.group ღ
+        ღ        Q
+
+.group ყ
+        ყ        q
+
+.group შ
+        შ        S
+
+.group ჩ
+        ჩ        tS
+
+.group ც
+        ც        ts#
+
+.group ძ
+        ძ        dz
+
+.group წ
+        წ        ts
+
+.group ჭ
+        ჭ        c
+
+.group ხ
+        ხ        x
+
+.group ჯ
+        ჯ        dZ
+
+.group ჰ
+        ჰ        h
+
+.group ჱ
+        ჱ        ej
+
+.group ჲ
+        ჲ        j
+
+.group ჳ
+        ჳ        w
+
+.group ჴ
+        ჴ        x
+
+.group ჵ
+        ჵ        o:
+
+.group ჶ
+        ჶ        f
+
+.group ჷ
+        ჷ        @
+
+.group ჸ
+        ჸ        ?
+
+.group ჹ
+        ჹ
+
+.group ჺ
+        ჺ
+
+// For cyrillic characters (U+0400 to U+04FF) use Russian voice
+.group 0xd0
+	\320	_^_RU
+.group 0xd1
+	\321	_^_RU
+.group 0xd2
+	\322	_^_RU
+.group 0xd3
+	\323	_^_RU
+
+.group
+	$	dolari

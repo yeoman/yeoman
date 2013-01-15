@@ -1,0 +1,332 @@
+// Spelling-to-phoneme rules for Icelandic
+// This file is UTF8 encoded.
+
+// letter group B  voiceless consonants c,f,h,k,p,t,x,þ
+// letter group F  p,t,k,s
+// letter group H  j,r,v,
+
+.L01  e i í y ý æ j    // front vowels
+.L02  c f h k p t x þ s    // voiceless consonants
+.L03  p t k
+
+.replace
+ x       xz    // so that it behaves as 2 letters
+
+
+.group a
+        a        a:
+        a (FH    a:
+        a (CC    a
+        a (ng    aU
+        a (nk    aU
+
+        au       Yy:
+        au (FH   Yy:
+        au (CC   Yy
+
+     _) al (@P2N ,a:l
+     _) a (ll+   a
+
+.group á
+        á        aU:
+        á (FH    aU:
+        á (CC    aU
+
+
+.group b
+        b        b
+        bb       b
+
+.group c
+        c        k
+        c (e     s
+        c (i     s
+
+
+.group d
+        d        d
+        dd       d
+
+
+.group ð
+        ð        D
+        ð (B     T
+        ð (__    T
+
+
+.group e
+        e        E:
+        e (FH    E:
+        e (CC    E
+        e (ng    eI
+        e (nk    eI
+        egi      eI:jI
+        ei       eI:
+        ey       eI:
+        ei (FH   eI:
+        ey (FH   eI:
+        ei (CC   eI
+        ey (CC   eI
+
+
+.group é
+        é        jE:
+        é (FH    jE:
+        é (CC    jE
+
+
+.group f
+        f        f
+        ff       f
+     A) f (A     v
+//     A) f (_     v    // ??
+     l) f (A     v
+     @) f (l     b
+     @) f (n     b
+        fnd      mt
+        fnt      m#bt
+
+
+.group g
+        g        g
+        gg       g
+     _) g        g
+     A) g (l     g
+     A) g (n     g
+     _) g (e     J
+     _) g (i     J
+     _) g (í     J
+     _) g (æ     J
+     _) gj       J
+     A) g (a     Q
+     A) g (u     Q
+     A) g (ð     Q
+     A) g (r     Q
+        g (_     x
+        gn (_    gn#
+        gt       xd
+        g (s     x
+        gj       J
+        g (i     J
+     A) g (j     j
+     A) g (i     j
+     á) g (a
+     á) g (u
+     ó) g (a
+     ó) g (u
+     ú) g (a
+     ú) g (u
+
+
+.group h
+        h        h
+        hj       C
+        hl       l#
+        hr       hr#
+        hn       hn#
+        hv       kv
+
+
+.group i
+        i        I:
+        i (FH    I:
+        i (CC    I
+     K) i (ng    i
+     K) i (nk    i
+
+
+.group í
+        í        i:
+        í (FH    i:
+        í (CC    i
+
+
+.group j
+        j        j
+
+
+.group k
+     _) k        k
+        k        g
+     _) k (L01   c
+        k (L01   J
+        kj       c
+        k (K     g
+        k (k     h        // [hk]
+        k (s     x
+        k (t     t
+
+
+.group l
+        l        l
+        l (_     l#   // ??
+        l (BX    l#
+        ll       dl
+        ll (BX   tl#
+        ll (_    tl#  // ??
+
+
+.group m
+        m        m
+        mm (K    m
+     B) m        hm#
+        m (L03   m#
+
+
+.group n
+        n        n
+        nn       n:
+     B) n        hn#
+        n (L03   n#
+        n (g     N
+        ng (_    Ng
+        ngt (K   N#d
+        n (gi    n^
+        nk(i     n^#J
+        n (k     N#
+     A) n (k     N#h
+     á) nn       dn
+     é) nn       dn
+     í) nn       dn
+     ó) nn       dn
+     ú) nn       dn
+     ý) nn       dn
+     æ) nn       dn
+    au) nn       dn
+    ei) nn       dn
+    ey) nn       dn
+        nn (K    n
+
+
+
+.group o
+        o        O:
+        o (FH    O:
+        o (CC    O
+        o (gi    OI
+        o (gj    OI
+        o (ng    oU
+        o (nk    oU
+
+
+.group ó
+        ó        oU:
+        ó (FH    oU:
+        ó (CC    oU
+
+
+.group p
+        p        b
+     _) p        p
+        p (s     f
+        p (k     f
+        p (t     f
+        pp       hb
+
+
+.group q
+        q        kv
+
+
+.group r
+     _) r        _|R2
+     C) r        @-R
+     l) r        **R
+     A) r (A     *R
+        r (L02   rr#
+        r (_     _|R
+        r        _|R2
+        rr       R*R
+        rl       dl
+        rl (B    Rtl#
+        rn       Rdn#
+
+
+.group s
+        s        s
+        ss       ss2
+     _) sh       S    // English
+        sh (_    S    // English
+
+
+.group t
+     _) t        t
+        t        d
+        tt       hd
+        t (l     hd   //??  ætla
+        t (n     hd
+        th (_    T   // English
+     _) th       T   // English
+
+
+.group u
+        u        y:
+        u (FH    y:
+        u (CC    y
+        u (gi    yI
+        u (gj    yI
+     K) u (ng    u
+     K) u (nk    u
+     @) u (num_  O
+
+
+.group ú
+        ú        u:
+        ú (FH    u:
+        ú (CC    u
+
+
+.group v
+        v        v
+
+
+.group w
+        w        v
+
+
+.group x
+        x        ks
+        xz       ks
+
+.group y
+        y        I:
+        y (FH    I:
+        y (CC    I
+     K) y (ng    i
+     K) y (nk    i
+
+
+.group ý
+        ý        i:
+        ý (FH    i:
+        ý (CC    i
+
+
+.group z
+        z        z
+        zz       ts     // pizza
+
+
+.group þ
+        þ        T
+
+
+.group æ
+        æ        aI:
+        æ (FH    aI:
+        æ (CC    aI
+
+
+.group ö
+        ö        W:
+        ö (FH    W:
+        ö (CC    W
+        ö (ng    Yy
+        ö (ng    Yy
+
+     _) ö (@P1N  ,W:
+
+.group
+        $        dOllar
+
+

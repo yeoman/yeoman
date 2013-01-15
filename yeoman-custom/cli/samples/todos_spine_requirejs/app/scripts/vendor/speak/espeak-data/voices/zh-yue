@@ -1,0 +1,14 @@
+name cantonese
+language zh-yue
+language yue
+language zhy
+
+translator zhy
+phonemes zhy
+dictionary zhy
+gender male
+
+// interpret English letters as 1=English words, 2=jyutping
+dictrules 1
+
+words 1

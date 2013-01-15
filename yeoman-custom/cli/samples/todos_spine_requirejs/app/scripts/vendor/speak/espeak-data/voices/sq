@@ -1,0 +1,6 @@
+name albanian
+language sq
+gender male
+
+// add this line to remove 'ë' at the end of words
+// replace 00  @/  NULL
