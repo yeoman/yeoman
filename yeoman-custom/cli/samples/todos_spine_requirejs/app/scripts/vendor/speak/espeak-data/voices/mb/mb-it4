@@ -1,0 +1,8 @@
+name italian-mbrola-4
+language it 7
+gender female
+
+pitch 140 220
+mbrola it4 it3_phtrans
+
+replace 03 i I       // final unstressed "i"

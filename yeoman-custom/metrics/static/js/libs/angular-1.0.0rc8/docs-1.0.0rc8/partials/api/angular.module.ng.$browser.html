@@ -1,0 +1,109 @@
+<h1><code ng:non-bindable="">$browser</code>
+<span class="hint">(service in module <code ng:non-bindable="">ng</code>
+)</span>
+</h1>
+<div><h2 id="Description">Description</h2>
+<div class="description"><p>This object has two goals:</p>
+
+<ul>
+<li>hide all the global state in the browser caused by the window object</li>
+<li>abstract away all the browser specific features and inconsistencies</li>
+</ul>
+
+<p>For tests we provide <a href="api/angular.module.ngMock.$browser"><code>mock implementation</code></a> of the <code>$browser</code>
+service, which can be used for convenient testing of the application without the interaction with
+the real browser apis.</p></div>
+<h2 id="Dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="api/angular.module.ng.$log">$log</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="Methods">Methods</h2>
+<ul class="methods"><li><h3 id="addPollFn">addPollFn(fn)</h3>
+<div class="addpollfn"><p>Adds a function to the list of functions that poller periodically executes,
+and starts polling if not started yet.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+<p>Poll function to add</p></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{function()}</code>
+– <p>the added function</p></div>
+</div>
+</li>
+<li><h3 id="cookies">cookies(name, value)</h3>
+<div class="cookies"><p>The cookies method provides a 'private' low level access to browser cookies.
+It is not meant to be used directly, use the $cookie service instead.</p>
+
+<p>The return values vary depending on the arguments that the method was called with as follows:</p>
+
+<ul>
+  <li>cookies() -> hash of all cookies, this is NOT a copy of the internal state, so do not modify it</li>
+  <li>cookies(name, value) -> set name to value, if value is undefined delete the cookie</li>
+  <li>cookies(name) -> the same as (name, undefined) == DELETES (no one calls it right now that way)</li>
+</ul><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">name<i>(optional)</i> – {string=} – </code>
+<p>Cookie name</p></li>
+<li><code ng:non-bindable="">value<i>(optional)</i> – {string=} – </code>
+<p>Cokkie value</p></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{Object}</code>
+– <p>Hash of all cookies (if called without any parameter)</p></div>
+</div>
+</li>
+<li><h3 id="defer">defer(fn, delay)</h3>
+<div class="defer"><p>Executes a fn asynchroniously via <code>setTimeout(fn, delay)</code>.</p>
+
+<p>Unlike when calling <code>setTimeout</code> directly, in test this function is mocked and instead of using
+<code>setTimeout</code> in tests, the fns are queued in an array, which can be programmatically flushed
+via <code>$browser.defer.flush()</code>.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">fn – {function()} – </code>
+<p>A function, who's execution should be defered.</p></li>
+<li><code ng:non-bindable="">delay<i>(optional=0)</i> – {number=} – </code>
+<p>of milliseconds to defer the function execution.</p></li>
+</ul>
+<h4 id="Returns">Returns</h4>
+<div class="returns"><code ng:non-bindable="">{*}</code>
+– <p>DeferId that can be used to cancel the task via <code>$browser.defer.cancel()</code>.</p></div>
+</div>
+</li>
+<li><h3 id="onUrlChange">onUrlChange(listener)</h3>
+<div class="onurlchange"><p>Register callback function that will be called, when url changes.</p>
+
+<p>It's only called when the url is changed by outside of angular:
+- user types different url into address bar
+- user clicks on history (forward/back) button
+- user clicks on a link</p>
+
+<p>It's not called when url is changed by $browser.url() method</p>
+
+<p>The listener gets called with new url as parameter.</p>
+
+<p>NOTE: this api is intended for use only by the $location service. Please use the
+<a href="api/angular.module.ng.$location"><code>$location service</code></a> to monitor url changes in angular apps.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">listener – {function(string)} – </code>
+<p>Listener function to be called when url changes.</p></li>
+</ul>
+</div>
+</li>
+<li><h3 id="url">url(url, replace)</h3>
+<div class="url"><p>GETTER:
+Without any argument, this method just returns current value of location.href.</p>
+
+<p>SETTER:
+With at least one argument, this method sets url to new value.
+If html5 history api supported, pushState/replaceState is used, otherwise
+location.href/location.replace is used.
+Returns its own instance to allow chaining</p>
+
+<p>NOTE: this api is intended for use only by the $location service. Please use the
+<a href="api/angular.module.ng.$location"><code>$location service</code></a> to change url.</p><h4 id="Parameters">Parameters</h4>
+<ul class="parameters"><li><code ng:non-bindable="">url – {string} – </code>
+<p>New url (when used as setter)</p></li>
+<li><code ng:non-bindable="">replace<i>(optional)</i> – {boolean=} – </code>
+<p>Should new url replace current history record ?</p></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>

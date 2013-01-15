@@ -1,0 +1,8 @@
+name en-french
+language en 10
+gender male
+
+dictrules 1
+pitch 82 117
+mbrola fr1 fr1_phtrans
+

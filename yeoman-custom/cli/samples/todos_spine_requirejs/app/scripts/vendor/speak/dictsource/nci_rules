@@ -1,0 +1,90 @@
+// translation rules for Classical Nahuatl
+// This file is UTF-8 encoded
+
+.L01 e ē i ī    // letter group for front vowels
+
+
+.group a
+	a	a
+
+.group ā
+	ā	a:
+
+.group c
+	c	k
+	c (L01	s
+	ch	tS
+	cu	kw
+
+.group e
+	e	e
+
+.group ē
+	ē	e:
+	ē (_	'e:    // vocative, stress in final vowel
+
+.group h
+	h	?
+	hu	w
+
+.group i
+	i	i
+
+.group ī
+	ī	i:
+
+.group l
+	l	l
+
+.group m
+	m	m
+
+
+.group n
+	n	n
+
+.group o
+	o	o
+
+.group ō
+	ō	o:
+
+.group p
+	p	p
+
+.group q
+	qu	k
+
+.group t
+	t	t
+
+.group u
+	u	o
+	u (A	w
+	uc	wk
+	uq	k
+	uh	w
+
+
+.group x
+	x	S
+
+.group y
+	y	j
+
+.group z
+	z	s
+
+.group
+	b	b
+	d	d
+	f	f
+	g	g
+	j	x
+	k	k
+	r	R
+	s	s
+	v	v
+	w	w
+	ç	s
+	#	_:

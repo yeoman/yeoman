@@ -1,0 +1,8 @@
+Description:
+    Creates a new Angular controller
+
+Example:
+    yeoman init angularcrud:controller Thing [--coffee]
+
+    This will create:
+        app/scripts/controllers/thing-ctrl.js

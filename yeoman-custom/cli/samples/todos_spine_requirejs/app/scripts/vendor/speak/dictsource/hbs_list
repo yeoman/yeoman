@@ -1,0 +1,633 @@
+
+// "hbs" is the ISO 639-3 code for Serbian/Croatian/Bosnian macrolanguage
+// This file is UTF-8 encoded
+
+// Conditional rules:
+// ?1  Croatian
+// ?2  Serbian
+// ?3  Bosnian (Bosna and Hercegovina)
+// ?4  Serbian & Bosnian
+
+
+// Letters
+   b	b@
+   c	ts@
+   č	tS@
+   ć	tS;@2
+   d	d@
+   dž	dZ@
+   đ	dZ;@2
+   f	f@
+   g	g@
+   h	x@
+   j	j@2
+   k	k@
+   l	l@
+   lj	l^@
+   m	m@
+   n	n@
+   nj	n^@
+   p	p@
+   q	kv@
+   r	R@
+   _s	s@
+   š	S@
+   t	t@
+   v	v@
+   w	dvostr*uko||v@
+?2 w	duplo||v@
+   x	iks
+   y	ipsilon
+   z	z@
+   ž	Z@
+
+_á	$accent
+_é	$accent
+_í	$accent
+_ó	$accent
+_ú	$accent
+
+// accent names
+_lig	l'ig&t,UR&
+_acu	'akUt
+_ac2	dv'ostr**UkI;'akUt	
+_brv	br**'Ev   // ??
+_ced	ts'EdIl&
+_cir	ts'iRkUmflEks
+_dia	'uml&Ut
+_dot	t'otSk&
+_grv	n'agl&s&k
+_hac	kv'atSIts&
+_mcn	m'akr**on
+_ogo	'ogonEk
+_rng	r**'iNg
+_stk	kr**'oz
+_tld	t'ild&
+
+
+// symbols
+   _??	znak          // unknown symbol
+   _?A	slovo         // unknown letter
+   _cap	k'apIt&l      // ?? use English until I find the correct word
+
+   ©	'aUtoRsk&||pr*av&
+   *	zvj'ezdits&	$max3
+   = 	_j'edn&ko	$max3
+   %	p'osto	$max3
+   +	plus	$max3
+   .	totSk&	$max3
+?4 .	tatSk&	$max3
+   €	'euRo
+?4 €	'evr*o
+   @	_'at
+?2 @	tRgovatSkoi
+   &	_'end
+   !	'usklItSnIk
+?2 !	'uzvItSnIk
+   :	dv'ototSk&
+?4 :	dv'ot&tSk&
+   #	br*'oj_	$max3
+   /	kr*'oz_	$max3
+   \	b'EkslES	$max3
+   ^	ts'iRkumfleks
+   ~	t'ild&
+   ¤	v'alut&
+   §	'odlom&k
+   µ	m'ikr*o
+   ¶	tSl'an&k
+   °	st'up&n^
+?4 °	st'epen
+   _"	n'avodnIk
+?2 _"	n'avod
+   _‚	'otvoReni||n'avodnIk
+   _„	sp'uSteni||n'avodnIk
+?2 _„	z&tvoReni||n'avodnIk
+   …	tr*'i||t'otSke
+?4 …	tr*'i||t'atSke
+   †	kr*'iZ
+?2 †	kr-'st
+   ‡	dv'ostr*Uki||kr*'iZ
+?2 ‡	dv'ostRUki||kR'st
+   ‰	pr*'omil
+   _‹	'otvoReni||n'avodnIk
+   _‘	'otvoReni||n'avodnIk
+   _’	j'ednostr*'uki||n'avodnIk
+   _“	'otvoReni||n'avodnIk
+   _”	z'atvoReni||n'avodnIk
+   •	kr*'upna||t'otSk&
+?4 •	kr*'upna||t'atSk&
+   _–	En||ts'r-t&
+   _—	Em||ts'r-t&
+   ™	pr*'o'izvodZ&tS
+   ˘	br*'evis
+   ¨	pr*'ijegl&s
+?2 ¨	pr*'egl&s
+   _«	'otvoReni||n'avodnIk
+   _­	pr*'ivr*emen&||ts'r-t'its&
+   ·	p'ut&
+   ¸	sed'il&
+   _»	z'atvoReni||n'avodnIk
+   ®	R'egistr*atsIj&
+   ł	l@||s&||ts'r-t'itsom
+   ×	p'ut&
+   ÷	p'odijel^,eno
+?2 ÷	p'odel^,eno
+
+   _$    d'ol&R
+   _-	m'inus
+   _*	zvj'ezdits&
+?2 _*	zv'ezdits&
+   _=	j'edn&ko
+   _@	t'r-g'ov&tSko||'a
+?2 _@	et
+
+   _(	'otvoRen&||z'agr*ad&
+   _)	z'atvoRen&||z'agr*ad&
+   _'	'apostr*of
+   _,	z'aRez
+?2 _,	z'apeta
+   _-	ts'r-t'its&
+   _.	t'otSk&
+?4 _.	t'atSk&
+   _;	t'otSk&z,a*Ez
+?2 _;	t'atSk&z,apeta
+?3 _;	t'atSk&z,a*Ez
+   _<	m'an^i||'od
+   _=	j'edn&ko
+   _>	v'etSi||'od
+   _?	'upitnIk
+   _&	t'r-g'ov&tSko||'i
+   _[	'otvoRen&||'ugl&t&
+?2 _[	'otvoRen&||'ugl&st&
+   _]	z'atvoRen&||'ugl&t&
+?2 _]	z'atvoRen&||'ugl&st&
+   __	ts'r-t&
+   _`	gr*'avis
+   _{	'otvoRen&||v'ititS&st&
+   _|	'okomits&
+?2 _|	'uspR&vn&
+   _}	z'atvoRen&||v'ititS&st&
+
+
+// Numbers
+   _0    n'ul&
+   _1    j'ed&n
+   _2    dv'a
+   _2f   dv'ije
+?2 _2f   dv'E
+   _3    tr*'i
+   _4    tS'EtIRI
+   _5    p'Et
+   _6    S'Est
+   _7    s'Ed&m
+   _8    'os&m
+   _9    d'EvEt
+   _10   d'EsEt
+   _11   j'ed&naIst
+   _12   dv'anaIst
+   _13   tr*'inaIst
+   _14   tS'Etr-naIst
+   _15   p'EtnaIst
+   _16   S'EsnaIst
+   _17   s'Ed&mnaIst
+   _18   'os&mnaIst
+   _19   d'EvEtnaIst
+?2 _11   j'ed&naEst
+?2 _12   dv'anaEst
+?2 _13   tr*'inaEst
+?2 _14   tS'Etr-naEst
+?2 _15   p'EtnaEst
+?2 _16   S'EsnaEst
+?2 _17   s'Ed&mnaEst
+?2 _18   'os&mnaEst
+?2 _19   d'EvEtnaEst
+   _2X   dv'adEsEt
+   _3X   tr*'idEsEt
+   _4X   tS'Etr-dEsEt
+   _5X   p'EdEsEt
+   _6X   S'EzdEsEt
+   _7X   s'Ed&mdEsEt
+   _8X   'os&mdEsEt
+   _9X   d'EvEdEsEt
+   _0C   st'o_
+?2 _0C   st'O_
+   _2C   dvj'est'o
+?2 _2C   dv'est'a_
+?2 _3C   tR'ist'a_
+?2 _4C   tSetR'ist'o_
+   _6C   S'Est'o
+   _0M1  t'isUtS;&
+   _0MA1 t'isUtS;e
+   _1M1  t'isUtS;U
+?2 _0M1  h'il^,&d&
+?2 _0MA1 h'il^,&de
+?2 _1M1  h'il^,&dU
+?2 _1MA1  jedn&||hil^&d&
+?3 _0M1  h'il^ad&
+?3 _0MA1 h'il^ade
+?3 _1M1  h'il^adU
+   _0M2  m'ilijUna
+   _0MA2 m'ilijUna
+   _1M2  m'ilijUn
+?4 _0M2  m'ilijOna
+?4 _0MA2 m'ilijOna
+?4 _1M2  m'ilijOn
+   _0M3  m'iliaRdI
+   _0MA3 m'iliaRde
+   _1M3  m'iliaRdU
+?2 _0M3  milijArdI
+?2 _0MA3 milijArde
+?2 _1M3  milijArdU
+   _0M4  b'ilijUna
+   _1M4  b'ilijUn
+?4 _0M4  b'ilijOna
+?4 _1M4  b'ilijOn
+   _dpt  _:z'a*Ez_
+   _roman  r*'imsko
+
+// not Roman numerals
+// vi	vi   // not needed if only all-capitals are spoken as Roman numbers
+
+
+// Abbreviations
+aaa	$abbrev
+aac	$abbrev
+ab	$only $abbrev $capital
+abc	$abbrev
+abk	$only $abbrev
+abs	$abbrev
+acc $only $abbrev
+acf $only $abbrev
+acfm $abbrev
+acg $only $abbrev
+acgm $abbrev
+acl $only $abbrev
+acm $only $abbrev
+acw $only $abbrev
+add	$only $abbrev
+adn $only $abbrev
+adp $only $abbrev
+adsl	$abbrev
+agm	$abbrev
+ahk $only $abbrev
+aif $only $abbrev
+aip $only $abbrev
+alg $only $abbrev
+alm $only $abbrev
+amd	$only $abbrev
+amf $only $abbrev
+amg	$only $abbrev
+aph $only $abbrev
+apj $only $abbrev
+apl $only $abbrev
+apm $only $abbrev
+app $only $abbrev
+arg	$only $abbrev
+arj	$only $abbrev
+asc $only $abbrev
+asf $only $abbrev
+asm $only $abbrev
+asn $only $abbrev
+asp $only $abbrev
+asx $only $abbrev
+atf $only $abbrev
+atp	$abbrev
+av	$only $abbrev
+avg	$abbrev
+avr $only $abbrev
+awb $only $abbrev
+awt $only $abbrev
+brf	$abbrev
+brl	$abbrev
+brx	$abbrev
+cca	$abbrev
+cda $only $abbrev
+cdr	$abbrev
+cdrw	$abbrev
+cgi $abbrev
+clr	$abbrev
+cpe $only $abbrev
+cpu $only $abbrev
+cr	$only $abbrev
+crt $only $abbrev
+ctrl	$abbrev
+daa $only $abbrev
+doo	$abbrev
+dox $only $abbrev
+dqy $abbrev
+dsr $only $abbrev
+ear $only $abbrev
+ecdl	$only $abbrev
+ecp $only $abbrev
+ecs $only $abbrev
+elm $only $abbrev
+emf $only $abbrev
+emh $only $abbrev
+eml $only $abbrev
+ems $only $abbrev
+epf $only $abbrev
+eq $only $abbrev
+esc	$only $abbrev
+etd $only $abbrev
+eu	$only $abbrev
+eur	$only $abbrev
+exc $only $abbrev
+faq	$abbrev
+fbi	$abbrev
+ffa $only $abbrev
+fr	$only $abbrev
+frm	$abbrev
+frt $only $abbrev
+frx	$abbrev
+gho $only $abbrev
+gr	$only $abbrev
+grr	$abbrev
+grrr	$abbrev
+grp	$abbrev
+grps	$abbrev
+grs $only $abbrev
+grx $only $abbrev
+gui $only $abbrev
+hho	$abbrev
+hr	$only $abbrev
+hrk	$only $abbrev
+hrt	$only $abbrev $capital
+hrv	$only $abbrev
+hta $only $abbrev
+hzzo	$abbrev
+ibm	$abbrev
+icc $only $abbrev
+icm $only $abbrev
+ics $only $abbrev
+idb $only $abbrev
+idc $only $abbrev
+idm $only $abbrev
+iff $only $abbrev
+ifu $only $abbrev
+ilk $only $abbrev
+img $only $abbrev
+iml $only $abbrev
+isdn $abbrev
+isl $only $abbrev
+isp $only $abbrev
+iss $only $abbrev
+iq $only $abbrev
+iqy $only $abbrev
+itw $only $abbrev
+itz $only $abbrev
+ivf $only $abbrev
+jpi $only $abbrev
+jrr	$abbrev
+jse $only $abbrev
+lha $abbrev
+liq $only $abbrev
+maq $only $abbrev
+maw $only $abbrev
+mda $only $abbrev
+mde $only $abbrev
+mdi $only $abbrev
+mga $only $abbrev
+mge $only $abbrev
+mgi $only $abbrev
+mpa $only $abbrev
+mpe $only $abbrev
+mpr $only $abbrev
+msi $only $abbrev
+mup $abbrev $capital
+nco $only $abbrev
+nfo $only $abbrev
+nji $only $abbrev
+nr	$only $abbrev
+nra $only $abbrev
+nrb $only $abbrev
+nrc $only $abbrev
+nre $only $abbrev
+nrf $only $abbrev
+nrg	$abbrev
+nrh $only $abbrev
+nri $only $abbrev
+nrm $only $abbrev
+nrq $only $abbrev
+nrs $only $abbrev
+nru $only $abbrev
+nrw $only $abbrev
+nsa $only $abbrev
+nsi $only $abbrev
+nvda	$abbrev
+obd $only $abbrev
+obj $only $abbrev
+obt $only $abbrev
+obz $only $abbrev
+ocr $only $abbrev
+ocx $only $abbrev
+oem	$abbrev
+off	$only $abbrev
+oft $only $abbrev
+ofx $only $abbrev
+ogc $only $abbrev
+ogg	$only $abbrev
+ogl $only $abbrev
+omw	$abbrev
+oqy $only $abbrev
+os $only $abbrev $capital
+oss $only $abbrev
+otf $only $abbrev
+otm $only $abbrev
+pda $abbrev
+pdi $only $abbrev
+pgi $only $abbrev
+pho $only $abbrev
+pko $only $abbrev
+pma $only $abbrev
+ppa $only $abbrev
+pr	$only $abbrev
+prf $only $abbrev
+prg $only $abbrev
+prn	$abbrev
+prt $only $abbrev
+qbr $abbrev
+qpr $abbrev
+raw	$only $abbrev
+rb	$abbrev
+rba	$abbrev
+rc	$only $abbrev
+rcc	$abbrev
+rcd	$abbrev
+rcs	$abbrev
+rd	$only $abbrev
+rds	$abbrev
+rgb	$abbrev
+rh	$only $abbrev
+rk	$only $abbrev
+rm	$only $abbrev
+rma $only $abbrev
+rme $only $abbrev
+rmf $only $abbrev
+rmi $only $abbrev
+rmt $only $abbrev
+rmx	$abbrev
+rn $only $abbrev
+rnk $only $abbrev
+rp	$only $abbrev
+rqy $only $abbrev
+rs	$abbrev
+rss	$abbrev
+rta	$abbrev
+rtf	$abbrev
+rtl	$abbrev
+rttl	$abbrev
+rtv	$abbrev
+rw	$abbrev
+rwo $only $abbrev
+rx	$abbrev
+sbr $only $abbrev
+scr	$only $abbrev
+sr	$only $abbrev
+srd	$only $abbrev
+ssa $only $abbrev
+sys $only $abbrev
+tpu $only $abbrev
+udf $only $abbrev
+udl $only $abbrev
+udt	$abbrev
+uhh $abbrev
+uif $only $abbrev
+uip $only $abbrev
+url	$only $abbrev
+usd	$only $abbrev
+usr	$only $abbrev
+uss	$only $abbrev
+uu $only $abbrev
+uue $only $abbrev
+uup $only $abbrev
+uxd $only $abbrev
+vba	$only $abbrev
+vbe $only $abbrev
+vbr	$abbrev
+vga	$abbrev
+wax $only $abbrev
+wbr	$abbrev
+wiz $only $abbrev
+wma $only $abbrev
+wri $only $abbrev
+wta	$abbrev
+xam $only $abbrev
+xba $only $abbrev
+xiw $only $abbrev
+xla $only $abbrev
+xpa $only $abbrev
+xpi $only $abbrev
+xsi $only $abbrev
+xxa $only $abbrev
+xxe $only $abbrev
+xy	$abbrev
+xyz	$abbrev
+yu $only $abbrev
+zaa $only $abbrev
+zoo $only $abbrev
+
+br	$dot $abbrev
+dr	$dot $abbrev
+mr	$dot $abbrev
+mrs	$dot $abbrev
+itd	$dot $abbrev
+npr	$dot $abbrev
+str	$only $dot $abbrev
+
+inc	$dot
+prof	$dot
+sl	$dot
+tj	$dot
+tzv	$dot
+
+// Demonstratives
+tko      $u+
+?4 šta      $u+
+što      $u+
+koga     $pause
+čega     $pause
+
+
+// Pronouns
+
+
+// Prepositions
+o        $u $brk
+u        $u $brk
+s        s_ $brk
+
+
+// Conjunctions
+a        $u $pause    // and
+i        $u $pause    // and
+ali      $pause       // but
+nego     $pause       // but
+ili      $u $pause    // or
+
+
+
+
+// Auxillary verbs
+li       $u      // question
+
+sam      $u      // to be, short form
+si       $u
+je       $u
+smo      $u
+ste      $u
+su       $u
+
+bio      $u       // to be, past tense
+bila     $u
+bilo     $u
+bili     $u
+
+nisam    $u+      // to be, negative
+nisi     $u+
+nije     $u+
+nismo    $u+
+niste    $u+
+nisu     $u+
+
+imam     $u+      // to have
+imaš     $u+
+ima      $u+
+imamo    $u+
+imate    $u+
+imaju    $u+
+
+nemam    $u+      // to have, negative
+nemaš    $u+
+nema     $u+
+nemamo   $u+
+nemate   $u+
+nemaju   $u+
+
+
+
+
+
+// treat as letters if at the end of the clause
+a        a    $atend    // letter-a
+i        i    $atend    // letter-i
+o        o    $atend    // letter-o
+s        s@   $atend
+u        u    $atend
+
+
+// Exceptions
+
+ctrl	tsontRo:l
+control	tsontRo:l
+docx	d'ots||'iks
+jpeg	j@2||p'eg
+macx	m'ats||'iks
+potx	p'ot||'iks
+sisx	s'is||'iks
+start	st'aRt
+utf	u||te||ef
+
+?2 ra	R&
+?2 re	Re
+?2 ar	&R
+?2 er	eR

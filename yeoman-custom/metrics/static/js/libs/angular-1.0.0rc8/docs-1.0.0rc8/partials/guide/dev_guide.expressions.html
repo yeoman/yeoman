@@ -1,0 +1,291 @@
+<h1 id="Developer.Guide..Understanding.Angular.Expressions">Developer Guide: Understanding Angular Expressions</h1>
+<div class="developer-guide--understanding-angular-expressions"><p>Expressions are <a href="guide/dev_guide.templates.databinding">bindings</a> that you write in HTML and embed
+in templates in order to create views in angular. Angular expressions are similar but not
+equivalent to JavaScript expressions.</p>
+
+<p>For example, these are all valid expressions in angular:</p>
+
+<ul>
+<li><code>1+2={{1+2}}</code></li>
+<li><code>3*10|currency</code></li>
+<li><code>Hello {{name}}!</code></li>
+<li><code>Hello {{'World'}}!</code></li>
+</ul>
+
+<h3>Angular Expressions vs. JS Expressions</h3>
+
+<p>It might be tempting to think of angular view expressions as JavaScript expressions, but that is
+not entirely correct. Angular does not use a simple JavaScript eval of the expression text. You can
+think of angular expressions as JavaScript expressions with these differences:</p>
+
+<ul>
+<li><strong>Attribute Evaluation:</strong> evaluation of all attributes are against the current scope, not to the
+global window as in JavaScript.</li>
+<li><strong>Forgiving:</strong> expression evaluation is forgiving to undefined and null, unlike in JavaScript.</li>
+<li><strong>No Control Flow Statements:</strong> you cannot do the following from an angular expression:
+conditionals, loops, or throw.</li>
+<li><strong>Type Augmentation:</strong> the scope expression evaluator augments built-in types.</li>
+<li><strong>Filters:</strong> you can add filters to an expression, for example to convert raw data into a
+human-readable format.</li>
+<li><strong>The $:</strong> angular reserves this prefix to differentiate its API names from others.</li>
+</ul>
+
+<p>If, on the other hand, you do want to run arbitrary JavaScript code, you should make it a
+controller method and call that. If you want to <code>eval()</code> an angular expression from JavaScript, use
+the <code>Scope:$eval()</code> method.</p>
+
+<h3>Example</h3>
+
+<h2>Demo Source Code</h2>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-15" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-16"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-15" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-15">
+ 1+2={{1+2}}
+</script>
+</div>
+<div class="tab-pane" title="End to end test">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-16"></pre>
+<script type="text/ng-template" id="scenario.js-16">
+ it('should calculate expression in binding', function() {
+   expect(binding('1+2')).toEqual('3');
+ });
+</script>
+</div>
+</div><h2>Demo Source Code</h2>
+<div class="well  doc-example-live" ng-embed-app="" ng-set-html="index.html-15" ng-eval-javascript=""></div>
+
+<p>You can try evaluating different expressions here:</p>
+
+<h2>Demo Source Code</h2>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-18" source-edit-css="" source-edit-js="script.js-17" source-edit-unit="" source-edit-scenario="scenario.js-19"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-18" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-18">
+ 
+ <div ng-controller="Cntl2" class="expressions">
+   Expression:
+   <input type='text' ng-model="expr" size="80"/>
+   <button ng-click="addExp(expr)">Evaluate</button>
+   <ul>
+    <li ng-repeat="expr in exprs">
+      [ <a href="" ng-click="removeExp($index)">X</a> ]
+      <tt>{{expr}}</tt> => <span ng-bind="$parent.$eval(expr)"></span>
+     </li>
+   </ul>
+ </div>
+</script>
+</div>
+<div class="tab-pane" title="script.js">
+<pre class="prettyprint linenums" ng-set-text="script.js-17"></pre>
+<script type="text/ng-template" id="script.js-17">
+   function Cntl2($scope) {
+     $scope.exprs = [];
+     $scope.expr = '3*10|currency';
+     $scope.addExp = function(expr) {
+        this.exprs.push(expr);
+     };
+
+     $scope.removeExp = function(index) {
+       this.exprs.splice(index, 1);
+     };
+   }
+ </script>
+</div>
+<div class="tab-pane" title="End to end test">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-19"></pre>
+<script type="text/ng-template" id="scenario.js-19">
+ it('should allow user expression testing', function() {
+    element('.expressions :button').click();
+    var li = using('.expressions ul').repeater('li');
+    expect(li.count()).toBe(1);
+    expect(li.row(0)).toEqual(["3*10|currency", "$30.00"]);
+ });
+</script>
+</div>
+</div><h2>Demo Source Code</h2>
+<div class="well  doc-example-live" ng-embed-app="" ng-set-html="index.html-18" ng-eval-javascript="script.js-17"></div>
+
+<h2>Attribute Evaluation</h2>
+
+<p>Evaluation of all attributes takes place against the current scope. Unlike JavaScript, where names
+default to global window properties, angular expressions have to use <code>$window</code> to refer to the
+global object. For example, if you want to call <code>alert()</code>, which is defined on <code>window</code>, an
+expression must use <code>$window.alert()</code>. This is done intentionally to prevent accidental access to
+the global state (a common source of subtle bugs).</p>
+
+<h2>Demo Source Code</h2>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-21" source-edit-css="" source-edit-js="script.js-20" source-edit-unit="" source-edit-scenario="scenario.js-22"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-21" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-21">
+ 
+ <div class="example2" ng-controller="Cntl1">
+   Name: <input ng-model="name" type="text"/>
+   <button ng-click="greet()">Greet</button>
+ </div>
+</script>
+</div>
+<div class="tab-pane" title="script.js">
+<pre class="prettyprint linenums" ng-set-text="script.js-20"></pre>
+<script type="text/ng-template" id="script.js-20">
+   function Cntl1($window, $scope){
+     $scope.name = 'World';
+
+     $scope.greet = function() {
+       ($window.mockWindow || $window).alert('Hello ' + this.name);
+     }
+   }
+ </script>
+</div>
+<div class="tab-pane" title="End to end test">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-22"></pre>
+<script type="text/ng-template" id="scenario.js-22">
+ it('should calculate expression in binding', function() {
+   var alertText;
+   this.addFutureAction('set mock', function($window, $document, done) {
+     $window.mockWindow = {
+       alert: function(text){ alertText = text; }
+     };
+     done();
+   });
+   element(':button:contains(Greet)').click();
+   expect(this.addFuture('alert text', function(done) {
+     done(null, alertText);
+   })).toBe('Hello World');
+ });
+</script>
+</div>
+</div><h2>Demo Source Code</h2>
+<div class="well  doc-example-live" ng-embed-app="" ng-set-html="index.html-21" ng-eval-javascript="script.js-20"></div>
+
+<h3>Forgiving</h3>
+
+<p>Expression evaluation is forgiving to undefined and null. In JavaScript, evaluating <code>a.b.c</code> throws
+an exception if <code>a</code> is not an object. While this makes sense for a general purpose language, the
+expression evaluations are primarily used for data binding, which often look like this:</p>
+
+<pre><code>    {{a.b.c}}
+</code></pre>
+
+<p>It makes more sense to show nothing than to throw an exception if <code>a</code> is undefined (perhaps we are
+waiting for the server response, and it will become defined soon). If expression evaluation wasn't
+forgiving we'd have to write bindings that clutter the code, for example: <code>{{((a||{}).b||{}).c}}</code></p>
+
+<p>Similarly, invoking a function <code>a.b.c()</code> on undefined or null simply returns undefined.</p>
+
+<p>Assignments work the same way in reverse:</p>
+
+<pre><code>   a.b.c = 10
+</code></pre>
+
+<p>...creates the intermediary objects even if a is undefined.</p>
+
+<h3>No Control Flow Statements</h3>
+
+<p>You cannot write a control flow statement in an expression. The reason behind this is core to the
+angular philosophy that application logic should be in controllers, not in the view. If you need a
+conditional (including ternary operators), loop, or to throw from a view expression, delegate to a
+JavaScript method instead.</p>
+
+<h3>Type Augmentation</h3>
+
+<p>Built-in types have methods like <code>[].push()</code>, but the richness of these methods is limited.
+Consider the example below, which allows you to do a simple search over a canned set of contacts.
+The example would be much more complicated if we did not have the <code>Array:$filter()</code>. There is no
+built-in method on <code>Array</code> called <a href="api/angular.module.ng.$filter.filter"><code>$filter</code></a> and angular doesn't add
+it to <code>Array.prototype</code> because that could collide with other JavaScript frameworks.</p>
+
+<p>For this reason the scope expression evaluator augments the built-in types to make them act like
+they have extra methods. The actual method for <code>$filter()</code> is <code>angular.module.ng.$filter.filter()</code>. You can
+call it from JavaScript.</p>
+
+<p>Extensions: You can further extend the expression vocabulary by adding new methods to
+<code>angular.module.ng.$filter</code> or <code>angular.String</code>, etc.</p>
+
+<h2>Demo Source Code</h2>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-23" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-24"></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-23" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-23">
+ <div ng-init="friends = [
+   {name:'John', phone:'555-1212'},
+   {name:'Mary', phone:'555-9876'},
+   {name:'Mike', phone:'555-4321'},
+   {name:'Adam', phone:'555-5678'},
+   {name:'Julie', phone:'555-8765'}]"></div>
+ Search: <input ng-model="searchText"/>
+ <table class="example3">
+   <thead>
+     <tr><th>Name</th><th>Phone</th><tr>
+   </thead>
+   <tbody>
+     <tr ng-repeat="friend in friends | filter:searchText">
+       <td>{{friend.name}}</td>
+       <td>{{friend.phone}}</td>
+     </tr>
+    </tbody>
+ </table>
+</script>
+</div>
+<div class="tab-pane" title="End to end test">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-24"></pre>
+<script type="text/ng-template" id="scenario.js-24">
+ it('should filter the list', function() {
+    var tr = using('table.example3 tbody').repeater('tr');
+    expect(tr.count()).toBe(5);
+    input('searchText').enter('a');
+    expect(tr.count()).toBe(2);
+
+ });
+</script>
+</div>
+</div><h2>Demo Source Code</h2>
+<div class="well  doc-example-live" ng-embed-app="" ng-set-html="index.html-23" ng-eval-javascript=""></div>
+
+<h3>Filters</h3>
+
+<p>When presenting data to the user, you might need to convert the data from its raw format to a
+user-friendly format. For example, you might have a data object that needs to be formatted
+according to the locale before displaying it to the user. You can pass expressions through a chain
+of filters like this:</p>
+
+<pre><code>   name | uppercase
+</code></pre>
+
+<p>The expression evaluator simply passes the value of name to angular.module.ng.$filter.uppercase.</p>
+
+<p>Chain filters using this syntax:</p>
+
+<pre><code>   value | filter1 | filter2
+</code></pre>
+
+<p>You can also pass colon-delimited arguments to filters, for example, to display the number 123 with
+2 decimal points:</p>
+
+<pre><code>   123 | number:2
+</code></pre>
+
+<h2>The $</h2>
+
+<p>You might be wondering, what is the significance of the $ prefix? It is simply a prefix that
+angular uses, to differentiate its API names from others. If angular didn't use $, then evaluating
+<code>a.length()</code> would return undefined because neither a nor angular define such a property.</p>
+
+<p>Consider that in a future version of angular we might choose to add a length method, in which case
+the behavior of the expression would change. Worse yet, you the developer could create a length
+property and then we would have a collision. This problem exists because angular augments existing
+objects with additional behavior. By prefixing its additions with $ we are reserving our namespace
+so that angular developers and developers who use angular can develop in harmony without collisions.</p>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.templates.filters">Understanding Angular Filters</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<ul>
+<li><a href="api/angular.module.ng.$compile"><code>Angular Compiler API</code></a></li>
+</ul></div>

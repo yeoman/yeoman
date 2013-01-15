@@ -1,0 +1,53 @@
+<h1 id="Developer.Guide..Initializing.Angular..Automatic.Initialization">Developer Guide: Initializing Angular: Automatic Initialization</h1>
+<div class="developer-guide--initializing-angular--automatic-initialization"><p>For Angular to manage the DOM for your application, it needs to compile some or all of an HTML page.  Angular does this initialization automatically when you load the angular.js script into your page and insert an <code>ngApp</code> directive (attribute) into one of the page's elements.  For example, we can tell Angular to initialize the entire document:</p>
+
+<pre class="prettyprint linenums">
+&lt;!doctype html&gt;
+&lt;html ng-app&gt;
+  &lt;head&gt;
+    &lt;script src="angular.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    I can add: {{ 1+2 }}.
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<p>You can also tell Angular to manage only a portion of a page.  You would want to do this if you are using some other framework to manage other parts of the page.  You do this by placing the <code>ngApp</code> directive on one or more container elements in the document.  For example:</p>
+
+<pre class="prettyprint linenums">
+&lt;div ng-app&gt;
+  I can add: {{ 1+2 }}
+&lt;/div&gt;
+</pre>
+
+<p>You can also ask <code>ngApp</code> to load additional <a href="api/angular.module"><code>modules</code></a> containing services, directives or filers that you'll use on the page.</p>
+
+<p><pre></p>
+
+<div ng-app="AwesomeModule">
+...
+</div>
+
+<p></pre</p>
+
+<p>From a high-level, here's what Angular does during the initialization process:</p>
+
+<ol>
+<li><p>The browser loads the page, and then runs the Angular script. Angular then waits for the
+<code>DOMContentLoaded</code> (or 'Load') event to attempt to initialize.</p></li>
+<li><p>Angular looks for the <code>ngApp</code> directive. If found it compilies the DOM element containing <code>ngApp</code> and its children.</p></li>
+<li><p>Angular creates a global variable <code>angular</code> and binds all Angular APIs to this object's fields.</p></li>
+</ol>
+
+<h3>Related Topics</h3>
+
+<ul>
+<li><a href="guide/dev_guide.compiler">Angular HTML Compiler</a></li>
+<li><a href="guide/dev_guide.bootstrap">Initializing Angular</a></li>
+<li><a href="guide/dev_guide.bootstrap.manual_bootstrap">Manual Initialization</a></li>
+</ul>
+
+<h3>Related API</h3>
+
+<p><a href="api/angular.module.ng.$compile"><code>Compiler API</code></a></p></div>

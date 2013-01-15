@@ -1,0 +1,29 @@
+
+
+// Imports and modules
+
+module speech at "vendor/speak/speakClient";
+import { animator: animateNyan } from "hm/nyan";
+
+
+
+// Privates
+
+function getItems(){
+	return jQuery('.item.done');
+}
+
+
+
+// Exports
+
+export function addAnimation(){
+	var items = getItems();
+	animateNyan(items);
+}
+
+export function say(msg){
+	if(msg.length !== 0){
+		speech.speak(msg);
+	}
+}

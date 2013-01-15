@@ -1,0 +1,241 @@
+// translation rules for Catalan
+// This file is UTF-8 encoded
+
+// Conditional rules
+
+
+// letter groups
+// A  any vowel
+// C  any consonant
+// K  not a vowel (i.e. consonant or word boundary)
+.L01 f h l r s v w y z // continuants
+.L02 h l r s v w y z   // continuants, not f
+.L03 f h r s v w y z   // continuants, not l
+.L04 i í e é è         // front vowels
+.L05 p t k f s         // sords
+.L09 b d g m v l n d z r q // sonors
+.L10 a e o             // vocals fortes
+.L11 i u               // vocals febles
+.L21 p b t d k g       // oclusives
+.L22 f v s z           // fricatives
+.L23 m n               // nasals
+.L24 l ll              // laterals
+.L25 r                 // vibrants
+
+
+.group a
+        a          a
+        ae         ,aE2  // Evitem la neutralització
+        amb (_A     am    // Sensibilització
+
+
+.group b
+        b          b
+        b (_       p
+     A) b (A       B
+    A_) b (A       B
+   L02) b (A       B
+  L02_) b (A       B
+
+
+.group c
+        c          k
+        c (L04     s
+
+.group ç
+        ç          s
+
+.group d
+        d          d
+        d (_       t
+     A) d (A       D
+    A_) d (A       D
+   L03) d (A       D
+  L03_) d (A       D
+        dj         dZ;
+        dv         bb	// Geminació
+
+
+.group e
+        e          E
+        ea         E2,a // Evitem la neutralització
+        eo         E2,o // Evitem la neutralització
+
+        e (nt_     e
+
+
+.group f
+        f          f
+
+.group g
+        g          g
+        g (_       k
+     A) g (A       Q
+    A_) g (A       Q
+   L01) g (A       Q
+  L01_) g (A       Q
+     A) g (rA      Q
+        g (L04     Z;
+        gu (L04    g   // front vowels
+        gui        dZ;i
+
+
+.group h
+        h              // silent
+        -) hi (_   'i
+        -) ho (_   'U
+
+
+.group i
+        i          i
+     A) i (K+      j
+    gü) i (K       i
+    qü) i (K       i
+        i (A       j
+        i (a_      i
+        i (u       i
+     A) ig (_      tS;
+     A) ix         S;
+
+
+.group j
+        j          Z;
+
+
+.group k
+        k          k
+
+
+.group l
+        l          l
+        ll         l^
+     _) l' (P2     l
+     -) la (_      la#
+
+
+.group m
+        m          m
+     _) m' (P2     m
+        mp (K      m
+//        ment (_    m'En  // ??
+
+
+.group n
+        n          n
+     _) n' (P2     n
+        n (_       =n  // unlike Spanish, the vowel is stressed
+     e) n (_       n   // except after e, i
+     i) n (_       n
+        nt (K      n
+        nt (_      =n
+        ny         n^
+     b) n (@       m
+     v) n (@       m
+     @) n (b       m
+     @) n (v       m
+        n (cK      N
+        ng         N
+
+
+.group o
+        o          o
+        or (_      'o*
+        ou         Ow
+
+
+.group p
+        p          p
+        p (t       p:
+
+
+.group q
+        q          k
+        qu (L04    k
+        qui        kwi
+        qü         kw
+
+
+.group r
+        r          R
+     _) r          *R
+        r (_       =        // final r is silent, but stress the vowel
+        r (t       **
+     A) r (A       **
+     C) r (A       **
+     l) r (A       R
+     m) r (A       R
+     n) r (A       R
+     s) r (A       R
+        rr         *R
+
+
+.group s
+        s          s
+     _) s' (P2     s
+        ss         s
+     A) s (A       z
+     @) s (_S1     s
+     -) se (_      s@
+
+
+.group t
+        t          t
+     _) t' (P2     t
+        tg (L04    dZ;
+        tj         dZ;
+        tj (_      tS;
+        tx         tS;
+        tz         dz
+        tm         mm	// Geminació
+
+
+.group u
+        u          u
+     A) u (K       w
+        u (A       w
+        u (i       u
+        uu         uw
+
+.group v
+        v          B
+     _) v          v#
+
+
+.group w
+        w          w
+
+
+.group x
+        x          ks
+    _A) x          gz
+    _A) x (L05     ks
+     K) x          S;
+    Ai) x          S;
+    Au) x          S;
+
+
+.group y
+        y          i
+        y (A       j
+
+
+.group z
+        z          z
+
+
+
+.group
+        à          ''a   // force stress onto this vowel
+        é          ''e
+        è          ''E
+        í          ''i
+        ó          ''o
+        ò          ''O
+        ú          ''u
+        ï          i
+        ŀ          l
+        ü          u
+     g) ü          w
+        ñ          n^
+
+        $          dola#*

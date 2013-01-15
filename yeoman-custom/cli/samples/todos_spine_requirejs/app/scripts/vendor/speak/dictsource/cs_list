@@ -1,0 +1,419 @@
+ // translation rules for Czech
+// This file is UTF-8 encoded
+
+// Letters
+_a	a:
+á	dl'oUhe:,a:
+b	be:
+c	tse:
+č	tSe:
+ch	xa:
+d	de:
+ď	Je:
+e	e:
+é	dl'oUhe:,e:
+ě	ije
+f	ef
+g	ge:
+h	ha:
+_i	i:
+í	dl'oUhe:,i:
+j	je:
+_k	ka:
+l	el
+ľ	el^
+ĺ	dl'oUhe:,el
+m	em
+n	en
+ň	en^
+_o	o:
+ó	dl'oUhe:,o:
+ô	uo:
+p	pe:
+q	kve:
+r	eR
+ř	eR^
+_s	es
+š	eS
+t	te:
+ť	ce:
+u	u:
+ú	dl'oUhe:,u:
+ů	'u:s_kR'oUZkem
+_v	ve:
+w	dv'ojve:
+x	iks
+y	ipsilon
+ý	dl'oUe:,ipsilon
+_z	zet
+ž	Zet
+
+ë	$accent
+ö	$accent
+ü	$accent
+
+
+_#9	t'ap
+_#32 	m'ezeRa // space
+_??	simbol
+_?A	znak
+_cap	velke:
+
+// accent names
+_lig	l'igat,uRa
+_acu	tS'a:Rka
+_ac2	dvj'etS'a:Rki
+_brv	'obloUtSek
+_ced	ts'eJila
+_cir	stR^'i:Ska
+_dia	tR'ema
+_dot	t'etSka	
+_grv	c'eSki:;'aktsent
+_hac	h'a:tSek
+_mcn	m'akRon
+_ogo	'ogonek
+_rng	kR'oUZek
+_stk	S'ikma:tS'a:Rka
+_tld	c'ilda
+
+
+
+_$	dola:R
+_'	apostRof
+_"	uvozovki
+_,	tSa:Rka
+_-	mi:nus
+_;	zdR^edn^i:k
+_?	otazn^i:k
+__	pottr-Zen^i:
+_`	'obRa:ts,ena:||tS'a:Rka
+_(	za:voRka
+_)	za:vorkazavR^i:t
+_[	hR'anata:||z'a:voRka
+_]	hR'anata:||z'avR^i:t
+_{	sl'oZena:||z'a:voRka
+_}	sl'oZena:||z'avR^i:t
+_<	menSi:
+_>	vjetSi:
+_|	sv'isla:||tS'a:Ra
+_:	dv'ojtetSka
+
+.	tetSka	$max3
+*	hvjezJitSka	$max3
+=	Rovno	$max3
+*	hvjezJitSka	$max3
+%	pRotsento	$max3
++	plus	$max3
+!	vigR^itSn^i:k	$max3
+€	eURo
+@	zavina:tS
+&	ampr-sent
+#	gR^i:Zek
+/	lomeno
+\	beksleS
+
+°	stupen^
+×	kRa:t
+÷	Jeleno
+§	paRagRaf
+~	tilda
+^	zdR^i:Ska
+©	k'opiRajt
+
+
+// Numbers
+_0	n'ula
+_1	j'eden
+_2	dv'a
+_2f	dvj'e
+_3	tR^/i
+_4	tSt'iR^i
+_5	p'jet
+_6	S'est
+_7	s'edum
+_8	'osum
+_9	d'evjet
+_10	d'eset
+_11	j'edena:tst
+_12	dv'ana:tst
+_13	tR^/'ina:tst
+_14	tSt'r-na:tst
+_15	p'atna:tst
+_16	S'estna:tst
+_17	s'edumna:tst
+_18	'osumna:tst
+_19	d'evatena:tst
+_2X	dv'atset
+_3X	tR^/'itset
+_4X	tSt'iR^itset
+_5X	p'adesa:t
+_6X	S'edesa:t
+_7X	s'edumdesa:t
+_8X	'osumdesa:t
+_9X	d'evadesa:t
+_0C	s'et
+_1C	st'o
+_2C	dvj'esc'e
+_3C	tR^/'ist'a
+_4C	tStiR^ist'a
+
+_1M1	c'isi:ts
+_0MA1	c'isi:tse
+_0M1	c'isi:ts
+
+_1M2	m'ilio:n
+_0MA2	m'ilio:ni
+_0M2	m'ilio:nu:
+
+_1M3	m'iliaRda
+_0MA3	m'iliaRdi
+_0M3	m'iliaRd
+
+_1M4	b'ilio:n
+_0MA4	b'ilio:ni
+_0M4	b'ilio:nu:
+
+_dpt	_:tSa:Rka_
+_.	tetSka
+
+
+// Pronouns
+mi       $u
+ti       $u
+se       $u
+si       $u
+
+
+// Prepositions
+// the $combine prepositions should also be included in cs_rules
+// as prefixes, so "na-" (for example) is removed from the combined
+// word before the pronuciation of the main word is determined.
+
+skrz     $u $brk $combine    // though
+skrze    $u $pause        // through
+pro      $u $pause $combine  // for
+na       $u $brk $combine    // to/for/on
+o        $u $pause $combine  // around/about
+při      $u $pause $combine  // into,in,around
+v        v_ $brk          // in
+po       $u $pause $combine  // after,around
+za       $u $pause $combine  // behind
+před     $u $pause $combine  // in front of
+mezi     $pause           // between
+pod      $u $pause $combine  // below
+pode     $u $pause        // below
+s        s_ $pause        // with
+nad      $u $pause $combine  // above
+nade     $u $pause        // above
+
+k        $brk             // towards
+proti    $u $pause        // against
+díky     $pause           // thanks to
+naproti  $pause           // opposite
+
+během    $pause           // during
+podle    $pause           // according to
+dle      $u $pause $combine  // along
+vedle    $pause           // beside
+kolem    $pause           // around
+okolo    $pause           // around
+do       $u $brk $combine    // to
+od       $u $brk $combine    // away from
+ode      $u $brk          // away from
+z        s_ $brk          // out of/from
+ze       $u $brk $combine    // out of/from
+bez      $pause $combine     // without
+beze     $pause           // without
+místo    $pause           // instead of
+
+i        $u $brk    // ???
+
+// Conjunctions
+a        $u $brk $pause      // and
+nebo     $u $pause      // or
+však     $pause         // but
+krom     $pause         // except
+ale      $pause         // however
+ač       $pause         // although
+leč      $pause         // unless
+sice     $pause         // although
+že       $u $pause      // if,that
+mimo     $pause         // except
+což      $pause         // which
+ani      $pause         // neither,nor
+
+// Negative
+
+
+// Auxillary verbs
+být      $u     // to be
+jsem     $u     // am
+jsi      $u
+je       $u
+jsme     $u
+jste     $u
+jsou     $u
+
+byl      $u     // (past participle)
+byla     $u
+bylo     $u
+byli     $u
+byly     $u
+
+
+budu     $u     // (future)
+budeš    $u
+bude     $u
+budeme   $u
+budete   $u
+budou    $u
+
+bych     $u     // (conditional)
+bys      $u
+by       $u
+bychom   $u
+byste    $u
+by       $u
+
+mám      $u+     // have
+máš      $u+
+má       $u+
+máme     $u+
+máte     $u+
+mají     $u+
+měl      $u+
+
+chci     $u+     // want
+chceš    $u+
+chce     $u+
+chceme   $u+
+chcete   $u+
+chtějí   $u+
+
+// treat as letters if at the end of the clause
+a        a:    $atend    // letter-a
+i        i:    $atend    // letter-i
+k        ka:   $atend    // letter-k
+o        o:    $atend    // letter-o
+s        es    $atend
+v        ve:   $atend
+z        zet   $atend
+
+
+// Abbreviations
+// if a word has no vowels (or "r") then it will
+// automatically be spoken as individual letters
+
+e.g	napR^
+
+arc      $abbrev
+arj      $abbrev
+atd      $abbrev
+bes      $abbrev
+blr      $abbrev
+cab      $abbrev
+cga      $abbrev
+cm       tsentimetr-
+crd      $abbrev
+ča       $abbrev
+čav      $abbrev
+čla      $abbrev
+člr      $abbrev
+čr       $abbrev
+čsad     $abbrev
+čsfr     $abbrev
+čsr      $abbrev
+čssr     $abbrev
+čvut     $abbrev
+dcl      detsilitr-
+dpi      $abbrev
+drv      $abbrev
+dta      $abbrev
+eeg      $abbrev
+ekg      $abbrev
+esc      iskeip
+etf      $abbrev
+kb       kilobajt
+ghz      gigaherts
+gn       gigan^utn
+gpa      $abbrev
+gw       gigavat
+(http ://)  ha:tetepe:
+hz       heRts
+ibm      $abbrev
+ip       $abbrev
+khz      kiloherts
+kldr     $abbrev
+km       kilometr-
+kn       kilon^utn
+kpa      $abbrev
+kw       kilovat
+mhz      megaheRts
+mkr      $abbrev
+mlr      $abbrev
+mpa      $abbrev
+ndr      $abbrev
+nsr      $abbrev
+ocr      $abbrev
+ods      $abbrev
+ohc      $abbrev
+ohv      $abbrev
+okd      $abbrev
+om       $abbrev
+osn      $abbrev
+ozv      $abbrev
+pci      $abbrev
+pdr      $abbrev
+pgdn     peIdZdaUn
+pgup     peIdZap
+plr      $abbrev
+prm      $abbrev
+rc       $abbrev
+rlc      $abbrev
+rlr      $abbrev
+rs       $abbrev
+rss      $abbrev
+rx       $abbrev
+scsi     $abbrev
+sr       $abbrev
+ssr      $abbrev
+sssr     $abbrev
+stva     $abbrev
+trm      $abbrev
+ufz      $abbrev
+uhf      $abbrev
+ukv      $abbrev
+usa      $abbrev
+uvf      $abbrev
+vga      $abbrev
+wgpo     $abbrev
+wri      $abbrev
+www      ve:ve:ve:
+
+
+// Exceptions
+
+antoni     antoni
+ascii      aski
+balistika  balistika
+cancel     kensl-
+(caps lock) kapslok
+change     tSeIndZ
+delete     dili:t
+down       daUn
+exchange   ikstSeIndZ
+home       hoUm
+insert     inzeRt
+lazer      leIzr-
+newton     n^u:tn
+num        nam
+outlook    aUtlu:k
+page       peIdZ
+power      paUr-
+scroll     skro:l
+search     seRtS
+size       sajz
+unie       unije
+untitled   antitl-
+up         ap
+

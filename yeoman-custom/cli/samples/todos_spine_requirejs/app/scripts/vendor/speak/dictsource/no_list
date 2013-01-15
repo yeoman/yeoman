@@ -1,0 +1,312 @@
+
+// This file in UTF8 encoded
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+
+// character names
+//****************
+a      A:
+b      be:
+c      se:
+d      de:
+f      Ef
+g      ge:
+h      ho:
+j      je:
+k      ko:
+l      El
+m      Em
+n      En
+p      pe:
+q      ku-:
+r      E:R
+s      Es
+t      te:
+v      ve:
+w      d'Ob:El,ve:
+x      Eks
+z      sEt
+
+
+// numeric
+//********
+_0        n'u-l
+_1        'e:n
+_2        t'u:
+_3        tR'e:
+_4        f'i:RE
+_5        f'Em
+_6        s'Eks
+_7        S'u-:
+_8        'Ot:a#
+_9        n'i:
+_10       t'i:
+_11       'Elva#
+_12       t'Olv
+_13       tR'Et:@n
+_14       fj'URt@n
+_15       f'Emt@n
+_16       s'Ekst@n
+_17       s'yt:@n
+_18       'At:@n
+_19       n'It:@n
+_2X       s;'u-:a#
+_3X       tR'Et:i:
+_4X       f'Y:Rti:
+_5X       f'Emti:
+_6X       s'Eksti:
+_7X       s'yt:i:
+_8X       'Ot:i:
+_9X       n'It:i:
+_0C       h'u-ndRa#
+_1C       'Et||h'u-ndRa#
+_0M1      t'u-:s@n
+_1M1      'Et||t'u-:s@n
+_0M2      m'Illi:;,u:n@R
+_1M2      'e:n||m'Illi:;,u:n
+
+_0and     u:g
+_dpt      kOmmA
+
+// ordinal numbers
+_ord	@nda#
+_1o	f'WRsta#
+_2o	'AndRa#
+_3o	tR'Edja#
+_4o	fj'a:Ra#
+_5o	f'Emta#
+_6o	S'Et:a#	
+_8o	'Ot:@nda#
+_11o	'EllEvta#
+_12o	t'Olvta#
+_13o	tR'Et:@nda#
+_14o	fj'URt@mda#
+_15o	f'Emt@nda#
+_16o	s'Ekst@nda#
+_17o	s'yt:@nda#
+_18o	'At:@nda#
+_19o	n'It:@nda#
+_2Xo	s;'u-:@nda#
+_0Co	h'u-ndR@da#
+_0M1o	t'u-:s@nda#
+
+
+// punctuation and symbols
+//========================
+
+*	ss;aRna#	$max3
+=	aRli:k		$max3
++	plu-s		$max3
+%	pR'u:s'Ent	$max3
+&	O:g
+#	nu-mm@RtENn	$max3
+/	skROstR@k	$max3
+\       OmvEndt||skROstR@k	$max3
+
+_!	u-:tRu:pstENn
+_"	AnfY:RS@l
+_$	dOllA:R
+_'	ApUstR'u:f
+_(	paRaNt'e:s||b@j'ynn@R
+_)	paRaNt'e:s||Sl'u-t:
+_*	ss;aRna#
+_,	kOmmA
+_-	stRe:k
+_.	pu-Nktu-:m
+_:	ku:lOn
+_;	se:mi:ku:lOn
+_<	mIndRa#||En
+_=	aRli:k
+_>	stWR@||En
+_?	spWRSmOlstENn
+@	kRWllAlfA
+_[	v'EnstRa#||h'A:ke:paRaNt'e:s
+_\	OmvEndt||skROstR@k
+_]	h'YyRa#||h'A:ke:paRaNt'e:s
+^	sIRku-mflEks
+__	u-ndaRStR@k
+_`	'OmvEndt||ApUstR'u:f
+
+_#09	tA:b
+_#32	mEllOmRu:m
+
+_acu	A:'ku-t:
+_ced	s'e:dIlla#
+_cir	s'IRku-mflEks
+_dia	tR'e:mA
+_grv	gR'A:vi:s
+_tld	t'Ilda#
+
+é	$accent
+ü	$accent
+
+
+// abbreviations
+//**************
+ooxml	$abbrev
+
+
+// articles
+en	$u
+et	Et $u
+ei	$u
+
+
+// pronouns
+jeg	jE:I $u+
+du	$u+
+han	$u+
+hun	$u+
+vi	$u+
+dere	$u+
+de	di: $u+
+
+meg	$u+
+deg	$u+
+ham	$u+
+henne	$u+
+oss	$u+
+dere	$u+
+dem	$u+
+
+denne	$u+
+dette	$u+
+disse	$u+
+den	$u+
+det	de: $u+
+
+
+// possessive adjectives
+min	$u+
+mi	$u+
+mitt	$u+
+mine	$u+
+din	$u+
+di	$u+
+ditt	$u+
+dine	$u+
+hans	$u+
+hennes	$u+
+vår	$u+
+vårt	$u+
+våre	$u+
+deres	$u+
+sin	$u+
+si	$u+
+sitt	$u+
+sine	$u+
+
+
+// prepositions
+i	$u $brk     // in
+å	$u $brk     // to
+av	$u $brk     // of, off, by
+bak     $pause      // behind
+etter	$u $pause   // after
+for	fOr: $u $pause   // for
+foran   $pause      // in front of
+fra	$u $pause   // from
+in	$u $brk     // in
+innen	$pause      // within
+hos     $u $pause   // with, by, at
+langs	$u $pause   // along
+med	$u $pause   // with
+mellom	$pause      // between
+mens	$u $pause   // while
+mot	$u $pause   // against, towards
+ned	$pause      // down
+om	$u $brk     // about
+over	$brk        // over
+på      $u $brk     // on
+som	$u $pause   // as, that, which
+til	$u $brk     // to
+under	$brk        // under
+uten    $brk        // without
+
+// conjunctions
+at	$u $pause   // that
+og	$u $pause   // and
+samt	$u $pause   // and
+men	$u $pause   // but
+så	$u $pause   // so
+fordi	$pause      // because
+før     $pause      // before
+hvis	$u $pause   // if
+dersom  $pause      // if
+eller	$u $pause   // or
+enn	$u $pause   // than
+mens	$pause      // while
+
+// negative
+ikke	$u
+
+// questions
+
+
+// auxillary verbs  (be, have, can, etc)
+
+være	$u+
+er	,E:R
+var	$u
+vært	$u
+
+ha	$u+
+har	$u
+hadde	$u
+hatt	$u
+
+// bli
+blir	$u+
+ble	$u+
+blitt	$u+
+
+vil	$u+
+kan	$u+
+kunne	$u+
+kunnet	$u+
+
+skal	$u+
+skulle	$u+
+skullet	$u+
+
+bør	$u+
+
+
+
+// some common adjectives and adverbs
+bare    $u          // only
+også	$brk        // also
+
+
+// letters which are also words
+_å     o:
+å      o:   $atend
+_i     i:
+i      i:   $atend
+
+
+// English Words
+firefox	_^_EN
+screen	_^_EN
+reader	_^_EN
+cancel	_^_EN
+continue	_^_EN
+magnifier	_^_EN
+and	a#nd	$only
+
+
+// MAIN WORD DICTIONARY
+//*********************
+
+der         dE:R
+her         hE:R
+kom         kOm
+loe         lu:		$capital
+noe         nU:a#
+noen        nU:@n	// no+en
+office      Offi:s
+system      syst'e:m

@@ -1,0 +1,25 @@
+
+// This file is UTF8 encoded 
+// Spelling to phoneme words for Nahuatl.
+
+// Note: initial/final "." has already been removed
+
+// numeric
+
+//_0    zero $text  // TEST
+_0	a?tle
+_1	se:
+_2	O:me
+_3	e:ji
+_4	na:wi
+_5	ma:kwi:lli
+_6	tSikwase:
+_7	tSicO:me
+_8	tSiwke:ji
+_9	tSiwkna:wi
+_10	ma?tlaktli
+_1X	ma?tlaktlion
+_20	sempO:walli
+_2X	sempO:wallion
+_30	sempO:walliomma?tlaktli
+_3X	sempO:walliomma?tlaktlion

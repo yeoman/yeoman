@@ -1,0 +1,337 @@
+
+// This file in UTF8 encoded
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+_cap	'iso
+_??	m'erk:I
+_#9	sarkain
+_#32	v&li
+
+a	a:
+ä	&:
+b	be:
+c	se:
+d	de:
+e	e:
+f	&f
+g	ge:
+h	ho:
+i	i:
+j	ji:
+k	ko:
+l	&l
+m	&m
+n	&n
+o	o:
+ö	Y:
+p	pe:
+q	ku:
+r	&r
+s	&s
+t	te:
+u	u:
+v	ve:
+w	kaksoisve:
+x	&ks
+y	y:
+z	tset
+å	r'uotsalainen'o:
+š	h'at:u&s
+ž	h'at:uts,et
+
+
+
+_.	piste
+_!	hu:tomerk:i
+_?	kysymysmerk:I
+_"	lainaus
+_#	risu
+_$	dollarin
+_%	prosent:i
+_&	etmerk:i
+_'	heit:o
+_:	kaksoispiste
+€	euroa
+%	prosent:i
+_(	alkusulku
+_)	lop:usulku
+_[	alkuhaka2
+_]	lop:uhaka2
+_{	alkua:lto
+_}	lop:ua:lto
+_<	p'ienempIk'uin
+_>	s'u:rempIk'uin
+_-	vi:va2
+__	ala2vi:va2
++	plus	$max3
+*	asteriski	$max3
+=	'yht&k'uin	$max3
+%	prosent:I	$max3
+/	kaut:a2
+\	keno
+€	euro
+£	punta2
+¤	valu:t:a2
+&	_et
+@	_&t
+~	tilde
+
+_acu	'aku:t:I
+_brv	br'eve
+_ced	s'edIljI
+_cir	s'irkumfl,eksI
+_dia	'umlaut
+_grv	gr'avIs
+_tld	tilde
+
+// numbers
+_0       n'olla
+_1       'yksi
+_2       k'aksi
+_3       k'olme
+_4       n'elj&
+_5       v'i:si
+_6       k'u:si
+_7       s'eitsem&n
+_8       k'ahdeksan
+_9       'yhdeks&m
+_10      k'ymmenen
+_11      'yksitoista
+_12      k'aksitoista
+_13      k'olmetoista
+_14      n'elj&toista
+_15      v'i:sitoista
+_16      k'u:sitoista
+_17      s'eitsem&nt,oista
+_18      k'ahdeksant,oista
+_19      'yhdeks&nt,oista
+_2X      k'aksikymment&
+_3X      k'olmekymment&
+_4X      n'elj&kymment&
+_5X      v'i:sikymment&
+_6X      k'u:sikymment&
+_7X      s'eitsem&nk,ymment&
+_8X      k'ahdeksank,ymment&
+_9X      'yhdeks&mk,ymment&
+_0C      s'ata:_
+_1C      s'ata
+_0M1     t'uhat:a
+_1M1     t'uhat          // no '1' before thousand
+_0M2     m'iljo:na:
+_1M2     m'iljo:na
+_0M3     m'iljardi
+_1M3     m'iljardi
+_0M4     b'iljo:na:
+_1M4     b'iljo:na
+_dpt     pilk:u        // comma
+
+
+// articles
+
+
+// pronouns
+minä $u
+sinä $u
+hän  $u
+se   $u
+me   $u
+te   $u
+he   $u
+ne   $u
+
+itse  $u $double      // reflexive pronoun
+
+tämä  $u+ // this
+tämän  $u+
+tätä  $u+
+tässä  $u+
+tästä  $u+
+tähän  $u+
+tällä  $u+
+tältä  $u+
+tälle  $u+
+tänä  $u+
+
+tuo   $u+ // that
+tuon  $u+
+tuota  $u+
+tuossa  $u+
+tuosta  $u+
+tuohon  $u+
+tuolla  $u+
+tuolta  $u+
+tuolle  $u+
+tuona  $u+
+
+nämä  $u+ // these
+näiden   $u+
+näitten  $u+
+näitä  $u+
+näissä  $u+
+näistä  $u+
+näihin  $u+
+näillä  $u+
+näiltä  $u+
+näille  $u+
+näinä  $u+
+
+nuo   $u+ // those
+noiden  $u+
+noitten  $u+
+noissa  $u+
+noista  $u+
+noihin  $u+
+noilla  $u+
+noilta  $u+
+noille  $u+
+noina  $u+
+
+joka  $u+
+jonka  $u+
+jota  $u+
+jossa  $u+
+josta  $u+
+johon  $u+
+jolla  $u+
+jolle  $u+
+jolta  $u+
+jona  $u+
+
+jotka  $u+
+joiden  $u+
+joita  $u+
+joissa  $u+
+joista  $u+
+joihin  $u+
+joilla  $u+
+joilta  $u+
+joille  $u+
+joina  $u+
+
+
+// possessives
+
+// prepositions
+
+// conjunctions
+ja     $u $pause // and
+entä   $u $pause // and
+tai    $u $pause // or
+vai    $u $pause
+mutta  $u $pause // but
+
+// negative
+
+en    $u
+et    $u
+ei    $u  // not
+emme  $u
+ette  $u
+eivät $u
+
+// questions
+
+
+// auxillary verbs
+olla    $u // to be
+olen    $u
+olet    $u
+on      $u
+olemme  $u
+olette  $u
+ovat    $u
+
+ole     $u $double
+olleet  $u
+ollut   $u
+olin    $u
+olit    $u
+oli     $u
+olimme  $u
+olitte  $u
+olivat  $u
+olisin  $u
+olisit  $u
+olisi   $u
+olisimme  $u
+olisitte  $u
+olisivat  $u
+
+lienen    $u
+lienet    $u
+lienee    $u
+lienemme  $u
+lienette  $u
+lienevät  $u
+liene     $u
+lienneet  $u
+
+
+// some common adjectives and adverbs
+vähän   $u // some
+
+// words that cause doubling
+kiinni  $double
+luo     $double
+taa     $double
+terve   $double
+tuore   $double
+
+aihe    $double
+aste    $double
+kone    $double
+laite   $double
+lause   $double
+luode   $double
+näyte   $double
+oire    $double
+puhe    $double
+purje   $double
+tunne   $double
+vene    $double
+virhe   $double
+
+aja     $double
+auta    $double
+mene    $double
+ota     $double
+pue     $double
+pure    $double
+syö     $double
+tule    $double
+
+// Pronunciation exceptions
+
+ok        oo_,ko:
+// ok     _^_EN                  // Translates to english o'kay.
+okay      okei
+
+// Jogurtti (also: jugurtti or jukurtti)
+yoghurt    jogurtti
+yogurt     jogurtti
+
+
+// Abbreviations
+
+abc        'a:,be:,se:
+os         o:&s:   $dot
+ad         a:de:   $dot            // anno Domini, Herran vuonna
+ca         'se:a:    $dot            // circa 
+em         e:,&m  $dot    
+ekr        'e:,ko:,&r   $dot         // ennen Kristuksen syntymää
+etc        et_setera  $dot          // et cetera, ym., jne.
+ym         ynn&_mu:ta  $dot        // ynnä muuta (etc)
+eg         esimerkiksi  $dot       // exempli gratia, esimerkiksi
+jne        'ji,&n,e:  $dot  // ja niin edelleen
+(à la)     'ala    $dot            // jonka mukaan
+ky         ko:y:   $dot            // kommandiittiyhtiö
+oy         o:y:                    // osakeyhtiö 
+nro        numero  $dot
+
+
+
+

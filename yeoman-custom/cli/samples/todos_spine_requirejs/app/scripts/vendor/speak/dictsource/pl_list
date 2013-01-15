@@ -1,0 +1,3088 @@
+
+// This file is UTF8 encoded
+
+// Letters
+// If a letter has a "word" pronunciation which is different from its
+// "letter" name, then include the letter name here, with the letter
+// prefixed by a _ character.
+
+// Numbers
+_0		z'ERO:
+_1		j'EdEn
+_2		dv'a
+_3		t|S'y
+_4		tSt'ERy
+_5		p;'En^ts;
+_6		S'ES;ts;
+_7		S;'EdEm
+_8		'OS;Em
+_9		dz;'Ev;En^ts;
+_10		dz;'ES;En^ts;
+_11		jEdEn'aS;ts;E
+_12		dvan'aS;ts;E
+_13		t|Syn'aS;ts;E
+_14		tStERn'aS;ts;E
+_15		pjEtn'aS;ts;E
+_16		SEsn'aS;ts;E
+_17		S;EdEmn'aS;ts;E
+_18		OS;Emn'aS;ts;E
+_19		dz;Ev;Etn'aS;ts;E
+_2X		dvadz;'ES;ts;a
+_3X		t|Sydz;'ES;c;i
+_4X		tStERdz;'ES;c;i
+_5X		p;En^dz;'ES;Ont
+_6X		SEZ;dz;'ES;Ont
+_7X		S;EdEmdz;'ES;Ont
+_8X		OS;Emdz;'ES;Ont
+_9X		dz;Ev;En^dz;'ES;Ont
+
+_1C		st'O
+_2C		dv;'ES;c;E
+_3C		t|S'ysta
+_4C		tSt'ERysta
+_5C		p;'En^ts;sEt
+_6C		S'ES;sEt
+_7C		S;'EdEmsEt
+_8C		'OS;EmsEt
+_9C		dz;'Ev;En^ts;sEt
+
+_0M1		tyS;'Entsy
+_1M1		t'yS;Onts
+_0MA1		tyS;'OntsE		// alternative form
+_0MA2		m;ilj'Ony
+_1M2		m;'iljOn
+_0M2		m;ilj'Onuf
+_0MA3		m;ilj'aRdy
+_1M3		m;'iljaRd
+_0M3		m;ilj'aRduf
+_0MA4		b;ilj'Ony
+_1M4		b;'iljOn
+_0M4		b;ilj'Onuf
+
+_dpt		_pSEts;'inEk_
+
+_cap d'uZE_
+_?A  litERa
+_??  symbOl
+_#9  tab
+_#32 spatsja
+
+// accent names
+_lig	ligat'uRa
+_acu	_'OstRE
+_ac2	x,uNgaR'umlawt // pOdv'ujnE_'OstRE	
+_brv	bR'Evis
+_ced	z|tsEd;'ilO~
+_cir	z|d'aSc;Em	//pSEts;'ONgwE
+_dia	_'umlawt
+_dot	z|kROpkO~
+_grv	ts;'E~Sc;E
+_hac	h'atSEk
+_mcn	nadkRES;l'OnE //m'akROn
+_ogo	z|Og'Onc;Em
+_rng	z|k'uwc;Em	//k'OwO
+_stk	skRES;l'OnE // dz;ElOnE
+_tld	z|t'yldO~
+
+
+w	vy  $u $atend
+z	zy  $u $atend
+
+_a	a
+ą	O~
+b	bE
+c	tsE
+ć	ts;i
+d	dE
+e	E
+ę	E~
+f	Ef
+g	gjE
+h	xa
+_i	i
+j	jOt
+k	ka
+l	El
+ł	wy
+m	Em
+n	En
+ń	n^i
+_o	O
+_ó	,u_kREskOv'anE
+p	pE
+q	ku
+r	ER
+s	Es
+ś	S;i
+t	tE
+_u	u
+v	faw
+_w	vu
+x	iks
+y	'igREk
+_z	zEt
+ż	ZEt|z|kR'OpkO~
+ź	Z;i
+
+ä	$accent
+ö	$accent
+ü	$accent
+č	$accent
+ř	$accent
+š	$accent
+ž	$accent
+å	$accent
+æ	$accent
+ø	$accent
+ñ	$accent
+í	$accent
+
+
+// redefine foreign letters from pl_rules as CHAR
+
+ß	S,arfEs_'Es
+ü	$accent
+ö	$accent
+ä	$accent
+ž	$accent
+č	$accent
+š	$accent
+ř	$accent
+å	$accent
+æ	$accent
+ø	$accent
+ñ	$accent
+í	$accent
+
+// all my keyboard...
+
+_!	vykS'ykn^ik
+_<	mn^'EjSE
+_>	w;'ENkSE
+_"	tsudz'yswuf
+_,	pSEts;'inEk
+_-	m'yS;lnik		// or minus?
+_?	zn,ak||zapyt'an^a
+__	pOdkRES;l'En^E
+_:	dvukR'OpEk
+_;	S;R'Edn^ik
+_(	nav;as
+_)	pOnav;'aS;E
+_[	n,av;as||kvadRat'Ovy
+_]	pRavy||n,av;as||kvadRat'Ovy
+_{	n,av;as||klamROvy
+_}	pRavy||n,av;as||klamR'Ovy
+_'	ap'OstROf
+
+.	kR'Opka	$max3
+~	t'ylda
+=	R'uvna||S;E	$max3
+/	slES	$max3
+*	gv;'astka	$max3
+\	b'EkslES	$max3
+|	kR,Eska||p;On'Ova
+#	haS	$max3
+_$	d'OlaR
+%	pR'OtsEnt
+^	d'aSEk		// what's be better?
+&	and
+`	'aktsEnt
+@	m'awpa
++	plus	$max3
+
+// other characters 
+
+˘	bR'Evis
+¤	val'uta
+§	paR'agRaf
+¨	'umlawt
+°	st'Op;En^
+˛	Og'OnEk
+´	,OstRy_'aktsEnt
+ˇ	k'aROn
+¸	tsEd;'illa
+˝	x,uNgaR'umlawt
+×	R'azy
+÷	dz;El'En^;E
+˙	g'uRna_kR'Opka
+¯	nadkRES;l'En^E
+²	kv'adRat
+³	S'ES;tS;an
+¼	jEdnatSf'aRta
+½	jEdnadR'uga
+¾	t||SytSf'aRtE
+¹	jEdEng'uRnE
+™	tR'EjdmaRk
+±	plusm'inus
+£	funt
+®	zastSEZ'Ony
+¡	OdvR,Otny||vykS'ykn^ik
+¢	tsEnt
+¥	jEn
+«	fRants,usci||tsudz'yswuf
+¬	nEg'atsja
+»	pR'avy||fRants,usci||tsudz'yswuf
+¶	ak'apit
+¿	OdvR,Otny||pytajn^ik
+
+
+// screenreadery
+
+nvda EnfawdE'a $abbrev
+orca ORka
+jaws dZ'Ews $abbrev
+
+// komputery, komputery
+
+home	xOwm
+(page up) 	pEjdZ'ap
+pageup		pEjdZ'ap
+(page down)	pEjdZd'awn
+pagedown	pEjdZd'awn
+(caps lock)	kapslOk
+(num lock)	numlOk
+escape		Esk'Ejp
+backspace	b'EkspEjs
+evolution	EvOl'uSyn
+load		lOwd
+office		Ofis
+play		plEj
+scane		skan
+(screen reader) skRinR'idEr
+(sound juicer)	sawnd||dZ'usER
+thunderbird	$1
+view		v;u
+(e mail)	imEjl
+(e maila)	imEjla
+(e mailem)	imEjlEm
+(e maile)	imEjlE
+(e maili)	imEjli
+(e mailom)	imEjlOm
+(e mailowy)	imEjlOvy
+(e mailowego)	imEjlOvEgO
+(e mailowe)	imEjlOvE
+delete		dil'Ejt
+eject		iZ'Ekt
+forward		fORwERd
+backward	bEkwERd
+device		div'ajs
+devices		divajsis
+usb		uEsb'E	$abbrev
+url		uER'El	$abbrev
+drive		drajv
+scsi		sk'azi	$abbrev
+hda		$abbrev
+sda		$abbrev
+dvd		divid'i	$abbrev
+sh		Es'xa	$abbrev
+ascii		'askEj	$abbrev
+ctrl		k'OntROl $abbrev
+right		Rajt	$abbrev
+
+// nazwy własne akcentowanie - wymowa w regułkach
+// todo: more!
+
+aberdeen $1
+alastair $1
+alison	$1
+allison	$1
+alistair $1
+allister $1
+
+amsterdam $1
+angeles	$1
+
+
+canaveral $2
+christopher $1
+discovery $2
+jonathan	$1
+mandelbrot $1
+matterhorn $1
+
+microsoft $1
+
+//nazwy własne - ze względu na odmianę większość do rules, a szkoda :(
+
+andrew	Endrju	// nieodmienne
+chihuahua	tSiwawa
+francisco	fRansiskO
+josé	hOz'E
+jose	hOz'E
+jake	dZEjk
+jersey	dZERzi
+miami	maj'ami
+
+janet	dZanEt	// żeńskie nie kończące się na a
+jane	dZEjn
+alice	Elis
+circe	kiRkE
+maureen	mOR'in
+jackie	dZEki
+jacqueline Zakl'in
+janice	dZEn^is
+jeanette	Zan'Et
+
+george	dZOrdZ	// i męskie zakończone samogłoską odmieniane przez apostrof
+maurice mORis
+anthony	EntOn
+anthony EntOny $1 $only
+jerry	dZER
+jerry	dZERy	$only
+
+
+// some exceptions - dawać więcej!
+arcus		arkus
+jebut		$2
+babach		$2
+cv		siv'i	$abbrev
+maximum		$1
+maxima		$1
+maksimum	$1
+minimum		$1
+optimum		$1
+kolaż		$2
+
+// wice- arcy- archi- with single-syllable nouns
+
+archidiak	$3
+archirej	$3
+
+// liczebniki
+
+czterysta	$1
+czterystu	$1
+pięciuset	$1
+sześciuset	$1
+siedemset	$1
+siedmiuset	$1
+osiemset	$1
+ośmiuset	$1
+dziewięćset	$1
+dziewięciuset	$2
+
+// pronouns
+ja		$u+		// I
+ty		$u+		// you (sng)
+on		$u+		// he
+ona		$u+		// she
+ono		$u+
+my		$u+		// we
+wy		$u+		// you
+oni		$u+		// they (m)
+one		$u+		// they (f)
+się		$u		// (reflexive)
+
+który		$u+		// which,what,that (+declines)
+którego	$u+
+któremu	$u+
+którym		$u+
+która		$u+
+którą		$u+
+której		$u+
+które		$u+
+których	$u+
+którzy		$u+
+niektóry	$u+		// some (+declines)
+niektórego	$u+
+niektóremu	$u+
+niektórym	$u+
+niektóra	$u+
+niektórą	$u+
+niektórej	$u+
+niektóre	$u+
+niektórych	$u+
+niektórzy	$u+
+
+to		$u		// this
+tego		$u $strend2
+temu		$u $strend2
+tym		$u $strend2
+ta		$u $strend2
+tej		$u $strend2
+tą		$u $strend2
+ci		$u $strend2
+te		$u $strend2
+tych		$u $strend2
+tymi		$u $strend2
+ten		$u $strend2
+
+mi		$u
+mu		$u
+jej		$u
+mnie		$u
+jemu		$u
+im		$u
+ich		$u
+wam		$u
+dla		$u
+
+od		$u
+
+// questions
+czy		$u
+czemu		$u+
+czym		$u1+
+czyj		$u $strend2			// does not work hgw why
+czyim		$u+
+
+// prepositions
+na		$u+		// in/on
+po		$u+
+do		$u+
+we		$u
+o		$u+
+obok		$u+		// near/next to
+przy		$u+		// near/at
+nad		$u+		// over
+pod		$u+
+między		$u+		// between
+przed		$u+		// in front of, before
+za		$u+		// beyond, at the back
+
+// misc
+nie		$u+		// not, no
+taki		$u+		// such
+
+// verbs
+
+być		$u+		// to be
+jestem		$u+		// am
+jesteś		$u+		// are
+jest		$u+		// is
+jesteśmy	$u+		// (we) are
+jesteście	$u+		// (you) are
+są		$u+		// (they) are
+byłem		$u+			// past 
+byłam		$u+
+byłeś		$u+
+byłaś		$u+
+był		$u+
+była		$u+
+było		$u+
+byliśmy	$u+
+byliście	$u+
+byli		$u+
+byłyśmy	$u+
+byłyście	$u+
+były		$u+
+będę		$u+			// future
+będziesz	$u+
+będzie		$u+
+będziemy	$u+
+będziecie	$u+
+będą		$u+
+
+mieć		$u+		// to have
+mam		$u+
+masz		$u+
+ma		$u+
+miałem		$u+
+miałaś	$u+
+miał		$u+
+mamy		$u+
+macie		$u+
+mają		$u+
+mieliśmy	$u+
+mieliście	$u+
+mieli		$u+
+miałyśmy	$u+
+miałyście	$u+
+miały		$u+
+
+// conjunctions
+a		$u $brk		// and/but
+i		$u $brk		// and
+oraz		$u $brk		// and
+bo		$pause		// because
+gdyż		$pause		// because
+ponieważ	$pause		// because
+ale		$u+ $brk	// but
+ani		$u+ $pause	// neither
+też		$pause		// also, as well, too
+przecież	$u+ $pause	// after all
+tylko		$u+
+
+
+//?
+proc	pr'OtsEnt	$dot
+
+//dr, mgr and so...
+
+dr		d'OktOR		$dot
+mgr		mag'istER	$dot
+doc		d'OtsEnt	$dot
+prof		pROf'EsOR	$dot
+hab		habilitOv'any $dot
+inż		inZ'yn^ER $dot
+mec		mEtsEnas	$dot
+//ks		kS;Onts	$dot
+//bp		biskup	$dot
+//bpa		biskupa
+//hr		hRab;ja	$dot
+
+//gen		gEnERaw	$dot
+płk		puwk'Ovnik $dot	// declinated forms in pl_rules
+ppłk		pOtpuwk'Ovnik $dot
+mjr		m'ajOR	$dot
+kpt		kap'itan	$dot
+//por		pOR'utSn^ik $dot
+ppor		pOdpOR'utSn^ik	$dot
+kpr		kapRal	$dot
+
+// abbr
+
+ekg		Ekag;'E	$abbrev
+usg		u_Esg;'E	$abbrev
+
+tzn		tO||znatSy	$dot
+itd		i||tak||dalEj	$dot
+itp		i||tEmu||pOdObnE	$dot
+etc		Ets'EtERa	$dot
+św		S;v;Enty $dot
+śp		S;v;EntEj||pam;En^ts;i $dot
+
+ok		OkOwO	$dot
+ok		Ok'Ej $allcaps
+
+np		napS'ykwad $dot
+tys		tyS;E~tsy $dot
+mln		miljOnuf
+mld		miljaRduf
+
+//popularne zagraniczniaki nieodmienne (no, prawie)
+(ad hoc) adh'Ok
+adieu	adj'E
+(ad oculos) ad'OkulOs
+angelica	angElika $2
+
+(carte blanche) kaRtbl'anS
+challenge	tSElEndZ
+chanson		SansO~	$2
+(chargé d'affaires) SaRZEdafER	$4
+(charge d'affaires) SaRZEdafER	$4
+charmant	SaRman	$2
+charme		SaRm
+charmeur	SaRmER	$2
+charmeuse	SaRmEz	$2
+chippendale	tSipEndEjl
+chippendale	tSipEndEjl $1 $only
+(chow chow)	tSawtSau	$2
+ciao	tSjaw
+(cicer cum caule)	ts,itsERkumk'awlE
+(ci devant)	sidEv'aN
+cinquecento	tSinkwEtSEntO
+circa		tsiRka
+(cis dur)	tsisd'uR
+(cis moll)	tsism'Ol
+cito		tsitO
+city		tsity
+cliché		kliS'E
+cliche		kliS'E
+clou	klu
+collage		kOl'aZ
+college		kOlEdZ		//en
+collège		kOlEZ	$2	//fr
+comte	kO~t
+comtesse	kO~t'Es
+con	kOn
+concierge	kOnsj'ERZ
+cool		kul
+copyright	k'OpyRajt
+(cosa nostra)	k,Ozan'OstRa
+cottage		kOtydZ
+coupé		kup'E
+coupe		kup'E
+country		kantRy
+cubiculum	kub'ikulum
+culpa		kulpa
+curriculum	kuR'ikulum
+
+d'amour		damuR	$2
+(de facto)	dEfaktO
+(de iure)	dEjuRE
+(déjà vu)	dEZav'i
+(déjà vue)	dEZav'i
+(deja vu)	dEZav'i
+(deja vue)	dEZav'i
+dell'arte	dEl'aR
+del'arte	dEl'aR
+(dies irae) d;'ijEs'iRE
+dinghy	d;iNgi
+
+faciendi	fasjEndi
+foyer	fuaj'E
+
+gentleman $1
+graecas	gREkas
+
+
+monsieur mEsj'E
+madame	mad'am
+mademoiselle madmuaz'El
+(maitré d'hotel) mEtREdOt'El
+(maitre d'hotel) mEtREdOt'El
+mlle	madmuaz'El
+(mon ami)	mOnami $3
+(mon cher)	mO~SER $2
+
+new	n^;u
+
+out	awt
+
+poirot	puwaR'O // odmieniony w regułkach
+
+(qui pro quo) kvipROkvO $3
+rock		rOk
+
+sir	sER
+sire	siR
+street		stRit
+
+(va banque) vab'aNk
+variétés	varjEtE $3
+varietes	varjEtE $3
+via		via
+vice		vitsE
+(vis à vis)	vizavi $3
+(vis a vis)	vizavi $3
+voilà		vuala $3
+voila		vuala $3
+vivace		vivatSE
+von		fOn
+voodoo		vudu
+
+// kuchnia, kuchnia, jeść nam się chce!
+//ragout	Rag'u // przen. do rules
+fondue	fO~d'i
+beaujolais	bOZOl'E
+boeuf	bEf
+cabernet	kabERn'E
+camembert	kamEmb'ER
+café		kafE $2
+cafe		kafE $2
+chablis		Sabli $2
+chantilly	Santiji	$3
+chianti		kjanti
+chili		tSili
+chilli		tSili
+(chili con carne) tS,ilikOnk'arnE
+(chop suey)	tSOpsui
+coca		kOka
+cola		kOla
+coleslaw	kOlEslOw
+croissant	kRuas'aN
+cumberland	k'ambERlEnd
+(cura çao)	kiRasaO
+curaçao		kiRasaO
+curacao		kiRasaO
+curry		kaRy
+(de la maison)	dElamEz'O~
+(de volaille)	dEvOl'aj
+(a la)		al'a
+(á la)		al'a
+muesli		musli
+müsli		musli
+quiche		kiS
+ratatouille	ratatuj $3
+spécialité	spEsjalit'E
+specialite	spEsjalit'E
+
+vinaigrette 	winEgrEt $3
+winegret	$3
+
+// stress... stress... stress...
+
+(o mnie)	 'Omn^;E
+(o nas)		 'Onas
+(o niej)	 'On^;Ej
+(o nim)		 'On^im
+(o nie)		 'On^;E
+(o nią)		 'On^;O~
+(o tą) 		 'OtO~
+(o te)	 	 'OtE
+(o to) 		 'OtO
+(o tych) 	 'Otyh
+(o tym) 	 'Otym_
+(o was) 	 'Ovas
+(na mnie) 	 n'amn^;E
+(na nas) 	 n'anas
+(na niej) 	 n'an^;Ej
+(na nim) 	 n'an^im
+(na nich) 	 n'an^ih
+(na nie) 	 n'an^;E
+(na nią) 	 n'an^;O~
+(na tą) 	 n'atO~
+(na te) 	 n'atE
+(na to) 	 n'atO
+(na tych) 	 n'atyh
+(na tym) 	 n'atym_
+(na was) 	 n'avas
+(nad nas) 	 n'adnas
+(nad nią) 	 n'adn^;O~
+(nad nim) 	 n'adn^im
+(nad nich) 	 n'adn^ih
+(nad nie) 	 n'adn^;E
+(nad tą) 	 n'attO~
+(nad te) 	 n'attE
+(nad to) 	 n'attO
+(nad tym) 	 n'attym
+(nad was) 	 n'advas
+(nade mną) 	 nad'EmnO~
+(nade mnie) 	 nad'Emn^;E
+(po mnie) 	 p'Omn^;E
+(po nas) 	 p'Onas
+(po niej) 	 p'On^;Ej
+(po nim) 	 p'On^im
+(po nich) 	 p'On^ih
+(po nie) 	 p'On^;E
+(po tą) 	 p'OtO~
+(po te) 	 p'OtE
+(po to) 	 p'OtO
+(po tym) 	 p'Otym
+(po was) 	 p'Ovas
+(pod nas) 	 p'Odnas
+(pod nią) 	 p'Odn^;O~
+(pod nim) 	 p'Odn^im
+(pod nich) 	 p'Odn^ih
+(pod nie) 	 p'Odn^;E
+(pod tą) 	 p'OttO~
+(pod te) 	 p'OttE
+(pod to) 	 p'OttO
+(pod tym) 	 p'Ottym
+(pod was) 	 p'Odvas
+(pode mną) 	 pOd'EmnO~
+(pode mnie) 	 pOd'Emn^;E
+(poza mną) 	 pOz'amnO~
+(poza nią) 	 pOz'an^;O~
+(poza nim) 	 pOz'an^im
+(przed nas) 	 pS'Ednas
+(przed nią) 	 pS'Edn^;O~
+(przed nim) 	 pS'Edn^im
+(przed tą) 	 pS'EttO~
+(przed te) 	 pS'EttE
+(przed to) 	 pS'EttO
+(przed tych) 	 pS'Ettyh
+(przed tym) 	 pS'Ettym
+(przed was) 	 pS'Edvas
+(przed nich) 	 pS'Edn^ih
+(przed nie) 	 pS'Edn^;E
+(przede mną) 	 pSEd'EmnO~
+(przede mnie) 	 pSEd'Emn^;E
+(przez nas) 	 pS'Eznas
+(przez nią) 	 pS'Ezn^;O~
+(przez tą) 	 pS'EstO~
+(przez te) 	 pS'EstE
+(przez to) 	 pS'EstO
+(przez tych) 	 pS'Estyh
+(przez was) 	 pS'Ezvas
+(przez nich) 	 pS'Ezn^ih
+(przez nie) 	 pS'Ezn^;E
+(przeze mnie) 	 pSEz'Emn^;E
+(przy mnie) 	 pS'ymn^;E
+(przy nas) 	 pS'ynas
+(przy nich) 	 pS'yn^ih
+(przy niej) 	 pS'yn^;Ej
+(przy nim) 	 pS'yn^im
+(przy tej) 	 pS'ytEj
+(przy tych) 	 pS'ytyh
+(przy tym) 	 pS'ytym
+(przy was) 	 pS'yvas
+(we mnie)	 v'Emn^;E
+(za mnie) 	 z'amn^;E
+(za nas) 	 z'anas
+(za nią) 	 z'an^;O~
+(za nim) 	 z'an^im
+(za tą) 	 z'atO~
+(za te) 	 z'atE
+(za to) 	 z'atO
+(za tym) 	 z'atym
+(za was) 	 z'avas
+(za nich) 	 z'an^ih
+(za nie) 	 z'an^;E
+(ze mnie) 	 z'Emn^;E
+(ze mną) 	 z'EmnO~
+
+	
+// words marked with $combine are combined with word marked with $alt
+// (used for 'nie' with single-syllable verbs)
+
+nie		$u $combine
+ni		$u $combine
+
+
+
+// autogenerated
+
+bacz		$alt
+bać		$alt
+baw		$alt
+bądź		$alt
+becz		$alt
+bić		$alt
+bij		$alt
+bił		$alt
+bladł		$alt
+blakł		$alt
+błądź	$alt
+błoć		$alt
+błyszcz	$alt
+bocz		$alt
+boć		$alt
+bódł		$alt
+bódź		$alt
+bój		$alt
+bóść		$alt
+brać		$alt
+brak		$alt
+brakł		$alt
+bredź		$alt
+brną		$alt
+brnąc		$alt
+brnąć		$alt
+brnął		$alt
+brnę		$alt
+brnie		$alt
+brniesz		$alt
+brnij		$alt
+brocz		$alt
+broć		$alt
+brodź		$alt
+broń		$alt
+bródź		$alt
+brudź		$alt
+bruźdź	$alt
+brzęcz		$alt
+brzmi		$alt
+brzmiał	$alt
+brzmią		$alt
+brzmiąc	$alt
+brzmię		$alt
+brzmij		$alt
+brzmioł	$alt
+brzmisz		$alt
+brzydł		$alt
+brzydź		$alt
+bycz		$alt
+być		$alt
+był		$alt
+bzdurz		$alt
+bzycz		$alt
+bździ		$alt
+bździć	$alt
+bździł	$alt
+bździsz	$alt
+bżdżą	$alt
+bżdżąc	$alt
+bżdżę	$alt
+cedź		$alt
+charcz		$alt
+chcą		$alt
+chcąc		$alt
+chce		$alt
+chceń		$alt
+chcesz		$alt
+chcę		$alt
+chciał		$alt
+chcieć		$alt
+chciej		$alt
+chcioł		$alt
+chlać		$alt
+chlaj		$alt
+chlał		$alt
+chlap		$alt
+chlaszcz	$alt
+chlej		$alt
+chlip		$alt
+chloć		$alt
+chloł		$alt
+chlup		$alt
+chłepcz	$alt
+chłoszcz	$alt
+chłódł	$alt
+chłódź	$alt
+chmurz		$alt
+chodź		$alt
+chódź		$alt
+chrap		$alt
+chroń		$alt
+chrup		$alt
+chrypł		$alt
+chrzań		$alt
+chrzci		$alt
+chrzcić	$alt
+chrzcij		$alt
+chrzcił	$alt
+chrzcisz	$alt
+chrzczą	$alt
+chrzcząc	$alt
+chrzczę	$alt
+chrzęść	$alt
+chudł		$alt
+chwal		$alt
+chwiać		$alt
+chwiał		$alt
+chwiej		$alt
+chwioć		$alt
+chwioł		$alt
+chwyć		$alt
+chyl		$alt
+ciąć		$alt
+cichł		$alt
+ciec		$alt
+ciekł		$alt
+cierp		$alt
+cierpł		$alt
+ciesz		$alt
+clą		$alt
+cląc		$alt
+clę		$alt
+cli		$alt
+clić		$alt
+clij		$alt
+clił		$alt
+clisz		$alt
+cnić		$alt
+cnię		$alt
+cnij		$alt
+cnił		$alt
+cnisz		$alt
+cuć		$alt
+czaj		$alt
+czci		$alt
+czcić		$alt
+czcij		$alt
+czcił		$alt
+czcisz		$alt
+czczą		$alt
+czcząc		$alt
+czczę		$alt
+czesz		$alt
+czkać		$alt
+czkaj		$alt
+czkał		$alt
+czkam		$alt
+czkasz		$alt
+czkną		$alt
+czknąć	$alt
+czknął	$alt
+czknę		$alt
+czknie		$alt
+czkniesz	$alt
+czknij		$alt
+czkoć		$alt
+czkoł		$alt
+czkom		$alt
+człap		$alt
+czuj		$alt
+czuł		$alt
+czyń		$alt
+czyść		$alt
+ćmi		$alt
+ćmią		$alt
+ćmiąc		$alt
+ćmić		$alt
+ćmię		$alt
+ćmij		$alt
+ćmił		$alt
+ćmisz		$alt
+ćpa		$alt
+ćpać		$alt
+ćpaj		$alt
+ćpał		$alt
+ćpam		$alt
+ćpasz		$alt
+ćpoć		$alt
+ćpoł		$alt
+ćpom		$alt
+ćwicz		$alt
+dać		$alt
+daj		$alt
+dał		$alt
+dam		$alt
+dasz		$alt
+dąć		$alt
+dął		$alt
+dąż		$alt
+dbać		$alt
+dbaj		$alt
+dbał		$alt
+dbam		$alt
+dbasz		$alt
+dboć		$alt
+dboł		$alt
+dbom		$alt
+depcz		$alt
+dłub		$alt
+dmąc		$alt
+dmij		$alt
+dniał		$alt
+dnieć		$alt
+dniej		$alt
+dnioł		$alt
+doć		$alt
+dojdź		$alt
+dojść		$alt
+doł		$alt
+dom		$alt
+dój		$alt
+drap		$alt
+drą		$alt
+drąż		$alt
+drepcz		$alt
+drę		$alt
+dręcz		$alt
+drga		$alt
+drgać		$alt
+drgaj		$alt
+drgał		$alt
+drgam		$alt
+drgasz		$alt
+drgną		$alt
+drgnąć	$alt
+drgnął	$alt
+drgnę		$alt
+drgnie		$alt
+drgniesz	$alt
+drgnij		$alt
+drgoć		$alt
+drgoł		$alt
+drgom		$alt
+drwią		$alt
+drwiąc		$alt
+drwić		$alt
+drwię		$alt
+drwij		$alt
+drwił		$alt
+drwisz		$alt
+drzeć		$alt
+drzyj		$alt
+drżał		$alt
+drżą		$alt
+drżąc		$alt
+drżeć		$alt
+drżę		$alt
+drżoł		$alt
+drży		$alt
+drżyj		$alt
+drżysz		$alt
+duć		$alt
+duj		$alt
+duł		$alt
+dupcz		$alt
+duś		$alt
+dyb		$alt
+dziab		$alt
+dziać		$alt
+dział		$alt
+dziel		$alt
+dzierż		$alt
+dziob		$alt
+dzioć		$alt
+dzioł		$alt
+dzwoń		$alt
+dźga		$alt
+dźgać		$alt
+dźgaj		$alt
+dźgał		$alt
+dźgam		$alt
+dźgasz		$alt
+dźgną		$alt
+dźgnąć	$alt
+dźgnął	$alt
+dźgnę		$alt
+dźgnie		$alt
+dźgniesz	$alt
+dźgnięć	$alt
+dźgnij		$alt
+dźgoć		$alt
+dźgoł		$alt
+dźgom		$alt
+dźwięcz	$alt
+dżdży		$alt
+dżdżyć	$alt
+dżdżył	$alt
+furcz		$alt
+gap		$alt
+garb		$alt
+gasł		$alt
+gaś		$alt
+giąć		$alt
+giął		$alt
+giń		$alt
+ględź		$alt
+gładź		$alt
+głaszcz	$alt
+głoś		$alt
+głódź	$alt
+głuchł	$alt
+gna		$alt
+gnać		$alt
+gnaj		$alt
+gnał		$alt
+gnam		$alt
+gnasz		$alt
+gną		$alt
+gnąc		$alt
+gnę		$alt
+gnęb		$alt
+gnić		$alt
+gnie		$alt
+gnieć		$alt
+gniesz		$alt
+gnieść	$alt
+gnieźdź	$alt
+gnij		$alt
+gnił		$alt
+gniótł	$alt
+gnoć		$alt
+gnoł		$alt
+gnom		$alt
+gol		$alt
+goń		$alt
+gość		$alt
+grać		$alt
+graj		$alt
+grał		$alt
+gram		$alt
+grandź		$alt
+grasz		$alt
+groć		$alt
+grodź		$alt
+groł		$alt
+grom		$alt
+gródź		$alt
+gryzł		$alt
+gryź		$alt
+gryźć		$alt
+grzać		$alt
+grzał		$alt
+grząźć	$alt
+grzesz		$alt
+grzmi		$alt
+grzmiał	$alt
+grzmią		$alt
+grzmiąc	$alt
+grzmieć	$alt
+grzmię		$alt
+grzmij		$alt
+grzmioł	$alt
+grzmisz		$alt
+grzmoć		$alt
+grzoć		$alt
+grzoł		$alt
+guzdrz		$alt
+gwałć		$alt
+gwarz		$alt
+gwiżdż	$alt
+gzią		$alt
+gzić		$alt
+gżąc		$alt
+hańb		$alt
+hucz		$alt
+idź		$alt
+iść		$alt
+jadł		$alt
+jąć		$alt
+jął		$alt
+jątrz		$alt
+je		$alt
+jedz		$alt
+jedź		$alt
+jem		$alt
+jesz		$alt
+jeść		$alt
+jeźdź		$alt
+jęcz		$alt
+jojcz		$alt
+judź		$alt
+karć		$alt
+karm		$alt
+każ		$alt
+kąp		$alt
+kąsz		$alt
+kisł		$alt
+klap		$alt
+klaszcz		$alt
+kląć		$alt
+klął		$alt
+kleć		$alt
+klej		$alt
+klęsł		$alt
+klną		$alt
+klnąc		$alt
+klnę		$alt
+klnie		$alt
+klniesz		$alt
+klnij		$alt
+kładł		$alt
+kładź		$alt
+kłam		$alt
+kłap		$alt
+kłaść	$alt
+kłom		$alt
+kłoń		$alt
+kłoś		$alt
+kłóć		$alt
+kłuć		$alt
+kłuj		$alt
+kłuł		$alt
+knoć		$alt
+knuć		$alt
+knuj		$alt
+knuł		$alt
+kończ		$alt
+kopć		$alt
+korć		$alt
+koś		$alt
+kój		$alt
+kórz		$alt
+kpi		$alt
+kpiarz		$alt
+kpią		$alt
+kpiąc		$alt
+kpić		$alt
+kpię		$alt
+kpij		$alt
+kpił		$alt
+kpiorz		$alt
+kpisz		$alt
+kracz		$alt
+kradł		$alt
+kraś		$alt
+kraść		$alt
+krąż		$alt
+kreśl		$alt
+kręć		$alt
+krój		$alt
+krusz		$alt
+krwaw		$alt
+kryć		$alt
+kryj		$alt
+krył		$alt
+krzep		$alt
+krzepł		$alt
+krztuś		$alt
+krzycz		$alt
+krzywdź	$alt
+kształć	$alt
+kuć		$alt
+kuj		$alt
+kuł		$alt
+kuś		$alt
+kwicz		$alt
+kwil		$alt
+kwitł		$alt
+lać		$alt
+lał		$alt
+lazł		$alt
+lągł		$alt
+ląkł		$alt
+lecz		$alt
+leć		$alt
+legł		$alt
+lej		$alt
+leź		$alt
+leźć		$alt
+leż		$alt
+lgną		$alt
+lgnąc		$alt
+lgnąć		$alt
+lgnął		$alt
+lgnę		$alt
+lgnie		$alt
+lgnieć		$alt
+lgniesz		$alt
+lgnij		$alt
+licz		$alt
+liź		$alt
+liż		$alt
+loć		$alt
+loł		$alt
+lśni		$alt
+lśnią		$alt
+lśniąc	$alt
+lśnić		$alt
+lśnię		$alt
+lśnij		$alt
+lśnił		$alt
+lśnisz		$alt
+lżą		$alt
+lżąc		$alt
+lżę		$alt
+lży		$alt
+lżyć		$alt
+lżyj		$alt
+lżył		$alt
+lżysz		$alt
+ładź		$alt
+łap		$alt
+łaszcz		$alt
+łącz		$alt
+łgać		$alt
+łgał		$alt
+łgoć		$alt
+łgoł		$alt
+łka		$alt
+łkać		$alt
+łkaj		$alt
+łkał		$alt
+łkam		$alt
+łkań		$alt
+łkasz		$alt
+łkoć		$alt
+łkoł		$alt
+łkom		$alt
+łów		$alt
+łudź		$alt
+łzaw		$alt
+łżą		$alt
+łżąc		$alt
+łże		$alt
+łżesz		$alt
+łżę		$alt
+łżyj		$alt
+ma		$alt
+mam		$alt
+marszcz		$alt
+martw		$alt
+marz		$alt
+marzł		$alt
+maść		$alt
+maż		$alt
+mąć		$alt
+mądrz		$alt
+mdlał		$alt
+mdlą		$alt
+mdląc		$alt
+mdleć		$alt
+mdlej		$alt
+mdlę		$alt
+mdli		$alt
+mdlić		$alt
+mdlił		$alt
+mdlisz		$alt
+mdloł		$alt
+męcz		$alt
+miał		$alt
+miażdż	$alt
+miął		$alt
+mieć		$alt
+miej		$alt
+miel		$alt
+mierz		$alt
+mieś		$alt
+mieść		$alt
+milcz		$alt
+milkł		$alt
+miń		$alt
+mioł		$alt
+miożdż	$alt
+miótł		$alt
+mizdrz		$alt
+mkną		$alt
+mknąc		$alt
+mknąć		$alt
+mknął		$alt
+mknę		$alt
+mknie		$alt
+mkniesz		$alt
+mknij		$alt
+mleć		$alt
+młóć		$alt
+mnij		$alt
+mnóż		$alt
+mocz		$alt
+mom		$alt
+mość		$alt
+módl		$alt
+mógł		$alt
+mókł		$alt
+mów		$alt
+mrą		$alt
+mrąc		$alt
+mrę		$alt
+mrocz		$alt
+mroź		$alt
+mrucz		$alt
+mruż		$alt
+mrze		$alt
+mrzeć		$alt
+mrzesz		$alt
+mszczą		$alt
+mszcząc	$alt
+mszczę		$alt
+mści		$alt
+mścić		$alt
+mścij		$alt
+mścił		$alt
+mścisz		$alt
+myć		$alt
+myj		$alt
+mył		$alt
+myśl		$alt
+mżą		$alt
+mżąc		$alt
+mży		$alt
+mżyć		$alt
+mżył		$alt
+mżysz		$alt
+najdź		$alt
+najść		$alt
+nęć		$alt
+niańcz		$alt
+nieś		$alt
+nieść		$alt
+nikł		$alt
+niończ		$alt
+niósł		$alt
+niszcz		$alt
+noś		$alt
+nuć		$alt
+nudź		$alt
+ostrz		$alt
+padł		$alt
+pal		$alt
+parz		$alt
+pasł		$alt
+paś		$alt
+paść		$alt
+patrz		$alt
+pcha		$alt
+pchać		$alt
+pchaj		$alt
+pchał		$alt
+pcham		$alt
+pchasz		$alt
+pchną		$alt
+pchnąć	$alt
+pchnął	$alt
+pchnę		$alt
+pchnie		$alt
+pchniesz	$alt
+pchnij		$alt
+pchoć		$alt
+pchoł		$alt
+pchom		$alt
+pełzł		$alt
+pędź		$alt
+piać		$alt
+piał		$alt
+piąć		$alt
+pichć		$alt
+pić		$alt
+piej		$alt
+piekł		$alt
+piel		$alt
+pieprz		$alt
+pierzchł	$alt
+pieść		$alt
+pij		$alt
+pił		$alt
+pioć		$alt
+pioł		$alt
+piszcz		$alt
+pleć		$alt
+pleń		$alt
+pleść		$alt
+plótł		$alt
+pluć		$alt
+pluj		$alt
+pluł		$alt
+pluń		$alt
+pluszcz		$alt
+plwa		$alt
+plwać		$alt
+plwaj		$alt
+plwał		$alt
+plwam		$alt
+plwasz		$alt
+plwoć		$alt
+plwoł		$alt
+plwom		$alt
+płacz		$alt
+płać		$alt
+płoć		$alt
+płódź	$alt
+pną		$alt
+pnąc		$alt
+pnąć		$alt
+pnę		$alt
+pnie		$alt
+pniesz		$alt
+pnij		$alt
+popstrz		$alt
+pość		$alt
+pój		$alt
+pójdź		$alt
+pójść	$alt
+prać		$alt
+prał		$alt
+praż		$alt
+prą		$alt
+prąc		$alt
+prę		$alt
+pręż		$alt
+proć		$alt
+proł		$alt
+proś		$alt
+pruć		$alt
+pruj		$alt
+pruł		$alt
+prządł	$alt
+prządź	$alt
+przągł	$alt
+prząść	$alt
+prząż		$alt
+przeć		$alt
+przejdź	$alt
+przejść	$alt
+przędź	$alt
+przyjdź	$alt
+przyjść	$alt
+przykrz		$alt
+psoć		$alt
+pstrzą		$alt
+pstrząc	$alt
+pstrzę		$alt
+pstrzy		$alt
+pstrzyć	$alt
+pstrzyj		$alt
+pstrzył	$alt
+pstrzysz	$alt
+psuć		$alt
+psuj		$alt
+psuł		$alt
+puchł		$alt
+puść		$alt
+pyl		$alt
+racz		$alt
+radź		$alt
+rań		$alt
+raź		$alt
+rąb		$alt
+ręcz		$alt
+rodź		$alt
+roń		$alt
+rób		$alt
+ródź		$alt
+rósł		$alt
+róść		$alt
+rwać		$alt
+rwał		$alt
+rwą		$alt
+rwąc		$alt
+rwę		$alt
+rwie		$alt
+rwiesz		$alt
+rwij		$alt
+rwoć		$alt
+rwoł		$alt
+rycz		$alt
+ryć		$alt
+ryj		$alt
+rył		$alt
+rządź		$alt
+rzedł		$alt
+rzekł		$alt
+rzeźb		$alt
+rzęź		$alt
+rzęż		$alt
+rzuć		$alt
+rżał		$alt
+rżą		$alt
+rżąc		$alt
+rżeć		$alt
+rżę		$alt
+rżną		$alt
+rżnąc		$alt
+rżnąć	$alt
+rżnął	$alt
+rżnę		$alt
+rżnie		$alt
+rżniesz	$alt
+rżnięć	$alt
+rżnij		$alt
+rżoł		$alt
+rży		$alt
+sadź		$alt
+sącz		$alt
+sądź		$alt
+scal		$alt
+scedź		$alt
+schla		$alt
+schlać		$alt
+schlaj		$alt
+schlał		$alt
+schlam		$alt
+schlap		$alt
+schlasz		$alt
+schlaszcz	$alt
+schlej		$alt
+schli		$alt
+schloć		$alt
+schloł		$alt
+schlom		$alt
+schła		$alt
+schłam		$alt
+schłaś	$alt
+schłem		$alt
+schłeś	$alt
+schło		$alt
+schłodź	$alt
+schłom		$alt
+schłoszcz	$alt
+schłódź	$alt
+schły		$alt
+schną		$alt
+schnąc		$alt
+schnąć	$alt
+schnę		$alt
+schnie		$alt
+schniesz	$alt
+schnij		$alt
+schodź		$alt
+schódź	$alt
+schroń		$alt
+schrup		$alt
+schrypł	$alt
+schrzań	$alt
+schudł		$alt
+schwyć		$alt
+scukrz		$alt
+sczep		$alt
+sczesz		$alt
+sczyść	$alt
+sechł		$alt
+sęp		$alt
+sfajcz		$alt
+sfruń		$alt
+siać		$alt
+siadł		$alt
+siał		$alt
+siądź		$alt
+siąp		$alt
+siąść	$alt
+siecz		$alt
+siej		$alt
+siekł		$alt
+sierdź		$alt
+sil		$alt
+sioć		$alt
+siodł		$alt
+sioł		$alt
+siorb		$alt
+skacz		$alt
+skaml		$alt
+skarć		$alt
+skarż		$alt
+skaź		$alt
+skaż		$alt
+skąp		$alt
+skisł		$alt
+skląć		$alt
+sklął		$alt
+skleć		$alt
+sklej		$alt
+sklęsł	$alt
+sklną		$alt
+sklnę		$alt
+sklnie		$alt
+sklniesz	$alt
+sklnij		$alt
+skłoń		$alt
+skłóć	$alt
+skłuć		$alt
+skłuj		$alt
+skłuł		$alt
+sknoć		$alt
+skocz		$alt
+skończ		$alt
+skopć		$alt
+skorć		$alt
+skoś		$alt
+skradł		$alt
+skraść	$alt
+skręć		$alt
+skrob		$alt
+skrop		$alt
+skróć		$alt
+skrój		$alt
+skrusz		$alt
+skrwaw		$alt
+skryć		$alt
+skryj		$alt
+skrył		$alt
+skrzą		$alt
+skrząc		$alt
+skrzepł	$alt
+skrzesz		$alt
+skrzę		$alt
+skrzy		$alt
+skrzycz		$alt
+skrzyć		$alt
+skrzyj		$alt
+skrzył		$alt
+skrzyp		$alt
+skrzysz		$alt
+skrzyw		$alt
+skrzywdź	$alt
+skub		$alt
+skuć		$alt
+skuj		$alt
+skul		$alt
+skuł		$alt
+skurw		$alt
+skuś		$alt
+skwaś		$alt
+skwiercz	$alt
+słabł		$alt
+słać		$alt
+słał		$alt
+słoć		$alt
+słodź		$alt
+słoł		$alt
+słódź	$alt
+służ		$alt
+słyń		$alt
+słysz		$alt
+smaż		$alt
+smęć		$alt
+smrodź		$alt
+smródź	$alt
+smuć		$alt
+snuć		$alt
+snuj		$alt
+snuł		$alt
+sól		$alt
+spadł		$alt
+spal		$alt
+spał		$alt
+sparz		$alt
+spasł		$alt
+spaś		$alt
+spaść		$alt
+spełń		$alt
+spełzł	$alt
+spesz		$alt
+spędź		$alt
+spiąć		$alt
+spiął		$alt
+spić		$alt
+spiec		$alt
+spiecz		$alt
+spiekł		$alt
+spieprz		$alt
+spierdź	$alt
+spierz		$alt
+spierzchł	$alt
+spiesz		$alt
+spiętrz	$alt
+spij		$alt
+spił		$alt
+spisz		$alt
+splam		$alt
+spleć		$alt
+spleść	$alt
+splom		$alt
+splótł	$alt
+spluń		$alt
+spłacz		$alt
+spłać		$alt
+spłaszcz	$alt
+spłoć		$alt
+spłoń		$alt
+spłosz		$alt
+spłódź	$alt
+spłucz		$alt
+spłyć		$alt
+spłyń		$alt
+spolszcz	$alt
+społ		$alt
+spój		$alt
+sprać		$alt
+sprał		$alt
+spraw		$alt
+sprawdź	$alt
+spręż		$alt
+sproć		$alt
+sproł		$alt
+sproś		$alt
+spruć		$alt
+spruj		$alt
+spruł		$alt
+sprządł	$alt
+sprządź	$alt
+sprzągł	$alt
+sprząść	$alt
+sprząż	$alt
+sprzędź	$alt
+sprzykrz	$alt
+spsiał		$alt
+spsieć		$alt
+spsiej		$alt
+spsioł		$alt
+spsoć		$alt
+spuść		$alt
+ssać		$alt
+ssał		$alt
+ssą		$alt
+ssąc		$alt
+ssę		$alt
+ssią		$alt
+ssiesz		$alt
+ssij		$alt
+ssoć		$alt
+ssoł		$alt
+stać		$alt
+stał		$alt
+stań		$alt
+stąp		$alt
+stchórz	$alt
+stercz		$alt
+stęchł	$alt
+stlą		$alt
+stlę		$alt
+stli		$alt
+stlić		$alt
+stlij		$alt
+stlił		$alt
+stlisz		$alt
+stłamś	$alt
+stłocz		$alt
+stłuc		$alt
+stłucz		$alt
+stłukł	$alt
+stocz		$alt
+stoć		$alt
+stoł		$alt
+stój		$alt
+strać		$alt
+strasz		$alt
+strąć		$alt
+streść	$alt
+stręcz		$alt
+stroć		$alt
+stroń		$alt
+strój		$alt
+struć		$alt
+strudź		$alt
+struj		$alt
+struł		$alt
+strwoń		$alt
+strwóż	$alt
+strząsł	$alt
+strząś	$alt
+strząść	$alt
+strzegł	$alt
+strzel		$alt
+strzep		$alt
+strzeż		$alt
+strzęś	$alt
+strzyc		$alt
+strzygł	$alt
+strzyż		$alt
+studź		$alt
+stul		$alt
+stwierdź	$alt
+stwórz		$alt
+stygł		$alt
+suń		$alt
+susz		$alt
+swędź		$alt
+syć		$alt
+szarp		$alt
+szcza		$alt
+szczać		$alt
+szczał		$alt
+szczam		$alt
+szczasz		$alt
+szczą		$alt
+szcząc		$alt
+szczeć		$alt
+szczę		$alt
+szczędź	$alt
+szczoć		$alt
+szczoł		$alt
+szczom		$alt
+szczuć		$alt
+szczuj		$alt
+szczuł		$alt
+szczy		$alt
+szczyć		$alt
+szczyj		$alt
+szczyp		$alt
+szczysz		$alt
+szedł		$alt
+szemrz		$alt
+szepcz		$alt
+szklą		$alt
+szkląc		$alt
+szklę		$alt
+szkli		$alt
+szklić		$alt
+szklij		$alt
+szklił		$alt
+szklisz		$alt
+szkodź		$alt
+szkol		$alt
+szkódź	$alt
+szli	$alt
+szła		$alt
+szły	$alt
+szpeć		$alt
+szyć		$alt
+szydź		$alt
+szyj		$alt
+szył		$alt
+ściąć	$alt
+ściął	$alt
+ścichł	$alt
+ściec		$alt
+ściekł	$alt
+ściel		$alt
+ścierp		$alt
+ścierpł	$alt
+ścisz		$alt
+ściub		$alt
+ślą		$alt
+śląc		$alt
+śle		$alt
+ślepł		$alt
+ślesz		$alt
+ślę		$alt
+ślęcz		$alt
+śmiać		$alt
+śmiał		$alt
+śmiardł	$alt
+śmiąc		$alt
+śmieć		$alt
+śmiej		$alt
+śmierdł	$alt
+śmiesz		$alt
+śmioć		$alt
+śmioł		$alt
+śmiordł	$alt
+śni		$alt
+śnią		$alt
+śniąc		$alt
+śnić		$alt
+śnię		$alt
+śnij		$alt
+śnił		$alt
+śnisz		$alt
+śpi		$alt
+śpią		$alt
+śpiąc		$alt
+śpiesz		$alt
+śpię		$alt
+śpisz		$alt
+świadcz	$alt
+świeć		$alt
+święć	$alt
+świń		$alt
+świodcz	$alt
+świszcz	$alt
+tańcz		$alt
+tchną		$alt
+tchnąc		$alt
+tchnąć	$alt
+tchnął	$alt
+tchnę		$alt
+tchnie		$alt
+tchnieć	$alt
+tchniesz	$alt
+tchnij		$alt
+tęchł		$alt
+tęp		$alt
+tka		$alt
+tkać		$alt
+tkaj		$alt
+tkał		$alt
+tkam		$alt
+tkasz		$alt
+tkną		$alt
+tknąć		$alt
+tknął		$alt
+tknę		$alt
+tknie		$alt
+tkniesz		$alt
+tknij		$alt
+tkoć		$alt
+tkoł		$alt
+tkom		$alt
+tkwi		$alt
+tkwią		$alt
+tkwiąc		$alt
+tkwić		$alt
+tkwię		$alt
+tkwij		$alt
+tkwił		$alt
+tkwisz		$alt
+tlał		$alt
+tlą		$alt
+tląc		$alt
+tlę		$alt
+tli		$alt
+tlić		$alt
+tlił		$alt
+tloł		$alt
+tłocz		$alt
+tłucz		$alt
+tłukł		$alt
+tłuść	$alt
+tnąc		$alt
+tocz		$alt
+toń		$alt
+traf		$alt
+trą		$alt
+trąb		$alt
+trąc		$alt
+trę		$alt
+trocz		$alt
+troszcz		$alt
+truć		$alt
+trudź		$alt
+truj		$alt
+truł		$alt
+trwa		$alt
+trwać		$alt
+trwaj		$alt
+trwał		$alt
+trwam		$alt
+trwasz		$alt
+trwoć		$alt
+trwoł		$alt
+trwom		$alt
+trwoń		$alt
+trwóż		$alt
+trząsł	$alt
+trząś		$alt
+trząść	$alt
+trzeć		$alt
+trzep		$alt
+trzesz		$alt
+trzeszcz	$alt
+trzęś		$alt
+twierdź	$alt
+twórz		$alt
+tyj		$alt
+tył		$alt
+ujdź		$alt
+ujść		$alt
+wadź		$alt
+wal		$alt
+walcz		$alt
+waż		$alt
+wątp		$alt
+wbić		$alt
+wbiec		$alt
+wbiegł		$alt
+wbij		$alt
+wbił		$alt
+wchłoń	$alt
+wchodź		$alt
+wchódź	$alt
+wchrzcić	$alt
+wchrzcij	$alt
+wchrzcił	$alt
+wchrzcisz	$alt
+wchrzczą	$alt
+wchrzcząc	$alt
+wchrzczę	$alt
+wciąć		$alt
+wciął		$alt
+wciekł		$alt
+wciel		$alt
+wczuć		$alt
+wczuj		$alt
+wczuł		$alt
+wćwicz		$alt
+wda		$alt
+wdać		$alt
+wdaj		$alt
+wdał		$alt
+wdam		$alt
+wdarł		$alt
+wdasz		$alt
+wdepcz		$alt
+wdoć		$alt
+wdoł		$alt
+wdom		$alt
+wdrap		$alt
+wdróż		$alt
+wduś		$alt
+wdziać		$alt
+wdział		$alt
+wdziej		$alt
+wdzięcz	$alt
+wdzioć		$alt
+wdzioł		$alt
+wejdź		$alt
+wejść		$alt
+weź		$alt
+wędź		$alt
+węsz		$alt
+wgiąć		$alt
+wgiął		$alt
+wgięć		$alt
+wgnieć		$alt
+wgnieść	$alt
+wgniótł	$alt
+wgra		$alt
+wgrać		$alt
+wgraj		$alt
+wgrał		$alt
+wgram		$alt
+wgrasz		$alt
+wgroć		$alt
+wgroł		$alt
+wgrom		$alt
+wgryzł		$alt
+wgryź		$alt
+wgryźć	$alt
+wiać		$alt
+wiał		$alt
+wiądł		$alt
+wiąż		$alt
+wichrz		$alt
+wić		$alt
+widź		$alt
+wie		$alt
+wiedz		$alt
+wiej		$alt
+wielb		$alt
+wiem		$alt
+wieńcz		$alt
+wierć		$alt
+wierz		$alt
+wiesz		$alt
+wieszcz		$alt
+wietrz		$alt
+wieź		$alt
+wieźć		$alt
+więdł		$alt
+wij		$alt
+wilgł		$alt
+wił		$alt
+wiń		$alt
+wioć		$alt
+wioł		$alt
+wiózł		$alt
+wiś		$alt
+wjedź		$alt
+wklej		$alt
+wklep		$alt
+wkłuć		$alt
+wkłuj		$alt
+wkłuł		$alt
+wkop		$alt
+wkradł		$alt
+wkraść	$alt
+wkręć		$alt
+wkrocz		$alt
+wkrop		$alt
+wkrój		$alt
+wkuć		$alt
+wkuj		$alt
+wkuł		$alt
+wkup		$alt
+wkurw		$alt
+wkurz		$alt
+wlać		$alt
+wlał		$alt
+wlazł		$alt
+wlec		$alt
+wlecz		$alt
+wleć		$alt
+wlej		$alt
+wlekł		$alt
+wlep		$alt
+wleź		$alt
+wleźć		$alt
+wlicz		$alt
+wliź		$alt
+wloć		$alt
+wloł		$alt
+wlókł		$alt
+włam		$alt
+właź		$alt
+włącz		$alt
+włom		$alt
+włócz		$alt
+włóż		$alt
+wmarzł		$alt
+wmieść	$alt
+wmiótł	$alt
+wmów		$alt
+wmuś		$alt
+wnieś		$alt
+wnieść	$alt
+wniósł	$alt
+wnoś		$alt
+woź		$alt
+wparł		$alt
+wpaść		$alt
+wpatrz		$alt
+wpełzł	$alt
+wpędź		$alt
+wpiąć		$alt
+wpiął		$alt
+wpić		$alt
+wpij		$alt
+wpił		$alt
+wpisz		$alt
+wpleć		$alt
+wpleść	$alt
+wplótł	$alt
+wpłać		$alt
+wpłoć		$alt
+wpłyń		$alt
+wpój		$alt
+wpraw		$alt
+wproś		$alt
+wprząc		$alt
+wprządł	$alt
+wprządź	$alt
+wprzągł	$alt
+wprząść	$alt
+wprząż	$alt
+wprzędź	$alt
+wpuść		$alt
+wraź		$alt
+wrą		$alt
+wrąb		$alt
+wrę		$alt
+wręcz		$alt
+wrodź		$alt
+wrób		$alt
+wróć		$alt
+wródź		$alt
+wrósł		$alt
+wróść	$alt
+wróż		$alt
+wryć		$alt
+wryj		$alt
+wrył		$alt
+wrze		$alt
+wrzeć		$alt
+wrzep		$alt
+wrzeszcz	$alt
+wrzuć		$alt
+wsadź		$alt
+wsiać		$alt
+wsiadł		$alt
+wsiał		$alt
+wsiądź	$alt
+wsiąkł	$alt
+wsiąść	$alt
+wsiej		$alt
+wsioć		$alt
+wsiodł		$alt
+wsioł		$alt
+wskaż		$alt
+wskocz		$alt
+wskrześ	$alt
+wsław		$alt
+wsnuć		$alt
+wsnuj		$alt
+wsnuł		$alt
+wspiąć	$alt
+wspiął	$alt
+wstać		$alt
+wstał		$alt
+wstań		$alt
+wstaw		$alt
+wstąp		$alt
+wstoć		$alt
+wstoł		$alt
+wstrzel		$alt
+wstydź		$alt
+wsuń		$alt
+wszcząć	$alt
+wszczął	$alt
+wszczep		$alt
+wszczną	$alt
+wszcznę	$alt
+wszcznie	$alt
+wszczniesz	$alt
+wszcznij	$alt
+wszedł		$alt
+wszepcz		$alt
+wszyć		$alt
+wszyj		$alt
+wszył		$alt
+wścib		$alt
+wściekł	$alt
+wściel		$alt
+wtarł		$alt
+wtaszcz		$alt
+wtłocz		$alt
+wtocz		$alt
+wtop		$alt
+wtrąć		$alt
+wtrój		$alt
+wtryń		$alt
+wtul		$alt
+wwal		$alt
+wwierć		$alt
+wwieź		$alt
+wwieźć	$alt
+wwiódł	$alt
+wwiózł	$alt
+wwoź		$alt
+wyć		$alt
+wyj		$alt
+wyjdź		$alt
+wyjść		$alt
+wył		$alt
+wzbić		$alt
+wzbierz		$alt
+wzbij		$alt
+wzbił		$alt
+wzbroń		$alt
+wzburz		$alt
+wzdąć		$alt
+wzdął		$alt
+wzejdź		$alt
+wzejść	$alt
+wzgardź	$alt
+wziąć		$alt
+wziął		$alt
+wzleć		$alt
+wzmóc		$alt
+wzmógł	$alt
+wzmóż		$alt
+wznieć		$alt
+wznieś		$alt
+wznieść	$alt
+wzniósł	$alt
+wznoś		$alt
+wznów		$alt
+wzrósł	$alt
+wzróść	$alt
+wzrusz		$alt
+wzuć		$alt
+wzuj		$alt
+wzuł		$alt
+wżął		$alt
+wżeń		$alt
+wżyć		$alt
+wżyj		$alt
+wżył		$alt
+zajdź		$alt
+zajść		$alt
+zapstrz		$alt
+zbaw		$alt
+zbądź		$alt
+zbić		$alt
+zbiec		$alt
+zbiegł		$alt
+zbierz		$alt
+zbieś		$alt
+zbij		$alt
+zbił		$alt
+zbladł		$alt
+zblakł		$alt
+zbliż		$alt
+zbłaźń	$alt
+zbłądź	$alt
+zbocz		$alt
+zbrakł		$alt
+zbrocz		$alt
+zbroj		$alt
+zbrudź		$alt
+zbruźdź	$alt
+zbryl		$alt
+zbrzydł	$alt
+zbrzydź	$alt
+zbudź		$alt
+zburz		$alt
+zbyć		$alt
+zbył		$alt
+zdać		$alt
+zdaj		$alt
+zdał		$alt
+zdam		$alt
+zdarł		$alt
+zdarz		$alt
+zdasz		$alt
+zdąż		$alt
+zdechł		$alt
+zdepcz		$alt
+zderz		$alt
+zdjąć		$alt
+zdjął		$alt
+zdław		$alt
+zdoć		$alt
+zdoł		$alt
+zdom		$alt
+zdób		$alt
+zdradź		$alt
+zdrap		$alt
+zduś		$alt
+zdwój		$alt
+zdyb		$alt
+zdziel		$alt
+zdzierż	$alt
+zejdź		$alt
+zejść		$alt
+zgadł		$alt
+zgań		$alt
+zgarb		$alt
+zgasł		$alt
+zgaś		$alt
+zgęstł	$alt
+zgęść	$alt
+zgiąć		$alt
+zgiął		$alt
+zgiń		$alt
+zgładź	$alt
+zgłoś		$alt
+zgłusz		$alt
+zgnić		$alt
+zgnieć		$alt
+zgnieść	$alt
+zgnij		$alt
+zgnił		$alt
+zgniótł	$alt
+zgnój		$alt
+zgol		$alt
+zgorsz		$alt
+zgódź		$alt
+zgra		$alt
+zgrab		$alt
+zgrać		$alt
+zgraj		$alt
+zgrał		$alt
+zgram		$alt
+zgrandź	$alt
+zgrasz		$alt
+zgroć		$alt
+zgroł		$alt
+zgrom		$alt
+zgryzł		$alt
+zgryź		$alt
+zgryźć	$alt
+zgrzesz		$alt
+zgwałć	$alt
+zhańb		$alt
+ziać		$alt
+ział		$alt
+ziej		$alt
+zioć		$alt
+zioł		$alt
+ziść		$alt
+zjadł		$alt
+zje		$alt
+zjedz		$alt
+zjedź		$alt
+zjem		$alt
+zjesz		$alt
+zjeść		$alt
+zjeźdź	$alt
+zlać		$alt
+zlał		$alt
+zlazł		$alt
+zląkł		$alt
+zleć		$alt
+zlej		$alt
+zleź		$alt
+zleźć		$alt
+zlicz		$alt
+zliź		$alt
+zloć		$alt
+zloł		$alt
+złaj		$alt
+złam		$alt
+złap		$alt
+złaź		$alt
+złącz		$alt
+złoć		$alt
+złom		$alt
+złój		$alt
+złów		$alt
+złóż		$alt
+złudź		$alt
+złuszcz	$alt
+zmarł		$alt
+zmarszcz	$alt
+zmartw		$alt
+zmarzł		$alt
+zmaż		$alt
+zmąć		$alt
+zmądrz		$alt
+zmęcz		$alt
+zmiażdż	$alt
+zmiąć		$alt
+zmiął		$alt
+zmień		$alt
+zmierz		$alt
+zmierzchł	$alt
+zmierzw		$alt
+zmierź		$alt
+zmieść	$alt
+zmiękcz	$alt
+zmilcz		$alt
+zmilkł		$alt
+zmiożdż	$alt
+zmiótł	$alt
+zmłóć	$alt
+zmniejsz	$alt
+zmocz		$alt
+zmóc		$alt
+zmógł		$alt
+zmókł		$alt
+zmórz		$alt
+zmów		$alt
+zmóż		$alt
+zmroź		$alt
+zmruż		$alt
+zmuś		$alt
+zmyć		$alt
+zmyl		$alt
+zmył		$alt
+zmysł		$alt
+zmyśl		$alt
+znacz		$alt
+znaj		$alt
+znajdź		$alt
+znał		$alt
+znam		$alt
+znasz		$alt
+zniemcz		$alt
+znieś		$alt
+znieść	$alt
+znikł		$alt
+zniósł	$alt
+zniszcz		$alt
+zniż		$alt
+znoł		$alt
+znom		$alt
+znoś		$alt
+znudź		$alt
+znuż		$alt
+zrań		$alt
+zraź		$alt
+zrodź		$alt
+zroś		$alt
+zrób		$alt
+zródź		$alt
+zrósł		$alt
+zróść	$alt
+zrusz		$alt
+zryć		$alt
+zryj		$alt
+zrył		$alt
+zrzec		$alt
+zrzedł		$alt
+zrzekł		$alt
+zrzędź	$alt
+zrzuć		$alt
+zsadź		$alt
+zsiadł		$alt
+zsiodł		$alt
+zstąp		$alt
+zsuń		$alt
+zsyp		$alt
+zszarp		$alt
+zszyć		$alt
+zszyj		$alt
+zszył		$alt
+ztarł		$alt
+zwab		$alt
+zwać		$alt
+zwal		$alt
+zwalcz		$alt
+zwał		$alt
+zwarł		$alt
+zwarz		$alt
+zważ		$alt
+zwą		$alt
+zwąc		$alt
+zwątp		$alt
+zwę		$alt
+zwędź		$alt
+zwęź		$alt
+zwiać		$alt
+zwiał		$alt
+zwiądł	$alt
+zwiąż		$alt
+zwichrz		$alt
+zwić		$alt
+zwidź		$alt
+zwie		$alt
+zwiedź		$alt
+zwiej		$alt
+zwiem		$alt
+zwieńcz	$alt
+zwiesz		$alt
+zwieś		$alt
+zwieść	$alt
+zwieź		$alt
+zwieźć	$alt
+zwiększ	$alt
+zwij		$alt
+zwiń		$alt
+zwioć		$alt
+zwioł		$alt
+zwiódł	$alt
+zwiózł	$alt
+zwisł		$alt
+zwlec		$alt
+zwlecz		$alt
+zwlekł		$alt
+zwlókł	$alt
+zwłócz	$alt
+zwoć		$alt
+zwoł		$alt
+zwoź		$alt
+zwódź		$alt
+zwróć		$alt
+zwykł		$alt
+zziąbł	$alt
+zzuć		$alt
+zzuj		$alt
+zzuł		$alt
+zżąć		$alt
+zżął		$alt
+zżółkł	$alt
+zżuć		$alt
+zżuj		$alt
+zżuł		$alt
+zżyć		$alt
+zżyj		$alt
+zżył		$alt
+żga		$alt
+żgać		$alt
+żgaj		$alt
+żgał		$alt
+żgam		$alt
+żgasz		$alt
+żgną		$alt
+żgnąc		$alt
+żgnąć	$alt
+żgnął	$alt
+żgnę		$alt
+żgnie		$alt
+żgniesz	$alt
+żgnij		$alt
+żgoć		$alt
+żgoł		$alt
+żgom		$alt
+żłop		$alt
+żółkł	$alt
+żrą		$alt
+żrąc		$alt
+żre		$alt
+żreć		$alt
+żresz		$alt
+żrę		$alt
+żryj		$alt
+żuć		$alt
+żuj		$alt
+żuł		$alt
+życz		$alt
+żyj		$alt
+żył		$alt
+
+
+biłby		$alt
+bladłby		$alt
+blakłby		$alt
+bódłby		$alt
+brakłby		$alt
+brnąłby		$alt
+brzmiałby	$alt
+brzmiołby	$alt
+brzydłby	$alt
+byłby		$alt
+bździłby	$alt
+chciałby	$alt
+chciołby	$alt
+chlałby		$alt
+chlołby		$alt
+chłódłby	$alt
+chrypłby	$alt
+chrzciłby	$alt
+chudłby		$alt
+chwiałby	$alt
+chwiołby	$alt
+cichłby		$alt
+ciekłby		$alt
+cierpłby	$alt
+cliłby		$alt
+cniłby		$alt
+czciłby		$alt
+czkałby		$alt
+czknąłby	$alt
+czkołby		$alt
+czułby		$alt
+ćmiłby		$alt
+ćpałby		$alt
+ćpołby		$alt
+dałby		$alt
+dąłby		$alt
+dbałby		$alt
+dbołby		$alt
+dniałby		$alt
+dniołby		$alt
+dołby		$alt
+drgałby		$alt
+drgnąłby	$alt
+drgołby		$alt
+drwiłby		$alt
+drżałby		$alt
+drżołby		$alt
+dułby		$alt
+działby		$alt
+dziołby		$alt
+dźgałby		$alt
+dźgnąłby	$alt
+dźgołby		$alt
+dżdżyłby	$alt
+gasłby		$alt
+giąłby		$alt
+głuchłby	$alt
+gnałby		$alt
+gniłby		$alt
+gniótłby	$alt
+gnołby		$alt
+grałby		$alt
+grołby		$alt
+gryzłby		$alt
+grzałby		$alt
+grzmiałby	$alt
+grzmiołby	$alt
+grzołby		$alt
+jadłby		$alt
+jąłby		$alt
+kisłby		$alt
+kląłby		$alt
+klęsłby		$alt
+kładłby		$alt
+kłułby		$alt
+knułby		$alt
+kpiłby		$alt
+kradłby		$alt
+kryłby		$alt
+krzepłby	$alt
+kułby		$alt
+kwitłby		$alt
+lałby		$alt
+lazłby		$alt
+lągłby		$alt
+ląkłby		$alt
+ległby		$alt
+lgnąłby		$alt
+lołby		$alt
+lśniłby		$alt
+lżyłby		$alt
+łgałby		$alt
+łgołby		$alt
+łkałby		$alt
+łkołby		$alt
+marzłby		$alt
+mdlałby		$alt
+mdliłby		$alt
+mdlołby		$alt
+miałby		$alt
+miąłby		$alt
+milkłby		$alt
+miołby		$alt
+miótłby		$alt
+mknąłby		$alt
+mógłby		$alt
+mókłby		$alt
+mściłby		$alt
+myłby		$alt
+mżyłby		$alt
+nikłby		$alt
+niósłby		$alt
+padłby		$alt
+pasłby		$alt
+pchałby		$alt
+pchnąłby	$alt
+pchołby		$alt
+pełzłby		$alt
+piałby		$alt
+piekłby		$alt
+pierzchłby	$alt
+piłby		$alt
+piołbym		$alt
+piołbyś		$alt
+piołby		$alt
+plótłby		$alt
+plułby		$alt
+plwałby		$alt
+plwołby		$alt
+prałby		$alt
+prołby		$alt
+prułby		$alt
+prządłby	$alt
+przągłby	$alt
+pstrzyłby	$alt
+psułby		$alt
+puchłby		$alt
+rósłby		$alt
+rwałby		$alt
+rwołby		$alt
+ryłby		$alt
+rzedłby		$alt
+rzekłby		$alt
+rżałby		$alt
+rżnąłby		$alt
+rżołby		$alt
+schlałby	$alt
+schliby		$alt
+schlołby	$alt
+schłaby		$alt
+schłoby		$alt
+schłyby		$alt
+schrypłby	$alt
+schudłby	$alt
+sechłby		$alt
+siadłby		$alt
+siałby		$alt
+siekłby		$alt
+siodłby		$alt
+siołby		$alt
+skisłby		$alt
+skląłby		$alt
+sklęsłby	$alt
+skłułby		$alt
+skradłby	$alt
+skryłby		$alt
+skrzepłby	$alt
+skrzyłby	$alt
+skułby		$alt
+słabłby		$alt
+słałby		$alt
+słołby		$alt
+snułby		$alt
+spadłby		$alt
+spałby		$alt
+spasłby		$alt
+spełzłby	$alt
+spiąłby		$alt
+spiekłby	$alt
+spierzchłby	$alt
+spiłby		$alt
+splótłby	$alt
+społby		$alt
+sprałby		$alt
+sprołby		$alt
+sprułby		$alt
+sprządłby	$alt
+sprzągłby	$alt
+spsiałby	$alt
+spsiołby	$alt
+ssałby		$alt
+ssołby		$alt
+stałby		$alt
+stęchłby	$alt
+stliłby		$alt
+stłukłby	$alt
+stołby		$alt
+strułby		$alt
+strząsłby	$alt
+strzegłby	$alt
+strzygłby	$alt
+stygłby		$alt
+szczałby	$alt
+szczołby	$alt
+szczułby	$alt
+szedłby		$alt
+szkliłby	$alt
+szłaby		$alt
+szliby		$alt
+szłyby		$alt
+szyłby		$alt
+ściąłby		$alt
+ścichłby	$alt
+ściekłby	$alt
+ścierpłby	$alt
+ślepłby		$alt
+śmiałby		$alt
+śmiardłby	$alt
+śmierdłby	$alt
+śmiołby		$alt
+śmiordłby	$alt
+śniłby		$alt
+tchnąłby	$alt
+tęchłby		$alt
+tkałby		$alt
+tknąłby		$alt
+tkołby		$alt
+tkwiłby		$alt
+tlałby		$alt
+tliłby		$alt
+tlołby		$alt
+tłukłby		$alt
+trułby		$alt
+trwałby		$alt
+trwołby		$alt
+trząsłby	$alt
+tyłby		$alt
+wbiegłby	$alt
+wbiłby		$alt
+wchrzciłby	$alt
+wciąłby		$alt
+wciekłby	$alt
+wczułby		$alt
+wdałby		$alt
+wdarłby		$alt
+wdołby		$alt
+wdziałby	$alt
+wdziołby	$alt
+wgiąłby		$alt
+wgniótłby	$alt
+wgrałby		$alt
+wgrołby		$alt
+wgryzłby	$alt
+wiałby		$alt
+wiądłby		$alt
+więdłby		$alt
+wilgłby		$alt
+wiłby		$alt
+wiołby		$alt
+wiózłby		$alt
+wkłułby		$alt
+wkradłby	$alt
+wkułby		$alt
+wlałby		$alt
+wlazłby		$alt
+wlekłby		$alt
+wlołby		$alt
+wlókłby		$alt
+wmarzłby	$alt
+wmiótłby	$alt
+wniósłby	$alt
+wparłby		$alt
+wpełzłby	$alt
+wpiąłby		$alt
+wpiłby		$alt
+wplótłby	$alt
+wprządłby	$alt
+wprzągłby	$alt
+wrósłby		$alt
+wryłby		$alt
+wsiadłby	$alt
+wsiałby		$alt
+wsiąkłby	$alt
+wsiodłby	$alt
+wsiołby		$alt
+wsnułby		$alt
+wspiąłby	$alt
+wstałby		$alt
+wstołby		$alt
+wszcząłby	$alt
+wszedłby	$alt
+wszyłby		$alt
+wściekłby	$alt
+wtarłby		$alt
+wwiódłby	$alt
+wwiózłby	$alt
+wyłby		$alt
+wzbiłby		$alt
+wzdąłby		$alt
+wziąłby		$alt
+wzmógłby	$alt
+wzniósłby	$alt
+wzrósłby	$alt
+wzułby		$alt
+wżąłby		$alt
+wżyłby		$alt
+zbiegłby	$alt
+zbiłby		$alt
+zbladłby	$alt
+zblakłby	$alt
+zbrakłby	$alt
+zbrzydłby	$alt
+zbyłby		$alt
+zdałby		$alt
+zdarłby		$alt
+zdechłby	$alt
+zdjąłby		$alt
+zdołby		$alt
+zgadłby		$alt
+zgasłby		$alt
+zgęstłby	$alt
+zgiąłby		$alt
+zgniłby		$alt
+zgniótłby	$alt
+zgrałby		$alt
+zgrołby		$alt
+zgryzłby	$alt
+ziałby		$alt
+ziołby		$alt
+zjadłby		$alt
+zlałby		$alt
+zlazłby		$alt
+zląkłby		$alt
+zlołby		$alt
+zmarłby		$alt
+zmarzłby	$alt
+zmiąłby		$alt
+zmierzchłby	$alt
+zmilkłby	$alt
+zmiótłby	$alt
+zmógłby		$alt
+zmókłby		$alt
+zmyłby		$alt
+zmysłby		$alt
+znałby		$alt
+znikłby		$alt
+zniósłby	$alt
+znołby		$alt
+zrósłby		$alt
+zryłby		$alt
+zrzedłby	$alt
+zrzekłby	$alt
+zsiadłby	$alt
+zsiodłby	$alt
+zszyłby		$alt
+ztarłby		$alt
+zwałby		$alt
+zwarłby		$alt
+zwiałby		$alt
+zwiądłby	$alt
+zwiołby		$alt
+zwiódłby	$alt
+zwiózłby	$alt
+zwisłby		$alt
+zwlekłby	$alt
+zwlókłby	$alt
+zwołby		$alt
+zwykłby		$alt
+zziąbłby	$alt
+zzułby		$alt
+zżąłby		$alt
+zżółkłby	$alt
+zżułby		$alt
+zżyłby		$alt
+żgałby		$alt
+żgnąłby		$alt
+żgołby		$alt
+żółkłby		$alt
+żułby		$alt
+żyłby		$alt
+schlibyśmy	$alt
+schlibyście	$alt
+schłybyśmy	$alt
+shłybyście	$alt
+szlibyśmy	$alt
+szlibyście	$alt
+szłybyśmy	$alt
+szłybyście	$alt
+szliśmy		$alt
+szliście	$alt
+szłyśmy		$alt
+szłyście	$alt
+schliśmy	$alt
+schliście	$alt
+schłyśmy	$alt
+schłyście	$alt
+
+(pi s)   pEi;'Es
+

@@ -1,0 +1,8 @@
+Description:
+    Creates a new Angular directive
+
+Example:
+    yeoman init angularcrud:directive thing [--coffee]
+
+    This will create:
+        app/scripts/directives/thing.js

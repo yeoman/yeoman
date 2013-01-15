@@ -1,0 +1,242 @@
+ // translation rules for Macedonian
+// This file is UTF-8 encoded
+// Letters
+
+б     b@
+в     v@
+г     g@
+д     d@
+ѓ     dZ;@
+ж     Z@
+з     z@
+ѕ     dz@
+ј     j@2
+к     k@
+л     l@
+љ     l^@
+м     m@
+н     n@
+њ     n^@
+п     p@
+р     R@
+с     s@
+т     t@
+ќ     k^@
+ф     f@
+х     x@
+ц     ts@
+ч     tS@
+џ     dZ@
+ш     S@
+
+q     kv@
+w     dvost@-*uko||v@
+x     iks
+z     z@
+
+
+ // translation rules for Croatian
+// This file is UTF-8 encoded
+
+
+
+_??   znak          // unknown symbol
+_?A   bukva         // unknown letter
+©     'avtoRsk&||p@-*av&
+%     p'osto
++     plus
+€     'evRo
+@     _'et
+&     _'i
+!     'izvItSnIk
+:     dve_totSki
+#     b@-*'oj_
+/     k@-*'oz_
+\\    b'EkslES
+^     ts'irkumfleks
+~     t'ild&
+¤     v'alut&
+§     del
+µ     m'ik@-*o
+¶     tSlen
+°     st'epen
+_"    n'avodnIk
+_‚    'otvoRen||n'avodnIk
+_„    zatvoRen||n'avodnIk
+…     t@-*'i||t'otSki
+†     k@-*st
+‡     dv'oen||k@-*'st
+‰     p@-*'omil
+_‹    'otvoRen||n'avodnIk
+_‘    'otvoRen||n'avodnIk
+_’    'edinetSen||n'avodnIk
+_“    'otvoRen||n'avodnIk
+_”    z'atvoRen||n'avodnIk
+•     g'olema||t'otSk&
+_–    En||ts'r-t&
+_—    Em||ts'r-t&
+™     p@-*oizv'oditel
+˘     b@-*'evis
+¨     p@-*'ijegl&s
+_«    'otvoRen||n'avodnIk
+_­    p@-*'iv@-*emen&||ts'r-t'itSk&
+·     po
+¸     sed'il&
+_»    z'atvoRen||n'avodnIk
+®     R'egist@-*atsIj&
+ł     l@||s&||ts'r-t'itsom
+×     p'o
+÷     pod'el^,eno
+
+_$    d'ol&R
+_-    m'inus
+_*    dzv'ezditSk@
+_=    'edn&kvo
+_@    t'r-g'ovsko||'a
+_(    'otvoRen&||z'ag@-*ad&
+_)    z'atvoRen&||z'ag@-*ad&
+_'    'apost@-*of
+_*    dzv'ezditSk&
+_,    z'apiRk&
+_-    ts'r-t'itSk&
+_.    t'otSk&
+_;    t'otSk&z,apiRka
+_<    p'omalo||'od
+_=    'edn&kvo
+_>    pog'olemo||'od
+_?    pr'aSalnik
+_&    t'r-g'ovsko||'i
+_[    'otvoRen&||sR'edn&||z'ag@-*ad&
+_]    z'atvoRen&||sR'edn&||z'ag@-*ad&
+__    ts'r-t&
+_`    g@-*'avis
+_{    'otvoRen&||g'olem&||z'ag@-*ad&
+_|    veRtikaln&||ts'r-t&
+_}    z'atvoRen&||g'olema&||z'ag@-*ad&
+
+
+
+
+// Numbers
+_0    n'ul&
+_1    'eden
+_1f    'edna
+_2    d'v'a
+_2f   dv'e
+_3    tR'i
+_4    tS'EtI*I
+_5    p'Et
+_6    S'Est
+_7    s'Edum
+_8    'osum
+_9    d'EvEt
+_10   d'EsEt
+_11   edIn'aeset
+_12   dvan'aeset
+_13   t@-*in'aeset
+_14   tSEtirin'aeset
+_15   pEtn'aeset
+_16   SEsn'aeset
+_17   sEdumn'aeset
+_18   osumn'aeset
+_19   dEvEtn'aeset
+_2X   dv'aEsEt
+_3X   t@-*'iEsEt
+_4X   tSEtir-'iEsEt
+_5X   p'EEsEt
+_6X   S'EEsEt
+_7X   sEd'umdEsEt
+_8X   os'umdEsEt
+_9X   dEv'EEsEt
+_0C   st'o_
+_2C   dv'est'a
+_6C   S'Est'o
+_0M1  'iljadi
+_1MA1 'iljad&
+_0M2  mili'oni
+_1MA2 mili'on
+_0M3  m'iliardI
+_1MA3 m'iliarda
+_0M4  bili'oni
+_1M4  bili'on
+_dpt  _:z'api*k&_
+_0and i
+
+
+
+// Abbreviations
+
+// Demonstratives
+кој      $u+
+што      $u+
+кого     $pause
+
+
+// Pronouns
+
+
+// Prepositions
+за        $u $brk
+во        $u $brk
+со        s_ $brk
+
+
+// Conjunctions
+а        a $u $pause    // and
+и        i_: $u $pause   // and
+или      $pause       // but
+него     $pause       // but
+или      $u $pause    // or
+
+
+
+
+
+// Auxillary verbs
+ли       $u      // question
+
+сум      $u      // to be, short form
+си       $u
+е        $u $brk
+сме      $u
+сте      $u
+се       $u
+
+бил      $u       // to be, past tense
+била     $u
+било     $u
+беа      $u
+
+несум    $u+      // to be, negative
+неси     $u+
+нее      $u+
+несме    $u+
+несте    $u+
+несе     $u+
+
+имам     $u+      // to have
+имаш     $u+
+има      $u+
+имаме    $u+
+имате    $u+
+имаат    $u+
+
+немам    $u+      // to have, negative
+немаш    $u+
+нема     $u+
+немаме   $u+
+немате   $u+
+немаат   $u+
+
+
+
+
+
+// treat as letters not words if at the end of the clause
+а        a    $atend    // letter-а
+е        E    $atend    // letter-е
+и        i_   $atend    // letter-и
+
+
+// Exceptions
+

@@ -1,0 +1,643 @@
+// translation rules for Slovak
+// This file is UTF-8 encoded
+
+// Letter groups:
+// G   voiced: bdgjlmnrvwzaeiouy
+
+.group a
+        a        a
+
+.group á
+        á        a:
+
+.group ä
+        ä        e
+
+.group b
+        b        b
+        b (_     p
+        b (_G    b
+
+     _) bez (-P4  'bes
+     _) bezo (-P5 'bezo
+
+.group c
+        c        ts
+        ch       x
+
+.group č
+        č        tS
+
+.group d
+        d        d
+        d (_     t
+        d (_G    d
+        d (e     d;
+        d (i     d;
+        d (í     d;
+        d (eT    d     // word has $alt attribute
+        d (iT    d
+        d (íT    d
+        dz       dz
+        dz (_    ts
+        dz (_G   dz
+        dž       dZ
+        dž (_    tS
+        dž (_G   dZ
+
+         d (istic    d
+      _) d (ekor     d
+      _) d (eleg     d
+      _) d (elim     d
+      _) d (epres    d
+      _) d (eviz     d
+      _) d (ivíz     d
+   _han) d (i        d
+_korešpon) d (en     d
+    _na) d (íd       d
+    _na) d (íď       d
+   _pre) d (izb      d
+_štandar) d (iz      d
+    _vi) d (ea       d
+    _vi) d (eo       d
+    _vi) d (eu       d
+      a) d (e        d
+     in) d (i        d
+    man) d (it       d
+     mé) d (i        d
+     mo) d (er       d
+     or) d (i        d
+ _prezi) d (ent      d
+      _) d (etektí   d
+      _) d (iftín    d
+         d (izmus    d
+     _i) d (enti     d
+   _pre) d (iš       d
+      _) d (efinitív d
+     _o) d (iš       d
+         d (idakti   d
+    _mo) d (i        d
+     _o) d (in       d
+     _o) d (is       d
+      _) d (iec      d
+      _) d (iet      t
+   _štú) d (i        d
+   melo) d (i        d
+    _mo) d (el       d
+    _mo) d (em       d
+    _fe) d (er       d
+   _evi) d (en       d
+      _) d (isk      d
+     _e) d (it       d
+  _skan) d (i        d
+_invali) d (iz       d
+  _meto) d (i        d
+      _) d (einte    d
+      _) d (ekád     d
+    _in) d (ex       d
+    tra) d (i        d
+      _) d (imen     d
+   _šta) d (i        d
+      _) d (iá       d
+      _) d (ié       d
+      _) d (ez       d
+      _) d (etail    d
+     me) d (i        d
+      _) d (ekór     d
+      _) d (ia       d
+      _) d (ig       d
+      _) d (ip       d
+      _) d (is       d
+         d (ef       d
+         d (ió       d
+         d (etek     d
+         d (if       d
+         d (io       d
+         d (ir       d
+   _štá) d (i        d
+    _au) d (i        d
+         d (ick      d
+      o) d (ic       d
+      o) d (ik       d
+      _) d (ekrét    d
+    _po) d (íď       d
+         d (ik_      d
+_invali) d (it       d
+    _po) d (íd       d
+         d (ikt      d
+         d (eterm    d
+         d (isp      d
+         d (ist      d
+   _štu) d (i        d
+_štipen) d (i        d
+     _i) d (eá       d
+    kre) d (i        d
+    _ra) d (ikál     d
+     _i) d (ea       d
+      _) d (evíz     d
+      i) d (en       d
+      i) d (eo       d
+     _i) d (il       d
+     _i) d (io       d
+    _ko) d (ifi      d
+  _expe) d (i        d
+   meló) d (i        d
+      _) d (esig     d
+   _tra) d (í        d
+   _štu) d (en       d
+    _au) d (i        d
+      _) d (esti     d
+         d (iskre    d
+ diskre) d (i        d
+    _ka) d (et       d
+         d (eci      d
+      _) d (ece      d
+         d (isku     d
+   _pre) d (íď       d
+   _pre) d (íd       d
+      _) d (ekrement d
+     _o) d (íď       d
+
+
+.group ď
+        ď        d;
+        ď (_     t;
+        ď (_G    d;
+
+.group e
+        e        e
+
+.group é
+        é        e:
+
+.group f
+        f        f
+
+.group g
+        g        g
+        g (_     k
+        g (_G    g
+
+.group h
+        h        h
+        h (_     x
+        h (_G    h
+
+.group i
+        i        i
+        ia       %ia
+        ie       %ie
+        iu       %iu
+
+.group í
+        í        i:
+
+.group j
+        j        j
+
+.group k
+        k        k
+
+.group l
+        l        l
+     K) l (K     l-
+
+.group ĺ
+        ĺ        l:
+
+.group ľ
+        ľ        l^
+
+.group m
+        m        m
+
+.group n
+        n        n
+        n (g     N
+        n (k     N
+        n (e     n^
+        n (i     n^
+        n (í     n^
+        n (eT    n    // word has $alt attribute from sk_list
+        n (iT    n
+        n (íT    n
+    @C) n (ej_   n
+
+     _) na (-P3  'na   // include $combine words as stressed prefixes
+
+         n (ent    n
+    _be) n (ef     n
+  _bota) n (i      n
+    _fo) n (e      n
+    _gé) n (i      n
+  _kolo) n (i      n
+    _li) n (e      n
+ _miest) n (e      n
+    _mu) n (i      n
+  _part) n (er     n
+_personál) n (e    n
+ _prázd) n (e      n
+    _tu) n (is     n
+   _vin) n (e      n
+  _žiad) n (e      n
+      a) n (im     n
+     ál) n (i      n
+     fó) n (i      n
+     fo) n (ic     n
+     ge) n (e      n
+     go) n (i      n
+  harmó) n (i      n
+     ch) n (ic     n
+     ch) n (ik     n
+     ma) n (i      n
+    mag) n (e      n
+         n (eho_   n
+   orga) n (iz     n
+     ro) n (ic     n
+     ro) n (ik     n
+ sociál) n (e      n
+  správ) n (e      n
+    tro) n (i      n
+   vole) n (í      n
+     _e) n (erg    n
+  inter) n (e      n
+  _defi) n (itív   n
+_aktuál) n (e      n
+    _mo) n (i      n
+    _re) n (es     n
+   _tré) n (er     n
+  _defi) n (íc     n
+  endro) n (i      n
+  _komu) n (i      n
+      _) n (eón    n
+_kultúr) n (e      n
+      _) n (egatív n
+      _) n (egác   n
+      _) n (eoklas n
+    _me) n (ež     n
+    tré) n (i      n
+      _) n (eutrál n
+  harmo) n (i      n
+    _te) n (is     n
+      _) n (ikot   n
+     lí) n (i      n
+_konkrét) n (e     n
+ _matki) n (e      n
+   _sig) n (i      n
+  _tech) n (i      n
+     gó) n (i      n
+  _reál) n (e      n
+      i) n (ici    n
+         n (ist    n
+      _) n (eg     n
+     mu) n (ik     n
+     mu) n (is     n
+   tago) n (is     n
+    rôz) n (e      n
+ _mecha) n (i      n
+  _koló) n (i      n
+      _) n (eoprén n
+    _mi) n (i      n
+    _ge) n (i      n
+   _imu) n (i      n
+_špeciál) n (e     n
+      o) n (ic     n
+      o) n (ik     n
+      o) n (is     n
+  _admi) n (ist     n
+_administratív) n (e n
+         n (izmus_ n
+   _váž) n (e      n
+ formál) n (e      n
+  _štát) n (e      n
+   štát) n (e_     n
+   riad) n (e      n
+    _pa) n (el     n
+      _) n (eore   n
+      _) n (erv    n
+  natív) n (e      n
+      _) n (ext    n
+    zva) n (ej_    n
+     _u) n (i      n
+
+.group ň
+        ň        n^
+
+.group o
+        o        o
+//        ou (_    ow
+        ou       oU
+
+.group ó
+        ó        o:
+
+.group ô
+        ô        uo
+
+.group p
+        p        p
+
+     _) po (-P3   'po
+     _) pod (-P4  'pot
+     _) pri (-P4  'pRi
+
+.group q
+        q        k
+        qu       kv
+
+.group r
+     K) r (K     r-
+        r        R
+        rr       R
+
+
+.group ŕ
+        ŕ        r:
+
+.group ř        // Czech r-caron
+        ř        R^
+     p) ř        R^/   // quieter after unvoiced consonant
+     f) ř        R^/
+     t) ř        R^/
+     k) ř        R^/
+
+
+.group s
+        s        s
+
+     _) so (-P3  'so
+
+.group š
+        š        S
+
+.group t
+        t        t
+        t (e     t;
+        t (i     t;
+        t (í     t;
+        t (eT    t       // word has $alt attribute
+        t (iT    t
+        t (íT    t
+
+      _) t (erestri  t
+
+         t (ik_   t
+         t (ing   t
+         t (ist   t
+ _atlan) t (i       t
+_automa) t (i       t
+   _cer) t (i       t
+ _herme) t (i       t
+   _ins) t (i       t
+_konkre) t (iz      t
+  _konš) t (i       t
+ _kozme) t (i       t
+_matema) t (i       t
+ _sensi) t (i       t
+   _ver) t (i       t
+      a) t (in      t
+      a) t (iz      t
+     ak) t (i       t
+    ama) t (ic      t
+    ama) t (ik      t
+     an) t (i       t
+     as) t (ic      t
+     ro) t (ic      t
+     ro) t (ik      t
+ komple) t (iz      t
+     ma) t (ick     t
+     op) t (i       t
+    par) t (i       t
+         t (ick     t
+     rk) t (i       t
+    _sa) t (ir      t
+    _sa) t (is      t
+  _iden) t (i       t
+   _exo) t (i       t
+   pres) t (iž      t
+_farmaceu) t (i     t
+     os) t (ic      t
+_diagnos) t (i      t
+     _s) t (imul    t
+  didak) t (i       t
+   _kon) t (i       t
+      i) t (ic      t
+ _synte) t (i       t
+   _abs) t (i       t
+      _) t (iran    t
+   _reš) t (i       t
+   _tex) t (il      t
+    _pu) t (ik      t
+      o) t (ic      t
+      o) t (ik      t
+    ven) t (il      t
+     ak) t (ik      t
+ _magne) t (i       t
+     ma) t (ik      t
+      e) t (ic      t
+      e) t (ik      t
+_preven) t (ív      t
+   _inš) t (i       t
+ _deinš) t (i       t
+         t (izmus_  t
+   tema) t (i       t
+  inves) t (i       t
+     ek) t (í       t
+ _balis) t (i       t
+     ek) t (i       t
+     en) t (in      t
+      a) t (ick     t
+_produk) t (i       t
+      _) t (itan    t
+  _fone) t (i       t
+  _niko) t (i       t
+   _šta) t (i       t
+_štatis) t (i       t
+    cha) t (ic      t
+    cha) t (ik      t
+     li) t (ic      t
+      _) t (itul    t
+   _kul) t (i       t
+   _kri) t (ic      t
+   _kri) t (ik      t
+   _kri) t (iz      t
+   _apa) t (i       t
+  _chao) t (ic      t
+  _chao) t (ik      t
+     ep) t (ic      t
+     ep) t (ik      t
+_charakteris) t (i  t
+_charakteris) t (ík t
+     _š) t (ipendi  t
+   _cen) t (i       t
+    _ak) t (iv      t
+      ý) t (ic      t
+     mo) t (iv      t
+      s) t (ic      t
+      n) t (ic      t
+      n) t (in      t
+   _mul) t (i       t
+  _kons) t (i       t
+   _jus) t (i       t
+      i) t (ik      t
+   _des) t (i       t
+    _an) t (i       t
+_antipa) t (i       t
+    ema) t (i       t
+      _) t (imotej  t
+      a) t (iká     t
+
+ _sensi) tí         ti:
+   _dif) tí (n      ti:
+      _) tí (mov    ti:
+_defini) tí (v      ti:
+    _ak) tí (v      ti:
+ _detek) tí         ti:
+     mo) tí (v      ti:
+ _pales) tí         ti:
+  _nega) tí (v      ti:
+      i) tí (v      ti:
+      a) tí (v      ti:
+  _audi) tí (v      ti:
+     or) tí (m      ti:
+   spek) tí (v      ti:
+_produk) tí (v      ti:
+_alterna) tí (v     ti:
+_konštruk) tí (v    ti:
+   _jus) tí         ti:
+  viknu) tí         ti:
+   ales) tí (t      ti:
+
+
+
+.group te
+      _) te (letext te
+      _) te (rap    te
+      _) te (ras    te
+      _) te (rez    te
+  _exis) te (n      te
+    _ho) te (l      te
+_charak) te (r      te
+    _in) te (l      te
+    _in) te (n      te
+ _kompe) te (n      te
+    _ma) te (mati   te
+    _ma) te (ria    te
+    _ma) te (riá    te
+  _stra) te (g      te
+     ia) te (_      te
+     me) te (r_     te
+      v) te (dajš   te
+  zavia) te         te
+    _de) te (ktí    te
+      _) te (ó      te
+     in) te (rne    te
+      _) te (o      te
+         te (x      te
+      _) te (lec    te
+      _) te (lef    te
+      _) te (leg    te
+      _) te (lek    te
+      _) te (lem    te
+      _) te (leo    te
+      _) te (lep    te
+    _al) te (r      te
+      _) te (ler    te
+      _) te (lev    te
+      _) te (lex    te
+   _syn) te (ti     te
+   _wal) te (r      te
+      _) te (ch     te
+      _) te (x      te
+         te (rajš   te
+      _) te (mp     te
+      _) te (nd     te
+      _) te (rč     te
+      _) te (dajš   te
+     _s) te (p      te
+ _archi) te (k      te
+   _pas) te         te
+    _pa) te (nt     te
+         te (mati   te
+  _dein) te         te
+   _sep) te (mb     te
+     _é) te (r      te
+  _asis) te (n      te
+      _) te (nis    te
+    nás) te (_      te
+   _vše) te (č      te
+      _) te (rén    te
+      _) te (réz    te
+     de) te (k      te
+         te (ho_    te
+      _) te (nto    te
+      s) te (r_     te
+    _ka) te (d      te
+    _ka) te (g      te
+      _) te (lesk   te
+         te (raz    te
+      _) te (lesen  te
+    _ka) te (ch     te
+    _al) te (rnatív te
+     de) te (rm     te
+_charak) te (r      te
+         te (j_     te
+         te (s_     te
+      s) te (r      te
+         te (rm     te
+         te (st     te
+     ex) te (r      te
+      _) te (leter  te
+  _tele) te (r      te
+    _po) te (n      te
+     in) te (r      te
+   _sys) te (m      te
+    _al) te (rn     te
+   _syn) te         te
+    _li) te (r      te
+
+
+.group ť
+        ť        t;
+
+.group u
+        u        u
+
+.group ú
+        ú        u:
+
+.group v
+        v        v
+     o) v (_     u
+
+     _) vy (@P2  'vi
+
+.group w
+        w        v
+
+.group x
+        x        ks
+
+.group y
+        y        i
+
+.group ý
+        ý        i:
+
+.group z
+        z        z
+        z (_     s
+        z (_G    z
+
+.group ž
+        ž        Z
+        ž (_     S
+        ž (_G    Z
+
+.group
+        ě        e
+        ů        u:            // czech
+        $        dola:R
+        %        peRtsento
+    D_) %        peRtsent
+

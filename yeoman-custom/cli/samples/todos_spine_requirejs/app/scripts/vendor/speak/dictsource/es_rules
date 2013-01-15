@@ -1,0 +1,266 @@
+// translation rules for Spanish
+// This file is UTF-8 encoded
+
+// Conditional rules
+// ?1  Castilian
+// ?2  Latin America
+
+.L01 l r y
+.L02 b d g n m         // change [s] to [z] before these
+.L03 f h j s y z r      // allow [B] [D] [Q] before these consonants
+.L04 b v f p      // labials, nasals are [m]
+.L05 g k          // velars, nasals are [N]
+.L06 j w l r b d g n m p t k c
+
+.group a
+          a          a
+          ai         aI
+          ay (K      aI
+          ay (_      'aI
+          au         aU
+          au (_      'aU
+
+
+.group b
+          b          b
+       _) b ($unpr   b  // phoneme definition may change it to [B]
+       _) b (L01A    b  // Only bl, br are allowed at start of word
+          b (A       B
+          b (cY      B
+          b (L03     B
+       m) b          b
+       n) b          b
+          b (iA      b
+          b (uA      b
+
+.group c
+          c          k
+       _) c (L01A    k    // allow: cl cr  at start of word
+       _) ch (A      tS   // allow _ch
+
+          c (Y       T         // ce, ci
+          ch         tS
+
+
+.group d
+          d          d
+       _) d ($unpr   d  // phoneme definition may change it to [D]
+       _) d (rA      d
+          d (A       D
+          d (cY      D
+          d (L03     D
+       m) d          d
+       n) d          d
+       l) d          d
+       r) d          d
+
+
+.group e
+          e          e
+          e (CK      E
+          e (r       E
+          e (Ch      e
+      Ar) e          E
+          ei         eI
+          ey (K      eI
+          ey (_      'eI
+          eu         eU
+          eu (_      'eU
+
+
+.group f
+          f          f
+       _) f (L01A    f   // allow fl fr  at start of word
+
+
+.group g
+          g          g
+       _) g ($unpr   g  // phoneme definition may change it to [Q]
+       _) g (L01A    g
+       _) gh (A      g  // allow _gh in foreign words
+       _) gn (A      n
+          g (A       Q
+          g (cY      Q
+          g (L03     Q
+       m) g          g
+       n) g          g
+          g (Y+      x        // ge gi
+
+
+.group h
+          h              // silent
+
+
+.group i
+          i          i
+          i (A       J^
+       C) i (A       j
+       l) i (A       %i
+       r) i (A       %i
+
+
+.group j
+          j          x
+
+
+.group k
+          k          k
+       _) k (L01A    k   // allow kl kr  at start of word
+
+
+.group l
+          l          l
+       _) ll (A      J^  // allowe _ll
+          ll         J^
+?2     A) ll (A      j:
+
+
+
+.group m
+          m          m
+       _) mn (em     n
+
+          m (K       n
+          m (L04     m
+          m (_L04    m
+          m (L05     N
+          m (_L05    N
+          m (j       N
+
+
+.group n
+          n          n
+          n (L04     m
+          n (_L04    m
+          n (L05     N
+          n (_L05    N
+          n (j       N
+
+
+.group o
+          o          o
+          o (CK      O
+          o (r       O
+          o (Ch      o
+      Ar) o          O
+          oi         oI
+          oy (K      oI
+          oy (_      'oI
+
+
+.group p
+          p          p
+       _) p (L01A    p   // allow  pl pr  at start of word
+          p (t       p:
+       _) ph         f
+          ph (K      f
+       _) ps (i      s
+       _) ps (eudo   s
+       _) pt (ero    t
+       _) pt (ol     t
+
+
+.group q
+          q          k
+          qu         k
+
+
+.group r
+          r          R
+          r (_       *
+          r (t       **
+       A) r (A       **
+       C) r (A       **
+       l) r (A       R
+       m) r (A       R
+       n) r (A       R
+       s) r (A       R
+          rr         RR2
+
+
+.group s
+          s          s
+       &) s (_S1     s
+       _) s (C       %Es
+       _) sh (A      S
+       _) sh (L01A   S
+          sh (K      S
+
+
+.group t
+          t          t
+       _) t (L01A    t  // all tr at start of word
+       _) th         T
+          th (K      T
+
+
+.group u
+          u          u
+          u (A       w
+          u (y_      w
+       l) u (A       %u
+       r) u (A       %u
+
+       g) u (Y             // gue gui
+
+
+.group v
+          v          B
+       _) v (L01A    b   // allow vl vr  at start of word
+?1     m) v          b
+?1     n) v          b
+?1        v (L06     b
+?1        v (iA      b
+?1        v (uA      b
+?2        v          v#
+?2     _) v          v
+?2        v (L06     v
+?2        v (j       v
+?2        v (iA      v
+?2        v (uA      v
+
+
+.group w
+          w          w
+       _) wh (A      w
+
+
+.group x
+          x          ks
+?1     A) x (A       Qs
+          x (_       =Qs
+       _) x ($unpr   z      // ?
+
+
+.group y
+          y          i
+       _) y ($unpr   J
+      _m) y          J
+       n) y          J
+      _l) y          J
+          y (A       J^
+?2     A) y (A       j:
+
+
+.group z
+          z          T
+?2        z (L02     z
+
+
+
+.group
+          á          ''a
+          é          ''E
+          í          ''i
+          ó          ''O
+          ú          ''u
+          ü          u
+          ñ          n^
+
+          $          d'Ola*
+
+      _)  - (_D      m'EnOs
+     A_)  - (_D      _
+     C_)  - (_D      _
+
+          , (D       kOma

@@ -1,0 +1,139 @@
+// Cantonese Chinese
+
+// condition ?1   Speak English letters as English words
+// condition ?2   Speak English letter as jyutping romanisation
+
+
+
+.group a
+?1        a        _^_EN
+?2        a        a
+?2        ai       ai
+?2        au       au
+?2        aa       aa
+?2        aai      aai
+?2        aau      aau 
+?2        aang     aang
+
+.group b
+?1        b        _^_EN
+?2        b        b
+
+.group c
+?1        c        _^_EN
+?2        c        c
+?2        ch       tS
+
+.group d
+?1        d        _^_EN
+?2        d        d
+
+.group e
+?1        e        _^_EN
+?2        e        e
+?2        ei       ei
+?2        eu       eu
+?2        eo       eo
+?2        eoi      eoi
+
+.group f
+?1        f        _^_EN
+?2        f        f
+
+.group g
+?1        g        _^_EN
+?2        g        g
+
+.group h
+?1        h        _^_EN
+?2        h        h
+
+.group i
+?1        i        _^_EN
+?2        i        i
+?2        iu       iu
+
+.group j
+?1        j        _^_EN
+?2        j        j
+
+.group k
+?1        k        _^_EN
+?2        k        k
+
+.group l
+?1        l        _^_EN
+?2        l        l
+
+.group m
+?1        m        _^_EN
+?2        m        m
+
+.group n
+?1        n        _^_EN
+?2        n        n
+?2        ng       N
+
+.group o
+?1        o        _^_EN
+?2        o        o
+?2        oi       oi
+?2        ou       ou
+?2        oe       oe
+?2        ong      ong
+
+.group p
+?1        p        _^_EN
+?2        p        p
+
+.group q
+?1        q        _^_EN
+?2        q        k
+?2        qu       kw
+
+.group r
+?1        r        _^_EN
+?2        r        r
+
+.group s
+?1        s        _^_EN
+?2        s        s
+
+.group t
+?1        t        _^_EN
+?2        t        t
+
+.group u
+?1        u        _^_EN
+?2        u        u
+?2        ui       ui
+
+.group v
+?1        v        _^_EN
+?2        v        v
+
+.group w
+?1        w        _^_EN
+?2        w        w
+
+.group x
+?1        x        _^_EN
+?2        x        ks
+
+.group y
+?1        y        _^_EN
+?2        y        j
+?2        yu       yu
+
+.group z
+?1        z        _^_EN
+?2        z        z
+
+.group
+        1        1
+        2        2
+        3        3
+        4        4
+        5        5
+        6        6
+        7        7

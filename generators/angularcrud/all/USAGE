@@ -1,0 +1,19 @@
+Description:
+    Creates a crud AngularJS app
+
+Example:
+    yeoman init angularcrud
+
+    This will create:
+        Gruntfile.js
+        package.json
+        
+        app/index.html
+        app/scripts/your-app-name-here.js
+        app/scripts/controllers/main.js
+        app/scripts/vendor/angular.js
+        app/styles/main.css
+        app/views/main.html
+
+        test/lib/angular-mocks.js
+        test/spec/controllers/main.js

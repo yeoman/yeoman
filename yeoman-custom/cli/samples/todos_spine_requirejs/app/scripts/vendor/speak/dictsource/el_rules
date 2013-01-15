@@ -1,0 +1,252 @@
+// Greek -modern
+ 
+// This file is UTF-8 encoded
+// all words lower case
+
+// Alphabet
+// Α α, Β β, Γ γ, Δ δ, Ε ε, Ζ ζ, Η η, Θ θ, Ι ι, Κ κ, Λ λ, Μ μ, Ν ν, Ξ ξ,
+// Ο ο, Π π, Ρ ρ, Σ σ ς (word-final form), Τ τ, Υ υ, Φ φ, Χ χ, Ψ ψ, Ω ω.
+
+// Letter group B:   θ κ ξ π ς σ τ φ χ  (voiceless consonants)
+// Letter group Y:   ε η ι υ  έ ή ί ύ  (front vowels).
+
+.L01 αι ε ι η υ οι ει  αί έ ί ή ύ οί εί 
+
+
+.group α
+           α        a
+           αι       e
+           αί       'e
+           αυ       av
+           αυ (B    af      // +voiceless consonant κ, π, τ, χ, θ, σ, ξ.
+           αύ      'av
+           αύ (B   'af      // +voiceless consonant κ, π, τ, χ, θ, σ, ξ.
+           αη       aI
+           αϊ       aI
+
+.group β
+           β        v
+           β (β
+
+.group γ
+           γ        Q
+           γγ       g
+           γκ       g
+        A) γγ       Ng
+        A) γκ       Ng
+           γ (χ     N
+           γ (L01   j
+           γαι (A   j
+           γε (A    j
+           γι (A    j
+           γη (A    j
+           γυ (A    j
+           γοι (A   j
+           γει (A   j
+
+.group δ
+           δ        D
+           δ (δ
+
+
+.group ε
+           ε        e
+           ει       i
+           εί       'i
+        C) ει (A    ;
+           ευ       ev
+           ευ (B    ef      // +voiceless consonant
+           ευ (β    e
+           ευ (φ    e
+           εύ      'ev
+           εύ (B   'ef      // +voiceless consonant
+           εύ (β   'e
+           εύ (φ   'e
+
+.group ζ
+           ζ        z
+           ζ (ζ
+           ζη (A    z;
+           ζι (A    z;
+           ζυ (A    z;
+           ζει (A   z;
+           ζοι (A   z;
+
+.group η
+           η        i
+        C) η (A     ;
+           ηυ       iv
+           ηυ (B    if      // +voiceless consonant
+
+.group θ
+           θ        T
+           θ (θ
+
+.group ι
+           ι        i
+        C) ι (A     ;
+        ρ) ι (A     i
+        δ) ι (α_    i
+           ι (ε     i
+
+.group κ
+           κ        k
+           κ (κ
+       ν_) κ        g
+
+           κ (Y     c
+           κ (αι    c
+           κ (αί    c
+           κ (οι    c
+           κ (οί    c
+
+           κη (A    c  // k + i sound = [c]
+           κι (A    c
+           κυ (A    c
+           κει (A   c
+           κοι (A   c
+
+
+.group λ
+           λ        l
+           λ (λ
+           λη (A    l^
+           λι (A    l^
+           λυ (A    l^
+           λει (A   l^
+           λοι (A   l^
+
+.group μ
+           μ        m
+           μ (μ
+        _) μπ       b
+
+.group ν
+           ν        n
+           ν (ν
+           ντ       d  // always? or not after a vowel?
+           ν (_π    m
+           ν (_ψ    m
+           ν (_κ    N
+           ν (_και_  n  // there is a pause before και
+           ν (_ξ    N
+
+           νη (A    n^
+           νι (A    n^
+           νυ (A    n^
+           νει (A   n^
+           νοι (A   n^
+
+
+.group ξ
+           ξ        ks
+           ξ (ξ
+       ν_) ξ        gz
+
+.group ο
+           ο        o
+           οι       i
+           οί       'i
+        C) οι (A    ;
+           ου       u
+           ού       'u
+           οη       oI
+           οϊ       oI
+
+.group π
+           π        p
+           π (π
+       ν_) π        b
+
+.group ρ
+           ρ        r
+           ρρ       r
+        A) ρ (A     r
+        C) ρ        r
+
+       αυ) ρ        r   // υ  becomes consionant [v]
+       αύ) ρ        r
+       ευ) ρ        r
+       εύ) ρ        r
+       ηυ) ρ        r
+       ηύ) ρ        r
+
+
+.group σ
+           σ        s
+// ??          σ (σ
+           ση (A    s;
+           σι (A    s;
+           συ (A    s;
+           σει (A   s;
+           σοι (A   s;
+
+.group ς
+           ς        s
+           ς (_B    s    // +voiceless consonant
+           ς (_C    z
+
+.group τ
+           τ        t
+           τ (τ
+           τσ       ts
+           τζ       dz
+       ν_) τ        d
+       ν_) τσ       dz
+
+.group υ
+           υ        i
+        C) υ (A     ;
+           υι       i
+           υί       'i
+
+.group φ
+           φ        f
+           φ (φ
+
+.group χ
+           χ        x
+           χ (Y     C
+           χ (αι    C
+           χ (αί    C
+           χ (οι    C
+           χ (οί    C
+
+           χει (A   C
+           χη (A    C
+           χι (A    C
+           χοι (A   C
+           χυ (A    C
+
+.group ψ
+           ψ        ps
+           ψ (ψ
+       ν_) ψ        bz
+
+.group ω
+           ω        o
+
+
+
+.group
+           ά        'a
+           άη       'aI
+           άι       'aI
+           έ        'e
+           ή        'i
+           ί        'i
+           ΰ        'i
+           ϊ        i
+           ϋ        i
+           ό        'o
+           όη       'oI
+           όι       'oI
+           ύ        'i
+           ώ        'o
+
+           .        tel'ia
+           , (D     k'oma
+           !        Tavmastik'o
+        !) !
+
+
