@@ -35,10 +35,18 @@ module.exports = function( grunt ) {
       linkExpress: {
         command: 'ln -s ' + expressPath + ' ./yeoman-custom/cli/node_modules/yeoman-generators/lib/generators/express',
         stdout: true
+      },
+
+      promptAddPath: {
+        command: "echo '\nNow add the follow dir to your system path' && pwd",
+        stdout: true,
+        execOptions: {
+          cwd: './yeoman-custom/cli/bin'
+        }
       }
     }
   });
 
   // Disable lint for now until we upgrade to latest grunt with latest jshint
-  grunt.registerTask('install', ['shell:npmYeoman', 'shell: npmDemo', 'shell:linkAngularcrud', 'shell:linkExpress']);
+  grunt.registerTask('install', ['shell:npmYeoman', 'shell:npmDemo', 'shell:linkAngularcrud', 'shell:linkExpress', 'shell:promptAddPath']);
 };
