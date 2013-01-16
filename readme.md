@@ -1,6 +1,6 @@
 Yeoman Express Stack
 ====================
-A proof of concept end-to-end stack for development using Yeoman 0.9.6, Express and AngularJS. Note: This experimental branch is providing for testing purposes only (at present) and does not provide any guarantees.
+A proof of concept end-to-end stack for development using [Yeoman](http://yeoman.io) 0.9.6, [Express](http://expressjs.com/) and [AngularJS](http://angularjs.org). Note: This experimental branch is providing for testing purposes only (at present) and does not provide any guarantees.
 
 * Custom version of Yeoman's server.js with support for Express middleware
 * LiveReload supported out of the box
@@ -20,8 +20,8 @@ From `express-stack` root:
 
 1. `npm install`
 2. `grunt install`
-3. follow output of step 2 and update your system path
-4. Now your system has a new command `yeomen` (noticed the `e`, instead of `a`, `e` for `express`?), which will run this custom copy of yeoman bundled with the custom generators listed below.
+3. follow output of step 2 and update your [system path](http://hathaway.cc/2008/06/how-to-edit-your-path-environment-variables-on-mac-os-x/)
+4. Now your system has a new command `yeomen` (notice the `e`, instead of `a` in yeoman? - `e` is for `express`), which will run this custom copy of yeoman bundled with the custom generators listed below.
 
 ### Getting started from scratch
 
@@ -30,9 +30,9 @@ either start a brand new application using the below commands or skip to the dem
 where some included sample code is available for you to try out.
 
 ```
-yeomen init angularcrud
-yeomen init angularcrud:crud post
-yeomen init express post
+yeomen init angularcrud            # Standard Angular app
+yeomen init angularcrud:crud post  # Angular CRUD routes/views
+yeomen init express post           # Express CRUD
 yeomen server
 
 # you can then navigate to #/api/post/index to verify
