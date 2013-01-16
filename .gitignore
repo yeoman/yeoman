@@ -1,3 +1,4 @@
 # ignore hidden folders
 .*/
+.server
 node_modules
