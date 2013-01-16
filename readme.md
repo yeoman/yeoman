@@ -16,7 +16,7 @@ This stack assumes that you wish to develop both the server and client portions 
 * `demo` - A sample application
 
 ### Installation (assume you have already installed Yeoman@0.9.6)
-From `express-stack` root:
+Clone this repository and then from the `express-stack` root:
 
 1. `npm install`
 2. `grunt install`
