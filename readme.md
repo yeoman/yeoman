@@ -20,7 +20,7 @@ From `express-stack` root:
 
 1. `npm install`
 2. `grunt install`
-3. cd `yeoman-custom/cli/bin` and run `pwd` then add the output to your system path
+3. follow output of step 2 and update your system path
 4. Now your system has a new command `yeomen` (noticed the `e`, instead of `a`, `e` for `express`?), which will run this custom copy of yeoman bundled with the custom generators listed below.
 
 ### Getting started from scratch
@@ -30,10 +30,10 @@ either start a brand new application using the below commands or skip to the dem
 where some included sample code is available for you to try out.
 
 ```
-yeoman init angularcrud
-yeoman init angularcrud:crud post
-yeoman init express post
-yeoman server
+yeomen init angularcrud
+yeomen init angularcrud:crud post
+yeomen init express post
+yeomen server
 
 # you can then navigate to #/api/post/index to verify
 # that the routing is working with Express correctly
@@ -44,7 +44,7 @@ Note: should you receive any warnings about Express not being present,
 
 ### Demo
 
-You should now be able to navigate to `demo` and run `yeoman server` to run it. Note, if you have multiple versions of yeoman installed locally, you may wish to directly use the binary in `yeoman-custom`, otherwise everything should work.
+You should now be able to navigate to `demo` and run `yeomen server` to run it. Note, if you have multiple versions of yeoman installed locally, you may wish to directly use the binary in `yeoman-custom`, otherwise everything should work.
 
 For the generators, the following are supported:
 
