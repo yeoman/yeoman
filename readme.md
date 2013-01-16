@@ -71,6 +71,10 @@ Express:
 
 For more information about individual sub-generators, please see the USAGE guidelines.
 
+### Bug reporting
+
+As Express Stack is an experimental project, please avoid posting any issues for it on the [main](https://github.com/yeoman/yeoman/issues) Yeoman issue tracker. Instead, issues can be posted [here](https://github.com/yeoman/express-stack/issues). We do however accept pull requests against this branch, which do need to go through the main repository.
+
 ### Credits
 
 @addyosmani, @blai, @jacobmumm, @mklabs
