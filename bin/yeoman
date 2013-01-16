@@ -12,8 +12,12 @@ var updateNotifier = require('update-notifier');
 var Insight = require('insight');
 
 var helpScreen = _.template(fs.readFileSync(path.join(__dirname, 'help.txt'), 'utf8'));
-var args = process.argv.slice(2);
-var opts = nopt({}, {}, process.argv, 2);
+var opts = nopt({
+  help: Boolean
+}, {
+  h: '--help'
+});
+var args = opts.argv.remain;
 var cmd = args[0];
 
 var insight = new Insight({
@@ -44,18 +48,25 @@ function runInit() {
 
   track();
 
-  // default to generator-webapp
-  if (opts.argv.remain.length === 1) {
-    args[1] = 'webapp';
+  // register each built-in generator individually
+  env.plugins('node_modules', __dirname);
+
+  // alias any single namespace to `*:all` and `webapp` namespace specifically
+  // to webapp:app.
+  env.alias(/^([^:]+)$/, '$1:all');
+  env.alias(/^([^:]+)$/, '$1:app');
+
+  // lookup for every namespaces, within the environments.paths and lookups
+  env.lookup('*:*');
+
+  if (opts.help) {
+    return console.log(env.help('yeoman init'));
   }
 
-  // alias any single namespace to *:all and *:app, all taking precedence over
-  // app.
-  env.alias(/^([^:]+)$/, '$1:app');
-  env.alias(/^([^:]+)$/, '$1:all');
-
-  // lookup for npm packages
-  env.lookup('*:*');
+  // default to generator-webapp
+  if (!opts.help && opts.argv.remain.length === 1) {
+    args[1] = 'webapp';
+  }
 
   env.on('end', function() {
     console.log('done running sir');
@@ -68,6 +79,9 @@ function runInit() {
     process.exit(err.code || 1);
   });
 
+  // Note: at some point, nopt needs to know about the generator options, the
+  // one that will be triggered by the below args. Maybe the nopt parsing
+  // should be done internally, from the args.
   env.run(args.slice(1), opts);
 }
 

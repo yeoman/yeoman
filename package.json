@@ -31,7 +31,9 @@
     "manpages": "./scripts/docs-build"
   },
   "dependencies": {
-    "yeoman-generators": "http://github.com/yeoman/generators/archive/e47bf1d6c8.tar.gz",
+    "yeoman-generator": "http://github.com/yeoman/generators/archive/da837c604e164.tar.gz",
+    "generator-webapp": "http://github.com/yeoman/generator-webapp/archive/57f06a7f8045.tar.gz",
+    "generator-mocha": "http://github.com/yeoman/generator-mocha/archive/6bd112ebc4db2b9.tar.gz",
     "bower": "~0.6.8",
     "colors": "~0.6.0",
     "nopt": "~2.0.0",
