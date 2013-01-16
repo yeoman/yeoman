@@ -2,13 +2,23 @@
 var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
-  _ = grunt.util._,
   yeoman = require('yeoman'),
   angularUtils = require('../util.js');
 
 module.exports = Generator;
 
+
+function titleize(str){
+  if (str == null) return '';
+  return String(str).replace(/(?:^|\s)\S/g, function(c){ return c.toUpperCase(); });
+}
+
+function classify(str){
+  return titleize(String(str).replace(/[\W_]/g, ' ')).replace(/\s/g, '');
+}
+
 function Generator() {
+
   yeoman.generators.NamedBase.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, '../templates'));
 
@@ -41,7 +51,7 @@ Generator.prototype.rewriteAppJs = function() {
     splicable: [
       ".when('/api/" + this.name + "/" + this.action + "', {",
       "  templateUrl: 'views/" + this.name + "/" + this.filename + ".html',",
-      "  controller: '" + _.classify(this.filename) + "Ctrl'",
+      "  controller: '" + classify(this.filename) + "Ctrl'",
       "})"
     ]
   });
