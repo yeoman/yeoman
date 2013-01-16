@@ -25,7 +25,7 @@ Yeoman has three primary repos:
 
 ## Contributor License Agreement
 
-Before we can accept patches, there's a quick web form we need you to fill our [here](http://code.google.com/legal/individual-cla-v1.0.html) (<strong>\*scroll to the bottom!\*</strong>).
+Before we can accept patches, there's a quick web form we need you to fill out [here](http://code.google.com/legal/individual-cla-v1.0.html) (<strong>\*scroll to the bottom!\*</strong>).
 
 If you're contributing under a company, you need to fill out [this form instead](http://code.google.com/legal/corporate-cla-v1.0.html).
 
