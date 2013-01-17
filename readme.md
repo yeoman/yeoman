@@ -110,6 +110,16 @@ Yeoman 1.0 will support OS X, Linux and FreeBSD. We will be aiming to bring in s
 See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)
 
 
+## Links
+
+- [Website](http://yeoman.io)
+- [Documentation](https://github.com/yeoman/yeoman/wiki)
+- [Mailinglist](https://groups.google.com/forum/#!forum/yeoman-dev)
+- [\#yeoman](irc://irc.freenode.net:6667) on Freenode *(or [webchat](http://webchat.freenode.net))*
+- [Google+](https://plus.google.com/101063139999404044459/posts) *(follow for updates)*
+- [Twitter](https://twitter.com/yeoman)
+
+
 ## About
 
 Yeoman is an open-source project by [Google](http://google.com) which builds on top of [Grunt](https://github.com/gruntjs/grunt) and [node-build-script](http://github.com/h5bp/node-build-script). We utilize a number of useful open-source solutions including:
