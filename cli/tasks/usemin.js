@@ -247,7 +247,11 @@ module.exports = function(grunt) {
           .writeln('    - ' + grunt.log.wordlist(assets, { separator: '\n    - ' }));
 
         // update concat config for this block
-        concat[output] = assets;
+				concat[output] = {
+				    src: assets,
+				    dest: output,
+				    separator: (type === 'js') ? ';' : ''
+				}
         grunt.config('concat', concat);
 
         // update rjs config as well, as during path lookup we might have
