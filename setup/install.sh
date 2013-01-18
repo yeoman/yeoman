@@ -32,11 +32,12 @@ declare -r reqnode=0.8.0
 declare -r reqnpm=1.1
 declare -r reqruby=1.8.7
 
-#M------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # | Audit & Dependencies Checks                                                |
 # ------------------------------------------------------------------------------
 
 audit() {
+
     declare -i all_check=0
     declare -i none_check=0
 
@@ -281,7 +282,36 @@ msgs_gem() {
 
     case $1 in
         0 ) sad_print "$outputName" "[not installed]"
-            desc_print "You'll acquire $outputName with your" "ruby" "installation."
+
+            if [ $ruby -eq 0 ]; then
+                desc_print "You'll acquire $outputName with your" \
+                           "Ruby" \
+                           "installation."
+            elif [ $ruby -eq 2 ]; then
+                desc_print "You'll acquire $outputName after your install" \
+                           "Ruby (≥ $reqruby)"
+
+            # On some OSes, `RubyGems` does not come
+            # by default with older versions of `Ruby`
+            elif [ $ruby -eq 1 ]; then
+                case $os in
+
+                    linux )
+                        case $distro in
+                            ubuntu|debian ) desc_print "To install $outputName use:" \
+                                                       "sudo apt-get install rubygems" ;;
+                                        * ) desc_print "Download $outputName from:" \
+                                                       "http://rubygems.org/pages/download" ;;
+                        esac
+                    ;;
+
+                        * ) desc_print "Download $outputName from:" \
+                                       "http://rubygems.org/pages/download"
+                    ;;
+
+                esac
+            fi
+
         ;;
         1 ) happy_print "$outputName" "check." ;;
     esac
@@ -636,7 +666,7 @@ get_os_info() {
         os="linux"
 
         # Get Linux distribution
-        # (list of release: http://linuxmafia.com/faq/Admin/release-files.html)
+        # (list of releases: http://linuxmafia.com/faq/Admin/release-files.html)
         distro=$(check_linux_release "lsb-release" "ubuntu") ||
                $(check_linux_release "debian_version" "debian") ||
                $(check_linux_release "debian_release" "debian") ||
