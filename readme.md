@@ -25,6 +25,13 @@ cd yeoman
 git checkout express-stack
 ```
 
+Install Yeoman@0.9.6 and Grunt
+
+```
+npm install -g yeoman
+npm install -g grunt
+```
+
 and then from the `express-stack` root:
 
 1. `npm install`
