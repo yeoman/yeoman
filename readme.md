@@ -95,7 +95,7 @@ See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contrib
 - [Website](http://yeoman.io)
 - [Documentation](https://github.com/yeoman/yeoman/wiki)
 - [Mailinglist](https://groups.google.com/forum/#!forum/yeoman-dev)
-- [\#yeoman](irc://irc.freenode.net:6667) on Freenode *(or [webchat](http://webchat.freenode.net))*
+- [\#yeoman](http://webchat.freenode.net) on Freenode
 - [Google+](https://plus.google.com/101063139999404044459/posts) *(follow for updates)*
 - [Twitter](https://twitter.com/yeoman)
 - [Media assets](https://github.com/yeoman/yeoman.io/tree/gh-pages/media)
@@ -116,5 +116,5 @@ Yeoman was beautifully crafted by these people and bunch of awesome [contributor
 
 ## License
 
-[BSD license](http://opensource.org/licenses/bsd-license.php)
+[BSD license](http://opensource.org/licenses/bsd-license.php)  
 Copyright (c) Google
