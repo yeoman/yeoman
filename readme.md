@@ -145,6 +145,7 @@ Version 1 of the project features the combined efforts of:
 * [Mickael Daniel](http://blog.mklog.fr)
 * [Sindre Sorhus](http://sindresorhus.com)
 * [Eric Bidelman](http://ericbidelman.com)
+* [Frederick Ros](https://github.com/sleeper)
 
 and other developers.
 
