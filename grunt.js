@@ -6,8 +6,8 @@ module.exports = function( grunt ) {
 
   grunt.loadNpmTasks('grunt-shell');
 
-  var angularcrudPath = path.resolve('./generators/angularcrud');
-  var expressPath = path.resolve('./generators/express');
+  var angularcrudPath = path.resolve('./generators/angularcrud').replace(" ", "\\ ");
+  var expressPath = path.resolve('./generators/express').replace(" ", "\\ ");
 
   grunt.initConfig({
     shell: {
