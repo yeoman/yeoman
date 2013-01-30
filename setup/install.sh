@@ -376,7 +376,7 @@ msgs_jpegtran() {
                                    "brew install jpeg-turbo && brew link jpeg-turbo"
                     else
                         desc_print "Download $outputName from:" \
-                                   "http://jpegclub.org/jpegtran/"
+                                   "http://libjpeg-turbo.virtualgl.org"
                     fi
                 ;;
 
@@ -385,7 +385,7 @@ msgs_jpegtran() {
                         ubuntu ) desc_print "To install $outputName use:" \
                                             "sudo apt-get install libjpeg-turbo-progs" ;;
                              * ) desc_print "Download $outputName from:" \
-                                            "http://jpegclub.org/jpegtran/" ;;
+                                            "http://libjpeg-turbo.virtualgl.org" ;;
                     esac
                 ;;
 
