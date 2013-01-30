@@ -30,7 +30,7 @@ Make sure you've read the [issue submission guidelines](https://github.com/yeoma
 
 Yeoman supports a powerful set of high-level commands:
 
-```
+```shell
      init  # Initialize and scaffold a new project using generator templates
     build  # Build an optimized version of your app, ready to deploy
    server  # Launch a preview server which will begin watching for changes
@@ -95,7 +95,8 @@ See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contrib
 - [Website](http://yeoman.io)
 - [Documentation](https://github.com/yeoman/yeoman/wiki)
 - [Mailinglist](https://groups.google.com/forum/#!forum/yeoman-dev)
-- [\#yeoman](http://webchat.freenode.net) on Freenode
+- [StackOverflow](http://stackoverflow.com/questions/tagged/yeoman) 
+- [\#yeoman](http://webchat.freenode.net/?channels=yeoman) on Freenode
 - [Google+](https://plus.google.com/101063139999404044459/posts) *(follow for updates)*
 - [Twitter](https://twitter.com/yeoman)
 - [Media assets](https://github.com/yeoman/yeoman.io/tree/gh-pages/media)
