@@ -17,7 +17,7 @@
   "bugs": "https://github.com/yeoman/yeoman/issues",
   "author": "Chrome Developer Relations",
   "bin": {
-    "yeoman": "bin/yo"
+    "yo": "bin/yo"
   },
   "directories": {
     "man": "man"
@@ -31,17 +31,14 @@
     "manpages": "./scripts/docs-build"
   },
   "dependencies": {
-    "yeoman-generator": "https://github.com/yeoman/generators/archive/master.tar.gz",
-    "generator-webapp": "http://github.com/yeoman/generator-webapp/archive/57f06a7f8045.tar.gz",
-    "generator-mocha": "http://github.com/yeoman/generator-mocha/archive/6bd112ebc4db2b9.tar.gz",
+    "yeoman-generator": "https://github.com/yeoman/generator/archive/23db667fa0ce6ced8fa5825294273150832ba5f3.tar.gz",
     "colors": "~0.6.0-1",
     "nopt": "~2.1.1",
     "lodash": "~1.0.0-rc.3",
     "update-notifier": "~0.1.1",
     "insight": "~0.1.0",
     "ronn": "~0.3.8",
-    "mocha": "~1.8.1",
-    "grunt": "~0.4.0rc7"
+    "mocha": "~1.8.1"
   },
   "devDependencies": {
     "mocha": "~1.8.1",
