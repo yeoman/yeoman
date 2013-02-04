@@ -1,18 +1,11 @@
 
-Usage: <%= 'yeoman'.bold.red %> <%= 'command'.yellow %> [task]
+Usage: <%= 'yo'.bold.red %> <%= '<generator>'.yellow %> [arguments] [--help]
 
-Available commands supported by yeoman
+Before using a generator you'll have to install it.
 
-      <%= 'init'.yellow %>  Initialize and scaffold a new project using generator templates
-     <%= 'build'.yellow %>  Build an optimized version of your app, ready to deploy
-    <%= 'server'.yellow %>  Launch a preview server which will begin watching for changes
-      <%= 'test'.yellow %>  Run a Mocha test harness in a headless PhantomJS
+The default generator <%= 'webapp'.yellow %> can be installed with <%= 'npm install generator-webapp'.bold %>
 
-   <%= 'install'.yellow %>  Install a package from the clientside package registry
- <%= 'uninstall'.yellow %>  Uninstall the package
-    <%= 'update'.yellow %>  Update a package to the latest version
-      <%= 'list'.yellow %>  List the packages currently installed
-    <%= 'search'.yellow %>  Query the registry for matching package names
-    <%= 'lookup'.yellow %>  Look up info on a particular package
+Officially supported generators:
+<%= 'webapp angular ember backbone chromeapp chrome-extension bootstrap mocha jasmine testacular'.yellow %>
 
-Certain commands such as <%= 'init'.yellow %> also provide further help via a --help flag
+See a list of all available generators with <%= 'npm search yeoman-generator'.bold %>
