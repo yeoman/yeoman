@@ -373,7 +373,7 @@ msgs_jpegtran() {
                 mac )
                     if [ $brew -eq 1 ]; then
                         desc_print "To install $outputName use:" \
-                                   "brew install jpeg-turbo && brew link jpeg-turbo"
+                                   "brew install jpeg-turbo && brew link jpeg-turbo --force"
                     else
                         desc_print "Download $outputName from:" \
                                    "http://libjpeg-turbo.virtualgl.org"
