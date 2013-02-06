@@ -68,12 +68,24 @@ function init() {
   env.run(args, opts);
 }
 
+function pre() {
+  if (opts.version) {
+    return console.log(pkg.version);
+  }
+
+  if (!cmd) {
+    return console.log(helpScreen());
+  }
+
+  init();
+}
+
 // TODO: Update docs to flag `--no-insight`
 if (!process.env.yeoman_test && opts.insight !== false) {
   if (insight.optOut === undefined) {
     insight.optOut = false;
     insight.track('downloaded');
-    insight.askPermission(insightMsg);
+    insight.askPermission(insightMsg, pre);
     return;
   }
   // only track the two first subcommands
@@ -92,12 +104,4 @@ if (!process.env.yeoman_test && opts['update-notifier'] !== false) {
   }
 }
 
-if (opts.version) {
-  return console.log(pkg.version);
-}
-
-if (!cmd) {
-  return console.log(helpScreen());
-}
-
-init();
+pre();
