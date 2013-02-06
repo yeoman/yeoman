@@ -1,11 +1,11 @@
 
 Usage: <%= 'yo'.bold.red %> <%= '<generator>'.yellow %> [arguments] [--help]
 
-Before using a generator you'll have to install it.
-
-The default generator <%= 'webapp'.yellow %> can be installed with <%= 'npm install generator-webapp'.bold %>
+The <%= 'webapp'.yellow %> generator is bundled, while others can be installed with <%= 'npm install -g <generator-name>'.bold %>
 
 Officially supported generators:
 <%= 'webapp angular ember backbone chromeapp chrome-extension bootstrap mocha jasmine testacular'.yellow %>
 
 See a list of all available generators with <%= 'npm search yeoman-generator'.bold %>
+
+Now just run <%= 'yo'.bold.red %> <%= 'webapp'.yellow %> and have a great day :)
