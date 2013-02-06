@@ -31,14 +31,13 @@
     "manpages": "./scripts/docs-build"
   },
   "dependencies": {
-    "yeoman-generator": "https://github.com/yeoman/generator/archive/23db667fa0ce6ced8fa5825294273150832ba5f3.tar.gz",
-    "colors": "~0.6.0-1",
+    "yeoman-generator": "https://github.com/yeoman/generator/archive/master.tar.gz",
+    "generator-webapp": "https://github.com/yeoman/generator-webapp/archive/master.tar.gz",
+    "colors": "~0.6.0",
     "nopt": "~2.1.1",
     "lodash": "~1.0.0-rc.3",
     "update-notifier": "~0.1.2",
-    "insight": "~0.1.0",
-    "ronn": "~0.3.8",
-    "mocha": "~1.8.1"
+    "insight": "~0.1.0"
   },
   "devDependencies": {
     "mocha": "~1.8.1",
