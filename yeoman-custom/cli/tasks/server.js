@@ -1,4 +1,3 @@
-
 var fs = require('fs'),
     path = require('path'),
     util = require('util'),
@@ -259,7 +258,7 @@ module.exports = function(grunt) {
 
     opts = {
       // prevent browser opening on `reload` target
-      open: target !== 'reload',
+      open: grunt.config('server.open') && target !== 'reload',
       // and force 35729 port no matter what when on `reload` target
       port: target === 'reload' ? 35729 : port,
       base: base,
