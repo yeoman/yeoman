@@ -1,4 +1,4 @@
-# Welcome, Friend! [![Build Status](https://secure.travis-ci.org/yeoman/yeoman.png?branch=master)](http://travis-ci.org/yeoman/yeoman)
+# Welcome, Friend!
 
 Yeoman is a robust and opinionated client-side stack, comprising tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup. Builds upon great tools like [grunt](http://gruntjs.com) the task runner, [bower](http://twitter.github.com/bower/) the package manager for the web, and our own homebrewed [generator system](https://github.com/yeoman/generators).
 
