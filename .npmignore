@@ -1,8 +1,0 @@
-.npmignore
-.editorconfig
-.jshintrc
-.gitattributes
-setup
-sublime
-test
-Gruntfile.js

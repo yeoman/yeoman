@@ -1,3 +1,8 @@
+### 1.0
+
+See the [migration doc](https://github.com/yeoman/yeoman/wiki/Migrate-from-0.9.6-to-1.0).
+
+
 ### 0.9.5 - 2012-11-05
 
 - [#627](https://github.com/yeoman/yeoman/issues/627)
