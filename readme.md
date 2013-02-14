@@ -1,88 +1,20 @@
 # Welcome, Friend!
 
-Yeoman is a robust and opinionated client-side stack, comprising tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup. Builds upon great tools like [grunt](http://gruntjs.com) the task runner, [bower](http://twitter.github.com/bower/) the package manager for the web, and our own homebrewed [generator system](https://github.com/yeoman/generators).
+Yeoman is a robust and opinionated set of tools, libraries, and a workflow that can help developers quickly build beautiful, compelling web apps.
 
-## [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit issue](https://github.com/yeoman/yeoman#issue-submission)
+## [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/gettingstarted_1.0.html)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit issue](https://github.com/yeoman/yeoman#issue-submission)
 
 ![image](http://yeoman.io/media/yeoman-masthead.png)
-
-
-## Installation
-
-    npm install -g yeoman
-
-*Node.js 0.8.x required*
-
-
-Try the audit script to see what you need in place:
-
-    curl -L get.yeoman.io | bash
-
-You can follow its guidance or simply walk through the [installation procedure](https://github.com/yeoman/yeoman/wiki/Manual-Install).
-
-
-## Issue submission
-
-Make sure you've read the [issue submission guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
-
-
-## Overview
-
-Yeoman supports a powerful set of high-level commands:
-
-```shell
-     init  # Initialize and scaffold a new project using generator templates
-    build  # Build an optimized version of your app, ready to deploy
-   server  # Launch a preview server which will begin watching for changes
-     test  # Run a Mocha test harness in a headless PhantomJS
-
-  install  # Install a package from the clientside package registry
-uninstall  # Uninstall the package
-   update  # Update a package to the latest version
-     list  # List the packages currently installed
-   search  # Query the registry for matching package names
-   lookup  # Look up info on a particular package
-```
-
-### Example usage
-
-A common initial workflow with Yeoman might be:
-
-```shell
-yeoman init         # Invoke the most basic application scaffold (Bootstrap, Boilerplate etc.)
-yeoman server       # Fire off a file watch/server process which also places an
-                    # intermediate build of your project in `temp`
-yeoman build        # Build your project, creating an optimized version in a new `dist` directory
-yeoman server:dist  # Serve up the production-ready version of your application
-yeoman test         # Test your app
-```
-
-Some more examples of how to use our commands:
-
-```shell
-# Generators
-yeoman init ember                           # Create a "Hello World" Yeoman project with the Ember Starter Kit
-yeoman init backbone                        # Backbone-Rails generator scaffold
-yeoman init angular                         # Invoke the AngularJS generator scaffold
-yeoman init angular:controller name         # Invoke the AngularJS Controller sub-generator
-
-# Package management
-yeoman search jquery                        # Lookup jQuery in the Bower registry
-yeoman install jquery underscore [depName]  # Install a dependency or dependencies
-yeoman update jquery                        # Update a specific dependency (e.g jquery)
-```
-
-#### Bower
-
-Yeoman uses [Bower](http://twitter.github.com/bower) as its package manager. The Bower registry is currently being populated, you may find that certain packages work and others do not. We are actively working with the Bower team to resolve this issue.
-
-
-![image](http://yeoman.io/media/yeoman-packages.png)
 
 
 ## Platform Support
 
 Yeoman supports OS X, Linux, FreeBSD, with partial Windows support. We will be aiming to bring in full support for Windows in a [future](https://github.com/yeoman/yeoman/wiki/Manual-Install) version.
+
+
+## Issue submission
+
+Make sure you've read the [issue submission guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
 
 
 ## Contribute
@@ -94,13 +26,13 @@ See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contrib
 
 - [Website](http://yeoman.io)
 - [Documentation](https://github.com/yeoman/yeoman/wiki)
+- [StackOverflow](http://stackoverflow.com/questions/tagged/yeoman)
 - [Mailinglist](https://groups.google.com/forum/#!forum/yeoman-dev)
-- [StackOverflow](http://stackoverflow.com/questions/tagged/yeoman) 
 - [\#yeoman](http://webchat.freenode.net/?channels=yeoman) on Freenode
 - [Google+](https://plus.google.com/101063139999404044459/posts) *(follow for updates)*
 - [Twitter](https://twitter.com/yeoman)
 - [Media assets](https://github.com/yeoman/yeoman.io/tree/gh-pages/media)
-- [Available components](http://sindresorhus.com/bower-components/)
+- [Discover Bower components](http://sindresorhus.com/bower-components/)
 
 
 ## Team
