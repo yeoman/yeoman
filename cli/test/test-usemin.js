@@ -81,6 +81,14 @@ describe('usemin', function() {
       assert.ok( changed == awaited );
     });
 
+    it('should treat files referenced as relative paths with ../', function() {
+      grunt.file.write('images/23012.foo.png', "foo");
+      var content = '<img src="../images/foo.png">';
+      var awaited = '<img src="../images/23012.foo.png">';
+      var changed = grunt.helper('usemin:post:html', content);
+      assert.ok( changed == awaited );
+    });
+
     it('should also replace local reference in anchors', function() {
       grunt.file.write('images/23012.foo.png', "foo");
       var content = '<a href="http://foo/bar"></a><a href="ftp://bar"></a><a href="images/foo.png"></a><a href="/images/foo.png"></a><a href="#local"></a>';

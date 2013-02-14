@@ -370,10 +370,8 @@ module.exports = function(grunt) {
         return match;
       }
 
-      // Consider reference from site root
-      if ( src.match(/^\//) ) {
-        src = src.substr(1);
-      }
+      // Consider reference from site root (i.e. remove / or ../ from beginning of filename)
+      src = src.replace(/^(\.*\.*\/)+/, '');
 
       var basename = path.basename(src);
       var dirname = path.dirname(src);
