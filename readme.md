@@ -30,6 +30,7 @@ Install Yeoman@0.9.6 and Grunt
 ```
 npm install -g yeoman
 npm install -g grunt
+npm install -g grunt-cli
 ```
 
 and then from the `express-stack` root:
