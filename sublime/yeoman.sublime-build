@@ -1,5 +1,0 @@
-{
-	"cmd": ["yeoman", "build", "--no-color"],
-	"selector": ["source.js", "source.less", "source.json"],
-	"path": "/usr/local/bin:/usr/bin"
-}
