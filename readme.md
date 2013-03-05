@@ -105,7 +105,7 @@ See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contrib
 
 ## Team
 
-Yeoman was beautifully crafted by these people and bunch of awesome [contributors](https://github.com/yeoman/yeoman/graphs/contributors)
+Yeoman was beautifully crafted by these people and a bunch of awesome [contributors](https://github.com/yeoman/yeoman/graphs/contributors)
 
 [![Paul Irish](http://www.gravatar.com/avatar/ffe68d6f71b225f7661d33f2a8908281.png?s=40)Paul Irish](http://paulirish.com)&nbsp;
 [![Addy Osmani](http://www.gravatar.com/avatar/96270e4c3e5e9806cf7245475c00b275.png?s=40)Addy Osmani](http://addyosmani.com)&nbsp;
