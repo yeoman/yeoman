@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "grunt-shell": "~0.1.3",
-    "yeoman": "0.9.6"
+    "yeoman": "0.9.6",
+    "grunt": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.3.12"
