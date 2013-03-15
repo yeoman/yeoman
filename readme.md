@@ -45,6 +45,7 @@ Yeoman was beautifully crafted by these people and a bunch of awesome [contribut
 [![Sindre Sorhus](http://www.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=40)Sindre Sorhus](http://sindresorhus.com)&nbsp;
 [![Eric Bidelman](http://www.gravatar.com/avatar/e7948aac7c52b26470be80311873a398.png?s=40)Eric Bidelman](http://ericbidelman.com)
 [![Frederick Ros](http://www.gravatar.com/avatar/4605de69c4c3af3f48b8e829206cd4c2.png?s=40)Frederick Ros](https://github.com/sleeper)
+[![Brian Ford](http://www.gravatar.com/avatar/721cc7667947af96cc416729fc497107.png?s=40)Brian Ford](https://github.com/btford)
 
 
 ## License
