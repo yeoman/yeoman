@@ -2,7 +2,7 @@
 
 Yeoman is a robust and opinionated set of tools, libraries, and a workflow that can help developers quickly build beautiful, compelling web apps.
 
-## [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/gettingstarted_1.0.html)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit issue](https://github.com/yeoman/yeoman#issue-submission)
+## [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/gettingstarted.html)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit issue](https://github.com/yeoman/yeoman#issue-submission)
 
 ![image](http://yeoman.io/media/yeoman-masthead.png)
 
@@ -42,7 +42,8 @@ Yeoman was beautifully crafted by these people and a bunch of awesome [contribut
 [![Paul Irish](http://www.gravatar.com/avatar/ffe68d6f71b225f7661d33f2a8908281.png?s=40)Paul Irish](http://paulirish.com)&nbsp;
 [![Addy Osmani](http://www.gravatar.com/avatar/96270e4c3e5e9806cf7245475c00b275.png?s=40)Addy Osmani](http://addyosmani.com)&nbsp;
 [![Mickael Daniel](http://www.gravatar.com/avatar/a23615915f0baf096b94cc9df93fc327.png?s=40)Mickael Daniel](http://blog.mklog.fr)&nbsp;
-[![Sindre Sorhus](http://www.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=40)Sindre Sorhus](http://sindresorhus.com)&nbsp;
+[![Sindre Sorhus](http://www.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=40)Sindre Sorhus](http://sindresorhus.com)
+
 [![Eric Bidelman](http://www.gravatar.com/avatar/e7948aac7c52b26470be80311873a398.png?s=40)Eric Bidelman](http://ericbidelman.com)
 [![Frederick Ros](http://www.gravatar.com/avatar/4605de69c4c3af3f48b8e829206cd4c2.png?s=40)Frederick Ros](https://github.com/sleeper)
 [![Brian Ford](http://www.gravatar.com/avatar/721cc7667947af96cc416729fc497107.png?s=40)Brian Ford](https://github.com/btford)
