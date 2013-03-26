@@ -208,7 +208,7 @@ module.exports = function(grunt) {
           parts = dest.split(':'),
           type = parts[0],
           output = parts[1];
-        // Handle absolute path (i.e. with respect to th eserver root)
+        // Handle absolute path (i.e. with respect to the server root)
         if (output[0] === '/') {
           output = output.substr(1);
         }
@@ -231,7 +231,7 @@ module.exports = function(grunt) {
             asset += ',' + output;
           }
 
-          // Handle absolute path (i.e. with respect to th eserver root)
+          // Handle absolute path (i.e. with respect to the server root)
           if (asset[0] === '/') {
             asset = asset.substr(1);
           }
