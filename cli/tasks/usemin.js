@@ -231,6 +231,11 @@ module.exports = function(grunt) {
             asset += ',' + output;
           }
 
+          // Handle absolute path (i.e. with respect to th eserver root)
+          if (asset[0] === '/') {
+            asset = asset.substr(1);
+          }
+
           return asset;
         }).reduce(function(a, b) {
           b = ( b ? b.split(',') : '');
