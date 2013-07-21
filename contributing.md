@@ -31,23 +31,12 @@ Other projects require a similar agreement: jQuery, Firefox, Apache, and many mo
 ## Quick Start
 
 - Add `yeoman_test` with any value to your environment variables to disable the updater and Insight.
-- Clone the repo of yo, generator, generator-webapp, generator-mocha, and any other generator you might want to develop against, and then run `npm install` in them.
-- Go to the yo folder and link it globally using `npm link` then link in the generator repo using `npm link path/to/generator`.
-- Link in the generators you cloned using eg. `npm link path/to/webapp` for each.
+- Clone the repo of yo, generator, and any generator you might want to develop against, and then run `npm install` in them.
+- Go to the yo folder and link it globally using `npm link` then link in the generators using `npm link path/to/generator` for each.
 - Run `yo` and you should now see the linked generators in the list.
 - Start hacking :)
 
 You can keep the various repos up to date by running `git pull --rebase upstream master` in each.
-
-
-### Generators
-
-When developing in the generators repo you probably want to be able to test out your changes. The recommended workflow is to link the generators module into the yo project by running `npm link path/to/generator/folder` in `/yo`. This means changes you do in the generators repo will be reflected in the yo repo.
-
-
-### Insight
-
-When developing for Yeoman, you will most likely be running and debugging commands within the CLI. If you have opted into Insight, these commands will be logged. A special `--no-insight` flag is available for developers wishing to opt out of Insight tracking so inflated stats are not recorded.
 
 
 ## Style Guide
