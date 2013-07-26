@@ -14,7 +14,8 @@ In order for us to help you please check that you've completed the following ste
 
 Unix: `yo --version && echo $PATH $NODE_PATH && node -e 'console.log(process.platform, process.versions)' && cat Gruntfile.js`
 
-Windows: `yo --version && echo %PATH% %NODE_PATH% && node -e "console.log(process.platform, process.versions)" && type Gruntfile.js`
+Windows: `yo --version && echo %PATH% %NODE_PATH% && node -e "console.log(process.platform, process.versions)" && type Gruntfile.js`  
+  
 [Submit your issue](https://github.com/yeoman/yeoman/issues/new)
 
 
