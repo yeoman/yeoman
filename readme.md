@@ -2,7 +2,7 @@
 
 Yeoman is a robust and opinionated set of tools, libraries, and a workflow that can help developers quickly build beautiful, compelling web apps.
 
-### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/gettingstarted.html)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit Issue](https://github.com/yeoman/yeoman#issue-submission)
+### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/gettingstarted.html)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit Issue](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission)
 
 ![image](http://yeoman.io/media/yeoman-masthead.png)
 
