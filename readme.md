@@ -14,7 +14,9 @@ Yeoman supports OS X, Linux, FreeBSD, Windows.
 
 ## Issue Submission
 
-Make sure you've read the [issue submission guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new).
+Make sure you've read the [issue submission guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new). 
+
+Yeoman is composed of a number of different sub-projects, most of which have their own dedicated repository. If you are looking for a repo for a particular piece, you'll find it on the [organization](http://github.com/yeoman) page.
 
 
 ## Feature requests
