@@ -68,3 +68,7 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
 Copyright (c) Google
+
+-
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/yeoman/yeoman/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
