@@ -61,7 +61,11 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 
 [![Frederick Ros](http://gravatar.com/avatar/4605de69c4c3af3f48b8e829206cd4c2?s=144)](https://github.com/sleeper) | [![Brian Ford](http://gravatar.com/avatar/721cc7667947af96cc416729fc497107?s=144)](http://briantford.com) | [![Pascal Hartig](http://gravatar.com/avatar/be451fcdbf0e5ff07f23ed16cb5c90a3?s=144)](http://passy.me) | [![Stephen Sawchuk](http://gravatar.com/avatar/098cfe2d360e77c3229f2cd5298354c4?s=144)](http://github.com/stephenplusplus)| [![Simon Boudrias](http://www.gravatar.com/avatar/368346708a485060d31f77677a21d2a5?s=144)](http://github.com/SBoudrias)
 :---:|:---:|:---:|:---:|:---:
-[Frederick Ros](https://github.com/sleeper) | [Brian Ford](http://briantford.com) | [Pascal Hartig](http://passy.me) | [Stephen Sawchuk](http://github.com/stephenplusplus) | [Simon Boudrias](http://github.com/SBoudrias)
+[Frederick Ros](https://github.com/sleeper) | [Brian Ford](http://briantford.com) | [Pascal Hartig](http://passy.me) | [Stephen Sawchuk](http://github.com/stephenplusplus) | [Simon Boudrias](http://github.com/SBoudrias) 
+
+[![Hemanth.HM](https://s.gravatar.com/avatar/d32a6bf2b43bf62a7212f0c793d76319?s=144)](http://h3manth.com) |
+:---:|:---:|:---:|:---:|:---:
+[Hemanth.HM](http://h3manth.com) |
 
 
 ## License
