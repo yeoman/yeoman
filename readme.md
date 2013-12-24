@@ -63,9 +63,9 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 :---:|:---:|:---:|:---:|:---:
 [Frederick Ros](https://github.com/sleeper) | [Brian Ford](http://briantford.com) | [Pascal Hartig](http://passy.me) | [Stephen Sawchuk](http://github.com/stephenplusplus) | [Simon Boudrias](http://github.com/SBoudrias) 
 
-[![Hemanth.HM](https://s.gravatar.com/avatar/d32a6bf2b43bf62a7212f0c793d76319?s=144)](http://h3manth.com) |
+[![Hemanth.HM](https://s.gravatar.com/avatar/d32a6bf2b43bf62a7212f0c793d76319?s=144)](http://h3manth.com) | [![Revath S Kumar](https://s.gravatar.com/avatar/fb7edc7cc7a53c903af74d07dcecf9dc?s=144)](http://blog.revathskumar.com) |
 :---:|:---:|:---:|:---:|:---:
-[Hemanth.HM](http://h3manth.com) |
+[Hemanth.HM](http://h3manth.com) | [Revath S Kumar](http://blog.revathskumar.com) |
 
 
 ## License
