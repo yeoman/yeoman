@@ -63,9 +63,9 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 :---:|:---:|:---:|:---:|:---:
 [Frederick Ros](https://github.com/sleeper) | [Brian Ford](http://briantford.com) | [Pascal Hartig](http://passy.me) | [Stephen Sawchuk](http://github.com/stephenplusplus) | [Simon Boudrias](http://github.com/SBoudrias) 
 
-[![Hemanth.HM](https://s.gravatar.com/avatar/d32a6bf2b43bf62a7212f0c793d76319?s=144)](http://h3manth.com) | [![Revath S Kumar](https://s.gravatar.com/avatar/fb7edc7cc7a53c903af74d07dcecf9dc?s=144)](http://blog.revathskumar.com) | [![Jimmy Moon](https://1.gravatar.com/avatar/687ac25540fe35fcb5e828f75c4a6079?s=144)](http://ragingwind.org) |
+[![Hemanth.HM](https://s.gravatar.com/avatar/d32a6bf2b43bf62a7212f0c793d76319?s=144)](http://h3manth.com) | [![Revath S Kumar](https://s.gravatar.com/avatar/fb7edc7cc7a53c903af74d07dcecf9dc?s=144)](http://blog.revathskumar.com) | [![Jimmy Moon](https://1.gravatar.com/avatar/687ac25540fe35fcb5e828f75c4a6079?s=144)](http://ragingwind.org) | [![Eddie Monge](https://s.gravatar.com/avatar/08a01ffbfa6e039295208f023dec0dae?s=144)](http://eddiemonge.com) |
 :---:|:---:|:---:|:---:|:---:
-[Hemanth.HM](http://h3manth.com) | [Revath S Kumar](http://blog.revathskumar.com) | [Jimmy Moon](http://ragingwind.org) |
+[Hemanth.HM](http://h3manth.com) | [Revath S Kumar](http://blog.revathskumar.com) | [Jimmy Moon](http://ragingwind.org) | [Eddie Monge](http://eddiemonge.com) |
 
 
 ## License
