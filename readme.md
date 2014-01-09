@@ -11,7 +11,6 @@ Yeoman is a robust and opinionated set of tools, libraries, and a workflow that 
 
 Yeoman supports OS X, Linux, FreeBSD, Windows.
 
-
 ## Issue Submission
 
 Make sure you've read the [issue submission guidelines](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission) before you open a [new issue](https://github.com/yeoman/yeoman/issues/new). 
@@ -21,8 +20,18 @@ Yeoman is composed of a number of different sub-projects, most of which have the
 
 ## Feature requests
 
-Feature requests should be submitted to the [repo](https://github.com/yeoman) it concerns. Submit to [yeoman/yeoman](https://github.com/yeoman/yeoman/issues) if you're unsure.
+Feature requests should be submitted to the [repo](https://github.com/yeoman) it concerns. Submit to [yeoman/yeoman](https://github.com/yeoman/yeoman/issues) if you're unsure, otherwise the respositories for our officially maintained generators can be found below:
 
+* [Web App](https://github.com/yeoman/generator-webapp#readme)
+* [AngularJS](https://github.com/yeoman/generator-angular#readme)
+* [Backbone](https://github.com/yeoman/generator-backbone#readme)
+* [Ember](https://github.com/yeoman/generator-ember#readme)
+* [Polymer](https://github.com/yeoman/generator-polymer#readme)
+* [Jasmine](https://github.com/yeoman/generator-jasmine#readme)
+* [Mocha](https://github.com/yeoman/generator-mocha#readme)
+* [Karma](https://github.com/yeoman/generator-karma#readme)
+* [Chrome Apps Basic Boilerplate](https://github.com/yeoman/generator-chromeapp#readme)
+* [Chrome Extension Boilerplate](https://github.com/yeoman/generator-chrome-extension#readme)
 
 ## Contribute
 
