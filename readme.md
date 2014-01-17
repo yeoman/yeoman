@@ -73,7 +73,7 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 [Brian Ford](http://briantford.com) | [Eddie Monge](http://eddiemonge.com) | [Paul Irish](http://paulirish.com) | [Hemanth.HM](http://h3manth.com) | [Revath S Kumar](http://blog.revathskumar.com)
 
 [![Jimmy Moon](https://1.gravatar.com/avatar/687ac25540fe35fcb5e828f75c4a6079?s=144)](http://ragingwind.org) | [![Frederick Ros](http://gravatar.com/avatar/4605de69c4c3af3f48b8e829206cd4c2?s=144)](https://github.com/sleeper) | [![Mickael Daniel](http://gravatar.com/avatar/a23615915f0baf096b94cc9df93fc327?s=144)](https://github.com/mklabs) | [![Eric Bidelman](http://gravatar.com/avatar/e7948aac7c52b26470be80311873a398?s=144)](http://ericbidelman.com)
-:---:|:---:|:---:|:---:
+:---:|:---:|:---:|:---:|:---:
 [Jimmy Moon](http://ragingwind.org) | [Frederick Ros](https://github.com/sleeper) | [Mickael Daniel](https://github.com/mklabs) | [Eric Bidelman](http://ericbidelman.com)
 
 
