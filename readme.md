@@ -55,7 +55,7 @@ Need help or have a question?
 - [Development discussions](https://github.com/yeoman/yeoman/issues)
 - [Google+](https://plus.google.com/101063139999404044459/posts)
 - [Twitter](https://twitter.com/yeoman)
-- [Media kit](https://github.com/yeoman/yeoman.io/tree/gh-pages/media)
+- [Media kit](https://github.com/yeoman/yeoman.io/tree/master/media)
 - [Discover Bower components](http://sindresorhus.com/bower-components/)
 
 
