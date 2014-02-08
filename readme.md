@@ -56,7 +56,7 @@ Need help or have a question?
 - [Google+](https://plus.google.com/101063139999404044459/posts)
 - [Twitter](https://twitter.com/yeoman)
 - [Media kit](https://github.com/yeoman/yeoman.io/tree/master/media)
-- [Discover Bower components](http://sindresorhus.com/bower-components/)
+- [Discover Bower packages](http://bower.io/search)
 
 
 ## Team
