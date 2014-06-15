@@ -2,7 +2,7 @@
 
 Yeoman is a robust and opinionated set of tools, libraries, and a workflow that can help developers quickly build beautiful, compelling web apps. It is comprised of [yo](https://github.com/yeoman/yo) - a scaffolding tool using our [generator](https://github.com/yeoman/generator) system, [grunt](http://gruntjs.com) - a task runner for your build process and [bower](http://bower.io) for dependency management.
 
-### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/gettingstarted.html)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit Issue](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission)
+### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/learning)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit Issue](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission)
 
 ![image](yeoman-masthead.png)
 
