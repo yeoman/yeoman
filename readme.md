@@ -4,7 +4,7 @@ Yeoman is a robust and opinionated set of tools, libraries, and a workflow that 
 
 ### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/learning)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit Issue](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission)
 
-![image](yeoman-masthead.png)
+![image](yeoman-illustration.png)
 
 
 ## Platform Support
