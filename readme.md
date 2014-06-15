@@ -1,15 +1,12 @@
 # Welcome, Friend!
 
-Yeoman is a robust and opinionated set of tools, libraries, and a workflow that can help developers quickly build beautiful, compelling web apps. It is comprised of [yo](https://github.com/yeoman/yo) - a scaffolding tool using our [generator](https://github.com/yeoman/generator) system, [grunt](http://gruntjs.com) - a task runner for your build process and [bower](http://bower.io) for dependency management.
-
-### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/learning)&nbsp;&nbsp;&nbsp;[Documentation](https://github.com/yeoman/yeoman/wiki)&nbsp;&nbsp;&nbsp;[Submit Issue](https://github.com/yeoman/yeoman/blob/master/contributing.md#issue-submission)
-
-![image](yeoman-illustration.png)
+> Yeoman is a robust and opinionated set of tools, libraries, and a workflow that can help developers quickly build beautiful, compelling web apps.
 
 
-## Platform Support
+### [Website](http://yeoman.io)&nbsp;&nbsp;&nbsp;[Getting Started](http://yeoman.io/learning)&nbsp;&nbsp;&nbsp;[Submit Issue](contributing.md#issue-submission)
 
-Yeoman supports OS X, Linux, FreeBSD, Windows.
+[![image](yeoman-illustration.png)](http://yeoman.io)
+
 
 ## Issue Submission
 
@@ -33,9 +30,10 @@ Feature requests should be submitted to the [repo](https://github.com/yeoman) it
 * [Chrome Apps Basic Boilerplate](https://github.com/yeoman/generator-chromeapp#readme)
 * [Chrome Extension Boilerplate](https://github.com/yeoman/generator-chrome-extension#readme)
 
+
 ## Contribute
 
-See the [contributing docs](https://github.com/yeoman/yeoman/blob/master/contributing.md)
+See the [contributing docs](contributing.md)
 
 
 ## Support
@@ -51,7 +49,6 @@ Need help or have a question?
 ## Links
 
 - [Website](http://yeoman.io)
-- [Documentation](https://github.com/yeoman/yeoman/wiki)
 - [Development discussions](https://github.com/yeoman/yeoman/issues)
 - [Google+](https://plus.google.com/101063139999404044459/posts)
 - [Twitter](https://twitter.com/yeoman)
