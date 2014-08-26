@@ -17,18 +17,7 @@ Yeoman is composed of a number of different sub-projects, most of which have the
 
 ## Feature requests
 
-Feature requests should be submitted to the [repo](https://github.com/yeoman) it concerns. Submit to [yeoman/yeoman](https://github.com/yeoman/yeoman/issues) if you're unsure, otherwise the respositories for our officially maintained generators can be found below:
-
-* [Web App](https://github.com/yeoman/generator-webapp#readme)
-* [AngularJS](https://github.com/yeoman/generator-angular#readme)
-* [Backbone](https://github.com/yeoman/generator-backbone#readme)
-* [Ember](https://github.com/yeoman/generator-ember#readme)
-* [Polymer](https://github.com/yeoman/generator-polymer#readme)
-* [Jasmine](https://github.com/yeoman/generator-jasmine#readme)
-* [Mocha](https://github.com/yeoman/generator-mocha#readme)
-* [Karma](https://github.com/yeoman/generator-karma#readme)
-* [Chrome Apps Basic Boilerplate](https://github.com/yeoman/generator-chromeapp#readme)
-* [Chrome Extension Boilerplate](https://github.com/yeoman/generator-chrome-extension#readme)
+Feature requests should be submitted to the [repo](https://github.com/yeoman) it concerns. Submit to [yeoman/yeoman](https://github.com/yeoman/yeoman/issues) if you're unsure, otherwise the respositories for our officially maintained generators can be found [here](https://github.com/yeoman/?query=generator-).
 
 
 ## Contribute
