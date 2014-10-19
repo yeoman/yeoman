@@ -1,6 +1,6 @@
 # Code of Conduct
 
-"We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the Yeoman project to do the same." (- credit to the Angular community for this ^)
+"We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the Yeoman project to do the same."
 
 All contributions to this project are valuable, including and not limited to posting issues, updating documentation, submitting pull requests and providing feedback in comments. Please act with respect and avoid demeaning, condescending, racist, sexist and other inappropriate language and conduct. 
 
@@ -11,7 +11,7 @@ Please ensure comments stay professional, constructive and about the code, not t
 
 This Code of Conduct applies to all of the projects under the [Yeoman organization](https://github.com/yeoman) on GitHub and the Yeoman community at large (IRC, mailing lists, Google+, Twitter, etc.).
 
-See the [contributing guidelines](http://yeoman.io/contributing/) and the [tutorial on getting started with Yeoman](http://yeoman.io/codelab.html_) for technical details of contributing to Yeoman or its satellite projects.
+See the [contributing guidelines](http://yeoman.io/contributing/) and the [tutorial on getting started with Yeoman](http://yeoman.io/codelab.html) for technical details of contributing to Yeoman or its satellite projects.
 
 ## Events
 
@@ -29,7 +29,7 @@ To submit an issue, simply click the Issues tab in the far right menu, below the
 
 On the far right of that screen is a big green button that says "New Issue". Click the button and it will take you to a screen like this:
 
-Please make the Title of your issue Code of Conduct Content Update
+Please make the Title of your issue "Code of Conduct Content Update"
 
 Issues will be reviewed by the Yeoman core team. This is standard for the GitHub workflow, which works primarily to serve code reviews. Any delay in time between your request and its addition to the Code of Conduct is not an indication it has been received negatively.
 
@@ -40,7 +40,6 @@ We welcome your thoughts and contributions.
 ## Consequences for violations to this Code of Conduct
 
 If a participant engages in any behaviour violating this code of conduct, the core members of this community may take any action they deem appropriate, including warning the offender or expulsion from the community, exclusion from any interaction and loss of all rights in this community. 
-(-credit to Hoodie for this ^)
 
 ## Reporting violations of the Code of Conduct
 
@@ -48,4 +47,4 @@ If you personally require help or you are witness to violations of the Code of C
 
 ## Credits
 
-Based on the [Contributor Covenant by Coraline Ada Ehmke (Bantik)](https://github.com/Bantik/contributor_covenant), [AngularJS Code of Conduct](https://github.com/angular/code-of-conduct), [Hoodie Code of Conduct](http://hood.ie/code-of-conduct.html)
+Based on the [Contributor Covenant by Coraline Ada Ehmke (Bantik)](https://github.com/Bantik/contributor_covenant), [AngularJS Code of Conduct](https://github.com/angular/code-of-conduct) (direct quote in first paragraph), [Hoodie Code of Conduct](http://hood.ie/code-of-conduct.html) (direct quote in "Consequences")
