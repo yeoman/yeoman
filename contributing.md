@@ -21,8 +21,7 @@ Windows: `yo --version && echo %PATH% %NODE_PATH% && node -e "console.log(proces
 
 ## Quick Start
 
-- Add `yeoman_test` with any value to your environment variables to disable the updater and Insight.
-- Clone the repo of yo, generator, and any generator you might want to develop against, and then run `npm install` in them.
+- Clone the repo of [yo](https://github.com/yeoman/yo), [generator](https://github.com/yeoman/generator), and any generator you might want to develop against, and then run `npm install` in them.
 - Go to the yo folder and link it globally using `npm link` then link in the generators using `npm link path/to/generator` for each.
 - Run `yo` and you should now see the linked generators in the list.
 - Start hacking :)
