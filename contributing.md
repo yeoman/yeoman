@@ -43,7 +43,6 @@ Please ensure any pull requests follow this closely. If you notice existing code
 
 ## Pull Request Guidelines
 
-* Submit your CLA, if you haven't.
 * Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
 * Non-trivial changes should be discussed in an issue first
 * Develop in a topic branch, not master
@@ -52,3 +51,4 @@ Please ensure any pull requests follow this closely. If you notice existing code
 * Make sure test-suite passes: `npm test`
 * Squash your commits
 * Write a convincing description of your PR and why we should land it
+* Check the indvidual project to see if there is a **contributing.md** or similar file as some project's have different requirements.
