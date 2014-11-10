@@ -1,6 +1,6 @@
 # Contributing
 
-We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :) At this time we are primarily focusing on improving the user-experience and stability of Yeoman for our first release. Please keep this in mind if submitting feature requests, which we're happy to consider for future versions.
+We are more than happy to accept external contributions to the project in the form of feedback, bug reports and even better - pull requests :)
 
 
 ## Issue submission
