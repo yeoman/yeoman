@@ -19,19 +19,6 @@ Windows: `yo --version && echo %PATH% %NODE_PATH% && node -e "console.log(proces
 [Submit your issue](https://github.com/yeoman/yeoman/issues/new)
 
 
-## Contributor License Agreement
-
-Before we can accept patches, there's a quick web form we need you to fill out [here](http://code.google.com/legal/individual-cla-v1.0.html) (**scroll to the bottom!**).
-
-If you're contributing under a company, you need to fill out [this form instead](http://code.google.com/legal/corporate-cla-v1.0.html).
-
-This CLA asserts that fixes and documentation are owned by you and that Google can license all work under BSD.
-
-Other projects require a similar agreement: jQuery, Firefox, Apache, and many more.
-
-[More about CLAs](https://www.google.com/search?q=Contributor%20License%20Agreement)
-
-
 ## Quick Start
 
 - Add `yeoman_test` with any value to your environment variables to disable the updater and Insight.
