@@ -2,6 +2,8 @@
 
 "We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the Yeoman project to do the same."
 
+And we add to it: wealth and property, religion and spirituality or any other philosophy of life or any other aspect of life; because it is coincidence or fortune.
+
 All contributions to this project are valuable, including and not limited to posting issues, updating documentation, submitting pull requests and providing feedback in comments. Please act with respect and avoid demeaning, condescending, racist, sexist and other inappropriate language and conduct. 
 
 Please ensure comments stay professional, constructive and about the code, not the person. 
