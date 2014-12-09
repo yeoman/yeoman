@@ -1,6 +1,6 @@
 # Code of Conduct
 
-"We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, race, ethnicity, religion, or level of experience. We expect anyone contributing to the Yeoman project to do the same."
+"We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, ethnicity, religion, level of experience, or any other aspect of life. We expect anyone contributing to the Yeoman project to do the same."
 
 All contributions to this project are valuable, including and not limited to posting issues, updating documentation, submitting pull requests and providing feedback in comments. Please act with respect and avoid demeaning, condescending, racist, sexist and other inappropriate language and conduct. 
 
