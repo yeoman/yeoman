@@ -67,9 +67,9 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 :---:|:---:|:---:|:---:|:---:
 [Jimmy Moon](http://ragingwind.org) | [Frederick Ros](https://github.com/sleeper) | [Mickael Daniel](https://github.com/mklabs) | [Eric Bidelman](http://ericbidelman.com) | [Matija Marohnić](https://github.com/silvenon)
 
-[![Kevin Mårtensson](http://gravatar.com/avatar/48fa294e3cd41680b80d3ed6345c7b4d?s=117)](https://github.com/kevva) |
-:---:|
-[Kevin Mårtensson](https://github.com/kevva) |
+[![Kevin Mårtensson](http://gravatar.com/avatar/48fa294e3cd41680b80d3ed6345c7b4d?s=117)](https://github.com/kevva) | [![Arthur Verschaeve](https://gravatar.com/avatar/e34daab0d2e344219adb5234198269c5?s=117)](https://github.com/arthurvr)
+:---:|:---:|
+[Kevin Mårtensson](https://github.com/kevva) | [Arthur Verschaeve](https://github.com/arthurvr)
 
 
 ## License
