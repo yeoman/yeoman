@@ -51,4 +51,4 @@ Please ensure any pull requests follow this closely. If you notice existing code
 * Make sure test-suite passes: `npm test`
 * Squash your commits
 * Write a convincing description of your PR and why we should land it
-* Check the indvidual project to see if there is a **contributing.md** or similar file as some project's have different requirements.
+* Check the individual project to see if there is a **contributing.md** or similar file as some project's have different requirements.
