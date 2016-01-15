@@ -37,6 +37,7 @@ See the [contributing docs](contributing.md)
 Need help or have a question?
 
 - [StackOverflow](https://stackoverflow.com/questions/tagged/yeoman)
+- [Gitter chat](https://gitter.im/yeoman/yeoman)
 - [\#yeoman](https://webchat.freenode.net/?channels=yeoman) on Freenode
 
 *Please don't use the issue trackers for support/questions.*
