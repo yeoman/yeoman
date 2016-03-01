@@ -74,9 +74,9 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 :---:|:---:|
 [Kevin Mårtensson](https://github.com/kevva) | [Arthur Verschaeve](https://github.com/arthurvr)
 
-# Sponsors
+## Backers
 Love Yeoman work and community? Help us keep it alive by donating funds to cover project expenses! <br />
-[[Become a sponsor](https://opencollective.com/yeoman#support)]
+[[Become a backer](https://opencollective.com/yeoman#support)]
 
   <a href="https://opencollective.com/yeoman/backers/0/website" target="_blank">
     <img src="https://opencollective.com/yeoman/backers/0/avatar">
