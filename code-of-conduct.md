@@ -11,7 +11,7 @@ Please ensure comments stay professional, constructive and about the code, not t
 
 This Code of Conduct applies to all of the projects under the [Yeoman organization](https://github.com/yeoman) on GitHub and the Yeoman community at large (IRC, mailing lists, Google+, Twitter, etc.).
 
-See the [contributing guidelines](http://yeoman.io/contributing/) and the [tutorial on getting started with Yeoman](http://yeoman.io/codelab.html) for technical details of contributing to Yeoman or its satellite projects.
+See the [contributing guidelines](http://yeoman.io/contributing/) and the [tutorial on getting started with Yeoman](http://yeoman.io/learning/) for technical details of contributing to Yeoman or its satellite projects.
 
 ## Events
 
