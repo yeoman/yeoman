@@ -24,7 +24,7 @@ Yeoman is composed of a number of different sub-projects, most of which have the
 
 ## Feature requests
 
-Feature requests should be submitted to the [repo](https://github.com/yeoman) it concerns. Submit to [yeoman/yeoman](https://github.com/yeoman/yeoman/issues) if you're unsure, otherwise the respositories for our officially maintained generators can be found [here](https://github.com/yeoman/?query=generator-).
+Feature requests should be submitted to the [repo](https://github.com/yeoman) it concerns. Submit to [yeoman/yeoman](https://github.com/yeoman/yeoman/issues) if you're unsure, otherwise the repositories for our officially maintained generators can be found [here](https://github.com/yeoman/?query=generator-).
 
 
 ## Contribute
@@ -36,9 +36,8 @@ See the [contributing docs](contributing.md)
 
 Need help or have a question?
 
-- [StackOverflow](https://stackoverflow.com/questions/tagged/yeoman)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/yeoman)
 - [Gitter chat](https://gitter.im/yeoman/yeoman)
-- [\#yeoman](https://webchat.freenode.net/?channels=yeoman) on Freenode
 
 *Please don't use the issue trackers for support/questions.*
 
@@ -57,7 +56,6 @@ Need help or have a question?
 
 Yeoman is beautifully crafted by these people and a bunch of awesome [contributors](https://github.com/yeoman/yeoman/graphs/contributors)
 
-
 [![Addy Osmani](https://gravatar.com/avatar/96270e4c3e5e9806cf7245475c00b275?s=117)](http://addyosmani.com) | [![Sindre Sorhus](https://gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9?s=117)](http://sindresorhus.com) | [![Pascal Hartig](https://gravatar.com/avatar/be451fcdbf0e5ff07f23ed16cb5c90a3?s=117)](https://passy.me) | [![Stephen Sawchuk](https://gravatar.com/avatar/098cfe2d360e77c3229f2cd5298354c4?s=117)](https://github.com/stephenplusplus) | [![Simon Boudrias](https://gravatar.com/avatar/368346708a485060d31f77677a21d2a5?s=117)](https://github.com/SBoudrias)
 :---:|:---:|:---:|:---:|:---:
 [Addy Osmani](http://addyosmani.com) | [Sindre Sorhus](http://sindresorhus.com) | [Pascal Hartig](https://passy.me) | [Stephen Sawchuk](https://github.com/stephenplusplus) | [Simon Boudrias](https://github.com/SBoudrias)
@@ -74,7 +72,9 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 :---:|:---:|
 [Kevin Mårtensson](https://github.com/kevva) | [Arthur Verschaeve](https://github.com/arthurvr)
 
+
 ## Backers
+
 Love Yeoman work and community? Help us keep it alive by donating funds to cover project expenses! <br />
 [[Become a backer](https://opencollective.com/yeoman#support)]
 
