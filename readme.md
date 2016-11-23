@@ -68,9 +68,9 @@ Yeoman is beautifully crafted by these people and a bunch of awesome [contributo
 :---:|:---:|:---:|:---:|:---:
 [Jimmy Moon](http://ragingwind.org) | [Frederick Ros](https://github.com/sleeper) | [Mickael Daniel](https://github.com/mklabs) | [Eric Bidelman](http://ericbidelman.com) | [Matija Marohnić](https://github.com/silvenon)
 
-[![Kevin Mårtensson](https://gravatar.com/avatar/48fa294e3cd41680b80d3ed6345c7b4d?s=117)](https://github.com/kevva) | [![Arthur Verschaeve](https://gravatar.com/avatar/e34daab0d2e344219adb5234198269c5?s=117)](https://github.com/arthurvr) | [![Michael Kühnel](https://gravatar.com/avatar/57e80cd1ada0e75bb04da5bbcd155753?s=117)](https://github.com/mischah)
-:---:|:---:|:---:|
-[Kevin Mårtensson](https://github.com/kevva) | [Arthur Verschaeve](https://github.com/arthurvr) | [Michael Kühnel](https://github.com/mischah)
+[![Kevin Mårtensson](https://gravatar.com/avatar/48fa294e3cd41680b80d3ed6345c7b4d?s=117)](https://github.com/kevva) | [![Arthur Verschaeve](https://gravatar.com/avatar/e34daab0d2e344219adb5234198269c5?s=117)](https://github.com/arthurvr) | [![Michael Kühnel](https://gravatar.com/avatar/57e80cd1ada0e75bb04da5bbcd155753?s=117)](https://github.com/mischah) | [![Mehdy Dara](https://gravatar.com/avatar/2ad7eb39d40ec50b8a16f0924a664ad2?s=117)](https://github.com/zckrs)
+:---:|:---:|:---:|:---:
+[Kevin Mårtensson](https://github.com/kevva) | [Arthur Verschaeve](https://github.com/arthurvr) | [Michael Kühnel](https://github.com/mischah) | [Mehdy Dara](https://github.com/zckrs)
 
 
 ## Backers
