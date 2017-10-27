@@ -12,9 +12,9 @@ In order for us to help you please check that you've completed the following ste
 * Included as much information about the bug as possible, including any output you've received, what OS and version you're on, etc.
 * Shared the output from running the following command in your project root as this can also help track down the issue.
 
-Unix: `yo --version && echo $PATH $NODE_PATH && node -e 'console.log(process.platform, process.versions)' && cat Gruntfile.js`
+Unix: `yo --version && echo $PATH $NODE_PATH && node -e 'console.log(process.platform, process.versions)'`
 
-Windows: `yo --version && echo %PATH% %NODE_PATH% && node -e "console.log(process.platform, process.versions)" && type Gruntfile.js`  
+Windows: `yo --version && echo %PATH% %NODE_PATH% && node -e "console.log(process.platform, process.versions)"`  
   
 [Submit your issue](https://github.com/yeoman/yeoman/issues/new)
 
@@ -46,9 +46,9 @@ Please ensure any pull requests follow this closely. If you notice existing code
 * Please check to make sure that there aren't existing pull requests attempting to address the issue mentioned. We also recommend checking for issues related to the issue on the tracker, as a team member may be working on the issue in a branch or fork.
 * Non-trivial changes should be discussed in an issue first
 * Develop in a topic branch, not master
-* Lint the code by running `grunt`
 * Add relevant tests to cover the change
 * Make sure test-suite passes: `npm test`
+* Lint the code (mostly done with running the tests)
 * Squash your commits
 * Write a convincing description of your PR and why we should land it
 * Check the individual project to see if there is a **contributing.md** or similar file as some project's have different requirements.
