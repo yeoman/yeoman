@@ -46,7 +46,6 @@ Need help or have a question?
 
 - [Website](http://yeoman.io)
 - [Development discussions](https://github.com/yeoman/yeoman/issues)
-- [Google+](https://plus.google.com/101063139999404044459/posts)
 - [Twitter](https://twitter.com/yeoman)
 - [Media kit](https://github.com/yeoman/media)
 - [Discover Bower packages](http://bower.io/search)
