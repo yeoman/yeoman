@@ -1,3 +1,4 @@
+#CODE OF CONDUCT-COMMENTS
 # Code of Conduct
 
 "We promise to extend courtesy and respect to everyone involved in this project regardless of gender, gender identity, sexual orientation, disability, age, ethnicity, religion, level of experience, or any other aspect of life. We expect anyone contributing to the Yeoman project to do the same."
